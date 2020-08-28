@@ -1,0 +1,150 @@
+.ptnr-1-row {
+  padding-bottom: 40px;
+}
+
+.ptnr-bajaj-bank {
+  background: black;
+  padding: 5px;
+}
+
+.tnr-2-row {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.tnr-3-row {
+  padding-top: 40px;
+}
+
+.img-sbi-card {
+  margin-top: 14px;
+}
+
+.img-indus-card {
+  margin-top: 30px;
+}
+
+.img-hdfc-card {
+  margin-top: 27px;
+}
+
+.padding-loans {
+  padding-bottom: 40px;
+  padding-top: 40px;
+}
+
+.col-lg-2-5, .col-lg-2-5 {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+.div-loan > .loan-img1 {
+	background-image: linear-gradient(145deg, #550814, #ef4961);
+  width: 210px;
+  height: 210px;
+  border-radius: 100%;
+}
+
+.loan-img1:hover {
+  border: 5px solid #d5d3d3;
+}
+
+.div-loan > .loan-img2 {
+  background-image: linear-gradient(145deg, #075140, #50c87b);
+  width: 210px;
+  height: 210px;
+  border-radius: 100%;
+}
+
+.loan-img2:hover {
+  border: 5px solid #d5d3d3;
+}
+
+.div-loan > .loan-img3 {
+  background-image: linear-gradient(145deg, #200751, #4869c8);
+  width: 210px;
+  height: 210px;
+  border-radius: 100%;
+}
+
+.loan-img3:hover {
+  border: 5px solid #d5d3d3;
+}
+
+.div-loan > .loan-img4 {
+  background-image: linear-gradient(145deg, #510737, #c8489b);
+  width: 210px;
+  height: 210px;
+  border-radius: 100%;
+}
+
+.loan-img4:hover {
+  border: 5px solid #d5d3d3;
+}
+
+.div-loan > .loan-img5 {
+  background-image: linear-gradient(145deg, #511f07, #c89548);
+  width: 210px;
+  height: 210px;
+  border-radius: 100%;
+}
+
+.loan-img5:hover {
+  border: 5px solid #d5d3d3;
+}
+
+.div-loan {
+	position: relative;
+}
+
+.div-loan > .img-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.img-text {
+  span {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  i {
+    color: #ffffff;
+  }
+}
+
+.btn-search-loan {
+	border-radius: 0px 2px 2px 0px;
+}
+.search-loan {
+	margin-bottom: 0px;
+}
+
+.header-video {
+  height: 300px;
+  width: 800px;
+	border: #ffffff;
+}
+.header-description {
+	padding: 80px;
+  color: #ffffff;
+  text-align: center;	
+}
+
+.banner {
+  padding: 30px 0px 30px 0px;
+	background-image: linear-gradient(90deg, #01000f 0%, #090979 35%, #00d4ff 100%);
+}
+
+
+@media only screen and (max-width: 600px) {
+  .header-description {
+    padding: 10px;
+  }
+  .header-description > h4 {
+  	font-size: 18px;
+  }
+}

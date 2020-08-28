@@ -1,21 +1,20 @@
 @media only screen and (max-width: 1200px) {
+	.car_type_heading {
+		width: 75%
+	}
 
-.car_type_heading {
-	width: 75%
-}
+	.inventory_right {
+		width: 75%
+	}
 
-.inventory_right {
-	width: 75%
-}
+	.car-type-price .price-wraper {
+		padding-left: 7px;
+	}
 
-.car-type-price .price-wraper {
-	padding-left: 7px;
-}
-
-.bottom-header .navbar > .container-fluid {
-	padding-left: 0;
-	padding-right: 0;
-}
+	.bottom-header .navbar > .container-fluid {
+		padding-left: 0;
+		padding-right: 0;
+	}
 }
 
 @media only screen and (max-width: 1170px) {
@@ -490,7 +489,7 @@ body header.affix {
 }
 
 .banner-wrap {
-	margin-top: 120px !important;
+	margin-top: 105px !important;
 }
 
 .navbar-collapse {
