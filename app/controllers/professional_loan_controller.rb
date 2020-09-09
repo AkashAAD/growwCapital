@@ -1,0 +1,2 @@
+class ProfessionalLoanController < ApplicationController
+end

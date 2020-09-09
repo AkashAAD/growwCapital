@@ -1,0 +1,2 @@
+class BusinessLoanController < ApplicationController
+end

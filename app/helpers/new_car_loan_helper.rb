@@ -1,0 +1,2 @@
+module NewCarLoanHelper
+end

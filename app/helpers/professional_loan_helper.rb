@@ -1,0 +1,2 @@
+module ProfessionalLoanHelper
+end

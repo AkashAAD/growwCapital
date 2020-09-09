@@ -1,0 +1,2 @@
+class HomeLoanController < ApplicationController
+end

@@ -1,0 +1,3 @@
+class BusinessLoan < ApplicationRecord
+	
+end

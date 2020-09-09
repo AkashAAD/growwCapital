@@ -1,0 +1,2 @@
+class UsedCarLoanController < ApplicationController
+end

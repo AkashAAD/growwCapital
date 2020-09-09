@@ -1,0 +1,2 @@
+class LoanAgainstPropertyController < ApplicationController
+end

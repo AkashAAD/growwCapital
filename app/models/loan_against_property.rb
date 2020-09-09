@@ -1,0 +1,2 @@
+class LoanAgainstProperty < ApplicationRecord
+end

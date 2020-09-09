@@ -1,0 +1,2 @@
+module UsedCarLoanHelper
+end
