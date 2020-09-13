@@ -2732,7 +2732,7 @@ input[type="text"], textarea, textarea[name="msg"], select, div.custom-select, i
 }
 
 div.custom-select, select, input[type="file"]:after {
-	background: url(custom-select.png) no-repeat center right;
+	/*background: url(custom-select.png) no-repeat center right;*/
 	border-radius: 4px 4px;
 }
 
