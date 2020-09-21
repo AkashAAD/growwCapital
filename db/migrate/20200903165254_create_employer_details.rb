@@ -5,10 +5,10 @@ class CreateEmployerDetails < ActiveRecord::Migration[5.2]
       t.string :employer_name
       t.text :office_address_line1
       t.text :office_address_line2
-      t.integer :office_state
-      t.integer :office_city
+      t.string :office_state
+      t.string :office_city
       t.string :office_pincode
-      t.integer :mailing_address
+      t.text :mailing_address
       t.string :first_name
       t.string :last_name
       t.string :mobile_number

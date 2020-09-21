@@ -1,2 +1,99 @@
 module ApplicationHelper
+
+  def show_errors(object, field_name)
+    if object.errors.any?
+      if !object.errors.messages[field_name].blank?
+        "#{field_name.to_s.split("_").join(" ")} #{object.errors.messages[field_name].join(", ")}"
+      end
+    end
+  end
+
+  def cities
+    [['-Select City-','']] + CS.cities(:mh, :in).map{ |val| [val, val.downcase] }
+  end
+
+  def states
+    [['-Select State-','']] + CS.states(:in).map{ |val| [val[1], val[0].downcase] }
+  end
+
+  def current_employment
+  	[['-Select Your Emplyment-','']] + BusinessEmploymentType.pluck(:name, :id)
+  end
+
+  def employment_type
+    [['-Select Your Emplyment-','']] + EmploymentType.pluck(:name, :id)
+  end
+
+  def annual_turnover
+  	[['-Select Annual Turnover-','']] + AnnualTurnover.pluck(:name, :id)
+  end
+
+  def gender
+  	[['-Select Gender-',''], ['Male','male'], ['Female','female'], ['Transgender','transgender']]
+  end
+
+  def is_rbi_offer
+  	[['-Select RBI Offer-',''], ["Yes", "yes"], ["No", "no"]]
+  end
+
+  def residence_type
+  	[['-Select Residence Type-','']] + ResidenceType.pluck(:name, :id)
+  end
+
+  def company_type
+  	[['-Select Residence Type-','']] + CompanyType.pluck(:name, :id)
+  end
+
+  def business_nature
+    [['-Select Business Nature-','']] + BusinessNature.pluck(:name, :id)
+  end
+
+  def industry_type
+    [['-Select Industry Type-','']] + IndustryType.pluck(:name, :id)
+  end
+
+  def business_year
+    [['-Select Business Year-','']] + BusinessYear.pluck(:name, :id)
+  end
+
+  def marital_status
+    [['-Select Marital Status-',''], ["Married", "married"], ["Unmarried", "unmarried"]]
+  end
+
+  def highest_qualification
+    [['-Select Highest Qualification-','']] + HighestQualification.pluck(:name, :id)
+  end
+
+  def dependent_number
+    [['-Select Dependent Number-','']] + DependentNumber.pluck(:name, :id)
+  end
+
+  def purpose_of_loan
+    [['-Select Loan Purpose-','']] + LoanPurpose.pluck(:name, :id)
+  end
+
+  def qualification
+    [['-Select Qualification-','']] + Qualification.pluck(:name, :id)
+  end
+
+  def home_loan_amount
+    [['-Select Home Loan Amount-','']] + HomeLoanAmount.pluck(:name, :id)
+  end
+
+  def property_type
+    [['-Select Property Type-',''], ["NATP", "natp"], ["RL", "rl"], ["NA", "na"], ["Gramin", "gramin"]]
+  end
+
+  def profession_type
+    [['-Select Profession Type-','']] + Profession.pluck(:name, :id)
+  end
+
+  def bank_name
+    [['-Select Bank Name-','']] + Bank.pluck(:name, :id)
+  end
+
+  def open_land_constructed_property
+    [['-Select Land Type-',''], ["Residential", "residential"], ["Commercial", "commercial"]]
+  end
+
 end

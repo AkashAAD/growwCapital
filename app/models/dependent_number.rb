@@ -1,0 +1,2 @@
+class DependentNumber < ApplicationRecord
+end

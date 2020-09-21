@@ -1,11 +1,9 @@
 class CreatePersonalLoans < ActiveRecord::Migration[5.2]
   def change
     create_table :personal_loans do |t|
-      t.string :full_name
       t.string :first_name
       t.string :last_name
       t.string :gender
-      t.string :last_name
       t.string :marital_status
       t.integer :highest_qualification
       t.integer :no_of_dependent
@@ -18,7 +16,7 @@ class CreatePersonalLoans < ActiveRecord::Migration[5.2]
       t.text :address_line1
       t.text :address_line2
       t.text :address_line3
-      t.integer :city
+      t.string :city
       t.string :pincode
       t.timestamps
     end

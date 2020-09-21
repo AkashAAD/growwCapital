@@ -1,0 +1,2 @@
+class HomeLoanAmount < ApplicationRecord
+end

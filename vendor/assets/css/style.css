@@ -164,10 +164,11 @@ img, iframe {
 
 .error {
 	font-size: 15px;
-	background: #FFDFDF;
-	border: 1px solid #FFCACA;
+/*	background: #FFDFDF;
+	border: 1px solid #FFCACA;*/
 	border-radius: 5px;
 	font-weight: normal;
+	color: red;
 }
 
 .select-wrapper .row {
@@ -2732,7 +2733,7 @@ input[type="text"], textarea, textarea[name="msg"], select, div.custom-select, i
 }
 
 div.custom-select, select, input[type="file"]:after {
-	background: url(custom-select.png) no-repeat center right;
+	/*background: url(custom-select.png) no-repeat center right;*/
 	border-radius: 4px 4px;
 }
 
@@ -2808,14 +2809,14 @@ input[type="radio"], input[type="checkbox"] {
 }
 
 label:before {
-	display: inline-block;
+/*	display: inline-block;
 	position: relative;
 	top: 0.25em;
 	left: -2px;
 	content: '';
 	width: 25px;
 	height: 20px;
-	background-image: url(formelements.png);
+	background-image: url(formelements.png);*/
 }
 
 input[type="checkbox"] + label:before {
@@ -2865,10 +2866,10 @@ input[type="text"], textarea, select, div.styled, div.custom-select {
 }
 
 label {
-	margin: 0 !important;
+	/*margin: 0 !important;
 	position: absolute;
 	top: 0;
-	right: -47px;
+	right: -47px;*/
 }
 
 div.custom-select {

@@ -1,0 +1,2 @@
+class BusinessEmploymentType < ApplicationRecord
+end

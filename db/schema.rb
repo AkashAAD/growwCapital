@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_09_022112) do
+ActiveRecord::Schema.define(version: 2020_09_21_164444) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,24 @@ ActiveRecord::Schema.define(version: 2020_09_09_022112) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "annual_turnovers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "banks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "business_employment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "business_loan_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "business_loan_id"
     t.integer "company_type"
@@ -48,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_022112) do
     t.string "email"
     t.string "is_rbi_offer"
     t.integer "residence_type"
-    t.integer "city"
+    t.string "city"
     t.string "gst_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,9 +77,33 @@ ActiveRecord::Schema.define(version: 2020_09_09_022112) do
     t.integer "current_employment"
     t.integer "annual_turnover"
     t.decimal "gross_annual_profit", precision: 20, scale: 2
-    t.integer "residence_city"
+    t.string "residence_city"
     t.string "email"
     t.string "mobile_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "business_natures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "business_years", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "company_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dependent_numbers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -71,10 +113,10 @@ ActiveRecord::Schema.define(version: 2020_09_09_022112) do
     t.string "employer_name"
     t.text "office_address_line1"
     t.text "office_address_line2"
-    t.integer "office_state"
-    t.integer "office_city"
+    t.string "office_state"
+    t.string "office_city"
     t.string "office_pincode"
-    t.integer "mailing_address"
+    t.text "mailing_address"
     t.string "first_name"
     t.string "last_name"
     t.string "mobile_number"
@@ -84,12 +126,30 @@ ActiveRecord::Schema.define(version: 2020_09_09_022112) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "employment_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "highest_qualifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "home_loan_amounts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "home_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "loan_amount", precision: 20, scale: 2
-    t.integer "property_city"
-    t.decimal "annual_amount", precision: 20, scale: 2
+    t.integer "loan_amount"
+    t.string "property_city"
+    t.decimal "annual_income", precision: 20, scale: 2
     t.string "mobile_number"
-    t.integer "property_type"
+    t.string "property_type"
     t.decimal "property_cost", precision: 20, scale: 2
     t.integer "current_employment"
     t.decimal "current_emi", precision: 20, scale: 2
@@ -100,33 +160,45 @@ ActiveRecord::Schema.define(version: 2020_09_09_022112) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "industry_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "loan_against_properties", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.decimal "current_emi", precision: 20, scale: 2
     t.string "full_name"
     t.datetime "dob"
     t.decimal "property_cost", precision: 20, scale: 2
     t.string "email"
-    t.integer "property_type"
-    t.integer "constructed_property"
-    t.integer "open_land"
+    t.string "property_type"
+    t.string "constructed_property"
+    t.string "open_land"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "loan_against_property_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "loan_against_propertie_id"
-    t.decimal "loan_amount", precision: 20, scale: 2
+    t.integer "loan_against_property_id"
+    t.integer "loan_amount"
     t.integer "employment_type"
-    t.integer "city"
+    t.string "city"
     t.decimal "annual_income", precision: 20, scale: 2
     t.string "mobile_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "loan_purposes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "new_car_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "registration_state"
-    t.integer "registration_city"
+    t.string "registration_city"
     t.string "car_manufacturer"
     t.string "car_make"
     t.string "car_model"
@@ -157,7 +229,6 @@ ActiveRecord::Schema.define(version: 2020_09_09_022112) do
   end
 
   create_table "personal_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "full_name"
     t.string "first_name"
     t.string "last_name"
     t.string "gender"
@@ -173,14 +244,14 @@ ActiveRecord::Schema.define(version: 2020_09_09_022112) do
     t.text "address_line1"
     t.text "address_line2"
     t.text "address_line3"
-    t.integer "city"
+    t.string "city"
     t.string "pincode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "professional_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "mobile_number"
+  create_table "professional_loan_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "professional_loan_id"
     t.boolean "otp_status"
     t.integer "bank_account_name"
     t.decimal "current_emi", precision: 20, scale: 2
@@ -195,6 +266,37 @@ ActiveRecord::Schema.define(version: 2020_09_09_022112) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "professional_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "loan_amount", precision: 20, scale: 2
+    t.integer "current_employment"
+    t.integer "profession_type"
+    t.string "current_profession_since_year"
+    t.decimal "annual_income", precision: 20, scale: 2
+    t.string "residence_city"
+    t.string "email"
+    t.string "mobile_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "professions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "qualifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "residence_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -203,7 +305,7 @@ ActiveRecord::Schema.define(version: 2020_09_09_022112) do
 
   create_table "used_car_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "registration_state"
-    t.integer "registration_city"
+    t.string "registration_city"
     t.string "car_manufacturer"
     t.string "car_make"
     t.string "car_model"

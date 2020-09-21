@@ -2,7 +2,7 @@ class CreateNewCarLoans < ActiveRecord::Migration[5.2]
   def change
     create_table :new_car_loans do |t|
       t.integer :registration_state
-      t.integer :registration_city
+      t.string :registration_city
       t.string :car_manufacturer
       t.string :car_make
       t.string :car_model

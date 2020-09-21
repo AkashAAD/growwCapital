@@ -1,0 +1,62 @@
+<section id="secondary-banner" class="dynamic-image-6">
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h2>New Business Loan</h2>
+                <h4>Apply for new business loan</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="business-loan-section">
+  <%= form_for @business_loan, :url => { :action => @business_loan.id.nil? ? "create" : "update"}, html: {id:  "business_loan", class: "business_loan"} do |f| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Loan Amount (Rs.) <span>*</span></span>
+            <%= f.number_field(:loan_amount, step: 0.5, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :loan_amount) %></p>
+          </div>
+          <div class="form-group">
+            <span>Current Employment <span>*</span></span>
+            <%= f.select(:current_employment, current_employment, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :current_employment) %></p>
+          </div>
+          <div class="form-group">
+            <span>Annual Turnover (Rs.) <span>*</span></span>
+            <%= f.select(:annual_turnover, annual_turnover, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :annual_turnover) %></p>
+          </div>
+          <div class="form-group">
+            <span>Gross Annual Profit (Rs.) <span>*</span></span>
+            <%= f.number_field(:gross_annual_profit,  step: 0.5, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :gross_annual_profit) %></p>
+          </div>
+          <div class="form-group">
+            <span>Residence City <span>*</span></span>
+            <%= f.select(:residence_city, cities, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :residence_city) %></p>
+          </div>
+          <div class="form-group">
+            <span>Email <span>*</span></span>
+            <%= f.text_field(:email, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :email) %></p>
+          </div>
+          <div class="form-group">
+            <span>Mobile Number <span>*</span></span>
+            <%= f.text_field(:mobile_number, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :mobile_number) %></p>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</section>

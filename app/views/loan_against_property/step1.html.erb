@@ -1,0 +1,67 @@
+<section id="secondary-banner" class="dynamic-image-6">
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h2>New Loan Against Property</h2>
+                <h4>Apply for Loan Against Property</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="business-loan-section">
+  <%= form_for @loan_against_property, :url => { :action => @loan_against_property.id.nil? ? "create" : "update"}, html: {id:  "loan_against_property", class: "loan_against_property"} do |f| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Current EMI (Rs.) <span>*</span></span>
+            <%= f.number_field(:current_emi, step: 0.5, class: "form-control") %>
+            <p class="error"><%= show_errors(@loan_against_property, :current_emi) %></p>
+          </div>
+          <div class="form-group">
+            <span>Full Name <span>*</span></span>
+            <%= f.text_field(:full_name, class: "form-control") %>
+            <p class="error"><%= show_errors(@loan_against_property, :full_name) %></p>
+          </div>
+          <div class="form-group">
+            <span>DOB <span>*</span></span>
+            <%= f.date_field(:dob, class: "form-control") %>
+            <p class="error"><%= show_errors(@loan_against_property, :dob) %></p>
+          </div>
+          <div class="form-group">
+            <span>Property Cost (Rs.) <span>*</span></span>
+            <%= f.number_field(:property_cost,  step: 0.5, class: "form-control") %>
+            <p class="error"><%= show_errors(@loan_against_property, :property_cost) %></p>
+          </div>
+          <div class="form-group">
+            <span>Email <span>*</span></span>
+            <%= f.text_field(:email, class: "form-control") %>
+            <p class="error"><%= show_errors(@loan_against_property, :email) %></p>
+          </div>
+          <div class="form-group">
+            <span>Property Type <span>*</span></span>
+            <%= f.select(:property_type, property_type, class: "form-control") %>
+            <p class="error"><%= show_errors(@loan_against_property, :property_type) %></p>
+          </div>
+          <div class="form-group">
+            <span>Open Land <span>*</span></span>
+            <%= f.select(:open_land, open_land_constructed_property, class: "form-control") %>
+            <p class="error"><%= show_errors(@loan_against_property, :open_land) %></p>
+          </div>
+          <div class="form-group">
+            <span>Constructed Property <span>*</span></span>
+            <%= f.select(:constructed_property, open_land_constructed_property, class: "form-control") %>
+            <p class="error"><%= show_errors(@loan_against_property, :constructed_property) %></p>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</section>

@@ -6,10 +6,9 @@ class CreateLoanAgainstProperties < ActiveRecord::Migration[5.2]
       t.datetime :dob
       t.decimal :property_cost, precision: 20, scale: 2
       t.string :email
-      t.integer :property_type
-      t.integer :constructed_property
-      t.integer :open_land
-      t.integer :property_type
+      t.string :property_type
+      t.string :constructed_property
+      t.string :open_land
       t.timestamps
     end
   end

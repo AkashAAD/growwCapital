@@ -1,9 +1,4 @@
 class LoanAgainstPropertyOffer < ApplicationRecord
-  has_one_attached :persoanl_bank_statement
-  has_one_attached :id_proof
-  has_one_attached :salary_slip
-  has_one_attached :business_bank_statement
-  has_one_attached :itr_copy
-  has_one_attached :property_photo
-  has_one_attached :passport_photo
+  belongs_to :loan_against_property
+  validates :loan_amount, :employment_type, :city, :annual_income, :mobile_number, presence: true
 end

@@ -1,0 +1,2 @@
+class BusinessNature < ApplicationRecord
+end

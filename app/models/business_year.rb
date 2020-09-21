@@ -1,0 +1,2 @@
+class BusinessYear < ApplicationRecord
+end

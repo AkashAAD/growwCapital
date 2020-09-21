@@ -15,7 +15,7 @@ class CreateBusinessLoanOffers < ActiveRecord::Migration[5.2]
       t.string :email
       t.string :is_rbi_offer
       t.integer :residence_type
-      t.integer :city
+      t.string :city
       t.string :gst_number
       t.timestamps
     end
