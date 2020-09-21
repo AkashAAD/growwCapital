@@ -1,4 +1,5 @@
 class BusinessLoanController < ApplicationController
+<<<<<<< HEAD
 	before_action :create_business_loan, only: [:create]
 	before_action :create_business_loan_offer, only: [:create_business_offer]
 	before_action :update_business_loan, only: [:update]
@@ -107,4 +108,13 @@ class BusinessLoanController < ApplicationController
 		end
 	end
 
+=======
+	def new_business_loan 
+		@business_loan = BusinessLoan.new
+	end
+
+	def create_business_loan
+		debugger
+	end
+>>>>>>> 8c0cc4049bc58981dbc6f764a008e78244185828
 end

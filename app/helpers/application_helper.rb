@@ -1,4 +1,5 @@
 module ApplicationHelper
+<<<<<<< HEAD
 
   def show_errors(object, field_name)
     if object.errors.any?
@@ -96,4 +97,9 @@ module ApplicationHelper
     [['-Select Land Type-',''], ["Residential", "residential"], ["Commercial", "commercial"]]
   end
 
+=======
+  def cities
+    [['-Select City-','']] + CS.cities(:mh, :in).map{|val| [val, val.downcase]}
+  end
+>>>>>>> 8c0cc4049bc58981dbc6f764a008e78244185828
 end
