@@ -20,22 +20,22 @@
       <div class="row"> 
         <div class="col-md-4">
           <div class="form-group">
-            <span>Company Type <span>*</span></span>
-            <%= f.select(:company_type, company_type, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :company_type) %></p>
+            <span>Business Name <span>*</span></span>
+            <%= f.text_field(:business_name, class: "form-control") %>
+             <p class="error"><%= show_errors(@business_loan_offer, :business_name) %></p>
           </div>
           <div class="form-group">
-            <span>Business Nature <span>*</span></span>
+            <span>Nature Of Business <span>*</span></span>
             <%= f.select(:business_nature, business_nature, class: "form-control") %>
              <p class="error"><%= show_errors(@business_loan_offer, :business_nature) %></p>
           </div>
           <div class="form-group">
-            <span>Industry Type <span>*</span></span>
+            <span>Type Of Organization <span>*</span></span>
             <%= f.select(:industry_type, industry_type, class: "form-control") %>
              <p class="error"><%= show_errors(@business_loan_offer, :industry_type) %></p>
           </div>
           <div class="form-group">
-            <span>Business Years <span>*</span></span>
+            <span>Present Work Experience(Years) <span>*</span></span>
             <%= f.select(:business_years, business_year, class: "form-control") %>
              <p class="error"><%= show_errors(@business_loan_offer, :business_years) %></p>
           </div>
@@ -45,46 +45,61 @@
              <p class="error"><%= show_errors(@business_loan_offer, :current_emi) %></p>
           </div>
           <div class="form-group">
-            <span>Full Name <span>*</span></span>
-            <%= f.text_field(:full_name, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :full_name) %></p>
+            <span>Annual Turnover <span>*</span></span>
+            <%= f.select(:annual_turnover, annual_turnover, class: "form-control") %>
+             <p class="error"><%= show_errors(@business_loan_offer, :annual_turnover) %></p>
           </div>
           <div class="form-group">
-            <span>Gender <span>*</span></span>
-            <%= f.select(:gender, gender) %>
-             <p class="error"><%= show_errors(@business_loan_offer, :gender) %></p>
+            <span>Gross Annual Profit <span>*</span></span>
+            <%= f.number_field(:gross_annual_profit, class: "form-control") %>
+             <p class="error"><%= show_errors(@business_loan_offer, :gross_annual_profit) %></p>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <span>Pincode <span>*</span></span>
-            <%= f.text_field(:pincode, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :pincode) %></p>
+            <span>Business Pan Number: <span></span></span>
+            <%= f.text_field(:business_pan_number, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan_offer, :business_pan_number) %></p>
           </div>
           <div class="form-group">
-            <span>Pancard <span>*</span></span>
-            <%= f.text_field(:pancard, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :pancard) %></p>
-          </div>
-          <div class="form-group">
-            <span>DOB <span>*</span></span>
-            <%= f.date_field(:dob, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :dob) %></p>
-          </div>
-          <div class="form-group">
-            <span>Is RBI Offer <span>*</span></span>
-            <%= f.select(:is_rbi_offer, is_rbi_offer, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :is_rbi_offer) %></p>
-          </div>
-          <div class="form-group">
-            <span>Residence Type <span>*</span></span>
-            <%= f.select(:residence_type, residence_type, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :residence_type) %></p>
-          </div>
-          <div class="form-group">
-            <span>Business City <span>*</span></span>
-            <%= f.select(:city, cities, class: "form-control") %>
+            <span>GST Number <span></span></span>
+            <%= f.text_field(:gst_number, class: "form-control") %>
              <p class="error"><%= show_errors(@business_loan_offer, :city) %></p>
+          </div>
+          <div class="form-group">
+            <span>Business Property Type: <span>*</span></span>
+            <%= f.select(:residence_type, residence_type, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan_offer, :residence_type) %></p>
+          </div>
+          <div class="form-group">
+            <span>Business Address Line 1: <span>*</span></span>
+            <%= f.text_area(:address_line1, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan_offer, :address_line1) %></p>
+          </div>
+          <div class="form-group">
+            <span>Business Address Line 2: <span>*</span></span>
+            <%= f.text_area(:address_line2, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan_offer, :address_line2) %></p>
+          </div>
+          <div class="form-group">
+            <span>Business Landmark: <span>*</span></span>
+            <%= f.text_area(:landmark, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan_offer, :landmark) %></p>
+          </div>
+          <div class="form-group">
+            <span>Business State: <span>*</span></span>
+            <%= f.select(:state, states, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan_offer, :state) %></p>
+          </div>
+          <div class="form-group">
+            <span>Business City: <span>*</span></span>
+            <%= f.select(:city, cities, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan_offer, :city) %></p>
+          </div>
+          <div class="form-group">
+            <span>Business Pincode: <span>*</span></span>
+            <%= f.text_field(:pincode, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan_offer, :pincode) %></p>
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </div>

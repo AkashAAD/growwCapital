@@ -10,7 +10,6 @@ class CreateProfessionalLoanOffers < ActiveRecord::Migration[5.2]
       t.string :pincode
       t.string :pancard
       t.datetime :dob
-      t.string :is_rbi_offer
       t.integer :residence_type
       t.timestamps
     end

@@ -25,7 +25,7 @@
              <p class="error"><%= show_errors(@loan_against_property, :persoanl_bank_statement) %></p>
           </div>
           <div class="form-group">
-            <span>Persoanl Bank Statement <span>*</span></span>
+            <span>Id Proof <span>*</span></span>
             <%= f.file_field(:id_proof, class: "") %>
              <p class="error"><%= show_errors(@loan_against_property, :id_proof) %></p>
           </div>
@@ -33,11 +33,6 @@
             <span>Salary Slip <span>*</span></span>
             <%= f.file_field(:salary_slip, class: "") %>
              <p class="error"><%= show_errors(@loan_against_property, :salary_slip) %></p>
-          </div>
-          <div class="form-group">
-            <span>Business Bank Statement <span>*</span></span>
-            <%= f.file_field(:business_bank_statement, class: "") %>
-             <p class="error"><%= show_errors(@loan_against_property, :business_bank_statement) %></p>
           </div>
           <div class="form-group">
             <span>ITR Copy <span>*</span></span>

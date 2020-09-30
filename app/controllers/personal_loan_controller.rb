@@ -45,11 +45,11 @@ class PersonalLoanController < ApplicationController
 
 	private
 	def personal_loan_params
-    params.require(:personal_loan).permit(:first_name, :last_name, :gender, :marital_status, :highest_qualification, :no_of_dependent, :current_residency_since_year, :current_city_since_year, :pan_number, :purpose_of_loan, :qualification, :email, :address_line1, :address_line2, :address_line3, :city, :pincode)
+    params.require(:personal_loan).permit(:first_name, :middle_name, :last_name, :dob, :gender, :marital_status, :highest_qualification, :no_of_dependent, :current_residency_since_year, :current_city_since_year, :pan_number, :purpose_of_loan, :email, :address_line1, :address_line2, :landmark, :city, :state, :pincode, :residential_type)
 	end
 
 	def employer_detail_params
-    params.require(:employer_detail).permit(:employer_name, :office_state, :office_city, :office_pincode, :mailing_address, :first_name, :last_name, :mobile_number, :account_number, :branch_name)
+    params.require(:employer_detail).permit(:employer_name, :office_state, :office_city, :office_pincode, :mailing_address, :first_name, :last_name, :mobile_number, :salary_bank_account_name, :branch_name, :office_address_line1, :office_address_line2, :office_email, :years_in_current_job, :designation, :ref_mobile_number, :current_emi)
 	end
 
 	def personal_loan_assets_params

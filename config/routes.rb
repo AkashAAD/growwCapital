@@ -28,6 +28,9 @@ Rails.application.routes.draw do
 
   resources :new_car_loan do
     collection do
+      post  "create_address"
+      patch "update_address"
+      patch "update_assets"
     end
   end
 
@@ -49,6 +52,9 @@ Rails.application.routes.draw do
 
   resources :used_car_loan do
     collection do
+      post  "create_address"
+      patch "update_address"
+      patch "update_assets"
     end
   end
 

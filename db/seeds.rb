@@ -3,12 +3,12 @@
 end
 User.create(role_id: 2, email: "admin@gmail.com", password: "123456", password_confirmation: "123456")
 
-["SSC", "HSC", "Graduation", "Post Graduation", "Engineering"].each do |hq|
+["SSC", "HSC", "Graduation", "Post Graduation", "Engineering", "Professional", "Under Graduate", "Doctorate", "Other"].each do |hq|
   HighestQualification.create(name: hq)
 end
 
 
-["SSC", "HSC", "BCA", "MCA", "BSC", "MSC", "BE", "BCCA", "MCS", "BBA"].each do |hq|
+["SSC", "HSC", "BCA", "MCA", "BSC", "MSC", "BE", "BCCA", "MCS", "BBA", "Other"].each do |hq|
   Qualification.create(name: hq)
 end
 
@@ -20,46 +20,143 @@ end
   CompanyType.create(name: ct)
 end
 
-["Trade/Wholesaler", "Merchandising", "Manufacturing", "Hybrid", "Sole Proprietorship", "Limited Liability Company", "Corporation"].each do |ct|
+["Architech", "Astrologer", "Autospare Dealers", "Builders and Developers", "Builders and Material Supliers", "Cabel and TV Operators", "Chartered Accountants", "Chit Fund Operators/ SE Operating Finance Business", "Commission Agent", "Consultant Operating From Residence", "Contractors(All Types)", "Doctor", "DSA",
+  "Film industry related people", "Garage Owner", "Inssurance Agent", "Labour Contractors", 
+  "Manpower Consultants", "Manufacturing", "Massage Parlours/ Beauty Parlours", "MBBS Doctor", "MD/MS/MDS Doctor", 
+  "Motor Training School", "Owner of private security services agent", "Petrol Pump Owner", "Retailer Services",
+  "Small non branded courior Company", "Standalone STD/Xerox booth owners", "Trading", 
+  "Young Inssurance Agent < 30 Years", "Other"].each do |ct|
   BusinessNature.create(name: ct)
 end
 
-["Aerospace Industry", "Transport Industry", "Computer Industry", "Agriculture industry", "elecommunication industry", "Education Industry", "Pharmaceutical Industry"].each do |ct|
+["Central Govt.", "Education Institute", "Partnership Firm", "Private Limited Company", "Proprietoship Firm", "Public Limited Company", "Public Sector Undertaking", "Society", "State Govt.", "Trust", "Other"].each do |ct|
   IndustryType.create(name: ct)
 end
 
-["SBI", "ICICI", "BOI", "AXIS BANK", "BOB"].each do |ba|
-  Bank.create(name: ba)
-end
-
-["Rented", "Own"].each do |ba|
+["Rented", "Self-Owned", "Famaly-Owned", "Paying Guest", "Hotel", "Company Provided", "Other"].each do |ba|
   ResidenceType.create(name: ba)
 end
 
-["Wedding", "Home Construction", "Other"].each do |ba|
+["Debt Consolidation", "Holidays", "Home Improvements", "Medical Emergency", "Wedding", "Education", "Business Expansion", "Other"].each do |ba|
   LoanPurpose.create(name: ba)
 end
 
-["0 to 50,000 Rs.", "50,000 Rs. to 10,0000 Rs.", "10,0000 Rs. to 100,0000 Rs.", "100,0000 Rs. to 500,0000 Rs."].each do |ba|
+["0 to 5 lack", "5 lack to 30 lack", "30 lack to 50 lack", "50 lack to 80 lack", "80 lack to 1 cr", "Other"].each do |ba|
   HomeLoanAmount.create(name: ba)
 end
 
-["0 to 1 yr.", "1 yr. to 5 yrs.", "5 yrs. to 10yrs.", "10 yrs. to 50 yrs."].each do |ba|
+["0 to 1 yr.", "1 yr. to 5 yrs.", "5 yrs. to 10yrs.", "10 yrs. to 50 yrs.", "Other"].each do |ba|
   BusinessYear.create(name: ba)
 end
 
-["Permanent or fixed-term employees", "Casual employees", "Apprentices or trainees – employees", "Employment agency staff – also called labour hire", "Contractors and sub-contractors – hired staff"].each do |et|
+["Permanent or fixed-term employees", "Casual employees", "Apprentices or trainees – employees", "Employment agency staff – also called labour hire", "Contractors and sub-contractors – hired staff", "Other"].each do |et|
   BusinessEmploymentType.create(name: et)
 end
 
-["Salaried", "Contract basis"].each do |et|
+["Salaried", "Self Employed", "Professional", "Other"].each do |et|
   EmploymentType.create(name: et)
 end
 
-["0 to 50 lack", "50 lack to 1 crore", "1 crore to 5 crore", "5 crore to 10 crore"].each do |at|
+["0 to 50 lack", "50 lack to 1 crore", "1 crore to 5 crore", "5 crore to 10 crore", "Other"].each do |at|
   AnnualTurnover.create(name: at)
 end
 
-["Doctor", "Engineer", "Lawyer", "Singer", "Writer"].each do |pr|
+["Doctor", "CA", "Architechure", "Other"].each do |pr|
   Profession.create(name: pr)
 end
+
+["TCS", "Tech Mahindra", "Infosys", "Other"].each do |com|
+  Company.create(name: com)
+end
+
+["Residence","Office", "Permanent", "Other"].each do |ma|
+  MailingAddress.create(name: ma)
+end
+
+(1..100).each {|t| 
+  StayCitySinceYear.create(name: t)
+}
+
+(1..100).each {|t| 
+  StayResidenceSinceYear.create(name: t)
+}
+
+["Allahabad Bank",
+"Andhra Bank",
+"Axis Bank",
+"Bank of Bahrain and Kuwait",
+"Bank of Baroda - Corporate Banking",
+"Bank of Baroda - Retail Banking",
+"Bank of India",
+"Bank of Maharashtra",
+"Canara Bank",
+"Central Bank of India",
+"City Union Bank",
+"Corporation Bank",
+"Deutsche Bank",
+"Development Credit Bank",
+"Dhanlaxmi Bank",
+"Federal Bank",
+"ICICI Bank",
+"IDBI Bank",
+"Indian Bank",
+"Indian Overseas Bank",
+"IndusInd Bank",
+"ING Vysya Bank",
+"Jammu and Kashmir Bank",
+"Karnataka Bank Ltd",
+"Karur Vysya Bank",
+"Kotak Bank",
+"Laxmi Vilas Bank",
+"Oriental Bank of Commerce",
+"Punjab National Bank - Corporate Banking",
+"Punjab National Bank - Retail Banking",
+"Punjab & Sind Bank",
+"Shamrao Vitthal Co-operative Bank",
+"South Indian Bank",
+"State Bank of Bikaner & Jaipur",
+"State Bank of Hyderabad",
+"State Bank of India",
+"State Bank of Mysore",
+"State Bank of PatialSouth Indian Banka",
+"State Bank of Travancore",
+"Syndicate Bank",
+"TamilnadSouth Indian Bank Mercantile Bank Ltd.",
+"UCO Bank",
+"Union Bank of India",
+"United Bank of India",
+"Vijaya Bank",
+"Yes Bank Ltd",
+"Bandhan Bank",
+"Catholic Syrian Bank",
+"DCB Bank",
+"Dhanlaxmi Bank",
+"HDFC Bank",
+"IDFC First Bank",
+"Jammu & Kashmir Bank",
+"Kotak Mahindra Bank",
+"Lakshmi Vilas Bank",
+"Nainital Bank",
+"RBL Bank",
+"South Indian Bank",
+"Tamilnad Mercantile Bank Limited",
+"Other"].each do |ba|
+  Bank.create(name: ba)
+end
+
+
+["1 Yr", "2 yr", "3 yr", "4 yr", "5 yr"].each do |ten|
+  Tenure.create(name: ten)
+end
+
+
+
+
+
+
+
+
+
+
+
+

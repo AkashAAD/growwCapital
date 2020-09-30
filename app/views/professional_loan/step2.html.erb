@@ -57,11 +57,6 @@
              <p class="error"><%= show_errors(@professional_loan_offer, :dob) %></p>
           </div>
           <div class="form-group">
-            <span>Is RBI Offer <span>*</span></span>
-            <%= f.select(:is_rbi_offer, is_rbi_offer, class: "form-control") %>
-             <p class="error"><%= show_errors(@professional_loan_offer, :is_rbi_offer) %></p>
-          </div>
-          <div class="form-group">
             <span>Residence Type <span>*</span></span>
             <%= f.select(:residence_type, residence_type, class: "form-control") %>
              <p class="error"><%= show_errors(@professional_loan_offer, :residence_type) %></p>

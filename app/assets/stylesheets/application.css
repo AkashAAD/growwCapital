@@ -21,6 +21,7 @@
  *= require settings.css
  *= require animate.min.css
  *= require ts.css
+ *= require jquery-ui.css
  *= require_tree .
  *= require_self
  */

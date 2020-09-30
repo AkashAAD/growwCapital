@@ -19,29 +19,29 @@
   <%= form_for @business_loan_offer, :url => { :action => "update_business_offer_assets" }, html: {id:  "business_loan_offer", class: "business_loan_offer"} do |f| %>
     <div class="container">
       <div class="row"> 
-        <div class="col-md-4">
+        <div class="col-md-8">
           <div class="form-group">
-            <span>Bank Statement <span>*</span></span>
+            <span>Bank Statement Saving or Current Account(last 6 months) <span>*</span></span>
             <%= f.file_field(:bank_statement, class: "") %>
              <p class="error"><%= show_errors(@business_loan_offer, :bank_statement) %></p>
           </div>
           <div class="form-group">
-            <span>Id Proof <span>*</span></span>
+            <span>Id Proof(Pan Card, driving licence, aadhar or voting card) <span>*</span></span>
             <%= f.file_field(:id_proof, class: "") %>
              <p class="error"><%= show_errors(@business_loan_offer, :id_proof) %></p>
           </div>
           <div class="form-group">
-            <span>Residential Address Proof <span>*</span></span>
+            <span>Residential Address Proof(Aadhar card, Voter card, Property tax receipt, Utility Bill, Passport, Rent Agreement, Gas passbook and receipt, Bank Statement) <span>*</span></span>
             <%= f.file_field(:residential_address_proof, class: "") %>
              <p class="error"><%= show_errors(@business_loan_offer, :residential_address_proof) %></p>
           </div>
           <div class="form-group">
-            <span>Office Address Proof <span>*</span></span>
+            <span>Business Address Proof(Shockup licence, Utility Bill, Rent Agreement) <span>*</span></span>
             <%= f.file_field(:office_address_proof, class: "") %>
              <p class="error"><%= show_errors(@business_loan_offer, :office_address_proof) %></p>
           </div>
           <div class="form-group">
-            <span>ITR Copy <span>*</span></span>
+            <span>ITR Copy <span></span></span>
             <%= f.file_field(:itr_copy, class: "") %>
              <p class="error"><%= show_errors(@business_loan_offer, :itr_copy) %></p>
           </div>

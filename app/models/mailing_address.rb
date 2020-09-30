@@ -1,0 +1,2 @@
+class MailingAddress < ApplicationRecord
+end

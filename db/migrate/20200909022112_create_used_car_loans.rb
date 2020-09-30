@@ -1,10 +1,9 @@
 class CreateUsedCarLoans < ActiveRecord::Migration[5.2]
   def change
     create_table :used_car_loans do |t|
-      t.integer :registration_state
+      t.string :registration_state
       t.string :registration_city
       t.string :car_manufacturer
-      t.string :car_make
       t.string :car_model
       t.string :car_registration_number
       t.string :model_year
@@ -22,13 +21,13 @@ class CreateUsedCarLoans < ActiveRecord::Migration[5.2]
       t.string :email
       t.text :res_address_line1
       t.text :res_address_line2
-      t.integer :res_state
-      t.integer :res_city
+      t.string :res_state
+      t.string :res_city
       t.string :res_pincode
       t.text :office_address_line1
       t.text :office_address_line2
-      t.integer :office_state
-      t.integer :office_city
+      t.string :office_state
+      t.string :office_city
       t.string :office_pincode
       t.timestamps
     end

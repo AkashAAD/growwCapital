@@ -35,6 +35,8 @@
 //= require jquery.selectbox-0.2.js
 //= require jquery.mousewheel.js
 //= require jquery.easing.js
+//= require jquery-ui.js
+//= require jquery.validate.js
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks

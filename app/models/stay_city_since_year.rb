@@ -1,0 +1,2 @@
+class StayCitySinceYear < ApplicationRecord
+end

@@ -1,5 +1,4 @@
 module ApplicationHelper
-<<<<<<< HEAD
 
   def show_errors(object, field_name)
     if object.errors.any?
@@ -97,9 +96,24 @@ module ApplicationHelper
     [['-Select Land Type-',''], ["Residential", "residential"], ["Commercial", "commercial"]]
   end
 
-=======
-  def cities
-    [['-Select City-','']] + CS.cities(:mh, :in).map{|val| [val, val.downcase]}
+  def company_name
+    [['-Select Company Name-','']] + Company.pluck(:name, :id)
   end
->>>>>>> 8c0cc4049bc58981dbc6f764a008e78244185828
+
+  def mailing_address
+    [['-Select Mailing Address-','']] + MailingAddress.pluck(:name, :id)
+  end
+
+  def current_residency_since_year
+    [['-Select Residence Since Year-','']] + StayResidenceSinceYear.pluck(:name, :id)
+  end
+
+  def current_city_since_year
+    [['-Select City Since Year-','']] + StayCitySinceYear.pluck(:name, :id)
+  end
+
+  def tenure
+    [['-Select Tenure-','']] + Tenure.pluck(:name, :id)
+  end
+
 end

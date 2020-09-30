@@ -1,0 +1,2 @@
+class StayResidenceSinceYear < ApplicationRecord
+end

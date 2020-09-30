@@ -53,7 +53,7 @@ class LoanAgainstPropertyController < ApplicationController
   end
 
   def loan_against_property_assets_params
-    params.require(:loan_against_property).permit(:persoanl_bank_statement, :id_proof, :salary_slip, :business_bank_statement, :itr_copy, :property_photo, :passport_photo)
+    params.require(:loan_against_property).permit(:persoanl_bank_statement, :id_proof, :salary_slip, :itr_copy, :property_photo, :passport_photo)
   end
 
 	def create_loan_against_property

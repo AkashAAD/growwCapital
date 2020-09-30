@@ -1,5 +1,4 @@
 class BusinessLoanController < ApplicationController
-<<<<<<< HEAD
 	before_action :create_business_loan, only: [:create]
 	before_action :create_business_loan_offer, only: [:create_business_offer]
 	before_action :update_business_loan, only: [:update]
@@ -49,11 +48,11 @@ class BusinessLoanController < ApplicationController
 
 	private
 	def business_loan_params
-		 params.require(:business_loan).permit(:loan_amount, :current_employment, :annual_turnover, :gross_annual_profit, :residence_city, :email, :mobile_number)
+		 params.require(:business_loan).permit(:loan_amount, :annual_turnover, :gross_annual_profit, :residence_city, :email, :mobile_number)
 	end
 
 	def business_loan_offer_params
-    params.require(:business_loan_offer).permit(:company_type, :business_nature, :industry_type, :business_years, :current_emi, :full_name, :gender, :pincode, :pancard, :dob, :is_rbi_offer, :residence_type, :city)
+    params.require(:business_loan_offer).permit(:company_type, :business_nature, :industry_type, :business_years, :current_emi, :full_name, :gender, :pincode, :pancard, :dob, :residence_type, :city)
 	end
 
 	def business_loan_offer_assets_params
@@ -107,14 +106,4 @@ class BusinessLoanController < ApplicationController
 			render "business_loan/step2" #business_loan_path("step1")
 		end
 	end
-
-=======
-	def new_business_loan 
-		@business_loan = BusinessLoan.new
-	end
-
-	def create_business_loan
-		debugger
-	end
->>>>>>> 8c0cc4049bc58981dbc6f764a008e78244185828
 end

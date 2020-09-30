@@ -25,24 +25,9 @@
             <p class="error"><%= show_errors(@business_loan, :loan_amount) %></p>
           </div>
           <div class="form-group">
-            <span>Current Employment <span>*</span></span>
-            <%= f.select(:current_employment, current_employment, class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan, :current_employment) %></p>
-          </div>
-          <div class="form-group">
-            <span>Annual Turnover (Rs.) <span>*</span></span>
-            <%= f.select(:annual_turnover, annual_turnover, class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan, :annual_turnover) %></p>
-          </div>
-          <div class="form-group">
-            <span>Gross Annual Profit (Rs.) <span>*</span></span>
-            <%= f.number_field(:gross_annual_profit,  step: 0.5, class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan, :gross_annual_profit) %></p>
-          </div>
-          <div class="form-group">
-            <span>Residence City <span>*</span></span>
-            <%= f.select(:residence_city, cities, class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan, :residence_city) %></p>
+            <span>Tenure <span>*</span></span>
+            <%= f.select(:tenure, tenure, step: 0.5, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :tenure) %></p>
           </div>
           <div class="form-group">
             <span>Email <span>*</span></span>
@@ -50,9 +35,106 @@
             <p class="error"><%= show_errors(@business_loan, :email) %></p>
           </div>
           <div class="form-group">
+            <span>First Name <span>*</span></span>
+            <%= f.text_field(:first_name, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :first_name) %></p>
+          </div>
+          <div class="form-group">
+            <span>Middle Name <span>*</span></span>
+            <%= f.text_field(:middle_name, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :middle_name) %></p>
+          </div>
+          <div class="form-group">
+            <span>Last Name <span>*</span></span>
+            <%= f.text_field(:last_name, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :last_name) %></p>
+          </div>
+          <div class="form-group">
+            <span>DOB <span>*</span></span>
+            <%= f.date_field(:dob, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :dob) %></p>
+          </div>
+          <div class="form-group">
             <span>Mobile Number <span>*</span></span>
             <%= f.text_field(:mobile_number, class: "form-control") %>
             <p class="error"><%= show_errors(@business_loan, :mobile_number) %></p>
+          </div>
+          <div class="form-group">
+            <span>Gender <span>*</span></span>
+            <%= f.select(:gender, gender, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :gender) %></p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Marital Status <span>*</span></span>
+            <%= f.select(:marital_status, marital_status, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :marital_status) %></p>
+          </div>
+          <div class="form-group">
+            <span>Highest Qualification <span>*</span></span>
+            <%= f.select(:highest_qualification, highest_qualification, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :highest_qualification) %></p>
+          </div>
+          <div class="form-group">
+            <span>Dependent Number <span>*</span></span>
+            <%= f.select(:no_of_dependent, dependent_number, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :dependent_number) %></p>
+          </div>
+          <div class="form-group">
+            <span>Stying in current Residence Since: <span>*</span></span>
+            <%= f.select(:current_residency_since_year, current_residency_since_year, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :current_residency_since_year) %></p>
+          </div>
+          <div class="form-group">
+            <span>Stying at current City Since: <span>*</span></span>
+            <%= f.select(:current_city_since_year, current_city_since_year, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :current_city_since_year) %></p>
+          </div>
+          <div class="form-group">
+            <span>Personal PAN Number: <span>*</span></span>
+            <%= f.text_field(:pan_number, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :pan_number) %></p>
+          </div>
+          <div class="form-group">
+            <span>Purpose Of Loan: <span>*</span></span>
+            <%= f.select(:purpose_of_loan, purpose_of_loan, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :purpose_of_loan) %></p>
+          </div>
+          <div class="form-group">
+            <span>Residential Type: <span>*</span></span>
+            <%= f.select(:residential_type, residence_type, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :residential_type) %></p>
+          </div>
+          <div class="form-group">
+            <span>Address Line 1: <span>*</span></span>
+            <%= f.text_area(:address_line1, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :address_line1) %></p>
+          </div>
+          <div class="form-group">
+            <span>Address Line 2: <span>*</span></span>
+            <%= f.text_area(:address_line2, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :address_line2) %></p>
+          </div>
+          <div class="form-group">
+            <span>Landmark: <span>*</span></span>
+            <%= f.text_area(:landmark, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :landmark) %></p>
+          </div>
+          <div class="form-group">
+            <span>State: <span>*</span></span>
+            <%= f.select(:state, states, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :state) %></p>
+          </div>
+          <div class="form-group">
+            <span>City: <span>*</span></span>
+            <%= f.select(:city, cities, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :city) %></p>
+          </div>
+          <div class="form-group">
+            <span>Pincode: <span>*</span></span>
+            <%= f.text_field(:pincode, class: "form-control") %>
+            <p class="error"><%= show_errors(@business_loan, :pincode) %></p>
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </div>

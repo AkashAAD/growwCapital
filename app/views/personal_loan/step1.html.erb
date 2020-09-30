@@ -28,9 +28,19 @@
             <p class="error"><%= show_errors(@personal_loan, :first_name) %></p>
           </div>
           <div class="form-group">
+            <span>Middle Name <span>*</span></span>
+            <%= f.text_field(:middle_name, class: "form-control") %>
+            <p class="error"><%= show_errors(@personal_loan, :first_name) %></p>
+          </div>
+          <div class="form-group">
             <span>Last Name <span>*</span></span>
             <%= f.text_field(:last_name, class: "form-control") %>
             <p class="error"><%= show_errors(@personal_loan, :last_name) %></p>
+          </div>
+          <div class="form-group">
+            <span>DOB <span>*</span></span>
+            <%= f.date_field(:dob, class: "form-control") %>
+            <p class="error"><%= show_errors(@personal_loan, :dob) %></p>
           </div>
           <div class="form-group">
             <span>Gender <span>*</span></span>
@@ -54,16 +64,16 @@
           </div>
           <div class="form-group">
             <span>Stying in current Residence Since: <span>*</span></span>
-            <%= f.text_field(:current_residency_since_year, class: "form-control") %>
+            <%= f.select(:current_residency_since_year, current_residency_since_year, class: "form-control") %>
             <p class="error"><%= show_errors(@personal_loan, :current_residency_since_year) %></p>
           </div>
           <div class="form-group">
             <span>Stying at current City Since: <span>*</span></span>
-            <%= f.text_field(:current_city_since_year, class: "form-control") %>
+            <%= f.select(:current_city_since_year, current_city_since_year, class: "form-control") %>
             <p class="error"><%= show_errors(@personal_loan, :current_city_since_year) %></p>
           </div>
           <div class="form-group">
-            <span>Personal PAN: <span>*</span></span>
+            <span>Personal PAN Number: <span>*</span></span>
             <%= f.text_field(:pan_number, class: "form-control") %>
             <p class="error"><%= show_errors(@personal_loan, :pan_number) %></p>
           </div>
@@ -71,11 +81,6 @@
             <span>Purpose Of Loan: <span>*</span></span>
             <%= f.select(:purpose_of_loan, purpose_of_loan, class: "form-control") %>
             <p class="error"><%= show_errors(@personal_loan, :purpose_of_loan) %></p>
-          </div>
-          <div class="form-group">
-            <span>Qualification: <span>*</span></span>
-            <%= f.select(:qualification, qualification, class: "form-control") %>
-            <p class="error"><%= show_errors(@personal_loan, :qualification) %></p>
           </div>
           <div class="form-group">
             <span>Email: <span>*</span></span>
@@ -88,6 +93,11 @@
             <h3>Current Residence Details</h3>
           </div>
           <div class="form-group">
+            <span>Residential Type: <span>*</span></span>
+            <%= f.select(:residential_type, residence_type, class: "form-control") %>
+            <p class="error"><%= show_errors(@personal_loan, :residential_type) %></p>
+          </div>
+          <div class="form-group">
             <span>Address Line 1: <span>*</span></span>
             <%= f.text_area(:address_line1, class: "form-control") %>
             <p class="error"><%= show_errors(@personal_loan, :address_line1) %></p>
@@ -98,9 +108,14 @@
             <p class="error"><%= show_errors(@personal_loan, :address_line2) %></p>
           </div>
           <div class="form-group">
-            <span>Address Line 3: <span>*</span></span>
-            <%= f.text_area(:address_line3, class: "form-control") %>
-            <p class="error"><%= show_errors(@personal_loan, :address_line3) %></p>
+            <span>Landmark: <span>*</span></span>
+            <%= f.text_area(:landmark, class: "form-control") %>
+            <p class="error"><%= show_errors(@personal_loan, :landmark) %></p>
+          </div>
+          <div class="form-group">
+            <span>State: <span>*</span></span>
+            <%= f.select(:state, states, class: "form-control") %>
+            <p class="error"><%= show_errors(@personal_loan, :state) %></p>
           </div>
           <div class="form-group">
             <span>City: <span>*</span></span>

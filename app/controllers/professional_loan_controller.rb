@@ -44,11 +44,11 @@ class ProfessionalLoanController < ApplicationController
 
   private
   def professsional_loan_params
-  	params.require(:professional_loan).permit(:loan_amount, :current_employment, :profession_type, :current_profession_since_year, :annual_income, :residence_city, :email, :mobile_number)
+  	params.require(:professional_loan).permit(:loan_amount, :profession_type, :current_profession_since_year, :annual_income, :residence_city, :email, :mobile_number)
   end
 
   def professsional_loan_offer_params
-  	params.require(:professional_loan_offer).permit(:bank_account_name, :current_emi, :full_name, :gender, :pincode, :pancard, :dob, :is_rbi_offer, :residence_type)
+  	params.require(:professional_loan_offer).permit(:bank_account_name, :current_emi, :full_name, :gender, :pincode, :pancard, :dob, :residence_type)
   end
 
   def professsional_loan_offer_assets_params

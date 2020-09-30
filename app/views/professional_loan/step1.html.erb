@@ -25,11 +25,6 @@
             <p class="error"><%= show_errors(@professional_loan, :loan_amount) %></p>
           </div>
           <div class="form-group">
-            <span>Current Employment <span>*</span></span>
-            <%= f.select(:current_employment, employment_type, class: "form-control") %>
-            <p class="error"><%= show_errors(@professional_loan, :current_employment) %></p>
-          </div>
-          <div class="form-group">
             <span>Profession Type (Rs.) <span>*</span></span>
             <%= f.select(:profession_type, profession_type, class: "form-control") %>
             <p class="error"><%= show_errors(@professional_loan, :profession_type) %></p>

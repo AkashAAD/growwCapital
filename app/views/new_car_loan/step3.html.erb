@@ -1,0 +1,56 @@
+<section id="secondary-banner" class="dynamic-image-6">
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h2>New Car Loan</h2>
+                <h4>Apply for new car loan</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%= form_for @new_car_loan, :url => { :action => "update_assets" }, html: {id:  "new_car_loan", class: "new_car_loan"} do |f| %>
+  <div class="container">
+    <div class="row"> 
+      <div class="col-md-4">
+        <div class="form-group">
+          <span>Personal Bank Statement <span>*</span></span>
+          <%= f.file_field(:persoanl_bank_statement, class: "") %>
+           <p class="error"><%= show_errors(@new_car_loan, :persoanl_bank_statement) %></p>
+        </div>
+        <div class="form-group">
+          <span>Business Bank Statement <span>*</span></span>
+          <%= f.file_field(:business_bank_statement, class: "") %>
+           <p class="error"><%= show_errors(@new_car_loan, :business_bank_statement) %></p>
+        </div>
+        <div class="form-group">
+          <span>Id Proof <span>*</span></span>
+          <%= f.file_field(:id_proof, class: "") %>
+           <p class="error"><%= show_errors(@new_car_loan, :id_proof) %></p>
+        </div>
+        <div class="form-group">
+          <span>Salary Slip <span>*</span></span>
+          <%= f.file_field(:salary_slip, class: "") %>
+           <p class="error"><%= show_errors(@new_car_loan, :salary_slip) %></p>
+        </div>
+        <div class="form-group">
+          <span>ITR Copy <span>*</span></span>
+          <%= f.file_field(:itr_copy, class: "") %>
+           <p class="error"><%= show_errors(@new_car_loan, :itr_copy) %></p>
+        </div>
+        <div class="form-group">
+          <span>Passport Photo <span>*</span></span>
+          <%= f.file_field(:passport_photo, class: "") %>
+           <p class="error"><%= show_errors(@new_car_loan, :passport_photo) %></p>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </div>
+<%end%>

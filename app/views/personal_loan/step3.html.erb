@@ -19,19 +19,24 @@
   <%= form_for @personal_loan, :url => { :action => "update_personal_loan_assets" }, html: {id:  "personal_loan", class: "personal_loan"} do |f| %>
     <div class="container">
       <div class="row"> 
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Id Proof <span>*</span></span>
+            <span>Id Proof(Pan Card, driving licence, aadhar or voting card) <span>*</span></span>
             <%= f.file_field(:id_proof, class: "") %>
              <p class="error"><%= show_errors(@personal_loan, :id_proof) %></p>
           </div>
           <div class="form-group">
-            <span>Address Proof <span>*</span></span>
+            <span>Address Proof(Aadhar card, Voter card, Pension Payment Order(PPO), Property tax receipt, Utility Bill, Passport, Rent Agreement, Gas passbook and receipt, Bank Statement) <span>*</span></span>
             <%= f.file_field(:address_proof, class: "") %>
              <p class="error"><%= show_errors(@personal_loan, :address_proof) %></p>
           </div>
           <div class="form-group">
-            <span>Salary Slip <span>*</span></span>
+            <span>Bank Statement(last 6 months) <span>*</span></span>
+            <%= f.file_field(:bank_statement, class: "") %>
+             <p class="error"><%= show_errors(@personal_loan, :salary_slip) %></p>
+          </div>
+          <div class="form-group">
+            <span>Salary Slip(latest 3 months salary slip)<span>*</span></span>
             <%= f.file_field(:salary_slip, class: "") %>
              <p class="error"><%= show_errors(@personal_loan, :salary_slip) %></p>
           </div>

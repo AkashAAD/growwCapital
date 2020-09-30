@@ -1,0 +1,2 @@
+class Tenure < ApplicationRecord
+end
