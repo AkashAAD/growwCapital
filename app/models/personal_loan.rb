@@ -5,5 +5,4 @@ class PersonalLoan < ApplicationRecord
   has_one_attached :passport_photo
   has_one_attached :bank_statement
   has_one :employer_detail
-  # validates :first_name, :last_name, :gender, :marital_status, :highest_qualification, :no_of_dependent, :current_residency_since_year, :current_city_since_year, :pan_number, :purpose_of_loan, :email, :address_line1, :address_line2, :landmark, :city, :state, :residential_type, :pincode, presence: true
 end

@@ -42,18 +42,58 @@ class PersonalLoanController < ApplicationController
 		create_update_personal_loan_employer(@update_status_pl, "Personal Loan updated successfully.", personal_loan_path("step4"))
   end
 
+  def get_employer
+  	employers = Employer.search_employer(params[:term])
+  	render json: { employers: employers }, status:  :ok
+  end
 
 	private
 	def personal_loan_params
-    params.require(:personal_loan).permit(:first_name, :middle_name, :last_name, :dob, :gender, :marital_status, :highest_qualification, :no_of_dependent, :current_residency_since_year, :current_city_since_year, :pan_number, :purpose_of_loan, :email, :address_line1, :address_line2, :landmark, :city, :state, :pincode, :residential_type)
+    params.require(:personal_loan).permit(:first_name,
+    	:middle_name,
+    	:last_name,
+    	:dob,
+    	:gender,
+    	:marital_status,
+    	:highest_qualification,
+    	:no_of_dependent,
+    	:current_residency_since_year,
+    	:current_city_since_year,
+    	:pan_number,
+    	:purpose_of_loan,
+    	:address_line1,
+    	:address_line2,
+    	:landmark,
+    	:city,
+    	:state,
+    	:pincode,
+    	:residential_type)
 	end
 
 	def employer_detail_params
-    params.require(:employer_detail).permit(:employer_name, :office_state, :office_city, :office_pincode, :mailing_address, :first_name, :last_name, :mobile_number, :salary_bank_account_name, :branch_name, :office_address_line1, :office_address_line2, :office_email, :years_in_current_job, :designation, :ref_mobile_number, :current_emi)
+    params.require(:employer_detail).permit(:employer_name,
+    	:monthly_net_salary,
+    	:office_email,
+    	:years_in_current_job,
+    	:designation,
+    	:office_address_line1,
+    	:office_address_line2,
+    	:landmark,
+    	:office_state,
+    	:office_city,
+    	:office_pincode,
+    	:mailing_address,
+    	:mobile_number,
+    	:salary_bank_account_name,
+    	:branch_name,
+    	:current_emi,
+    	:first_name,
+    	:last_name,
+    	:ref_mobile_number)
 	end
 
 	def personal_loan_assets_params
-    params.require(:personal_loan).permit(:id_proof, :address_proof, :salary_slip, :passport_photo)
+    params.require(:personal_loan).permit(:id_proof, :address_proof, :salary_slip, :passport_photo, :bank_statement)
 	end
 
 	def create_personal_loan
@@ -101,6 +141,6 @@ class PersonalLoanController < ApplicationController
 
   def get_personal_loan(id)
     @personal_loan = PersonalLoan.find(id)
-  end	
+  end
 
 end

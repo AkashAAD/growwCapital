@@ -23,6 +23,7 @@ class CreatePersonalLoans < ActiveRecord::Migration[5.2]
       t.string :pincode
       t.integer :residential_type
       t.decimal :loan_amount, precision: 20, scale: 2
+      t.string :mobile_number
       t.timestamps
     end
   end

@@ -164,11 +164,14 @@ img, iframe {
 
 .error {
 	font-size: 15px;
-/*	background: #FFDFDF;
-	border: 1px solid #FFCACA;*/
 	border-radius: 5px;
 	font-weight: normal;
-	color: red;
+	color: #ff0000;
+	display: block;
+}
+
+select.error {
+	color: #000000;
 }
 
 .select-wrapper .row {

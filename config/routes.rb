@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       post  "create_employer"
       patch "update_employer"
       patch "update_personal_loan_assets"
+      get "get_employer"
     end
   end
 
