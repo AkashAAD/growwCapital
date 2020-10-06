@@ -24,6 +24,8 @@ class CreateBusinessLoans < ActiveRecord::Migration[5.2]
       t.string :pincode
       t.integer :residential_type
       t.datetime :dob
+      t.integer :otp
+      t.boolean :otp_verified, default: false
       t.timestamps
     end
   end

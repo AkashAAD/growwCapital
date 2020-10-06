@@ -1,25 +1,39 @@
 class PersonalLoanController < ApplicationController
-  before_action :create_personal_loan, only: [:create]
+  before_action :create_personal_loan, only: [:create, :create_otp]
   before_action :create_personal_loan_employer, only: [:create_employer]
   before_action :update_personal_loan, only: [:update]
   before_action :update_personal_loan_employer, only: [:update_employer]
 	before_action :personal_loan_assets, only: [:update_personal_loan_assets]
 
   include Wicked::Wizard
-  steps :step1, :step2, :step3, :step4
+  steps :step1, :step2, :step3, :step4, :step5, :step6
 
 	def show
 			# session[:personal_loan_id] = nil
 		id = session[:personal_loan_id]
 		case params[:id]
-		when "step1"
+		when "step1", "step2"
 			@personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
-		when "step2", "step3"
+		when "step3", "step4"
 			@personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
 			@employer_detail =  @personal_loan.employer_detail.try(:id) ? @personal_loan.employer_detail : EmployerDetail.new
 		end
 		render_wizard
 	end
+
+  def create_otp
+    # @personal_loan.save
+    # session[:personal_loan_id] = @personal_loan.id
+    # sms = SmsService.new
+    # sms.send_otp(@personal_loan.mobile_number)
+    # flash[:notice] = "Personal Loan created successfully." 
+    # redirect_to personal_loan_path("step2")
+    create_update_personal_loan(@personal_loan.save, "Personal Loan created successfully.", personal_loan_path("step2"))
+  end
+
+  def update_otp_status
+    
+  end
 
 	def create
     create_update_personal_loan(@personal_loan.save, "Personal Loan created successfully.", personal_loan_path("step2"))
@@ -67,7 +81,11 @@ class PersonalLoanController < ApplicationController
     	:city,
     	:state,
     	:pincode,
-    	:residential_type)
+    	:residential_type,
+      :mobile_number,
+      :email,
+      :loan_amount,
+      :tenure)
 	end
 
 	def employer_detail_params
@@ -123,6 +141,9 @@ class PersonalLoanController < ApplicationController
 	def create_update_personal_loan(status, message, path)
 		if status
 			session[:personal_loan_id] = @personal_loan.id
+      if @personal_loan.
+      sms = SmsService.new
+      sms.send_otp(@personal_loan.mobile_number)      
 			flash[:notice] = message
 			redirect_to path
 		else

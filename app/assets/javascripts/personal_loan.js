@@ -1,4 +1,39 @@
 $(document).ready(function(){
+
+	$("#personal_loan_state").change(function(evt) {
+		$.ajax({
+	    url: "/home/change_state",
+	    dataType: "json",
+	    data: {
+	      state: evt.target.value
+	    },
+	    success: function (data) {
+	    	var options = '';
+	    	data.cities.forEach(function(val) {
+	    		options+= '<option value="' + val[1] + '">'+val[0]+'</option>' 
+	    	});
+	    	$("#personal_loan_city").html(options);
+	    }
+		});
+	});
+
+	$("#employer_detail_office_state").change(function(evt) {
+		$.ajax({
+	    url: "/home/change_state",
+	    dataType: "json",
+	    data: {
+	      state: evt.target.value
+	    },
+	    success: function (data) {
+	    	var options = '';
+	    	data.cities.forEach(function(val) {
+	    		options+= '<option value="' + val[1] + '">'+val[0]+'</option>' 
+	    	});
+	    	$("#employer_detail_office_city").html(options);
+	    }
+		});
+	});
+
   $("#employer_detail_employer_name").autocomplete({
     source:function(req, res) {
 			$.ajax({
@@ -42,6 +77,67 @@ $(document).ready(function(){
 	jQuery.validator.addMethod("file_size", function(value, element) {
 	  return element.files[0].size < 5000000;
 	}, "");
+
+	$("#basic_personal_loan").validate({
+		rules: {
+			"personal_loan[mobile_number]": {
+				required: true,
+				maxlength: 10
+			},
+			"personal_loan[first_name]": {
+				required: true,
+				maxlength: 50
+			},
+			"personal_loan[middle_name]": {
+				required: true,
+				maxlength: 50
+			},
+			"personal_loan[last_name]": {
+				required: true,
+				maxlength: 50
+			},
+			'personal_loan[email]': {
+				required: true,
+				email: true
+			},
+			'personal_loan[loan_amount]': {
+				required: true,
+				maxlength: 10
+			},
+			'personal_loan[tenure]': {
+				required: true
+			}
+		},
+		messages: {
+			'personal_loan[tenure]': {
+				required: 'Please select tenure.'
+			},
+			'personal_loan[loan_amount]': {
+				required: 'Please enter loan amount.',
+				maxlength: 'Loan amount must consist of at most 10 characters'
+			},
+			'personal_loan[mobile_number]': {
+				required: 'Please enter mobile number.',
+				maxlength: 'Mobile number must consist of at most 10 characters'
+			},
+			'personal_loan[first_name]': {
+				required: 'Please enter first name.',
+				maxlength: 'First Name must consist of at most 50 characters'
+			},
+			'personal_loan[middle_name]': {
+				required: 'Please enter middle name.',
+				maxlength: 'Middle Name must consist of at most 50 characters.'
+			},
+			'personal_loan[last_name]': {
+				required: 'Please enter last name.',
+				maxlength: 'Middle Name must consist of at most 50 characters.'
+			},
+			'personal_loan[email]': {
+				required: 'Please enter office email.',
+				email: 'Email should be valid.'
+			},
+		}		
+	});
 
   $("#personal_loan").validate({
 		rules: {
@@ -116,15 +212,15 @@ $(document).ready(function(){
 		messages: {
 			'personal_loan[first_name]': {
 				required: 'Please enter first name.',
-				maxlength: 'Your First Name must consist of at most 50 characters'
+				maxlength: 'First Name must consist of at most 50 characters'
 			},
 			'personal_loan[middle_name]': {
 				required: 'Please enter middle name.',
-				maxlength: 'Your First Name must consist of at most 50 characters.'
+				maxlength: 'Middle Name must consist of at most 50 characters.'
 			},
 			'personal_loan[last_name]': {
 				required: 'Please enter last name.',
-				maxlength: 'Your First Name must consist of at most 50 characters.'
+				maxlength: 'Middle Name must consist of at most 50 characters.'
 			},
 			'personal_loan[dob]': {
 				required: 'Please enter date of birth.'
@@ -185,7 +281,7 @@ $(document).ready(function(){
 
   $("#employer_detail").validate({
 		rules: {
-			"employer_detail[employer_id]": {
+			"employer_detail[employer_name]": {
 				required: true,
 				maxlength: 50
 			},
@@ -247,6 +343,10 @@ $(document).ready(function(){
 				required: true,
 				maxlength: 10
 			},
+			"employer_detail[landmark]": {
+				required: true,
+				maxlength: 50
+			},
 			"employer_detail[office_state]": {
 				required: true
 			},
@@ -259,17 +359,21 @@ $(document).ready(function(){
 			},
 		},
 		messages: {
+			'employer_detail[employer_name]': {
+				required: 'Please enter employer name.',
+				maxlength: 'Employer name must consist of at most 50 characters.'
+			},
 			'employer_detail[first_name]': {
 				required: 'Please enter first name.',
 				maxlength: 'First name must consist of at most 50 characters'
 			},
+			'employer_detail[office_email]': {
+				required: 'Please enter office email.',
+				email: 'Email should be valid.'
+			},
 			'employer_detail[last_name]': {
 				required: 'Please enter last name.',
 				maxlength: 'Last name must consist of at most 50 characters.'
-			},
-			'employer_detail[employer_id]': {
-				required: 'Please enter employer name.',
-				maxlength: 'Employer name must consist of at most 50 characters.'
 			},
 			'employer_detail[designation]': {
 				required: 'Please enter designation.',
@@ -282,7 +386,7 @@ $(document).ready(function(){
 				required: 'Please enter address_line1.',
 				maxlength: 'Address line1 must consist of at most 150 characters.'
 			},
-			'employer_detail[office_address_line1]': {
+			'employer_detail[office_address_line2]': {
 				required: 'Please enter address line2.',
 				maxlength: 'Address line2 must consist of at most 150 characters.'
 			},
@@ -326,7 +430,7 @@ $(document).ready(function(){
 				required: 'Please enter current emi.',
 				maxlength: 'Current EMI must consist of at most 150 characters.'
 			}
-		}  	
+		}
   });
 
 	$("#personal_loan_assets").validate({
@@ -337,16 +441,24 @@ $(document).ready(function(){
 				file_size: true
 			},
 			"personal_loan[address_proof]": {
-				required: true
+				required: true,
+				file_type: true,
+				file_size: true
 			},
 			"personal_loan[bank_statement]": {
-				required: true
+				required: true,
+				file_type: true,
+				file_size: true				
 			},
 			"personal_loan[salary_slip]": {
-				required: true
+				required: true,
+				file_type: true,
+				file_size: true				
 			},
 			"personal_loan[passport_photo]": {
-				required: true
+				required: true,
+				file_type: true,
+				file_size: true				
 			}
 		},
 		messages: {
@@ -356,16 +468,24 @@ $(document).ready(function(){
 				file_size: 'File format should be less than 5 mb.'
 			},
 			'personal_loan[address_proof]': {
-				required: 'Please select address proof.'
+				required: 'Please select address proof.',
+				file_type: 'File format should be jpg, jpeg, png or pdf.',
+				file_size: 'File format should be less than 5 mb.'				
 			},
 			'personal_loan[bank_statement]': {
-				required: 'Please select bank statement.'
+				required: 'Please select bank statement.',
+				file_type: 'File format should be jpg, jpeg, png or pdf.',
+				file_size: 'File format should be less than 5 mb.'				
 			},
 			'personal_loan[salary_slip]': {
-				required: 'Please select salary slip.'
+				required: 'Please select salary slip.',
+				file_type: 'File format should be jpg, jpeg, png or pdf.',
+				file_size: 'File format should be less than 5 mb.'				
 			},
 			'personal_loan[passport_photo]': {
-				required: 'Please select passport photo.'
+				required: 'Please select passport photo.',
+				file_type: 'File format should be jpg, jpeg, png or pdf.',
+				file_size: 'File format should be less than 5 mb.'				
 			}												
 		}		
 	})

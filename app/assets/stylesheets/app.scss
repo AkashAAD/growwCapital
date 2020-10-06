@@ -139,6 +139,10 @@
 	background-image: linear-gradient(90deg, #01000f 0%, #090979 35%, #00d4ff 100%);
 }
 
+textarea.error, input.error, select.error {
+  border: 1px dotted #ff0000;
+}
+
 
 @media only screen and (max-width: 600px) {
   .header-description {

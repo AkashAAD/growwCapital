@@ -8,8 +8,12 @@ module ApplicationHelper
     end
   end
 
-  def cities
-    [['-Select City-','']] + CS.cities(:mh, :in).map{ |val| [val, val.downcase] }
+  def cities(obj, state, city)
+    if obj.object.send(city).blank?
+      [['-Select City-','']]
+    else
+      [['-Select City-','']] + CS.cities(obj.object.send(state).to_sym, :in).map{ |val| [val, val.downcase] }
+    end
   end
 
   def states

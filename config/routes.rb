@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get 'home/change_state' => "home#change_state"
   devise_for :user, controllers: {
     sessions: 'users/sessions'
   }
@@ -36,10 +37,12 @@ Rails.application.routes.draw do
 
   resources :personal_loan do
     collection do
-      post  "create_employer"
-      patch "update_employer"
-      patch "update_personal_loan_assets"
-      get "get_employer"
+      post  :create_employer
+      patch :update_employer
+      patch :update_personal_loan_assets
+      get :get_employer
+      post :create_otp
+      post :update_otp_status
     end
   end
 

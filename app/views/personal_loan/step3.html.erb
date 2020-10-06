@@ -14,39 +14,98 @@
         </div>
     </div>
 </section>
-
-
-  <%= form_for @personal_loan, :url => { :action => "update_personal_loan_assets" }, html: {id:  "personal_loan_assets", class: "personal_loan"} do |f| %>
+<section class="personal-loan-section">
+  <%= form_for @personal_loan, :url => { :action => @personal_loan.id.nil? ? "create" : "update"}, html: {id:  "personal_loan", class: "personal_loan"} do |f| %>
     <div class="container">
-      <div class="row"> 
-        <div class="col-md-6">
+      <div class="row">
+        <div class="col-md-4">
           <div class="form-group">
-            <span>Id Proof(Pan Card, driving licence, aadhar or voting card) <span>*</span></span>
-            <%= f.file_field(:id_proof, class: "") %>
-             <p class="error"><%= show_errors(@personal_loan, :id_proof) %></p>
+            <h3>Personal Details</h3>
           </div>
           <div class="form-group">
-            <span>Address Proof(Aadhar card, Voter card, Pension Payment Order(PPO), Property tax receipt, Utility Bill, Passport, Rent Agreement, Gas passbook and receipt, Bank Statement) <span>*</span></span>
-            <%= f.file_field(:address_proof, class: "") %>
-             <p class="error"><%= show_errors(@personal_loan, :address_proof) %></p>
+            <span>First Name <span>*</span></span>
+            <%= f.text_field(:first_name, class: "form-control", required: true) %>
           </div>
           <div class="form-group">
-            <span>Bank Statement(last 6 months) <span>*</span></span>
-            <%= f.file_field(:bank_statement, class: "") %>
-             <p class="error"><%= show_errors(@personal_loan, :salary_slip) %></p>
+            <span>Middle Name <span>*</span></span>
+            <%= f.text_field(:middle_name, class: "form-control") %>
           </div>
           <div class="form-group">
-            <span>Salary Slip(latest 3 months salary slip)<span>*</span></span>
-            <%= f.file_field(:salary_slip, class: "") %>
-             <p class="error"><%= show_errors(@personal_loan, :salary_slip) %></p>
+            <span>Last Name <span>*</span></span>
+            <%= f.text_field(:last_name, class: "form-control") %>
           </div>
           <div class="form-group">
-            <span>Passport Photo <span>*</span></span>
-            <%= f.file_field(:passport_photo, class: "") %>
-             <p class="error"><%= show_errors(@personal_loan, :passport_photo) %></p>
+            <span>DOB <span>*</span></span>
+            <%= f.date_field(:dob, class: "form-control") %>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+          <div class="form-group">
+            <span>Gender <span>*</span></span>
+            <%= f.select(:gender, gender) %>
+          </div>
+          <div class="form-group">
+            <span>Marital Status <span>*</span></span>
+            <%= f.select(:marital_status, marital_status, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>Highest Qualification <span>*</span></span>
+            <%= f.select(:highest_qualification, highest_qualification, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>Dependent Number <span>*</span></span>
+            <%= f.select(:no_of_dependent, dependent_number, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>Stying in current Residence Since: <span>*</span></span>
+            <%= f.select(:current_residency_since_year, current_residency_since_year, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>Stying at current City Since: <span>*</span></span>
+            <%= f.select(:current_city_since_year, current_city_since_year, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>Personal PAN Number: <span>*</span></span>
+            <%= f.text_field(:pan_number, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>Purpose Of Loan: <span>*</span></span>
+            <%= f.select(:purpose_of_loan, purpose_of_loan, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <h3>Current Residence Details</h3>
+          </div>
+          <div class="form-group">
+            <span>Residential Type: <span>*</span></span>
+            <%= f.select(:residential_type, residence_type, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>Address Line 1: <span>*</span></span>
+            <%= f.text_area(:address_line1, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>Address Line 2: <span>*</span></span>
+            <%= f.text_area(:address_line2, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>Landmark: <span>*</span></span>
+            <%= f.text_area(:landmark, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>State: <span>*</span></span>
+            <%= f.select(:state, states, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>City: <span>*</span></span>
+            <%= f.select(:city, cities(f, :state, :city), class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <span>Pincode: <span>*</span></span>
+            <%= f.number_field(:pincode, class: "form-control") %>
+          </div>
         </div>
       </div>
+      <button type="submit" class="btn btn-default">Submit</button>
     </div>
   <%end%>
+</section>

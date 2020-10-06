@@ -97,6 +97,8 @@ ActiveRecord::Schema.define(version: 2020_10_03_044529) do
     t.string "pincode"
     t.integer "residential_type"
     t.datetime "dob"
+    t.integer "otp"
+    t.boolean "otp_verified", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -292,6 +294,9 @@ ActiveRecord::Schema.define(version: 2020_10_03_044529) do
     t.string "pincode"
     t.integer "residential_type"
     t.decimal "loan_amount", precision: 20, scale: 2
+    t.string "mobile_number"
+    t.integer "otp"
+    t.boolean "otp_verified", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

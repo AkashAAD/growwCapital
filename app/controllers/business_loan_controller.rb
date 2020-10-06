@@ -48,15 +48,53 @@ class BusinessLoanController < ApplicationController
 
 	private
 	def business_loan_params
-		 params.require(:business_loan).permit(:loan_amount, :annual_turnover, :gross_annual_profit, :residence_city, :email, :mobile_number)
+    params.require(:business_loan).permit(:first_name,
+    	:middle_name,
+    	:last_name,
+    	:dob,
+    	:gender,
+    	:marital_status,
+    	:highest_qualification,
+    	:no_of_dependent,
+    	:current_residency_since_year,
+    	:current_city_since_year,
+    	:pan_number,
+    	:purpose_of_loan,
+    	:address_line1,
+    	:address_line2,
+    	:landmark,
+    	:city,
+    	:state,
+    	:pincode,
+    	:residential_type)
 	end
 
 	def business_loan_offer_params
-    params.require(:business_loan_offer).permit(:company_type, :business_nature, :industry_type, :business_years, :current_emi, :full_name, :gender, :pincode, :pancard, :dob, :residence_type, :city)
+    params.require(:business_loan_offer).permit(:business_name,
+    	:business_nature,
+    	:industry_type,
+    	:business_years,
+    	:current_emi,
+    	:annual_turnover,
+    	:gross_annual_profit,
+    	:business_pan_number,
+    	:gst_number,
+    	:residence_type,
+    	:address_line1,
+    	:address_line2,
+    	:landmark,
+    	:state,
+    	:city,
+    	:pincode)
 	end
 
 	def business_loan_offer_assets_params
-    params.require(:business_loan_offer).permit(:bank_statement, :id_proof, :residential_address_proof, :office_address_proof, :itr_copy, :passport_photo)		
+    params.require(:business_loan_offer).permit(:bank_statement,
+    	:id_proof,
+    	:residential_address_proof,
+    	:office_address_proof,
+    	:itr_copy,
+    	:passport_photo)		
 	end
 
 	def get_business_loan(id)
