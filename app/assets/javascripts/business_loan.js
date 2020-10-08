@@ -47,8 +47,27 @@ $(document).ready(function(){
 	  return element.files[0].size < 5000000;
 	}, "");
 
-  $("#business_loan").validate({
+	$("#otp_business_loan").validate({
 		rules: {
+			"business_loan[otp]": {
+				required: true,
+				maxlength: 6
+			}
+		},
+		messages: {
+			'business_loan[otp]': {
+				required: 'Please enter OTP.',
+				required: 'OTP should be 6 digits only.',
+			}
+		}
+	});
+
+	$("#basic_business_loan").validate({
+		rules: {
+			"business_loan[mobile_number]": {
+				required: true,
+				maxlength: 10
+			},
 			"business_loan[first_name]": {
 				required: true,
 				maxlength: 50
@@ -61,6 +80,51 @@ $(document).ready(function(){
 				required: true,
 				maxlength: 50
 			},
+			'business_loan[email]': {
+				required: true,
+				email: true
+			},
+			'business_loan[loan_amount]': {
+				required: true,
+				maxlength: 10
+			},
+			'business_loan[tenure]': {
+				required: true
+			}
+		},
+		messages: {
+			'business_loan[tenure]': {
+				required: 'Please select tenure.'
+			},
+			'business_loan[loan_amount]': {
+				required: 'Please enter loan amount.',
+				maxlength: 'Loan amount must consist of at most 10 characters'
+			},
+			'business_loan[mobile_number]': {
+				required: 'Please enter mobile number.',
+				maxlength: 'Mobile number must consist of at most 10 characters'
+			},
+			'business_loan[first_name]': {
+				required: 'Please enter first name.',
+				maxlength: 'First Name must consist of at most 50 characters'
+			},
+			'business_loan[middle_name]': {
+				required: 'Please enter middle name.',
+				maxlength: 'Middle Name must consist of at most 50 characters.'
+			},
+			'business_loan[last_name]': {
+				required: 'Please enter last name.',
+				maxlength: 'Middle Name must consist of at most 50 characters.'
+			},
+			'business_loan[email]': {
+				required: 'Please enter office email.',
+				email: 'Email should be valid.'
+			},
+		}
+	});
+
+  $("#business_loan").validate({
+		rules: {
 			"business_loan[dob]": {
 				required: true
 			},
@@ -118,18 +182,6 @@ $(document).ready(function(){
 			},
 		},
 		messages: {
-			'business_loan[first_name]': {
-				required: 'Please enter first name.',
-				maxlength: 'Your First Name must consist of at most 50 characters'
-			},
-			'business_loan[middle_name]': {
-				required: 'Please enter middle name.',
-				maxlength: 'Your First Name must consist of at most 50 characters.'
-			},
-			'business_loan[last_name]': {
-				required: 'Please enter last name.',
-				maxlength: 'Your First Name must consist of at most 50 characters.'
-			},
 			'business_loan[dob]': {
 				required: 'Please enter date of birth.'
 			},

@@ -99,6 +99,8 @@ ActiveRecord::Schema.define(version: 2020_10_03_044529) do
     t.datetime "dob"
     t.integer "otp"
     t.boolean "otp_verified", default: false
+    t.string "reference_number"
+    t.boolean "terms_and_conditions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -297,6 +299,8 @@ ActiveRecord::Schema.define(version: 2020_10_03_044529) do
     t.string "mobile_number"
     t.integer "otp"
     t.boolean "otp_verified", default: false
+    t.string "reference_number"
+    t.boolean "terms_and_conditions"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

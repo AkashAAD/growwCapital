@@ -1,23 +1,28 @@
 ['user', 'admin', 'super_admin'].each do |role|
   Role.create(name: role)
+  puts "Role #{role}"
 end
 User.create(role_id: 2, email: "admin@gmail.com", password: "123456", password_confirmation: "123456")
 
 ["SSC", "HSC", "Graduation", "Post Graduation", "Engineering", "Professional", "Under Graduate", "Doctorate", "Other"].each do |hq|
   HighestQualification.create(name: hq)
+  puts "HighestQualification #{hq}"
 end
 
 
 ["SSC", "HSC", "BCA", "MCA", "BSC", "MSC", "BE", "BCCA", "MCS", "BBA", "Other"].each do |hq|
   Qualification.create(name: hq)
+  puts "Qualification #{hq}"
 end
 
 20.times do |dep|
   DependentNumber.create(name: dep)
+  puts "DependentNumber #{dep}"
 end
 
 ["Partnership Firm", "Own Firm", "Rent Firm"].each do |ct|
   CompanyType.create(name: ct)
+  puts "CompanyType #{ct}"
 end
 
 ["Architech", "Astrologer", "Autospare Dealers", "Builders and Developers", "Builders and Material Supliers", "Cabel and TV Operators", "Chartered Accountants", "Chit Fund Operators/ SE Operating Finance Business", "Commission Agent", "Consultant Operating From Residence", "Contractors(All Types)", "Doctor", "DSA",
@@ -27,58 +32,72 @@ end
   "Small non branded courior Company", "Standalone STD/Xerox booth owners", "Trading", 
   "Young Inssurance Agent < 30 Years", "Other"].each do |ct|
   BusinessNature.create(name: ct)
+  puts "BusinessNature #{ct}"
 end
 
 ["Central Govt.", "Education Institute", "Partnership Firm", "Private Limited Company", "Proprietoship Firm", "Public Limited Company", "Public Sector Undertaking", "Society", "State Govt.", "Trust", "Other"].each do |ct|
   IndustryType.create(name: ct)
+  puts "IndustryType #{ct}"
 end
 
 ["Rented", "Self-Owned", "Famaly-Owned", "Paying Guest", "Hotel", "Company Provided", "Other"].each do |ba|
   ResidenceType.create(name: ba)
+  puts "ResidenceType #{ba}"
 end
 
 ["Debt Consolidation", "Holidays", "Home Improvements", "Medical Emergency", "Wedding", "Education", "Business Expansion", "Other"].each do |ba|
   LoanPurpose.create(name: ba)
+  puts "LoanPurpose #{ba}"
 end
 
 ["0 to 5 lack", "5 lack to 30 lack", "30 lack to 50 lack", "50 lack to 80 lack", "80 lack to 1 cr", "Other"].each do |ba|
   HomeLoanAmount.create(name: ba)
+  puts "HomeLoanAmount #{ba}"
 end
 
 ["0 to 1 yr.", "1 yr. to 5 yrs.", "5 yrs. to 10yrs.", "10 yrs. to 50 yrs.", "Other"].each do |ba|
   BusinessYear.create(name: ba)
+  puts "BusinessYear #{ba}"
 end
 
 ["Permanent or fixed-term employees", "Casual employees", "Apprentices or trainees – employees", "Employment agency staff – also called labour hire", "Contractors and sub-contractors – hired staff", "Other"].each do |et|
   BusinessEmploymentType.create(name: et)
+  puts "BusinessEmploymentType #{et}"
 end
 
 ["Salaried", "Self Employed", "Professional", "Other"].each do |et|
   EmploymentType.create(name: et)
+  puts "EmploymentType #{et}"
 end
 
 ["0 to 50 lack", "50 lack to 1 crore", "1 crore to 5 crore", "5 crore to 10 crore", "Other"].each do |at|
   AnnualTurnover.create(name: at)
+  puts "AnnualTurnover #{at}"
 end
 
 ["Doctor", "CA", "Architechure", "Other"].each do |pr|
   Profession.create(name: pr)
+  puts "Profession #{pr}"
 end
 
 ["TCS", "Tech Mahindra", "Infosys", "Other"].each do |com|
   Company.create(name: com)
+  puts "Company #{com}"
 end
 
 ["Residence","Office", "Permanent", "Other"].each do |ma|
   MailingAddress.create(name: ma)
+  puts "MailingAddress #{ma}"
 end
 
 (1..100).each {|t| 
   StayCitySinceYear.create(name: t)
+  puts "StayCitySinceYear #{t}"
 }
 
 (1..100).each {|t| 
   StayResidenceSinceYear.create(name: t)
+  puts "StayResidenceSinceYear #{t}"
 }
 
 ["Allahabad Bank",
@@ -142,11 +161,13 @@ end
 "Tamilnad Mercantile Bank Limited",
 "Other"].each do |ba|
   Bank.create(name: ba)
+  puts "Bank #{ba}"
 end
 
 
 ["1 Yr", "2 yr", "3 yr", "4 yr", "5 yr"].each do |ten|
   Tenure.create(name: ten)
+  puts "Tenure #{ten}"
 end
 
 ["3M INDIA LIMITED",
@@ -186,6 +207,7 @@ end
 "AUTOMOTIVE AXLES LIMITED",
 "AXIS BANK"].each do |em|
   Employer.create(name: em)
+  puts "Employer #{em}"
 end
 
 

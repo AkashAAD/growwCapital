@@ -7,9 +7,11 @@ Rails.application.routes.draw do
 
   resources :business_loan do
     collection do
-      post  "create_business_offer"
-      patch "update_business_offer"
-      patch "update_business_offer_assets"
+      post  :create_business_offer
+      patch :update_business_offer
+      patch :update_business_offer_assets
+      post :create_otp
+      patch :update_otp_status
     end
   end
 
@@ -42,7 +44,7 @@ Rails.application.routes.draw do
       patch :update_personal_loan_assets
       get :get_employer
       post :create_otp
-      post :update_otp_status
+      patch :update_otp_status
     end
   end
 

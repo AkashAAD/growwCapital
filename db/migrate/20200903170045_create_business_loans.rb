@@ -26,6 +26,8 @@ class CreateBusinessLoans < ActiveRecord::Migration[5.2]
       t.datetime :dob
       t.integer :otp
       t.boolean :otp_verified, default: false
+      t.string :reference_number
+      t.boolean :terms_and_conditions
       t.timestamps
     end
   end

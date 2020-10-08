@@ -1,12 +1,12 @@
 class BusinessLoanController < ApplicationController
-	before_action :create_business_loan, only: [:create]
+	before_action :create_business_loan, only: [:create, :create_otp]
 	before_action :create_business_loan_offer, only: [:create_business_offer]
 	before_action :update_business_loan, only: [:update]
 	before_action :update_business_loan_offer, only: [:update_business_offer]
 	before_action :update_business_loan_offer_assets, only: [:update_business_offer_assets]
 
 	include Wicked::Wizard
-	steps :step1, :step2, :step3, :step4
+  steps :step1, :step2, :step3, :step4, :step5, :step6
 
 	def new
     @business_loan = BusinessLoan.new		
@@ -18,32 +18,59 @@ class BusinessLoanController < ApplicationController
 		case params[:id]
 		when "step1"
 			@business_loan = id.nil? ? BusinessLoan.new : get_business_loan(id)
-		when "step2", "step3"
+      return redirect_to business_loan_path("step2") if !@business_loan.otp_verified && !@business_loan.otp.blank?
+      return redirect_to business_loan_path("step3") if @business_loan.otp_verified
+		when "step2"
+      @business_loan = id.nil? ? BusinessLoan.new : get_business_loan(id)
+      return redirect_to business_loan_path("step3") if @business_loan.otp_verified
+		when "step3", "step4", "step5"
 			@business_loan = id.nil? ? BusinessLoan.new : get_business_loan(id)
+      return redirect_to business_loan_path("step2") unless @business_loan.otp_verified
 			@business_loan_offer =  @business_loan.business_loan_offer.try(:id) ? @business_loan.business_loan_offer : BusinessLoanOffer.new
+		when "step6"
+      @business_loan = get_business_loan(id)
+      session[:business_loan_id] = nil			
 		end
 		render_wizard
 	end
+
+	def create_otp
+		@business_loan.reference_number = "BSNL#{(rand*100000000).to_i}"
+    create_update_business_loan(@business_loan.save, "Business Loan created successfully.", business_loan_path("step2"))
+	end
+
+  def update_otp_status
+    @business_loan = get_business_loan(session[:business_loan_id])
+    if @business_loan.otp.eql?(params[:business_loan][:otp])
+      @business_loan.otp_verified = true
+      @business_loan.save
+      flash[:error] = "The entered OTP verified successfully."
+      redirect_to business_loan_path("step3")
+    else
+      flash[:error] = "The entered OTP is not valid."
+      redirect_to business_loan_path("step2")
+    end
+  end
 
 	def create
     create_update_business_loan(@business_loan.save, "Business Loan created successfully.", business_loan_path("step2"))
 	end
 
 	def update
-    create_update_business_loan(@update_status_bl, "Business Loan updated successfully.", business_loan_path("step2"))
+    create_update_business_loan(@update_status_bl, "Business Loan updated successfully.", business_loan_path("step4"))
 	end
 
 	def create_business_offer
-    create_update_business_loan_offer(@business_loan_offer.save, "Business Loan offer applied successfully.", business_loan_path("step3"))
+    create_update_business_loan_offer(@business_loan_offer.save, "Business Loan offer applied successfully.", business_loan_path("step5"))
 	end
 
 	def update_business_offer
-		create_update_business_loan_offer(@update_status_blo, "Business Loan updated successfully.", business_loan_path("step3"))
+		create_update_business_loan_offer(@update_status_blo, "Business Loan updated successfully.", business_loan_path("step5"))
 	end
 
 	def update_business_offer_assets
-		session[:business_loan_id] = nil if @update_status_blo
-		create_update_business_loan_offer(@update_status_blo, "Business Loan updated successfully.", business_loan_path("step4"))
+		# session[:business_loan_id] = nil if @update_status_blo
+		create_update_business_loan_offer(@update_status_blo, "Business Loan updated successfully.", business_loan_path("step6"))
 	end
 
 	private
@@ -66,7 +93,11 @@ class BusinessLoanController < ApplicationController
     	:city,
     	:state,
     	:pincode,
-    	:residential_type)
+    	:residential_type,
+      :mobile_number,
+      :email,
+      :loan_amount,
+      :tenure)
 	end
 
 	def business_loan_offer_params
@@ -129,6 +160,12 @@ class BusinessLoanController < ApplicationController
 	def create_update_business_loan(status, message, path)
 		if status
 			session[:business_loan_id] = @business_loan.id
+      unless @business_loan.otp_verified
+        sms = SmsService.new
+        @business_loan.otp = 1234
+        @business_loan.save
+        sms.send_otp(@business_loan)
+      end
 			flash[:notice] = message
 			redirect_to path
 		else

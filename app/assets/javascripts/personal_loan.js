@@ -78,6 +78,21 @@ $(document).ready(function(){
 	  return element.files[0].size < 5000000;
 	}, "");
 
+	$("#otp_personal_loan").validate({
+		rules: {
+			"personal_loan[otp]": {
+				required: true,
+				maxlength: 6
+			}
+		},
+		messages: {
+			'personal_loan[otp]': {
+				required: 'Please enter OTP.',
+				required: 'OTP should be 6 digits only.',
+			}
+		}
+	});
+
 	$("#basic_personal_loan").validate({
 		rules: {
 			"personal_loan[mobile_number]": {
@@ -136,23 +151,11 @@ $(document).ready(function(){
 				required: 'Please enter office email.',
 				email: 'Email should be valid.'
 			},
-		}		
+		}
 	});
 
   $("#personal_loan").validate({
 		rules: {
-			"personal_loan[first_name]": {
-				required: true,
-				maxlength: 50
-			},
-			"personal_loan[middle_name]": {
-				required: true,
-				maxlength: 50
-			},
-			"personal_loan[last_name]": {
-				required: true,
-				maxlength: 50
-			},
 			"personal_loan[dob]": {
 				required: true
 			},
@@ -208,20 +211,11 @@ $(document).ready(function(){
 				required: true,
 				maxlength: 6
 			},
+			"personal_loan[terms_and_conditions]": {
+				required: true
+			}
 		},
 		messages: {
-			'personal_loan[first_name]': {
-				required: 'Please enter first name.',
-				maxlength: 'First Name must consist of at most 50 characters'
-			},
-			'personal_loan[middle_name]': {
-				required: 'Please enter middle name.',
-				maxlength: 'Middle Name must consist of at most 50 characters.'
-			},
-			'personal_loan[last_name]': {
-				required: 'Please enter last name.',
-				maxlength: 'Middle Name must consist of at most 50 characters.'
-			},
 			'personal_loan[dob]': {
 				required: 'Please enter date of birth.'
 			},
@@ -275,6 +269,9 @@ $(document).ready(function(){
 			},
 			'personal_loan[residential_type]': {
 				required: 'Please selecy enter residential type.'
+			},
+			"personal_loan[terms_and_conditions]": {
+				required: "Please select terms and conditions."
 			}
 		}  	
   });

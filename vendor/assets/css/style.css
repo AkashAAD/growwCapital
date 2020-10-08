@@ -120,16 +120,6 @@ h6 {
 	font-size: 16px;
 }
 
-p {
-	margin: 0;
-	margin-bottom: 20px;
-	font-weight: 400;
-}
-
-p+p {
-	margin: 20px 0 0;
-}
-
 a:hover, a:focus {
 	outline: none;
 	text-decoration: none;
@@ -2807,8 +2797,8 @@ input[type="file"]:active:after {
 }
 
 input[type="radio"], input[type="checkbox"] {
-	position: absolute;
-	left: -999em;
+	/*position: absolute;
+	left: -999em;*/
 }
 
 label:before {

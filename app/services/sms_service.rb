@@ -6,6 +6,6 @@ class SmsService
   end
 
 	def send_otp(mobile_number)
-		debugger
+		
 	end
 end

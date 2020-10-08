@@ -2,8 +2,8 @@
     <div class="container">
         <div class="row align-items-end">
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <h2>New Business Loan</h2>
-                <h4>Apply for new business loan</h4>
+                <h2>New Personal Loan</h2>
+                <h4>Apply for new personal loan</h4>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <ul class="breadcrumb">
@@ -14,95 +14,30 @@
         </div>
     </div>
 </section>
-
-  <%= form_for @business_loan_offer, :url => { :action => @business_loan_offer.id.nil? ? "create_business_offer" : "update_business_offer" }, html: {id:  "business_loan_offer", class: "business_loan_offer"} do |f| %>
+<section class="personal-loan-section">
+  <%= form_for @business_loan, :url => { :action => @business_loan.id.nil? ? "update_otp_status" : "update_otp_status"}, html: {id:  "otp_business_loan", class: "otp_business_loan"} do |f| %>
     <div class="container">
-      <div class="row"> 
+      <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <span>Business Name <span>*</span></span>
-            <%= f.text_field(:business_name, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :business_name) %></p>
-          </div>
-          <div class="form-group">
-            <span>Nature Of Business <span>*</span></span>
-            <%= f.select(:business_nature, business_nature, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :business_nature) %></p>
-          </div>
-          <div class="form-group">
-            <span>Type Of Organization <span>*</span></span>
-            <%= f.select(:industry_type, industry_type, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :industry_type) %></p>
-          </div>
-          <div class="form-group">
-            <span>Present Work Experience(Years) <span>*</span></span>
-            <%= f.select(:business_years, business_year, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :business_years) %></p>
-          </div>
-          <div class="form-group">
-            <span>Current EMI (Rs.) <span>*</span></span>
-            <%= f.number_field(:current_emi, step: 0.5, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :current_emi) %></p>
-          </div>
-          <div class="form-group">
-            <span>Annual Turnover <span>*</span></span>
-            <%= f.select(:annual_turnover, annual_turnover, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :annual_turnover) %></p>
-          </div>
-          <div class="form-group">
-            <span>Gross Annual Profit <span>*</span></span>
-            <%= f.number_field(:gross_annual_profit, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :gross_annual_profit) %></p>
+            <h3>Verify OTP</h3>
           </div>
         </div>
+      </div>
+      <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <span>Business Pan Number: <span></span></span>
-            <%= f.text_field(:business_pan_number, class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan_offer, :business_pan_number) %></p>
+            <span>OTP <span>*</span></span>
+            <%= f.text_field(:otp, class: "form-control", value: "") %>
           </div>
-          <div class="form-group">
-            <span>GST Number <span></span></span>
-            <%= f.text_field(:gst_number, class: "form-control") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :city) %></p>
-          </div>
-          <div class="form-group">
-            <span>Business Property Type: <span>*</span></span>
-            <%= f.select(:residence_type, residence_type, class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan_offer, :residence_type) %></p>
-          </div>
-          <div class="form-group">
-            <span>Business Address Line 1: <span>*</span></span>
-            <%= f.text_area(:address_line1, class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan_offer, :address_line1) %></p>
-          </div>
-          <div class="form-group">
-            <span>Business Address Line 2: <span>*</span></span>
-            <%= f.text_area(:address_line2, class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan_offer, :address_line2) %></p>
-          </div>
-          <div class="form-group">
-            <span>Business Landmark: <span>*</span></span>
-            <%= f.text_area(:landmark, class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan_offer, :landmark) %></p>
-          </div>
-          <div class="form-group">
-            <span>Business State: <span>*</span></span>
-            <%= f.select(:state, states, class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan_offer, :state) %></p>
-          </div>
-          <div class="form-group">
-            <span>Business City: <span>*</span></span>
-            <%= f.select(:city, cities(f, :state, :city), class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan_offer, :city) %></p>
-          </div>
-          <div class="form-group">
-            <span>Business Pincode: <span>*</span></span>
-            <%= f.number_field(:pincode, class: "form-control") %>
-            <p class="error"><%= show_errors(@business_loan_offer, :pincode) %></p>
-          </div>
+        </div>
+      </div> 
+      <div class="row">
+        <div class="col-md-4">
           <button type="submit" class="btn btn-default">Submit</button>
+          <a href="javascript:void(o)" id="resend-otp" style="float: right;">Resend</a>          
         </div>
       </div>
     </div>
   <%end%>
+</section>
