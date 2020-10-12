@@ -37,7 +37,12 @@
 //= require jquery.easing.js
 //= require jquery-ui.js
 //= require jquery.validate.js
+//= require owl.carousel.js
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})

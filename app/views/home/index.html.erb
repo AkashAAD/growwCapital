@@ -36,6 +36,25 @@
               gridwidth:1170,
               gridheight:645
           });
+
+      $('.loans, .cards, .partners').owlCarousel({
+          loop:true,
+          margin:10,
+          nav:true,
+          responsive:{
+            0:{
+                items:1
+            },
+            600:{
+                items:3
+            },
+            1000:{
+                items:5
+            }
+          }
+      })
+
+
       }); /*ready*/
     </script>
     <!-- END REVOLUTION SLIDER -->
@@ -46,135 +65,127 @@
 <section class="content">
   <div class="container">
     <div class="inner-page homepage margin-bottom-none">
-      <section class="message-wrap">
-        <div class="container">
-          <div class="row">
-            <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <span class="">LOANS</span>
-            </h2>
-          </div>
-        </div>
-      </section>
+      <div class="row">
+        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="ind-section">Loans</span>
+        </h2>
+      </div>
       <section class="row car-block-wrap padding-loans">
-        <div class="col-lg-2-5 col-md-2-5 col-sm-12 col-xs-12 margin-bottom-none">
-          <div class="flip margin-bottom-30">
-            <div class="card scroll_effect bounceInLeft">
-              <div class="div-loan">
-                <div class="img-text">
-                  <i class="fa fa-6x fa-user"></i>
-                  <span>PERSONAL LOAN</span>
+        <div class="owl-carousel loans">
+          <div class="col-sm-12 col-xs-12 margin-bottom-none">
+            <div class="flip margin-bottom-30">
+              <div class="card scroll_effect bounceInLeft">
+                <div class="div-loan">
+                  <%= link_to personal_loan_path('step1'), method: :get, class: "img-text" do %>
+                    <i class="fa fa-6x fa-user"></i>
+                    <span>Personal Loan</span>
+                  <% end %>
+                  <div class="loan-img1"></div>
                 </div>
-                <div class="loan-img1"></div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-2-5 col-md-2-5 col-sm-12 col-xs-12 margin-bottom-none">
-          <div class="flip margin-bottom-30">
-            <div class="card scroll_effect bounceInLeft">
-              <div class="div-loan">
-                <div class="img-text">
-                  <i class="fa fa-6x fa-briefcase"></i>
-                  <span>BUSINESS LOAN</span>
+          <div class="col-sm-12 col-xs-12 margin-bottom-none">
+            <div class="flip margin-bottom-30">
+              <div class="card scroll_effect bounceInLeft">
+                <div class="div-loan">
+                  <%= link_to business_loan_path('step1'), method: :get, class: "img-text" do %>
+                    <i class="fa fa-6x fa-briefcase"></i>
+                    <span>Business Loan</span>
+                  <% end %>
+                  <div class="loan-img2"></div>
                 </div>
-                <div class="loan-img2"></div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-2-5 col-md-2-5 col-sm-12 col-xs-12 margin-bottom-none">
-          <div class="flip margin-bottom-30">
-            <div class="card scroll_effect bounceInRight">
-              <div class="div-loan">
-                <div class="img-text">
-                  <i class="fa fa-6x fa-user-md"></i>
-                  <span>PROFESSIONAL LOAN</span>
+          <div class="col-sm-12 col-xs-12 margin-bottom-none">
+            <div class="flip margin-bottom-30">
+              <div class="card scroll_effect bounceInRight">
+                <div class="div-loan">
+                  <%= link_to professional_loan_path('step1'), method: :get, class: "img-text" do %>
+                    <i class="fa fa-6x fa-user-md"></i>
+                    <span>Professional Loan</span>
+                  <% end %>
+                  <div class="loan-img5"></div>
                 </div>
-                <div class="loan-img5"></div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-2-5 col-md-2-5 col-sm-12 col-xs-12 margin-bottom-none">
-          <div class="flip margin-bottom-30">
-            <div class="card scroll_effect bounceInRight">
-              <div class="div-loan">
-                <div class="img-text">
-                  <i class="fa fa-6x fa-user-md"></i>
-                  <span>CAR LOAN</span>
+          <div class="col-sm-12 col-xs-12 margin-bottom-none">
+            <div class="flip margin-bottom-30">
+              <div class="card scroll_effect bounceInRight">
+                <div class="div-loan">
+                  <%= link_to new_car_loan_path('step1'), method: :get, class: "img-text" do %>
+                    <i class="fa fa-6x fa-car"></i>
+                    <span>Car Loan</span>
+                  <% end %>
+                  <div class="loan-img5"></div>
                 </div>
-                <div class="loan-img5"></div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-2-5 col-md-2-5 col-sm-12 col-xs-12 margin-bottom-none">
-          <div class="flip margin-bottom-30">
-            <div class="card">
-              <div class="div-loan">
-                <div class="img-text">
-                  <i class="fa fa-6x fa-home"></i>
-                  <span>HOME LOAN</span>
+          <div class="col-sm-12 col-xs-12 margin-bottom-none">
+            <div class="flip margin-bottom-30">
+              <div class="card">
+                <div class="div-loan">
+                  <%= link_to home_loan_path('step1'), method: :get, class: "img-text" do %>
+                    <i class="fa fa-6x fa-home"></i>
+                    <span>Home Loan</span>
+                  <% end %>
+                  <div class="loan-img3"></div>
                 </div>
-                <div class="loan-img3"></div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="col-lg-2-5 col-md-2-5 col-sm-12 col-xs-12 margin-bottom-none">
-          <div class="flip margin-bottom-30">
-            <div class="card scroll_effect bounceInRight">
-              <div class="div-loan">
-                <div class="img-text">
-                  <i class="fa fa-6x fa-building-o"></i>
-                  <span>LOAN AGAINST PROPERTY</span>
+          <div class="col-sm-12 col-xs-12 margin-bottom-none">
+            <div class="flip margin-bottom-30">
+              <div class="card scroll_effect bounceInRight">
+                <div class="div-loan">
+                  <%= link_to loan_against_property_path('step1'), method: :get, class: "img-text" do %>
+                    <i class="fa fa-6x fa-building-o"></i>
+                    <span>Home Loan</span>
+                  <% end %>
+                  <div class="loan-img4"></div>
                 </div>
-                <div class="loan-img4"></div>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section class="message-wrap">
-        <div class="container">
-          <div class="row">
-            <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <span class="">CARDS</span>
-            </h2>
-          </div>
-        </div>
-      </section>
+      <div class="row">
+        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="ind-section">Cards</span>
+        </h2>
+      </div>
       <section class="row car-block-wrap padding-loans">
-        <div class="col-lg-2-5 col-md-2-5 col-sm-12 col-xs-12 margin-bottom-none">
-          <div class="scroll_effect bounceInUp img-hdfc-card">
-            <%= image_tag "hdfc-bank.png" %>
+        <div class="owl-carousel cards">
+          <div class="col-sm-12 col-xs-12 margin-bottom-none">
+            <div class="scroll_effect bounceInUp img-hdfc-card">
+              <%= image_tag "hdfc-bank.png" %>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-2-5 col-md-2-5 col-sm-12 col-xs-12 margin-bottom-none">
-          <div class="scroll_effect bounceInUp img-indus-card">
-            <%= image_tag "IndusInd-bank.png" %>
+          <div class="col-sm-12 col-xs-12 margin-bottom-none">
+            <div class="scroll_effect bounceInUp img-indus-card">
+              <%= image_tag "IndusInd-bank.png" %>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-2-5 col-md-2-5 col-sm-12 col-xs-12 margin-bottom-none">
-          <div class="scroll_effect bounceInUp img-sbi-card">
-            <%= image_tag "sbi-bank.png" %>
+          <div class="col-sm-12 col-xs-12 margin-bottom-none">
+            <div class="scroll_effect bounceInUp img-sbi-card">
+              <%= image_tag "sbi-bank.png" %>
+            </div>
           </div>
-        </div>
-        <div class="col-lg-2-5 col-md-2-5 col-sm-12 col-xs-12 margin-bottom-none">
-          <div class="scroll_effect bounceInUp">
-            <%= image_tag "rbl-bank.png" %>
-          </div>
-        </div>
-      </section>
-      <section class="message-wrap">
-        <div class="container">
-          <div class="row">
-            <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <span class="">LOANS AND CARD BENEFIT DESCRIPTION</span>
-            </h2>
-          </div>
+          <div class="col-sm-12 col-xs-12 margin-bottom-none">
+            <div class="scroll_effect bounceInUp">
+              <%= image_tag "rbl-bank.png" %>
+            </div>
+          </div>          
         </div>
       </section>
+      <div class="row">
+        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="ind-section">Loans & Card Benefit Description</span>
+        </h2>
+      </div>
       <section class="welcome-wrap padding-top-30 sm-horizontal-15">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bottom-none">
           <div class="row">
@@ -192,195 +203,73 @@
             </div>
           </div>
         </div>
-        <!-- <div class='fullwidth_element_parent margin-top-30 padding-bottom-40'>
-          <div id='google-map-listing' class='fullwidth_element' data-longitude='-79.38' data-latitude='43.65' data-zoom='12' style='height: 390px;' data-scroll='false' data-style='[{"featureType":"landscape","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"stylers":[{"hue":"#F0F0F0"},{"saturation":-100},{"gamma":2.15},{"lightness":12}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"lightness":24}]},{"featureType":"road","elementType":"geometry","stylers":[{"lightness":57}]}]'></div>
-        </div>
-        <div class="car-rate-block row clearfix margin-top-30 padding-bottom-40">
-          <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none padding-left-none scroll_effect bounceInLeft">
-            <div class="small-block clearfix">
-              <h4 class="margin-bottom-25 margin-top-none">Financing.</h4>
-              <a href="#"><span class="align-center"><i class="fa fa-tag fa-7x"></i></span></a> 
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInLeft" data-wow-delay=".2s">
-            <div class="small-block clearfix">
-              <h4 class="margin-bottom-25 margin-top-none">Warranty.</h4>
-              <a href="#"><span class="align-center"><i class="fa fa-cogs fa-7x"></i></span></a> 
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 padding-left-none padding-right-none hours_operation">
-            <div class="small-block clearfix">
-              <h4 class="margin-bottom-25 margin-top-none">What are our Hours of Operation?</h4>
-              <div class="row">
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-40 md-margin-bottom-none scroll_effect bounceInUp" data-wow-delay=".4s">
-                  <table class="table table-bordered no-border font-13px margin-bottom-none">
-                    <thead>
-                      <tr>
-                        <td colspan="2"><strong>Sales Department</strong></td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Mon:</td>
-                        <td>8:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Tue:</td>
-                        <td>8:00am - 9:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Wed:</td>
-                        <td>8:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Thu:</td>
-                        <td>8:00am - 9:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Fri:</td>
-                        <td>8:00am - 6:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Sat:</td>
-                        <td>9:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Sun:</td>
-                        <td>Closed</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInUp" data-wow-delay=".4s">
-                  <table class="table table-bordered no-border font-13px margin-bottom-none">
-                    <thead>
-                      <tr>
-                        <td colspan="2"><strong>Service Department</strong></td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Mon:</td>
-                        <td>8:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Tue:</td>
-                        <td>8:00am - 9:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Wed:</td>
-                        <td>8:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Thu:</td>
-                        <td>8:00am - 9:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Fri:</td>
-                        <td>8:00am - 6:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Sat:</td>
-                        <td>9:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Sun:</td>
-                        <td>Closed</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none scroll_effect bounceInRight" data-wow-delay=".2s">
-            <div class="small-block clearfix">
-              <h4 class="margin-bottom-25 margin-top-none">About Us.</h4>
-              <a href="#"><span class="align-center"><i class="fa fa-users fa-7x"></i></span></a> 
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12 xs-margin-bottom-40 sm-margin-bottom-none padding-right-none scroll_effect bounceInRight">
-            <div class="small-block clearfix">
-              <h4 class="margin-bottom-25 margin-top-none">Find Us.</h4>
-              <a href="#"><span class="align-center"><i class="fa fa-map-marker fa-7x"></i></span></a> 
-            </div>
-          </div>
-        </div> -->
       </section>
-      <section class="message-wrap">
-        <div class="container">
-          <div class="row">
-            <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-              <span class="">OUR PARTNERS</span>
-            </h2>
+      <div class="row">
+        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <span class="ind-section">Our Partners</span>
+        </h2>
+      </div>
+      <section class="padding-loans">
+        <div class="row owl-carousel partners">
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "hdfc-bank.png" %>
+          </div>
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "idfc-bank.gif"%>
+          </div>
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "yes-bank.png" %>
+          </div>
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "tata-capital.webp"%>
+          </div>
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "icici-bank.png"%>
+          </div>
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "axis-bank.png" %>
+          </div>
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "aditya-birla.png" %>
+          </div>
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "dbs_bank.svg"%>
+          </div>
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "bajaj-logo.png" %>
+          </div>
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "fllutoran.png" %>
+          </div>
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "au-bank.webp" %>
+          </div>
+          <div class="scroll_effect bounceInUp">
+            <%= image_tag "hero.png" %>
           </div>
         </div>
       </section>
-      <section class="row car-block-wrap padding-loans">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 margin-bottom-none">
-          <div class="row ptnr-1-row">
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "hdfc-bank.png", class: "ptnr-hdfc-bank" %>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "idfc-bank.gif", class: "ptnr-idfc-bank" %>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "yes-bank.png", class: "ptnr-yes-bank" %>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "tata-capital.webp", class: "ptnr-tatac-bank" %>
+      <section class="testimonital">
+        <div class="row">
+          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h3>50 + Partners</h3>
+                <h4>&</h4>
+                <h3>Over 100 Products</h3>
+                <h3>
+                  Disburse Loans worth 30 crore on an annulized basis
+                </h3>
               </div>
             </div>
           </div>
-          <div class="row tnr-2-row">
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "icici-bank.png", class: "ptnr-icici-bank" %>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "axis-bank.png", class: "ptnr-axis-bank" %>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "aditya-birla.png", class: "ptnr-adityab-bank" %>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "dbs_bank.svg", class: "ptnr-dbs-bank" %>
-              </div>
-            </div>
-          </div>
-          <div class="row tnr-3-row">
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "bajaj-logo.png", class: "ptnr-bajaj-bank" %>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "fllutoran.png", class: "ptnr-fllutoran-bank" %>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "au-bank.webp", class: "ptnr-au-bank" %>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 margin-bottom-none">
-              <div class="scroll_effect bounceInUp">
-                <%= image_tag "hero.png" %>
+          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
+            <div class="card">
+              <div class="card-body">
+                <h3>Satisfied Custmers</h3>
+                <h2>1000</h2>
+                <h3>Secured Systems</h3>
+                <h3>To Keep your data safe</h3>                
               </div>
             </div>
           </div>

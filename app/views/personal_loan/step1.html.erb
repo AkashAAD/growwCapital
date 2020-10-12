@@ -74,9 +74,10 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <span><%= f.check_box(:terms_and_conditions) %> Terms & Conditions</span>
+          <%= f.check_box(:terms_and_conditions) %>
+          <%= f.label "Terms & Conditions", for: 'personal_loan_terms_and_conditions' %>
         </div>
-      </div>      
+      </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </div>
   <%end%>

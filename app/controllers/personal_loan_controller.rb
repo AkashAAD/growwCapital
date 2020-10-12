@@ -9,7 +9,7 @@ class PersonalLoanController < ApplicationController
   steps :step1, :step2, :step3, :step4, :step5, :step6
 
 	def show
-			# session[:personal_loan_id] = nil
+			session[:personal_loan_id] = nil
 		id = session[:personal_loan_id]
 		case params[:id]
 		when "step1"
@@ -24,7 +24,7 @@ class PersonalLoanController < ApplicationController
       return redirect_to personal_loan_path("step2") unless @personal_loan.otp_verified
 			@employer_detail =  @personal_loan.employer_detail.try(:id) ? @personal_loan.employer_detail : EmployerDetail.new
     when "step6"
-      @personal_loan = get_personal_loan(id)
+      @personal_loan = PersonalLoan.last #get_personal_loan(id)
       session[:personal_loan_id] = nil
 		end
 		render_wizard
@@ -98,7 +98,8 @@ class PersonalLoanController < ApplicationController
       :mobile_number,
       :email,
       :loan_amount,
-      :tenure)
+      :tenure,
+      :terms_and_conditions)
 	end
 
 	def employer_detail_params

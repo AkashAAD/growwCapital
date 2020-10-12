@@ -502,7 +502,7 @@ hr {
 
 
 header {
-	background: rgba(0, 0, 0, 0.65);
+	background: rgb(255 255 255);
 	position: absolute;
 	z-index: 1000;
 	width: 100%;
@@ -522,7 +522,7 @@ header, header * {
 	min-height: 30px;
 	position: relative;
 	z-index: 5555;
-	background: rgba(0, 0, 0, 0.2);
+	background: rgb(8 84 160);
 	display: block;
 }
 
@@ -535,7 +535,7 @@ header, header * {
 .toolbar ul li {
 	float: left;
 	margin-right: 22px;
-	color: #929596;
+	color: #ffffff;
 	font-size: 10px;
 	font-weight: 800;
 	line-height: 30px;
@@ -547,7 +547,7 @@ header, header * {
 }
 
 .toolbar ul li a {
-	color: #929596;
+	color: #ffffff;
 	font-size: 10px;
 	line-height: 30px;
 	font-weight: 600;
@@ -618,7 +618,7 @@ header.affix .bottom-header {
 
 header .navbar-brand img {
 	height: 100%;
-	width: auto;
+	width: 300px;
 	margin-top: -6px;
 }
 
@@ -657,7 +657,7 @@ header .bottom-header .navbar-default .navbar-nav>li>a {
 	text-transform: uppercase;
 	font-weight: 700;
 	font-size: 14px;
-	color: #fff;
+	color: #000;
 	font-family: 'Open Sans', sans-serif;
 	line-height: 31px;
 	transition-duration: .15s;
@@ -667,7 +667,7 @@ header .bottom-header .navbar-default .navbar-nav>li>a {
 .bottom-header .navbar-default .navbar-nav>.active > a,
 .bottom-header .navbar-default .navbar-nav>.active > a:hover,
 .bottom-header .navbar-default .navbar-nav>.active > a:focus {
-	background-color: #c7081b;
+	background-color: #ee4031;
 	color: #fff;
 }
 
@@ -700,7 +700,7 @@ header.affix .container .navbar {
 
 header.affix .container .navbar .navbar-brand img {
 	height: 80%;
-	width: auto;
+	width: 300px;
 	margin-top: -2px;
 }
 
@@ -1377,7 +1377,7 @@ table.right_table {
 	border-bottom: solid 2px #fff;
 	border-top: solid 3px #fff;
 	padding: 22px 0;
-	background: #f0f0f0 url(message-shadow.png) top center repeat-x;
+	/*background: #f0f0f0 url(message-shadow.png) top center repeat-x;*/
 }
 
 .message-wrap div[class*="col-"] {
@@ -1914,7 +1914,7 @@ footer .default-btn:active, footer .btn-inventory:active, footer button:active, 
 }
 
 .welcome-wrap h4 {
-	color: #c7081b;
+	color: #0854a0;
 	font-weight: 400;
 	font-family: 'Open Sans', sans-serif, Arial;
 	margin-bottom: 23px;
@@ -2252,10 +2252,11 @@ input[type=text]:focus, .leave-comments form input[type=text]:focus, .leave-comm
 .copyright-wrap p {
 	word-spacing: 2px;
 	margin-top: 12px;
+	margin-left: 10px;
 }
 
 footer {
-	background-color: #3d3d3d;
+	background-color: #0854a0;
 	padding: 47px 0 64px 0;
 	color: #fff;
 	font-size: 14px;
@@ -2325,7 +2326,7 @@ footer form input[type=text] {
 
 .copyright-wrap {
 	padding: 18px 0 20px 11px;
-	background-color: #2f2f2f;
+	background-color: #072440;
 	color: #999999;
 	font-size: 13px;
 }
@@ -2587,7 +2588,7 @@ footer.design_2 h4 {
 	z-index: 2;
 	font-size: 185px;
 	top: 20px;
-	color: #383838;
+	color: #0e85fc;
 	right: 15px;
 }
 
@@ -2697,7 +2698,7 @@ textarea {
 
 input[type="text"], textarea, textarea[name="msg"], select, div.custom-select, input[type="file"], input[type="email"] {
 	float: left;
-	width: 108px;
+	width: 100%;
 	border-radius: 2px;
 	border: 1px solid #E4E4E4;
 	color: #54545e;
@@ -2769,6 +2770,16 @@ input[type="file"] {
 	box-sizing: border-box;
 	width: 40%;
 	padding: 0;
+    color: white;
+    display: inline-block;
+	background-image: linear-gradient(90deg, #01000f 0%, #090979 35%, #00d4ff 100%);
+    border: none;
+    padding: 7px 15px;
+    font-weight: 700;
+    border-radius: 3px;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 10pt;	
 }
 input[type=file]::-webkit-file-upload-button {
  width: 0;
@@ -2779,7 +2790,7 @@ input[type=file]::-webkit-file-upload-button {
 }
 
 input[type="file"]:after {
-	content: 'Upload File';
+	/*content: 'Upload File';
 	margin: 0 0 0 0.5em;
 	display: inline-block;
 	left: 100%;
@@ -2789,7 +2800,7 @@ input[type="file"]:after {
 	border: solid 1px #ccc !important;
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.2);
 	box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-	border-radius: 4px;
+	border-radius: 4px;*/
 }
 
 input[type="file"]:active:after {
@@ -7160,7 +7171,7 @@ body.pattern_32 {
 }
 
 section.content, .car-block-wrap, .welcome-wrap {
-	background: #FFF;
+	background: #d0d0d0;
 }
 
 .boxed_layout.margin {

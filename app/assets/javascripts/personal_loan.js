@@ -78,6 +78,11 @@ $(document).ready(function(){
 	  return element.files[0].size < 5000000;
 	}, "");
 
+	jQuery.validator.addMethod("valid_salary", function(value, element) {
+		return parseFloat(value) >= 15000;
+	}, "");
+
+
 	$("#otp_personal_loan").validate({
 		rules: {
 			"personal_loan[otp]": {
@@ -121,6 +126,9 @@ $(document).ready(function(){
 			},
 			'personal_loan[tenure]': {
 				required: true
+			},
+			"personal_loan[terms_and_conditions]": {
+				required: true
 			}
 		},
 		messages: {
@@ -151,6 +159,9 @@ $(document).ready(function(){
 				required: 'Please enter office email.',
 				email: 'Email should be valid.'
 			},
+			"personal_loan[terms_and_conditions]": {
+				required: "Please select terms and conditions."
+			}
 		}
 	});
 
@@ -210,9 +221,6 @@ $(document).ready(function(){
 			"personal_loan[pincode]": {
 				required: true,
 				maxlength: 6
-			},
-			"personal_loan[terms_and_conditions]": {
-				required: true
 			}
 		},
 		messages: {
@@ -269,9 +277,6 @@ $(document).ready(function(){
 			},
 			'personal_loan[residential_type]': {
 				required: 'Please selecy enter residential type.'
-			},
-			"personal_loan[terms_and_conditions]": {
-				required: "Please select terms and conditions."
 			}
 		}  	
   });
@@ -297,10 +302,6 @@ $(document).ready(function(){
 			"employer_detail[office_address_line2]": {
 				required: true,
 				maxlength: 150
-			},
-			"employer_detail[office_email]": {
-				required: true,
-				email: true
 			},
 			"employer_detail[mailing_address]": {
 				required: true
@@ -334,7 +335,8 @@ $(document).ready(function(){
 			},
 			"employer_detail[monthly_net_salary]": {
 				required: true,
-				maxlength: 10
+				maxlength: 10,
+				valid_salary: true
 			},
 			"employer_detail[current_emi]": {
 				required: true,
@@ -363,10 +365,6 @@ $(document).ready(function(){
 			'employer_detail[first_name]': {
 				required: 'Please enter first name.',
 				maxlength: 'First name must consist of at most 50 characters'
-			},
-			'employer_detail[office_email]': {
-				required: 'Please enter office email.',
-				email: 'Email should be valid.'
 			},
 			'employer_detail[last_name]': {
 				required: 'Please enter last name.',
@@ -421,7 +419,8 @@ $(document).ready(function(){
 			},
 			'employer_detail[monthly_net_salary]': {
 				required: 'Please enter monthly net salary.',
-				maxlength: 'Monthly net salary must consist of at most 10 characters.'
+				maxlength: 'Monthly net salary must consist of at most 10 characters.',
+				valid_salary: 'Salary should be greator than or equal to ₹ 15,000.'
 			},
 			'employer_detail[current_emi]': {
 				required: 'Please enter current emi.',

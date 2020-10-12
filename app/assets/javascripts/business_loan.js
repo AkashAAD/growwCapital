@@ -90,6 +90,9 @@ $(document).ready(function(){
 			},
 			'business_loan[tenure]': {
 				required: true
+			},
+			"business_loan[terms_and_conditions]": {
+				required: true
 			}
 		},
 		messages: {
@@ -120,6 +123,9 @@ $(document).ready(function(){
 				required: 'Please enter office email.',
 				email: 'Email should be valid.'
 			},
+			"business_loan[terms_and_conditions]": {
+				required: "Please select terms and conditions."
+			}
 		}
 	});
 

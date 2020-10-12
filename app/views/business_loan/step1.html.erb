@@ -14,7 +14,7 @@
         </div>
     </div>
 </section>
-<section class="personal-loan-section">
+<section class="personal-loan-section custom-container">
   <%= form_for @business_loan, :url => { :action => @business_loan.id.nil? ? "create_otp" : "create_otp"}, html: {id:  "basic_business_loan", class: "basic_business_loan"} do |f| %>
     <div class="container">
       <div class="row">
@@ -25,51 +25,59 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
             <span>First Name <span>*</span></span>
             <%= f.text_field(:first_name, class: "form-control") %>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
             <span>Middle Name <span>*</span></span>
             <%= f.text_field(:middle_name, class: "form-control") %>
           </div>
         </div>
-        <div class="col-md-4">
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <div class="form-group">
             <span>Last Name <span>*</span></span>
             <%= f.text_field(:last_name, class: "form-control") %>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
+        </div>        
+        <div class="col-md-6">
           <div class="form-group">
             <span>Mobile Number <span>*</span></span>
             <%= f.number_field(:mobile_number, class: "form-control") %>
           </div>
         </div>
-        <div class="col-md-3">
+      </div>
+      <div class="row">
+        <div class="col-md-4">
           <div class="form-group">
             <span>Email <span>*</span></span>
             <%= f.text_field(:email, class: "form-control") %>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="form-group">
             <span>Loan Amount <span>*</span></span>
             <%= f.number_field(:loan_amount, class: "form-control") %>
           </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="form-group">
             <span>Tenure <span>*</span></span>
             <%= f.select(:tenure, tenure, class: "form-control") %>
           </div>
+        </div>        
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.check_box(:terms_and_conditions) %>
+          <%= f.label "Terms & Conditions", for: 'business_loan_terms_and_conditions' %>
         </div>
-      </div>      
+      </div>
       <button type="submit" class="btn btn-default">Submit</button>
     </div>
   <%end%>

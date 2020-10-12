@@ -14,29 +14,23 @@
         </div>
     </div>
 </section>
-<section class="personal-loan-section">
+<section class="personal-loan-section custom-container">
   <%= form_for @business_loan, :url => { :action => @business_loan.id.nil? ? "update_otp_status" : "update_otp_status"}, html: {id:  "otp_business_loan", class: "otp_business_loan"} do |f| %>
     <div class="container">
       <div class="row">
+        <div class="col-md-4"></div>
         <div class="col-md-4">
           <div class="form-group">
             <h3>Verify OTP</h3>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
           <div class="form-group">
             <span>OTP <span>*</span></span>
             <%= f.text_field(:otp, class: "form-control", value: "") %>
-          </div>
-        </div>
-      </div> 
-      <div class="row">
-        <div class="col-md-4">
+          </div> 
           <button type="submit" class="btn btn-default">Submit</button>
-          <a href="javascript:void(o)" id="resend-otp" style="float: right;">Resend</a>          
+          <a href="javascript:void(o)" id="resend-otp" style="float: right;">Resend</a>
         </div>
+        <div class="col-md-4"></div>
       </div>
     </div>
   <%end%>

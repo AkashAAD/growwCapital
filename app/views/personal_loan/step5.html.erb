@@ -14,29 +14,35 @@
         </div>
     </div>
 </section>
-
-
+<section class="business-loan-section custom-container">
   <%= form_for @personal_loan, :url => { :action => "update_personal_loan_assets" }, html: {id:  "personal_loan_assets", class: "personal_loan"} do |f| %>
     <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Upload Documents</h3>
+        </div>
+      </div>
       <div class="row"> 
         <div class="col-md-6">
           <div class="form-group">
-            <span>Id Proof(Pan Card, driving licence, aadhar or voting card) <span>*</span></span>
+            <span>Id Proof (<span title="Pan Card, driving licence, aadhar or voting card">?</span>) <span>*</span></span>
             <%= f.file_field(:id_proof, class: "") %>
              <p class="error"><%= show_errors(@personal_loan, :id_proof) %></p>
           </div>
           <div class="form-group">
-            <span>Address Proof(Aadhar card, Voter card, Pension Payment Order(PPO), Property tax receipt, Utility Bill, Passport, Rent Agreement, Gas passbook and receipt, Bank Statement) <span>*</span></span>
+            <span>Address Proof (<span title="Aadhar card, Voter card, Pension Payment Order(PPO), Property tax receipt, Utility Bill, Passport, Rent Agreement, Gas passbook and receipt, Bank Statement">?</span>) <span>*</span></span>
             <%= f.file_field(:address_proof, class: "") %>
              <p class="error"><%= show_errors(@personal_loan, :address_proof) %></p>
           </div>
           <div class="form-group">
-            <span>Bank Statement(last 6 months) <span>*</span></span>
+            <span>Bank Statement (<span title="Last 6 months">?</span>) <span>*</span></span>
             <%= f.file_field(:bank_statement, class: "") %>
              <p class="error"><%= show_errors(@personal_loan, :salary_slip) %></p>
           </div>
+        </div>
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Salary Slip(latest 3 months salary slip)<span>*</span></span>
+            <span>Salary Slip (<span title="Latest 3 months salary slip">?</span>) <span>*</span></span>
             <%= f.file_field(:salary_slip, class: "") %>
              <p class="error"><%= show_errors(@personal_loan, :salary_slip) %></p>
           </div>
@@ -45,8 +51,13 @@
             <%= f.file_field(:passport_photo, class: "") %>
              <p class="error"><%= show_errors(@personal_loan, :passport_photo) %></p>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <button type="submit" class="btn btn-default">Submit</button>
         </div>
       </div>
     </div>
   <%end%>
+</section>
