@@ -6,5 +6,4 @@ class LoanAgainstProperty < ApplicationRecord
   has_one_attached :property_photo
   has_one_attached :passport_photo
   has_one :loan_against_property_offer
-  validates :current_emi, :full_name, :dob, :property_cost, :email, :property_type, :open_land, :constructed_property, presence: true
 end

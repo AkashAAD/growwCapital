@@ -17,23 +17,31 @@ Rails.application.routes.draw do
 
   resources :home_loan do
     collection do
-      patch "update_home_loan_assets"
+      post  :create_home_offer
+      patch :update_home_offer
+      patch :update_home_assets
+      post :create_otp
+      patch :update_otp_status
     end
   end
 
   resources :loan_against_property do
     collection do
-      post  "create_against_property_offer"
-      patch "update_against_property_offer"
-      patch "update_against_property_assets"
+      post  :create_against_property_offer
+      patch :update_against_property_offer
+      patch :update_against_property_assets
+      post :create_otp
+      patch :update_otp_status      
     end
   end
 
   resources :new_car_loan do
     collection do
-      post  "create_address"
-      patch "update_address"
-      patch "update_assets"
+      post  :create_new_car_offer
+      patch :update_new_car_offer
+      patch :update_new_car_assets
+      post :create_otp
+      patch :update_otp_status
     end
   end
 
@@ -50,17 +58,21 @@ Rails.application.routes.draw do
 
   resources :professional_loan do
     collection do
-      post  "create_professional_offer"
-      patch "update_professional_offer"
-      patch "update_professsional_assets"
+      post  :create_professional_offer
+      patch :update_professional_offer
+      patch :update_professional_assets
+      post :create_otp
+      patch :update_otp_status
     end
   end
 
   resources :used_car_loan do
     collection do
-      post  "create_address"
-      patch "update_address"
-      patch "update_assets"
+      post  :create_used_car_offer
+      patch :update_used_car_offer
+      patch :update_used_car_assets
+      post :create_otp
+      patch :update_otp_status
     end
   end
 

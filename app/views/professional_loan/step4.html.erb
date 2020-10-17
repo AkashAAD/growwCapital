@@ -3,7 +3,7 @@
         <div class="row align-items-end">
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                 <h2>New Professional Loan</h2>
-                <h4>Apply for new professional loan</h4>
+                <h4>Apply for new brofessional loan</h4>
             </div>
             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                 <ul class="breadcrumb">
@@ -15,5 +15,21 @@
     </div>
 </section>
 
-
-<h1>Thank you for applying for professional loan</h1>
+  <%= form_for @professional_loan_offer, :url => { :action => @professional_loan_offer.id.nil? ? "create_professional_offer" : "update_professional_offer" }, html: {id:  "professional_loan_offer", class: "professional_loan_offer"} do |f| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Professional Loan Offer</h3>
+        </div>
+      </div>      
+      <div class="row"> 
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Name <span>*</span></span>
+            <%= f.text_field(:name, class: "form-control") %>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+      </div>
+    </div>
+  <%end%>

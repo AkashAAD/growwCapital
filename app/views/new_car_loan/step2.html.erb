@@ -14,65 +14,23 @@
         </div>
     </div>
 </section>
-<section class="business-loan-section">
-  <%= form_for @new_car_loan, :url => { :action => "update_address"}, html: {id:  "new_car_loan", class: "new_car_loan"} do |f| %>
+<section class="personal-loan-section custom-container">
+  <%= form_for @new_car_loan, :url => { :action => @new_car_loan.id.nil? ? "update_otp_status" : "update_otp_status"}, html: {id:  "otp_new_car_loan", class: "otp_new_car_loan"} do |f| %>
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
           <div class="form-group">
-            <span>Residential Address Line1 <span>*</span></span>
-            <%= f.text_area(:res_address_line1, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :res_address_line1) %></p>
+            <h3>Verify OTP</h3>
           </div>
           <div class="form-group">
-            <span>Residential Address Line2 <span>*</span></span>
-            <%= f.text_area(:res_address_line2, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :res_address_line2) %></p>
-          </div>
-          <div class="form-group">
-            <span>Residential State <span>*</span></span>
-            <%= f.select(:res_state, states, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :res_state) %></p>
-          </div>
-          <div class="form-group">
-            <span>Residential City<span>*</span></span>
-            <%= f.select(:res_city, cities, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :res_city) %></p>
-          </div>
-          <div class="form-group">
-            <span>Residential Pincode <span>*</span></span>
-            <%= f.text_field(:res_pincode, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :res_pincode) %></p>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Office Address Line1 <span>*</span></span>
-            <%= f.text_area(:office_address_line1, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :office_address_line1) %></p>
-          </div>
-          <div class="form-group">
-            <span>Office Address Line2 <span>*</span></span>
-            <%= f.text_area(:office_address_line2, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :office_address_line2) %></p>
-          </div>
-          <div class="form-group">
-            <span>Office State <span>*</span></span>
-            <%= f.select(:office_state, states, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :office_state) %></p>
-          </div>
-          <div class="form-group">
-            <span>Office City<span>*</span></span>
-            <%= f.select(:office_city, cities, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :office_city) %></p>
-          </div>
-          <div class="form-group">
-            <span>Office Pincode <span>*</span></span>
-            <%= f.text_field(:office_pincode, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :office_pincode) %></p>
-          </div>
+            <span>OTP <span>*</span></span>
+            <%= f.number_field(:otp, class: "form-control", value: "") %>
+          </div> 
           <button type="submit" class="btn btn-default">Submit</button>
+          <a href="javascript:void(o)" id="resend-otp" style="float: right;">Resend</a>
         </div>
+        <div class="col-md-4"></div>
       </div>
     </div>
   <%end%>

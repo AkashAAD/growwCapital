@@ -44,7 +44,7 @@ $(document).ready(function(){
 	}, "");
 
 	jQuery.validator.addMethod("file_size", function(value, element) {
-	  return element.files[0].size < 5000000;
+	  return element.files[0].size < 15000000;
 	}, "");
 
 	$("#otp_business_loan").validate({
@@ -407,32 +407,32 @@ $(document).ready(function(){
 			'business_loan_offer[bank_statement]': {
 				required: 'Please select bank statement.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 5 mb.'
+				file_size: 'File format should be less than 15 mb.'
 			},
 			'business_loan_offer[id_proof]': {
 				required: 'Please select id proof.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 5 mb.'				
+				file_size: 'File format should be less than 15 mb.'				
 			},
 			'business_loan_offer[residential_address_proof]': {
 				required: 'Please select residential address proof.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 5 mb.'				
+				file_size: 'File format should be less than 15 mb.'				
 			},
 			'business_loan_offer[office_address_proof]': {
 				required: 'Please select office address proof.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 5 mb.'				
+				file_size: 'File format should be less than 15 mb.'				
 			},
 			'business_loan_offer[itr_copy]': {
 				required: 'Please select itr copy.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 5 mb.'				
+				file_size: 'File format should be less than 15 mb.'				
 			},
 			'business_loan_offer[passport_photo]': {
 				required: 'Please select passport photo.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 5 mb.'				
+				file_size: 'File format should be less than 15 mb.'				
 			}
 		}
 	});

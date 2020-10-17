@@ -10,6 +10,39 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.img-effect {
+  visibility: visible;
+  animation-name: bounceInUp;
+  width: 180px;
+  height: 128px;
+  padding: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(5,47,95,.04), 0 12px 16px 0 rgba(52,105,203,.12);
+  border-radius: 10px;
+  margin: 0 12px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -webkit-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;  
+}
+
+input[type="number"], input[type="text"], input[type="date"], select, div.styled, input[type="file"] {
+  border: 2px solid #767171;
+  height: 45px;
+}
+
+textarea {
+  border: 2px solid #767171 !important;
+  height: 100px;
+}
+
+.partners {
+  padding-top: 38px;  
+}
+
 footer {
   margin-top: 30px;  
 }
@@ -266,6 +299,26 @@ textarea.error, input.error, select.error {
   }
   h3, h4 {
     font-weight: bold;
+  }
+}
+
+.crd-sat-cust {
+  background: linear-gradient(135deg, #ffffff 0, #9facb4 100%);
+  h3, h4, h2 {
+    color: #072440;
+  }
+  img {
+    padding-bottom: 10px;
+  }
+}
+
+.crd-parts {
+  background: linear-gradient(135deg, #fcf9f7 0, #bc8252 100%);
+  h3, h4 {
+    color: #072440;
+  }
+  img {
+    padding-bottom: 10px;
   }
 }
 

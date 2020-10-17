@@ -7,6 +7,5 @@ class UsedCarLoan < ApplicationRecord
   has_one_attached :car_photo
   has_one_attached :itr_copy
   has_one_attached :passport_photo
-  validates :registration_state, :registration_city, :car_manufacturer, :car_make, :car_model, :current_residency_since_year, :residence_type, :dob, :gender, :profession_status, :current_working_company, :industry_type, :monthly_salary, :mobile_number, :first_name, :last_name, :email, :car_registration_number, :model_year, presence: true
-  # validates :res_address_line1, :res_address_line2, :res_state, :res_city, :res_pincode, :office_address_line1, :office_address_line2, :office_state, :office_city, :office_pincode, presence: true, on: :update
+  has_one :used_car_loan_offer
 end

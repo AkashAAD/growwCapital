@@ -1,0 +1,71 @@
+<section id="secondary-banner" class="dynamic-image-6">
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h2>New Home Loan</h2>
+                <h4>Apply for new home loan</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container custom-container">
+  <div class="row main-thx-row"> 
+    <div class="col-md-4 col-lg-4 col-sm-12 bank-thank-row">
+      <div class="bank-thx-img">
+        <%= image_tag "icici-bank.png", class: "ptnr-icici-bank" %>
+      </div>
+      <div>
+        <p>Loan Amount</p>
+        <p><%= number_to_currency(@home_loan.loan_amount, unit: "₹ ") %></p>
+      </div>
+      <div>
+        <p>EMI</p>
+        <p>₹ 6,555</p>
+      </div>
+      <div>
+        <p>Interest Rate</p>
+        <p>₹ 12.25%</p>
+      </div>
+    </div>
+    <div class="col-md-8 col-lg-8 col-sm-12 thank-row">
+      <div class="congo">
+        <h3 class="float-left">CONGRATULATIONS</h3>
+        <h4 class="float-right">Reference Number: <%= @home_loan.reference_number %></h4>        
+      </div>
+      <div>
+        <p>
+          Your application has been <b>Successfully Submitted.</b> Our loan expert will get back to you with in <b>24 hours</b> to take this application forward.
+        </p>
+        <p>
+          <a href="/" target="_blank">Growwcapital.in</a> doesn't charge any money from customers for it's loan or credit card offerings. In such case you receive such communication from anyone claiming to be a Growwcapital representative, please contact us to 
+          <a href = "mailto:growwcapital@gmail.com">growwcapital@gmail.com</a>.
+        </p>
+        <p>
+          Thank you for choosing Growwcapital!!!
+        </p>        
+      </div>
+      <div class="contact-info">
+        <div>
+          <span class="fa fa-volume-control-phone" aria-hidden="true"></span>
+          <p>
+            Tollfree<br>
+            12-8787-7887
+          </p>
+        </div>
+        <div class="div2">
+          <span class="fa fa-envelope-o" aria-hidden="true"></span>
+          <p>
+            Write us to<br>
+            growwcapital@gmail.com
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

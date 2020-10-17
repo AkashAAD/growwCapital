@@ -15,97 +15,70 @@
     </div>
 </section>
 <section class="business-loan-section">
-  <%= form_for @new_car_loan, :url => { :action => @new_car_loan.id.nil? ? "create" : "update"}, html: {id:  "new_car_loan", class: "new_car_loan"} do |f| %>
+  <%= form_for @new_car_loan, :url => { :action => @new_car_loan.id.nil? ? "create_otp" : "create_otp"}, html: {id:  "basic_new_car_loan", class: "basic_new_car_loan"} do |f| %>
     <div class="container">
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <span>Registration State <span>*</span></span>
-            <%= f.select(:registration_state, states, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :registration_state) %></p>
-          </div>
-          <div class="form-group">
-            <span>Registration City <span>*</span></span>
-            <%= f.select(:registration_city, cities, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :registration_city) %></p>
-          </div>
-          <div class="form-group">
-            <span>Car Manufacturer <span>*</span></span>
-            <%= f.text_field(:car_manufacturer, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :car_manufacturer) %></p>
-          </div>
-          <div class="form-group">
-            <span>Car Model <span>*</span></span>
-            <%= f.text_field(:car_model, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :car_model) %></p>
-          </div>
-          <div class="form-group">
-            <span>Stying in current Residence Since: <span>*</span></span>
-            <%= f.text_field(:current_residency_since_year, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :current_residency_since_year) %></p>
+            <h3>Personal Details</h3>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Residence Type <span>*</span></span>
-            <%= f.select(:residence_type, residence_type, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :residence_type) %></p>
-          </div>
-          <div class="form-group">
-            <span>DOB <span>*</span></span>
-            <%= f.date_field(:dob, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :dob) %></p>
-          </div>
-          <div class="form-group">
-            <span>Gender <span>*</span></span>
-            <%= f.select(:gender, gender, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :gender) %></p>
-          </div>
-          <div class="form-group">
-            <span>Employment Type <span>*</span></span>
-            <%= f.select(:profession_status, employment_type, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :profession_status) %></p>
-          </div>
-          <div class="form-group">
-            <span>Current Working Company<span>*</span></span>
-            <%= f.select(:current_working_company, company_name, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :current_working_company) %></p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Industry Type <span>*</span></span>
-            <%= f.select(:industry_type, industry_type,class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :industry_type) %></p>
-          </div>
-          <div class="form-group">
-            <span>Monthly Salary: <span>*</span></span>
-            <%= f.number_field(:monthly_salary, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :monthly_salary) %></p>
-          </div>
-          <div class="form-group">
-            <span>Mobile Number <span>*</span></span>
-            <%= f.text_field(:mobile_number, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :mobile_number) %></p>
-          </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <div class="form-group">
             <span>First Name <span>*</span></span>
             <%= f.text_field(:first_name, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :first_name) %></p>
           </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <span>Middle Name <span>*</span></span>
+            <%= f.text_field(:middle_name, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <div class="form-group">
             <span>Last Name <span>*</span></span>
             <%= f.text_field(:last_name, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :last_name) %></p>
           </div>
+        </div>        
+        <div class="col-md-6">
+          <div class="form-group">
+            <span>Mobile Number <span>*</span></span>
+            <%= f.number_field(:mobile_number, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
           <div class="form-group">
             <span>Email <span>*</span></span>
             <%= f.text_field(:email, class: "form-control") %>
-            <p class="error"><%= show_errors(@new_car_loan, :email) %></p>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Loan Amount <span>*</span></span>
+            <%= f.number_field(:loan_amount, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Tenure <span>*</span></span>
+            <%= f.select(:tenure, tenure, class: "form-control") %>
+          </div>
+        </div>        
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.check_box(:terms_and_conditions) %>
+          <%= f.label "Terms & Conditions", for: 'personal_loan_terms_and_conditions' %>
         </div>
       </div>
+      <button type="submit" class="btn btn-default">Submit</button>
     </div>
   <%end%>
 </section>

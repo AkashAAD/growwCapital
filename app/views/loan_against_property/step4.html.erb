@@ -14,5 +14,23 @@
         </div>
     </div>
 </section>
-
-<h1>Thank you for applying Loan Against Property</h1>
+<section class="business-loan-section">
+  <%= form_for @loan_against_property_offer, :url => { :action => @loan_against_property_offer.id.nil? ? "create_against_property_offer" : "update_against_property_offer" }, html: {id:  "loan_against_property_offer", class: "loan_against_property_offer"} do |f| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h3>Professional Loan Offer</h3>
+        </div>
+      </div>      
+      <div class="row"> 
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Name <span>*</span></span>
+            <%= f.text_field(:name, class: "form-control") %>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+      </div>
+    </div>
+  <%end%>
+</section>

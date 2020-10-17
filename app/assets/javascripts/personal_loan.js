@@ -75,7 +75,7 @@ $(document).ready(function(){
 	}, "");
 
 	jQuery.validator.addMethod("file_size", function(value, element) {
-	  return element.files[0].size < 5000000;
+	  return element.files[0].size < 15000000;
 	}, "");
 
 	jQuery.validator.addMethod("valid_salary", function(value, element) {
@@ -461,27 +461,27 @@ $(document).ready(function(){
 			'personal_loan[id_proof]': {
 				required: 'Please select id proof.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 5 mb.'
+				file_size: 'File format should be less than 15 mb.'
 			},
 			'personal_loan[address_proof]': {
 				required: 'Please select address proof.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 5 mb.'				
+				file_size: 'File format should be less than 15 mb.'				
 			},
 			'personal_loan[bank_statement]': {
 				required: 'Please select bank statement.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 5 mb.'				
+				file_size: 'File format should be less than 15 mb.'				
 			},
 			'personal_loan[salary_slip]': {
 				required: 'Please select salary slip.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 5 mb.'				
+				file_size: 'File format should be less than 15 mb.'				
 			},
 			'personal_loan[passport_photo]': {
 				required: 'Please select passport photo.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 5 mb.'				
+				file_size: 'File format should be less than 15 mb.'				
 			}												
 		}		
 	})

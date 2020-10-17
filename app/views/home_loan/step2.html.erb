@@ -15,43 +15,24 @@
     </div>
 </section>
 
-
-  <%= form_for @home_loan, :url => { :action => "update_home_loan_assets" }, html: {id:  "home_loan_offer", class: "home_loan_offer"} do |f| %>
+<section class="personal-loan-section custom-container">
+  <%= form_for @home_loan, :url => { :action => @home_loan.id.nil? ? "update_otp_status" : "update_otp_status"}, html: {id:  "otp_home_loan", class: "otp_home_loan"} do |f| %>
     <div class="container">
-      <div class="row"> 
+      <div class="row">
+        <div class="col-md-4"></div>
         <div class="col-md-4">
           <div class="form-group">
-            <span>Persoanl Bank Statement <span>*</span></span>
-            <%= f.file_field(:persoanl_bank_statement, class: "") %>
-             <p class="error"><%= show_errors(@home_loan, :persoanl_bank_statement) %></p>
+            <h3>Verify OTP</h3>
           </div>
           <div class="form-group">
-            <span>Id Proof <span>*</span></span>
-            <%= f.file_field(:id_proof, class: "") %>
-             <p class="error"><%= show_errors(@home_loan, :id_proof) %></p>
-          </div>
-          <div class="form-group">
-            <span>Salary Slip <span>*</span></span>
-            <%= f.file_field(:salary_slip, class: "") %>
-             <p class="error"><%= show_errors(@home_loan, :salary_slip) %></p>
-          </div>
-          <div class="form-group">
-            <span>Business Bank_statement <span>*</span></span>
-            <%= f.file_field(:business_bank_statement, class: "") %>
-             <p class="error"><%= show_errors(@home_loan, :business_bank_statement) %></p>
-          </div>
-          <div class="form-group">
-            <span>ITR Copy <span>*</span></span>
-            <%= f.file_field(:itr_copy, class: "") %>
-             <p class="error"><%= show_errors(@home_loan, :itr_copy) %></p>
-          </div>
-          <div class="form-group">
-            <span>Passport Photo <span>*</span></span>
-            <%= f.file_field(:passport_photo, class: "") %>
-             <p class="error"><%= show_errors(@home_loan, :passport_photo) %></p>
-          </div>
+            <span>OTP <span>*</span></span>
+            <%= f.number_field(:otp, class: "form-control", value: "") %>
+          </div> 
           <button type="submit" class="btn btn-default">Submit</button>
+          <a href="javascript:void(o)" id="resend-otp" style="float: right;">Resend</a>
         </div>
+        <div class="col-md-4"></div>
       </div>
     </div>
   <%end%>
+</section>

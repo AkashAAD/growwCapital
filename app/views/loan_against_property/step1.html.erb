@@ -14,54 +14,71 @@
         </div>
     </div>
 </section>
-<section class="business-loan-section">
-  <%= form_for @loan_against_property, :url => { :action => @loan_against_property.id.nil? ? "create" : "update"}, html: {id:  "loan_against_property", class: "loan_against_property"} do |f| %>
+<section class="personal-loan-section custom-container">
+  <%= form_for @loan_against_property, :url => { :action => @loan_against_property.id.nil? ? "create_otp" : "create_otp" }, html: { id:  "basic_loan_against_property", class: "basic_loan_against_property" } do |f| %>
     <div class="container">
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <span>Current EMI (Rs.) <span>*</span></span>
-            <%= f.number_field(:current_emi, step: 0.5, class: "form-control") %>
-            <p class="error"><%= show_errors(@loan_against_property, :current_emi) %></p>
+            <h3>Personal Details</h3>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Full Name <span>*</span></span>
-            <%= f.text_field(:full_name, class: "form-control") %>
-            <p class="error"><%= show_errors(@loan_against_property, :full_name) %></p>
+            <span>First Name <span>*</span></span>
+            <%= f.text_field(:first_name, class: "form-control") %>
           </div>
+        </div>
+        <div class="col-md-6">
           <div class="form-group">
-            <span>DOB <span>*</span></span>
-            <%= f.date_field(:dob, class: "form-control") %>
-            <p class="error"><%= show_errors(@loan_against_property, :dob) %></p>
+            <span>Middle Name <span>*</span></span>
+            <%= f.text_field(:middle_name, class: "form-control") %>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Property Cost (Rs.) <span>*</span></span>
-            <%= f.number_field(:property_cost,  step: 0.5, class: "form-control") %>
-            <p class="error"><%= show_errors(@loan_against_property, :property_cost) %></p>
+            <span>Last Name <span>*</span></span>
+            <%= f.text_field(:last_name, class: "form-control") %>
           </div>
+        </div>        
+        <div class="col-md-6">
+          <div class="form-group">
+            <span>Mobile Number <span>*</span></span>
+            <%= f.number_field(:mobile_number, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
           <div class="form-group">
             <span>Email <span>*</span></span>
             <%= f.text_field(:email, class: "form-control") %>
-            <p class="error"><%= show_errors(@loan_against_property, :email) %></p>
           </div>
+        </div>
+        <div class="col-md-4">
           <div class="form-group">
-            <span>Property Type <span>*</span></span>
-            <%= f.select(:property_type, property_type, class: "form-control") %>
-            <p class="error"><%= show_errors(@loan_against_property, :property_type) %></p>
+            <span>Loan Amount <span>*</span></span>
+            <%= f.number_field(:loan_amount, class: "form-control") %>
           </div>
+        </div>
+        <div class="col-md-4">
           <div class="form-group">
-            <span>Open Land <span>*</span></span>
-            <%= f.select(:open_land, open_land_constructed_property, class: "form-control") %>
-            <p class="error"><%= show_errors(@loan_against_property, :open_land) %></p>
+            <span>Tenure <span>*</span></span>
+            <%= f.select(:tenure, tenure, class: "form-control") %>
           </div>
-          <div class="form-group">
-            <span>Constructed Property <span>*</span></span>
-            <%= f.select(:constructed_property, open_land_constructed_property, class: "form-control") %>
-            <p class="error"><%= show_errors(@loan_against_property, :constructed_property) %></p>
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+        </div>        
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.check_box(:terms_and_conditions) %>
+          <%= f.label "Terms & Conditions", for: 'loan_against_property_terms_and_conditions' %>
         </div>
       </div>
+      <button type="submit" class="btn btn-default">Submit</button>
     </div>
   <%end%>
 </section>

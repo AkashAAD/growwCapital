@@ -14,49 +14,72 @@
         </div>
     </div>
 </section>
-<section class="professional-loan-section">
-  <%= form_for @professional_loan, :url => { :action => @professional_loan.id.nil? ? "create" : "update"}, html: {id:  "professional_loan", class: "professional_loan"} do |f| %>
+
+<section class="personal-loan-section custom-container">
+  <%= form_for @professional_loan, :url => { :action => @professional_loan.id.nil? ? "create_otp" : "create_otp"}, html: {id:  "basic_professional_loan", class: "basic_professional_loan"} do |f| %>
     <div class="container">
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <span>Loan Amount (Rs.) <span>*</span></span>
-            <%= f.number_field(:loan_amount, step: 0.5, class: "form-control") %>
-            <p class="error"><%= show_errors(@professional_loan, :loan_amount) %></p>
+            <h3>Personal Details</h3>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Profession Type (Rs.) <span>*</span></span>
-            <%= f.select(:profession_type, profession_type, class: "form-control") %>
-            <p class="error"><%= show_errors(@professional_loan, :profession_type) %></p>
+            <span>First Name <span>*</span></span>
+            <%= f.text_field(:first_name, class: "form-control") %>
           </div>
+        </div>
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Years In Current Profession <span>*</span></span>
-            <%= f.number_field(:current_profession_since_year, class: "form-control") %>
-            <p class="error"><%= show_errors(@professional_loan, :current_profession_since_year) %></p>
+            <span>Middle Name <span>*</span></span>
+            <%= f.text_field(:middle_name, class: "form-control") %>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Annual Income <span>*</span></span>
-            <%= f.number_field(:annual_income, class: "form-control") %>
-            <p class="error"><%= show_errors(@professional_loan, :annual_income) %></p>
+            <span>Last Name <span>*</span></span>
+            <%= f.text_field(:last_name, class: "form-control") %>
           </div>
+        </div>        
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Residence City <span>*</span></span>
-            <%= f.select(:residence_city, cities, class: "form-control") %>
-            <p class="error"><%= show_errors(@professional_loan, :residence_city) %></p>
+            <span>Mobile Number <span>*</span></span>
+            <%= f.number_field(:mobile_number, class: "form-control") %>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
           <div class="form-group">
             <span>Email <span>*</span></span>
             <%= f.text_field(:email, class: "form-control") %>
-            <p class="error"><%= show_errors(@professional_loan, :email) %></p>
           </div>
+        </div>
+        <div class="col-md-4">
           <div class="form-group">
-            <span>Mobile Number <span>*</span></span>
-            <%= f.text_field(:mobile_number, class: "form-control") %>
-            <p class="error"><%= show_errors(@professional_loan, :mobile_number) %></p>
+            <span>Loan Amount <span>*</span></span>
+            <%= f.number_field(:loan_amount, class: "form-control") %>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Tenure <span>*</span></span>
+            <%= f.select(:tenure, tenure, class: "form-control") %>
+          </div>
+        </div>        
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.check_box(:terms_and_conditions) %>
+          <%= f.label "Terms & Conditions", for: 'personal_loan_terms_and_conditions' %>
         </div>
       </div>
+      <button type="submit" class="btn btn-default">Submit</button>
     </div>
   <%end%>
 </section>

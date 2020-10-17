@@ -672,7 +672,7 @@ header .bottom-header .navbar-default .navbar-nav>li>a {
 }
 
 .bottom-header .navbar-default .navbar-nav> li a:hover {
-	background-color: #c7081b;
+	background-color: #ee4131;
 }
 
 header.affix {
@@ -2652,7 +2652,7 @@ footer.design_2 h4 {
 }
 
 .back_to_top:hover {
-	background-color: #c7081b;
+	background-color: #ee4131;
 }
 
 /*  K. Form Styles

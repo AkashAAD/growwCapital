@@ -1,14 +1,33 @@
 class CreateLoanAgainstProperties < ActiveRecord::Migration[5.2]
   def change
     create_table :loan_against_properties do |t|
-      t.decimal :current_emi, precision: 20, scale: 2
-      t.string :full_name
-      t.datetime :dob
-      t.decimal :property_cost, precision: 20, scale: 2
+      t.decimal :loan_amount, precision: 20, scale: 2
+      t.integer :tenure
       t.string :email
-      t.string :property_type
-      t.string :constructed_property
-      t.string :open_land
+      t.string :mobile_number
+      t.string :first_name
+      t.string :middle_name
+      t.string :last_name
+      t.string :gender
+      t.string :marital_status
+      t.integer :highest_qualification
+      t.integer :no_of_dependent
+      t.string :current_residency_since_year
+      t.string :current_city_since_year
+      t.string :pan_number
+      t.integer :purpose_of_loan
+      t.text :address_line1
+      t.text :address_line2
+      t.text :landmark
+      t.string :city
+      t.string :state
+      t.string :pincode
+      t.integer :residential_type
+      t.datetime :dob
+      t.integer :otp
+      t.boolean :otp_verified, default: false
+      t.string :reference_number
+      t.boolean :terms_and_conditions
       t.timestamps
     end
   end

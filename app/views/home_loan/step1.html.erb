@@ -14,77 +14,72 @@
         </div>
     </div>
 </section>
-<section class="home-loan-section">
-  <%= form_for @home_loan, :url => { :action => @home_loan.id.nil? ? "create" : "update"}, html: {id:  "home_loan", class: "home_loan"} do |f| %>
+<section class="personal-loan-section custom-container">
+  <%= form_for @home_loan, :url => { :action => @home_loan.id.nil? ? "create_otp" : "create_otp" }, html: { id:  "basic_home_loan", class: "basic_home_loan" } do |f| %>
     <div class="container">
       <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            Home Loan Offers
+            <h3>Personal Details</h3>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Home Loan Amount <span>*</span></span>
-            <%= f.select(:loan_amount, home_loan_amount, class: "form-control") %>
-            <p class="error"><%= show_errors(@home_loan, :loan_amount) %></p>
+            <span>First Name <span>*</span></span>
+            <%= f.text_field(:first_name, class: "form-control") %>
           </div>
+        </div>
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Property City <span>*</span></span>
-            <%= f.select(:property_city, cities, class: "form-control") %>
-            <p class="error"><%= show_errors(@home_loan, :property_city) %></p>
+            <span>Middle Name <span>*</span></span>
+            <%= f.text_field(:middle_name, class: "form-control") %>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Annual Income <span>*</span></span>
-            <%= f.number_field(:annual_income, class: "form-control") %>
-            <p class="error"><%= show_errors(@home_loan, :annual_income) %></p>
+            <span>Last Name <span>*</span></span>
+            <%= f.text_field(:last_name, class: "form-control") %>
           </div>
+        </div>        
+        <div class="col-md-6">
           <div class="form-group">
             <span>Mobile Number <span>*</span></span>
-            <%= f.text_field(:mobile_number, class: "form-control") %>
-            <p class="error"><%= show_errors(@home_loan, :mobile_number) %></p>
+            <%= f.number_field(:mobile_number, class: "form-control") %>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
           <div class="form-group">
-            <span>Property Type <span>*</span></span>
-            <%= f.select(:property_type, property_type,class: "form-control") %>
-            <p class="error"><%= show_errors(@home_loan, :property_type) %></p>
+            <span>Email <span>*</span></span>
+            <%= f.text_field(:email, class: "form-control") %>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            Home Loan Suited for you
+            <span>Loan Amount <span>*</span></span>
+            <%= f.number_field(:loan_amount, class: "form-control") %>
           </div>
+        </div>
+        <div class="col-md-4">
           <div class="form-group">
-            <span>Home Loan Amount <span>*</span></span>
-            <%= f.number_field(:property_cost, class: "form-control") %>
-            <p class="error"><%= show_errors(@home_loan, :property_cost) %></p>
+            <span>Tenure <span>*</span></span>
+            <%= f.select(:tenure, tenure, class: "form-control") %>
           </div>
-          <div class="form-group">
-            <span>Current Employment <span>*</span></span>
-            <%= f.select(:current_employment, employment_type, class: "form-control") %>
-            <p class="error"><%= show_errors(@home_loan, :current_employment) %></p>
-          </div>
-          <div class="form-group">
-            <span>Current EMI (Rs.) <span>*</span></span>
-            <%= f.number_field(:current_emi, class: "form-control") %>
-            <p class="error"><%= show_errors(@home_loan, :current_emi) %></p>
-          </div>
-          <div class="form-group">
-            <span>Full Name <span>*</span></span>
-            <%= f.text_field(:full_name, class: "form-control") %>
-            <p class="error"><%= show_errors(@home_loan, :full_name) %></p>
-          </div>
-          <div class="form-group">
-            <span>Email <span>*</span></span>
-            <%= f.text_field(:email, class: "form-control") %>
-            <p class="error"><%= show_errors(@home_loan, :email) %></p>
-          </div>
-          <div class="form-group">
-            <span>DOB <span>*</span></span>
-            <%= f.date_field(:dob, class: "form-control") %>
-            <p class="error"><%= show_errors(@home_loan, :dob) %></p>
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+        </div>        
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.check_box(:terms_and_conditions) %>
+          <%= f.label "Terms & Conditions", for: 'home_loan_terms_and_conditions' %>
         </div>
       </div>
+      <button type="submit" class="btn btn-default">Submit</button>
     </div>
   <%end%>
 </section>
+
