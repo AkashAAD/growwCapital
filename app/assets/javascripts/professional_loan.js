@@ -33,6 +33,26 @@ $(document).ready(function(){
 		});
 	});
 
+
+	$("#professional_loan_offer_profession_type").change(function(evt) {
+		$.ajax({
+	    url: "/home/change_profession",
+	    dataType: "json",
+	    data: {
+	      id: evt.target.value
+	    },
+	    success: function (data) {
+	    	var options = '';
+	    	data.degrees.forEach(function(val) {
+	    		options+= '<option value="' + val.id + '">' + val.name + '</option>' 
+	    	});
+	    	$("#professional_loan_offer_degree").html(options);
+	    }
+		});
+	});
+
+
+
 	$("#otp_professional_loan").validate({
 		rules: {
 			"professional_loan[otp]": {
@@ -231,18 +251,50 @@ $(document).ready(function(){
 		}  	
   });
 
-  $("#professional_loan_offer").validate({
+
+	$("#professional_loan_offer").validate({
 		rules: {
-			"professional_loan_offer[name]": {
+			"professional_loan_offer[profession_type]": {
 				required: true
 			},
+			"professional_loan_offer[degree]": {
+				required: true
+			},
+			"professional_loan_offer[current_profession_since_year]": {
+				required: true
+			},
+			"professional_loan_offer[annual_income]": {
+				required: true,
+				maxlength: 10
+			},
+			"professional_loan_offer[current_emi]": {
+				required: true,
+				maxlength: 10
+			}
 		},
 		messages: {
-			'professional_loan_offer[name]': {
-				required: 'Please enter name.',
+			"professional_loan_offer[profession_type]": {
+				required: "Please select profession type."
 			},
+			"professional_loan_offer[degree]": {
+				required: "Please select degree."
+			},
+			"professional_loan_offer[current_profession_since_year]": {
+				required: "Please select profession years since."
+			},
+			"professional_loan_offer[annual_income]": {
+				required: "Please enter annual income.",
+				maxlength: "Annual income must consist of at most 10 characters."
+			},
+			"professional_loan_offer[current_emi]": {
+				required: "Please enter current emi.",
+				maxlength: "Current emi must consist of at most 10 characters."
+			}
 		}
 	});
+
+
+
 
 	$("#professional_loan_assets").validate({
 		rules: {

@@ -1742,7 +1742,7 @@ table.right_table {
 .default-btn, .btn-inventory, button, input[type="reset"], input[type="button"], input[type="submit"] {
 	font-size: 15.5px;
 	padding: 5px 13px;
-	background-color: #c7081b;
+	background-color: #ee4131;
 	border-radius: 4px;
 	border: 0;
 	color: #fff;
@@ -6750,7 +6750,7 @@ img.aligncenter {
 
 
 .find_map h2 {
-	color: #c7081b;
+	color: #ee4131;
 	font-size: 20px;
 	font-weight: 800;
 }
@@ -6760,7 +6760,7 @@ img.aligncenter {
 }
 
 .information_head h3 {
-	color: #c7081b;
+	color: #ee4131;
 	font-size: 20px;
 	font-weight: 800;
 }

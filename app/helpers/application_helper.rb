@@ -16,6 +16,14 @@ module ApplicationHelper
     end
   end
 
+  def degrees(obj)
+    if obj.object.profession_type.blank?
+      [['-Select Degree-','']]
+    else
+      [['-Select Degree-','']] + Degree.where(profession_id: obj.object.profession_type).pluck(:name, :id)
+    end
+  end
+
   def states
     [['-Select State-','']] + CS.states(:in).map{ |val| [val[1], val[0].downcase] }
   end
@@ -84,8 +92,16 @@ module ApplicationHelper
     [['-Select Home Loan Amount-','']] + HomeLoanAmount.pluck(:name, :id)
   end
 
-  def property_type
+  def land_type
     [['-Select Property Type-',''], ["NATP", "natp"], ["RL", "rl"], ["NA", "na"], ["Gramin", "gramin"]]
+  end
+
+  def property_type
+    [['-Select Property Type-',''],
+    ["Flat", "flat"],
+    ["Plot", "plot"],
+    ["Consturcted Property", "consturcted_property"],
+    ["Commercial Property", "commercial_property"]]    
   end
 
   def profession_type
@@ -112,12 +128,22 @@ module ApplicationHelper
     [['-Select Residence Since Year-','']] + StayResidenceSinceYear.pluck(:name, :id)
   end
 
+  def current_profession_since_year
+    [['-Select Profession Since Year-','']] + StayResidenceSinceYear.pluck(:name, :id)
+  end
+
   def current_city_since_year
     [['-Select City Since Year-','']] + StayCitySinceYear.pluck(:name, :id)
   end
 
   def tenure
     [['-Select Tenure-','']] + Tenure.pluck(:name, :id)
+  end
+
+  def profession_status
+    [['-Select Profession Status-',''],
+    ['Salaried','salaried'],
+    ['Self Employed','self-employed']]
   end
 
 end

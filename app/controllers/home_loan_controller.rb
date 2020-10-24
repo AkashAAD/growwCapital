@@ -94,7 +94,14 @@ class HomeLoanController < ApplicationController
   end
 
   def home_loan_offer_params
-    params.require(:home_loan_offer).permit(:name)
+    params.require(:home_loan_offer).permit(:land_type,
+      :property_type,
+      :property_cost,
+      :property_state,
+      :property_city,
+      :current_employment,
+      :annual_income,
+      :current_emi)
   end
 
   def home_loan_assets_params

@@ -94,7 +94,16 @@ class LoanAgainstPropertyController < ApplicationController
   end
 
   def loan_against_property_offer_params
-    params.require(:loan_against_property_offer).permit(:name)
+    params.require(:loan_against_property_offer).permit(:employment_type,
+      :annual_income,
+      :property_cost,
+      :land_type,
+      :property_type,
+      :commercial_property,
+      :buildup_area,
+      :property_state,
+      :property_city,
+      :current_emi)
   end
 
   def loan_against_property_assets_params

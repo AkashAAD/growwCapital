@@ -65,7 +65,6 @@ class ProfessionalLoanController < ApplicationController
   end
 
   def update_professional_assets
-		session[:professional_loan_id] = nil if @update_status_plo
 		create_update_professional_loan_offer(@update_status_plo, "Professional Loan updated successfully.", professional_loan_path("step6"))
   end
 
@@ -98,7 +97,11 @@ class ProfessionalLoanController < ApplicationController
   end
 
   def professsional_loan_offer_params
-  	params.require(:professional_loan_offer).permit(:name)
+  	params.require(:professional_loan_offer).permit(:profession_type,
+      :degree,
+      :current_profession_since_year,
+      :annual_income,
+      :current_emi)
   end
 
   def professsional_loan_offer_assets_params

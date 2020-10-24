@@ -75,9 +75,17 @@ end
   puts "AnnualTurnover #{at}"
 end
 
-["Doctor", "CA", "Architechure", "Other"].each do |pr|
-  Profession.create(name: pr)
-  puts "Profession #{pr}"
+{"Doctor": ["MBBS", "MBBS MD", "MBBS MS", "BMS", "BHMS", "BDS", "Deploma"],
+ "CA": ["Plain CA", "FCA"],
+ "Architechure": ["Bacholor of Architechure", "Master of Architechure"],
+ "CS(Company Secretary)": ["CS(Company Secretary)"]}.each do |key, val|
+  profession = Profession.create(name: key.to_s)
+  puts "Profession #{profession.id}"
+  val.each do |degree|
+    deg = Degree.new(profession_id: profession.id, name: degree)
+    deg.save
+    puts "Degree #{deg.id}"
+  end
 end
 
 ["TCS", "Tech Mahindra", "Infosys", "Other"].each do |com|

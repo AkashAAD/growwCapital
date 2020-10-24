@@ -336,15 +336,6 @@ $(document).ready(function(){
 				required: 'Please enter gross annual profit.',
 				maxlength: 'gross annual profit must consist of at most 10 characters'
 			},
-			"business_loan_offer[business_pan_number]": {
-				required: 'Please enter business pan number.',
-				maxlength: 'Business pan number must consist of at most 10 characters.',
-				is_pan: 'Entered business pan number is invalid.'
-			},
-			"business_loan_offer[gst_number]": {
-				required: 'Please enter gst number.',
-				maxlength: 'gst number must consist of at most 50 characters'
-			},
 			'business_loan_offer[address_line1]': {
 				required: 'Please enter address_line1.',
 				maxlength: 'Address line1 must consist of at most 150 characters.'

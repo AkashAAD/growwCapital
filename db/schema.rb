@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_17_064324) do
+ActiveRecord::Schema.define(version: 2020_10_24_044353) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -129,6 +129,23 @@ ActiveRecord::Schema.define(version: 2020_10_17_064324) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "contact_us", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "subject"
+    t.text "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "degrees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "profession_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "dependent_numbers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -186,7 +203,14 @@ ActiveRecord::Schema.define(version: 2020_10_17_064324) do
 
   create_table "home_loan_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "home_loan_id"
-    t.string "name"
+    t.string "land_type"
+    t.string "property_type"
+    t.decimal "property_cost", precision: 20, scale: 2
+    t.string "property_city"
+    t.string "property_state"
+    t.integer "current_employment"
+    t.decimal "annual_income", precision: 20, scale: 2
+    t.decimal "current_emi", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -263,7 +287,15 @@ ActiveRecord::Schema.define(version: 2020_10_17_064324) do
 
   create_table "loan_against_property_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "loan_against_property_id"
-    t.string "name"
+    t.integer "employment_type"
+    t.decimal "annual_income", precision: 20, scale: 2
+    t.decimal "property_cost", precision: 20, scale: 2
+    t.string "land_type"
+    t.string "property_type"
+    t.decimal "buildup_area", precision: 20, scale: 2
+    t.string "property_city"
+    t.string "property_state"
+    t.decimal "current_emi", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -282,7 +314,45 @@ ActiveRecord::Schema.define(version: 2020_10_17_064324) do
 
   create_table "new_car_loan_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "new_car_loan_id"
-    t.string "name"
+    t.string "registration_state"
+    t.string "registration_city"
+    t.string "car_manufacturer"
+    t.string "car_model"
+    t.string "profession_status"
+    t.decimal "current_emi", precision: 20, scale: 2
+    t.string "employer_name"
+    t.string "designation"
+    t.string "years_in_current_job"
+    t.text "office_address_line1"
+    t.text "office_address_line2"
+    t.text "landmark"
+    t.string "office_state"
+    t.string "office_city"
+    t.string "office_email"
+    t.string "office_pincode"
+    t.integer "mailing_address"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "mobile_number"
+    t.string "ref_mobile_number"
+    t.integer "salary_bank_account_name"
+    t.string "branch_name"
+    t.decimal "monthly_net_salary", precision: 20, scale: 2
+    t.string "business_name"
+    t.integer "business_nature"
+    t.integer "industry_type"
+    t.integer "business_years"
+    t.string "business_pan_number"
+    t.integer "residence_type"
+    t.text "address_line1"
+    t.text "address_line2"
+    t.text "bus_landmark"
+    t.string "city"
+    t.string "state"
+    t.string "pincode"
+    t.string "gst_number"
+    t.integer "annual_turnover"
+    t.decimal "gross_annual_profit", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -353,7 +423,11 @@ ActiveRecord::Schema.define(version: 2020_10_17_064324) do
 
   create_table "professional_loan_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "professional_loan_id"
-    t.string "name"
+    t.integer "profession_type"
+    t.integer "degree"
+    t.integer "current_profession_since_year"
+    t.decimal "annual_income", precision: 20, scale: 2
+    t.decimal "current_emi", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -434,7 +508,47 @@ ActiveRecord::Schema.define(version: 2020_10_17_064324) do
 
   create_table "used_car_loan_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "used_car_loan_id"
-    t.string "name"
+    t.string "registration_state"
+    t.string "registration_city"
+    t.string "car_manufacturer"
+    t.string "car_model"
+    t.string "car_registration_number"
+    t.string "model_year"
+    t.string "profession_status"
+    t.decimal "current_emi", precision: 20, scale: 2
+    t.string "employer_name"
+    t.string "designation"
+    t.string "years_in_current_job"
+    t.text "office_address_line1"
+    t.text "office_address_line2"
+    t.text "landmark"
+    t.string "office_state"
+    t.string "office_city"
+    t.string "office_email"
+    t.string "office_pincode"
+    t.integer "mailing_address"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "mobile_number"
+    t.string "ref_mobile_number"
+    t.integer "salary_bank_account_name"
+    t.string "branch_name"
+    t.decimal "monthly_net_salary", precision: 20, scale: 2
+    t.string "business_name"
+    t.integer "business_nature"
+    t.integer "industry_type"
+    t.integer "business_years"
+    t.string "business_pan_number"
+    t.integer "residence_type"
+    t.text "address_line1"
+    t.text "address_line2"
+    t.text "bus_landmark"
+    t.string "city"
+    t.string "state"
+    t.string "pincode"
+    t.string "gst_number"
+    t.integer "annual_turnover"
+    t.decimal "gross_annual_profit", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

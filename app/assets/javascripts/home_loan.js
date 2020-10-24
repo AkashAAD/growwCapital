@@ -33,6 +33,23 @@ $(document).ready(function(){
 		});
 	});
 
+	$("#home_loan_offer_property_state").change(function(evt) {
+		$.ajax({
+	    url: "/home/change_state",
+	    dataType: "json",
+	    data: {
+	      state: evt.target.value
+	    },
+	    success: function (data) {
+	    	var options = '';
+	    	data.cities.forEach(function(val) {
+	    		options+= '<option value="' + val[1] + '">'+val[0]+'</option>' 
+	    	});
+	    	$("#home_loan_offer_property_city").html(options);
+	    }
+		});
+	});
+
 	$("#otp_home_loan").validate({
 		rules: {
 			"home_loan[otp]": {
@@ -233,13 +250,61 @@ $(document).ready(function(){
 
   $("#home_loan_offer").validate({
 		rules: {
-			"home_loan_offer[name]": {
+			"home_loan_offer[land_type]": {
 				required: true
+			},
+			"home_loan_offer[property_type]": {
+				required: true
+			},
+			"home_loan_offer[property_cost]": {
+				required: true,
+				maxlength: 10
+			},
+			"home_loan_offer[property_state]": {
+				required: true
+			},
+			"home_loan_offer[property_city]": {
+				required: true
+			},
+			"home_loan_offer[current_employment]": {
+				required: true
+			},
+			"home_loan_offer[annual_income]": {
+				required: true,
+				maxlength: 10
+			},
+			"home_loan_offer[current_emi]": {
+				required: true,
+				maxlength: 10
 			},
 		},
 		messages: {
-			'home_loan_offer[name]': {
-				required: 'Please enter name.',
+			"home_loan_offer[land_type]": {
+				required: "Please select land type."
+			},
+			"home_loan_offer[property_type]": {
+				required: "Please select property type."
+			},
+			"home_loan_offer[property_cost]": {
+				required: "Please enter property cost.",
+				maxlength: "Property cost must consist of at most 10 characters."
+			},
+			"home_loan_offer[property_state]": {
+				required: "Please select property state"
+			},
+			"home_loan_offer[property_city]": {
+				required: "Please select property city."
+			},
+			"home_loan_offer[current_employment]": {
+				required: "Please select current employment."
+			},
+			"home_loan_offer[annual_income]": {
+				required: "Please select annual income.",
+				maxlength: "Annual income must consist of at most 10 characters."
+			},
+			"home_loan_offer[current_emi]": {
+				required: "Please select current EMI.",
+				maxlength: "Current EMI must consist of at most 10 characters."
 			},
 		}
 	});

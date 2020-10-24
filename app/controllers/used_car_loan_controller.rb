@@ -94,7 +94,48 @@ class UsedCarLoanController < ApplicationController
 	end
 
   def used_car_loan_offer_params
-  	params.require(:used_car_loan_offer).permit(:name)
+  	params.require(:used_car_loan_offer).permit(
+      :registration_state,
+      :registration_city,
+      :car_registration_number,
+      :model_year,
+      :car_manufacturer,
+      :car_model,
+      :profession_status,
+      :current_emi,      
+      :employer_name,
+      :designation,
+      :years_in_current_job,
+      :office_address_line1,
+      :office_address_line2,
+      :landmark,
+      :office_state,
+      :office_city,
+      :office_email,
+      :office_pincode,
+      :mailing_address,
+      :first_name,
+      :last_name,
+      :mobile_number,
+      :ref_mobile_number,
+      :salary_bank_account_name,
+      :branch_name,
+      :monthly_net_salary,
+      :business_name,
+      :business_nature,
+      :industry_type,
+      :business_years,
+      :business_pan_number,
+      :residence_type,
+      :address_line1,
+      :address_line2,
+      :bus_landmark,
+      :city,
+      :state,
+      :pincode,
+      :gst_number,
+      :annual_turnover,
+      :gross_annual_profit)
   end
 
 	def used_car_loan_assets_params

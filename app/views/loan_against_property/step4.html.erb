@@ -25,12 +25,71 @@
       <div class="row"> 
         <div class="col-md-4">
           <div class="form-group">
-            <span>Name <span>*</span></span>
-            <%= f.text_field(:name, class: "form-control") %>
+            <span>Employment Type <span>*</span></span>
+            <%= f.select(:employment_type, employment_type, class: "form-control") %>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Annual Income <span>*</span></span>
+            <%= f.number_field(:annual_income, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Property Cost <span>*</span></span>
+            <%= f.number_field(:property_cost, class: "form-control") %>
+          </div>
         </div>
       </div>
+      <div class="row"> 
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Land type <span>*</span></span>
+            <%= f.select(:land_type, land_type, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Property Type <span>*</span></span>
+            <%= f.select(:property_type, property_type, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Buildup Area(in Sq. ft.) <span>*</span></span>
+            <%= f.number_field(:buildup_area, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Property State <span>*</span></span>
+            <%= f.select(:property_state, states, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Property City <span>*</span></span>
+            <%= f.select(:property_city, cities(f, :property_state, :property_city), class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Current EMI <span>*</span></span>
+            <%= f.number_field(:current_emi, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
     </div>
   <%end%>
 </section>
+<script type="text/javascript">
+  $(document).ready(function(){
+    <% if @loan_against_property_offer.property_type == 'plot' %>
+      $("#loan_against_property_offer_buildup_area").prop("readonly", true);
+    <% end %>
+  });  
+</script>

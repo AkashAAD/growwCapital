@@ -33,6 +33,35 @@ $(document).ready(function(){
 		});
 	});
 
+	$("#loan_against_property_offer_property_state").change(function(evt) {
+		$.ajax({
+	    url: "/home/change_state",
+	    dataType: "json",
+	    data: {
+	      state: evt.target.value
+	    },
+	    success: function (data) {
+	    	var options = '';
+	    	data.cities.forEach(function(val) {
+	    		options+= '<option value="' + val[1] + '">'+val[0]+'</option>' 
+	    	});
+	    	$("#loan_against_property_offer_property_city").html(options);
+	    }
+		});
+	});
+
+
+	$("#loan_against_property_offer_property_type").change(function(evt) {
+		var property_types = ['flat', 'consturcted_property', 'commercial_property'];
+		if($.inArray(evt.target.value, property_types) >= 0) {
+			$("#loan_against_property_offer_buildup_area").prop("readonly", false);
+			$("#loan_against_property_offer_buildup_area").val('');
+		} else {
+			$("#loan_against_property_offer_buildup_area").prop("readonly", true);
+			$("#loan_against_property_offer_buildup_area").val('0');
+		}
+	});
+
 	$("#otp_loan_against_property").validate({
 		rules: {
 			"loan_against_property[otp]": {
@@ -233,13 +262,67 @@ $(document).ready(function(){
 
   $("#loan_against_property_offer").validate({
 		rules: {
-			"loan_against_property_offer[name]": {
+			"loan_against_property_offer[employment_type]": {
 				required: true
+			},
+			"loan_against_property_offer[annual_income]": {
+				required: true,
+				maxlength: 10
+			},
+			"loan_against_property_offer[property_cost]": {
+				required: true,
+				maxlength: 10				
+			},
+			"loan_against_property_offer[land_type]": {
+				required: true
+			},
+			"loan_against_property_offer[property_type]": {
+				required: true
+			},
+			"loan_against_property_offer[buildup_area]": {
+				required: true
+			},
+			"loan_against_property_offer[property_state]": {
+				required: true
+			},
+			"loan_against_property_offer[property_city]": {
+				required: true
+			},
+			"loan_against_property_offer[current_emi]": {
+				required: true,
+				maxlength: 10
 			},
 		},
 		messages: {
-			'loan_against_property_offer[name]': {
-				required: 'Please enter name.',
+			"loan_against_property_offer[employment_type]": {
+				required: "Please select employment type."
+			},
+			"loan_against_property_offer[annual_income]": {
+				required: "Please enter annual income.",
+				maxlength: 'Annual income must consist of at most 10 characters.'
+			},
+			"loan_against_property_offer[property_cost]": {
+				required: "Please select property cost.",
+				maxlength: 'Property cost must consist of at most 10 characters.'
+			},
+			"loan_against_property_offer[land_type]": {
+				required: "Please select land type."
+			},
+			"loan_against_property_offer[property_type]": {
+				required: "Please select property type."
+			},
+			"loan_against_property_offer[buildup_area]": {
+				required: "Please enter buildup area."
+			},
+			"loan_against_property_offer[property_state]": {
+				required: "Please select property state."
+			},
+			"loan_against_property_offer[property_city]": {
+				required: "Please select property city."
+			},
+			"loan_against_property_offer[current_emi]": {
+				required: "Please enter current EMI.",
+				maxlength: 'Current EMI must consist of at most 10 characters.'
 			},
 		}
 	});

@@ -15,7 +15,7 @@
     </div>
 </section>
 
-  <%= form_for @professional_loan_offer, :url => { :action => @professional_loan_offer.id.nil? ? "create_professional_offer" : "update_professional_offer" }, html: {id:  "professional_loan_offer", class: "professional_loan_offer"} do |f| %>
+  <%= form_for @professional_loan_offer, :url => { :action => @professional_loan_offer.id.nil? ? "create_professional_offer" : "update_professional_offer" }, html: { id:  "professional_loan_offer", class: "professional_loan_offer" } do |f| %>
     <div class="container">
       <div class="row">
         <div class="col-md-4">
@@ -25,11 +25,37 @@
       <div class="row"> 
         <div class="col-md-4">
           <div class="form-group">
-            <span>Name <span>*</span></span>
-            <%= f.text_field(:name, class: "form-control") %>
+            <span>Profession Type <span>*</span></span>
+            <%= f.select(:profession_type, profession_type, class: "form-control") %>
           </div>
-          <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Degree: <span>*</span></span>
+            <%= f.select(:degree, degrees(f), class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <span>Profession Years Since: <span>*</span></span>
+            <%= f.select(:current_profession_since_year, current_profession_since_year, class: "form-control") %>
+          </div>
         </div>
       </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <span>Annual Income: <span>*</span></span>
+            <%= f.number_field(:annual_income, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <span>Current EMI: <span>*</span></span>
+            <%= f.number_field(:current_emi, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
     </div>
   <%end%>

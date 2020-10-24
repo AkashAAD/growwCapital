@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'home/change_state' => "home#change_state"
+  get 'home/change_profession' => "home#change_profession"
+  match "contact_us" => "home#contact_us", as: "contact_us", via: [:get, :post]
   devise_for :user, controllers: {
     sessions: 'users/sessions'
   }
