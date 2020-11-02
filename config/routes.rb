@@ -2,9 +2,12 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'home/change_state' => "home#change_state"
   get 'home/change_profession' => "home#change_profession"
+  get "home/profile" => "home#profile"
   match "contact_us" => "home#contact_us", as: "contact_us", via: [:get, :post]
-  devise_for :user, controllers: {
-    sessions: 'users/sessions'
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations',
+    passwords: 'users/passwords'
   }
 
   resources :business_loan do

@@ -20,8 +20,29 @@
           <div class="row">
             <div class="col-lg-6 left_bar">
               <ul class="left-none">
-                <li><a href="#"><i class="fa fa-user"></i> Login</a></li>
-                <li><a href="#"><i class="fa  fa-user-plus"></i> Regiter Yourself</a></li>
+                <%if current_user.nil?%>
+                  <li>
+                    <%= link_to new_user_session_path, method: :get do %>
+                      <i class="fa fa-user"></i> Login
+                    <%end%>
+                  </li>
+                  <li>
+                    <%= link_to new_user_registration_path, method: :get do %>
+                      <i class="fa fa-user-plus"></i> Register Yourself
+                    <%end%>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to home_profile_path, method: :get do %>
+                      <i class="fa fa-sign-out"></i> My Profile
+                    <%end%>
+                  </li>
+                  <li>
+                    <%= link_to destroy_user_session_path, method: :delete do %>
+                      <i class="fa fa-sign-out"></i> Log Out
+                    <%end%>
+                  </li>
+                <% end %>
               </ul>
             </div>
             <div class="col-lg-6 ">

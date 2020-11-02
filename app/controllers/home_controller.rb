@@ -1,4 +1,6 @@
 class HomeController < ApplicationController
+  before_action :authenticate_user!, only: [:profile]
+
   def index
   end
 
@@ -14,6 +16,10 @@ class HomeController < ApplicationController
       flash[:notice] = "Your message sent successfully!"
       redirect_to contact_us_path
     end
+  end
+
+  def profile
+
   end
 
   def change_state

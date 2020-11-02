@@ -92,7 +92,8 @@ input, select{
 }
 
 .div-loan > .loan-img1 {
-	background-image: linear-gradient(145deg, #550814, #ef4961);
+	//background-image: linear-gradient(145deg, #550814, #ef4961);
+  background-color: #ffffff;
   width: 210px;
   height: 210px;
   border-radius: 10px;
@@ -103,7 +104,7 @@ input, select{
 }
 
 .div-loan > .loan-img2 {
-  background-image: linear-gradient(145deg, #075140, #50c87b);
+  background-color: #ffffff;
   width: 210px;
   height: 210px;
   border-radius: 10px;
@@ -114,7 +115,7 @@ input, select{
 }
 
 .div-loan > .loan-img3 {
-  background-image: linear-gradient(145deg, #200751, #4869c8);
+  background-color: #ffffff;
   width: 210px;
   height: 210px;
   border-radius: 10px;
@@ -125,7 +126,7 @@ input, select{
 }
 
 .div-loan > .loan-img4 {
-  background-image: linear-gradient(145deg, #510737, #c8489b);
+  background-color: #ffffff;
   width: 210px;
   height: 210px;
   border-radius: 10px;
@@ -136,7 +137,7 @@ input, select{
 }
 
 .div-loan > .loan-img5 {
-  background-image: linear-gradient(145deg, #511f07, #c89548);
+  background-color: #ffffff;
   width: 210px;
   height: 210px;
   border-radius: 10px;
@@ -160,12 +161,12 @@ input, select{
 
 .img-text {
   span {
-    color: #ffffff;
+    color: #ee4131;
     font-size: 15px;
     font-weight: bold;
   }
   i {
-    color: #ffffff;
+    color: #ee4131;
   }
 }
 
