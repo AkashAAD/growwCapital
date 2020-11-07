@@ -20,6 +20,7 @@
           <div class="row">
             <div class="col-lg-6 left_bar">
               <ul class="left-none">
+                <%= render "layouts/flash_messages" %>
                 <%if current_user.nil?%>
                   <li>
                     <%= link_to new_user_session_path, method: :get do %>
@@ -34,7 +35,7 @@
                 <% else %>
                   <li>
                     <%= link_to home_profile_path, method: :get do %>
-                      <i class="fa fa-sign-out"></i> My Profile
+                      <i class="fa fa-user"></i> My Profile
                     <%end%>
                   </li>
                   <li>
@@ -63,27 +64,27 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-mobile" aria-controls="navbar-collapse-mobile" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
-                  <a class="navbar-brand" href="/">
+                  <%= link_to root_path, method: :get, class: "navbar-brand" do %>
                     <span class="logo">
                       <span class="primary_text"><%= image_tag "logo2.png", alt: "logo2" %></span>
-                    </span>
-                  </a>
+                    </span>                  
+                  <% end %>
               </div>
               <div class="desktop-menu-dropdown collapse navbar-collapse" id="navbar-collapse-desktop">
                 <ul class="nav navbar-nav pull-right">
-                  <li class="active">
-                    <a href="/">Home</a>
+                  <li class="<%= active_tab('index') %>">
+                    <%= link_to "Home", root_path, method: :get %>
                   </li>
-                  <li>
-                    <a href="#">About Us</a>
+                  <li class="<%= active_tab('about_us') %>">
+                    <%= link_to "About Us", about_us_path, method: :get %>
                   </li>
-                  <li>
-                    <a href="#">Blog</a>
+                  <li class="<%= active_tab('blog') %>">
+                    <%= link_to "Blog", blog_path, method: :get %>
                   </li>
-                  <li>
-                    <a href="#">Pre Approved Offers</a>
+                  <li class="<%= active_tab('pre_approved') %>">
+                    <%= link_to "Pre Approved Offers", pre_approved_path, method: :get %>
                   </li>
-                  <li>
+                  <li class="<%= active_tab('contact_us') %>">
                     <%= link_to "Contact Us", contact_us_path, method: :get %>
                   </li>
                 </ul>
@@ -93,17 +94,6 @@
                   <li class="active"><a href="index-2.html">Home</a></li>
                   <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Alternate Footers <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li class="active"><a href="index-2.html">Footer 1</a></li>
-                          <li><a href="index-footer-2.html">Footer 2</a></li>
-                          <li><a href="index-footer-3.html">Footer 3</a></li>
-                          <li><a href="index-footer-4.html">Footer 4</a></li>
-                          <li><a href="index-footer-5.html">Footer 5</a></li>
-                          <li><a href="index-footer-6.html">Footer 6</a></li>
-                          <li><a href="index-no-footer.html">No Footer</a></li>
-                        </ul>
-                      </li>
                       <li><a href="404.html">404</a></li>
                       <li><a href="about.html">About Us</a></li>
                       <li><a href="faq.html">FAQ</a></li>

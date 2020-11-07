@@ -3,11 +3,16 @@ Rails.application.routes.draw do
   get 'home/change_state' => "home#change_state"
   get 'home/change_profession' => "home#change_profession"
   get "home/profile" => "home#profile"
-  match "contact_us" => "home#contact_us", as: "contact_us", via: [:get, :post]
+  get "contact_us" => "home#contact_us", as: "contact_us"
+  get "about_us" => "home#about_us", as: "about_us"
+  get "blog" => "home#blog", as: "blog"
+  get "pre_approved" => "home#pre_approved", as: "pre_approved"
+  get "save_contact_us" => "home#save_contact_us", as: "save_contact_us"
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
-    passwords: 'users/passwords'
+    passwords: 'users/passwords',
+    confirmations: 'users/confirmations'
   }
 
   resources :business_loan do

@@ -23,6 +23,7 @@
  *= require ts.css
  *= require jquery-ui.css
  *= require owl.carousel.min.css
+ *= require toastr
  *= require_tree .
  *= require_self
  */

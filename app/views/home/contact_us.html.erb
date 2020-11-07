@@ -52,7 +52,7 @@
           <div class="information_hour information_head margin-top-30 xs-padding-bottom-40">
             <h3 class="margin-bottom-25 margin-top-none">BUSINESS HOURS</h3>
             <div class="row">
-              <div class="col-sm-4">
+              <div class="col-sm-5">
                 <div class="deparment">
                   <table class="table table-bordered no-border font-12px">
                     <thead>
@@ -63,109 +63,27 @@
                     <tbody>
                       <tr>
                         <td>Mon:</td>
-                        <td>8:00am - 5:00pm</td>
+                        <td>10:00AM - 7:00PM</td>
                       </tr>
                       <tr>
                         <td>Tue:</td>
-                        <td>8:00am - 9:00pm</td>
+                        <td>10:00AM - 7:00PM</td>
                       </tr>
                       <tr>
                         <td>Wed:</td>
-                        <td>8:00am - 5:00pm</td>
+                        <td>10:00AM - 7:00PM</td>
                       </tr>
                       <tr>
                         <td>Thu:</td>
-                        <td>8:00am - 9:00pm</td>
+                        <td>10:00AM - 7:00PM</td>
                       </tr>
                       <tr>
                         <td>Fri:</td>
-                        <td>8:00am - 6:00pm</td>
+                        <td>10:00AM - 7:00PM</td>
                       </tr>
                       <tr>
                         <td>Sat:</td>
-                        <td>9:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Sun:</td>
-                        <td>Closed</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="deparment">
-                  <table class="table table-bordered no-border font-12px">
-                    <thead>
-                      <tr>
-                        <td colspan="2"><strong>Service Department</strong></td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Mon:</td>
-                        <td>8:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Tue:</td>
-                        <td>8:00am - 9:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Wed:</td>
-                        <td>8:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Thu:</td>
-                        <td>8:00am - 9:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Fri:</td>
-                        <td>8:00am - 6:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Sat:</td>
-                        <td>9:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Sun:</td>
-                        <td>Closed</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="deparment">
-                  <table class="table table-bordered no-border font-12px margin-bottom-none">
-                    <thead>
-                      <tr>
-                        <td colspan="2"><strong>Parts Department</strong></td>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>Mon:</td>
-                        <td>8:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Tue:</td>
-                        <td>8:00am - 9:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Wed:</td>
-                        <td>8:00am - 5:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Thu:</td>
-                        <td>8:00am - 9:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Fri:</td>
-                        <td>8:00am - 6:00pm</td>
-                      </tr>
-                      <tr>
-                        <td>Sat:</td>
-                        <td>9:00am - 5:00pm</td>
+                        <td>10:00AM - 7:00PM</td>
                       </tr>
                       <tr>
                         <td>Sun:</td>
@@ -182,7 +100,7 @@
           <div class="contact_wrapper information_head">
             <h3 class="margin-bottom-25 margin-top-none">CONTACT FORM</h3>
             <div class="margin-bottom-20">
-              <%= form_for @contact_us, url: { action: "contact_us" }, method: :post, html: { id:  "contact_us", class: "contact_us" } do |f| %>
+              <%= form_for @contact_us, url: { action: "save_contact_us" }, method: :post, html: { id:  "contact_us", class: "contact_us" } do |f| %>
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.text_field(:first_name, class: "form-control", placeholder: "First Name(* Required)") %>

@@ -8,7 +8,8 @@ $(document).ready(function(){
 				required: true
 			},
 			"contact_u[email]": {
-				required: true
+				required: true,
+				email: true
 			},
 			"contact_u[subject]": {
 				required: true

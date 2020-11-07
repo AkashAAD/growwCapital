@@ -17,34 +17,38 @@
 <section class="personal-loan-section custom-container">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, class: "form-control" %>
-          </div>
-        </div>
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= f.label :password %><br />
-            <%= f.password_field :password, class: "form-control" %>
-          </div>        
-        </div>
-      </div>
-      <div class="row">
+      <div class="row regist-div">
         <div class="col-md-6">
-          <% if devise_mapping.rememberable? %>
-            <div class="form-group">
-              <%= f.check_box :remember_me %>
-              <%= f.label :remember_me %>
-              <div class="actions">
-                <%= f.submit "Log in" %>
-              </div>            
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <%= f.label :email %><br />
+                <%= f.email_field :email, class: "form-control", required: true %>
+              </div>
             </div>
-          <% end %>        
-        </div>
-        <div class="col-md-6 text-right">
-          <%= render "devise/shared/links" %>          
+            <div class="col-md-12">
+              <div class="form-group">
+                <%= f.label :password %><br />
+                <%= f.password_field :password, class: "form-control", required: true %>
+              </div>        
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <% if devise_mapping.rememberable? %>
+                <div class="form-group">
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :remember_me %>
+                  <div class="actions">
+                    <%= f.submit "Log in" %>
+                  </div>            
+                </div>
+              <% end %>        
+            </div>
+            <div class="col-md-6 text-right">
+              <%= render "devise/shared/links" %>          
+            </div>
+          </div>
         </div>
       </div>
     </div>

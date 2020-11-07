@@ -29,7 +29,7 @@ input[type=number] {
   -o-animation: fadeIn 1s;  
 }
 
-input[type="number"], input[type="text"], input[type="date"], select, div.styled, input[type="file"] {
+input[type="email"], input[type="password"], input[type="number"], input[type="text"], input[type="date"], select, div.styled, input[type="file"] {
   border: 2px solid #767171 !important;
   height: 45px !important;
 }
@@ -327,6 +327,12 @@ textarea.error, input.error, select.error {
   border: 2px solid #0854a0;
   width: 100%;
   height: 500px;  
+}
+
+.regist-div {
+  div {
+    margin: auto;
+  }
 }
 
 @media only screen and (max-width: 600px) {

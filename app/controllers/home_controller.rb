@@ -5,17 +5,23 @@ class HomeController < ApplicationController
   end
 
   def about_us
-  	
+  end
+
+  def pre_approved
+  end
+
+  def blog    
   end
 
   def contact_us
   	@contact_us = ContactU.new
-    if request.method.eql?("POST")
-      @contact_us = ContactU.new(contact_us_params)
-      @contact_us.save
-      flash[:notice] = "Your message sent successfully!"
-      redirect_to contact_us_path
-    end
+  end
+
+  def save_contact_us
+    @contact_us = ContactU.new(contact_us_params)
+    @contact_us.save
+    flash[:notice] = "Your message sent successfully!"
+    redirect_to contact_us_path    
   end
 
   def profile

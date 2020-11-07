@@ -146,4 +146,10 @@ module ApplicationHelper
     ['Self Employed','self-employed']]
   end
 
+  def active_tab(tab)
+    if params['controller'].eql?('home')
+      return 'active' if params[:action] == tab
+    end
+  end
+
 end
