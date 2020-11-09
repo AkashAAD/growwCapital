@@ -9,5 +9,6 @@ class CreateProfessionalLoanOffers < ActiveRecord::Migration[5.2]
       t.decimal :current_emi, precision: 20, scale: 2
       t.timestamps
     end
+    add_index :professional_loan_offers, :professional_loan_id
   end
 end

@@ -13,5 +13,6 @@ class CreateLoanAgainstPropertyOffers < ActiveRecord::Migration[5.2]
       t.decimal :current_emi, precision: 20, scale: 2
       t.timestamps
     end
+    add_index :loan_against_property_offers, :loan_against_property_id
   end
 end

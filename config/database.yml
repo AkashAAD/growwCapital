@@ -8,7 +8,7 @@ default: &default
 
 development:
   <<: *default
-  database: getCapital_development
+  database: growwCapital_development
 # production:
 #   <<: *default
 #   database: getCapital_production

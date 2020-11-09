@@ -28,7 +28,10 @@ class CreateBusinessLoans < ActiveRecord::Migration[5.2]
       t.boolean :otp_verified, default: false
       t.string :reference_number
       t.boolean :terms_and_conditions
+      t.integer :business_loan_bank_id
+      t.decimal :emi, precision: 20, scale: 2
       t.timestamps
     end
+    add_index :business_loans, :business_loan_bank_id
   end
 end

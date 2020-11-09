@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_24_044353) do
+ActiveRecord::Schema.define(version: 2020_11_09_183230) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -51,6 +51,26 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "business_loan_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
+    t.integer "business_loan_bank_id"
+    t.integer "business_loan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["business_loan_bank_id"], name: "index_business_loan_bank_infos_on_business_loan_bank_id"
+    t.index ["business_loan_id"], name: "index_business_loan_bank_infos_on_business_loan_id"
+  end
+
+  create_table "business_loan_banks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "business_loan_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "business_loan_id"
     t.string "business_name"
@@ -71,6 +91,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.decimal "gross_annual_profit", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["business_loan_id"], name: "index_business_loan_offers_on_business_loan_id"
   end
 
   create_table "business_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -101,8 +122,11 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.boolean "otp_verified", default: false
     t.string "reference_number"
     t.boolean "terms_and_conditions"
+    t.integer "business_loan_bank_id"
+    t.decimal "emi", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["business_loan_bank_id"], name: "index_business_loans_on_business_loan_bank_id"
   end
 
   create_table "business_natures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -175,6 +199,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.decimal "current_emi", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["personal_loan_id"], name: "index_employer_details_on_personal_loan_id"
   end
 
   create_table "employers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -201,6 +226,26 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "home_loan_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
+    t.integer "home_loan_bank_id"
+    t.integer "home_loan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["home_loan_bank_id"], name: "index_home_loan_bank_infos_on_home_loan_bank_id"
+    t.index ["home_loan_id"], name: "index_home_loan_bank_infos_on_home_loan_id"
+  end
+
+  create_table "home_loan_banks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "home_loan_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "home_loan_id"
     t.string "land_type"
@@ -213,6 +258,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.decimal "current_emi", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["home_loan_id"], name: "index_home_loan_offers_on_home_loan_id"
   end
 
   create_table "home_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -243,8 +289,11 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.boolean "otp_verified", default: false
     t.string "reference_number"
     t.boolean "terms_and_conditions"
+    t.integer "home_loan_bank_id"
+    t.decimal "emi", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["home_loan_bank_id"], name: "index_home_loans_on_home_loan_bank_id"
   end
 
   create_table "industry_types", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -281,6 +330,29 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.boolean "otp_verified", default: false
     t.string "reference_number"
     t.boolean "terms_and_conditions"
+    t.integer "loan_against_property_bank_id"
+    t.decimal "emi", precision: 20, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loan_against_property_bank_id"], name: "index_loan_against_properties_on_loan_against_property_bank_id"
+  end
+
+  create_table "loan_against_property_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
+    t.integer "loan_against_property_bank_id"
+    t.integer "loan_against_property_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loan_against_property_bank_id"], name: "lapb_index"
+    t.index ["loan_against_property_id"], name: "lap_index"
+  end
+
+  create_table "loan_against_property_banks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -298,6 +370,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.decimal "current_emi", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["loan_against_property_id"], name: "index_loan_against_property_offers_on_loan_against_property_id"
   end
 
   create_table "loan_purposes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -308,6 +381,26 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
 
   create_table "mailing_addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "new_car_loan_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
+    t.integer "new_car_loan_bank_id"
+    t.integer "new_car_loan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["new_car_loan_bank_id"], name: "index_new_car_loan_bank_infos_on_new_car_loan_bank_id"
+    t.index ["new_car_loan_id"], name: "index_new_car_loan_bank_infos_on_new_car_loan_id"
+  end
+
+  create_table "new_car_loan_banks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -355,6 +448,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.decimal "gross_annual_profit", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["new_car_loan_id"], name: "index_new_car_loan_offers_on_new_car_loan_id"
   end
 
   create_table "new_car_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -385,6 +479,27 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.boolean "otp_verified", default: false
     t.string "reference_number"
     t.boolean "terms_and_conditions"
+    t.integer "new_car_loan_bank_id"
+    t.decimal "emi", precision: 20, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["new_car_loan_bank_id"], name: "index_new_car_loans_on_new_car_loan_bank_id"
+  end
+
+  create_table "personal_loan_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
+    t.integer "personal_loan_bank_id"
+    t.integer "personal_loan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["personal_loan_bank_id"], name: "index_personal_loan_bank_infos_on_personal_loan_bank_id"
+    t.index ["personal_loan_id"], name: "index_personal_loan_bank_infos_on_personal_loan_id"
+  end
+
+  create_table "personal_loan_banks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -417,6 +532,29 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.boolean "otp_verified", default: false
     t.string "reference_number"
     t.boolean "terms_and_conditions"
+    t.integer "personal_loan_bank_id"
+    t.decimal "emi", precision: 20, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["personal_loan_bank_id"], name: "index_personal_loans_on_personal_loan_bank_id"
+  end
+
+  create_table "professional_loan_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
+    t.integer "professional_loan_bank_id"
+    t.integer "professional_loan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["professional_loan_bank_id"], name: "index_professional_loan_bank_infos_on_professional_loan_bank_id"
+    t.index ["professional_loan_id"], name: "index_professional_loan_bank_infos_on_professional_loan_id"
+  end
+
+  create_table "professional_loan_banks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -430,6 +568,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.decimal "current_emi", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["professional_loan_id"], name: "index_professional_loan_offers_on_professional_loan_id"
   end
 
   create_table "professional_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -460,8 +599,11 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.boolean "otp_verified", default: false
     t.string "reference_number"
     t.boolean "terms_and_conditions"
+    t.integer "professional_loan_bank_id"
+    t.decimal "emi", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["professional_loan_bank_id"], name: "index_professional_loans_on_professional_loan_bank_id"
   end
 
   create_table "professions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -502,6 +644,26 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
 
   create_table "tenures", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "used_car_loan_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
+    t.integer "used_car_loan_bank_id"
+    t.integer "used_car_loan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["used_car_loan_bank_id"], name: "index_used_car_loan_bank_infos_on_used_car_loan_bank_id"
+    t.index ["used_car_loan_id"], name: "index_used_car_loan_bank_infos_on_used_car_loan_id"
+  end
+
+  create_table "used_car_loan_banks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -551,6 +713,7 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.decimal "gross_annual_profit", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["used_car_loan_id"], name: "index_used_car_loan_offers_on_used_car_loan_id"
   end
 
   create_table "used_car_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -581,8 +744,11 @@ ActiveRecord::Schema.define(version: 2020_10_24_044353) do
     t.boolean "otp_verified", default: false
     t.string "reference_number"
     t.boolean "terms_and_conditions"
+    t.integer "used_car_loan_bank_id"
+    t.decimal "emi", precision: 20, scale: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["used_car_loan_bank_id"], name: "index_used_car_loans_on_used_car_loan_bank_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

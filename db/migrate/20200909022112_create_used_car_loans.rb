@@ -28,7 +28,10 @@ class CreateUsedCarLoans < ActiveRecord::Migration[5.2]
       t.boolean :otp_verified, default: false
       t.string :reference_number
       t.boolean :terms_and_conditions
+      t.integer :used_car_loan_bank_id
+      t.decimal :emi, precision: 20, scale: 2
       t.timestamps
     end
+    add_index :used_car_loans, :used_car_loan_bank_id
   end
 end

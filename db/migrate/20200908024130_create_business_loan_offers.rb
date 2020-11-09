@@ -20,5 +20,6 @@ class CreateBusinessLoanOffers < ActiveRecord::Migration[5.2]
       t.decimal :gross_annual_profit, precision: 20, scale: 2
       t.timestamps
     end
+    add_index :business_loan_offers, :business_loan_id
   end
 end

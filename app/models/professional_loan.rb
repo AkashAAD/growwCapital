@@ -8,4 +8,6 @@ class ProfessionalLoan < ApplicationRecord
   has_one_attached :itr_copy
   has_one_attached :passport_photo
   has_one :professional_loan_offer
+  has_one :professional_loan_bank
+  has_one :professional_loan_bank_info
 end

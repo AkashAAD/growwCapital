@@ -12,5 +12,6 @@ class CreateHomeLoanOffers < ActiveRecord::Migration[5.2]
       t.decimal :current_emi, precision: 20, scale: 2
       t.timestamps
     end
+    add_index :home_loan_offers, :home_loan_id
   end
 end

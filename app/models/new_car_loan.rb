@@ -6,4 +6,6 @@ class NewCarLoan < ApplicationRecord
   has_one_attached :itr_copy
   has_one_attached :passport_photo
   has_one :new_car_loan_offer
+  has_one :new_car_loan_bank
+  has_one :new_car_loan_bank_info
 end

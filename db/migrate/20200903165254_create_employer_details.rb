@@ -23,5 +23,6 @@ class CreateEmployerDetails < ActiveRecord::Migration[5.2]
       t.decimal :current_emi, precision: 20, scale: 2
       t.timestamps
     end
+    add_index :employer_details, :personal_loan_id
   end
 end

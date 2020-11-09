@@ -48,5 +48,6 @@ class CreateNewCarLoanOffers < ActiveRecord::Migration[5.2]
       t.decimal :gross_annual_profit, precision: 20, scale: 2      
       t.timestamps
     end
+    add_index :new_car_loan_offers, :new_car_loan_id    
   end
 end
