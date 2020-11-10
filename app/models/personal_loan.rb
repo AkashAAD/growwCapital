@@ -6,5 +6,4 @@ class PersonalLoan < ApplicationRecord
   has_one_attached :bank_statement
   has_one :employer_detail
   has_one :personal_loan_bank
-  has_one :personal_loan_info
 end

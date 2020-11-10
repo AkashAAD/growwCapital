@@ -7,5 +7,4 @@ class LoanAgainstProperty < ApplicationRecord
   has_one_attached :passport_photo
   has_one :loan_against_property_offer
   has_one :loan_against_property_bank
-  has_one :loan_against_property_bank_info
 end
