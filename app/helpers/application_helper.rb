@@ -152,4 +152,19 @@ module ApplicationHelper
     end
   end
 
+  def percentage_roi(roi)
+    "%.2f" % roi + "%"
+  end
+
+  def processing_fee(processing_fee, loan_amount)
+    (processing_fee.to_f / 100.to_f) * loan_amount.to_f
+  end
+
+  def calculate_emi(personal_loan_info, personal_loan)
+    r = personal_loan_info.roi / (12 * 100)
+    t = personal_loan.tenure * 12
+    emi = (personal_loan.loan_amount * r * ((1 + r)**t))/((1 + r)**t - 1)
+    return "%.2f" % emi
+  end
+
 end

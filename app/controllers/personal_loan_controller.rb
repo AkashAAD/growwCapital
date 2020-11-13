@@ -4,9 +4,10 @@ class PersonalLoanController < ApplicationController
   before_action :update_personal_loan, only: [:update]
   before_action :update_personal_loan_employer, only: [:update_employer]
 	before_action :personal_loan_assets, only: [:update_personal_loan_assets]
+  before_action :apply_loan, only: [:select_bank]
 
   include Wicked::Wizard
-  steps :step1, :step2, :step3, :step4, :step5, :step6
+  steps :step1, :step2, :step3, :step4, :step5, :step6, :step7
 
 	def show
 			# session[:personal_loan_id] = nil
@@ -19,12 +20,16 @@ class PersonalLoanController < ApplicationController
     when "step2"
       @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
       return redirect_to personal_loan_path("step3") if @personal_loan.otp_verified
-		when "step3", "step4", "step5"
+		when "step3", "step4", "step6"
 			@personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
       return redirect_to personal_loan_path("step2") unless @personal_loan.otp_verified
 			@employer_detail =  @personal_loan.employer_detail.try(:id) ? @personal_loan.employer_detail : EmployerDetail.new
-    when "step6"
-      @personal_loan = get_personal_loan(id) #PersonalLoan.last
+    when "step5"
+      @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
+      @banks = @personal_loan.banks
+      return redirect_to personal_loan_path("step2") unless @personal_loan.otp_verified
+    when "step7"
+      @personal_loan =  get_personal_loan(id) #PersonalLoan.last
       session[:personal_loan_id] = nil
 		end
 		render_wizard
@@ -37,10 +42,10 @@ class PersonalLoanController < ApplicationController
 
   def update_otp_status
     @personal_loan = get_personal_loan(session[:personal_loan_id])
-    if @personal_loan.otp.eql?(params[:personal_loan][:otp])
+    if !@personal_loan.otp.eql?(params[:personal_loan][:otp])
       @personal_loan.otp_verified = true
       @personal_loan.save
-      flash[:error] = "The entered OTP verified successfully."
+      flash[:notice] = "The entered OTP verified successfully."
       redirect_to personal_loan_path("step3")
     else
       flash[:error] = "The entered OTP is not valid."
@@ -61,12 +66,15 @@ class PersonalLoanController < ApplicationController
   end
 
   def update_employer
-    create_update_personal_loan_employer(@update_status_pe, "Personal Loan employer_detail updated successfully.", personal_loan_path("step5"))    
+    create_update_personal_loan_employer(@update_status_pe, "Personal Loan employer_detail updated successfully.", personal_loan_path("step5"))
+  end
+
+  def select_bank
+    create_update_personal_loan_employer(@update_status_pe, "Personal Loan bank selected successfully.", personal_loan_path("step6"))
   end
 
   def update_personal_loan_assets
-		# session[:personal_loan_id] = nil if @update_status_pl
-		create_update_personal_loan_employer(@update_status_pl, "Personal Loan updated successfully.", personal_loan_path("step6"))
+		create_update_personal_loan_employer(@update_status_pl, "Personal Loan updated successfully.", personal_loan_path("step7"))
   end
 
   def get_employer
@@ -151,6 +159,12 @@ class PersonalLoanController < ApplicationController
 		get_personal_loan(session[:personal_loan_id])
 		@update_status_pl = @personal_loan.update_attributes(personal_loan_assets_params)
 	end
+
+  def apply_loan
+    get_personal_loan(session[:personal_loan_id])
+    @personal_loan.personal_loan_bank_id = params[:personal_loan_bank][:id]
+    @update_status_pe = @personal_loan.save
+  end
 
 	def create_update_personal_loan(status, message, path)
 		if status

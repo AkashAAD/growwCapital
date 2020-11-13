@@ -1,0 +1,71 @@
+<section id="secondary-banner" class="dynamic-image-6">
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h2>New Loan Against Property</h2>
+                <h4>Apply for Loan Against Property</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container custom-container">
+  <div class="row main-thx-row"> 
+    <div class="col-md-4 col-lg-4 col-sm-12 bank-thank-row">
+      <div class="bank-thx-img">
+        <%= image_tag url_for(@loan_against_property.loan_against_property_bank.bank_image), class: "ptnr-icici-bank" %>
+      </div>
+      <div>
+        <p>Loan Amount</p>
+        <p><%= number_to_currency(@loan_against_property.loan_amount, unit: "₹ ") %></p>
+      </div>
+      <div>
+        <p>EMI</p>
+        <p><%= number_to_currency(calculate_emi(@loan_against_property.loan_against_property_bank.loan_against_property_bank_info, @loan_against_property), unit: "₹ ") %></p>
+      </div>
+      <div>
+        <p>Interest Rate</p>
+        <p><%= percentage_roi(@loan_against_property.loan_against_property_bank.loan_against_property_bank_info.roi) %></p>
+      </div>
+    </div>
+    <div class="col-md-8 col-lg-8 col-sm-12 thank-row">
+      <div class="congo">
+        <h3 class="float-left">CONGRATULATIONS</h3>
+        <h4 class="float-right">Reference Number: <%= @loan_against_property.reference_number %></h4>        
+      </div>
+      <div>
+        <p>
+          Your application has been <b>Successfully Submitted.</b> Our loan expert will get back to you with in <b>24 hours</b> to take this application forward.
+        </p>
+        <p>
+          <a href="/" target="_blank">Growwcapital.in</a> doesn't charge any money from customers for it's loan or credit card offerings. In such case you receive such communication from anyone claiming to be a Growwcapital representative, please contact us to 
+          <a href = "mailto:growwcapital@gmail.com">growwcapital@gmail.com</a>.
+        </p>
+        <p>
+          Thank you for choosing Growwcapital!!!
+        </p>        
+      </div>
+      <div class="contact-info">
+        <div>
+          <span class="fa fa-volume-control-phone" aria-hidden="true"></span>
+          <p>
+            Tollfree<br>
+            12-8787-7887
+          </p>
+        </div>
+        <div class="div2">
+          <span class="fa fa-envelope-o" aria-hidden="true"></span>
+          <p>
+            Write us to<br>
+            growwcapital@gmail.com
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

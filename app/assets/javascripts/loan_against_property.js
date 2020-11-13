@@ -81,7 +81,7 @@ $(document).ready(function(){
 		rules: {
 			"loan_against_property[mobile_number]": {
 				required: true,
-				maxlength: 10
+				minlength: 10
 			},
 			"loan_against_property[first_name]": {
 				required: true,
@@ -120,7 +120,7 @@ $(document).ready(function(){
 			},
 			'loan_against_property[mobile_number]': {
 				required: 'Please enter mobile number.',
-				maxlength: 'Mobile number must consist of at most 10 characters'
+				minlength: 'Mobile number must consist of at least 10 characters'
 			},
 			'loan_against_property[first_name]': {
 				required: 'Please enter first name.',

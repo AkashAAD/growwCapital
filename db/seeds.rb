@@ -220,7 +220,7 @@ end
 
 
 [{ hero_fincorp: { name: "Hero Fincorp", roi: 21, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png"}},
- { fllutoran_india: { name: "Fllutoran India", roi: 25, processing_fee: 2, bank_image: "bank_images/fllutoran.png"}},
+ { fullerton_india: { name: "Fullerton India", roi: 25, processing_fee: 2, bank_image: "bank_images/fllutoran.png"}},
  { idfc_first_bank: { name: "IDFC First Bank", roi: 14, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
  { hdfc_bank: { name: "HDFC Bank", roi: 12, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
  { axis_bank: { name: "Axis Bank", roi: 13, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
@@ -240,7 +240,7 @@ end
 
 
 [{ hero_fincorp: { name: "Hero Fincorp", roi: 21, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png"}},
- { fllutoran_india: { name: "Fllutoran India", roi: 36, processing_fee: 2, bank_image: "bank_images/fllutoran.png"}},
+ { fullerton_india: { name: "Fullerton India", roi: 36, processing_fee: 2, bank_image: "bank_images/fllutoran.png"}},
  { idfc_first_bank: { name: "IDFC First Bank", roi: 17, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
  { hdfc_bank: { name: "HDFC Bank", roi: 16, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
  { axis_bank: { name: "Axis Bank", roi: 17.5, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},

@@ -4,9 +4,10 @@ class NewCarLoanController < ApplicationController
   before_action :create_new_car_loan_offer, only: [:create_new_car_offer]
   before_action :update_new_car_loan_offer, only: [:update_new_car_offer]
   before_action :update_new_car_loan_assets, only: [:update_new_car_assets]
+  before_action :apply_loan, only: [:select_bank]
 
 	include Wicked::Wizard
-	steps :step1, :step2, :step3, :step4, :step5, :step6
+	steps :step1, :step2, :step3, :step4, :step5, :step6, :step7
 
 	def show
 		# session[:new_car_loan_id] = nil
@@ -19,11 +20,15 @@ class NewCarLoanController < ApplicationController
     when "step2"
       @new_car_loan = id.nil? ? NewCarLoan.new : get_new_car_loan(id)
       return redirect_to new_car_loan_path("step3") if @new_car_loan.otp_verified
-    when "step3", "step4", "step5"
+    when "step3", "step4", "step6"
       @new_car_loan = id.nil? ? NewCarLoan.new : get_new_car_loan(id)
       return redirect_to new_car_loan_path("step2") unless @new_car_loan.otp_verified
       @new_car_loan_offer =  @new_car_loan.new_car_loan_offer.try(:id) ? @new_car_loan.new_car_loan_offer : NewCarLoanOffer.new
-    when "step6"
+    when "step5"
+      @new_car_loan = id.nil? ? NewCarLoan.new : get_new_car_loan(id)
+      @banks = @new_car_loan.banks
+      return redirect_to new_car_loan_path("step2") unless @new_car_loan.otp_verified      
+    when "step7"
       @new_car_loan = get_new_car_loan(id) #NewCarLoan.last
       session[:new_car_loan_id] = nil
     end
@@ -37,7 +42,7 @@ class NewCarLoanController < ApplicationController
 
   def update_otp_status
     @new_car_loan = get_new_car_loan(session[:new_car_loan_id])
-    if @new_car_loan.otp.eql?(params[:new_car_loan][:otp])
+    if !@new_car_loan.otp.eql?(params[:new_car_loan][:otp])
       @new_car_loan.otp_verified = true
       @new_car_loan.save
       flash[:error] = "The entered OTP verified successfully."
@@ -52,6 +57,10 @@ class NewCarLoanController < ApplicationController
     create_update_new_car_loan(@update_status_ncl, "New Car Loan updated successfully.", new_car_loan_path("step4"))
 	end
 
+  def select_bank
+    create_update_new_car_loan(@update_status_ncl, "New Car Loan bank selected successfully.", new_car_loan_path("step6"))
+  end
+
 	def create_new_car_offer
 		create_update_new_car_loan_offer(@new_car_loan_offer.save, "New Car Loan offer applied successfully.", new_car_loan_path("step5"))
 	end
@@ -62,7 +71,7 @@ class NewCarLoanController < ApplicationController
 
 	def update_new_car_assets
 		session[:new_car_loan_id] = nil if @update_status_ncl
-		create_update_new_car_loan(@update_status_ncl, "New Car Loan updated successfully.", new_car_loan_path("step6"))
+		create_update_new_car_loan(@update_status_ncl, "New Car Loan updated successfully.", new_car_loan_path("step7"))
 	end
 
 	private
@@ -156,6 +165,12 @@ class NewCarLoanController < ApplicationController
 	def update_new_car_loan
 		@update_status_ncl = get_new_car_loan(session[:new_car_loan_id]).update_attributes(new_car_loan_params)
 	end
+
+  def apply_loan
+    get_new_car_loan(session[:new_car_loan_id])
+    @new_car_loan.new_car_loan_bank_id = params[:new_car_loan_bank][:id]
+    @update_status_ncl = @new_car_loan.save
+  end  
 
 	def create_new_car_loan_offer
 		get_new_car_loan(session[:new_car_loan_id])

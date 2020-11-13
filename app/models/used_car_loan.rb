@@ -8,5 +8,9 @@ class UsedCarLoan < ApplicationRecord
   has_one_attached :itr_copy
   has_one_attached :passport_photo
   has_one :used_car_loan_offer
-  has_one :used_car_loan_bank
+  belongs_to :used_car_loan_bank, optional: true
+
+  def banks
+    return UsedCarLoanBank.all
+  end
 end

@@ -232,11 +232,23 @@ textarea.error, input.error, select.error {
 .bank-thank-row {
   background: #032361;
   .bank-thx-img {
-    margin: 40px;
-    width: 280px;
+    visibility: visible;
+    animation-name: bounceInUp;
+    width: 180px;
+    height: 128px;
+    padding: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(5,47,95,.04), 0 12px 16px 0 rgba(52,105,203,.12);
+    border-radius: 10px;
+    margin: 20px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 1s;
+    -moz-animation: fadeIn 1s;
+    -webkit-animation: fadeIn 1s;
+    -o-animation: fadeIn 1s;
     border-left: 0px;
-    padding-left: 0px;
-    background-color: #032361;
   }
   div{
     margin: 20px 20px 20px 40px;
@@ -332,6 +344,15 @@ textarea.error, input.error, select.error {
 .regist-div {
   div {
     margin: auto;
+  }
+}
+
+.loan-table {
+  th, td {
+    text-align: center;
+  }
+  div {
+    margin: 0 auto;
   }
 }
 

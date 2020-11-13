@@ -166,7 +166,7 @@ $(document).ready(function(){
 		rules: {
 			"new_car_loan[mobile_number]": {
 				required: true,
-				maxlength: 10
+				minlength: 10
 			},
 			"new_car_loan[first_name]": {
 				required: true,
@@ -205,7 +205,7 @@ $(document).ready(function(){
 			},
 			'new_car_loan[mobile_number]': {
 				required: 'Please enter mobile number.',
-				maxlength: 'Mobile number must consist of at most 10 characters'
+				minlength: 'Mobile number must consist of at least 10 characters'
 			},
 			'new_car_loan[first_name]': {
 				required: 'Please enter first name.',

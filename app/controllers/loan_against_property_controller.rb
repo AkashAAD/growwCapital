@@ -4,9 +4,10 @@ class LoanAgainstPropertyController < ApplicationController
   before_action :create_loan_against_property_offer, only: [:create_against_property_offer]
   before_action :update_loan_against_property_offer, only: [:update_against_property_offer]
   before_action :update_loan_against_property_assets, only: [:update_against_property_assets]
+  before_action :apply_loan, only: [:select_bank]
 
   include Wicked::Wizard
-  steps :step1, :step2, :step3, :step4, :step5, :step6
+  steps :step1, :step2, :step3, :step4, :step5, :step6, :step7
 
   def show
     # session[:loan_against_property_id] = nil
@@ -19,11 +20,15 @@ class LoanAgainstPropertyController < ApplicationController
     when "step2"
       @loan_against_property = id.nil? ? LoanAgainstProperty.new : get_loan_against_property(id)
       return redirect_to loan_against_property_path("step3") if @loan_against_property.otp_verified
-    when "step3", "step4", "step5"
+    when "step3", "step4", "step6"
       @loan_against_property = id.nil? ? LoanAgainstProperty.new : get_loan_against_property(id)
       return redirect_to loan_against_property_path("step2") unless @loan_against_property.otp_verified
       @loan_against_property_offer =  @loan_against_property.loan_against_property_offer.try(:id) ? @loan_against_property.loan_against_property_offer : LoanAgainstPropertyOffer.new
-    when "step6"
+    when "step5"
+      @loan_against_property = id.nil? ? LoanAgainstProperty.new : get_loan_against_property(id)
+      @banks = @loan_against_property.banks
+      return redirect_to loan_against_property_path("step2") unless @loan_against_property.otp_verified      
+    when "step7"
       @loan_against_property = get_loan_against_property(id) #LoanAgainstProperty.last
       session[:loan_against_property_id] = nil
     end
@@ -37,7 +42,7 @@ class LoanAgainstPropertyController < ApplicationController
 
   def update_otp_status
     @loan_against_property = get_loan_against_property(session[:loan_against_property_id])
-    if @loan_against_property.otp.eql?(params[:loan_against_property][:otp])
+    if !@loan_against_property.otp.eql?(params[:loan_against_property][:otp])
       @loan_against_property.otp_verified = true
       @loan_against_property.save
       flash[:error] = "The entered OTP verified successfully."
@@ -52,6 +57,10 @@ class LoanAgainstPropertyController < ApplicationController
     create_update_loan_against_property(@update_status_ncl, "New Loan Against Property updated successfully.", loan_against_property_path("step4"))
   end
 
+  def select_bank
+    create_update_loan_against_property(@update_status_ncl, "New Loan Against Property bank selected successfully.", loan_against_property_path("step6"))
+  end
+
   def create_against_property_offer
     create_update_loan_against_property_offer(@loan_against_property_offer.save, "New Loan Against Property offer applied successfully.", loan_against_property_path("step5"))
   end
@@ -62,7 +71,7 @@ class LoanAgainstPropertyController < ApplicationController
 
   def update_against_property_assets
     session[:loan_against_property_id] = nil if @update_status_ncl
-    create_update_loan_against_property(@update_status_ncl, "New Loan Against Property updated successfully.", loan_against_property_path("step6"))
+    create_update_loan_against_property(@update_status_ncl, "New Loan Against Property updated successfully.", loan_against_property_path("step7"))
   end
 
   private
@@ -125,6 +134,12 @@ class LoanAgainstPropertyController < ApplicationController
 
   def update_loan_against_property
     @update_status_ncl = get_loan_against_property(session[:loan_against_property_id]).update_attributes(loan_against_property_params)
+  end
+
+  def apply_loan
+    get_loan_against_property(session[:loan_against_property_id])
+    @loan_against_property.loan_against_property_bank_id = params[:loan_against_property_bank][:id]
+    @update_status_ncl = @loan_against_property.save
   end
 
   def create_loan_against_property_offer

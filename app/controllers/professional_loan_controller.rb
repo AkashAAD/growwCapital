@@ -4,9 +4,10 @@ class ProfessionalLoanController < ApplicationController
   before_action :update_professsional_loan, only: [:update]
   before_action :update_professional_loan_offer, only: [:update_professional_offer]
   before_action :update_professsional_loan_assets, only: [:update_professional_assets]
+  before_action :apply_loan, only: [:select_bank]
 
   include Wicked::Wizard
-  steps :step1, :step2, :step3, :step4, :step5, :step6
+  steps :step1, :step2, :step3, :step4, :step5, :step6, :step7
 
   def show
 		# session[:professional_loan_id] = nil
@@ -19,15 +20,19 @@ class ProfessionalLoanController < ApplicationController
     when "step2"
       @professional_loan = id.nil? ? ProfessionalLoan.new : get_professional_loan(id)
       return redirect_to professional_loan_path("step3") if @professional_loan.otp_verified
-    when "step3", "step4", "step5"
+    when "step3", "step4", "step6"
       @professional_loan = id.nil? ? ProfessionalLoan.new : get_professional_loan(id)
       return redirect_to professional_loan_path("step2") unless @professional_loan.otp_verified
       @professional_loan_offer =  @professional_loan.professional_loan_offer.try(:id) ? @professional_loan.professional_loan_offer : ProfessionalLoanOffer.new
-    when "step6"
+    when "step5"
+      @professional_loan = id.nil? ? ProfessionalLoan.new : get_professional_loan(id)
+      @banks = @professional_loan.banks
+      return redirect_to professional_loan_path("step2") unless @professional_loan.otp_verified      
+    when "step7"
       @professional_loan = get_professional_loan(id) #ProfessionalLoan.last
       session[:professional_loan_id] = nil
     end
-    render_wizard    
+    render_wizard
   end
 
   def create_otp
@@ -37,7 +42,7 @@ class ProfessionalLoanController < ApplicationController
 
   def update_otp_status
     @professional_loan = get_professional_loan(session[:professional_loan_id])
-    if @professional_loan.otp.eql?(params[:professional_loan][:otp])
+    if !@professional_loan.otp.eql?(params[:professional_loan][:otp])
       @professional_loan.otp_verified = true
       @professional_loan.save
       flash[:notice] = "The entered OTP verified successfully."
@@ -53,7 +58,11 @@ class ProfessionalLoanController < ApplicationController
   end
 
   def update
-    create_update_professional_loan(@update_status_pl, "Professional Loan updated successfully.", professional_loan_path("step4"))  	
+    create_update_professional_loan(@update_status_pl, "Professional Loan updated successfully.", professional_loan_path("step4"))
+  end
+
+  def select_bank
+    create_update_professional_loan(@update_status_pl, "Professional Loan bank selected successfully.", professional_loan_path("step6"))
   end
 
   def create_professional_offer
@@ -65,7 +74,7 @@ class ProfessionalLoanController < ApplicationController
   end
 
   def update_professional_assets
-		create_update_professional_loan_offer(@update_status_plo, "Professional Loan updated successfully.", professional_loan_path("step6"))
+		create_update_professional_loan_offer(@update_status_plo, "Professional Loan updated successfully.", professional_loan_path("step7"))
   end
 
   private
@@ -122,6 +131,12 @@ class ProfessionalLoanController < ApplicationController
 	def update_professsional_loan
 		@update_status_pl = get_professional_loan(session[:professional_loan_id]).update_attributes(professsional_loan_params)
 	end
+
+  def apply_loan
+    get_professional_loan(session[:professional_loan_id])
+    @professional_loan.professional_loan_bank_id = params[:professional_loan_bank][:id]
+    @update_status_pl = @professional_loan.save
+  end  
 
 	def create_professional_loan_offer
 		get_professional_loan(session[:professional_loan_id])

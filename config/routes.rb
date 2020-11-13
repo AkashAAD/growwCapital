@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       patch :update_business_offer_assets
       post :create_otp
       patch :update_otp_status
+      patch :select_bank
     end
   end
 
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
       patch :update_home_assets
       post :create_otp
       patch :update_otp_status
+      patch :select_bank
     end
   end
 
@@ -41,7 +43,8 @@ Rails.application.routes.draw do
       patch :update_against_property_offer
       patch :update_against_property_assets
       post :create_otp
-      patch :update_otp_status      
+      patch :update_otp_status
+      patch :select_bank
     end
   end
 
@@ -52,6 +55,7 @@ Rails.application.routes.draw do
       patch :update_new_car_assets
       post :create_otp
       patch :update_otp_status
+      patch :select_bank
     end
   end
 
@@ -63,6 +67,7 @@ Rails.application.routes.draw do
       get :get_employer
       post :create_otp
       patch :update_otp_status
+      patch :select_bank
     end
   end
 
@@ -73,6 +78,7 @@ Rails.application.routes.draw do
       patch :update_professional_assets
       post :create_otp
       patch :update_otp_status
+      patch :select_bank
     end
   end
 
@@ -83,6 +89,7 @@ Rails.application.routes.draw do
       patch :update_used_car_assets
       post :create_otp
       patch :update_otp_status
+      patch :select_bank
     end
   end
 

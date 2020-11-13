@@ -15,44 +15,36 @@
     </div>
 </section>
 
-<%= form_for @new_car_loan, :url => { :action => "update_new_car_assets" }, html: {id:  "new_car_loan_assets", class: "new_car_loan_assets"} do |f| %>
+<div class="container custom-container">
   <div class="container">
-    <div class="row"> 
-      <div class="col-md-6">
-        <div class="form-group">
-          <span>Personal Bank Statement <span>*</span></span>
-          <%= f.file_field(:persoanl_bank_statement, class: "") %>
-           <p class="error"><%= show_errors(@new_car_loan, :persoanl_bank_statement) %></p>
-        </div>
-        <div class="form-group">
-          <span>Business Bank Statement <span>*</span></span>
-          <%= f.file_field(:business_bank_statement, class: "") %>
-           <p class="error"><%= show_errors(@new_car_loan, :business_bank_statement) %></p>
-        </div>
-        <div class="form-group">
-          <span>Id Proof <span>*</span></span>
-          <%= f.file_field(:id_proof, class: "") %>
-           <p class="error"><%= show_errors(@new_car_loan, :id_proof) %></p>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <span>Salary Slip <span>*</span></span>
-          <%= f.file_field(:salary_slip, class: "") %>
-           <p class="error"><%= show_errors(@new_car_loan, :salary_slip) %></p>
-        </div>
-        <div class="form-group">
-          <span>ITR Copy <span>*</span></span>
-          <%= f.file_field(:itr_copy, class: "") %>
-           <p class="error"><%= show_errors(@new_car_loan, :itr_copy) %></p>
-        </div>
-        <div class="form-group">
-          <span>Passport Photo <span>*</span></span>
-          <%= f.file_field(:passport_photo, class: "") %>
-           <p class="error"><%= show_errors(@new_car_loan, :passport_photo) %></p>
-        </div>
-      </div>
+    <div class="row">
+      <table class="table loan-table">
+        <thead class="thead-light">
+          <tr>
+            <th>Bank</th>
+            <th>Interest Rate</th>
+            <th>Processing Fee</th>
+            <th>EMI</th>
+            <th>Proceed</th>
+          </tr>
+        </thead>
+        <% @banks.each do |bank| %>
+          <tr>
+            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
+            <td><b><%= percentage_roi(bank.new_car_loan_bank_info.roi) %><br><span>(Floating)</span></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.new_car_loan_bank_info.processing_fee, @new_car_loan.loan_amount), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency(calculate_emi(bank.new_car_loan_bank_info, @new_car_loan), unit: "₹ ") %></b></td>
+            <td>
+              <b>
+                <%= form_for @new_car_loan, :url => { :action => "select_bank" }, html: {id:  "new_car_loan_bank", class: "new_car_loan_bank"} do |f| %>
+                  <input type="hidden" name="new_car_loan_bank[id]" value="<%= bank.new_car_loan_bank_info.id %>">
+                  <button type="submit" class="btn btn-default">Apply</button>
+                <%end%>
+              </b>
+            </td>
+          </tr>
+        <%end%>
+      </table>
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
   </div>
-<%end%>
+</div>
