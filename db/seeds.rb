@@ -2,7 +2,7 @@
   Role.create(name: role)
   puts "Role #{role}"
 end
-User.create(role_id: 2, email: "admin@gmail.com", password: "123456", password_confirmation: "123456")
+# User.create(role_id: 2, email: "admin@gmail.com", password: "123456", password_confirmation: "123456")
 
 ["SSC", "HSC", "Graduation", "Post Graduation", "Engineering", "Professional", "Under Graduate", "Doctorate", "Other"].each do |hq|
   HighestQualification.create(name: hq)
