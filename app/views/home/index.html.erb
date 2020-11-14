@@ -8,7 +8,7 @@
           <p>All in one place.</p>
           <div class="row">
             <div class="col-md-12">
-              <form action="/action_page.php" style="display: inline-flex;">
+              <form action="/" style="display: inline-flex;">
                 <input type="text" placeholder="Search.." class="search-loan" name="search">
                 <button type="submit" class="btn-search-loan"><i class="fa fa-search"></i></button>
               </form>
@@ -19,7 +19,7 @@
       <div class="col-lg-6 col-md-6 col-sm-12">
         <!-- <iframe class="header-video"  src="https://www.youtube.com/embed/WJTd1iSch94">
         </iframe> -->
-        <%= image_tag "diwali.jpg" %>
+        <%= video_tag "diwali1.mp4", :controls => true %>
       </div>
     </div>
     <script>
@@ -207,13 +207,15 @@
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 welcome padding-left-none padding-bottom-40 scroll_effect fadeInUp">
               <h4 class="margin-bottom-25 margin-top-none">About <strong>Loans</strong> </h4>
               <div class="search-form margin-top-20 padding-vertical-20">
-                <iframe class="header-video"  src="https://www.youtube.com/embed/WJTd1iSch94"></iframe>
+                <!-- <iframe class="header-video"  src="https://www.youtube.com/embed/WJTd1iSch94"></iframe> -->
+                <%= video_tag "diwali2.mp4", :controls => true, style: "width: 533px; height: 368px;" %>
               </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 welcome padding-right-none padding-bottom-40 scroll_effect fadeInUp" data-wow-delay='.2s'>
               <h4 class="margin-bottom-25 margin-top-none">About <strong>Cards</strong></h4>
               <div class="search-form margin-top-20 padding-vertical-20">
-                <iframe class="header-video"  src="https://www.youtube.com/embed/WJTd1iSch94"></iframe>
+                <!-- <iframe class="header-video"  src="https://www.youtube.com/embed/WJTd1iSch94"></iframe> -->
+                <%= video_tag "diwali2.mp4", :controls => true, style: "width: 533px; height: 368px;" %>
               </div>
             </div>
           </div>
