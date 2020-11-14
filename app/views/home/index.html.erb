@@ -19,7 +19,11 @@
       <div class="col-lg-6 col-md-6 col-sm-12">
         <!-- <iframe class="header-video"  src="https://www.youtube.com/embed/WJTd1iSch94">
         </iframe> -->
-        <%= video_tag "diwali1.mp4", :controls => true %>
+        <%#= video_tag "diwali1.mp4", :controls => true, class: "top-video", type: "video/mp4" %>
+        <video class="top-video" controls>
+          <source src="assets/diwali1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>        
       </div>
     </div>
     <script>
@@ -208,14 +212,20 @@
               <h4 class="margin-bottom-25 margin-top-none">About <strong>Loans</strong> </h4>
               <div class="search-form margin-top-20 padding-vertical-20">
                 <!-- <iframe class="header-video"  src="https://www.youtube.com/embed/WJTd1iSch94"></iframe> -->
-                <%= video_tag "diwali2.mp4", :controls => true, style: "width: 533px; height: 368px;" %>
+                <video class="bottom-video" controls>
+                  <source src="assets/diwali2.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 welcome padding-right-none padding-bottom-40 scroll_effect fadeInUp" data-wow-delay='.2s'>
               <h4 class="margin-bottom-25 margin-top-none">About <strong>Cards</strong></h4>
               <div class="search-form margin-top-20 padding-vertical-20">
                 <!-- <iframe class="header-video"  src="https://www.youtube.com/embed/WJTd1iSch94"></iframe> -->
-                <%= video_tag "diwali2.mp4", :controls => true, style: "width: 533px; height: 368px;" %>
+                <video class="bottom-video" controls>
+                  <source src="assets/diwali2.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
               </div>
             </div>
           </div>

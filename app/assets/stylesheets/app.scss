@@ -52,6 +52,13 @@ input[type=number] {
   .img-effect {
     margin: 0 auto;
   }
+  .top-video {
+    width: 100%;
+  }
+}
+
+.bottom-video {
+  width: 100%;  
 }
 
 input[type="email"], input[type="password"], input[type="number"], input[type="text"], input[type="date"], select, div.styled, input[type="file"] {
