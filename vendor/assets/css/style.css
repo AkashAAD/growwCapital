@@ -619,7 +619,7 @@ header.affix .bottom-header {
 header .navbar-brand img {
 	height: 100%;
 	width: 300px;
-	margin-top: -6px;
+	margin-top: 6px;
 }
 
 .bottom-header .navbar {
@@ -634,9 +634,8 @@ header .bottom-header .navbar-default {
 }
 
 header .navbar-toggler {
-	border-color: transparent;
-	margin-top: 17px;
-	margin-right: 15px;
+  border-color: #0854a0;
+  margin-right: 15px !important;
 }
 
 header.affix .navbar-toggler {

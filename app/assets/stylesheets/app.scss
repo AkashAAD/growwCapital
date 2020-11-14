@@ -26,7 +26,32 @@ input[type=number] {
   animation: fadeIn 1s;
   -moz-animation: fadeIn 1s;
   -webkit-animation: fadeIn 1s;
-  -o-animation: fadeIn 1s;  
+  -o-animation: fadeIn 1s;
+}
+
+@media(max-width: 570px) {
+  .main-logo {
+    width: 250px !important;
+  }
+  .navbar-toggler:not(:disabled):not(.disabled) {
+    background: #0854a0;
+    margin-top: 18px;
+  }
+  .div-loan > .loan-img1,
+  .div-loan > .loan-img2,
+  .div-loan > .loan-img3,
+  .div-loan > .loan-img4,
+  .div-loan > .loan-img5,
+  .div-loan > .loan-img6,
+  .div-loan > .loan-img7 {
+    margin: 0 auto;
+  }
+  .div-loan > .img-text {
+    left: 150px !important;
+  }
+  .img-effect {
+    margin: 0 auto;
+  }
 }
 
 input[type="email"], input[type="password"], input[type="number"], input[type="text"], input[type="date"], select, div.styled, input[type="file"] {
