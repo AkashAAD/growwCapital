@@ -1,0 +1,83 @@
+<section id="secondary-banner" class="dynamic-image-5">
+  <div class="container">
+    <div class="row align-items-end">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <h2>Pre Approved Offers Approval</h2>
+        <h4></h4>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <ul class="breadcrumb">
+          <li><a href="#">Home</a></li>
+          <li>Pre Approved Offers Approval</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="personal-loan-section custom-container">
+  <div class="row">
+    <div class="col-md-3 col-md-3 col-sm-3"></div>
+    <div class="col-md-6 col-md-6 col-sm-6">
+      <div class="row main-thx-row"> 
+        <div class="col-md-12 col-lg-12 col-sm-12 thank-row">
+          <div class="congo">
+            <h3 class="float-left">CONGRATULATIONS</h3>
+            <h4 class="float-right">Reference Number: <%= "#{@pre_approved_offer&.reference_number}" %></h4>        
+          </div>
+          <div>            
+            <% if @pre_approved_offer %>
+              <p>Congratulations!!! You are eligible for pre approved offers. Please upload your documents on the link which is provided in the sms.</p>
+            <% else %>
+              <p>Sorry!!! You are new for growwcapital. Please apply with new application.
+                <%= link_to personal_loan_path('step1'), method: :get do %>
+                  <b><i>Apply</i></b>
+                <%end%>
+              </p>
+            <% end %>
+            <% unless @pre_approved_offer %>
+              <div class="row">
+                <div class="col-md-6">
+                  <%= link_to personal_loan_path('step1'), method: :get, class: "btn btn-success" do %>
+                    <b>Apply for Loan</b>
+                  <% end %>
+                </div>
+                <div class="col-md-6">
+                  <%= link_to "#", method: :get, class: "btn btn-success" do %>
+                    <b>Apply for Cards</b>
+                  <% end %>
+                </div>
+              </div>
+              <br>
+            <% end %>
+            <p>
+              <a href="http://growwcapital.com/" target="_blank">Growwcapital.com</a> doesn't charge any money from customers for it's loan or credit card offerings. In such case you receive such communication from anyone claiming to be a Growwcapital representative, please contact us to 
+              <a href="mailto:support@growwcapital.com">support@growwcapital.com</a>.
+            </p>
+            <p>
+              Thank you for choosing Growwcapital!!!
+            </p>        
+          </div>
+          <div class="contact-info">
+            <div>
+              <span class="fa fa-volume-control-phone" aria-hidden="true"></span>
+              <p>
+                Tollfree<br>
+                <a href="tel:+918806601122">+91-88066-01122</a>
+              </p>
+            </div>
+            <div class="div2">
+              <span class="fa fa-envelope-o" aria-hidden="true"></span>
+              <p>
+                Write us to<br>
+                <a href="mailto:support@growwcapital.com">support@growwcapital.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 col-md-3 col-sm-3"></div>
+  </div>
+</section>

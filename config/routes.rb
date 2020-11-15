@@ -3,11 +3,17 @@ Rails.application.routes.draw do
   get 'home/change_state' => "home#change_state"
   get 'home/change_profession' => "home#change_profession"
   get "home/profile" => "home#profile"
+  post 'home/newsletter' => "home#newsletter"
   get "contact_us" => "home#contact_us", as: "contact_us"
   get "about_us" => "home#about_us", as: "about_us"
   get "blog" => "home#blog", as: "blog"
   get "pre_approved" => "home#pre_approved", as: "pre_approved"
-  get "save_contact_us" => "home#save_contact_us", as: "save_contact_us"
+  post "pre_approved_offer" => "home#pre_approved_offer", as: "pre_approved_offer"
+  post "save_contact_us" => "home#save_contact_us", as: "save_contact_us"
+  get "pre_approved_status" => "home#pre_approved_status", as: "pre_approved_status"
+  post "verfiy_pre_approved" => "home#verfiy_pre_approved", as: "verfiy_pre_approved"
+  get "confirm_otp" => "home#confirm_otp", as: "confirm_otp"
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',

@@ -75,14 +75,14 @@
                   <li class="<%= active_tab('index') %>">
                     <%= link_to "Home", root_path, method: :get %>
                   </li>
+                  <li class="<%= active_tab('pre_approved') %>">
+                    <%= link_to "Pre Approved Offers", pre_approved_path, method: :get %>
+                  </li>
                   <li class="<%= active_tab('about_us') %>">
                     <%= link_to "About Us", about_us_path, method: :get %>
                   </li>
                   <li class="<%= active_tab('blog') %>">
                     <%= link_to "Blog", blog_path, method: :get %>
-                  </li>
-                  <li class="<%= active_tab('pre_approved') %>">
-                    <%= link_to "Pre Approved Offers", pre_approved_path, method: :get %>
                   </li>
                   <li class="<%= active_tab('contact_us') %>">
                     <%= link_to "Contact Us", contact_us_path, method: :get %>
@@ -94,14 +94,14 @@
                   <li class="<%= active_tab('index') %>">
                     <%= link_to "Home", root_path, method: :get %>
                   </li>
+                  <li class="<%= active_tab('pre_approved') %>">
+                    <%= link_to "Pre Approved Offers", pre_approved_path, method: :get %>
+                  </li>
                   <li class="<%= active_tab('about_us') %>">
                     <%= link_to "About Us", about_us_path, method: :get %>
                   </li>
                   <li class="<%= active_tab('blog') %>">
                     <%= link_to "Blog", blog_path, method: :get %>
-                  </li>
-                  <li class="<%= active_tab('pre_approved') %>">
-                    <%= link_to "Pre Approved Offers", pre_approved_path, method: :get %>
                   </li>
                   <li class="<%= active_tab('contact_us') %>">
                     <%= link_to "Contact Us", contact_us_path, method: :get %>
@@ -138,12 +138,10 @@
             <p>By subscribing to our company newsletter
               you will always be up-to-date on our latest
               promotions, deals and vehicle inventory!</p>
-            <form method="post" action="#" class="form_contact">
-              <input type="text" value="" name="MERGE0" placeholder="Email Address">
-              <input type="submit" value="Subscribe" class="md-button">
-              <input type="hidden" name="u" value="">
-              <input type="hidden" name="id" value="">
-            </form>
+            <%= form_for 'newsletter', url: { controller: "home", action: "newsletter"}, html: {id:  "newsletter", class: "newsletter"} do |f| %>
+              <%= f.email_field(:email, class: "form-control", placeholder: "Email Address", required: true) %>
+              <input type="submit" value="Subscribe" class="md-button" style="cursor: pointer;">
+            <% end %>            
           </div>
           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
             <!-- <h4>Latest tweets</h4>
@@ -166,9 +164,9 @@
             <h4>Contact us</h4>
             <div class="footer-contact">
               <ul>
-                <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 1234 Street Name, City Name, AB 12345</li>
-                <li><i class="fa fa-phone"></i> <strong>Phone:</strong>1-800-123-4567</li>
-                <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong><a href="#">sales@company.com</a></li>
+                <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 2nd Floot, Gupta Travels Building, Lokmat Square, Nagpur - 440012</li>
+                <li><i class="fa fa-phone"></i> <strong>Phone:</strong><a href="tel:+918806601122">+91-88066-01122</a></li>
+                <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong><a href="mailto:support@growwcapital.com">support@growwcapital.com</a></li>
               </ul>
               <i class="fa fa-location-arrow back_icon"></i>
             </div>
@@ -184,7 +182,7 @@
             <div class="logo-footer margin-bottom-20 md-margin-bottom-20 sm-margin-bottom-10 xs-margin-bottom-20"><a href="#">
               <%= image_tag "logo2.png", alt: "logo2" %>
             </div>
-            <p>Copyright &copy; 2020 Theme Suite. All rights reserved.</p>
+            <p>Copyright &copy; <%= "#{Time.zone.now.year}" %> Growwcapital.com. All rights reserved.</p>
           </div>
           <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
             <ul class="social margin-bottom-25 md-margin-bottom-25 sm-margin-bottom-20 xs-margin-bottom-20 xs-padding-top-10 clearfix">

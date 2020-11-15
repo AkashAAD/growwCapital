@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_09_183230) do
+ActiveRecord::Schema.define(version: 2020_11_15_112843) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -470,6 +470,12 @@ ActiveRecord::Schema.define(version: 2020_11_09_183230) do
     t.index ["new_car_loan_bank_id"], name: "index_new_car_loans_on_new_car_loan_bank_id"
   end
 
+  create_table "newsletter_subscriptions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "personal_loan_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.decimal "roi", precision: 20, scale: 2
     t.decimal "processing_fee", precision: 20, scale: 2
@@ -519,6 +525,15 @@ ActiveRecord::Schema.define(version: 2020_11_09_183230) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["personal_loan_bank_id"], name: "index_personal_loans_on_personal_loan_bank_id"
+  end
+
+  create_table "pre_approved_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "mobile_no"
+    t.string "reference_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "professional_loan_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
