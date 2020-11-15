@@ -408,6 +408,12 @@ textarea.error, input.error, select.error {
   list-style-type: none;
 }
 
+.pre-appr {
+  .card, .loan {
+    border: 0;
+  }
+}
+
 
 @media only screen and (max-width: 600px) {
   .header-description {
@@ -419,6 +425,15 @@ textarea.error, input.error, select.error {
 }
 
 @media(max-width: 570px) {
+  .pre-appr {
+    .card, .loan {
+      width: 50%;
+      border: 0;
+    }
+    .loan {
+      padding: 0px;
+    }
+  }
   .header-description {
     .col-md-12 {
       padding: 0px;

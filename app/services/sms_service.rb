@@ -10,7 +10,7 @@ class SmsService
 	end
 
 	def send_preapproved_otp(pre_approved_offer, otp)
-		message = "Dear #{pre_approved_offer[:first_name]} #{pre_approved_offer[:last_name]}, Your preappoved offer otp is #{otp}. Please do not share this otp to with anyone. Growwcapital executive don't ask for an otp."
+		message = "Dear #{pre_approved_offer[:first_name]} #{pre_approved_offer[:last_name]}, Your preappoved offer otp is #{otp}. Do not share this with anyone. No Growwcapital employee will call and ask for your OTP. Call +91-88066-01122 if not requested by you."
 		thread = "#{Rails.application.config.SMS_URL}&numbers=#{pre_approved_offer[:mobile_no]}&message=#{message}"
 		request = RestClient.get("#{thread}")
 	end
