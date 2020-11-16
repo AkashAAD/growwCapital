@@ -32,6 +32,9 @@ class HomeController < ApplicationController
   end
 
   def pre_approved_status
+    return redirect_to root_path if session[:pre_otp].nil?
+    session[:pre_mobile_no] = nil
+    session[:pre_otp] = nil
     @pre_approved_offer = PreApprovedOffer.find_by(id: params[:pre_approved_offer_id])
   end
 
@@ -44,8 +47,6 @@ class HomeController < ApplicationController
         @pre_approved_offer.opt_status = true
         @pre_approved_offer.save
       end
-      session[:pre_mobile_no] = nil
-      session[:pre_otp] = nil      
       flash[:notice] = "Your entered OTP is vefified successfully."
       redirect_to pre_approved_status_path + "?pre_approved_offer_id=#{@pre_approved_offer&.id}"
     else

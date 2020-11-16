@@ -425,6 +425,10 @@ textarea.error, input.error, select.error {
 }
 
 @media(max-width: 570px) {
+  .contact-info div {
+    width: 177px;
+    word-break: break-word;
+  }
   .pre-appr {
     .card, .loan {
       width: 50%;
