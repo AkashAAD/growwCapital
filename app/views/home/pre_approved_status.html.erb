@@ -37,15 +37,15 @@
               </p>
             <% end %>
             <% unless @pre_approved_offer %>
-              <div class="row">
-                <div class="col-md-6">
+              <div class="row pre-appr">
+                <div class="col-md-6 loan">
                   <%= link_to personal_loan_path('step1'), method: :get, class: "btn btn-success" do %>
                     <b>Apply for Loan</b>
                   <% end %>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 card">
                   <%= link_to "#", method: :get, class: "btn btn-success" do %>
-                    <b>Apply for Cards</b>
+                    <b>Apply for Card</b>
                   <% end %>
                 </div>
               </div>
