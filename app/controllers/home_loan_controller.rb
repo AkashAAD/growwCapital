@@ -30,6 +30,7 @@ class HomeLoanController < ApplicationController
       return redirect_to home_loan_path("step2") unless @home_loan.otp_verified
     when "step7"
       @home_loan = get_home_loan(id) #HomeLoan.last
+      LoanMailer.home_loan(@home_loan).deliver_later
       session[:home_loan_id] = nil
     end
     render_wizard
@@ -42,7 +43,7 @@ class HomeLoanController < ApplicationController
 
   def update_otp_status
     @home_loan = get_home_loan(session[:home_loan_id])
-    if !@home_loan.otp.eql?(params[:home_loan][:otp])
+    if @home_loan.otp.eql?(params[:home_loan][:otp].to_i)
       @home_loan.otp_verified = true
       @home_loan.save
       flash[:error] = "The entered OTP verified successfully."
@@ -72,6 +73,11 @@ class HomeLoanController < ApplicationController
   def update_home_assets
     session[:home_loan_id] = nil if @update_status_ncl
     create_update_home_loan(@update_status_ncl, "New Car Loan updated successfully.", home_loan_path("step7"))
+  end
+
+  def resend_otp
+    @home_loan = get_home_loan(session[:home_loan_id])
+    send_otp
   end
 
   private
@@ -161,10 +167,7 @@ class HomeLoanController < ApplicationController
     if status
       session[:home_loan_id] = @home_loan.id
       unless @home_loan.otp_verified
-        sms = SmsService.new
-        @home_loan.otp = 1234
-        @home_loan.save
-        sms.send_otp(@home_loan)
+        send_otp
       end
       flash[:notice] = message
       redirect_to path
@@ -180,5 +183,12 @@ class HomeLoanController < ApplicationController
     else
       render "home_loan/step2"
     end
+  end
+
+  def send_otp
+    sms = SmsService.new
+    @home_loan.otp = (rand*1000000).to_i
+    @home_loan.save
+    sms.send_otp(@home_loan, "Home Loan")
   end
 end

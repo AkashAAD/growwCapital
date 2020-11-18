@@ -1,5 +1,16 @@
 $(document).ready(function(){
 
+	$("#personal-loan-resend-otp").click(function(){
+		$.ajax({
+	    url: "/personal_loan/resend_otp",
+	    dataType: "json",
+	    data: {},
+	    success: function (data) {
+	    	toastr["info"]("Your OTP has been sent successfully.", "info");
+	    }
+		});
+	});
+
 	$("#personal_loan_state").change(function(evt) {
 		$.ajax({
 	    url: "/home/change_state",

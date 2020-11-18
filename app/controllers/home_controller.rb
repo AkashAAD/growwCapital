@@ -12,6 +12,8 @@ class HomeController < ApplicationController
     @pre_approved_offer = PreApprovedOffer.new
   end
 
+  def emi_calculator; end
+
   def pre_approved_offer
     if @pre_approved_offer
       @pre_approved_offer.first_name = pre_approved_offer_params[:first_name]
@@ -72,6 +74,7 @@ class HomeController < ApplicationController
   def save_contact_us
     @contact_us = ContactU.new(contact_us_params)
     @contact_us.save
+    ApplicationMailer.contact_us(@contact_us).deliver_later
     flash[:notice] = "Your message sent successfully!"
     redirect_to contact_us_path
   end

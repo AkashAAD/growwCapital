@@ -30,6 +30,7 @@ class LoanAgainstPropertyController < ApplicationController
       return redirect_to loan_against_property_path("step2") unless @loan_against_property.otp_verified      
     when "step7"
       @loan_against_property = get_loan_against_property(id) #LoanAgainstProperty.last
+      LoanMailer.loan_against_property(@loan_against_property).deliver_later
       session[:loan_against_property_id] = nil
     end
     render_wizard
@@ -42,7 +43,7 @@ class LoanAgainstPropertyController < ApplicationController
 
   def update_otp_status
     @loan_against_property = get_loan_against_property(session[:loan_against_property_id])
-    if !@loan_against_property.otp.eql?(params[:loan_against_property][:otp])
+    if @loan_against_property.otp.eql?(params[:loan_against_property][:otp].to_i)
       @loan_against_property.otp_verified = true
       @loan_against_property.save
       flash[:error] = "The entered OTP verified successfully."
@@ -72,6 +73,11 @@ class LoanAgainstPropertyController < ApplicationController
   def update_against_property_assets
     session[:loan_against_property_id] = nil if @update_status_ncl
     create_update_loan_against_property(@update_status_ncl, "New Loan Against Property updated successfully.", loan_against_property_path("step7"))
+  end
+
+  def resend_otp
+    @loan_against_property = get_loan_against_property(session[:loan_against_property_id])
+    send_otp
   end
 
   private
@@ -163,10 +169,7 @@ class LoanAgainstPropertyController < ApplicationController
     if status
       session[:loan_against_property_id] = @loan_against_property.id
       unless @loan_against_property.otp_verified
-        sms = SmsService.new
-        @loan_against_property.otp = 1234
-        @loan_against_property.save
-        sms.send_otp(@loan_against_property)
+        send_otp
       end
       flash[:notice] = message
       redirect_to path
@@ -182,5 +185,12 @@ class LoanAgainstPropertyController < ApplicationController
     else
       render "loan_against_property/step2"
     end
+  end
+
+  def send_otp
+    sms = SmsService.new
+    @loan_against_property.otp = (rand*1000000).to_i
+    @loan_against_property.save
+    sms.send_otp(@loan_against_property, "Loan Against Property")
   end
 end

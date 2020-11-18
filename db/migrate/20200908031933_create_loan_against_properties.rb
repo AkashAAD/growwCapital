@@ -30,6 +30,7 @@ class CreateLoanAgainstProperties < ActiveRecord::Migration[5.2]
       t.boolean :terms_and_conditions
       t.integer :loan_against_property_bank_id
       t.decimal :emi, precision: 20, scale: 2
+      t.string :status
       t.timestamps
     end
     add_index :loan_against_properties, :loan_against_property_bank_id

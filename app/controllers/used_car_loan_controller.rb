@@ -30,6 +30,7 @@ class UsedCarLoanController < ApplicationController
       return redirect_to used_car_loan_path("step2") unless @used_car_loan.otp_verified      
     when "step7"
       @used_car_loan = get_used_car_loan(id) #UsedCarLoan.last
+      LoanMailer.used_car_loan(@used_car_loan).deliver_later
       session[:used_car_loan_id] = nil
     end
     render_wizard
@@ -42,7 +43,7 @@ class UsedCarLoanController < ApplicationController
 
   def update_otp_status
     @used_car_loan = get_used_car_loan(session[:used_car_loan_id])
-    if !@used_car_loan.otp.eql?(params[:used_car_loan][:otp])
+    if @used_car_loan.otp.eql?(params[:used_car_loan][:otp].to_i)
       @used_car_loan.otp_verified = true
       @used_car_loan.save
       flash[:error] = "The entered OTP verified successfully."
@@ -73,6 +74,11 @@ class UsedCarLoanController < ApplicationController
 		session[:used_car_loan_id] = nil if @update_status_ncl
 		create_update_used_car_loan(@update_status_ncl, "Used Car Loan updated successfully.", used_car_loan_path("step7"))
 	end
+
+  def resend_otp
+    @used_car_loan = get_used_car_loan(session[:used_car_loan_id])
+    send_otp
+  end
 
 	private
 	def used_car_loan_params
@@ -195,10 +201,7 @@ class UsedCarLoanController < ApplicationController
 		if status
 			session[:used_car_loan_id] = @used_car_loan.id
       unless @used_car_loan.otp_verified
-        sms = SmsService.new
-        @used_car_loan.otp = 1234
-        @used_car_loan.save
-        sms.send_otp(@used_car_loan)
+        send_otp
       end
 			flash[:notice] = message
 			redirect_to path
@@ -214,5 +217,12 @@ class UsedCarLoanController < ApplicationController
 		else
 			render "used_car_loan/step2"
 		end
+  end
+
+  def send_otp
+    sms = SmsService.new
+    @used_car_loan.otp = (rand*1000000).to_i
+    @used_car_loan.save
+    sms.send_otp(@used_car_loan, "Used Car Loan")
   end
 end

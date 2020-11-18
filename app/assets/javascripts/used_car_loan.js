@@ -1,4 +1,16 @@
 $(document).ready(function(){
+
+	$("#used-car-loan-resend-otp").click(function(){
+		$.ajax({
+	    url: "/used_car_loan/resend_otp",
+	    dataType: "json",
+	    data: {},
+	    success: function (data) {
+	    	toastr["info"]("Your OTP has been sent successfully.", "info");
+	    }
+		});
+	});
+
 	jQuery.validator.addMethod("is_pan", function(value, element) {
 	  return this.optional(element) || /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value);
 	}, "Entered pan number is invalid.");

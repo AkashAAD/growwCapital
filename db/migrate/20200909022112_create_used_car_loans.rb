@@ -30,6 +30,7 @@ class CreateUsedCarLoans < ActiveRecord::Migration[5.2]
       t.boolean :terms_and_conditions
       t.integer :used_car_loan_bank_id
       t.decimal :emi, precision: 20, scale: 2
+      t.string :status
       t.timestamps
     end
     add_index :used_car_loans, :used_car_loan_bank_id

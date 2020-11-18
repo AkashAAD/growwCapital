@@ -10,7 +10,7 @@ class BusinessLoanController < ApplicationController
   steps :step1, :step2, :step3, :step4, :step5, :step6, :step7
 
 	def new
-    @business_loan = BusinessLoan.new		
+    @business_loan = BusinessLoan.new
 	end
 
 	def show
@@ -34,6 +34,7 @@ class BusinessLoanController < ApplicationController
       return redirect_to business_loan_path("step2") unless @business_loan.otp_verified
 		when "step7"
       @business_loan = get_business_loan(id)
+      LoanMailer.business_loan(@business_loan).deliver_later
       session[:business_loan_id] = nil
 		end
 		render_wizard
@@ -46,7 +47,7 @@ class BusinessLoanController < ApplicationController
 
   def update_otp_status
     @business_loan = get_business_loan(session[:business_loan_id])
-    if !@business_loan.otp.eql?(params[:business_loan][:otp])
+    if @business_loan.otp.eql?(params[:business_loan][:otp].to_i)
       @business_loan.otp_verified = true
       @business_loan.save
       flash[:error] = "The entered OTP verified successfully."
@@ -81,6 +82,11 @@ class BusinessLoanController < ApplicationController
 		# session[:business_loan_id] = nil if @update_status_blo
 		create_update_business_loan_offer(@update_status_blo, "Business Loan updated successfully.", business_loan_path("step7"))
 	end
+
+  def resend_otp
+    @business_loan = get_business_loan(session[:business_loan_id])
+    send_otp
+  end	
 
 	private
 	def business_loan_params
@@ -175,10 +181,7 @@ class BusinessLoanController < ApplicationController
 		if status
 			session[:business_loan_id] = @business_loan.id
       unless @business_loan.otp_verified
-        sms = SmsService.new
-        @business_loan.otp = 1234
-        @business_loan.save
-        sms.send_otp(@business_loan)
+      	send_otp
       end
 			flash[:notice] = message
 			redirect_to path
@@ -194,5 +197,12 @@ class BusinessLoanController < ApplicationController
 		else
 			render "business_loan/step2" #business_loan_path("step1")
 		end
+	end
+
+	def send_otp
+    sms = SmsService.new
+    @business_loan.otp = (rand*1000000).to_i
+    @business_loan.save
+    sms.send_otp(@business_loan, "Business Loan")
 	end
 end

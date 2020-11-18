@@ -30,6 +30,7 @@ class PersonalLoanController < ApplicationController
       return redirect_to personal_loan_path("step2") unless @personal_loan.otp_verified
     when "step7"
       @personal_loan =  get_personal_loan(id) #PersonalLoan.last
+      LoanMailer.personal_loan(@personal_loan).deliver_later
       session[:personal_loan_id] = nil
 		end
 		render_wizard
@@ -42,7 +43,7 @@ class PersonalLoanController < ApplicationController
 
   def update_otp_status
     @personal_loan = get_personal_loan(session[:personal_loan_id])
-    if !@personal_loan.otp.eql?(params[:personal_loan][:otp])
+    if @personal_loan.otp.eql?(params[:personal_loan][:otp].to_i)
       @personal_loan.otp_verified = true
       @personal_loan.save
       flash[:notice] = "The entered OTP verified successfully."
@@ -80,6 +81,11 @@ class PersonalLoanController < ApplicationController
   def get_employer
   	employers = Employer.search_employer(params[:term])
   	render json: { employers: employers }, status:  :ok
+  end
+
+  def resend_otp
+    @personal_loan = get_personal_loan(session[:personal_loan_id])
+    send_otp
   end
 
 	private
@@ -170,10 +176,7 @@ class PersonalLoanController < ApplicationController
 		if status
 			session[:personal_loan_id] = @personal_loan.id
       unless @personal_loan.otp_verified
-        sms = SmsService.new
-        @personal_loan.otp = 1234
-        @personal_loan.save
-        sms.send_otp(@personal_loan)
+        send_otp
       end
 			flash[:notice] = message
 			redirect_to path
@@ -193,6 +196,13 @@ class PersonalLoanController < ApplicationController
 
   def get_personal_loan(id)
     @personal_loan = PersonalLoan.find(id)
+  end
+
+  def send_otp
+    sms = SmsService.new
+    @personal_loan.otp = (rand*1000000).to_i
+    @personal_loan.save
+    sms.send_otp(@personal_loan, "Personal Loan")    
   end
 
 end

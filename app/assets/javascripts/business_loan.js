@@ -1,5 +1,16 @@
 $(document).ready(function(){
 
+	$("#business-loan-resend-otp").click(function(){
+		$.ajax({
+	    url: "/business_loan/resend_otp",
+	    dataType: "json",
+	    data: {},
+	    success: function (data) {
+	    	toastr["info"]("Your OTP has been sent successfully.", "info");
+	    }
+		});
+	});
+
 	$("#business_loan_state").change(function(evt) {
 		$.ajax({
 	    url: "/home/change_state",

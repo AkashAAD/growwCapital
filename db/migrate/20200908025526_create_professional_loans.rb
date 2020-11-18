@@ -30,6 +30,7 @@ class CreateProfessionalLoans < ActiveRecord::Migration[5.2]
       t.boolean :terms_and_conditions
       t.integer :professional_loan_bank_id
       t.decimal :emi, precision: 20, scale: 2
+      t.string :status
       t.timestamps
     end
     add_index :professional_loans, :professional_loan_bank_id

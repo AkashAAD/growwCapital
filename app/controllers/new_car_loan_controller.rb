@@ -30,6 +30,7 @@ class NewCarLoanController < ApplicationController
       return redirect_to new_car_loan_path("step2") unless @new_car_loan.otp_verified      
     when "step7"
       @new_car_loan = get_new_car_loan(id) #NewCarLoan.last
+      LoanMailer.new_car_loan(@new_car_loan).deliver_later
       session[:new_car_loan_id] = nil
     end
     render_wizard
@@ -42,7 +43,7 @@ class NewCarLoanController < ApplicationController
 
   def update_otp_status
     @new_car_loan = get_new_car_loan(session[:new_car_loan_id])
-    if !@new_car_loan.otp.eql?(params[:new_car_loan][:otp])
+    if @new_car_loan.otp.eql?(params[:new_car_loan][:otp].to_i)
       @new_car_loan.otp_verified = true
       @new_car_loan.save
       flash[:error] = "The entered OTP verified successfully."
@@ -73,6 +74,11 @@ class NewCarLoanController < ApplicationController
 		session[:new_car_loan_id] = nil if @update_status_ncl
 		create_update_new_car_loan(@update_status_ncl, "New Car Loan updated successfully.", new_car_loan_path("step7"))
 	end
+
+  def resend_otp
+    @new_car_loan = get_new_car_loan(session[:new_car_loan_id])
+    send_otp
+  end
 
 	private
 	def new_car_loan_params
@@ -193,10 +199,7 @@ class NewCarLoanController < ApplicationController
 		if status
 			session[:new_car_loan_id] = @new_car_loan.id
       unless @new_car_loan.otp_verified
-        sms = SmsService.new
-        @new_car_loan.otp = 1234
-        @new_car_loan.save
-        sms.send_otp(@new_car_loan)
+        send_otp
       end
 			flash[:notice] = message
 			redirect_to path
@@ -212,6 +215,13 @@ class NewCarLoanController < ApplicationController
 		else
 			render "new_car_loan/step2"
 		end
+  end
+
+  def send_otp
+    sms = SmsService.new
+    @new_car_loan.otp = (rand*1000000).to_i
+    @new_car_loan.save
+    sms.send_otp(@new_car_loan, "New Car Loan")
   end
 
 end

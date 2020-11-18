@@ -30,6 +30,7 @@ class ProfessionalLoanController < ApplicationController
       return redirect_to professional_loan_path("step2") unless @professional_loan.otp_verified      
     when "step7"
       @professional_loan = get_professional_loan(id) #ProfessionalLoan.last
+      LoanMailer.professional_loan(@professional_loan).deliver_later
       session[:professional_loan_id] = nil
     end
     render_wizard
@@ -42,7 +43,7 @@ class ProfessionalLoanController < ApplicationController
 
   def update_otp_status
     @professional_loan = get_professional_loan(session[:professional_loan_id])
-    if !@professional_loan.otp.eql?(params[:professional_loan][:otp])
+    if @professional_loan.otp.eql?(params[:professional_loan][:otp].to_i)
       @professional_loan.otp_verified = true
       @professional_loan.save
       flash[:notice] = "The entered OTP verified successfully."
@@ -75,6 +76,11 @@ class ProfessionalLoanController < ApplicationController
 
   def update_professional_assets
 		create_update_professional_loan_offer(@update_status_plo, "Professional Loan updated successfully.", professional_loan_path("step7"))
+  end
+
+  def resend_otp
+    @professional_loan = get_professional_loan(session[:professional_loan_id])
+    send_otp
   end
 
   private
@@ -162,10 +168,7 @@ class ProfessionalLoanController < ApplicationController
     if status
       session[:professional_loan_id] = @professional_loan.id
       unless @professional_loan.otp_verified
-        sms = SmsService.new
-        @professional_loan.otp = 1234
-        @professional_loan.save
-        sms.send_otp(@professional_loan)
+        send_otp
       end
       flash[:notice] = message
       redirect_to path
@@ -182,6 +185,13 @@ class ProfessionalLoanController < ApplicationController
 		else
 			render "professional_loan/step2"
 		end
+  end
+
+  def send_otp
+    sms = SmsService.new
+    @professional_loan.otp = (rand*1000000).to_i
+    @professional_loan.save
+    sms.send_otp(@professional_loan, "Professional Loan")
   end
 
 end

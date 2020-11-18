@@ -30,6 +30,7 @@ class CreateBusinessLoans < ActiveRecord::Migration[5.2]
       t.boolean :terms_and_conditions
       t.integer :business_loan_bank_id
       t.decimal :emi, precision: 20, scale: 2
+      t.string :status
       t.timestamps
     end
     add_index :business_loans, :business_loan_bank_id

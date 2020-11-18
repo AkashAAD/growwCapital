@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "contact_us" => "home#contact_us", as: "contact_us"
   get "about_us" => "home#about_us", as: "about_us"
   get "blog" => "home#blog", as: "blog"
+  get "emi_calculator" => "home#emi_calculator", as: "emi_calculator"
   get "pre_approved" => "home#pre_approved", as: "pre_approved"
   post "pre_approved_offer" => "home#pre_approved_offer", as: "pre_approved_offer"
   post "save_contact_us" => "home#save_contact_us", as: "save_contact_us"
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      get :resend_otp
     end
   end
 
@@ -40,6 +42,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      get :resend_otp
     end
   end
 
@@ -51,6 +54,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      get :resend_otp
     end
   end
 
@@ -62,6 +66,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      get :resend_otp
     end
   end
 
@@ -74,6 +79,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      get :resend_otp
     end
   end
 
@@ -85,6 +91,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      get :resend_otp
     end
   end
 
@@ -96,6 +103,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      get :resend_otp
     end
   end
 
