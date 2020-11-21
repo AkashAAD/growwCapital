@@ -1,0 +1,2 @@
+class HomeLoanTenure < ApplicationRecord
+end

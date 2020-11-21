@@ -178,6 +178,11 @@ end
   puts "Tenure #{ten}"
 end
 
+(1..30).map{|rr|  
+  HomeLoanTenure.create(name: "#{rr} yr")
+  puts "HomeLoanTenure #{rr} yr"
+}
+
 ["3M INDIA LIMITED",
 "AIRPORTS AUTHORITY OF INDIA",
 "ABB LIMITED",

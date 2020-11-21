@@ -131,4 +131,115 @@ $(document).ready(function(){
   });
 
 
+  $(".sldLoanAmount").on('input', function () {
+    var per = (this.value/100000)*100;
+    this.style.background = 'linear-gradient(to right, #0854a0 0%, #82CFD0 ' + per + '%, #fff ' + per + '%, white 100%)';
+    $(".loanAmount").val(this.value);
+    calculateEMI(this.value, $(".loanRoi").val(), $(".loanTen").val());
+  });
+
+  $(".loanAmount").on('input', function () {
+    if(this.value <=1 ){
+      this.value = 1;
+    } else if(this.value >= 100000) {
+      this.value = 100000;
+    };
+    var per = (this.value/100000)*100;
+    $(".sldLoanAmount").css("background", 'linear-gradient(to right, #0854a0 0%, #82CFD0 ' + per + '%, #fff ' + per + '%, white 100%)');
+    $(".sldLoanAmount").val(this.value);
+    calculateEMI(this.value, $(".loanRoi").val(), $(".loanTen").val());
+  });
+
+  $(".sldLoanRoi").on('input', function () {
+    var per = (this.value/100)*100;
+    this.style.background = 'linear-gradient(to right, #0854a0 0%, #82CFD0 ' + per + '%, #fff ' + per + '%, white 100%)';
+    $(".loanRoi").val(this.value);
+    calculateEMI($(".loanAmount").val(), this.value, $(".loanTen").val());
+  });
+
+  $(".loanRoi").on('input', function () {
+    if(this.value <=1 ){
+      this.value = 1;
+    } else if(this.value >= 100) {
+      this.value = 100;
+    };
+    var per = (this.value/100)*100;
+    $(".sldLoanRoi").css("background", 'linear-gradient(to right, #0854a0 0%, #82CFD0 ' + per + '%, #fff ' + per + '%, white 100%)');
+    $(".sldLoanRoi").val(this.value);
+    calculateEMI($(".loanAmount").val(), this.value, $(".loanTen").val());
+  });
+
+  $(".sldLoanTen").on('input', function () {
+    var per = (this.value/500)*100;
+    this.style.background = 'linear-gradient(to right, #0854a0 0%, #82CFD0 ' + per + '%, #fff ' + per + '%, white 100%)';
+    $(".loanTen").val(this.value);
+    calculateEMI($(".loanAmount").val(), $(".loanRoi").val(), this.value);
+  });
+
+  $(".loanTen").on('input', function () {
+    if(this.value <=1 ){
+      this.value = 1;
+    } else if(this.value >= 500) {
+      this.value = 500;
+    };
+    var per = (this.value/500)*100;
+    $(".sldLoanTen").css("background", 'linear-gradient(to right, #0854a0 0%, #82CFD0 ' + per + '%, #fff ' + per + '%, white 100%)');
+    $(".sldLoanTen").val(this.value);
+    calculateEMI($(".loanAmount").val(), $(".loanRoi").val(), this.value);
+  });
+
+  var totAmt = 0;
+  var totRoi = 0;
+  var myPieChart;
+
+  function calculateEMI(amount, roi, tenure) {
+    if(myPieChart) {
+      myPieChart.destroy();
+    }
+    var r = roi / (12 * 100);
+    var t = tenure * 12;
+    emi = (amount * r * (Math.pow(1 + r, t)))/(Math.pow(1 + r, t) - 1);
+    $(".mon-emi").text("₹ " + Math.round(emi));
+    totAmt = Math.round(amount);    
+    $(".pri-amt").text("₹ " + totAmt);
+    $(".tot-amt").text("₹ " + Math.round(Math.round(emi) * t));
+    totRoi = Math.round(Math.round(emi) * t) - Math.round(amount);
+    $(".tot-int").text("₹ " + totRoi);
+    loadChart();
+  }
+
+  window.onload = loadChart();
+  function loadChart() {
+    var ctx = document.getElementById('emiCalcChart').getContext('2d');
+    ctx.canvas.width = 400;
+    ctx.canvas.height = 400;
+    var data = {
+      datasets: [{
+        data: [totAmt, totRoi],
+        backgroundColor: ['#0854a0', '#ee4031'],
+        borderColor: ['#0854a0', '#ee4031'],
+      }],
+      labels: [
+        'Principal Amount',
+        'Interest Amount',
+      ]
+    };
+
+    myPieChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: data,
+      options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      // scales: {
+      //   yAxes: [{
+      //       ticks: {
+      //           beginAtZero:true
+      //       }
+      //   }]
+      // }
+      }
+    });
+  }
+
 });

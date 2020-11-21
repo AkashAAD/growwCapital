@@ -38,6 +38,7 @@
 //= require jquery-ui.js
 //= require jquery.validate.js
 //= require owl.carousel.js
+//= require Chart.min.js
 //= require rails-ujs
 //= require activestorage
 // require turbolinks

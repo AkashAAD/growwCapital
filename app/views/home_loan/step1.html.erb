@@ -18,6 +18,31 @@
   <%= form_for @home_loan, :url => { :action => @home_loan.id.nil? ? "create_otp" : "create_otp" }, html: { id:  "basic_home_loan", class: "basic_home_loan" } do |f| %>
     <div class="container">
       <div class="row">
+        <div class="col-md-12">
+          <!-- <ul class="progress-tracker">
+            <li class="progress-step is-complete">
+              <div class="progress-marker">
+                <a href="www.google.com">sdfd</a>
+              </div>
+            </li>
+            <li class="progress-step is-complete">
+              <div class="progress-marker"></div>
+            </li>
+            <li class="progress-step is-active">
+              <div class="progress-marker"></div>
+            </li>
+
+            <li class="progress-step">
+              <div class="progress-marker"></div>
+            </li>
+
+            <li class="progress-step">
+              <div class="progress-marker"></div>
+            </li>
+          </ul> -->
+        </div>
+      </div>
+      <div class="row">
         <div class="col-md-4">
           <div class="form-group">
             <h3>Personal Details</h3>
@@ -68,7 +93,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <span>Tenure <span>*</span></span>
-            <%= f.select(:tenure, tenure, class: "form-control") %>
+            <%= f.select(:tenure, home_loan_tenure, class: "form-control") %>
           </div>
         </div>        
       </div>

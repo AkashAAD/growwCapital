@@ -140,6 +140,10 @@ module ApplicationHelper
     [['-Select Tenure-','']] + Tenure.pluck(:name, :id)
   end
 
+  def home_loan_tenure
+    [['-Select Tenure-','']] + HomeLoanTenure.pluck(:name, :id)
+  end
+
   def profession_status
     [['-Select Profession Status-',''],
     ['Salaried','salaried'],

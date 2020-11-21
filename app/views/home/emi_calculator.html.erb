@@ -1,3 +1,11 @@
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.js" integrity="sha512-zO8oeHCxetPn1Hd9PdDleg5Tw1bAaP0YmNvPY8CwcRyUk7d7/+nyElmFrB6f7vg4f7Fv4sui1mcep8RIEShczg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js" integrity="sha512-SuxO9djzjML6b9w9/I07IWnLnQhgyYVSpHZx0JV97kGBfTIsUYlWflyuW4ypnvhBrslz1yJ3R+S14fdCWmSmSA==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="anonymous" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js" integrity="sha512-hZf9Qhp3rlDJBvAKvmiG+goaaKRZA6LKUO35oK6EsM0/kjPK32Yw7URqrq3Q+Nvbbt8Usss+IekL7CRn83dYmw==" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" />
+ -->
+
 <section id="secondary-banner" class="dynamic-image-5">
   <div class="container">
     <div class="row align-items-end">
@@ -15,4 +23,44 @@
   </div>
 </section>
 <section class="personal-loan-section custom-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        Loan Amount (₹): <input type="number" class="form-control loanAmount" value="1">
+        <input type="range" min="1" max="100000" value="100" class="slider sldLoanAmount">
+        <hr class="emi-calc">
+        Rate of Interest (%): <input type="number" class="form-control loanRoi" value="1">
+        <input type="range" min="1" max="100" value="1" class="slider sldLoanRoi">
+        <hr class="emi-calc">
+        Loan Tenure (years): <input type="number" class="form-control loanTen" value="1">
+        <input type="range" min="1" max="500" value="1" class="slider sldLoanTen">
+        <hr class="emi-calc">
+        <div class="row">
+          <div class="col-md-6">
+            <label>Monthly EMI</label><br>
+            <span class="mon-emi"></span>
+          </div>
+          <div class="col-md-6">
+            <label>Principal Amount</label><br>
+            <span class="pri-amt"></span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <label>Total Interest</label><br>
+            <span class="tot-int"></span>
+          </div>
+          <div class="col-md-6">
+            <label>Total Amount</label><br>
+            <span class="tot-amt"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div width="" height="">
+          <canvas id="emiCalcChart" width="400" height="400"></canvas>          
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
