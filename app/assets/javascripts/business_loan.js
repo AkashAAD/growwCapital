@@ -286,15 +286,6 @@ $(document).ready(function(){
 				required: true,
 				maxlength: 10
 			},
-			"business_loan_offer[business_pan_number]": {
-				required: true,
-				maxlength: 10,
-				is_pan: true
-			},
-			"business_loan_offer[gst_number]": {
-				required: true,
-				maxlength: 50
-			},
 			"business_loan_offer[address_line1]": {
 				required: true,
 				maxlength: 150

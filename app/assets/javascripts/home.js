@@ -210,36 +210,39 @@ $(document).ready(function(){
 
   window.onload = loadChart();
   function loadChart() {
-    var ctx = document.getElementById('emiCalcChart').getContext('2d');
-    ctx.canvas.width = 400;
-    ctx.canvas.height = 400;
-    var data = {
-      datasets: [{
-        data: [totAmt, totRoi],
-        backgroundColor: ['#0854a0', '#ee4031'],
-        borderColor: ['#0854a0', '#ee4031'],
-      }],
-      labels: [
-        'Principal Amount',
-        'Interest Amount',
-      ]
-    };
+    var ctx = document.getElementById('emiCalcChart');
+    if(ctx){
+      // ctx.getContext('2d');
+      // ctx.canvas.width = 400;
+      // ctx.canvas.height = 400;
+      var data = {
+        datasets: [{
+          data: [totAmt, totRoi],
+          backgroundColor: ['#0854a0', '#ee4031'],
+          borderColor: ['#0854a0', '#ee4031'],
+        }],
+        labels: [
+          'Principal Amount',
+          'Interest Amount',
+        ]
+      };
 
-    myPieChart = new Chart(ctx, {
-      type: 'doughnut',
-      data: data,
-      options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      // scales: {
-      //   yAxes: [{
-      //       ticks: {
-      //           beginAtZero:true
-      //       }
-      //   }]
-      // }
-      }
-    });
+      myPieChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        // scales: {
+        //   yAxes: [{
+        //       ticks: {
+        //           beginAtZero:true
+        //       }
+        //   }]
+        // }
+        }
+      });
+    }
   }
 
 });
