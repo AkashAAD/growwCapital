@@ -1,0 +1,96 @@
+.pb-feature-section {
+	margin-top: 50px;
+  box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
+  padding-top: 20px;
+  border-radius: 10px;
+}
+
+.pb-feature-section .pb-feature {
+  margin-bottom: 60px;
+}
+
+.pb-feature .top-line, .top-line {
+  height: 2px;
+  width: 40px;
+  background-color: #1b1dc7;
+  display: block;
+  margin-bottom: 16px;
+}
+.pb-feature h3 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1b1dc7;
+  max-width: 360px;
+  margin-bottom: 16px;
+}
+
+.pb-feature .read-more-btn {
+   margin-top: 16px;
+}
+.read-more-btn {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1b1dc7;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  background-color: #e6eaef;
+  border-radius: 4px;
+  display: inline-block;
+  transition: all .4s;
+}
+
+.pb-feature-section .pb-feature {
+  margin-bottom: 60px;
+}
+
+.pb-feature img {
+  margin-bottom: 16px;
+}
+
+.pb-feature p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #69829f;
+  margin-bottom: 16px;
+}
+
+.lkcarousel .carousel-inner {
+  box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
+  border-radius: 10px;  
+}
+
+.lkcarousel .card .card-title {
+  font-size: 25px;
+  color: #1D1D1D;
+  font-weight: 600;
+  margin: 0;
+}
+
+.lkcarousel .card {
+  box-shadow: none;
+  width: 100%;
+  .external-img {
+    width: 563px;
+    height: 356px;
+  }
+}
+
+.lkcarousel {
+  .card-block {
+    padding: 20px;
+  }
+}
+
+.lkcarousel .card .card-designation {
+  font-size: 15px;
+  color: rgba(29, 29, 29, 0.58);
+  font-weight: 600;
+  margin: 1.2rem 0 2rem;
+}
+
+.card-text {
+  p {
+    font-size: 16px;
+  }
+}

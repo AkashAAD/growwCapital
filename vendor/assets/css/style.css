@@ -84,11 +84,11 @@ body {
 }
 
 a {
-	color: #c7081b;
+	color: #000000;
 }
 
 a:hover {
-	color: #c7081b;
+	color: #1b1dc7;
 }
 
 p, h1, h2, h3, h4, h5, h6 {
@@ -619,7 +619,7 @@ header.affix .bottom-header {
 header .navbar-brand img {
 	height: 100%;
 	width: 300px;
-	margin-top: 6px;
+	margin-top: 3px;
 }
 
 .bottom-header .navbar {
@@ -631,6 +631,7 @@ header .bottom-header .navbar-default {
 	background-color: transparent;
 	border-color: transparent;
 	padding: 0;
+	height: 50px;
 }
 
 header .navbar-toggler {
@@ -645,7 +646,7 @@ header.affix .navbar-toggler {
 
 header .bottom-header .navbar-default .navbar-brand {
 	padding: 21px 0 0 0;
-	height: 75px;
+	height: 45px;
 	overflow: hidden;
 	transition-duration: 0s;
 	float: left;
@@ -653,8 +654,8 @@ header .bottom-header .navbar-default .navbar-brand {
 
 header .bottom-header .navbar-default .navbar-nav>li>a {
 	display: inline-block;
-	text-transform: uppercase;
-	font-weight: 700;
+	/*text-transform: capitalize;*/
+	font-weight: normal;
 	font-size: 14px;
 	color: #000;
 	font-family: 'Open Sans', sans-serif;
@@ -666,12 +667,15 @@ header .bottom-header .navbar-default .navbar-nav>li>a {
 .bottom-header .navbar-default .navbar-nav>.active > a,
 .bottom-header .navbar-default .navbar-nav>.active > a:hover,
 .bottom-header .navbar-default .navbar-nav>.active > a:focus {
-	background-color: #ee4031;
-	color: #fff;
+	/*background-color: #ee4031;*/
+	/*color: #2742f0;*/
+	/*border-bottom: 1px solid;*/
 }
 
 .bottom-header .navbar-default .navbar-nav> li a:hover {
-	background-color: #ee4131;
+	/*background-color: #ee4131;*/
+	color: #2742f0;
+	border-bottom: 1px solid;
 }
 
 header.affix {
@@ -680,7 +684,7 @@ header.affix {
 }
 
 header.affix .bottom-header .navbar-default .navbar-brand {
-	padding: 11px 0 0 15px;
+	padding: 5px 0 0 10px;
 	height: 59px;
 }
 
@@ -1306,7 +1310,7 @@ table.right_table {
 	position: relative;
 	display: block;
 	z-index: 22;
-	margin-top: 77px;
+	margin-top: 52px;
 }
 
 .boxed_layout .banner-wrap {
@@ -2255,7 +2259,7 @@ input[type=text]:focus, .leave-comments form input[type=text]:focus, .leave-comm
 }
 
 footer {
-	background-color: #0854a0;
+	background-image: linear-gradient(90deg, #01000f 0%, #030303 35%, #2e4f56 100%);
 	padding: 47px 0 64px 0;
 	color: #fff;
 	font-size: 14px;
@@ -2325,7 +2329,7 @@ footer form input[type=text] {
 
 .copyright-wrap {
 	padding: 18px 0 20px 11px;
-	background-color: #072440;
+	background-image: linear-gradient(90deg, #39848b 0%, #040505 35%, #1c3034 100%);
 	color: #999999;
 	font-size: 13px;
 }
@@ -2636,7 +2640,7 @@ footer.design_2 h4 {
 .back_to_top {
 	width: 40px;
 	height: 40px;
-	background-color: rgba(0, 0, 0, 0.65);
+	background-color: rgb(8 84 160);
 	color: #FFF;
 	cursor: pointer;
 	text-align: center;
@@ -7170,7 +7174,7 @@ body.pattern_32 {
 }
 
 section.content, .car-block-wrap, .welcome-wrap {
-	background: #d0d0d0;
+	background: #ffffff;
 }
 
 .boxed_layout.margin {

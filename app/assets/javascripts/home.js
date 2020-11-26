@@ -53,26 +53,37 @@ $(document).ready(function(){
     {loan: 'Home Loan', link: "/home_loan/step1", type: 'loan'},
     {loan: 'Loan Against Property', link: "/loan_against_property/step1", type: 'loan'},
     {loan: 'Car Loan', link: "/new_car_loan/step1", type: 'loan'},
-    {loan: 'Used Loan', link: "/used_car_loan/step1", type: 'loan'},
-    {loan: 'Axis Bank Credit Card', link: "#", type: 'card'},
-    {loan: 'SBI Bank Credit Card', link: "#", type: 'card'},
-    {loan: 'IndusInd Bank Credit Card', link: "#", type: 'card'},
-    {loan: 'HDFC Bank Credit Card', link: "#", type: 'card'},
-    {loan: 'ICICI Bank Credit Card', link: "#", type: 'card'}];
+    {loan: 'Used Car Loan', link: "/used_car_loan/step1", type: 'loan'},
+    // {loan: 'Axis Bank Credit Card', link: "#", type: 'card'},
+    // {loan: 'SBI Bank Credit Card', link: "#", type: 'card'},
+    // {loan: 'IndusInd Bank Credit Card', link: "#", type: 'card'},
+    // {loan: 'HDFC Bank Credit Card', link: "#", type: 'card'},
+    // {loan: 'ICICI Bank Credit Card', link: "#", type: 'card'}
+    ];
+
+  $(".search-loan").focus(function(){
+    searchLoans(this.value, 'focus');
+  }).blur(function() {
+    $('#loan-autocomplete-list').remove();
+  });
+
 	$(".search-loan").keydown(delay(function () {
-    var _searchVal = this.value;
+    searchLoans(this.value, 'key');
+	}));
+
+  function searchLoans(_searchVal, state) {
     var $html = '';
-    if(!_searchVal) {
+    if(!_searchVal && state == 'key') {
       $('#loan-autocomplete-list').remove();
       return false;
     }
     $('#loan-autocomplete-list').remove();    
     $html += '<ul class="predictions" >';
     var loans = '<li class="loans">Loans</li>';
-    var cards = '<li class="cards">Cards</li>';
+    var cards = '<li class="cards">Credit Card</li>';
     predictions.forEach(function (item) {
-    	if (item.loan.toLocaleLowerCase().includes(_searchVal.toLocaleLowerCase())) {
-    		if(item.type == 'loan') {
+      if ((_searchVal == '' && state == 'focus') || item.loan.toLocaleLowerCase().includes(_searchVal.toLocaleLowerCase())) {
+        if(item.type == 'loan') {
           var loan = '';
           loan += '<li>';
           loan += '<a href="'+ item.link +'" class="">';
@@ -80,7 +91,7 @@ $(document).ready(function(){
           loan += '</a>';
           loan += '</li>';
           loans += loan;
-    		} else if(item.type == 'card') {
+        } else if(item.type == 'card') {
           var card = '';
           card += '<li>';
           card += '<a href="'+ item.link +'" class="">';
@@ -88,8 +99,8 @@ $(document).ready(function(){
           card += '</a>';
           card += '</li>';
           cards += card;
-    		}
-    	}
+        }
+      }
     });
     $html += loans;
     $html += cards;
@@ -101,7 +112,7 @@ $(document).ready(function(){
     var innerDiv = document.createElement("DIV");
     innerDiv.innerHTML = $html;
     a.append(innerDiv);
-	}));
+  }
 
   $("#pre_approved_offer").validate({
     rules: {

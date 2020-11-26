@@ -489,7 +489,7 @@ body header.affix {
 }
 
 .banner-wrap {
-	margin-top: 77px !important;
+	margin-top: 52px !important;
 }
 
 .navbar-collapse {
@@ -649,7 +649,7 @@ header .right_bar {
 }
 
 header .bottom-header .navbar-default .navbar-brand {
-	padding: 15px 0 0 15px;
+	padding: 5px 0 0 10px;
 }
 
 .inner-page.inventory-listing .content-nav {
@@ -2485,7 +2485,7 @@ header .left_bar {
 
 header .bottom-header .navbar-default .navbar-nav>li>a {
 	font-size: 14px;
-	padding: 15px 10px 15px 10px !important;
+	padding: 5px 5px 5px 5px !important;
 }
 
 .flip {
@@ -2613,7 +2613,7 @@ footer .container .row .col-md-3:nth-of-type(3n) {
 }
 
 header .bottom-header .navbar-default .navbar-brand {
-	padding: 10px 0 0 0;
+	padding: 0px 0 0 0;
 }
 
 header.affix .bottom-header .navbar-default .navbar-brand {

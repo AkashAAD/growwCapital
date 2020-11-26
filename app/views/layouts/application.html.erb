@@ -71,29 +71,35 @@
                     </span>                  
                   <% end %>
               </div>
+              <div class="desktop-menu-dropdown collapse navbar-collapse">
+                <form action="/" style="display: inline-flex;">
+                  <i class="fa fa-search loan-search-ico"></i>
+                  <input type="text" placeholder="Search here.." class="search-loan" name="search">
+                </form>
+              </div>
               <div class="desktop-menu-dropdown collapse navbar-collapse" id="navbar-collapse-desktop">
-                <ul class="nav navbar-nav pull-right">
+                <ul class="nav navbar-nav pull-right desktop-nav">
                   <li class="<%= active_tab('index') %>">
                     <%= link_to "Home", root_path, method: :get %>
                   </li>
-                  <li class="<%= active_tab('pre_approved') %>">
-                    <%= link_to "Pre Approved Offers", pre_approved_path, method: :get %>
+                  <li class="<%#= active_tab('pre_approved') %>">
+                    <%= link_to "Pre-approved Offers", pre_approved_path, method: :get %>
                   </li>
-                  <li class="<%= active_tab('about_us') %>">
-                    <%= link_to "About Us", about_us_path, method: :get %>
-                  </li>
-                  <li class="<%= active_tab('emi_calculator') %>">
+                  <li class="<%#= active_tab('emi_calculator') %>">
                     <%= link_to "EMI Calculator", emi_calculator_path, method: :get %>
                   </li>
-                  <li class="<%= active_tab('blog') %>">
+                  <li class="<%#= active_tab('contact_us') %>">
+                    <%= link_to "Contact us", contact_us_path, method: :get %>
+                  </li>
+                  <li class="<%#= active_tab('about_us') %>">
+                    <%= link_to "About us", about_us_path, method: :get %>
+                  </li>
+                  <li class="<%#= active_tab('blog') %>">
                     <%= link_to "Blog", blog_path, method: :get %>
                   </li>
-                  <li class="<%= active_tab('contact_us') %>">
-                    <%= link_to "Contact Us", contact_us_path, method: :get %>
-                  </li>
                   <%if current_user.nil?%>
-                    <li class="<%= active_tab('contact_us') %>">
-                      <%= link_to "Login", new_user_session_path, method: :get %>
+                    <li class="<%#= active_tab('contact_us') %>">
+                      <%= link_to "Sign In", new_user_session_path, method: :get, class: "sign-in" %>
                     </li>
                   <% else %>
                     <li>
@@ -127,7 +133,7 @@
                   </li>
                   <%if current_user.nil?%>
                     <li class="<%= active_tab('contact_us') %>">
-                      <%= link_to "Login", new_user_session_path, method: :get %>
+                      <%= link_to "Sign In", new_user_session_path, method: :get %>
                     </li>
                   <% else %>
                     <li>
@@ -196,7 +202,7 @@
             <div class="footer-contact">
               <ul>
                 <li><i class="fa fa-map-marker"></i> <strong>Address:</strong> 2nd Floor, Gupta Travels Building, Lokmat Square, Nagpur - 440012</li>
-                <li><i class="fa fa-phone"></i> <strong>Phone:</strong><a href="tel:+918806601122">+91-88066-01122</a></li>
+                <li><i class="fa fa-phone"></i> <strong>Phone:</strong><a href="tel:+918806644344">+91-88066-44344</a></li>
                 <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong><a href="mailto:support@growwcapital.com">support@growwcapital.com</a></li>
               </ul>
               <i class="fa fa-location-arrow back_icon"></i>
