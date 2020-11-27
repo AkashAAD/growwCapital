@@ -63,9 +63,20 @@ $(document).ready(function(){
 
   $(".search-loan").focus(function(){
     searchLoans(this.value, 'focus');
-  }).blur(function() {
-    $('#loan-autocomplete-list').remove();
   });
+
+  // .blur(function(event) {
+  //   debugger
+  //   $('#loan-autocomplete-list').remove();
+  // });
+
+  $(document).click(function(e) {
+    if(e.target.id != "search-loan") {
+      $('#loan-autocomplete-list').remove();
+    }
+  });
+
+
 
 	$(".search-loan").keydown(delay(function () {
     searchLoans(this.value, 'key');
@@ -86,7 +97,7 @@ $(document).ready(function(){
         if(item.type == 'loan') {
           var loan = '';
           loan += '<li>';
-          loan += '<a href="'+ item.link +'" class="">';
+          loan += '<a href="'+ item.link +'" class="s-loan">';
           loan += item.loan;
           loan += '</a>';
           loan += '</li>';
@@ -94,7 +105,7 @@ $(document).ready(function(){
         } else if(item.type == 'card') {
           var card = '';
           card += '<li>';
-          card += '<a href="'+ item.link +'" class="">';
+          card += '<a href="'+ item.link +'" class="s-loan">';
           card += item.loan;
           card += '</a>';
           card += '</li>';
