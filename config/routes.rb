@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      patch :updated_address
       get :resend_otp
     end
   end
@@ -42,6 +43,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      patch :update_address
       get :resend_otp
     end
   end
@@ -53,6 +55,7 @@ Rails.application.routes.draw do
       patch :update_against_property_assets
       post :create_otp
       patch :update_otp_status
+      patch :update_address
       patch :select_bank
       get :resend_otp
     end
@@ -79,6 +82,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      patch :updated_address
       get :resend_otp
     end
   end

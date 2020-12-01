@@ -15,23 +15,22 @@
     </div>
 </section>
 <section class="personal-loan-section custom-container">
-  <%= form_for @personal_loan, :url => { :action => @personal_loan.id.nil? ? "update_otp_status" : "update_otp_status"}, html: {id:  "otp_personal_loan", class: "otp_personal_loan"} do |f| %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <h3>Verify OTP</h3>
-          </div>
-          <div class="form-group">
-            <span>OTP <span>*</span></span>
-            <%= f.number_field(:otp, class: "form-control", value: "") %>
-          </div> 
-          <button type="submit" class="btn btn-default">Submit</button>
-          <a href="javascript:void(o)" id="personal-loan-resend-otp" style="float: right;">Resend</a>
-        </div>
-        <div class="col-md-4"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <!-- <h3>Personal Details</h3> -->
       </div>
     </div>
-  <%end%>
+    <%= form_for @personal_loan, :url => { :action => "update_employer" }, html: {id:  "personal_loan", class: "personal_loan"} do |f| %>
+      <div class="container">
+        <div class="row heading">
+          <div class="col-md-6">
+            <h3>Loan Application</h3>
+          </div>
+        </div>    
+        <%= render partial: "form2", locals: { f: f } %>
+        <button type="submit" class="btn btn-custom"><b>Process</b></button>
+      </div>
+    <%end%>
+  </div> 
 </section>

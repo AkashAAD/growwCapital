@@ -15,120 +15,35 @@
     </div>
 </section>
 <section class="business-loan-section custom-container">
-  <%= form_for @business_loan_offer, :url => { :action => @business_loan_offer.id.nil? ? "create_business_offer" : "update_business_offer" }, html: {id:  "business_loan_offer", class: "business_loan_offer"} do |f| %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h3>Business Details</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business Name <span>*</span></span>
-            <%= f.text_field(:business_name, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Nature Of Business <span>*</span></span>
-            <%= f.select(:business_nature, business_nature, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Type Of Organization <span>*</span></span>
-            <%= f.select(:industry_type, industry_type, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Present Work Experience(Years) <span>*</span></span>
-            <%= f.select(:business_years, business_year, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Current Paying EMI (Rs.) <span>*</span></span>
-            <%= f.number_field(:current_emi, step: 0.5, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Annual Turnover <span>*</span></span>
-            <%= f.select(:annual_turnover, annual_turnover, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Gross Annual Profit <span>*</span></span>
-            <%= f.number_field(:gross_annual_profit, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Business Pan Number: <span></span></span>
-            <%= f.text_field(:business_pan_number, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>GST Number <span></span></span>
-            <%= f.text_field(:gst_number, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Business Property Type: <span>*</span></span>
-            <%= f.select(:residence_type, residence_type, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business Address Line 1: <span>*</span></span>
-            <%= f.text_area(:address_line1, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business Address Line 2: <span>*</span></span>
-            <%= f.text_area(:address_line2, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business Landmark: <span>*</span></span>
-            <%= f.text_area(:landmark, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business State: <span>*</span></span>
-            <%= f.select(:state, states, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business City: <span>*</span></span>
-            <%= f.select(:city, cities(f, :state, :city), class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business Pincode: <span>*</span></span>
-            <%= f.number_field(:pincode, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+  <div class="container">
+    <div class="row">
+      <table class="table loan-table">
+        <thead class="thead-light">
+          <tr>
+            <th>Bank</th>
+            <th>Interest Rate</th>
+            <th>Processing Fee</th>
+            <th>EMI</th>
+            <th>Proceed</th>
+          </tr>
+        </thead>
+        <% @banks.each do |bank| %>
+          <tr>
+            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
+            <td><b><%= percentage_roi(bank.business_loan_bank_info.roi) %><br><span>(Floating)</span></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.business_loan_bank_info.processing_fee, @business_loan.loan_amount), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency(calculate_emi(bank.business_loan_bank_info, @business_loan), unit: "₹ ") %></b></td>
+            <td>
+              <b>
+                <%= form_for @business_loan, :url => { :action => "select_bank" }, html: {id:  "business_loan_bank", class: "business_loan_bank"} do |f| %>
+                  <input type="hidden" name="business_loan_bank[id]" value="<%= bank.business_loan_bank_info.id %>">
+                  <button type="submit" class="btn btn-default">Apply</button>
+                <%end%>
+              </b>
+            </td>
+          </tr>
+        <%end%>
+      </table>
     </div>
-  <%end%>
+  </div>
 </section>

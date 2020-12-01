@@ -17,39 +17,41 @@
 <section class="business-loan-section custom-container">
   <%= form_for @home_loan, :url => { :action => "update_home_assets" }, html: { id:  "home_loan_assets", class: "home_loan_assets" } do |f| %>
     <div class="container">
-      <div class="row">
+      <div class="row heading">
         <div class="col-md-6">
-          <h3>Upload Documents</h3>
+          <h3>Upload KYC Document</h3>
         </div>
       </div>
-      <div class="row"> 
+      <div class="row first-row"> 
         <div class="col-md-6">
           <div class="form-group">
-            <span>Persoanl Bank Statement <span>*</span></span>
-            <%= f.file_field(:persoanl_bank_statement, class: "") %>
-          </div>
-          <div class="form-group">
-            <span>Id Proof <span>*</span></span>
-            <%= f.file_field(:id_proof, class: "") %>
-          </div>
-          <div class="form-group">
-            <span>Salary Slip <span>*</span></span>
-            <%= f.file_field(:salary_slip, class: "") %>
+            <label>Aadhar Card(front)
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <div class="wrapper">
+              <div class="file-upload">
+                <%= f.file_field(:aadhar_front, class: "") %>
+                <i class="fa fa-arrow-up"></i>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-md-6">
           <div class="form-group">
-            <span>Business Bank_statement <span>*</span></span>
-            <%= f.file_field(:business_bank_statement, class: "") %>
-          </div>
-          <div class="form-group">
-            <span>ITR Copy <span>*</span></span>
-            <%= f.file_field(:itr_copy, class: "") %>
-          </div>
-          <div class="form-group">
-            <span>Passport Photo <span>*</span></span>
-            <%= f.file_field(:passport_photo, class: "") %>
-          </div>
+            <label>Aadhar Card(Back)
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <div class="wrapper">
+              <div class="file-upload">
+                <%= f.file_field(:aadhar_back, class: "") %>
+                <i class="fa fa-arrow-up"></i>
+              </div>
+            </div>
+          </div>          
         </div>
       </div>
       <button type="submit" class="btn btn-default">Submit</button>

@@ -15,62 +15,58 @@
     </div>
 </section>
 <section class="personal-loan-section custom-container">
-  <%= form_for @business_loan, :url => { :action => @business_loan.id.nil? ? "create_otp" : "create_otp"}, html: {id:  "basic_business_loan", class: "basic_business_loan"} do |f| %>
+  <%= form_for @business_loan, :url => { :action => @business_loan.id.nil? ? "create_otp" : "update"}, html: {id:  "basic_business_loan", class: "basic_business_loan"} do |f| %>
     <div class="container">
-      <div class="row">
+      <div class="row heading">
         <div class="col-md-4">
           <div class="form-group">
             <h3>Personal Details</h3>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row first-row">
         <div class="col-md-6">
           <div class="form-group">
-            <span>First Name <span>*</span></span>
-            <%= f.text_field(:first_name, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Middle Name <span>*</span></span>
-            <%= f.text_field(:middle_name, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Last Name <span>*</span></span>
-            <%= f.text_field(:last_name, class: "form-control") %>
-          </div>
-        </div>        
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Mobile Number <span>*</span></span>
-            <%= f.number_field(:mobile_number, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Email <span>*</span></span>
-            <%= f.text_field(:email, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Loan Amount <span>*</span></span>
+            <label>Your desired loan amount
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
             <%= f.number_field(:loan_amount, class: "form-control") %>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Tenure <span>*</span></span>
+            <label>Tenure
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
             <%= f.select(:tenure, tenure, class: "form-control") %>
           </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Gross Annual Turnover
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:annual_turnover, annual_turnover, class: "form-control") %>
+          </div>
         </div>        
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Gross Annual Profit
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.number_field(:gross_annual_profit, class: "form-control") %>
+          </div>
+        </div>
       </div>
       <div class="row">
         <div class="col-md-4">

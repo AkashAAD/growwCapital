@@ -15,46 +15,45 @@
     </div>
 </section>
 <section class="business-loan-section custom-container">
-  <%= form_for @business_loan_offer, :url => { :action => "update_business_offer_assets" }, html: {id:  "business_loan_offer_assets", class: "business_loan_offer_assets"} do |f| %>
+  <%= form_for @business_loan, :url => { :action => "update_business_offer_assets" }, html: {id:  "business_loan_offer_assets", class: "business_loan_offer_assets"} do |f| %>
     <div class="container">
-      <div class="row">
+      <div class="row heading">
         <div class="col-md-6">
-          <h3>Upload Documents</h3>
+          <h3>Upload KYC Document</h3>
         </div>
       </div>
-      <div class="row"> 
-        <div class="col-md-6">
+      <div class="row first-row"> 
+        <div class="col-md-3">
           <div class="form-group">
-            <span>Bank Statement Saving or Current Account <span title="Last 6 months">(?)</span><span>*</span></span>
-            <%= f.file_field(:bank_statement, class: "") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :bank_statement) %></p>
-          </div>
-          <div class="form-group">
-            <span>Id Proof <span title="Pan Card, driving licence, aadhar or voting card">(?)</span><span>*</span></span>
-            <%= f.file_field(:id_proof, class: "") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :id_proof) %></p>
-          </div>
-          <div class="form-group">
-            <span>Residential Address Proof <span title="Aadhar card, Voter card, Property tax receipt, Utility Bill, Passport, Rent Agreement, Gas passbook and receipt, Bank Statement">(?)</span><span>*</span></span>
-            <%= f.file_field(:residential_address_proof, class: "") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :residential_address_proof) %></p>
+            <label>Aadhar Card(Front) <label title="Last 6 months">(?)</label></label>
+            <div class="wrapper">
+              <div class="file-upload">
+                <%= f.file_field(:aadhar_card_front, class: "") %>
+                <i class="fa fa-arrow-up"></i>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-3">
           <div class="form-group">
-            <span>Business Address Proof <span title="Shockup licence, Utility Bill, Rent Agreement">(?)</span><span>*</span></span>
-            <%= f.file_field(:office_address_proof, class: "") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :office_address_proof) %></p>
+            <label>Aadhar Card(Back) <label title="Pan Card, driving licence, aadhar or voting card">(?)</label></label>
+            <div class="wrapper">
+              <div class="file-upload">
+                <%= f.file_field(:aadhar_card_back, class: "") %>
+                <i class="fa fa-arrow-up"></i>
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="col-md-3">
           <div class="form-group">
-            <span>ITR Copy <span></span></span>
-            <%= f.file_field(:itr_copy, class: "") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :itr_copy) %></p>
-          </div>
-          <div class="form-group">
-            <span>Passport Photo <span>*</span></span>
-            <%= f.file_field(:passport_photo, class: "") %>
-             <p class="error"><%= show_errors(@business_loan_offer, :passport_photo) %></p>
+            <label>Shockup licence <label title="Aadhar card, Voter card, Property tax receipt, Utility Bill, Passport, Rent Agreement, Gas passbook and receipt, Bank Statement">(?)</label></label>
+            <div class="wrapper">
+              <div class="file-upload">
+                <%= f.file_field(:shockup_licence, class: "") %>
+                <i class="fa fa-arrow-up"></i>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -16,6 +16,10 @@ module ApplicationHelper
     end
   end
 
+  def only_cities
+    [['-Select City-','']] + City.all.map{ |val| [val.name, val.slug] }
+  end
+
   def degrees(obj)
     if obj.object.profession_type.blank?
       [['-Select Degree-','']]
@@ -41,7 +45,7 @@ module ApplicationHelper
   end
 
   def gender
-  	[['-Select Gender-',''], ['Male','male'], ['Female','female'], ['Transgender','transgender']]
+  	[['-Select Gender-',''], ['Male','male'], ['Female','female']]
   end
 
   def is_rbi_offer
@@ -112,6 +116,10 @@ module ApplicationHelper
     [['-Select Bank Name-','']] + Bank.pluck(:name, :id)
   end
 
+  def persoanl_bank_name
+    [['-Select Bank Name-','']] + [['Cheque','cheque']] + [['Cash','cash']] + Bank.pluck(:name, :id)
+  end
+
   def open_land_constructed_property
     [['-Select Land Type-',''], ["Residential", "residential"], ["Commercial", "commercial"]]
   end
@@ -169,6 +177,10 @@ module ApplicationHelper
     t = personal_loan.tenure * 12
     emi = (personal_loan.loan_amount * r * ((1 + r)**t))/((1 + r)**t - 1)
     return "%.2f" % emi
+  end
+
+  def existing_card
+    [['-Select Option-', ''], ['Yes','true'], ['No', 'false']]
   end
 
 end

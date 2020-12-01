@@ -2,7 +2,7 @@ class PersonalLoanController < ApplicationController
   before_action :create_personal_loan, only: [:create, :create_otp]
   before_action :create_personal_loan_employer, only: [:create_employer]
   before_action :update_personal_loan, only: [:update]
-  before_action :update_personal_loan_employer, only: [:update_employer]
+  before_action :update_personal_loan_employer, only: [:update_employer, :updated_address]
 	before_action :personal_loan_assets, only: [:update_personal_loan_assets]
   before_action :apply_loan, only: [:select_bank]
 
@@ -10,26 +10,25 @@ class PersonalLoanController < ApplicationController
   steps :step1, :step2, :step3, :step4, :step5, :step6, :step7
 
 	def show
-			# session[:personal_loan_id] = nil
+		# session[:personal_loan_id] = nil
 		id = session[:personal_loan_id]
 		case params[:id]
 		when "step1"
 			@personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
-      return redirect_to personal_loan_path("step2") if !@personal_loan.otp_verified && !@personal_loan.otp.blank?
-      return redirect_to personal_loan_path("step3") if @personal_loan.otp_verified
     when "step2"
       @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
-      return redirect_to personal_loan_path("step3") if @personal_loan.otp_verified
-		when "step3", "step4", "step6"
-			@personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
-      return redirect_to personal_loan_path("step2") unless @personal_loan.otp_verified
-			@employer_detail =  @personal_loan.employer_detail.try(:id) ? @personal_loan.employer_detail : EmployerDetail.new
-    when "step5"
+    when "step3"
+      @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
+      return redirect_to personal_loan_path("step4") if @personal_loan.otp_verified
+		when "step4", "step6"
       @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
       @banks = @personal_loan.banks
-      return redirect_to personal_loan_path("step2") unless @personal_loan.otp_verified
+      return redirect_to personal_loan_path("step1") unless @personal_loan.otp_verified
+    when "step5"
+      @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
+      return redirect_to personal_loan_path("step1") unless @personal_loan.otp_verified
     when "step7"
-      @personal_loan =  get_personal_loan(id) #PersonalLoan.last
+      @personal_loan = get_personal_loan(id) #PersonalLoan.last
       LoanMailer.personal_loan(@personal_loan).deliver_later
       session[:personal_loan_id] = nil
 		end
@@ -43,14 +42,14 @@ class PersonalLoanController < ApplicationController
 
   def update_otp_status
     @personal_loan = get_personal_loan(session[:personal_loan_id])
-    if @personal_loan.otp.eql?(params[:personal_loan][:otp].to_i)
+    if !@personal_loan.otp.eql?(params[:personal_loan][:otp].to_i)
       @personal_loan.otp_verified = true
       @personal_loan.save
       flash[:notice] = "The entered OTP verified successfully."
-      redirect_to personal_loan_path("step3")
+      redirect_to personal_loan_path("step4")
     else
       flash[:error] = "The entered OTP is not valid."
-      redirect_to personal_loan_path("step2")
+      redirect_to personal_loan_path("step3")
     end
   end
 
@@ -59,23 +58,26 @@ class PersonalLoanController < ApplicationController
 	end
 
   def update
-    create_update_personal_loan(@update_status_pl, "Personal Loan updated successfully.", personal_loan_path("step4"))
-  end
-
-  def create_employer
-    create_update_personal_loan_employer(@employer_detail.save, "Personal Loan employer_detail saved successfully.", personal_loan_path("step5"))
+    create_update_personal_loan(@update_status_pl, "Personal Loan updated successfully.", personal_loan_path("step2"))
   end
 
   def update_employer
-    create_update_personal_loan_employer(@update_status_pe, "Personal Loan employer_detail updated successfully.", personal_loan_path("step5"))
+    unless @personal_loan.otp_verified
+      send_otp
+    end
+    create_update_personal_loan(@update_status_pe, "Personal Loan employer_detail updated successfully.", personal_loan_path("step3"))
   end
 
   def select_bank
-    create_update_personal_loan_employer(@update_status_pe, "Personal Loan bank selected successfully.", personal_loan_path("step6"))
+    create_update_personal_loan(@update_status_pe, "Personal Loan bank selected successfully.", personal_loan_path("step5"))
+  end
+
+  def updated_address
+    create_update_personal_loan(@update_status_pe, "Personal Loan updated successfully.", personal_loan_path("step6"))
   end
 
   def update_personal_loan_assets
-		create_update_personal_loan_employer(@update_status_pl, "Personal Loan updated successfully.", personal_loan_path("step7"))
+		create_update_personal_loan(@update_status_pl, "Personal Loan updated successfully.", personal_loan_path("step7"))
   end
 
   def get_employer
@@ -90,56 +92,35 @@ class PersonalLoanController < ApplicationController
 
 	private
 	def personal_loan_params
-    params.require(:personal_loan).permit(:first_name,
-    	:middle_name,
-    	:last_name,
-    	:dob,
-    	:gender,
-    	:marital_status,
-    	:highest_qualification,
-    	:no_of_dependent,
-    	:current_residency_since_year,
-    	:current_city_since_year,
-    	:pan_number,
-    	:purpose_of_loan,
-    	:address_line1,
-    	:address_line2,
-    	:landmark,
-    	:city,
-    	:state,
-    	:pincode,
-    	:residential_type,
-      :mobile_number,
-      :email,
-      :loan_amount,
-      :tenure,
-      :terms_and_conditions)
-	end
-
-	def employer_detail_params
-    params.require(:employer_detail).permit(:employer_name,
-    	:monthly_net_salary,
-    	:office_email,
-    	:years_in_current_job,
-    	:designation,
-    	:office_address_line1,
-    	:office_address_line2,
-    	:landmark,
-    	:office_state,
-    	:office_city,
-    	:office_pincode,
-    	:mailing_address,
-    	:mobile_number,
-    	:salary_bank_account_name,
-    	:branch_name,
-    	:current_emi,
-    	:first_name,
-    	:last_name,
-    	:ref_mobile_number)
+    params.require(:personal_loan).permit(:full_name,
+     :employer_name,
+     :tenure,
+     :monthly_net_salary,
+     :email,
+     :dob,
+     :address,
+     :city,
+     :pincode,
+     :office_address,
+     :office_city,
+     :office_pincode,
+     :loan_amount,
+     :mobile_number,
+     :otp,
+     :otp_verified,
+     :reference_number,
+     :terms_and_conditions,
+     :personal_loan_bank_id,
+     :current_emi,
+     :existing_card,
+     :bank_name,
+     :status,
+     :id_proof_front,
+     :id_proof_back)
 	end
 
 	def personal_loan_assets_params
-    params.require(:personal_loan).permit(:id_proof, :address_proof, :salary_slip, :passport_photo, :bank_statement)
+    params.require(:personal_loan).permit(:id_proof_front, :id_proof_back)
 	end
 
 	def create_personal_loan
@@ -152,7 +133,7 @@ class PersonalLoanController < ApplicationController
 
 	def update_personal_loan_employer
 		get_personal_loan(session[:personal_loan_id])
-		@update_status_pe = @personal_loan.employer_detail.update_attributes(employer_detail_params)
+		@update_status_pe = @personal_loan.update_attributes(personal_loan_params)
 	end
 
 	def create_personal_loan_employer
@@ -163,7 +144,7 @@ class PersonalLoanController < ApplicationController
 
 	def personal_loan_assets
 		get_personal_loan(session[:personal_loan_id])
-		@update_status_pl = @personal_loan.update_attributes(personal_loan_assets_params)
+		@update_status_pl = @personal_loan.update_attributes(personal_loan_params)
 	end
 
   def apply_loan
@@ -174,10 +155,7 @@ class PersonalLoanController < ApplicationController
 
 	def create_update_personal_loan(status, message, path)
 		if status
-			session[:personal_loan_id] = @personal_loan.id
-      unless @personal_loan.otp_verified
-        send_otp
-      end
+      session[:personal_loan_id] = @personal_loan.id if session[:personal_loan_id].nil?
 			flash[:notice] = message
 			redirect_to path
 		else

@@ -1,3 +1,28 @@
 .business-loan-section {
   padding: 50px;
 }
+
+.basic_business_loan .container, .update_business_offer .container, .business_loan_address .container, .business_loan_offer_assets .container{
+	padding: 0px 15px 15px 15px;
+	box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
+	border-radius: 10px;	
+}
+
+.basic_business_loan .container .heading, .update_business_offer .container .heading, .business_loan_address .container .heading, .business_loan_offer_assets .container .heading,{
+  height: 70px;
+  background: linear-gradient(135deg, #294e9b, #6c6ea0);
+  color: #ffffff;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.basic_business_loan .container .heading h3, .update_business_offer .container .heading h3, .business_loan_address .container .heading h3, .business_loan_offer_assets .container .heading h3{
+  padding-top: 15px;
+}
+
+.basic_business_loan .form-group label, .update_business_offer .form-group label, .business_loan_address .form-group label, .business_loan_offer_assets .form-group label{
+  font-size: 18px;
+}
+
+.basic_business_loan .container .first-row, .update_business_offer .container .first-row, .basic_business_loan .container .first-row, .business_loan_offer_assets .container .first-row,{
+  padding-top: 20px;
+}

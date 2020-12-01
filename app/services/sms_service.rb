@@ -6,7 +6,7 @@ class SmsService
   end
 
 	def send_otp(loan, loan_type)
-		message = "Dear #{loan.first_name} #{loan.last_name}, Your #{loan_type} otp is #{loan.otp}. Do not share this with anyone. No Growwcapital employee will call and ask for your OTP. Call +91-88066-01122 if not requested by you."
+		message = "Dear Customer, Your #{loan_type} otp is #{loan.otp}. Do not share this with anyone. No Growwcapital employee will call and ask for your OTP. Call +91-88066-01122 if not requested by you."
 		thread = "#{Rails.application.config.SMS_URL}&numbers=#{loan.mobile_number}&message=#{message}"
 		request = RestClient.get("#{thread}")
 		puts "#{request}"

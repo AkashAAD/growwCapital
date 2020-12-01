@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	$("#contact_us").validate({
 		rules: {
 			"contact_u[first_name]": {

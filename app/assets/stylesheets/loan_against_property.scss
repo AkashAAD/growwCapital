@@ -1,3 +1,24 @@
-// Place all the styles related to the LoanAgainstProperty controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.basic_loan_against_property .container, .update_against_property_offer .container, .loan_against_property_address .container, .loan_against_property_assets .container{
+	padding: 0px 15px 15px 15px;
+	box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
+	border-radius: 10px;	
+}
+
+.basic_loan_against_property .container .heading, .update_against_property_offer .container .heading, .loan_against_property_address .container .heading, .loan_against_property_assets .container .heading,{
+  height: 70px;
+  background: linear-gradient(135deg, #294e9b, #6c6ea0);
+  color: #ffffff;
+  border-radius: 10px 10px 0px 0px;
+}
+
+.basic_loan_against_property .container .heading h3, .update_against_property_offer .container .heading h3, .loan_against_property_address .container .heading h3, .loan_against_property_assets .container .heading h3{
+  padding-top: 15px;
+}
+
+.basic_loan_against_property .form-group label, .update_against_property_offer .form-group label, .loan_against_property_address .form-group label, .loan_against_property_assets .form-group label{
+  font-size: 18px;
+}
+
+.basic_loan_against_property .container .first-row, .update_against_property_offer .container .first-row, .loan_against_property_address .container .first-row, .loan_against_property_assets .container .first-row,{
+  padding-top: 20px;
+}

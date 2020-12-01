@@ -2,7 +2,7 @@ class HomeLoanController < ApplicationController
   before_action :create_home_loan, only: [:create_otp]
   before_action :update_home_loan, only: [:update]
   before_action :create_home_loan_offer, only: [:create_home_offer]
-  before_action :update_home_loan_offer, only: [:update_home_offer]
+  before_action :update_home_loan_offer, only: [:update_home_offer, :update_address]
   before_action :update_home_loan_assets, only: [:update_home_assets]
   before_action :apply_loan, only: [:select_bank]  
 
@@ -15,19 +15,21 @@ class HomeLoanController < ApplicationController
     case params[:id]
     when "step1"
       @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
-      return redirect_to home_loan_path("step2") if !@home_loan.otp_verified && !@home_loan.otp.blank?
-      return redirect_to home_loan_path("step3") if @home_loan.otp_verified
+      # return redirect_to home_loan_path("step2") if !@home_loan.otp_verified && !@home_loan.otp.blank?
+      # return redirect_to home_loan_path("step3") if @home_loan.otp_verified
     when "step2"
       @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
-      return redirect_to home_loan_path("step3") if @home_loan.otp_verified
-    when "step3", "step4", "step6"
+      # return redirect_to home_loan_path("step3") if @home_loan.otp_verified
+    when "step3"
       @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
-      return redirect_to home_loan_path("step2") unless @home_loan.otp_verified
-      @home_loan_offer =  @home_loan.home_loan_offer.try(:id) ? @home_loan.home_loan_offer : HomeLoanOffer.new
-    when "step5"
+      # return redirect_to home_loan_path("step2") unless @home_loan.otp_verified
+    when "step4", "step6"
       @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
       @banks = @home_loan.banks
-      return redirect_to home_loan_path("step2") unless @home_loan.otp_verified
+      return redirect_to home_loan_path("step1") unless @home_loan.otp_verified
+    when "step5"
+      @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
+      return redirect_to home_loan_path("step1") unless @home_loan.otp_verified
     when "step7"
       @home_loan = get_home_loan(id) #HomeLoan.last
       LoanMailer.home_loan(@home_loan).deliver_later
@@ -38,7 +40,7 @@ class HomeLoanController < ApplicationController
 
   def create_otp
     @home_loan.reference_number = "HOL#{(rand*100000000).to_i}"
-    create_update_home_loan(@home_loan.save, "New Car Loan created successfully.", home_loan_path("step2"))
+    create_update_home_loan(@home_loan.save, "Home Loan created successfully.", home_loan_path("step2"))
   end
 
   def update_otp_status
@@ -46,33 +48,40 @@ class HomeLoanController < ApplicationController
     if @home_loan.otp.eql?(params[:home_loan][:otp].to_i)
       @home_loan.otp_verified = true
       @home_loan.save
-      flash[:error] = "The entered OTP verified successfully."
-      redirect_to home_loan_path("step3")
+      flash[:notice] = "The entered OTP verified successfully."
+      redirect_to home_loan_path("step4")
     else
       flash[:error] = "The entered OTP is not valid."
-      redirect_to home_loan_path("step2")
+      redirect_to home_loan_path("step3")
     end
   end
 
   def update
-    create_update_home_loan(@update_status_ncl, "New Car Loan updated successfully.", home_loan_path("step4"))
+    create_update_home_loan(@update_status_ncl, "Home Loan updated successfully.", home_loan_path("step2"))
   end
 
   def select_bank
-    create_update_home_loan(@update_status_ncl, "New Car Loan updated successfully.", home_loan_path("step6"))
+    create_update_home_loan(@update_status_ncl, "Home Loan updated successfully.", home_loan_path("step5"))
   end
 
   def create_home_offer
-    create_update_home_loan_offer(@home_loan_offer.save, "New Car Loan offer applied successfully.", home_loan_path("step5"))
+    create_update_home_loan_offer(@home_loan_offer.save, "Home Loan offer applied successfully.", home_loan_path("step5"))
   end
 
   def update_home_offer
-    create_update_home_loan_offer(@update_status_nclo, "New Car Loan offer applied successfully.", home_loan_path("step5"))
+    unless @home_loan.otp_verified
+      send_otp
+    end
+    create_update_home_loan_offer(@update_status_nclo, "Home Loan offer applied successfully.", home_loan_path("step3"))
+  end
+
+  def update_address
+    create_update_home_loan(@update_status_nclo, "Home Loan updated successfully.", home_loan_path("step6"))
   end
 
   def update_home_assets
     session[:home_loan_id] = nil if @update_status_ncl
-    create_update_home_loan(@update_status_ncl, "New Car Loan updated successfully.", home_loan_path("step7"))
+    create_update_home_loan(@update_status_ncl, "Home Loan updated successfully.", home_loan_path("step7"))
   end
 
   def resend_otp
@@ -82,30 +91,27 @@ class HomeLoanController < ApplicationController
 
   private
   def home_loan_params
-    params.require(:home_loan).permit(:first_name,
-      :middle_name,
-      :last_name,
-      :dob,
-      :gender,
-      :marital_status,
-      :highest_qualification,
-      :no_of_dependent,
-      :current_residency_since_year,
-      :current_city_since_year,
-      :pan_number,
-      :purpose_of_loan,
-      :address_line1,
-      :address_line2,
-      :landmark,
-      :city,
-      :state,
-      :pincode,
-      :residential_type,
-      :mobile_number,
-      :email,
-      :loan_amount,
-      :tenure,
-      :terms_and_conditions)
+    params.require(:home_loan).permit(:loan_amount,
+     :tenure,
+     :email,
+     :mobile_number,
+     :property_city,
+     :annual_income,
+     :current_emi,
+     :property_cost,
+     :employment_type,
+     :full_name,
+     :address,
+     :city,
+     :pincode,
+     :dob,
+     :otp,
+     :otp_verified,
+     :reference_number,
+     :terms_and_conditions,
+     :status,
+     :aadhar_front,
+     :aadhar_back)
   end
 
   def home_loan_offer_params
@@ -154,21 +160,18 @@ class HomeLoanController < ApplicationController
 
   def update_home_loan_offer
     get_home_loan(session[:home_loan_id])
-    @update_status_nclo = @home_loan.home_loan_offer.update_attributes(home_loan_offer_params)
+    @update_status_nclo = @home_loan.update_attributes(home_loan_params)
   end
 
 
   def update_home_loan_assets
     get_home_loan(session[:home_loan_id])
-    @update_status_ncl = @home_loan.update_attributes(home_loan_assets_params)
+    @update_status_ncl = @home_loan.update_attributes(home_loan_params)
   end
 
   def create_update_home_loan(status, message, path)
     if status
       session[:home_loan_id] = @home_loan.id
-      unless @home_loan.otp_verified
-        send_otp
-      end
       flash[:notice] = message
       redirect_to path
     else

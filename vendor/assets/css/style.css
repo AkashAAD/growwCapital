@@ -76,10 +76,10 @@ html {
 }
 
 body {
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 14px;
 	line-height: 24px;
-	color: #2d2d2d;
+	color: #484848;
 	overflow-x: hidden;
 }
 
@@ -92,7 +92,7 @@ a:hover {
 }
 
 p, h1, h2, h3, h4, h5, h6 {
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
 }
 
@@ -153,11 +153,11 @@ img, iframe {
 }
 
 .error {
-	font-size: 15px;
-	border-radius: 5px;
-	font-weight: normal;
-	color: #ff0000;
-	display: block;
+	font-size: 15px !important;
+    border-radius: 5px;
+    font-weight: normal;
+    color: #f54545;
+    display: block;
 }
 
 select.error {
@@ -173,7 +173,7 @@ select.error {
 	margin-right: 12px;
 	line-height: 33px;
 	color: #333;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 14px;
 }
 
@@ -190,7 +190,7 @@ select.error {
 a.sbSelector:link, a.sbSelector:visited, a.sbSelector:hover {
 	color: #333;
 	font-size: 13px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	line-height: 28px;
 }
 
@@ -658,7 +658,7 @@ header .bottom-header .navbar-default .navbar-nav>li>a {
 	font-weight: normal;
 	font-size: 14px;
 	color: #000;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	line-height: 31px;
 	transition-duration: .15s;
 
@@ -788,7 +788,7 @@ header .navbar-nav li.dropdown .dropdown-menu li.dropdown.other_side .dropdown-m
 	font-weight: 600;
 	font-size: 13px;
 	color: #fff;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	transition-duration: .15s;
 	display: block;
 }
@@ -820,7 +820,7 @@ header .bottom-header .navbar-default .navbar-brand .logo .primary_text {
 
 header .bottom-header .navbar-default .navbar-brand .logo .secondary_text {
 	color: #FFF;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 12px;
 	display: block;
 	text-align: center;
@@ -892,7 +892,7 @@ header.affix .bottom-header .navbar-default .navbar-brand .logo .secondary_text 
 	font-weight: 600;
 	font-size: 13px;
 	color: #fff;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .dropdown .dropdown-menu li.dropdown .dropdown-menu:before {
@@ -1337,7 +1337,7 @@ table.right_table {
 .slide-text-wrap h2 {
 	font-size: 72px;
 	font-weight: 800;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	letter-spacing: -5px;
 }
 
@@ -1345,7 +1345,7 @@ table.right_table {
 	font-size: 55px;
 	font-weight: 300;
 	color: #acd6f0;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	margin: -18px 0 0 0;
 	letter-spacing: -2px;
 }
@@ -1354,7 +1354,7 @@ table.right_table {
 	font-size: 30px;
 	font-weight: 300;
 	color: #fff;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	letter-spacing: -2px;
 	margin: -5px 0 0 0;
 }
@@ -1391,7 +1391,7 @@ table.right_table {
 	font-size: 35px;
 	font-weight: bold;
 	color: #c7341c;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	letter-spacing: -2px;
 	margin: 0;
 	text-align: center;
@@ -1879,7 +1879,7 @@ footer .default-btn:active, footer .btn-inventory:active, footer button:active, 
 	color: #c7081b;
 	font-size: 20px;
 	font-weight: 800;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	letter-spacing: -0.5px;
 	text-decoration: none;
 }
@@ -1909,7 +1909,7 @@ footer .default-btn:active, footer .btn-inventory:active, footer button:active, 
 	margin: 20px 0 14px 0;
 	letter-spacing: -1px;
 	font-size: 29px;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .welcome-wrap .container .recent-vehicles-wrap .row {
@@ -1919,7 +1919,7 @@ footer .default-btn:active, footer .btn-inventory:active, footer button:active, 
 .welcome-wrap h4 {
 	color: #0854a0;
 	font-weight: 400;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	margin-bottom: 0px;
 }
 
@@ -1937,7 +1937,7 @@ footer .default-btn:active, footer .btn-inventory:active, footer button:active, 
 	font-weight: 700;
 	letter-spacing: -2px;
 	color: #2d2d2d;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .small-block i {
@@ -2249,7 +2249,7 @@ input[type=text]:focus, .leave-comments form input[type=text]:focus, .leave-comm
 	padding: 0px 12px;
 	color: #999;
 	font-weight: 600;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .copyright-wrap p {
@@ -2489,7 +2489,7 @@ textarea, select, div.custom-select, input[type="search"] {
 }
 
 .footer-contact ul li {
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	line-height: 29px;
 }
 
@@ -2766,7 +2766,7 @@ div.custom-select select {
 	padding: 0;
 }
 
-input[type="file"] {
+/*input[type="file"] {
 	position: relative;
 	-webkit-appearance: none;
 	-webkit-box-sizing: border-box;
@@ -2790,7 +2790,7 @@ input[type=file]::-webkit-file-upload-button {
  margin: 0;
  -webkit-appearance: none;
  border: none;
-}
+}*/
 
 input[type="file"]:after {
 	/*content: 'Upload File';
@@ -3003,7 +3003,7 @@ div.custom-select:last-child {
 	margin: 20px 0 14px 0;
 	letter-spacing: -1px;
 	font-size: 29px;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .parallax_parent.design_2 .parallax_scroll > .row {
@@ -3135,7 +3135,7 @@ div.custom-select:last-child {
 
 .flip .card .back .hover_title {
 	margin: 0;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	margin-top: 40px;
 	font-weight: 200;
 	color: #FFF;
@@ -5426,7 +5426,7 @@ div.inventory.span3 .price b {
 }
 
 .inventory_listings, .single-listing {
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 div.inventory {
@@ -5447,7 +5447,7 @@ div.inventory {
 	background-image: -webkit-linear-gradient(bottom, #f9f9f9 0%, #fff 100%);
 	background-image: linear-gradient(bottom, #f9f9f9 0%, #fff 100%);
 	margin-bottom: 20px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 div.inventory:hover {
@@ -5982,7 +5982,7 @@ div img.carfax {
 	font-weight: normal;
 	font-size: 16px;
 	margin: 0px;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	line-height: 28px;
 }
 
@@ -6085,7 +6085,7 @@ div img.carfax {
 	font-weight: 700;
 	margin: 0;
 	font-size: 20px;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	line-height: 100%;
 }
 
@@ -6501,7 +6501,7 @@ div.secect_costom4 {
 .blog-content ul li a {
 	font-size: 14px;
 	color: #2e2e2e;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
 	text-decoration: none;
 }
@@ -6598,7 +6598,7 @@ img.aligncenter {
 	font-size: 14px;
 	text-decoration: none;
 	color: #2e2e2e;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	padding-left: 10px;
 }
 
@@ -6609,7 +6609,7 @@ img.aligncenter {
 .post-entry p.quotation {
 	font-size: 20px;
 	color: #2e2e2e;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Source Sans Pro', sans-serif;
 	line-height: 28px;
 }
 
@@ -6816,7 +6816,7 @@ img.aligncenter {
 	margin: 0px;
 	font-size: 13px;
 	font-weight: bold;
-	font-family: 'Open Sans', sans-serif, Arial;
+	font-family: 'Source Sans Pro', sans-serif;
 	color: #2d2d2d;
 	margin-bottom: 15px;
 }

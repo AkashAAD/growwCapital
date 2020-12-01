@@ -14,138 +14,38 @@
         </div>
     </div>
 </section>
-<section class="business-loan-section custom-container">
-  <%= form_for @employer_detail, :url => { :action => @employer_detail.id.nil? ? "create_employer" : "update_employer" }, html: { id:  "employer_detail", class: "employer_detail" } do |f| %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <h3>Employer Details</h3>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Employer Name <span>*</span></span>
-            <%= f.text_field(:employer_name, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Official Email Id <span></span></span>
-            <%= f.text_field(:office_email, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Monthly Net Salary(minimum ₹ 15,000) <span>*</span></span>
-            <%= f.number_field(:monthly_net_salary, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Years In Current Job <span>*</span></span>
-            <%= f.number_field(:years_in_current_job, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Designation <span>*</span></span>
-            <%= f.text_field(:designation, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Current Paying EMI (Rs.) <span>*</span></span>
-            <%= f.number_field(:current_emi, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Mailing Address <span>*</span></span>
-            <%= f.select(:mailing_address, mailing_address, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Office Landline No./ Mobile No. <span>*</span></span>
-            <%= f.number_field(:mobile_number, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Salary Account Bank Name <span>*</span></span>
-            <%= f.select(:salary_bank_account_name, bank_name, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Branch Name <span>*</span></span>
-            <%= f.text_field(:branch_name, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <span>Office Address Line 1 <span>*</span></span>
-          <%= f.text_area(:office_address_line1, class: "form-control") %>
-        </div>
-        <div class="col-md-4">
-          <span>Office Address Line 2 <span>*</span></span>
-          <%= f.text_area(:office_address_line2, class: "form-control") %>
-        </div>
-        <div class="col-md-4">
-          <span>Landmark <span>*</span></span>
-          <%= f.text_area(:landmark, class: "form-control") %>          
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <span>Office State <span>*</span></span>
-          <%= f.select(:office_state, states, class: "form-control") %>
-        </div>
-        <div class="col-md-4">
-          <span>Office City <span>*</span></span>
-          <%= f.select(:office_city, cities(f, :office_state, :office_city), class: "form-control") %>
-        </div>
-        <div class="col-md-4">
-          <span>Office Pincode <span>*</span></span>
-          <%= f.number_field(:office_pincode, class: "form-control") %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <h3>Personal Reference</h3>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>First Name <span>*</span></span>
-            <%= f.text_field(:first_name, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Last Name <span>*</span></span>
-            <%= f.text_field(:last_name, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Mobile Number <span>*</span></span>
-            <%= f.number_field(:ref_mobile_number, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+<div class="container custom-container">
+  <div class="container">
+    <div class="row">
+      <table class="table loan-table">
+        <thead class="thead-light">
+          <tr>
+            <th>Bank</th>
+            <th>Interest Rate</th>
+            <th>Processing Fee</th>
+            <th>EMI</th>
+            <th>Prepayment Charges</th>
+            <th>Proceed</th>
+          </tr>
+        </thead>
+        <% @banks.each do |bank| %>
+          <tr>
+            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
+            <td><b><%= percentage_roi(bank.personal_loan_info.roi) %><br><span>(Floating)</span></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.personal_loan_info.processing_fee, @personal_loan.loan_amount), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency(calculate_emi(bank.personal_loan_info, @personal_loan), unit: "₹ ") %></b></td>
+            <td></td>
+            <td>
+              <b>
+                <%= form_for @personal_loan, :url => { :action => "select_bank" }, html: {id:  "personal_loan_bank", class: "personal_loan_bank"} do |f| %>
+                  <input type="hidden" name="personal_loan_bank[id]" value="<%= bank.personal_loan_info.id %>">
+                  <button type="submit" class="btn btn-custom">Apply</button>
+                <%end%>
+              </b>
+            </td>
+          </tr>
+        <%end%>
+      </table>
     </div>
-  <%end%>
-</section>
+  </div>
+</div>

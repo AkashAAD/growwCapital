@@ -15,62 +15,72 @@
     </div>
 </section>
 <section class="personal-loan-section custom-container">
-  <%= form_for @loan_against_property, :url => { :action => @loan_against_property.id.nil? ? "create_otp" : "create_otp" }, html: { id:  "basic_loan_against_property", class: "basic_loan_against_property" } do |f| %>
+  <%= form_for @loan_against_property, :url => { :action => @loan_against_property.id.nil? ? "create_otp" : "update" }, html: { id:  "basic_loan_against_property", class: "basic_loan_against_property" } do |f| %>
     <div class="container">
-      <div class="row">
+      <div class="row heading">
         <div class="col-md-4">
           <div class="form-group">
             <h3>Personal Details</h3>
           </div>
         </div>
       </div>
-      <div class="row">
+      <div class="row first-row">
         <div class="col-md-6">
           <div class="form-group">
-            <span>First Name <span>*</span></span>
-            <%= f.text_field(:first_name, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Middle Name <span>*</span></span>
-            <%= f.text_field(:middle_name, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Last Name <span>*</span></span>
-            <%= f.text_field(:last_name, class: "form-control") %>
-          </div>
-        </div>        
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Mobile Number <span>*</span></span>
-            <%= f.number_field(:mobile_number, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Email <span>*</span></span>
-            <%= f.text_field(:email, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Loan Amount <span>*</span></span>
+            <label>Your desired loan amount
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
             <%= f.number_field(:loan_amount, class: "form-control") %>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
-            <span>Tenure <span>*</span></span>
-            <%= f.select(:tenure, tenure, class: "form-control") %>
+            <label>Tenure
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:tenure, home_loan_tenure, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Property City
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:property_city, only_cities, class: "form-control") %>
           </div>
         </div>        
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Annual Income
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.number_field(:annual_income, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Mobile Number
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.number_field(:mobile_number, class: "form-control") %>
+          </div>
+        </div>        
+        <div class="col-md-6">
+        </div>
       </div>
       <div class="row">
         <div class="col-md-4">

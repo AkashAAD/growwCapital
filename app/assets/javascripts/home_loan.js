@@ -72,7 +72,7 @@ $(document).ready(function(){
 		messages: {
 			'home_loan[otp]': {
 				required: 'Please enter OTP.',
-				required: 'OTP should be 6 digits only.',
+				minlength: 'OTP should be 6 digits only.',
 			}
 		}
 	});
@@ -81,23 +81,10 @@ $(document).ready(function(){
 		rules: {
 			"home_loan[mobile_number]": {
 				required: true,
-				maxlength: 10
+				minlength: 10
 			},
-			"home_loan[first_name]": {
-				required: true,
-				maxlength: 50
-			},
-			"home_loan[middle_name]": {
-				required: true,
-				maxlength: 50
-			},
-			"home_loan[last_name]": {
-				required: true,
-				maxlength: 50
-			},
-			'home_loan[email]': {
-				required: true,
-				email: true
+			'home_loan[annual_income]': {
+				required: true
 			},
 			'home_loan[loan_amount]': {
 				required: true,
@@ -107,6 +94,9 @@ $(document).ready(function(){
 				required: true
 			},
 			"home_loan[terms_and_conditions]": {
+				required: true
+			},
+			"home_loan[property_city]": {
 				required: true
 			}
 		},
@@ -120,78 +110,62 @@ $(document).ready(function(){
 			},
 			'home_loan[mobile_number]': {
 				required: 'Please enter mobile number.',
-				maxlength: 'Mobile number must consist of at most 10 characters'
+				minlength: 'Mobile number must consist of at most 10 characters'
 			},
-			'home_loan[first_name]': {
-				required: 'Please enter first name.',
-				maxlength: 'First Name must consist of at most 50 characters'
-			},
-			'home_loan[middle_name]': {
-				required: 'Please enter middle name.',
-				maxlength: 'Middle Name must consist of at most 50 characters.'
-			},
-			'home_loan[last_name]': {
-				required: 'Please enter last name.',
-				maxlength: 'Middle Name must consist of at most 50 characters.'
-			},
-			'home_loan[email]': {
-				required: 'Please enter office email.',
-				email: 'Email should be valid.'
+			'home_loan[annual_income]': {
+				required: 'Please enter annual income.',
 			},
 			"home_loan[terms_and_conditions]": {
 				required: "Please select terms and conditions."
+			},
+			"home_loan[property_city]": {
+				required: "Please select property city."
 			}
 		}
 	});
 
-  $("#home_loan").validate({
+  $("#update_home_offer").validate({
 		rules: {
 			"home_loan[dob]": {
 				required: true
 			},
-			"home_loan[gender]": {
+			"home_loan[property_cost]": {
 				required: true
 			},
-			"home_loan[marital_status]": {
+			"home_loan[employment_type]": {
 				required: true
 			},
-			"home_loan[highest_qualification]": {
+			"home_loan[current_emi]": {
 				required: true
 			},
-			"home_loan[no_of_dependent]": {
-				required: true
-			},
-			"home_loan[current_residency_since_year]": {
-				required: true
-			},
-			"home_loan[current_city_since_year]": {
-				required: true
-			},
-			"home_loan[pan_number]": {
+			"home_loan[email]": {
 				required: true,
-				maxlength: 10,
-				is_pan: true
+				email: true
 			},
-			"home_loan[purpose_of_loan]": {
-				required: true,
-				maxlength: 50
+		},
+		messages: {
+			'home_loan[dob]': {
+				required: 'Please enter date of birth.'
 			},
-			"home_loan[residential_type]": {
-				required: true
+			"home_loan[property_cost]": {
+				required: "Please enter property cost."
 			},
-			"home_loan[address_line1]": {
-				required: true,
-				maxlength: 150
+			"home_loan[employment_type]": {
+				required: "Please select employment type."
 			},
-			"home_loan[address_line2]": {
-				required: true,
-				maxlength: 150
+			"home_loan[current_emi]": {
+				required: "Please enter current EMI."
 			},
-			"home_loan[landmark]": {
-				required: true,
-				maxlength: 50
+			"home_loan[email]": {
+				required: "Please enter email",
+				email: "Please enter validate email"
 			},
-			"home_loan[state]": {
+		}  	
+  });
+
+  $("#home_loan_address").validate({
+		rules: {
+			"home_loan[address]": {
 				required: true
 			},
 			"home_loan[city]": {
@@ -199,192 +173,50 @@ $(document).ready(function(){
 			},
 			"home_loan[pincode]": {
 				required: true,
-				maxlength: 6
-			}
-		},
-		messages: {
-			'home_loan[dob]': {
-				required: 'Please enter date of birth.'
-			},
-			'home_loan[gender]': {
-				required: 'Please select gender.'
-			},
-			'home_loan[marital_status]': {
-				required: 'Please select marital status.'
-			},
-			'home_loan[highest_qualification]': {
-				required: 'Please select highest qualification.'
-			},
-			'home_loan[no_of_dependent]': {
-				required: 'Please select number of dependents.'
-			},
-			'home_loan[current_residency_since_year]': {
-				required: 'Please select stying in current residence since.'
-			},
-			'home_loan[current_city_since_year]': {
-				required: 'Please select stying at current city since.'
-			},
-			'home_loan[pan_number]': {
-				required: 'Please enter pan number.',
-				maxlength: 'Pan number must consist of at most 10 characters.',
-				is_pan: 'Entered pan number is invalid.'
-			},
-			'home_loan[purpose_of_loan]': {
-				required: 'Please select purpose of loan.'
-			},
-			'home_loan[address_line1]': {
-				required: 'Please enter address_line1.',
-				maxlength: 'Address line1 must consist of at most 150 characters.'
-			},
-			'home_loan[address_line2]': {
-				required: 'Please enter address line2.',
-				maxlength: 'Address line2 must consist of at most 150 characters.'
-			},
-			'home_loan[landmark]': {
-				required: 'Please enter landmark.',
-				maxlength: 'Landmark must consist of at most 150 characters.'
-			},
-			'home_loan[state]': {
-				required: 'Please select enter state.'
-			},
-			'home_loan[city]': {
-				required: 'Please select enter city.'
-			},
-			'home_loan[pincode]': {
-				required: 'Please enter pincode.',
-				maxlength: 'pincode must consist of at most 6 characters.'
-			},
-			'home_loan[residential_type]': {
-				required: 'Please selecy enter residential type.'
-			}
-		}  	
-  });
-
-  $("#home_loan_offer").validate({
-		rules: {
-			"home_loan_offer[land_type]": {
-				required: true
-			},
-			"home_loan_offer[property_type]": {
-				required: true
-			},
-			"home_loan_offer[property_cost]": {
-				required: true,
-				maxlength: 10
-			},
-			"home_loan_offer[property_state]": {
-				required: true
-			},
-			"home_loan_offer[property_city]": {
-				required: true
-			},
-			"home_loan_offer[current_employment]": {
-				required: true
-			},
-			"home_loan_offer[annual_income]": {
-				required: true,
-				maxlength: 10
-			},
-			"home_loan_offer[current_emi]": {
-				required: true,
-				maxlength: 10
+				minlength: 6
 			},
 		},
 		messages: {
-			"home_loan_offer[land_type]": {
-				required: "Please select land type."
+			"home_loan[address]": {
+				required: "Please enter address."
 			},
-			"home_loan_offer[property_type]": {
-				required: "Please select property type."
+			"home_loan[city]": {
+				required: "Please select city."
 			},
-			"home_loan_offer[property_cost]": {
-				required: "Please enter property cost.",
-				maxlength: "Property cost must consist of at most 10 characters."
-			},
-			"home_loan_offer[property_state]": {
-				required: "Please select property state"
-			},
-			"home_loan_offer[property_city]": {
-				required: "Please select property city."
-			},
-			"home_loan_offer[current_employment]": {
-				required: "Please select current employment."
-			},
-			"home_loan_offer[annual_income]": {
-				required: "Please select annual income.",
-				maxlength: "Annual income must consist of at most 10 characters."
-			},
-			"home_loan_offer[current_emi]": {
-				required: "Please select current EMI.",
-				maxlength: "Current EMI must consist of at most 10 characters."
+			"home_loan[pincode]": {
+				required: "Please enter pincode.",
+				minlength: "Pincode must consist of at least 6 characters.",
 			},
 		}
 	});
 
 	$("#home_loan_assets").validate({
+    errorPlacement: function(error, element) {
+      element.parent().parent().append(error);
+    },
 		rules: {
-			"home_loan[persoanl_bank_statement]": {
+			"home_loan[aadhar_front]": {
 				required: true,
 				file_type: true,
 				file_size: true
 			},
-			"home_loan[business_bank_statement]": {
+			"home_loan[aadhar_back]": {
 				required: true,
 				file_type: true,
 				file_size: true
 			},
-			"home_loan[id_proof]": {
-				required: true,
-				file_type: true,
-				file_size: true				
-			},
-			"home_loan[salary_slip]": {
-				required: true,
-				file_type: true,
-				file_size: true				
-			},
-			"home_loan[itr_copy]": {
-				required: true,
-				file_type: true,
-				file_size: true
-			},
-			"home_loan[passport_photo]": {
-				required: true,
-				file_type: true,
-				file_size: true
-			}
 		},
 		messages: {
-			"home_loan[persoanl_bank_statement]": {
-				required: 'Please select persoanl bank statement.',
+			"home_loan[aadhar_front]": {
+				required: 'Please select aadhar card front.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
 				file_size: 'File format should be less than 15 mb.'
 			},
-			"home_loan[business_bank_statement]": {
-				required: 'Please select business bank statement',
+			"home_loan[aadhar_back]": {
+				required: 'Please select aadhar card back.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
 				file_size: 'File format should be less than 15 mb.'
 			},
-			"home_loan[id_proof]": {
-				required: 'Please select id proof',
-				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 15 mb.'			
-			},
-			"home_loan[salary_slip]": {
-				required: 'Please select salary slip',
-				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 15 mb.'	
-			},
-			"home_loan[itr_copy]": {
-				required: 'Please select itr copy',
-				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 15 mb.'
-			},
-			"home_loan[passport_photo]": {
-				required: 'Please select passport photo',
-				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 15 mb.'
-			}
 		}
 	})
 

@@ -15,81 +15,35 @@
     </div>
 </section>
 <section class="business-loan-section">
-  <%= form_for @loan_against_property_offer, :url => { :action => @loan_against_property_offer.id.nil? ? "create_against_property_offer" : "update_against_property_offer" }, html: {id:  "loan_against_property_offer", class: "loan_against_property_offer"} do |f| %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h3>Professional Loan Offer</h3>
-        </div>
-      </div>      
-      <div class="row"> 
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Employment Type <span>*</span></span>
-            <%= f.select(:employment_type, employment_type, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Annual Income <span>*</span></span>
-            <%= f.number_field(:annual_income, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Property Cost <span>*</span></span>
-            <%= f.number_field(:property_cost, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row"> 
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Land type <span>*</span></span>
-            <%= f.select(:land_type, land_type, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Property Type <span>*</span></span>
-            <%= f.select(:property_type, property_type, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Buildup Area(in Sq. ft.) <span>*</span></span>
-            <%= f.number_field(:buildup_area, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Property State <span>*</span></span>
-            <%= f.select(:property_state, states, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Property City <span>*</span></span>
-            <%= f.select(:property_city, cities(f, :property_state, :property_city), class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Current Paying EMI (Rs.) <span>*</span></span>
-            <%= f.number_field(:current_emi, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
+  <div class="container">
+    <div class="row">
+      <table class="table loan-table">
+        <thead class="thead-light">
+          <tr>
+            <th>Bank</th>
+            <th>Interest Rate</th>
+            <th>Processing Fee</th>
+            <th>EMI</th>
+            <th>Proceed</th>
+          </tr>
+        </thead>
+        <% @banks.each do |bank| %>
+          <tr>
+            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
+            <td><b><%= percentage_roi(bank.loan_against_property_bank_info.roi) %><br><span>(Floating)</span></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.loan_against_property_bank_info.processing_fee, @loan_against_property.loan_amount), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency(calculate_emi(bank.loan_against_property_bank_info, @loan_against_property), unit: "₹ ") %></b></td>
+            <td>
+              <b>
+                <%= form_for @loan_against_property, :url => { :action => "select_bank" }, html: {id:  "loan_against_property_bank", class: "loan_against_property_bank"} do |f| %>
+                  <input type="hidden" name="loan_against_property_bank[id]" value="<%= bank.loan_against_property_bank_info.id %>">
+                  <button type="submit" class="btn btn-default">Apply</button>
+                <%end%>
+              </b>
+            </td>
+          </tr>
+        <%end%>
+      </table>
     </div>
-  <%end%>
+  </div>
 </section>
-<script type="text/javascript">
-  $(document).ready(function(){
-    <% if @loan_against_property_offer.property_type == 'plot' %>
-      $("#loan_against_property_offer_buildup_area").prop("readonly", true);
-    <% end %>
-  });  
-</script>

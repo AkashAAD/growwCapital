@@ -14,68 +14,40 @@
         </div>
     </div>
 </section>
-
-  <%= form_for @home_loan_offer, :url => { :action => @home_loan_offer.id.nil? ? "create_home_offer" : "update_home_offer" }, html: {id:  "home_loan_offer", class: "home_loan_offer"} do |f| %>
+<section class="business-loan-section custom-container">
+  <div class="container">
+    <div class="row">
+    </div>
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
-          <h3>Professional Loan Offer</h3>
-        </div>
+        <table class="table loan-table">
+          <thead class="thead-light">
+            <tr>
+              <th>Bank</th>
+              <th>Interest Rate</th>
+              <th>Processing Fee</th>
+              <th>EMI</th>
+              <th>Proceed</th>
+            </tr>
+          </thead>
+          <% @banks.each do |bank| %>
+            <tr>
+              <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
+              <td><b><%= percentage_roi(bank.home_loan_bank_info.roi) %><br><span>(Floating)</span></b></td>
+              <td><b><%= number_to_currency("%.2f" % processing_fee(bank.home_loan_bank_info.processing_fee, @home_loan.loan_amount), unit: "₹ ") %></b></td>
+              <td><b><%= number_to_currency(calculate_emi(bank.home_loan_bank_info, @home_loan), unit: "₹ ") %></b></td>
+              <td>
+                <b>
+                  <%= form_for @home_loan, :url => { :action => "select_bank" }, html: {id:  "home_loan_bank", class: "home_loan_bank"} do |f| %>
+                    <input type="hidden" name="home_loan_bank[id]" value="<%= bank.home_loan_bank_info.id %>">
+                    <button type="submit" class="btn btn-default">Apply</button>
+                  <%end%>
+                </b>
+              </td>
+            </tr>
+          <%end%>
+        </table>
       </div>
-      <div class="row"> 
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Land Type <span>*</span></span>
-            <%= f.select(:land_type, land_type, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Property Type <span>*</span></span>
-            <%= f.select(:property_type, property_type, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Property Cost <span>*</span></span>
-            <%= f.number_field(:property_cost, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row"> 
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Property State <span>*</span></span>
-            <%= f.select(:property_state, states, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Property City <span>*</span></span>
-            <%= f.select(:property_city, cities(f, :property_state, :property_city), class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Current Employment <span>*</span></span>
-            <%= f.select(:current_employment, current_employment, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Annual Income: <span>*</span></span>
-            <%= f.number_field(:annual_income, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Current Paying EMI (Rs.): <span>*</span></span>
-            <%= f.number_field(:current_emi, class: "form-control") %>
-          </div>
-        </div>
-      </div>     
-      <button type="submit" class="btn btn-default">Submit</button>
     </div>
-  <%end%>
+  </div>
+</section>

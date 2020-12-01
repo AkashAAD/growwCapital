@@ -15,23 +15,104 @@
     </div>
 </section>
 <section class="personal-loan-section custom-container">
-  <%= form_for @business_loan, :url => { :action => @business_loan.id.nil? ? "update_otp_status" : "update_otp_status"}, html: {id:  "otp_business_loan", class: "otp_business_loan"} do |f| %>
+  <%= form_for @business_loan, :url => { :action => "update_business_offer"}, html: {id:  "update_business_offer", class: "update_business_offer"} do |f| %>
     <div class="container">
-      <div class="row">
-        <div class="col-md-4"></div>
+      <div class="row heading">
         <div class="col-md-4">
           <div class="form-group">
-            <h3>Verify OTP</h3>
+            <h3>Personal Details</h3>
           </div>
-          <div class="form-group">
-            <span>OTP <span>*</span></span>
-            <%= f.number_field(:otp, class: "form-control", value: "") %>
-          </div> 
-          <button type="submit" class="btn btn-default">Submit</button>
-          <a href="javascript:void(o)" id="business-loan-resend-otp" style="float: right;">Resend</a>
         </div>
-        <div class="col-md-4"></div>
       </div>
+      <div class="row first-row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Company Type
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:company_type, company_type, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Nature Of Business
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:business_nature, business_nature, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Bank Name
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:bank_name, bank_name, class: "form-control") %>
+          </div>
+        </div>        
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Current EMI
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.number_field(:current_emi, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Full Name
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.text_field(:full_name, class: "form-control") %>
+          </div>
+        </div>        
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Date Of birth
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.date_field(:dob, class: "form-control", max: "#{Time.zone.now - 21.years}") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Mobile Number
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.number_field(:mobile_number, class: "form-control") %>
+          </div>
+        </div>        
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Email
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.email_field(:email, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
     </div>
   <%end%>
 </section>

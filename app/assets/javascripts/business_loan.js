@@ -75,25 +75,8 @@ $(document).ready(function(){
 
 	$("#basic_business_loan").validate({
 		rules: {
-			"business_loan[mobile_number]": {
+			"business_loan[annual_turnover]": {
 				required: true,
-				minlength: 10
-			},
-			"business_loan[first_name]": {
-				required: true,
-				maxlength: 50
-			},
-			"business_loan[middle_name]": {
-				required: true,
-				maxlength: 50
-			},
-			"business_loan[last_name]": {
-				required: true,
-				maxlength: 50
-			},
-			'business_loan[email]': {
-				required: true,
-				email: true
 			},
 			'business_loan[loan_amount]': {
 				required: true,
@@ -102,37 +85,25 @@ $(document).ready(function(){
 			'business_loan[tenure]': {
 				required: true
 			},
+			'business_loan[gross_annual_profit]': {
+				required: true
+			},
 			"business_loan[terms_and_conditions]": {
 				required: true
 			}
 		},
 		messages: {
-			'business_loan[tenure]': {
-				required: 'Please select tenure.',
+			"business_loan[annual_turnover]": {
+				required: "Please select annual turnover.",
 			},
 			'business_loan[loan_amount]': {
-				required: 'Please enter loan amount.',
-				maxlength: 'Loan amount must consist of at most 10 characters'
+				required: "Please enter loan amount"
 			},
-			'business_loan[mobile_number]': {
-				required: 'Please enter mobile number.',
-				minlength: 'Mobile number must consist of at least 10 characters'
+			'business_loan[tenure]': {
+				required: "Please select tenure."
 			},
-			'business_loan[first_name]': {
-				required: 'Please enter first name.',
-				maxlength: 'First Name must consist of at most 50 characters'
-			},
-			'business_loan[middle_name]': {
-				required: 'Please enter middle name.',
-				maxlength: 'Middle Name must consist of at most 50 characters.'
-			},
-			'business_loan[last_name]': {
-				required: 'Please enter last name.',
-				maxlength: 'Middle Name must consist of at most 50 characters.'
-			},
-			'business_loan[email]': {
-				required: 'Please enter office email.',
-				email: 'Email should be valid.'
+			'business_loan[gross_annual_profit]': {
+				required: "Please enter gross annual profit."
 			},
 			"business_loan[terms_and_conditions]": {
 				required: "Please select terms and conditions."
@@ -140,54 +111,64 @@ $(document).ready(function(){
 		}
 	});
 
-  $("#business_loan").validate({
+  $("#update_business_offer").validate({
 		rules: {
-			"business_loan[dob]": {
+			'business_loan[company_type]': {
 				required: true
 			},
-			"business_loan[gender]": {
+			'business_loan[business_nature]': {
 				required: true
 			},
-			"business_loan[marital_status]": {
+			'business_loan[bank_name]': {
 				required: true
 			},
-			"business_loan[highest_qualification]": {
+			'business_loan[current_emi]': {
 				required: true
 			},
-			"business_loan[no_of_dependent]": {
+			'business_loan[full_name]': {
 				required: true
 			},
-			"business_loan[current_residency_since_year]": {
+			'business_loan[dob]': {
 				required: true
 			},
-			"business_loan[current_city_since_year]": {
+			'business_loan[mobile_number]': {
 				required: true
 			},
-			"business_loan[pan_number]": {
-				required: true,
-				maxlength: 10,
-				is_pan: true
-			},
-			"business_loan[purpose_of_loan]": {
-				required: true,
-				maxlength: 50
-			},
-			"business_loan[residential_type]": {
+			'business_loan[email]': {
 				required: true
 			},
-			"business_loan[address_line1]": {
-				required: true,
-				maxlength: 150
+		},
+		messages: {
+			'business_loan[company_type]': {
+				required: "Please select company type."
 			},
-			"business_loan[address_line2]": {
-				required: true,
-				maxlength: 150
+			'business_loan[business_nature]': {
+				required: "Please select business nature."
 			},
-			"business_loan[landmark]": {
-				required: true,
-				maxlength: 50
+			'business_loan[bank_name]': {
+				required: "Please select bank name."
 			},
-			"business_loan[state]": {
+			'business_loan[current_emi]': {
+				required: "Please enter current EMI"
+			},
+			'business_loan[full_name]': {
+				required: "Please enter full name"
+			},
+			'business_loan[dob]': {
+				required: "Please enter date of birth."
+			},
+			'business_loan[mobile_number]': {
+				required: "Please enter mobile number."
+			},
+			'business_loan[email]': {
+				required: "Please enter email address."
+			},		
+		}  	
+  });
+
+  $("#business_loan_address").validate({
+		rules: {
+			"business_loan[address]": {
 				required: true
 			},
 			"business_loan[city]": {
@@ -195,238 +176,80 @@ $(document).ready(function(){
 			},
 			"business_loan[pincode]": {
 				required: true,
-				maxlength: 6
+				minlength: 6
 			},
-		},
-		messages: {
-			'business_loan[dob]': {
-				required: 'Please enter date of birth.'
-			},
-			'business_loan[gender]': {
-				required: 'Please select gender.'
-			},
-			'business_loan[marital_status]': {
-				required: 'Please select marital status.'
-			},
-			'business_loan[highest_qualification]': {
-				required: 'Please select highest qualification.'
-			},
-			'business_loan[no_of_dependent]': {
-				required: 'Please select number of dependents.'
-			},
-			'business_loan[current_residency_since_year]': {
-				required: 'Please select stying in current residence since.'
-			},
-			'business_loan[current_city_since_year]': {
-				required: 'Please select stying at current city since.'
-			},
-			'business_loan[pan_number]': {
-				required: 'Please enter pan number.',
-				maxlength: 'Pan number must consist of at most 10 characters.',
-				is_pan: 'Entered pan number is invalid.'
-			},
-			'business_loan[purpose_of_loan]': {
-				required: 'Please select purpose of loan.'
-			},
-			'business_loan[address_line1]': {
-				required: 'Please enter address_line1.',
-				maxlength: 'Address line1 must consist of at most 150 characters.'
-			},
-			'business_loan[address_line2]': {
-				required: 'Please enter address line2.',
-				maxlength: 'Address line2 must consist of at most 150 characters.'
-			},
-			'business_loan[landmark]': {
-				required: 'Please enter landmark.',
-				maxlength: 'Landmark must consist of at most 150 characters.'
-			},
-			'business_loan[state]': {
-				required: 'Please select enter state.'
-			},
-			'business_loan[city]': {
-				required: 'Please select enter city.'
-			},
-			'business_loan[pincode]': {
-				required: 'Please enter pincode.',
-				maxlength: 'pincode must consist of at most 6 characters.'
-			},
-			'business_loan[residential_type]': {
-				required: 'Please selecy enter residential type.'
-			}
-		}  	
-  });
-
-  $("#business_loan_offer").validate({
-		rules: {
-			"business_loan_offer[business_name]": {
-				required: true,
-				maxlength: 50
-			},
-			"business_loan_offer[business_nature]": {
+			"business_loan[business_address]": {
 				required: true
 			},
-			"business_loan_offer[residence_type]": {
+			"business_loan[business_city]": {
 				required: true
 			},
-			"business_loan_offer[industry_type]": {
-				required: true
-			},
-			"business_loan_offer[business_years]": {
-				required: true
-			},
-			"business_loan_offer[current_emi]": {
+			"business_loan[business_pincode]": {
 				required: true,
-				maxlength: 10
-			},
-			"business_loan_offer[annual_turnover]": {
-				required: true,
-				maxlength: 10
-			},
-			"business_loan_offer[gross_annual_profit]": {
-				required: true,
-				maxlength: 10
-			},
-			"business_loan_offer[address_line1]": {
-				required: true,
-				maxlength: 150
-			},
-			"business_loan_offer[address_line2]": {
-				required: true,
-				maxlength: 150
-			},
-			"business_loan_offer[landmark]": {
-				required: true,
-				maxlength: 50
-			},
-			"business_loan_offer[state]": {
-				required: true
-			},
-			"business_loan_offer[city]": {
-				required: true
-			},
-			"business_loan_offer[pincode]": {
-				required: true,
-				maxlength: 6
+				minlength: 6
 			}
 		},
 		messages: {
-			"business_loan_offer[business_name]": {
-				required: 'Please enter business name.',
-				maxlength: 'Business name must consist of at most 50 characters'
+			"business_loan[address]": {
+				required: "Please enter address."
 			},
-			"business_loan_offer[business_nature]": {
-				required: 'Please select business nature.'
+			"business_loan[city]": {
+				required: "Please select city."
 			},
-			"business_loan_offer[residence_type]": {
-				required: 'Please select business property type.'
+			"business_loan[pincode]": {
+				required: "Please enter pincode.",
+				minlength: "Pincode must consist of at least 6 characters.",
 			},
-			"business_loan_offer[industry_type]": {
-				required: 'Please select business industry type.'
+			"business_loan[business_address]": {
+				required: "Please enter business address."
 			},
-			"business_loan_offer[business_years]": {
-				required: 'Please select business business years.'
+			"business_loan[business_city]": {
+				required: "Please enter business city."
 			},
-			"business_loan_offer[current_emi]": {
-				required: 'Please enter current EMI.',
-				maxlength: 'current EMI must consist of at most 10 characters'
-			},
-			"business_loan_offer[annual_turnover]": {
-				required: 'Please enter annual turnover.',
-				maxlength: 'Annual turnover must consist of at most 10 characters'
-			},
-			"business_loan_offer[gross_annual_profit]": {
-				required: 'Please enter gross annual profit.',
-				maxlength: 'gross annual profit must consist of at most 10 characters'
-			},
-			'business_loan_offer[address_line1]': {
-				required: 'Please enter address_line1.',
-				maxlength: 'Address line1 must consist of at most 150 characters.'
-			},
-			'business_loan_offer[address_line2]': {
-				required: 'Please enter address line2.',
-				maxlength: 'Address line2 must consist of at most 150 characters.'
-			},
-			'business_loan_offer[landmark]': {
-				required: 'Please enter landmark.',
-				maxlength: 'Landmark must consist of at most 150 characters.'
-			},
-			'business_loan_offer[state]': {
-				required: 'Please select enter state.'
-			},
-			'business_loan_offer[city]': {
-				required: 'Please select enter city.'
-			},
-			'business_loan_offer[pincode]': {
-				required: 'Please enter pincode.',
-				maxlength: 'pincode must consist of at most 6 characters.'
-			},
-		}  	
+			"business_loan[business_pincode]": {
+				required: "Please enter pincode",
+				minlength: "Pincode must consist of at least 6 characters.",
+			}
+		} 	
   });
 
 	$("#business_loan_offer_assets").validate({
+    errorPlacement: function(error, element) {
+      element.parent().parent().append(error);
+    },
 		rules: {
-			"business_loan_offer[bank_statement]": {
+			"business_loan[aadhar_card_front]": {
 				required: true,
 				file_type: true,
 				file_size: true
 			},
-			"business_loan_offer[id_proof]": {
+			"business_loan[aadhar_card_back]": {
 				required: true,
 				file_type: true,
 				file_size: true				
 			},
-			"business_loan_offer[residential_address_proof]": {
+			"business_loan[shockup_licence]": {
 				required: true,
 				file_type: true,
 				file_size: true				
 			},
-			"business_loan_offer[office_address_proof]": {
-				required: true,
-				file_type: true,
-				file_size: true				
-			},
-			"business_loan_offer[itr_copy]": {
-				required: true,
-				file_type: true,
-				file_size: true
-			},
-			"business_loan_offer[passport_photo]": {
-				required: true,
-				file_type: true,
-				file_size: true				
-			}
 		},
 		messages: {
-			'business_loan_offer[bank_statement]': {
-				required: 'Please select bank statement.',
+			'business_loan[aadhar_card_front]': {
+				required: 'Please select aadhar card front.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
 				file_size: 'File format should be less than 15 mb.'
 			},
-			'business_loan_offer[id_proof]': {
-				required: 'Please select id proof.',
+			'business_loan[aadhar_card_back]': {
+				required: 'Please select aadhar card back.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
 				file_size: 'File format should be less than 15 mb.'				
 			},
-			'business_loan_offer[residential_address_proof]': {
-				required: 'Please select residential address proof.',
+			'business_loan[shockup_licence]': {
+				required: 'Please select shockup 	licence.',
 				file_type: 'File format should be jpg, jpeg, png or pdf.',
 				file_size: 'File format should be less than 15 mb.'				
 			},
-			'business_loan_offer[office_address_proof]': {
-				required: 'Please select office address proof.',
-				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 15 mb.'				
-			},
-			'business_loan_offer[itr_copy]': {
-				required: 'Please select itr copy.',
-				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 15 mb.'				
-			},
-			'business_loan_offer[passport_photo]': {
-				required: 'Please select passport photo.',
-				file_type: 'File format should be jpg, jpeg, png or pdf.',
-				file_size: 'File format should be less than 15 mb.'				
-			}
 		}
 	});
 
