@@ -57,7 +57,7 @@ module ApplicationHelper
   end
 
   def company_type
-  	[['-Select Residence Type-','']] + CompanyType.pluck(:name, :id)
+  	[['-Select Company Type-','']] + CompanyType.pluck(:name, :id)
   end
 
   def business_nature

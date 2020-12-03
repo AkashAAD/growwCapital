@@ -23,7 +23,7 @@ class BusinessLoanController < ApplicationController
       # return redirect_to business_loan_path("step3") if @business_loan.otp_verified
 		when "step2"
       @business_loan = id.nil? ? BusinessLoan.new : get_business_loan(id)
-      # return redirect_to business_loan_path("step3") if @business_loan.otp_verified
+      return redirect_to business_loan_path("step4") if @business_loan.otp_verified
 		when "step3"
 			@business_loan = id.nil? ? BusinessLoan.new : get_business_loan(id)
       # return redirect_to business_loan_path("step2") unless @business_loan.otp_verified
@@ -53,7 +53,7 @@ class BusinessLoanController < ApplicationController
     if @business_loan.otp.eql?(params[:business_loan][:otp].to_i)
       @business_loan.otp_verified = true
       @business_loan.save
-      flash[:error] = "The entered OTP verified successfully."
+      flash[:notice] = "The entered OTP verified successfully."
       redirect_to business_loan_path("step4")
     else
       flash[:error] = "The entered OTP is not valid."

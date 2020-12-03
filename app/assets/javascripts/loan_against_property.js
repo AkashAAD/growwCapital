@@ -28,6 +28,18 @@ $(document).ready(function(){
 		return parseFloat(value) >= 15000;
 	}, "");
 
+	jQuery.validator.addMethod("full_name", function(value, element) {
+	  return /^[A-Z]+$/.test(value) && value.split(" ").length > 2;
+	}, "");
+
+	jQuery.validator.addMethod("email", function(value, element) {
+	  return this.optional(element) || /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+	}, "");
+
+	jQuery.validator.addMethod("valid_loan_amt", function(value, element) {
+		return parseFloat(value) >= 50000;
+	}, "");
+
 	$("#loan_against_property_state").change(function(evt) {
 		$.ajax({
 	    url: "/home/change_state",
@@ -100,7 +112,8 @@ $(document).ready(function(){
 			},
 			'loan_against_property[loan_amount]': {
 				required: true,
-				maxlength: 10
+				maxlength: 10,
+				valid_loan_amt: true
 			},
 			'loan_against_property[tenure]': {
 				required: true
@@ -118,7 +131,8 @@ $(document).ready(function(){
 			},
 			'loan_against_property[loan_amount]': {
 				required: 'Please enter loan amount.',
-				maxlength: 'Loan amount must consist of at most 10 characters'
+				maxlength: 'Loan amount must consist of at most 10 characters',
+				valid_loan_amt: "Loan amount should be greator than or equal to ₹ 50,000."
 			},
 			'loan_against_property[mobile_number]': {
 				required: 'Please enter mobile number.',
@@ -157,7 +171,9 @@ $(document).ready(function(){
 		},
 		messages: {
 			'loan_against_property[dob]': {
-				required: 'Please enter date of birth.'
+				required: 'Please enter date of birth.',
+				min: "For applying loan you should be minimum 21 years old.",
+				max: "For applying loan you should be maximum 60 years old."
 			},
 			"loan_against_property[property_cost]": {
 				required: "Please enter property cost."
@@ -178,7 +194,8 @@ $(document).ready(function(){
   $("#loan_against_property_address").validate({
 		rules: {
 			"loan_against_property[address]": {
-				required: true
+				required: true,
+				minlength: 20
 			},
 			"loan_against_property[city]": {
 				required: true
@@ -190,7 +207,8 @@ $(document).ready(function(){
 		},
 		messages: {
 			"loan_against_property[address]": {
-				required: "Please enter address."
+				required: "Please enter address.",
+				minlength: "Address must consist of at least 20 characters.",
 			},
 			"loan_against_property[city]": {
 				required: "Please select city."

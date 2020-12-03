@@ -658,7 +658,7 @@ header .bottom-header .navbar-default .navbar-nav>li>a {
 	font-weight: normal;
 	font-size: 14px;
 	color: #000;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: 'Open Sans',sans-serif;
 	line-height: 31px;
 	transition-duration: .15s;
 
@@ -2638,20 +2638,21 @@ footer.design_2 h4 {
 
 
 .back_to_top {
-	width: 40px;
-	height: 40px;
-	background-color: rgb(8 84 160);
-	color: #FFF;
-	cursor: pointer;
-	text-align: center;
-	position: fixed;
-	right: 50px;
-	bottom: 50px;
-	padding-top: 6px;
-	display: none;
-	z-index: 999;
-	transition-duration: .2s;
-	transition-property: background-color;
+	width: 50px;
+    height: 50px;
+    background-color: rgb(40 207 142);
+    color: #FFF;
+    cursor: pointer;
+    text-align: center;
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    padding-top: 12px;
+    display: none;
+    z-index: 999;
+    transition-duration: .2s;
+    transition-property: background-color;
+    border-radius: 100%;
 }
 
 .back_to_top:hover {
@@ -2714,7 +2715,7 @@ input[type="text"], textarea, textarea[name="msg"], select, div.custom-select, i
     display: block;
     width: 100%;
     padding: 6px 12px;
-    font-size: 14px;
+    font-size: 16px !important;
     line-height: 1.428571429;
     color: #555;
     vertical-align: middle;

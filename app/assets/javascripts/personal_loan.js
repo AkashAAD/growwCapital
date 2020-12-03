@@ -80,6 +80,18 @@ $(document).ready(function(){
 	  return this.optional(element) || /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value);
 	}, "Entered pan number is invalid.");
 
+	jQuery.validator.addMethod("full_name", function(value, element) {
+	  return value.split(" ").length >= 2;
+	}, "");
+
+	jQuery.validator.addMethod("email", function(value, element) {
+	  return this.optional(element) || /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+	}, "");
+
+	jQuery.validator.addMethod("valid_loan_amt", function(value, element) {
+		return parseFloat(value) >= 50000;
+	}, "");
+
 	jQuery.validator.addMethod("file_type", function(value, element) {
 		var types = ['application/pdf', 'image/png', 'image/jpeg', 'image/jpg']
 	  return types.includes(element.files[0].type);
@@ -92,7 +104,6 @@ $(document).ready(function(){
 	jQuery.validator.addMethod("valid_salary", function(value, element) {
 		return parseFloat(value) >= 15000;
 	}, "");
-
 
 	$("#otp_personal_loan").validate({
 		rules: {
@@ -117,7 +128,8 @@ $(document).ready(function(){
 			},
 			'personal_loan[loan_amount]': {
 				required: true,
-				maxlength: 10
+				maxlength: 10,
+				valid_loan_amt: true
 			},
 			'personal_loan[tenure]': {
 				required: true
@@ -143,7 +155,8 @@ $(document).ready(function(){
 			},
 			'personal_loan[loan_amount]': {
 				required: 'Please enter loan amount.',
-				maxlength: 'Loan amount must consist of at most 10 characters'
+				maxlength: 'Loan amount must consist of at most 10 characters',
+				valid_loan_amt: "Loan amount should be greator than or equal to ₹ 50,000."
 			},
 			'personal_loan[mobile_number]': {
 				required: 'Please enter mobile number.',
@@ -169,7 +182,7 @@ $(document).ready(function(){
   $("#personal_loan").validate({
 		rules: {
 			"personal_loan[dob]": {
-				required: true
+				required: true,
 			},
 			"personal_loan[employer_name]": {
 				required: true
@@ -181,7 +194,8 @@ $(document).ready(function(){
 				required: true
 			},
 			"personal_loan[full_name]": {
-				required: true
+				required: true,
+				full_name: true
 			},
 			"personal_loan[email]": {
 				required: true,
@@ -190,7 +204,9 @@ $(document).ready(function(){
 		},
 		messages: {
 			'personal_loan[dob]': {
-				required: 'Please enter date of birth.'
+				required: 'Please enter date of birth.',
+				max: "For applying loan you should be minimum 21 years old.",
+				min: ""
 			},
 			"personal_loan[employer_name]": {
 				required: "Please enter company name."
@@ -202,7 +218,8 @@ $(document).ready(function(){
 				required: "Please select existing card option."
 			},
 			"personal_loan[full_name]": {
-				required: "Please enter full name."
+				required: "Please enter full name",
+				full_name: "Please enter valid full name."
 			},
 			"personal_loan[email]": {
 				required: "Please enter email.",
@@ -215,6 +232,7 @@ $(document).ready(function(){
 		rules: {
 			"personal_loan[address]": {
 				required: true,
+				minlength: 20
 			},
 			"personal_loan[city]": {
 				required: true,
@@ -225,6 +243,7 @@ $(document).ready(function(){
 			},
 			"personal_loan[office_address]": {
 				required: true,
+				minlength: 20
 			},
 			"personal_loan[office_city]": {
 				required: true,
@@ -237,6 +256,7 @@ $(document).ready(function(){
 		messages: {
 			"personal_loan[address]": {
 				required: "Please enter address.",
+				minlength: "Address must consist of at least 20 characters.",
 			},
 			"personal_loan[city]": {
 				required: "Please enter city.",
@@ -247,6 +267,7 @@ $(document).ready(function(){
 			},
 			"personal_loan[office_address]": {
 				required: "Please enter office address.",
+				minlength: "Address must consist of at least 20 characters.",
 			},
 			"personal_loan[office_city]": {
 				required: "Please enter office city.",

@@ -19,7 +19,7 @@ class LoanAgainstPropertyController < ApplicationController
       # return redirect_to loan_against_property_path("step3") if @loan_against_property.otp_verified
     when "step2"
       @loan_against_property = id.nil? ? LoanAgainstProperty.new : get_loan_against_property(id)
-      # return redirect_to loan_against_property_path("step3") if @loan_against_property.otp_verified
+      return redirect_to loan_against_property_path("step4") if @loan_against_property.otp_verified
     when "step3"
       @loan_against_property = id.nil? ? LoanAgainstProperty.new : get_loan_against_property(id)
       # return redirect_to loan_against_property_path("step2") unless @loan_against_property.otp_verified

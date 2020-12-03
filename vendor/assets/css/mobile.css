@@ -2485,7 +2485,9 @@ header .left_bar {
 
 header .bottom-header .navbar-default .navbar-nav>li>a {
 	font-size: 14px;
-	padding: 5px 5px 5px 5px !important;
+    padding: 5px 5px 5px 5px !important;
+    font-weight: 600;
+    color: #544c4c;
 }
 
 .flip {

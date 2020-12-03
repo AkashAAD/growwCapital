@@ -24,4 +24,19 @@
   button {
     width: 10%;
   }
+  #personal_loan_bank_name {
+    option:nth-child(2) {
+      color: #000000;
+    }
+    option:nth-child(3) {
+      color: #000000;
+    }
+  }
+  .file-msg {
+    padding-left: 17px;
+    font-size: 15px;
+  }
+  .file-hr {
+    margin-top: 0px;
+  }
 }

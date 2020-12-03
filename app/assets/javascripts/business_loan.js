@@ -58,6 +58,18 @@ $(document).ready(function(){
 	  return element.files[0].size < 15000000;
 	}, "");
 
+	jQuery.validator.addMethod("full_name", function(value, element) {
+	  return /^[A-Z]+$/.test(value) && value.split(" ").length > 2;
+	}, "");
+
+	jQuery.validator.addMethod("email", function(value, element) {
+	  return this.optional(element) || /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+	}, "");
+
+	jQuery.validator.addMethod("valid_loan_amt", function(value, element) {
+		return parseFloat(value) >= 50000;
+	}, "");
+
 	$("#otp_business_loan").validate({
 		rules: {
 			"business_loan[otp]": {
@@ -80,7 +92,8 @@ $(document).ready(function(){
 			},
 			'business_loan[loan_amount]': {
 				required: true,
-				maxlength: 10
+				maxlength: 10,
+				valid_loan_amt: true
 			},
 			'business_loan[tenure]': {
 				required: true
@@ -90,14 +103,15 @@ $(document).ready(function(){
 			},
 			"business_loan[terms_and_conditions]": {
 				required: true
-			}
+			},
 		},
 		messages: {
 			"business_loan[annual_turnover]": {
 				required: "Please select annual turnover.",
 			},
 			'business_loan[loan_amount]': {
-				required: "Please enter loan amount"
+				required: "Please enter loan amount",
+				valid_loan_amt: "Loan amount should be greator than or equal to ₹ 50,000."
 			},
 			'business_loan[tenure]': {
 				required: "Please select tenure."
@@ -126,16 +140,19 @@ $(document).ready(function(){
 				required: true
 			},
 			'business_loan[full_name]': {
-				required: true
+				required: true,
+				full_name: true
 			},
 			'business_loan[dob]': {
 				required: true
 			},
 			'business_loan[mobile_number]': {
-				required: true
+				required: true,
+				minlength: 10
 			},
 			'business_loan[email]': {
-				required: true
+				required: true,
+				email: true
 			},
 		},
 		messages: {
@@ -152,16 +169,20 @@ $(document).ready(function(){
 				required: "Please enter current EMI"
 			},
 			'business_loan[full_name]': {
-				required: "Please enter full name"
+				required: "Please enter full name",
+				full_name: "Please enter valid full name."
 			},
 			'business_loan[dob]': {
-				required: "Please enter date of birth."
+				required: "Please enter date of birth.",
+				max: "For applying loan you should be minimum 21 years old."
 			},
 			'business_loan[mobile_number]': {
-				required: "Please enter mobile number."
+				required: "Please enter mobile number.",
+				minlength: 'Mobile number must consist of at least 10 characters'
 			},
 			'business_loan[email]': {
-				required: "Please enter email address."
+				required: "Please enter email address.",
+				email: "Please enter valid email."
 			},		
 		}  	
   });
@@ -169,7 +190,8 @@ $(document).ready(function(){
   $("#business_loan_address").validate({
 		rules: {
 			"business_loan[address]": {
-				required: true
+				required: true,
+				minlength: 20
 			},
 			"business_loan[city]": {
 				required: true
@@ -179,7 +201,8 @@ $(document).ready(function(){
 				minlength: 6
 			},
 			"business_loan[business_address]": {
-				required: true
+				required: true,
+				minlength: 20
 			},
 			"business_loan[business_city]": {
 				required: true
@@ -191,7 +214,8 @@ $(document).ready(function(){
 		},
 		messages: {
 			"business_loan[address]": {
-				required: "Please enter address."
+				required: "Please enter address.",
+				minlength: "Address must consist of at least 20 characters.",
 			},
 			"business_loan[city]": {
 				required: "Please select city."
@@ -201,7 +225,8 @@ $(document).ready(function(){
 				minlength: "Pincode must consist of at least 6 characters.",
 			},
 			"business_loan[business_address]": {
-				required: "Please enter business address."
+				required: "Please enter business address.",
+				minlength: "Address must consist of at least 20 characters.",
 			},
 			"business_loan[business_city]": {
 				required: "Please enter business city."

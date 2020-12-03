@@ -1,4 +1,4 @@
-<section id="secondary-banner" class="dynamic-image-6">
+<!-- <section id="secondary-banner" class="dynamic-image-6">
     <div class="container">
         <div class="row align-items-end">
             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <div class="container custom-container">
   <%= form_for @business_loan, :url => { :action => "updated_address"}, html: { id:  "business_loan_address", class: "business_loan_address" } do |f| %>
     <div class="container">
@@ -47,19 +47,19 @@
        <div class="row">
         <div class="col-md-4">
           <div class="form-group">
-            <label>Office Address</label>
+            <label>Business Address</label>
             <%= f.text_area(:business_address, class: "form-control") %>
           </div>
         </div>
          <div class="col-md-4">
           <div class="form-group">
-            <label>Office City</label>
+            <label>Business City</label>
             <%= f.select(:business_city, only_cities,class: "form-control") %>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label>Office Pincode</label>
+            <label>Business Pincode</label>
             <%= f.number_field(:business_pincode, class: "form-control") %>
           </div>
         </div>
