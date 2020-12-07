@@ -1,0 +1,54 @@
+<section class="business-loan-section custom-container">
+  <%= form_for @transfer_personal_loan, :url => { :action => "updated_address"}, html: { id:  "transfer_personal_loan_address", class: "transfer_personal_loan_address" } do |f| %>
+    <div class="container">
+      <div class="row heading">
+        <div class="col-md-4">
+          <div class="form-group">
+            <h3>Address Details</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row first-row">
+         <div class="col-md-4">
+          <div class="form-group">
+            <label>Present Address</label>
+            <%= f.text_area(:address, class: "form-control") %>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="form-group">
+            <label>City</label>
+            <%= f.select(:city, only_cities,class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Pincode</label>
+            <%= f.number_field(:pincode, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+       <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Office Address</label>
+            <%= f.text_area(:office_address, class: "form-control") %>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="form-group">
+            <label>Office City</label>
+            <%= f.select(:office_city, only_cities,class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Office Pincode</label>
+            <%= f.number_field(:office_pincode, class: "form-control") %>
+          </div>
+        </div>
+      </div><br>
+      <button type="submit" class="btn btn-custom">Process</button>
+    </div>
+  <%end%>
+</section>

@@ -1,8 +1,42 @@
-.new-car-salaried, .new-car-self-employed, .new-car-other-info {
-  display: none;
+.basic_new_car_loan, .update_new_car_offer, .new_car_loan_address, .personal_loan_assets {
+  .container {
+    padding: 0px 15px 15px 15px;
+    box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
+    border-radius: 10px;
+    .heading {
+      height: 70px;
+      background: linear-gradient(135deg,#294e9b,#6c6ea0);
+      color: #ffffff;
+      border-radius: 10px 10px 0px 0px;
+      h3 {
+        padding-top: 15px;      
+      }
+    }
+    .first-row {
+      padding-top: 20px;
+    }
+  }
+  .form-group {
+    label {
+      font-size: 18px;
+    }
+  }
+  button {
+    width: 10%;
+  }
+  #personal_loan_bank_name {
+    option:nth-child(2) {
+      color: #000000;
+    }
+    option:nth-child(3) {
+      color: #000000;
+    }
+  }
+  .file-msg {
+    padding-left: 17px;
+    font-size: 15px;
+  }
+  .file-hr {
+    margin-top: 0px;
+  }
 }
-
-.new-car-show-div {
-  display: block;
-}
-

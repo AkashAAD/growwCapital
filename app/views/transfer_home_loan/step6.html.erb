@@ -1,0 +1,56 @@
+<section class="business-loan-section custom-container">
+  <%= form_for @transfer_home_loan, :url => { :action => "update_home_assets" }, html: { id:  "transfer_home_loan_assets", class: "transfer_home_loan_assets" } do |f| %>
+    <div class="container">
+      <div class="row heading">
+        <div class="col-md-6">
+          <h3>Upload KYC Document</h3>
+        </div>
+      </div>
+      <div class="row first-row">
+        <div class="col-md-12">
+          <div class="form-group">
+            <ul class="file-msg">
+              <li>Supported file format - <b>PDF/ JPG/ PNG only</b></li>
+              <li>File size should be <b>< 5 MB</b></li>
+            </ul>
+            <label>NOTE: Your uploaded document will be secure on our end.</label>
+          </div>
+        </div>
+      </div>
+      <hr class="file-hr">
+      <div class="row"> 
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Aadhar Card(front)
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <div class="wrapper">
+              <div class="file-upload">
+                <%= f.file_field(:aadhar_front, class: "") %>
+                <i class="fa fa-arrow-up"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Aadhar Card(Back)
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <div class="wrapper">
+              <div class="file-upload">
+                <%= f.file_field(:aadhar_back, class: "") %>
+                <i class="fa fa-arrow-up"></i>
+              </div>
+            </div>
+          </div>          
+        </div>
+      </div>
+      <button type="submit" class="btn btn-custom">Submit</button>
+    </div>
+  <%end%>  
+</section>

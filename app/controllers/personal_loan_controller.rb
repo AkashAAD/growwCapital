@@ -17,6 +17,7 @@ class PersonalLoanController < ApplicationController
 			@personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
     when "step2"
       @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
+      return redirect_to personal_loan_path("step1") if id.nil?
     when "step3"
       @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
       return redirect_to personal_loan_path("step4") if @personal_loan.otp_verified

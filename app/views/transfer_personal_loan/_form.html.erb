@@ -1,0 +1,83 @@
+<div class="row first-row">
+  <div class="col-md-3">
+    <div class="form-group">
+      <label>Your foreclose loan amount
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.number_field(:foreclose_loan_amount, class: "form-control", placeholder: "Rs. 0") %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <label>Your require topup amount?
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.select(:is_topup_amount, is_topup_amount, class: "form-control", placeholder: "Rs. 0") %>
+    </div>
+  </div>
+  <div class="col-md-3 desired-loan <%= 'hide-div' if !f.object.is_topup_amount? %>">
+    <div class="form-group">
+      <label>Your desired loan amount
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.number_field(:desired_loan_amount, class: "form-control", placeholder: "Rs. 0") %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <label>Tenure
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.select(:tenure, tenure, class: "form-control") %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3">
+    <div class="form-group">
+      <label>Your monthly net income
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.number_field(:monthly_net_salary, class: "form-control",  placeholder: "Rs. 0") %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <label>Mobile number
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.number_field(:mobile_number, class: "form-control", placeholder: "9999999999") %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <label>Your current residence city</label>
+      <%= f.select(:city, only_cities, class: "form-control") %>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+      <label>Salary received in</label>
+      <%= f.select(:bank_name, persoanl_bank_name, class: "form-control") %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <%= f.check_box(:terms_and_conditions) %>
+    <%= f.label "Terms & Conditions", for: 'personal_loan_terms_and_conditions' %>
+  </div>
+</div>
+

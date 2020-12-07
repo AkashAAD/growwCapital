@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!, only: [:profile]
   before_action :pre_approved_user, only: [:pre_approved_offer]
+  require "indian_pincodes"
 
   def index
   end
@@ -13,6 +14,16 @@ class HomeController < ApplicationController
   end
 
   def emi_calculator; end
+
+  def check_pincode
+    pincode_status = IndianPincodes.search(params[:pincode])
+    if pincode_status && pincode_status[:city].downcase == params[:city]
+      pincode_status = true
+    else
+      pincode_status = false
+    end
+    render json: { pincode_status: pincode_status }
+  end
 
   def pre_approved_offer
     if @pre_approved_offer

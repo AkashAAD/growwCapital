@@ -1,0 +1,40 @@
+<section class="business-loan-section custom-container">
+  <div class="container container-step">
+    <div class="row">
+      <div class="col-md-12">
+        <%= render partial: "layouts/steps/credit_card" %>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="container">
+      <div class="row">
+        <table class="table loan-table">
+          <thead class="thead-light">
+            <tr>
+              <th>Credit Card</th>
+              <th>First Year Fee</th>
+              <th>Annual Fee</th>
+              <th>Proceed</th>
+            </tr>
+          </thead>
+          <% @cards.each do |card| %>
+            <tr>
+              <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(card.bank_image), width: 200, height: 100 %></div></td>
+              <td><%= number_to_currency(card.first_year_fee, unit: "₹ ") %></td>
+              <td><%= number_to_currency(card.annual_fee, unit: "₹ ") %></td>
+              <td>
+                <b>
+                  <%= form_for @credit_card, :url => { :action => "select_bank" }, html: {id:  "credit_card_bank", class: "credit_card_bank"} do |f| %>
+                    <input type="hidden" name="credit_card[id]" value="<%= card.id %>">
+                    <button type="submit" class="btn btn-custom">Apply</button>
+                  <%end%>
+                </b>
+              </td>
+            </tr>
+          <%end%>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

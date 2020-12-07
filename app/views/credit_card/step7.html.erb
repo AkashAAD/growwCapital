@@ -1,0 +1,59 @@
+
+<div class="container custom-container">
+  <div class="container container-step">
+    <div class="row">
+      <div class="col-md-12">
+        <%= render partial: "layouts/steps/credit_card" %>
+      </div>
+    </div>
+  </div>
+  <div class="row main-thx-row"> 
+    <div class="col-md-4 col-lg-4 col-sm-12 bank-thank-row">
+      <div class="bank-thx-img">
+        <%= image_tag url_for(@credit_card.card.bank_image), class: "ptnr-icici-bank" %>
+      </div>
+      <div>
+        <p>First Year Fee</p>
+        <p><%= number_to_currency(@credit_card.card.first_year_fee, unit: "₹ ") %></p>
+      </div>
+      <div>
+        <p>Annual Fee</p>
+        <p><%= number_to_currency(@credit_card.card.annual_fee, unit: "₹ ") %></p>
+      </div>
+    </div>
+    <div class="col-md-8 col-lg-8 col-sm-12 thank-row">
+      <div class="congo">
+        <h3 class="float-left">CONGRATULATIONS</h3>
+        <h4 class="float-right">Reference Number: <%= @credit_card.reference_number %></h4>        
+      </div>
+      <div>
+        <p>
+          Your application has been <b>Successfully Submitted.</b> Our loan expert will get back to you with in <b>24 hours</b> to take this application forward.
+        </p>
+        <p>
+          <a href="/" target="_blank">Growwcapital.com</a> doesn't charge any money from customers for it's loan or credit card offerings. In such case you receive such communication from anyone claiming to be a Growwcapital representative, please contact us to 
+          <a href = "mailto:support@growwcapital.com">support@growwcapital.com</a>.
+        </p>
+        <p>
+          Thank you for choosing Growwcapital!!!
+        </p>        
+      </div>
+      <div class="contact-info">
+        <div>
+          <span class="fa fa-volume-control-phone" aria-hidden="true"></span>
+          <p>
+            Tollfree<br>
+            +91-88066-44344
+          </p>
+        </div>
+        <div class="div2">
+          <span class="fa fa-envelope-o" aria-hidden="true"></span>
+          <p>
+            Write us to<br>
+            support@growwcapital.com
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

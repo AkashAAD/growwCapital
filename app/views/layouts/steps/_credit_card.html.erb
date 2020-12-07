@@ -1,0 +1,37 @@
+<ul class="progress-tracker">
+  <li class="progress-step <%= 'is-active' if params[:id] == "step1" %> <%= 'is-complete' if ["step2", "step3", "step4", "step5", "step6", "step7"].include?(params[:id]) %>">
+    <div class="progress-marker">
+      <%= link_to "Step1", ["step2", "step3", "step4", "step5", "step6", "step7"].include?(params[:id]) ? credit_card_path('step1') : "#" , method: :get %>
+    </div>
+  </li>
+  <li class="progress-step <%= 'is-active' if params[:id] == "step2" %> <%= 'is-complete' if ["step3", "step4", "step5", "step6", "step7"].include?(params[:id]) %>">
+    <div class="progress-marker">
+      <%= link_to "Step2", ["step3", "step4", "step5", "step6", "step7"].include?(params[:id]) ? credit_card_path('step2') : "#", method: :get %>
+    </div>
+  </li>
+  <li class="progress-step <%= 'is-active' if params[:id] == "step3" %> <%= 'is-complete' if ["step4", "step5", "step6", "step7"].include?(params[:id]) %>">
+    <div class="progress-marker">
+      <%= link_to "Step3", ["step4", "step5", "step6", "step7"].include?(params[:id]) ? credit_card_path('step3') : "#", method: :get %>                
+    </div>
+  </li>
+  <li class="progress-step <%= 'is-active' if params[:id] == "step4" %> <%= 'is-complete' if ["step5", "step6", "step7"].include?(params[:id]) %>">
+    <div class="progress-marker">
+      <%= link_to "Step4", ["step5", "step6", "step7"].include?(params[:id]) ? credit_card_path('step4') : "#", method: :get %>                
+    </div>
+  </li>
+  <li class="progress-step <%= 'is-active' if params[:id] == "step5" %> <%= 'is-complete' if ["step6", "step7"].include?(params[:id]) %>">
+    <div class="progress-marker">
+      <%= link_to "Step5", ["step6", "step7"].include?(params[:id]) ? credit_card_path('step5') : "#" , method: :get %>
+    </div>
+  </li>
+  <li class="progress-step <%= 'is-active' if params[:id] == "step6" %> <%= 'is-complete' if params[:id] == "step7" %>">
+    <div class="progress-marker">
+      <%= link_to "Step6", ["step6", "step7"].include?(params[:id]) ? credit_card_path('step6') : "#", method: :get %>
+    </div>
+  </li>
+  <li class="progress-step <%= 'is-active' if params[:id] == "step6" %> <%= 'is-complete' if params[:id] == "step7" %>">
+    <div class="progress-marker">
+      <%= link_to "Step7", ["step7"].include?(params[:id]) ? credit_card_path('step6') : "#", method: :get %>
+    </div>
+  </li>
+</ul>

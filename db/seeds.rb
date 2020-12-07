@@ -91,15 +91,25 @@ end
   puts "EmploymentType #{et}"
 end
 
-["0 to 50 lack", "50 lack to 1 crore", "1 crore to 5 crore", "5 crore to 10 crore", "Other"].each do |at|
+["Upto 5 lakh",
+  "5 lakh to 10 lakh",
+  "10 lakh to 20 lakh",
+  "20 lakh to 30 lakh",
+  "30 lakh to 50 lakh",
+  "50 lakh to 75 lakh",
+  "75 lakh to 1 crore",
+  "Above 1 crore"].each do |at|
   AnnualTurnover.create(name: at)
   puts "AnnualTurnover #{at}"
 end
 
-{"Doctor": ["MBBS", "MBBS MD", "MBBS MS", "BMS", "BHMS", "BDS", "Deploma"],
- "CA": ["Plain CA", "FCA"],
+{"Doctor": ["MBBS", "MD", "MS", "DM", "MCH", "DNB", "BDS", "MDS", "BHMS", "BAMS", "BUMS", "Other"],
+ "Chartered Accountant(CA)": ["0 - 1year", "1 - 2years", "2 - 3years", "3 - 5years", "5years+"],
  "Architechure": ["Bacholor of Architechure", "Master of Architechure"],
- "CS(Company Secretary)": ["CS(Company Secretary)"]}.each do |key, val|
+ "Company Secretary(CS)": ["CS(Company Secretary)"],
+ "Cost Accountant(ICWA)": [],
+ "Consultant": [],
+ "Engineer": []}.each do |key, val|
   profession = Profession.create(name: key.to_s)
   puts "Profession #{profession.id}"
   val.each do |degree|
@@ -261,6 +271,8 @@ end
    plb.save
    plbi = PersonalLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], personal_loan_bank_id: plb.id)
    plbi.save
+   plbi = TransferPersonalLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], personal_loan_bank_id: plb.id)
+   plbi.save
    puts "PersonalLoanBank #{plb}"
 end
 
@@ -325,7 +337,7 @@ end
   plb = ProfessionalLoanBank.new(name: k[1][:name], slug: k[0].to_s)
   plb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
   plb.save
-  _id = Profession.find_by(name: "CA")
+  _id = Profession.find_by(name: "Chartered Accountant(CA)")
   plbi = ProfessionalLoanBankInfo.new(profession_id: _id.id, roi: k[1][:roi], processing_fee: k[1][:processing_fee], professional_loan_bank_id: plb.id)
   plbi.save
   puts "ProfessionalLoanBank #{plb}"
@@ -339,7 +351,7 @@ end
   plb = ProfessionalLoanBank.new(name: k[1][:name], slug: k[0].to_s)
   plb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
   plb.save
-  _id = Profession.find_by(name: "CS(Company Secretary)")
+  _id = Profession.find_by(name: "Company Secretary(CS)")
   plbi = ProfessionalLoanBankInfo.new(profession_id: _id.id, roi: k[1][:roi], processing_fee: k[1][:processing_fee], professional_loan_bank_id: plb.id)
   plbi.save
   puts "ProfessionalLoanBank #{plb}"
@@ -351,7 +363,7 @@ end
  { idfc_first_bank: { name: "IDFC First Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
  { idbi_bank: { name: "IDBI Bank", roi: 7.30, processing_fee: 2, bank_image: "bank_images/idbi-bank.png"}},
  { indiabulls_bank: { name: "Indiabulls Bank", roi: 9.50, processing_fee: 2, bank_image: "bank_images/indiabulls.png"}},
- { sbi_bank: { name: "SBI Bank", roi: 6.50, processing_fee: 2, bank_image: "bank_images/sbi-bank.png"}},
+ # { sbi_bank: { name: "SBI Bank", roi: 6.50, processing_fee: 2, bank_image: "bank_images/sbi-bank.png"}},
  { axis_bank: { name: "Axis Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
  { lic_housing: { name: "LIC Housing", roi: 6.5, processing_fee: 2, bank_image: "bank_images/lic-housing.jpeg"}},
  { aadhar_housing: { name: "Aadhar Housing", roi: 12, processing_fee: 2, bank_image: "bank_images/aadhar-housing.png"}},
@@ -368,6 +380,8 @@ end
   hlb.save
   hlbi = HomeLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], home_loan_bank_id: hlb.id)
   hlbi.save
+  hlbi = TransferHomeLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], home_loan_bank_id: hlb.id)
+  hlbi.save
   puts "HomeLoanBank #{hlb}"
 end
 
@@ -377,7 +391,7 @@ end
  { idfc_first_bank: { name: "IDFC First Bank", roi: 10.5, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
  { idbi_bank: { name: "IDBI Bank", roi: 9.75, processing_fee: 2, bank_image: "bank_images/idbi-bank.png"}},
  { indiabulls_bank: { name: "Indiabulls Bank", roi: 12.50, processing_fee: 2, bank_image: "bank_images/indiabulls.png"}},
- { sbi_bank: { name: "SBI Bank", roi: 8.50, processing_fee: 2, bank_image: "bank_images/sbi-bank.png"}},
+ # { sbi_bank: { name: "SBI Bank", roi: 8.50, processing_fee: 2, bank_image: "bank_images/sbi-bank.png"}},
  { axis_bank: { name: "Axis Bank", roi: 11, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
  { lic_housing: { name: "LIC Housing", roi: 9, processing_fee: 2, bank_image: "bank_images/lic-housing.jpeg"}},
  { aadhar_housing: { name: "Aadhar Housing", roi: 15, processing_fee: 2, bank_image: "bank_images/aadhar-housing.png"}},
@@ -400,7 +414,7 @@ end
 [
  { hdfc_bank: { name: "HDFC Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
  { idfc_first_bank: { name: "IDFC First Bank", roi: 12.5, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- { sbi_bank: { name: "SBI Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/sbi-bank.png"}},
+ # { sbi_bank: { name: "SBI Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/sbi-bank.png"}},
  { axis_bank: { name: "Axis Bank", roi: 8.5, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
  { icici_bank: { name: "ICICI Bank", roi: 9.50, processing_fee: 2, bank_image: "bank_images/icici-bank.png"}},
  { au_small_bank: { name: "AU Small Finance Bank", roi: 12.50, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}},
@@ -437,3 +451,15 @@ end
   city.save
   puts "City #{city}"
 }
+
+[{sbi: { name: "SBI Credit Card", bank_image: "bank_images/sbi-bank.png", first_year_fee: 100.00, annual_fee: 300}},
+ {icici: { name: "ICICI Credit Card", bank_image: "bank_images/icici-bank.png", first_year_fee: 100.00, annual_fee: 300}},
+ {indusind: { name: "IndusInd Credit Card", bank_image: "bank_images/IndusInd-bank.png", first_year_fee: 100.00, annual_fee: 300}},
+ {hdfc: { name: "HDFC Credit Card", bank_image: "bank_images/hdfc-bank.png", first_year_fee: 100.00, annual_fee: 300}}
+].each do |k|
+  k = k.flatten
+  card = Card.new(name: k[1][:name], first_year_fee: k[1][:first_year_fee], annual_fee: k[1][:annual_fee])
+  card.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
+  card.save
+  puts "Card #{card}"
+end

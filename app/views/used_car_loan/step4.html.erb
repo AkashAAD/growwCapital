@@ -1,304 +1,33 @@
-<section id="secondary-banner" class="dynamic-image-6">
-    <div class="container">
-        <div class="row align-items-end">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <h2>Used Car Loan</h2>
-                <h4>Apply for used car loan</h4>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li>FAQ</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<%= form_for @used_car_loan_offer, :url => { :action => @used_car_loan_offer.id.nil? ? "create_used_car_offer" : "update_used_car_offer" }, html: { id:  "used_car_loan_offer", class: "used_car_loan_offer" } do |f| %>
+<div class="container custom-container">
   <div class="container">
     <div class="row">
-      <div class="col-md-4">
-        <h3>Used Car Loan Offer</h3>
-      </div>
+      <table class="table loan-table">
+        <thead class="thead-light">
+          <tr>
+            <th>Bank</th>
+            <th>Interest Rate</th>
+            <th>Processing Fee</th>
+            <th>EMI</th>
+            <th>Proceed</th>
+          </tr>
+        </thead>
+        <% @banks.each do |bank| %>
+          <tr>
+            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
+            <td><b><%= percentage_roi(bank.used_car_loan_bank_info.roi) %><br><span>(Floating)</span></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.used_car_loan_bank_info.processing_fee, @used_car_loan.loan_amount), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency(calculate_emi(bank.used_car_loan_bank_info, @used_car_loan), unit: "₹ ") %></b></td>
+            <td>
+              <b>
+                <%= form_for @used_car_loan, :url => { :action => "select_bank" }, html: {id:  "used_car_loan_bank", class: "used_car_loan_bank"} do |f| %>
+                  <input type="hidden" name="used_car_loan_bank[id]" value="<%= bank.used_car_loan_bank_info.id %>">
+                  <button type="submit" class="btn btn-custom">Apply</button>
+                <%end%>
+              </b>
+            </td>
+          </tr>
+        <%end%>
+      </table>
     </div>
-    <div class="row"> 
-      <div class="col-md-4">
-        <div class="form-group">
-          <span>Car Model <span>*</span></span>
-          <%= f.text_field(:car_model, class: "form-control") %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <span>Car Manufacturer <span>*</span></span>
-          <%= f.text_field(:car_manufacturer, class: "form-control") %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <span>Current Paying EMI (Rs.) <span>*</span></span>
-          <%= f.number_field(:current_emi, class: "form-control") %>
-        </div>
-      </div>
-    </div>
-    <div class="row"> 
-      <div class="col-md-6">
-        <div class="form-group">
-          <span>Car Registration Number <span>*</span></span>
-          <%= f.text_field(:car_registration_number, class: "form-control") %>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <span>Model Year <span>*</span></span>
-          <%= f.text_field(:model_year, class: "form-control") %>
-        </div>
-      </div>
-    </div>
-    <div class="row"> 
-      <div class="col-md-4">
-        <div class="form-group">
-          <span>Car Registration State <span>*</span></span>
-          <%= f.select(:registration_state, states, class: "form-control") %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <span>Car Registration City <span>*</span></span>
-          <%= f.select(:registration_city, cities(f, :registration_state, :registration_city), class: "form-control") %>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="form-group">
-          <span>Profession Status <span>*</span></span>
-          <%= f.select(:profession_status, profession_status, class: "form-control") %>
-        </div>
-      </div>
-    </div>
-    <div class="row used-car-other-info">
-      <div class="col-md-4">
-        <h3>Other Information</h3>
-      </div>
-    </div>
-    <div class="used-car-salaried">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Employer Name <span>*</span></span>
-            <%= f.text_field(:employer_name, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Official Email Id <span></span></span>
-            <%= f.text_field(:office_email, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Monthly Net Salary(minimum ₹ 15,000) <span>*</span></span>
-            <%= f.number_field(:monthly_net_salary, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Years In Current Job <span>*</span></span>
-            <%= f.number_field(:years_in_current_job, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Designation <span>*</span></span>
-            <%= f.text_field(:designation, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Mailing Address <span>*</span></span>
-            <%= f.select(:mailing_address, mailing_address, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Office Landline No./ Mobile No. <span>*</span></span>
-            <%= f.number_field(:mobile_number, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Salary Account Bank Name <span>*</span></span>
-            <%= f.select(:salary_bank_account_name, bank_name, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Branch Name <span>*</span></span>
-            <%= f.text_field(:branch_name, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <span>Office Address Line 1 <span>*</span></span>
-          <%= f.text_area(:office_address_line1, class: "form-control") %>
-        </div>
-        <div class="col-md-4">
-          <span>Office Address Line 2 <span>*</span></span>
-          <%= f.text_area(:office_address_line2, class: "form-control") %>
-        </div>
-        <div class="col-md-4">
-          <span>Landmark <span>*</span></span>
-          <%= f.text_area(:landmark, class: "form-control") %>          
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <span>Office State <span>*</span></span>
-          <%= f.select(:office_state, states, class: "form-control") %>
-        </div>
-        <div class="col-md-4">
-          <span>Office City <span>*</span></span>
-          <%= f.select(:office_city, cities(f, :office_state, :office_city), class: "form-control") %>
-        </div>
-        <div class="col-md-4">
-          <span>Office Pincode <span>*</span></span>
-          <%= f.number_field(:office_pincode, class: "form-control") %>
-        </div>
-      </div>
-    </div>
-    <div class="used-car-self-employed">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business Name <span>*</span></span>
-            <%= f.text_field(:business_name, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Nature Of Business <span>*</span></span>
-            <%= f.select(:business_nature, business_nature, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Type Of Organization <span>*</span></span>
-            <%= f.select(:industry_type, industry_type, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Present Work Experience(Years) <span>*</span></span>
-            <%= f.select(:business_years, business_year, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Current Paying EMI (Rs.) <span>*</span></span>
-            <%= f.number_field(:current_emi, step: 0.5, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Annual Turnover <span>*</span></span>
-            <%= f.select(:annual_turnover, annual_turnover, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Gross Annual Profit <span>*</span></span>
-            <%= f.number_field(:gross_annual_profit, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Business Pan Number: <span>*</span></span>
-            <%= f.text_field(:business_pan_number, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>GST Number <span></span></span>
-            <%= f.text_field(:gst_number, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <span>Business Property Type: <span>*</span></span>
-            <%= f.select(:residence_type, residence_type, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business Address Line 1: <span>*</span></span>
-            <%= f.text_area(:address_line1, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business Address Line 2: <span>*</span></span>
-            <%= f.text_area(:address_line2, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business Landmark: <span>*</span></span>
-            <%= f.text_area(:bus_landmark, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business State: <span>*</span></span>
-            <%= f.select(:state, states, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business City: <span>*</span></span>
-            <%= f.select(:city, cities(f, :state, :city), class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Business Pincode: <span>*</span></span>
-            <%= f.number_field(:pincode, class: "form-control") %>
-          </div>
-        </div>
-      </div>      
-    </div>
-    <button type="submit" class="btn btn-default">Submit</button>
   </div>
-<%end%>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    <% if @used_car_loan_offer.profession_status == "self-employed" %>
-      $(".used-car-other-info").addClass("used-car-show-div");
-      $(".used-car-salaried").removeClass("used-car-show-div");
-      $(".used-car-self-employed").addClass("used-car-show-div");
-      $("#used_car_loan_offer_profession_status").prop("disabled", true);
-    <% elsif @used_car_loan_offer.profession_status == "salaried" %>
-      $(".used-car-other-info").addClass("used-car-show-div");
-      $(".used-car-salaried").addClass("used-car-show-div");
-      $(".used-car-self-employed").removeClass("used-car-show-div");
-      $("#used_car_loan_offer_profession_status").prop("disabled", true);
-    <% else %>
-      $(".used-car-other-info").removeClass("used-car-show-div");
-      $(".used-car-salaried").removeClass("used-car-show-div");
-      $(".used-car-self-employed").removeClass("used-car-show-div");
-    <% end %>
-  });  
-</script>
+</div>

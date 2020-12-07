@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_28_100701) do
+ActiveRecord::Schema.define(version: 2020_12_05_023111) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -109,6 +109,14 @@ ActiveRecord::Schema.define(version: 2020_11_28_100701) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.decimal "first_year_fee", precision: 20, scale: 2
+    t.decimal "annual_fee", precision: 20, scale: 2
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -136,6 +144,30 @@ ActiveRecord::Schema.define(version: 2020_11_28_100701) do
     t.text "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "credit_cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "mobile_number"
+    t.integer "otp"
+    t.boolean "otp_verified", default: false
+    t.string "reference_number"
+    t.boolean "terms_and_conditions"
+    t.string "status"
+    t.integer "employment_type"
+    t.string "email"
+    t.datetime "dob"
+    t.string "full_name"
+    t.boolean "existing_card", default: false
+    t.integer "card_id"
+    t.text "address"
+    t.string "city"
+    t.string "pincode"
+    t.text "office_address"
+    t.string "office_city"
+    t.string "office_pincode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["card_id"], name: "index_credit_cards_on_card_id"
   end
 
   create_table "degrees", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -350,31 +382,23 @@ ActiveRecord::Schema.define(version: 2020_11_28_100701) do
     t.integer "tenure"
     t.string "email"
     t.string "mobile_number"
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "last_name"
-    t.string "gender"
-    t.string "marital_status"
-    t.integer "highest_qualification"
-    t.integer "no_of_dependent"
-    t.string "current_residency_since_year"
-    t.string "current_city_since_year"
-    t.string "pan_number"
-    t.integer "purpose_of_loan"
-    t.text "address_line1"
-    t.text "address_line2"
-    t.text "landmark"
+    t.string "full_name"
+    t.string "car_manufacturer"
+    t.string "car_model"
+    t.integer "employment_type"
+    t.decimal "current_emi", precision: 20, scale: 2
+    t.text "address"
     t.string "city"
-    t.string "state"
     t.string "pincode"
-    t.integer "residential_type"
+    t.text "office_address"
+    t.string "office_city"
+    t.string "office_pincode"
     t.datetime "dob"
     t.integer "otp"
     t.boolean "otp_verified", default: false
     t.string "reference_number"
     t.boolean "terms_and_conditions"
     t.integer "new_car_loan_bank_id"
-    t.decimal "emi", precision: 20, scale: 2
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -460,48 +484,30 @@ ActiveRecord::Schema.define(version: 2020_11_28_100701) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "professional_loan_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "professional_loan_id"
-    t.integer "profession_type"
-    t.integer "degree"
-    t.integer "current_profession_since_year"
-    t.decimal "annual_income", precision: 20, scale: 2
-    t.decimal "current_emi", precision: 20, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["professional_loan_id"], name: "index_professional_loan_offers_on_professional_loan_id"
-  end
-
   create_table "professional_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.decimal "loan_amount", precision: 20, scale: 2
     t.integer "tenure"
     t.string "email"
     t.string "mobile_number"
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "last_name"
-    t.string "gender"
-    t.string "marital_status"
-    t.integer "highest_qualification"
-    t.integer "no_of_dependent"
-    t.string "current_residency_since_year"
-    t.string "current_city_since_year"
-    t.string "pan_number"
-    t.integer "purpose_of_loan"
-    t.text "address_line1"
-    t.text "address_line2"
-    t.text "landmark"
+    t.string "full_name"
+    t.integer "profession_type"
+    t.integer "degree"
+    t.integer "current_profession_since_year"
+    t.decimal "annual_income", precision: 20, scale: 2
+    t.integer "bank_name"
+    t.decimal "current_emi", precision: 20, scale: 2
+    t.text "address"
     t.string "city"
-    t.string "state"
     t.string "pincode"
-    t.integer "residential_type"
+    t.text "office_address"
+    t.string "office_city"
+    t.string "office_pincode"
     t.datetime "dob"
     t.integer "otp"
     t.boolean "otp_verified", default: false
     t.string "reference_number"
     t.boolean "terms_and_conditions"
     t.integer "professional_loan_bank_id"
-    t.decimal "emi", precision: 20, scale: 2
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -548,6 +554,83 @@ ActiveRecord::Schema.define(version: 2020_11_28_100701) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "transfer_home_loan_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
+    t.integer "home_loan_bank_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["home_loan_bank_id"], name: "index_transfer_home_loan_bank_infos_on_home_loan_bank_id"
+  end
+
+  create_table "transfer_home_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "foreclose_loan_amount", precision: 20, scale: 2, default: "0.0"
+    t.decimal "desired_loan_amount", precision: 20, scale: 2, default: "0.0"
+    t.integer "tenure"
+    t.string "email"
+    t.string "mobile_number"
+    t.string "property_city"
+    t.decimal "annual_income", precision: 20, scale: 2
+    t.decimal "current_emi", precision: 20, scale: 2
+    t.decimal "property_cost", precision: 20, scale: 2
+    t.integer "employment_type"
+    t.string "full_name"
+    t.text "address"
+    t.string "city"
+    t.string "pincode"
+    t.datetime "dob"
+    t.integer "otp"
+    t.boolean "otp_verified", default: false
+    t.string "reference_number"
+    t.boolean "terms_and_conditions"
+    t.integer "home_loan_bank_id"
+    t.string "status"
+    t.boolean "is_topup_amount", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["home_loan_bank_id"], name: "index_transfer_home_loans_on_home_loan_bank_id"
+  end
+
+  create_table "transfer_personal_loan_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "roi", precision: 20, scale: 2
+    t.decimal "processing_fee", precision: 20, scale: 2
+    t.integer "personal_loan_bank_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["personal_loan_bank_id"], name: "index_transfer_personal_loan_bank_infos_on_personal_loan_bank_id"
+  end
+
+  create_table "transfer_personal_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "full_name"
+    t.string "employer_name"
+    t.integer "tenure"
+    t.decimal "monthly_net_salary", precision: 20, scale: 2
+    t.string "email"
+    t.datetime "dob"
+    t.text "address"
+    t.string "city"
+    t.string "pincode"
+    t.text "office_address"
+    t.string "office_city"
+    t.string "office_pincode"
+    t.decimal "foreclose_loan_amount", precision: 20, scale: 2, default: "0.0"
+    t.decimal "desired_loan_amount", precision: 20, scale: 2, default: "0.0"
+    t.string "mobile_number"
+    t.integer "otp"
+    t.boolean "otp_verified", default: false
+    t.string "reference_number"
+    t.boolean "terms_and_conditions"
+    t.integer "personal_loan_bank_id"
+    t.integer "bank_name"
+    t.decimal "current_emi", precision: 20, scale: 2
+    t.boolean "existing_card", default: false
+    t.boolean "is_topup_amount", default: false
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["personal_loan_bank_id"], name: "index_transfer_personal_loans_on_personal_loan_bank_id"
   end
 
   create_table "used_car_loan_bank_infos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -619,31 +702,25 @@ ActiveRecord::Schema.define(version: 2020_11_28_100701) do
     t.integer "tenure"
     t.string "email"
     t.string "mobile_number"
-    t.string "first_name"
-    t.string "middle_name"
-    t.string "last_name"
-    t.string "gender"
-    t.string "marital_status"
-    t.integer "highest_qualification"
-    t.integer "no_of_dependent"
-    t.string "current_residency_since_year"
-    t.string "current_city_since_year"
-    t.string "pan_number"
-    t.integer "purpose_of_loan"
-    t.text "address_line1"
-    t.text "address_line2"
-    t.text "landmark"
+    t.string "full_name"
+    t.string "car_registration_number"
+    t.string "model_year"
+    t.string "car_manufacturer"
+    t.string "car_model"
+    t.integer "employment_type"
+    t.decimal "current_emi", precision: 20, scale: 2
+    t.text "address"
     t.string "city"
-    t.string "state"
     t.string "pincode"
-    t.integer "residential_type"
+    t.text "office_address"
+    t.string "office_city"
+    t.string "office_pincode"
     t.datetime "dob"
     t.integer "otp"
     t.boolean "otp_verified", default: false
     t.string "reference_number"
     t.boolean "terms_and_conditions"
     t.integer "used_car_loan_bank_id"
-    t.decimal "emi", precision: 20, scale: 2
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

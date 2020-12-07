@@ -1,0 +1,21 @@
+<section class="personal-loan-section custom-container">
+  <%= form_for @transfer_personal_loan, :url => { :action => @transfer_personal_loan.id.nil? ? "update_otp_status" : "update_otp_status"}, html: {id:  "otp_transfer_personal_loan", class: "otp_transfer_personal_loan"} do |f| %>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <!-- <div class="form-group">
+            <h3>Verify OTP</h3>
+          </div> -->
+          <div class="form-group">
+            <!-- <span>OTP</span> -->
+            <%= f.number_field(:otp, class: "form-control", value: "", placeholder: "OTP") %>
+          </div> 
+          <button type="submit" class="btn btn-custom">Submit</button>
+          <a href="javascript:void(o)" id="personal-loan-resend-otp" style="float: right;">Resend</a>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  <%end%>
+</section>

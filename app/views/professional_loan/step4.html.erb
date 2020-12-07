@@ -1,61 +1,35 @@
-<section id="secondary-banner" class="dynamic-image-6">
-    <div class="container">
-        <div class="row align-items-end">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <h2>New Professional Loan</h2>
-                <h4>Apply for new brofessional loan</h4>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li>FAQ</li>
-                </ul>
-            </div>
-        </div>
+<div class="container custom-container">
+  <div class="container">
+    <div class="row">
+      <table class="table loan-table">
+        <thead class="thead-light">
+          <tr>
+            <th>Bank</th>
+            <th>Interest Rate</th>
+            <th>Processing Fee</th>
+            <th>Prepayment Chares</th>
+            <th>EMI</th>
+            <th>Proceed</th>
+          </tr>
+        </thead>
+        <% @banks.each do |bank| %>
+          <tr>
+            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
+            <td><b><%= percentage_roi(bank.professional_loan_bank_info.roi) %><br><span>(Floating)</span></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.professional_loan_bank_info.processing_fee, @professional_loan.loan_amount), unit: "₹ ") %></b></td>
+            <td></td>
+            <td><b><%= number_to_currency(calculate_emi(bank.professional_loan_bank_info, @professional_loan), unit: "₹ ") %></b></td>
+            <td>
+              <b>
+                <%= form_for @professional_loan, :url => { :action => "select_bank" }, html: {id:  "professional_loan_bank", class: "professional_loan_bank"} do |f| %>
+                  <input type="hidden" name="professional_loan_bank[id]" value="<%= bank.professional_loan_bank_info.id %>">
+                  <button type="submit" class="btn btn-custom">Apply</button>
+                <%end%>
+              </b>
+            </td>
+          </tr>
+        <%end%>
+      </table>
     </div>
-</section>
-
-  <%= form_for @professional_loan_offer, :url => { :action => @professional_loan_offer.id.nil? ? "create_professional_offer" : "update_professional_offer" }, html: { id:  "professional_loan_offer", class: "professional_loan_offer" } do |f| %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4">
-          <h3>Professional Loan Offer</h3>
-        </div>
-      </div>      
-      <div class="row"> 
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Profession Type <span>*</span></span>
-            <%= f.select(:profession_type, profession_type, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Degree: <span>*</span></span>
-            <%= f.select(:degree, degrees(f), class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Profession Years Since: <span>*</span></span>
-            <%= f.select(:current_profession_since_year, current_profession_since_year, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Annual Income: <span>*</span></span>
-            <%= f.number_field(:annual_income, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <span>Current Paying EMI (Rs.): <span>*</span></span>
-            <%= f.number_field(:current_emi, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-default">Submit</button>
-    </div>
-  <%end%>
+  </div>
+</div>

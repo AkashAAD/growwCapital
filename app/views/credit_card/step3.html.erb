@@ -1,0 +1,76 @@
+
+<section class="personal-loan-section custom-container">
+  <%= form_for @credit_card, :url => { :action => "update_card_offer" }, html: {id: "update_card_offer", class: "update_card_offer"} do |f| %>
+    <div class="container container-step">
+      <div class="row">
+        <div class="col-md-12">
+          <%= render partial: "layouts/steps/credit_card", locals: { f: f } %>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row heading">
+        <div class="col-md-4">
+          <div class="form-group">
+            <h3>Credit Card Application</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row first-row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Employment Type
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:employment_type, employment_type, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Full Name
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.text_field(:full_name, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Date Of Birth
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.date_field(:dob, class: "form-control", max: "#{Time.zone.now - 21.years}") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Email
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.text_field(:email, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Do you have an existing credit card
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:existing_card, existing_card, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-custom">Submit</button>
+    </div>
+  <%end%>
+</section>

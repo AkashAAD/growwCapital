@@ -19,10 +19,10 @@ class HomeLoanController < ApplicationController
       # return redirect_to home_loan_path("step3") if @home_loan.otp_verified
     when "step2"
       @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
-      return redirect_to home_loan_path("step4") if @home_loan.otp_verified
+      return redirect_to home_loan_path("step1") if id.nil?
     when "step3"
       @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
-      # return redirect_to home_loan_path("step2") unless @home_loan.otp_verified
+      return redirect_to home_loan_path("step4") if @home_loan.otp_verified
     when "step4", "step6"
       @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
       @banks = @home_loan.banks

@@ -117,7 +117,7 @@
       <section class="car-block-wrap padding-loans">
         <div class="row">
           <div class="col-3 col-md-4 col-lg-3 col-xl-2 ord-10 col-md-6-prd">
-            <%= link_to "#", method: :get do %>
+            <%= link_to credit_card_path('step1'), method: :get do %>
               <div class="pb-product active">
                 <h1 class="product-name">Credit Card</h1>
                 <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card offers</p>
@@ -139,7 +139,7 @@
             <%end%>
           </div>
           <div class="col-3 col-md-4 col-lg-3 col-xl-2 ord-10 col-md-6-prd">
-            <%= link_to "#", method: :get do %>
+            <%= link_to transfer_personal_loan_path('step1'), method: :get do %>
               <div class="pb-product active">
                 <h1 class="product-name">Transfer Personal Loan</h1>
                 <p class="product-desc">Check, track &amp; build your credit scors</p>
@@ -185,7 +185,7 @@
         </div>
         <div class="row">
           <div class="col-3 col-md-4 col-lg-3 col-xl-2 ord-10 col-md-6-prd">
-            <%= link_to "#", method: :get do %>
+            <%= link_to transfer_home_loan_path('step1'), method: :get do %>
               <div class="pb-product active">
                 <h1 class="product-name">Transfer Home Loan</h1>
                 <p class="product-desc">Check, track &amp; build your credit score </p>
@@ -224,6 +224,28 @@
                 <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card offers</p>
                 <div class="product-icon">
                   <i class="fa fa-3x fa-car"></i>
+                </div>
+              </div>
+            <%end%>
+          </div>
+          <div class="col-3 col-md-4 col-lg-3 col-xl-2 ord-10 col-md-6-prd">
+            <%= link_to "/", method: :get do %>
+              <div class="pb-product active">
+                <h1 class="product-name">Gold Loan</h1>
+                <p class="product-desc">Check, tcredit score for best loan &amp; card offers comming soon...</p>
+                <div class="product-icon">
+                  <i class="fa fa-3x fa-balance-scale"></i>
+                </div>
+              </div>
+            <%end%>
+          </div>
+          <div class="col-3 col-md-4 col-lg-3 col-xl-2 ord-10 col-md-6-prd">
+            <%= link_to "/", method: :get do %>
+              <div class="pb-product active">
+                <h1 class="product-name">Insurance</h1>
+                <div class="product-icon">
+                <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card comming soon...</p>
+                  <i class="fa fa-3x fa-heartbeat"></i>
                 </div>
               </div>
             <%end%>

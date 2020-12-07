@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'home/change_state' => "home#change_state"
+  get 'home/check_pincode' => 'home#check_pincode'
   get 'home/change_profession' => "home#change_profession"
   get "home/profile" => "home#profile"
   post 'home/newsletter' => "home#newsletter"
@@ -35,7 +36,32 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :credit_card do
+    collection do
+      patch :update_card_offer
+      patch :update_card_assets
+      post :create_otp
+      patch :update_otp_status
+      patch :select_bank
+      patch :update_address
+      get :resend_otp
+    end
+  end
+
   resources :home_loan do
+    collection do
+      post  :create_home_offer
+      patch :update_home_offer
+      patch :update_home_assets
+      post :create_otp
+      patch :update_otp_status
+      patch :select_bank
+      patch :update_address
+      get :resend_otp
+    end
+  end
+
+  resources :transfer_home_loan do
     collection do
       post  :create_home_offer
       patch :update_home_offer
@@ -69,6 +95,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      patch :update_address
       get :resend_otp
     end
   end
@@ -87,6 +114,20 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :transfer_personal_loan do
+    collection do
+      post  :create_employer
+      patch :update_employer
+      patch :update_transfer_personal_loan_assets
+      get :get_employer
+      post :create_otp
+      patch :update_otp_status
+      patch :select_bank
+      patch :updated_address
+      get :resend_otp
+    end
+  end
+
   resources :professional_loan do
     collection do
       post  :create_professional_offer
@@ -95,6 +136,7 @@ Rails.application.routes.draw do
       post :create_otp
       patch :update_otp_status
       patch :select_bank
+      patch :updated_address
       get :resend_otp
     end
   end
@@ -106,6 +148,7 @@ Rails.application.routes.draw do
       patch :update_used_car_assets
       post :create_otp
       patch :update_otp_status
+      patch :update_address
       patch :select_bank
       get :resend_otp
     end

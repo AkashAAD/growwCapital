@@ -179,8 +179,19 @@ module ApplicationHelper
     return "%.2f" % emi
   end
 
+  def tr_calculate_emi(personal_loan_info, personal_loan)
+    r = personal_loan_info.roi / (12 * 100)
+    t = personal_loan.tenure * 12
+    emi = (personal_loan.desired_loan_amount * r * ((1 + r)**t))/((1 + r)**t - 1)
+    return "%.2f" % emi
+  end
+
   def existing_card
     [['-Select Option-', ''], ['Yes','true'], ['No', 'false']]
   end
+
+  def is_topup_amount
+    [['-Select Option-', ''], ['Yes','true'], ['No', 'false']]
+  end  
 
 end

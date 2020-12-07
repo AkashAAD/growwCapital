@@ -1,0 +1,66 @@
+<div class="row first-row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <label>Your Company Name
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.text_field(:employer_name, class: "form-control") %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <label>Total EMI you pay currently
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.number_field(:current_emi, class: "form-control", placeholder: "Rs. 0") %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <label>Do you have an existing credit card
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.select(:existing_card, existing_card, class: "form-control") %>     
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4">
+    <div class="form-group">
+      <label>Your Full Name
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.text_field(:full_name, class: "form-control", placeholder: "") %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <label>Date Of Birth
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.date_field(:dob, class: "form-control", max: "#{Time.zone.now - 21.years}") %>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group">
+      <label>Your Email Address
+        <a href="" data-toggle="tooltip" data-placement="top" title="!">
+          <i class="fa fa-info-circle" aria-hidden="true"></i>
+        </a>
+      </label>
+      <%= f.text_field(:email, class: "form-control", placeholder: "") %>
+    </div>
+  </div>
+</div>
+
+

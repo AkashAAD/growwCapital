@@ -1,0 +1,44 @@
+<div class="container custom-container">
+  <%= form_for @transfer_home_loan, :url => { :action => "update_address" }, html: {id:  "transfer_home_loan_address", class: "transfer_home_loan_address"} do |f| %>
+    <div class="container">
+      <div class="row heading">
+        <div class="col-md-4">
+          <h3>Address Detail</h3>
+        </div>
+      </div>
+      <div class="row first-row"> 
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Present Address
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.text_area(:address, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>City
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:city, only_cities, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Pincode
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.number_field(:pincode, class: "form-control") %>
+          </div>
+        </div>
+      </div>    
+      <button type="submit" class="btn btn-custom">Submit</button>
+    </div>
+  <%end%>
+</div>

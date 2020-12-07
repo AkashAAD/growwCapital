@@ -1,0 +1,44 @@
+<section class="personal-loan-section custom-container">
+  <%= form_for @credit_card, :url => { :action => @credit_card.id.nil? ? "create_otp" : "update" }, html: { id:  "basic_credit_card", class: "basic_credit_card" } do |f| %>
+    <div class="container container-step">
+      <div class="row">
+        <div class="col-md-12">
+          <%= render partial: "layouts/steps/credit_card", locals: { f: f } %>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row heading">
+        <div class="col-md-4">
+          <div class="form-group">
+            <h3>Credit Card Application</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row first-row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Mobile Number
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.number_field(:mobile_number, class: "form-control") %>
+          </div>
+        </div>        
+        <div class="col-md-4"></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <%= f.check_box(:terms_and_conditions) %>
+          <%= f.label "Terms & Conditions", for: 'home_loan_terms_and_conditions' %><br>
+          <button type="submit" class="btn btn-custom">Submit</button>          
+        </div>
+         <div class="col-md-4"></div>
+      </div>
+    </div>
+  <%end%>
+</section>
+

@@ -1,10 +1,6 @@
 class NewCarLoan < ApplicationRecord
-  has_one_attached :persoanl_bank_statement
-  has_one_attached :business_bank_statement
-  has_one_attached :id_proof
-  has_one_attached :salary_slip
-  has_one_attached :itr_copy
-  has_one_attached :passport_photo
+  has_one_attached :aadhar_back
+  has_one_attached :aadhar_front
   has_one :new_car_loan_offer
   belongs_to :new_car_loan_bank, optional: true
 

@@ -59,7 +59,7 @@ $(document).ready(function(){
 	}, "");
 
 	jQuery.validator.addMethod("full_name", function(value, element) {
-	  return /^[A-Z]+$/.test(value) && value.split(" ").length > 2;
+	  return value.split(" ").length >= 2;
 	}, "");
 
 	jQuery.validator.addMethod("email", function(value, element) {
@@ -69,6 +69,28 @@ $(document).ready(function(){
 	jQuery.validator.addMethod("valid_loan_amt", function(value, element) {
 		return parseFloat(value) >= 50000;
 	}, "");
+
+	jQuery.validator.addMethod("bus_is_pincode", function(value, element) {
+		var status = false;
+		var attr;
+		if($(element).attr('id') == "business_loan_pincode") {
+			attr = "#business_loan_city";
+		} else {
+			attr = "#business_loan_business_city";
+		}
+		$.ajax({
+	    url: "/home/check_pincode?pincode=" + value + "&city=" + $(attr).val(),
+	    success: function (data) {
+	    	if(data.pincode_status) {
+	    		status = true;
+	    	} else {
+	    		status = false;
+	    	}
+	    },
+	    async: false
+		});
+		return status;
+	}, "Please enter valid pincode.");
 
 	$("#otp_business_loan").validate({
 		rules: {
@@ -198,7 +220,8 @@ $(document).ready(function(){
 			},
 			"business_loan[pincode]": {
 				required: true,
-				minlength: 6
+				minlength: 6,
+				bus_is_pincode: true
 			},
 			"business_loan[business_address]": {
 				required: true,
@@ -209,7 +232,8 @@ $(document).ready(function(){
 			},
 			"business_loan[business_pincode]": {
 				required: true,
-				minlength: 6
+				minlength: 6,
+				bus_is_pincode: true
 			}
 		},
 		messages: {

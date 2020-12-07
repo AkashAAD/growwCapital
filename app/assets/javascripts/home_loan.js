@@ -29,7 +29,7 @@ $(document).ready(function(){
 	}, "");
 
 	jQuery.validator.addMethod("full_name", function(value, element) {
-	  return /^[A-Z]+$/.test(value) && value.split(" ").length > 2;
+	  return value.split(" ").length >= 2;
 	}, "");
 
 	jQuery.validator.addMethod("email", function(value, element) {
@@ -39,6 +39,28 @@ $(document).ready(function(){
 	jQuery.validator.addMethod("valid_loan_amt", function(value, element) {
 		return parseFloat(value) >= 50000;
 	}, "");
+
+	jQuery.validator.addMethod("hom_is_pincode", function(value, element) {
+		var status = false;
+		var attr;
+		if($(element).attr('id') == "home_loan_pincode") {
+			attr = "#home_loan_city";
+		} else {
+			attr = "#";
+		}
+		$.ajax({
+	    url: "/home/check_pincode?pincode=" + value + "&city=" + $(attr).val(),
+	    success: function (data) {
+	    	if(data.pincode_status) {
+	    		status = true;
+	    	} else {
+	    		status = false;
+	    	}
+	    },
+	    async: false
+		});
+		return status;
+	}, "Please enter valid pincode.");
 
 	$("#home_loan_state").change(function(evt) {
 		$.ajax({
@@ -78,7 +100,7 @@ $(document).ready(function(){
 		rules: {
 			"home_loan[otp]": {
 				required: true,
-				maxlength: 6
+				minlength: 6
 			}
 		},
 		messages: {
@@ -190,7 +212,8 @@ $(document).ready(function(){
 			},
 			"home_loan[pincode]": {
 				required: true,
-				minlength: 6
+				minlength: 6,
+				hom_is_pincode: true
 			},
 		},
 		messages: {
@@ -203,7 +226,7 @@ $(document).ready(function(){
 			},
 			"home_loan[pincode]": {
 				required: "Please enter pincode.",
-				minlength: "Pincode must consist of at least 6 characters.",
+				minlength: "Pincode must consist of at least 6 characters."
 			},
 		}
 	});

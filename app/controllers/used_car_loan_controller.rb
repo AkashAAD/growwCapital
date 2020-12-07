@@ -2,7 +2,7 @@ class UsedCarLoanController < ApplicationController
 	before_action :create_used_car_loan, only: [:create_otp]
 	before_action :update_used_car_loan, only: [:update]
   before_action :create_used_car_loan_offer, only: [:create_used_car_offer]
-  before_action :update_used_car_loan_offer, only: [:update_used_car_offer]
+  before_action :update_used_car_loan_offer, only: [:update_used_car_offer, :update_address]
   before_action :update_used_car_loan_assets, only: [:update_used_car_assets]
   before_action :apply_loan, only: [:select_bank]  
 
@@ -15,19 +15,19 @@ class UsedCarLoanController < ApplicationController
     case params[:id]
     when "step1"
       @used_car_loan = id.nil? ? UsedCarLoan.new : get_used_car_loan(id)
-      return redirect_to used_car_loan_path("step2") if !@used_car_loan.otp_verified && !@used_car_loan.otp.blank?
-      return redirect_to used_car_loan_path("step3") if @used_car_loan.otp_verified
     when "step2"
       @used_car_loan = id.nil? ? UsedCarLoan.new : get_used_car_loan(id)
-      return redirect_to used_car_loan_path("step3") if @used_car_loan.otp_verified
-    when "step3", "step4", "step6"
+      return redirect_to used_car_loan_path("step1") if id.nil?
+    when "step3"
       @used_car_loan = id.nil? ? UsedCarLoan.new : get_used_car_loan(id)
-      return redirect_to used_car_loan_path("step2") unless @used_car_loan.otp_verified
-      @used_car_loan_offer =  @used_car_loan.used_car_loan_offer.try(:id) ? @used_car_loan.used_car_loan_offer : UsedCarLoanOffer.new
-    when "step5"
+      return redirect_to used_car_loan_path("step4") if @used_car_loan.otp_verified
+    when "step4", "step6"
       @used_car_loan = id.nil? ? UsedCarLoan.new : get_used_car_loan(id)
       @banks = @used_car_loan.banks
-      return redirect_to used_car_loan_path("step2") unless @used_car_loan.otp_verified      
+      return redirect_to used_car_loan_path("step1") unless @used_car_loan.otp_verified 
+    when "step5"
+      @used_car_loan = id.nil? ? UsedCarLoan.new : get_used_car_loan(id)
+      return redirect_to used_car_loan_path("step1") unless @used_car_loan.otp_verified      
     when "step7"
       @used_car_loan = get_used_car_loan(id) #UsedCarLoan.last
       LoanMailer.used_car_loan(@used_car_loan).deliver_later
@@ -47,28 +47,35 @@ class UsedCarLoanController < ApplicationController
       @used_car_loan.otp_verified = true
       @used_car_loan.save
       flash[:error] = "The entered OTP verified successfully."
-      redirect_to used_car_loan_path("step3")
+      redirect_to used_car_loan_path("step4")
     else
       flash[:error] = "The entered OTP is not valid."
-      redirect_to used_car_loan_path("step2")
+      redirect_to used_car_loan_path("step3")
     end
   end
 
 	def update
-    create_update_used_car_loan(@update_status_ncl, "Used Car Loan updated successfully.", used_car_loan_path("step4"))
+    create_update_used_car_loan(@update_status_ncl, "Used Car Loan updated successfully.", used_car_loan_path("step2"))
 	end
 
   def select_bank
-    create_update_used_car_loan(@update_status_ncl, "Used Car Loan bank selected successfully.", used_car_loan_path("step6"))
+    create_update_used_car_loan(@update_status_ncl, "Used Car Loan bank selected successfully.", used_car_loan_path("step5"))
   end  
 
 	def create_used_car_offer
-		create_update_used_car_loan_offer(@used_car_loan_offer.save, "Used Car Loan offer applied successfully.", used_car_loan_path("step5"))
+		create_update_used_car_loan_offer(@used_car_loan_offer.save, "Used Car Loan offer applied successfully.", used_car_loan_path("step3"))
 	end
 
 	def update_used_car_offer
-		create_update_used_car_loan_offer(@update_status_nclo, "Used Car Loan offer applied successfully.", used_car_loan_path("step5"))
+    unless @used_car_loan.otp_verified
+      send_otp
+    end
+		create_update_used_car_loan_offer(@update_status_nclo, "Used Car Loan offer applied successfully.", used_car_loan_path("step3"))
 	end
+
+  def update_address
+    create_update_used_car_loan_offer(@update_status_nclo, "Used Car Loan updated successfully.", used_car_loan_path("step6"))
+  end
 
 	def update_used_car_assets
 		session[:used_car_loan_id] = nil if @update_status_ncl
@@ -82,75 +89,35 @@ class UsedCarLoanController < ApplicationController
 
 	private
 	def used_car_loan_params
-    params.require(:used_car_loan).permit(:first_name,
-      :middle_name,
-      :last_name,
-      :dob,
-      :gender,
-      :marital_status,
-      :highest_qualification,
-      :no_of_dependent,
-      :current_residency_since_year,
-      :current_city_since_year,
-      :pan_number,
-      :purpose_of_loan,
-      :address_line1,
-      :address_line2,
-      :landmark,
-      :city,
-      :state,
-      :pincode,
-      :residential_type,
-      :mobile_number,
-      :email,
-      :loan_amount,
+    params.require(:used_car_loan).permit(:loan_amount,
       :tenure,
-      :terms_and_conditions)
+      :email,
+      :mobile_number,
+      :full_name,
+      :car_manufacturer,
+      :car_model,
+      :car_registration_number,
+      :model_year,
+      :employment_type,
+      :current_emi,
+      :address,
+      :city,
+      :pincode,
+      :office_address,
+      :office_city,
+      :office_pincode,
+      :dob,
+      :otp,
+      :otp_verified,
+      :reference_number,
+      :terms_and_conditions,
+      :new_car_loan_bank_id,
+      :status,
+      :aadhar_back,
+      :aadhar_front)
 	end
 
   def used_car_loan_offer_params
-  	params.require(:used_car_loan_offer).permit(
-      :registration_state,
-      :registration_city,
-      :car_registration_number,
-      :model_year,
-      :car_manufacturer,
-      :car_model,
-      :profession_status,
-      :current_emi,      
-      :employer_name,
-      :designation,
-      :years_in_current_job,
-      :office_address_line1,
-      :office_address_line2,
-      :landmark,
-      :office_state,
-      :office_city,
-      :office_email,
-      :office_pincode,
-      :mailing_address,
-      :first_name,
-      :last_name,
-      :mobile_number,
-      :ref_mobile_number,
-      :salary_bank_account_name,
-      :branch_name,
-      :monthly_net_salary,
-      :business_name,
-      :business_nature,
-      :industry_type,
-      :business_years,
-      :business_pan_number,
-      :residence_type,
-      :address_line1,
-      :address_line2,
-      :bus_landmark,
-      :city,
-      :state,
-      :pincode,
-      :gst_number,
-      :annual_turnover,
-      :gross_annual_profit)
   end
 
 	def used_car_loan_assets_params
@@ -188,7 +155,7 @@ class UsedCarLoanController < ApplicationController
 
 	def update_used_car_loan_offer
 		get_used_car_loan(session[:used_car_loan_id])
-		@update_status_nclo = @used_car_loan.used_car_loan_offer.update_attributes(used_car_loan_offer_params)
+		@update_status_nclo = @used_car_loan.update_attributes(used_car_loan_params)
 	end
 
 
@@ -200,9 +167,6 @@ class UsedCarLoanController < ApplicationController
 	def create_update_used_car_loan(status, message, path)
 		if status
 			session[:used_car_loan_id] = @used_car_loan.id
-      unless @used_car_loan.otp_verified
-        send_otp
-      end
 			flash[:notice] = message
 			redirect_to path
 		else

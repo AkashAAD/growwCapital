@@ -1,0 +1,19 @@
+<section class="personal-loan-section custom-container">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+      </div>
+    </div>
+    <%= form_for @transfer_personal_loan, :url => { :action => "update_employer" }, html: {id:  "transfer_personal_loan", class: "transfer_personal_loan"} do |f| %>
+      <div class="container">
+        <div class="row heading">
+          <div class="col-md-6">
+            <h3>Loan Application</h3>
+          </div>
+        </div>    
+        <%= render partial: "form2", locals: { f: f } %>
+        <button type="submit" class="btn btn-custom"><b>Process</b></button>
+      </div>
+    <%end%>
+  </div> 
+</section>

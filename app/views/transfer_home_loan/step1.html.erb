@@ -1,0 +1,95 @@
+<section class="personal-loan-section custom-container">
+  <%= form_for @transfer_home_loan, :url => { :action => @transfer_home_loan.id.nil? ? "create_otp" : "update" }, html: { id:  "basic_transfer_home_loan", class: "basic_transfer_home_loan" } do |f| %>
+    <div class="container">
+      <div class="row heading">
+        <div class="col-md-4">
+          <div class="form-group">
+            <h3>Loan Application</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row first-row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Your foreclose loan amount
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.number_field(:foreclose_loan_amount, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Your require topup amount?
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:is_topup_amount, is_topup_amount, class: "form-control", placeholder: "Rs. 0") %>
+          </div>
+        </div>
+        <div class="col-md-3 desired-loan <%= 'hide-div' if !f.object.is_topup_amount? %>">
+          <div class="form-group">
+            <label>Your desired loan amount
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.number_field(:desired_loan_amount, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-group">
+            <label>Tenure
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:tenure, home_loan_tenure, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Property City
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.select(:property_city, only_cities, class: "form-control") %>
+          </div>
+        </div>        
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Annual Income
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.number_field(:annual_income, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Mobile Number
+              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+              </a>
+            </label>
+            <%= f.number_field(:mobile_number, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <%= f.check_box(:terms_and_conditions) %>
+          <%= f.label "Terms & Conditions", for: 'transfer_home_loan_terms_and_conditions' %>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-custom">Submit</button>
+    </div>
+  <%end%>
+</section>
+

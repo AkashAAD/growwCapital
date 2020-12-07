@@ -29,7 +29,7 @@ $(document).ready(function(){
 	}, "");
 
 	jQuery.validator.addMethod("full_name", function(value, element) {
-	  return /^[A-Z]+$/.test(value) && value.split(" ").length > 2;
+	  return value.split(" ").length >= 2;
 	}, "");
 
 	jQuery.validator.addMethod("email", function(value, element) {
@@ -39,6 +39,28 @@ $(document).ready(function(){
 	jQuery.validator.addMethod("valid_loan_amt", function(value, element) {
 		return parseFloat(value) >= 50000;
 	}, "");
+
+	jQuery.validator.addMethod("lap_is_pincode", function(value, element) {
+		var status = false;
+		var attr;
+		if($(element).attr('id') == "loan_against_property_pincode") {
+			attr = "#loan_against_property_city";
+		} else {
+			attr = "#";
+		}
+		$.ajax({
+	    url: "/home/check_pincode?pincode=" + value + "&city=" + $(attr).val(),
+	    success: function (data) {
+	    	if(data.pincode_status) {
+	    		status = true;
+	    	} else {
+	    		status = false;
+	    	}
+	    },
+	    async: false
+		});
+		return status;
+	}, "Please enter valid pincode.");
 
 	$("#loan_against_property_state").change(function(evt) {
 		$.ajax({
@@ -202,7 +224,8 @@ $(document).ready(function(){
 			},
 			"loan_against_property[pincode]": {
 				required: true,
-				minlength: 6
+				minlength: 6,
+				lap_is_pincode: true
 			},
 		},
 		messages: {

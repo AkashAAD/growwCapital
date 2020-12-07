@@ -75,6 +75,27 @@ $(document).ready(function(){
     }
   });
 
+	jQuery.validator.addMethod("per_is_pincode", function(value, element) {
+		var status = false;
+		var attr;
+		if($(element).attr('id') == "personal_loan_pincode") {
+			attr = "#personal_loan_city";
+		} else {
+			attr = "#personal_loan_office_city";
+		}
+		$.ajax({
+	    url: "/home/check_pincode?pincode=" + value + "&city=" + $(attr).val(),
+	    success: function (data) {
+	    	if(data.pincode_status) {
+	    		status = true;
+	    	} else {
+	    		status = false;
+	    	}
+	    },
+	    async: false
+		});
+		return status;
+	}, "Please enter valid pincode.");
 
 	jQuery.validator.addMethod("is_pan", function(value, element) {
 	  return this.optional(element) || /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value);
@@ -109,7 +130,7 @@ $(document).ready(function(){
 		rules: {
 			"personal_loan[otp]": {
 				required: true,
-				maxlength: 6
+				minlength: 6
 			}
 		},
 		messages: {
@@ -239,7 +260,8 @@ $(document).ready(function(){
 			},
 			"personal_loan[pincode]": {
 				required: true,
-				minlength: 6
+				minlength: 6,
+				per_is_pincode: true
 			},
 			"personal_loan[office_address]": {
 				required: true,
@@ -250,7 +272,8 @@ $(document).ready(function(){
 			},
 			"personal_loan[office_pincode]": {
 				required: true,
-				minlength: 6
+				minlength: 6,
+				per_is_pincode: true
 			},
 		},
 		messages: {
