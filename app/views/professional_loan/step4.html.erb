@@ -6,19 +6,19 @@
           <tr>
             <th>Bank</th>
             <th>Interest Rate</th>
+            <th>EMI</th>            
             <th>Processing Fee</th>
             <th>Prepayment Chares</th>
-            <th>EMI</th>
             <th>Proceed</th>
           </tr>
         </thead>
         <% @banks.each do |bank| %>
           <tr>
             <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
-            <td><b><%= percentage_roi(bank.professional_loan_bank_info.roi) %><br><span>(Floating)</span></b></td>
+            <td><b><%= percentage_roi(bank.professional_loan_bank_info.roi) %><br><span>(Reducing)</span></b></td>
+            <td><b><%= number_to_currency(calculate_emi(bank.professional_loan_bank_info, @professional_loan), unit: "₹ ") %></b></td>
             <td><b><%= number_to_currency("%.2f" % processing_fee(bank.professional_loan_bank_info.processing_fee, @professional_loan.loan_amount), unit: "₹ ") %></b></td>
             <td></td>
-            <td><b><%= number_to_currency(calculate_emi(bank.professional_loan_bank_info, @professional_loan), unit: "₹ ") %></b></td>
             <td>
               <b>
                 <%= form_for @professional_loan, :url => { :action => "select_bank" }, html: {id:  "professional_loan_bank", class: "professional_loan_bank"} do |f| %>

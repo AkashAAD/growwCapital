@@ -32,6 +32,18 @@ module ApplicationHelper
     [['-Select State-','']] + CS.states(:in).map{ |val| [val[1], val[0].downcase] }
   end
 
+  def car_manufacturer
+    [['-Select-','']] + CarManufacturer.pluck(:name, :id)
+  end
+
+  def car_model(obj)
+    if obj.object.car_manufacturer.nil?
+      [['-Select-','']]
+    else
+      [['-Select-','']] + CarManufacturer.find_by(id: obj.object.car_manufacturer).car_models.pluck(:name, :id)
+    end
+  end
+
   def current_employment
   	[['-Select Your Emplyment-','']] + BusinessEmploymentType.pluck(:name, :id)
   end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
   get 'home/change_state' => "home#change_state"
+  get "home/car_models" => "home#car_models"
   get 'home/check_pincode' => 'home#check_pincode'
   get 'home/change_profession' => "home#change_profession"
   get "home/profile" => "home#profile"

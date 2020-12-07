@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_05_023111) do
+ActiveRecord::Schema.define(version: 2020_12_07_183601) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -109,6 +109,21 @@ ActiveRecord::Schema.define(version: 2020_12_05_023111) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "car_manufacturers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "car_models", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.integer "car_manufacturer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.decimal "first_year_fee", precision: 20, scale: 2
@@ -165,6 +180,7 @@ ActiveRecord::Schema.define(version: 2020_12_05_023111) do
     t.text "office_address"
     t.string "office_city"
     t.string "office_pincode"
+    t.integer "bank_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["card_id"], name: "index_credit_cards_on_card_id"
@@ -331,60 +347,14 @@ ActiveRecord::Schema.define(version: 2020_12_05_023111) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "new_car_loan_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "new_car_loan_id"
-    t.string "registration_state"
-    t.string "registration_city"
-    t.string "car_manufacturer"
-    t.string "car_model"
-    t.string "profession_status"
-    t.decimal "current_emi", precision: 20, scale: 2
-    t.string "employer_name"
-    t.string "designation"
-    t.string "years_in_current_job"
-    t.text "office_address_line1"
-    t.text "office_address_line2"
-    t.text "landmark"
-    t.string "office_state"
-    t.string "office_city"
-    t.string "office_email"
-    t.string "office_pincode"
-    t.integer "mailing_address"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "mobile_number"
-    t.string "ref_mobile_number"
-    t.integer "salary_bank_account_name"
-    t.string "branch_name"
-    t.decimal "monthly_net_salary", precision: 20, scale: 2
-    t.string "business_name"
-    t.integer "business_nature"
-    t.integer "industry_type"
-    t.integer "business_years"
-    t.string "business_pan_number"
-    t.integer "residence_type"
-    t.text "address_line1"
-    t.text "address_line2"
-    t.text "bus_landmark"
-    t.string "city"
-    t.string "state"
-    t.string "pincode"
-    t.string "gst_number"
-    t.integer "annual_turnover"
-    t.decimal "gross_annual_profit", precision: 20, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["new_car_loan_id"], name: "index_new_car_loan_offers_on_new_car_loan_id"
-  end
-
   create_table "new_car_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.decimal "loan_amount", precision: 20, scale: 2
     t.integer "tenure"
     t.string "email"
     t.string "mobile_number"
     t.string "full_name"
-    t.string "car_manufacturer"
-    t.string "car_model"
+    t.integer "car_manufacturer"
+    t.integer "car_model"
     t.integer "employment_type"
     t.decimal "current_emi", precision: 20, scale: 2
     t.text "address"
@@ -649,54 +619,6 @@ ActiveRecord::Schema.define(version: 2020_12_05_023111) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "used_car_loan_offers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "used_car_loan_id"
-    t.string "registration_state"
-    t.string "registration_city"
-    t.string "car_manufacturer"
-    t.string "car_model"
-    t.string "car_registration_number"
-    t.string "model_year"
-    t.string "profession_status"
-    t.decimal "current_emi", precision: 20, scale: 2
-    t.string "employer_name"
-    t.string "designation"
-    t.string "years_in_current_job"
-    t.text "office_address_line1"
-    t.text "office_address_line2"
-    t.text "landmark"
-    t.string "office_state"
-    t.string "office_city"
-    t.string "office_email"
-    t.string "office_pincode"
-    t.integer "mailing_address"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "mobile_number"
-    t.string "ref_mobile_number"
-    t.integer "salary_bank_account_name"
-    t.string "branch_name"
-    t.decimal "monthly_net_salary", precision: 20, scale: 2
-    t.string "business_name"
-    t.integer "business_nature"
-    t.integer "industry_type"
-    t.integer "business_years"
-    t.string "business_pan_number"
-    t.integer "residence_type"
-    t.text "address_line1"
-    t.text "address_line2"
-    t.text "bus_landmark"
-    t.string "city"
-    t.string "state"
-    t.string "pincode"
-    t.string "gst_number"
-    t.integer "annual_turnover"
-    t.decimal "gross_annual_profit", precision: 20, scale: 2
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["used_car_loan_id"], name: "index_used_car_loan_offers_on_used_car_loan_id"
-  end
-
   create_table "used_car_loans", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.decimal "loan_amount", precision: 20, scale: 2
     t.integer "tenure"
@@ -705,8 +627,8 @@ ActiveRecord::Schema.define(version: 2020_12_05_023111) do
     t.string "full_name"
     t.string "car_registration_number"
     t.string "model_year"
-    t.string "car_manufacturer"
-    t.string "car_model"
+    t.integer "car_manufacturer"
+    t.integer "car_model"
     t.integer "employment_type"
     t.decimal "current_emi", precision: 20, scale: 2
     t.text "address"

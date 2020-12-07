@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-	$("#personal-loan-resend-otp").click(function(){
+	$("#tr-personal-loan-resend-otp").click(function(){
 		$.ajax({
 	    url: "/transfer_personal_loan/resend_otp",
 	    dataType: "json",

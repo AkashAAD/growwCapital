@@ -6,17 +6,17 @@
           <tr>
             <th>Bank</th>
             <th>Interest Rate</th>
-            <th>Processing Fee</th>
             <th>EMI</th>
+            <th>Processing Fee</th>
             <th>Proceed</th>
           </tr>
         </thead>
         <% @banks.each do |bank| %>
           <tr>
             <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
-            <td><b><%= percentage_roi(bank.used_car_loan_bank_info.roi) %><br><span>(Floating)</span></b></td>
-            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.used_car_loan_bank_info.processing_fee, @used_car_loan.loan_amount), unit: "₹ ") %></b></td>
+            <td><b><%= percentage_roi(bank.used_car_loan_bank_info.roi) %><br><span>(Reducing)</span></b></td>
             <td><b><%= number_to_currency(calculate_emi(bank.used_car_loan_bank_info, @used_car_loan), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.used_car_loan_bank_info.processing_fee, @used_car_loan.loan_amount), unit: "₹ ") %></b></td>
             <td>
               <b>
                 <%= form_for @used_car_loan, :url => { :action => "select_bank" }, html: {id:  "used_car_loan_bank", class: "used_car_loan_bank"} do |f| %>

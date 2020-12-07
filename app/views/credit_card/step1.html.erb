@@ -1,12 +1,5 @@
 <section class="personal-loan-section custom-container">
-  <%= form_for @credit_card, :url => { :action => @credit_card.id.nil? ? "create_otp" : "update" }, html: { id:  "basic_credit_card", class: "basic_credit_card" } do |f| %>
-    <div class="container container-step">
-      <div class="row">
-        <div class="col-md-12">
-          <%= render partial: "layouts/steps/credit_card", locals: { f: f } %>
-        </div>
-      </div>
-    </div>
+  <%= form_for @credit_card, :url => { :action => @credit_card.id.nil? ? "create_otp" : "update" }, remote: true, html: { id:  "basic_credit_card", class: "basic_credit_card" } do |f| %>
     <div class="container">
       <div class="row heading">
         <div class="col-md-4">
@@ -37,6 +30,28 @@
           <button type="submit" class="btn btn-custom">Submit</button>          
         </div>
          <div class="col-md-4"></div>
+      </div>
+    </div>
+  <%end%>
+  <%= form_for @credit_card, :url => { :action => "update_otp_status" }, method: :patch, remote: true, html: {id: "otp_credit_card", class: "otp_credit_card hide-div"} do |f| %>
+    <div class="container">
+      <div class="row heading">
+        <div class="col-md-4">
+          <div class="form-group">
+            <h3>Verify OTP</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row first-row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <%= f.number_field(:otp, class: "form-control", value: "", placeholder: "OTP") %>
+          </div> 
+          <button type="submit" class="btn btn-custom">Submit</button>
+          <a href="javascript:void(o)" id="credit-card-resend-otp" style="float: right;">Resend</a>
+        </div>
+        <div class="col-md-4"></div>
       </div>
     </div>
   <%end%>

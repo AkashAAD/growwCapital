@@ -22,8 +22,8 @@
           <tr>
             <th>Bank</th>
             <th>Interest Rate</th>
-            <th>Processing Fee</th>
             <th>EMI</th>
+            <th>Processing Fee</th>
             <th>Prepayment Charges</th>
             <th>Proceed</th>
           </tr>
@@ -31,9 +31,9 @@
         <% @banks.each do |bank| %>
           <tr>
             <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
-            <td><b><%= percentage_roi(bank.personal_loan_info.roi) %><br><span>(Floating)</span></b></td>
-            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.personal_loan_info.processing_fee, @personal_loan.loan_amount), unit: "₹ ") %></b></td>
+            <td><b><%= percentage_roi(bank.personal_loan_info.roi) %><br><span>(Reducing)</span></b></td>
             <td><b><%= number_to_currency(calculate_emi(bank.personal_loan_info, @personal_loan), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.personal_loan_info.processing_fee, @personal_loan.loan_amount), unit: "₹ ") %></b></td>
             <td></td>
             <td>
               <b>

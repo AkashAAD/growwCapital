@@ -19,18 +19,14 @@ class CreditCardController < ApplicationController
     when "step2"
       @credit_card = id.nil? ? CreditCard.new : get_credit_card(id)
       return redirect_to credit_card_path("step1") if id.nil?
-      return redirect_to credit_card_path("step3") if @credit_card.otp_verified
-    when "step3"
-      @credit_card = id.nil? ? CreditCard.new : get_credit_card(id)
-      return redirect_to credit_card_path("step1") unless @credit_card.otp_verified
-    when "step4", "step6"
+    when "step3", "step4"
       @credit_card = id.nil? ? CreditCard.new : get_credit_card(id)
       @cards = @credit_card.cards
       return redirect_to credit_card_path("step1") unless @credit_card.otp_verified
     when "step5"
       @credit_card = id.nil? ? CreditCard.new : get_credit_card(id)
       return redirect_to credit_card_path("step1") unless @credit_card.otp_verified
-    when "step7"
+    when "step6"
       @credit_card = get_credit_card(id) #CreditCard.last
       LoanMailer.credit_card(@credit_card).deliver_later
       session[:credit_card_id] = nil
@@ -43,28 +39,32 @@ class CreditCardController < ApplicationController
     unless @credit_card.otp_verified
       send_otp
     end
-    create_update_credit_card(@credit_card.save, "Credit card application created successfully.", credit_card_path("step2"))
+    if session[:credit_card_id]
+      @credit_card.update_attributes(credit_card_params)
+    else
+      @credit_card.save
+    end
+    session[:credit_card_id] = @credit_card.id    
+    # create_update_credit_card(@credit_card.save, "Credit card application created successfully.", credit_card_path("step2"))
   end
 
   def update_otp_status
     @credit_card = get_credit_card(session[:credit_card_id])
-    if !@credit_card.otp.eql?(params[:credit_card][:otp].to_i)
+    if @credit_card.otp.eql?(params[:credit_card][:otp].to_i)
       @credit_card.otp_verified = true
       @credit_card.save
       flash[:notice] = "The entered OTP verified successfully."
-      redirect_to credit_card_path("step3")
     else
       flash[:error] = "The entered OTP is not valid."
-      redirect_to credit_card_path("step2")
     end
   end
 
   def update
-    create_update_credit_card(@update_status_ncl, "Credit card application updated successfully.", credit_card_path("step2"))
+    # create_update_credit_card(@update_status_ncl, "Credit card application updated successfully.", credit_card_path("step2"))
   end
 
   def select_bank
-    create_update_credit_card(@update_status_ncl, "Credit card application updated successfully.", credit_card_path("step5"))
+    create_update_credit_card(@update_status_ncl, "Credit card application updated successfully.", credit_card_path("step4"))
   end
 
   def create_home_offer
@@ -72,16 +72,15 @@ class CreditCardController < ApplicationController
   end
 
   def update_card_offer
-    create_update_credit_card_offer(@update_status_nclo, "Credit card application offer applied successfully.", credit_card_path("step4"))
+    create_update_credit_card_offer(@update_status_nclo, "Credit card application offer applied successfully.", credit_card_path("step3"))
   end
 
   def update_address
-    create_update_credit_card(@update_status_nclo, "Credit card application updated successfully.", credit_card_path("step6"))
+    create_update_credit_card(@update_status_nclo, "Credit card application updated successfully.", credit_card_path("step5"))
   end
 
   def update_card_assets
-    session[:credit_card_id] = nil if @update_status_ncl
-    create_update_credit_card(@update_status_ncl, "Credit card application updated successfully.", credit_card_path("step7"))
+    create_update_credit_card(@update_status_ncl, "Credit card application updated successfully.", credit_card_path("step6"))
   end
 
   def resend_otp
@@ -108,17 +107,20 @@ class CreditCardController < ApplicationController
       :pincode,
       :office_address,
       :office_city,
+      :bank_name,
       :office_pincode,
       :aadhar_front,
       :aadhar_back)
   end
 
   def get_credit_card(id)
-    @credit_card = CreditCard.find(id)
+    @credit_card = CreditCard.find_by(id: id)
   end
 
   def create_credit_card
-    @credit_card = CreditCard.new(credit_card_params)
+    if get_credit_card(session[:credit_card_id]).nil?
+      @credit_card = CreditCard.new(credit_card_params)
+    end
   end
 
   def update_credit_card
@@ -150,7 +152,6 @@ class CreditCardController < ApplicationController
 
   def create_update_credit_card(status, message, path)
     if status
-      session[:credit_card_id] = @credit_card.id
       flash[:notice] = message
       redirect_to path
     else

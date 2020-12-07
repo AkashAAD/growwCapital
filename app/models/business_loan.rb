@@ -8,11 +8,11 @@ class BusinessLoan < ApplicationRecord
 
 
   def banks
-  	if self.annual_turnover == 1
-      return BusinessLoanBank.where("slug IN (?)", ['hero_fincorp', 'fullerton_india', 'idfc_first_bank', 'neogrowth_finance'])
-  	else
-  	  return BusinessLoanBank.all
-  	end
+  	# if self.annual_turnover == 1
+   #    return BusinessLoanBank.where("slug IN (?)", ['hero_fincorp', 'fullerton_india', 'idfc_first_bank', 'neogrowth_finance'])
+  	# else
+  	return BusinessLoanBank.all
+  	# end
   end
 
 end

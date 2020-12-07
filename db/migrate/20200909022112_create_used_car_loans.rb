@@ -8,8 +8,8 @@ class CreateUsedCarLoans < ActiveRecord::Migration[5.2]
       t.string :full_name
       t.string :car_registration_number
       t.string :model_year
-      t.string :car_manufacturer
-      t.string :car_model
+      t.integer :car_manufacturer
+      t.integer :car_model
       t.integer :employment_type
       t.decimal :current_emi, precision: 20, scale: 2
       t.text :address

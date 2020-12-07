@@ -25,6 +25,11 @@ class HomeController < ApplicationController
     render json: { pincode_status: pincode_status }
   end
 
+  def car_models
+    car_models = CarManufacturer.find(params[:id]).car_models
+    render json: { car_models: car_models }
+  end
+
   def pre_approved_offer
     if @pre_approved_offer
       @pre_approved_offer.first_name = pre_approved_offer_params[:first_name]

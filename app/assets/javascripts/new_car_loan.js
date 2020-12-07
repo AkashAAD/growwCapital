@@ -79,6 +79,23 @@ $(document).ready(function(){
 		});
 	});
 
+	$("#new_car_loan_car_manufacturer").change(function(evt) {
+		$.ajax({
+	    url: "/home/car_models",
+	    dataType: "json",
+	    data: {
+	      id: evt.target.value
+	    },
+	    success: function (data) {
+	    	var options = '';
+	    	data.car_models.forEach(function(val) {
+	    		options+= '<option value="' + val.id + '">'+ val.name +'</option>' 
+	    	});
+	    	$("#new_car_loan_car_model").html(options);
+	    }
+		});
+	});
+
 	$("#new_car_loan_offer_office_state").change(function(evt) {
 		$.ajax({
 	    url: "/home/change_state",
@@ -218,9 +235,6 @@ $(document).ready(function(){
 				maxlength: 10,
 				valid_loan_amt: true
 			},
-			'new_car_loan[car_model]': {
-				required: true
-			},
 			'new_car_loan[car_manufacturer]': {
 				required: true
 			},
@@ -240,11 +254,8 @@ $(document).ready(function(){
 				maxlength: 'Loan amount must consist of at most 10 characters',
 				valid_loan_amt: "Loan amount should be greator than or equal to ₹ 50,000."
 			},
-			'new_car_loan[car_model]': {
-				required: 'Please enter car model.',
-			},
 			'new_car_loan[car_manufacturer]': {
-				required: 'Please enter car manufacturer.',
+				required: 'Please select car manufacturer.',
 			},
 			'new_car_loan[employment_type]': {
 				required: 'Please select employment type.',

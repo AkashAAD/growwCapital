@@ -1,5 +1,16 @@
 $(document).ready(function() {
 
+	$("#credit-card-resend-otp").click(function(){
+		$.ajax({
+	    url: "/credit_card/resend_otp",
+	    dataType: "json",
+	    data: {},
+	    success: function (data) {
+	    	toastr["info"]("Your OTP has been sent successfully.", "info");
+	    }
+		});
+	});
+
 	jQuery.validator.addMethod("file_type", function(value, element) {
 		var types = ['application/pdf', 'image/png', 'image/jpeg', 'image/jpg']
 	  return types.includes(element.files[0].type);
@@ -47,6 +58,15 @@ $(document).ready(function() {
 		return status;
 	}, "Please enter valid pincode.");
 
+	$("#credit_card_existing_card").change(function(evt) {
+		if(evt.target.value == "true") {
+      $(".cr-bank-name").removeClass("hide-div");
+		} else {
+			$("#credit_card_bank_name").val("");
+      $(".cr-bank-name").addClass("hide-div");
+		}
+	});
+
 	$("#basic_credit_card").validate({
 		rules: {
 			"credit_card[mobile_number]": {
@@ -88,6 +108,9 @@ $(document).ready(function() {
 			"credit_card[employment_type]": {
 				required: true
 			},
+			"credit_card[bank_name]": {
+				required: true
+			},
 			"credit_card[full_name]": {
 				required: true,
 				full_name: true
@@ -106,6 +129,9 @@ $(document).ready(function() {
 		messages: {
 			"credit_card[employment_type]": {
 				required: "Please select employment type."
+			},
+			"credit_card[bank_name]": {
+				required: "Please select bank name"
 			},
 			"credit_card[full_name]": {
 				required: "Please enter full name.",

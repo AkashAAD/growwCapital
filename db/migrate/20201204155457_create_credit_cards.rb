@@ -19,6 +19,7 @@ class CreateCreditCards < ActiveRecord::Migration[5.2]
       t.text :office_address
       t.string :office_city
       t.string :office_pincode
+      t.integer :bank_name
       # t.decimal :annual_fee, precision: 20, scale: 2
       t.timestamps
     end

@@ -88,11 +88,10 @@ input[type=number] {
 }
 
 .loan-search-ico {
-  position: absolute;
+  position: relative;
   color: #797979;
-  left: 47%;
-  top: 19px;
-  padding-left: 15px;
+  right: 20px;
+  top: 10px;
 }
 
 .img-effect {
@@ -149,15 +148,19 @@ input[type=number] {
   font-weight: bold;
 }
 
-input[type="email"], input[type="password"], input[type="number"], input[type="text"], input[type="date"], select, div.styled, input[type="file"] {
-  //border: 1px solid #767171 !important;
+input[type="email"], input[type="password"], input[type="number"], input[type="text"], input[type="date"], div.styled, input[type="file"] {
   height: 35px !important;
   font-size: 16px;
   margin-bottom: 0px !important;
 }
 
+select {
+  height: 35px !important;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
 textarea {
-  //border: 1px solid #767171 !important;
   height: 80px;
   font-size: 16px;
 }
@@ -166,7 +169,7 @@ footer {
   margin-top: 30px;  
 }
 
-input, select{
+input {
   margin-bottom: 10px;
 }
 

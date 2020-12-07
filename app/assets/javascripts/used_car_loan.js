@@ -66,70 +66,19 @@ $(document).ready(function(){
 		return status;
 	}, "Please enter valid pincode.");
 
-	$("#used_car_loan_state").change(function(evt) {
+	$("#used_car_loan_car_manufacturer").change(function(evt) {
 		$.ajax({
-	    url: "/home/change_state",
+	    url: "/home/car_models",
 	    dataType: "json",
 	    data: {
-	      state: evt.target.value
+	      id: evt.target.value
 	    },
 	    success: function (data) {
 	    	var options = '';
-	    	data.cities.forEach(function(val) {
-	    		options+= '<option value="' + val[1] + '">'+val[0]+'</option>' 
+	    	data.car_models.forEach(function(val) {
+	    		options+= '<option value="' + val.id + '">'+ val.name +'</option>' 
 	    	});
-	    	$("#used_car_loan_city").html(options);
-	    }
-		});
-	});
-
-	$("#used_car_loan_offer_office_state").change(function(evt) {
-		$.ajax({
-	    url: "/home/change_state",
-	    dataType: "json",
-	    data: {
-	      state: evt.target.value
-	    },
-	    success: function (data) {
-	    	var options = '';
-	    	data.cities.forEach(function(val) {
-	    		options+= '<option value="' + val[1] + '">'+val[0]+'</option>' 
-	    	});
-	    	$("#used_car_loan_offer_office_city").html(options);
-	    }
-		});
-	});
-
-	$("#used_car_loan_offer_office_state").change(function(evt) {
-		$.ajax({
-	    url: "/home/change_state",
-	    dataType: "json",
-	    data: {
-	      state: evt.target.value
-	    },
-	    success: function (data) {
-	    	var options = '';
-	    	data.cities.forEach(function(val) {
-	    		options+= '<option value="' + val[1] + '">'+val[0]+'</option>' 
-	    	});
-	    	$("#used_car_loan_offer_office_city").html(options);
-	    }
-		});
-	});
-
-	$("#used_car_loan_offer_state").change(function(evt) {
-		$.ajax({
-	    url: "/home/change_state",
-	    dataType: "json",
-	    data: {
-	      state: evt.target.value
-	    },
-	    success: function (data) {
-	    	var options = '';
-	    	data.cities.forEach(function(val) {
-	    		options+= '<option value="' + val[1] + '">'+val[0]+'</option>' 
-	    	});
-	    	$("#used_car_loan_offer_city").html(options);
+	    	$("#used_car_loan_car_model").html(options);
 	    }
 		});
 	});
@@ -224,9 +173,6 @@ $(document).ready(function(){
 				maxlength: 10,
 				valid_loan_amt: true
 			},
-			'used_car_loan[car_model]': {
-				required: true
-			},
 			'used_car_loan[car_registration_number]': {
 				required: true
 			},
@@ -252,11 +198,8 @@ $(document).ready(function(){
 				maxlength: 'Loan amount must consist of at most 10 characters',
 				valid_loan_amt: "Loan amount should be greator than or equal to ₹ 50,000."
 			},
-			'used_car_loan[car_model]': {
-				required: 'Please enter car model.',
-			},
 			'used_car_loan[car_manufacturer]': {
-				required: 'Please enter car manufacturer.',
+				required: 'Please select car manufacturer.',
 			},
 			'used_car_loan[car_registration_number]': {
 				required: "Please enter car registration number."

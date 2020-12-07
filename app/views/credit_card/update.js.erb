@@ -1,0 +1,6 @@
+<%unless @credit_card.otp_verified?%>
+  $(".basic_credit_card").addClass('hide-div');
+  $(".otp_credit_card").removeClass('hide-div');
+<%else%>
+  window.location.href = "/credit_card/step2";
+<%end%>
