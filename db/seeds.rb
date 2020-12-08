@@ -164,7 +164,7 @@ end
 "Jammu and Kashmir Bank",
 "Karnataka Bank Ltd",
 "Karur Vysya Bank",
-"Kotak Bank",
+"Kotak Mahindra Bank",
 "Laxmi Vilas Bank",
 "Oriental Bank of Commerce",
 "Punjab National Bank - Corporate Banking",
@@ -264,7 +264,10 @@ end
  { tata_capital: { name: "TATA capital", roi: 15, processing_fee: 2, bank_image: "bank_images/tata-capital.webp"}},
  { yes_bank: { name: "YES Bank", roi: 12, processing_fee: 2, bank_image: "bank_images/yes-bank.png"}},
  { bajaj_finserve: { name: "Bajaj Finserve", roi: 17, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
- { indusind_bank: { name: "IndusInd Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/IndusInd-bank.png"}}].each do |k|
+ { indusind_bank: { name: "IndusInd Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/IndusInd-bank.png"}},
+ { aditya_birla: { name: "Aditya Birla", roi: 7.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png"}},
+ { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png"}}
+].each do |k|
    k = k.flatten
    plb = PersonalLoanBank.new(name: k[1][:name], slug: k[0].to_s)
    plb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
@@ -287,7 +290,11 @@ end
  { yes_bank: { name: "YES Bank", roi: 18, processing_fee: 2, bank_image: "bank_images/yes-bank.png"}},
  { bajaj_finserve: { name: "Bajaj Finserve", roi: 22, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
  { indusind_bank: { name: "IndusInd Bank", roi: 16, processing_fee: 2, bank_image: "bank_images/IndusInd-bank.png"}},
- { neogrowth_finance: { name: "Neogrowth finance", roi: 16, processing_fee: 2, bank_image: "bank_images/neogrowth-finance.png"}}
+ { neogrowth_finance: { name: "Neogrowth finance", roi: 16, processing_fee: 2, bank_image: "bank_images/neogrowth-finance.png"}},
+ { aditya_birla: { name: "Aditya Birla", roi: 7.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png"}},
+ { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png"}},
+ { au_small_bank: { name: "AU Small Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}},
+ { rbl_bank: { name: "RBL Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/rbl-bank.png"}},
 ].each do |k|
    k = k.flatten
    blb = BusinessLoanBank.new(name: k[1][:name], slug: k[0].to_s)
@@ -303,6 +310,7 @@ end
  { axis_bank: { name: "Axis Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
  { icici_bank: { name: "ICICI Bank", roi: 14.50, processing_fee: 2, bank_image: "bank_images/icici-bank.png"}},
  { yes_bank: { name: "YES Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/yes-bank.png"}},
+ { tata_capital: { name: "TATA capital", roi: 15, processing_fee: 2, bank_image: "bank_images/tata-capital.webp"}},
  { bajaj_finserve: { name: "Bajaj Finserve", roi: 14.50, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
 ].each do |k|
   k = k.flatten
@@ -361,17 +369,20 @@ end
  { hdfc_housing: { name: "HDFC Housing", roi: 6.95, processing_fee: 2, bank_image: "bank_images/hdfc-housing.png"}},
  { icici_housing: { name: "ICICI Housing", roi: 7, processing_fee: 2, bank_image: "bank_images/icici-housing.svg"}},
  { idfc_first_bank: { name: "IDFC First Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- { idbi_bank: { name: "IDBI Bank", roi: 7.30, processing_fee: 2, bank_image: "bank_images/idbi-bank.png"}},
- { indiabulls_bank: { name: "Indiabulls Bank", roi: 9.50, processing_fee: 2, bank_image: "bank_images/indiabulls.png"}},
- # { sbi_bank: { name: "SBI Bank", roi: 6.50, processing_fee: 2, bank_image: "bank_images/sbi-bank.png"}},
+ { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png"}},
+ # //{ idbi_bank: { name: "IDBI Bank", roi: 7.30, processing_fee: 2, bank_image: "bank_images/idbi-bank.png"}},
+ # //{ indiabulls_bank: { name: "Indiabulls Bank", roi: 9.50, processing_fee: 2, bank_image: "bank_images/indiabulls.png"}},
+ { hero_fincorp: { name: "Hero Fincorp", roi: 21, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 17, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
  { axis_bank: { name: "Axis Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
- { lic_housing: { name: "LIC Housing", roi: 6.5, processing_fee: 2, bank_image: "bank_images/lic-housing.jpeg"}},
+ # //{ lic_housing: { name: "LIC Housing", roi: 6.5, processing_fee: 2, bank_image: "bank_images/lic-housing.jpeg"}},
  { aadhar_housing: { name: "Aadhar Housing", roi: 12, processing_fee: 2, bank_image: "bank_images/aadhar-housing.png"}},
- { aawas_housing: { name: "Aawas Housing", roi: 12, processing_fee: 2, bank_image: "bank_images/aawas-housing.png"}},
- { equitas_bank: { name: "Equitas Bank", roi: 10, processing_fee: 2, bank_image: "bank_images/equitas-bank.jpeg"}},
- { utkarsh_small_bank: { name: "Utkarsh Small Bank", roi: 8.5, processing_fee: 2, bank_image: "bank_images/utkarsh-small-bank.png"}},
- { bankdhan_bank: { name: "Bankdhan Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/bankdhan-bank.png"}},
- { au_small_bank: { name: "AU Small Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}},
+ # //{ aawas_housing: { name: "Aawas Housing", roi: 12, processing_fee: 2, bank_image: "bank_images/aawas-housing.png"}},
+ # //{ equitas_bank: { name: "Equitas Bank", roi: 10, processing_fee: 2, bank_image: "bank_images/equitas-bank.jpeg"}},
+ # //{ utkarsh_small_bank: { name: "Utkarsh Small Bank", roi: 8.5, processing_fee: 2, bank_image: "bank_images/utkarsh-small-bank.png"}},
+ # //{ bankdhan_bank: { name: "Bankdhan Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/bankdhan-bank.png"}},
+ # //{ au_small_bank: { name: "AU Small Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}},
+ { pnb_housing_bank: { name: "PNB Housing finance LTD", roi: 7.5, processing_fee: 2, bank_image: "bank_images/pnb-housing.png"}},
  { aditya_birla: { name: "Aditya Birla", roi: 7.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png"}},
 ].each do |k|
   k = k.flatten
@@ -386,21 +397,17 @@ end
 end
 
 [
- { hdfc_housing: { name: "HDFC Housing", roi: 8.95, processing_fee: 2, bank_image: "bank_images/hdfc-housing.png"}},
- { icici_housing: { name: "ICICI Housing", roi: 9, processing_fee: 2, bank_image: "bank_images/icici-housing.svg"}},
- { idfc_first_bank: { name: "IDFC First Bank", roi: 10.5, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- { idbi_bank: { name: "IDBI Bank", roi: 9.75, processing_fee: 2, bank_image: "bank_images/idbi-bank.png"}},
- { indiabulls_bank: { name: "Indiabulls Bank", roi: 12.50, processing_fee: 2, bank_image: "bank_images/indiabulls.png"}},
- # { sbi_bank: { name: "SBI Bank", roi: 8.50, processing_fee: 2, bank_image: "bank_images/sbi-bank.png"}},
- { axis_bank: { name: "Axis Bank", roi: 11, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
- { lic_housing: { name: "LIC Housing", roi: 9, processing_fee: 2, bank_image: "bank_images/lic-housing.jpeg"}},
- { aadhar_housing: { name: "Aadhar Housing", roi: 15, processing_fee: 2, bank_image: "bank_images/aadhar-housing.png"}},
- { aawas_housing: { name: "Aawas Housing", roi: 13.50, processing_fee: 2, bank_image: "bank_images/aawas-housing.png"}},
- { equitas_bank: { name: "Equitas Bank", roi: 12, processing_fee: 2, bank_image: "bank_images/equitas-bank.jpeg"}},
- { utkarsh_small_bank: { name: "Utkarsh Small Bank", roi: 10.25, processing_fee: 2, bank_image: "bank_images/utkarsh-small-bank.png"}},
- { bankdhan_bank: { name: "Bankdhan Bank", roi: 9.25, processing_fee: 2, bank_image: "bank_images/bankdhan-bank.png"}},
- { au_small_bank: { name: "AU Small Finance Bank", roi: 10.60, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}},
- { aditya_birla: { name: "Aditya Birla", roi: 13.75, processing_fee: 2, bank_image: "bank_images/aditya-birla.png"}},
+ { hdfc_housing: { name: "HDFC Housing", roi: 6.95, processing_fee: 2, bank_image: "bank_images/hdfc-housing.png"}},
+ { icici_housing: { name: "ICICI Housing", roi: 7, processing_fee: 2, bank_image: "bank_images/icici-housing.svg"}},
+ { idfc_first_bank: { name: "IDFC First Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
+ { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png"}},
+ { hero_fincorp: { name: "Hero Fincorp", roi: 21, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 17, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
+ { axis_bank: { name: "Axis Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
+ { aadhar_housing: { name: "Aadhar Housing", roi: 12, processing_fee: 2, bank_image: "bank_images/aadhar-housing.png"}},
+ { pnb_housing_bank: { name: "PNB Housing finance LTD", roi: 7.5, processing_fee: 2, bank_image: "bank_images/pnb-housing.png"}},
+ { aditya_birla: { name: "Aditya Birla", roi: 7.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png"}},
+ { au_small_bank: { name: "AU Small Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}}, 
 ].each do |k|
   k = k.flatten
   lap = LoanAgainstPropertyBank.new(name: k[1][:name], slug: k[0].to_s)
@@ -413,11 +420,7 @@ end
 
 [
  { hdfc_bank: { name: "HDFC Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
- { idfc_first_bank: { name: "IDFC First Bank", roi: 12.5, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- # { sbi_bank: { name: "SBI Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/sbi-bank.png"}},
- { axis_bank: { name: "Axis Bank", roi: 8.5, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
  { icici_bank: { name: "ICICI Bank", roi: 9.50, processing_fee: 2, bank_image: "bank_images/icici-bank.png"}},
- { au_small_bank: { name: "AU Small Finance Bank", roi: 12.50, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}},
  { yes_bank: { name: "YES Bank", roi: 11.75, processing_fee: 2, bank_image: "bank_images/yes-bank.png"}},
 ].each do |k|
   k = k.flatten
@@ -430,8 +433,6 @@ end
 end
 
 [
- { hdfc_bank: { name: "HDFC Bank", roi: 11.50, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
- { axis_bank: { name: "Axis Bank", roi: 11.50, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
  { icici_bank: { name: "ICICI Bank", roi: 12.10, processing_fee: 2, bank_image: "bank_images/icici-bank.png"}},
  { au_small_bank: { name: "AU Small Finance Bank", roi: 13.75, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}},
  { yes_bank: { name: "YES Bank", roi: 13.50, processing_fee: 2, bank_image: "bank_images/yes-bank.png"}},
