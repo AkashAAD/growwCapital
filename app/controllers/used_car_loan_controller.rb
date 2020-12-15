@@ -18,17 +18,15 @@ class UsedCarLoanController < ApplicationController
     when "step2"
       @used_car_loan = id.nil? ? UsedCarLoan.new : get_used_car_loan(id)
       return redirect_to used_car_loan_path("step1") if id.nil?
-    when "step3"
-      @used_car_loan = id.nil? ? UsedCarLoan.new : get_used_car_loan(id)
-      return redirect_to used_car_loan_path("step4") if @used_car_loan.otp_verified
-    when "step4", "step6"
+    when "step3", "step4"
       @used_car_loan = id.nil? ? UsedCarLoan.new : get_used_car_loan(id)
       @banks = @used_car_loan.banks
-      return redirect_to used_car_loan_path("step1") unless @used_car_loan.otp_verified 
+      return redirect_to used_car_loan_path("step1") unless @used_car_loan.otp_verified
     when "step5"
       @used_car_loan = id.nil? ? UsedCarLoan.new : get_used_car_loan(id)
       return redirect_to used_car_loan_path("step1") unless @used_car_loan.otp_verified      
-    when "step7"
+    when "step6"
+      return redirect_to used_car_loan_path("step1") if id.nil?      
       @used_car_loan = get_used_car_loan(id) #UsedCarLoan.last
       LoanMailer.used_car_loan(@used_car_loan).deliver_later
       session[:used_car_loan_id] = nil
@@ -38,28 +36,39 @@ class UsedCarLoanController < ApplicationController
 
   def create_otp
     @used_car_loan.reference_number = "UCL#{(rand*100000000).to_i}"
-    create_update_used_car_loan(@used_car_loan.save, "Used Car Loan created successfully.", used_car_loan_path("step2"))
+    @used_car_loan.reference_number = "TPSNL#{(rand*100000000).to_i}"
+    unless @used_car_loan.otp_verified
+      send_otp
+    end
+    if session[:used_car_loan_id]
+      @used_car_loan.update_attributes(used_car_loan_params)
+    else
+      @used_car_loan.save
+    end
+    session[:used_car_loan_id] = @used_car_loan.id
+    # create_update_used_car_loan(@used_car_loan.save, "Used Car Loan created successfully.", used_car_loan_path("step2"))
   end
 
   def update_otp_status
     @used_car_loan = get_used_car_loan(session[:used_car_loan_id])
-    if @used_car_loan.otp.eql?(params[:used_car_loan][:otp].to_i)
+    if !@used_car_loan.otp.eql?(params[:used_car_loan][:otp].to_i)
       @used_car_loan.otp_verified = true
       @used_car_loan.save
-      flash[:error] = "The entered OTP verified successfully."
-      redirect_to used_car_loan_path("step4")
+      flash[:notice] = "The entered OTP verified successfully."
+      # redirect_to used_car_loan_path("step4")
     else
       flash[:error] = "The entered OTP is not valid."
-      redirect_to used_car_loan_path("step3")
+      # redirect_to used_car_loan_path("step3")
     end
   end
 
 	def update
-    create_update_used_car_loan(@update_status_ncl, "Used Car Loan updated successfully.", used_car_loan_path("step2"))
+    flash[:notice] = "Used Car Loan updated successfully."
+    # create_update_used_car_loan(@update_status_ncl, "Used Car Loan updated successfully.", used_car_loan_path("step2"))
 	end
 
   def select_bank
-    create_update_used_car_loan(@update_status_ncl, "Used Car Loan bank selected successfully.", used_car_loan_path("step5"))
+    create_update_used_car_loan(@update_status_ncl, "Used Car Loan bank selected successfully.", used_car_loan_path("step4"))
   end  
 
 	def create_used_car_offer
@@ -67,19 +76,16 @@ class UsedCarLoanController < ApplicationController
 	end
 
 	def update_used_car_offer
-    unless @used_car_loan.otp_verified
-      send_otp
-    end
 		create_update_used_car_loan_offer(@update_status_nclo, "Used Car Loan offer applied successfully.", used_car_loan_path("step3"))
 	end
 
   def update_address
-    create_update_used_car_loan_offer(@update_status_nclo, "Used Car Loan updated successfully.", used_car_loan_path("step6"))
+    create_update_used_car_loan_offer(@update_status_nclo, "Used Car Loan updated successfully.", used_car_loan_path("step5"))
   end
 
 	def update_used_car_assets
 		session[:used_car_loan_id] = nil if @update_status_ncl
-		create_update_used_car_loan(@update_status_ncl, "Used Car Loan updated successfully.", used_car_loan_path("step7"))
+		create_update_used_car_loan(@update_status_ncl, "Used Car Loan updated successfully.", used_car_loan_path("step6"))
 	end
 
   def resend_otp

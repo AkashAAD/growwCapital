@@ -108,13 +108,13 @@ $(document).ready(function(){
 		rules: {
 			"professional_loan[otp]": {
 				required: true,
-				minLength: 6
+				minlength: 6
 			}
 		},
 		messages: {
 			'professional_loan[otp]': {
 				required: 'Please enter OTP.',
-				minLength: 'OTP should be 6 digits only.',
+				minlength: 'OTP should be 6 digits only.',
 			}
 		}
 	});
@@ -173,9 +173,6 @@ $(document).ready(function(){
 			"professional_loan[bank_name]": {
 				required: true
 			},
-			"professional_loan[current_emi]": {
-				required: true
-			},
 			"professional_loan[full_name]": {
 				required: true,
 				full_name: true
@@ -191,9 +188,6 @@ $(document).ready(function(){
 		messages: {
 			"professional_loan[bank_name]": {
 				required: "Please select bank name."
-			},
-			"professional_loan[current_emi]": {
-				required: "Please enter current emi."
 			},
 			"professional_loan[full_name]": {
 				required: "Please enter full name.",

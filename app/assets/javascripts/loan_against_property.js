@@ -183,9 +183,6 @@ $(document).ready(function(){
 			"loan_against_property[employment_type]": {
 				required: true
 			},
-			"loan_against_property[current_emi]": {
-				required: true
-			},
 			"loan_against_property[email]": {
 				required: true,
 				email: true
@@ -202,9 +199,6 @@ $(document).ready(function(){
 			},
 			"loan_against_property[employment_type]": {
 				required: "Please select employment type."
-			},
-			"loan_against_property[current_emi]": {
-				required: "Please enter current EMI."
 			},
 			"loan_against_property[email]": {
 				required: "Please enter email",

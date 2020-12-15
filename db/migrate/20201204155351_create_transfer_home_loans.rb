@@ -20,11 +20,11 @@ class CreateTransferHomeLoans < ActiveRecord::Migration[5.2]
       t.boolean :otp_verified, default: false
       t.string :reference_number
       t.boolean :terms_and_conditions
-      t.integer :home_loan_bank_id
+      t.integer :transfer_home_loan_bank_id
       t.string :status
       t.boolean :is_topup_amount, default: false
       t.timestamps
     end
-    add_index :transfer_home_loans, :home_loan_bank_id
+    add_index :transfer_home_loans, :transfer_home_loan_bank_id
   end
 end

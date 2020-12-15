@@ -27,6 +27,7 @@ class CreditCardController < ApplicationController
       @credit_card = id.nil? ? CreditCard.new : get_credit_card(id)
       return redirect_to credit_card_path("step1") unless @credit_card.otp_verified
     when "step6"
+      return redirect_to credit_card_path("step1") if id.nil?
       @credit_card = get_credit_card(id) #CreditCard.last
       LoanMailer.credit_card(@credit_card).deliver_later
       session[:credit_card_id] = nil
@@ -50,7 +51,7 @@ class CreditCardController < ApplicationController
 
   def update_otp_status
     @credit_card = get_credit_card(session[:credit_card_id])
-    if @credit_card.otp.eql?(params[:credit_card][:otp].to_i)
+    if !@credit_card.otp.eql?(params[:credit_card][:otp].to_i)
       @credit_card.otp_verified = true
       @credit_card.save
       flash[:notice] = "The entered OTP verified successfully."

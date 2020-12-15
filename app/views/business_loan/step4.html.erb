@@ -1,51 +1,60 @@
-<!-- <section id="secondary-banner" class="dynamic-image-6">
+<div class="container custom-container">
+  <%= form_for @business_loan, :url => { :action => "updated_address"}, html: { id:  "business_loan_address", class: "business_loan_address" } do |f| %>
     <div class="container">
-        <div class="row align-items-end">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <h2>New Business Loan</h2>
-                <h4>Apply for new business loan</h4>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li>FAQ</li>
-                </ul>
-            </div>
+      <div class="row heading">
+        <div class="col-md-4">
+          <div class="form-group">
+            <h3>Address Details</h3>
+          </div>
         </div>
+      </div>
+      <div class="row first-row">
+         <div class="col-md-4">
+          <div class="form-group">
+            <label>Present Address
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Your current residence address."></i>
+            </label>
+            <%= f.text_area(:address, class: "form-control") %>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="form-group">
+            <label>City
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Your current residence city name."></i>
+            </label>
+            <%= f.select(:city, only_cities,class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Pincode</label>
+            <%= f.number_field(:pincode, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+       <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Business Address
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Your business address."></i>
+            </label>
+            <%= f.text_area(:business_address, class: "form-control") %>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="form-group">
+            <label>Business City</label>
+            <%= f.select(:business_city, only_cities,class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Business Pincode</label>
+            <%= f.number_field(:business_pincode, class: "form-control") %>
+          </div>
+        </div>
+      </div><br>
+      <button type="submit" class="btn btn-custom">Process</button>
     </div>
-</section> -->
-<section class="business-loan-section custom-container">
-  <div class="container">
-    <div class="row">
-      <table class="table loan-table">
-        <thead class="thead-light">
-          <tr>
-            <th>Bank</th>
-            <th>Interest Rate</th>
-            <th>EMI</th>
-            <th>Processing Fee</th>
-            <th>Prepayment Charges</th>
-            <th>Proceed</th>
-          </tr>
-        </thead>
-        <% @banks.each do |bank| %>
-          <tr>
-            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
-            <td><b><%= percentage_roi(bank.business_loan_bank_info.roi) %><br><span>(Reducing)</span></b></td>
-            <td><b><%= number_to_currency(calculate_emi(bank.business_loan_bank_info, @business_loan), unit: "₹ ") %></b></td>
-            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.business_loan_bank_info.processing_fee, @business_loan.loan_amount), unit: "₹ ") %></b></td>
-            <td></td>
-            <td>
-              <b>
-                <%= form_for @business_loan, :url => { :action => "select_bank" }, html: {id:  "business_loan_bank", class: "business_loan_bank"} do |f| %>
-                  <input type="hidden" name="business_loan_bank[id]" value="<%= bank.business_loan_bank_info.id %>">
-                  <button type="submit" class="btn btn-custom">Apply</button>
-                <%end%>
-              </b>
-            </td>
-          </tr>
-        <%end%>
-      </table>
-    </div>
-  </div>
-</section>
+  <%end%>
+</div>

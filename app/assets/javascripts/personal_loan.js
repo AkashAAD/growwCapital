@@ -208,9 +208,6 @@ $(document).ready(function(){
 			"personal_loan[employer_name]": {
 				required: true
 			},
-			"personal_loan[current_emi]": {
-				required: true
-			},
 			"personal_loan[existing_card]": {
 				required: true
 			},
@@ -231,9 +228,6 @@ $(document).ready(function(){
 			},
 			"personal_loan[employer_name]": {
 				required: "Please enter company name."
-			},
-			"personal_loan[current_emi]": {
-				required: "Please enter your current EMI."
 			},
 			"personal_loan[existing_card]": {
 				required: "Please select existing card option."

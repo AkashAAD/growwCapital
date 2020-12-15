@@ -15,22 +15,18 @@ class HomeLoanController < ApplicationController
     case params[:id]
     when "step1"
       @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
-      # return redirect_to home_loan_path("step2") if !@home_loan.otp_verified && !@home_loan.otp.blank?
-      # return redirect_to home_loan_path("step3") if @home_loan.otp_verified
     when "step2"
       @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
       return redirect_to home_loan_path("step1") if id.nil?
-    when "step3"
-      @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
-      return redirect_to home_loan_path("step4") if @home_loan.otp_verified
-    when "step4", "step6"
+    when "step3", "step4"
       @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
       @banks = @home_loan.banks
       return redirect_to home_loan_path("step1") unless @home_loan.otp_verified
     when "step5"
       @home_loan = id.nil? ? HomeLoan.new : get_home_loan(id)
       return redirect_to home_loan_path("step1") unless @home_loan.otp_verified
-    when "step7"
+    when "step6"
+      return redirect_to home_loan_path("step1") if id.nil?
       @home_loan = get_home_loan(id) #HomeLoan.last
       LoanMailer.home_loan(@home_loan).deliver_later
       session[:home_loan_id] = nil
@@ -40,28 +36,38 @@ class HomeLoanController < ApplicationController
 
   def create_otp
     @home_loan.reference_number = "HOL#{(rand*100000000).to_i}"
-    create_update_home_loan(@home_loan.save, "Home Loan created successfully.", home_loan_path("step2"))
+    unless @home_loan.otp_verified
+      send_otp
+    end
+    if session[:home_loan_id]
+      @home_loan.update_attributes(home_loan_params)
+    else
+      @home_loan.save
+    end
+    session[:home_loan_id] = @home_loan.id
+    # create_update_home_loan(@home_loan.save, "Home Loan created successfully.", home_loan_path("step2"))
   end
 
   def update_otp_status
     @home_loan = get_home_loan(session[:home_loan_id])
-    if @home_loan.otp.eql?(params[:home_loan][:otp].to_i)
+    if !@home_loan.otp.eql?(params[:home_loan][:otp].to_i)
       @home_loan.otp_verified = true
       @home_loan.save
       flash[:notice] = "The entered OTP verified successfully."
-      redirect_to home_loan_path("step4")
+      # redirect_to home_loan_path("step4")
     else
       flash[:error] = "The entered OTP is not valid."
-      redirect_to home_loan_path("step3")
+      # redirect_to home_loan_path("step3")
     end
   end
 
   def update
-    create_update_home_loan(@update_status_ncl, "Home Loan updated successfully.", home_loan_path("step2"))
+    flash[:notice] = "Home Loan updated successfully."
+    # create_update_home_loan(@update_status_ncl, "Home Loan updated successfully.", home_loan_path("step2"))
   end
 
   def select_bank
-    create_update_home_loan(@update_status_ncl, "Home Loan updated successfully.", home_loan_path("step5"))
+    create_update_home_loan(@update_status_ncl, "Home Loan updated successfully.", home_loan_path("step4"))
   end
 
   def create_home_offer
@@ -69,19 +75,16 @@ class HomeLoanController < ApplicationController
   end
 
   def update_home_offer
-    unless @home_loan.otp_verified
-      send_otp
-    end
     create_update_home_loan_offer(@update_status_nclo, "Home Loan offer applied successfully.", home_loan_path("step3"))
   end
 
   def update_address
-    create_update_home_loan(@update_status_nclo, "Home Loan updated successfully.", home_loan_path("step6"))
+    create_update_home_loan(@update_status_nclo, "Home Loan updated successfully.", home_loan_path("step5"))
   end
 
   def update_home_assets
     session[:home_loan_id] = nil if @update_status_ncl
-    create_update_home_loan(@update_status_ncl, "Home Loan updated successfully.", home_loan_path("step7"))
+    create_update_home_loan(@update_status_ncl, "Home Loan updated successfully.", home_loan_path("step6"))
   end
 
   def resend_otp

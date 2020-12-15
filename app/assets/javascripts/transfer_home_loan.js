@@ -196,9 +196,6 @@ $(document).ready(function(){
 			"transfer_home_loan[employment_type]": {
 				required: true
 			},
-			"transfer_home_loan[current_emi]": {
-				required: true
-			},
 			"transfer_home_loan[email]": {
 				required: true,
 				email: true
@@ -215,9 +212,6 @@ $(document).ready(function(){
 			},
 			"transfer_home_loan[employment_type]": {
 				required: "Please select employment type."
-			},
-			"transfer_home_loan[current_emi]": {
-				required: "Please enter current EMI."
 			},
 			"transfer_home_loan[email]": {
 				required: "Please enter email",

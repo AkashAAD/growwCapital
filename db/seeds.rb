@@ -255,193 +255,539 @@ end
 end
 
 
-[{ hero_fincorp: { name: "Hero Fincorp", roi: 21, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png"}},
- { fullerton_india: { name: "Fullerton India", roi: 25, processing_fee: 2, bank_image: "bank_images/fllutoran.png"}},
- { idfc_first_bank: { name: "IDFC First Bank", roi: 14, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- { hdfc_bank: { name: "HDFC Bank", roi: 12, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
- { axis_bank: { name: "Axis Bank", roi: 13, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
- { icici_bank: { name: "ICICI Bank", roi: 13, processing_fee: 2, bank_image: "bank_images/icici-bank.png"}},
- { tata_capital: { name: "TATA capital", roi: 15, processing_fee: 2, bank_image: "bank_images/tata-capital.webp"}},
- { yes_bank: { name: "YES Bank", roi: 12, processing_fee: 2, bank_image: "bank_images/yes-bank.png"}},
- { bajaj_finserve: { name: "Bajaj Finserve", roi: 17, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
- { indusind_bank: { name: "IndusInd Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/IndusInd-bank.png"}},
- { aditya_birla: { name: "Aditya Birla", roi: 7.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png"}},
- { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png"}}
+[{ hero_fincorp: { name: "Hero Fincorp", roi: 21, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png", preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>Partpayment - NA</p>"}},
+ { fullerton_india: { name: "Fullerton India", roi: 25, processing_fee: 2, bank_image: "bank_images/fllutoran.png", preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>7% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { idfc_first_bank: { name: "IDFC First Bank", roi: 14, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif", preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>4.5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2.5% + GST part payment Charges</p>"}},
+ { hdfc_bank: { name: "HDFC Bank", roi: 12, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png", preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>Part payment after 1 EMI</p>
+<p>4% + GST part payment Charges</p>"}},
+ { axis_bank: { name: "Axis Bank", roi: 13, processing_fee: 2, bank_image: "bank_images/axis-bank.png", preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { icici_bank: { name: "ICICI Bank", roi: 13, processing_fee: 2, bank_image: "bank_images/icici-bank.png", preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { tata_capital: { name: "TATA capital", roi: 15, processing_fee: 2, bank_image: "bank_images/tata-capital.webp", preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>4.5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2.5% + GST part payment Charges(if customer pays outstanfing amount 25%, part payment charges will be 0%.)</p>"}},
+ { yes_bank: { name: "YES Bank", roi: 12, processing_fee: 2, bank_image: "bank_images/yes-bank.png", preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>Part payment after 1 EMI</p>
+<p>2% + GST part payment Charges.</p>"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 17, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png", preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>4.72% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>part payment Charges – NA</p>"}},
+ { indusind_bank: { name: "IndusInd Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/IndusInd-bank.png", preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { aditya_birla: { name: "Aditya Birla", roi: 13, processing_fee: 2, bank_image: "bank_images/aditya-birla.png", preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png", preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}}
 ].each do |k|
    k = k.flatten
    plb = PersonalLoanBank.new(name: k[1][:name], slug: k[0].to_s)
    plb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
    plb.save
-   plbi = PersonalLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], personal_loan_bank_id: plb.id)
+   plbi = PersonalLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], preprocessing_charges: k[1][:preprocessing_charges], personal_loan_bank_id: plb.id)
    plbi.save
-   plbi = TransferPersonalLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], personal_loan_bank_id: plb.id)
+   puts "PersonalLoanBank #{plb}"
+end
+
+# TRANSFER PERSONAL LOAN BANK
+[{ hero_fincorp: { name: "Hero Fincorp", roi: 18, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png", preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>Partpayment - NA</p>"}},
+ { fullerton_india: { name: "Fullerton India", roi: 16, processing_fee: 2, bank_image: "bank_images/fllutoran.png",
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>7% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { idfc_first_bank: { name: "IDFC First Bank", roi: 11, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>4.5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2.5% + GST part payment Charges</p>"}},
+ { hdfc_bank: { name: "HDFC Bank", roi: 10.75, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>Part payment after 1 EMI</p>
+<p>4% + GST part payment Charges</p>"}},
+ { axis_bank: { name: "Axis Bank", roi: 10.99, processing_fee: 2, bank_image: "bank_images/axis-bank.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { icici_bank: { name: "ICICI Bank", roi: 10.99, processing_fee: 2, bank_image: "bank_images/icici-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { tata_capital: { name: "TATA capital", roi: 12, processing_fee: 2, bank_image: "bank_images/tata-capital.webp", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>4.5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2.5% + GST part payment Charges(if customer pays outstanfing amount 25%, part payment charges will be 0%.)</p>"}},
+ { yes_bank: { name: "YES Bank", roi: 10.49, processing_fee: 2, bank_image: "bank_images/yes-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>Part payment after 1 EMI</p>
+<p>2% + GST part payment Charges.</p>"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 14, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>4.72% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>part payment Charges – NA</p>"}},
+ { indusind_bank: { name: "IndusInd Bank", roi: 13, processing_fee: 2, bank_image: "bank_images/IndusInd-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { aditya_birla: { name: "Aditya Birla", roi: 12, processing_fee: 2, bank_image: "bank_images/aditya-birla.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { kotak_bank: { name: "Kotak Mahindra Bank", roi: 12, processing_fee: 2, bank_image: "bank_images/kotak-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}}
+].each do |k|
+   k = k.flatten
+   plb = TransferPersonalLoanBank.new(name: k[1][:name], slug: k[0].to_s)
+   plb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
+   plb.save
+   plbi = TransferPersonalLoanBankInfo.new(preprocessing_charges: k[1][:preprocessing_charges], roi: k[1][:roi], processing_fee: k[1][:processing_fee], transfer_personal_loan_bank_id: plb.id)
    plbi.save
    puts "PersonalLoanBank #{plb}"
 end
 
 
-[{ hero_fincorp: { name: "Hero Fincorp", roi: 21, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png"}},
- { fullerton_india: { name: "Fullerton India", roi: 36, processing_fee: 2, bank_image: "bank_images/fllutoran.png"}},
- { idfc_first_bank: { name: "IDFC First Bank", roi: 17, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- { hdfc_bank: { name: "HDFC Bank", roi: 16, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
- { axis_bank: { name: "Axis Bank", roi: 17.5, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
- { icici_bank: { name: "ICICI Bank", roi: 15.5, processing_fee: 2, bank_image: "bank_images/icici-bank.png"}},
- { tata_capital: { name: "TATA capital", roi: 14.5, processing_fee: 2, bank_image: "bank_images/tata-capital.webp"}},
- { yes_bank: { name: "YES Bank", roi: 18, processing_fee: 2, bank_image: "bank_images/yes-bank.png"}},
- { bajaj_finserve: { name: "Bajaj Finserve", roi: 22, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
- { indusind_bank: { name: "IndusInd Bank", roi: 16, processing_fee: 2, bank_image: "bank_images/IndusInd-bank.png"}},
- { neogrowth_finance: { name: "Neogrowth finance", roi: 16, processing_fee: 2, bank_image: "bank_images/neogrowth-finance.png"}},
- { aditya_birla: { name: "Aditya Birla", roi: 7.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png"}},
- { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png"}},
- { au_small_bank: { name: "AU Small Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}},
- { rbl_bank: { name: "RBL Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/rbl-bank.png"}},
+[{ hero_fincorp: { name: "Hero Fincorp", roi: 21, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>partpayment – NA</p>"}},
+ { fullerton_india: { name: "Fullerton India", roi: 36, processing_fee: 2, bank_image: "bank_images/fllutoran.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>7% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { idfc_first_bank: { name: "IDFC First Bank", roi: 17, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>4.5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2.5% + GST part payment Charges</p>"}},
+ { hdfc_bank: { name: "HDFC Bank", roi: 16, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>4% + GST part payment Charges</p>"}},
+ { axis_bank: { name: "Axis Bank", roi: 17.5, processing_fee: 2, bank_image: "bank_images/axis-bank.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { icici_bank: { name: "ICICI Bank", roi: 15.5, processing_fee: 2, bank_image: "bank_images/icici-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { tata_capital: { name: "TATA capital", roi: 14.5, processing_fee: 2, bank_image: "bank_images/tata-capital.webp", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>4.5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2.5% + GST part payment Charges(if customer pays outstanfing amount 25%, part payment charges will be 0%.)</p>"}},
+ { yes_bank: { name: "YES Bank", roi: 18, processing_fee: 2, bank_image: "bank_images/yes-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>2% + GST part payment Charges</p>"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 22, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>4.72% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>part payment Charges – NA</p>"}},
+ { indusind_bank: { name: "IndusInd Bank", roi: 16, processing_fee: 2, bank_image: "bank_images/IndusInd-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { neogrowth_finance: { name: "Neogrowth finance", roi: 18, processing_fee: 2, bank_image: "bank_images/neogrowth-finance.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>2% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { aditya_birla: { name: "Aditya Birla", roi: 7.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { au_small_bank: { name: "AU Small Bank", roi: 13.5, processing_fee: 2, bank_image: "bank_images/au-small-bank.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>forclosing charges(remaining outstanding amount. Before 12 EMI 5% and After 12 EMI 3%)</p>
+<p>part payment(after 6 EMI changes will be 0%)</p>"}},
+ { rbl_bank: { name: "RBL Bank", roi: 15.5, processing_fee: 2, bank_image: "bank_images/rbl-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
 ].each do |k|
    k = k.flatten
    blb = BusinessLoanBank.new(name: k[1][:name], slug: k[0].to_s)
    blb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
    blb.save
-   blbi = BusinessLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], business_loan_bank_id: blb.id)
+   blbi = BusinessLoanBankInfo.new(preprocessing_charges: k[1][:preprocessing_charges], roi: k[1][:roi], processing_fee: k[1][:processing_fee], business_loan_bank_id: blb.id)
    blbi.save
    puts "BusinessLoanBank #{blb}"
 end
 
-[{ idfc_first_bank: { name: "IDFC First Bank", roi: 11, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- { hdfc_bank: { name: "HDFC Bank", roi: 10.85, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
- { axis_bank: { name: "Axis Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
- { icici_bank: { name: "ICICI Bank", roi: 14.50, processing_fee: 2, bank_image: "bank_images/icici-bank.png"}},
- { yes_bank: { name: "YES Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/yes-bank.png"}},
- { tata_capital: { name: "TATA capital", roi: 15, processing_fee: 2, bank_image: "bank_images/tata-capital.webp"}},
- { bajaj_finserve: { name: "Bajaj Finserve", roi: 14.50, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
+[{ idfc_first_bank: { name: "IDFC First Bank", roi: 11, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>4.5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2.5% + GST part payment Charges</p>"}},
+ { hdfc_bank: { name: "HDFC Bank", roi: 10.85, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>4% + GST part payment Charges</p>"}},
+ { axis_bank: { name: "Axis Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/axis-bank.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { icici_bank: { name: "ICICI Bank", roi: 14.50, processing_fee: 2, bank_image: "bank_images/icici-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>2% + GST part payment Charges</p>"}},
+ { yes_bank: { name: "YES Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/yes-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>2% + GST part payment Charges</p>"}},
+ { tata_capital: { name: "TATA capital", roi: 15, processing_fee: 2, bank_image: "bank_images/tata-capital.webp", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 14.50, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>4.72% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>part payment Charges – NA</p>"}},
 ].each do |k|
   k = k.flatten
   plb = ProfessionalLoanBank.new(name: k[1][:name], slug: k[0].to_s)
   plb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
   plb.save
   _id = Profession.find_by(name: "Doctor")
-  plbi = ProfessionalLoanBankInfo.new(profession_id: _id.id, roi: k[1][:roi], processing_fee: k[1][:processing_fee], professional_loan_bank_id: plb.id)
+  plbi = ProfessionalLoanBankInfo.new(preprocessing_charges: k[1][:preprocessing_charges], profession_id: _id.id, roi: k[1][:roi], processing_fee: k[1][:processing_fee], professional_loan_bank_id: plb.id)
   plbi.save
   puts "ProfessionalLoanBank #{plb}"
 end
 
-[{ idfc_first_bank: { name: "IDFC First Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- { hdfc_bank: { name: "HDFC Bank", roi: 14.75, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
- { bajaj_finserve: { name: "Bajaj Finserve", roi: 15.75, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
+[{ idfc_first_bank: { name: "IDFC First Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>4.5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2.5% + GST part payment Charges</p>"}},
+ { hdfc_bank: { name: "HDFC Bank", roi: 14.75, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>4% + GST part payment Charges</p>"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 15.75, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>4.72% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>part payment Charges – NA</p>"}},
 ].each do |k|
   k = k.flatten
   plb = ProfessionalLoanBank.new(name: k[1][:name], slug: k[0].to_s)
   plb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
   plb.save
   _id = Profession.find_by(name: "Architechure")
-  plbi = ProfessionalLoanBankInfo.new(profession_id: _id.id, roi: k[1][:roi], processing_fee: k[1][:processing_fee], professional_loan_bank_id: plb.id)
+  plbi = ProfessionalLoanBankInfo.new(preprocessing_charges: k[1][:preprocessing_charges], profession_id: _id.id, roi: k[1][:roi], processing_fee: k[1][:processing_fee], professional_loan_bank_id: plb.id)
   plbi.save
   puts "ProfessionalLoanBank #{plb}"
 end
 
-[{ idfc_first_bank: { name: "IDFC First Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- { hdfc_bank: { name: "HDFC Bank", roi: 14.75, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
- { bajaj_finserve: { name: "Bajaj Finserve", roi: 15.75, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
+[{ idfc_first_bank: { name: "IDFC First Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>4.5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2.5% + GST part payment Charges</p>"}},
+ { hdfc_bank: { name: "HDFC Bank", roi: 14.75, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>4% + GST part payment Charges</p>"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 15.75, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>4.72% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>part payment Charges – NA</p>"}},
 ].each do |k|
   k = k.flatten
   plb = ProfessionalLoanBank.new(name: k[1][:name], slug: k[0].to_s)
   plb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
   plb.save
   _id = Profession.find_by(name: "Chartered Accountant(CA)")
-  plbi = ProfessionalLoanBankInfo.new(profession_id: _id.id, roi: k[1][:roi], processing_fee: k[1][:processing_fee], professional_loan_bank_id: plb.id)
+  plbi = ProfessionalLoanBankInfo.new(preprocessing_charges: k[1][:preprocessing_charges], profession_id: _id.id, roi: k[1][:roi], processing_fee: k[1][:processing_fee], professional_loan_bank_id: plb.id)
   plbi.save
   puts "ProfessionalLoanBank #{plb}"
 end
 
-[{ idfc_first_bank: { name: "IDFC First Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- { hdfc_bank: { name: "HDFC Bank", roi: 14.75, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
- { bajaj_finserve: { name: "Bajaj Finserve", roi: 15.75, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
+[{ idfc_first_bank: { name: "IDFC First Bank", roi: 15.50, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>4.5% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2.5% + GST part payment Charges</p>"}},
+ { hdfc_bank: { name: "HDFC Bank", roi: 14.75, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>4% + GST part payment Charges</p>"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 15.75, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>4.72% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>part payment Charges – NA</p>"}},
 ].each do |k|
   k = k.flatten
   plb = ProfessionalLoanBank.new(name: k[1][:name], slug: k[0].to_s)
   plb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
   plb.save
   _id = Profession.find_by(name: "Company Secretary(CS)")
-  plbi = ProfessionalLoanBankInfo.new(profession_id: _id.id, roi: k[1][:roi], processing_fee: k[1][:processing_fee], professional_loan_bank_id: plb.id)
+  plbi = ProfessionalLoanBankInfo.new(preprocessing_charges: k[1][:preprocessing_charges], profession_id: _id.id, roi: k[1][:roi], processing_fee: k[1][:processing_fee], professional_loan_bank_id: plb.id)
   plbi.save
   puts "ProfessionalLoanBank #{plb}"
 end
 
 [
- { hdfc_housing: { name: "HDFC Housing", roi: 6.95, processing_fee: 2, bank_image: "bank_images/hdfc-housing.png"}},
- { icici_housing: { name: "ICICI Housing", roi: 7, processing_fee: 2, bank_image: "bank_images/icici-housing.svg"}},
- { idfc_first_bank: { name: "IDFC First Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png"}},
- # //{ idbi_bank: { name: "IDBI Bank", roi: 7.30, processing_fee: 2, bank_image: "bank_images/idbi-bank.png"}},
- # //{ indiabulls_bank: { name: "Indiabulls Bank", roi: 9.50, processing_fee: 2, bank_image: "bank_images/indiabulls.png"}},
- { hero_fincorp: { name: "Hero Fincorp", roi: 21, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png"}},
- { bajaj_finserve: { name: "Bajaj Finserve", roi: 17, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
- { axis_bank: { name: "Axis Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
- # //{ lic_housing: { name: "LIC Housing", roi: 6.5, processing_fee: 2, bank_image: "bank_images/lic-housing.jpeg"}},
- { aadhar_housing: { name: "Aadhar Housing", roi: 12, processing_fee: 2, bank_image: "bank_images/aadhar-housing.png"}},
- # //{ aawas_housing: { name: "Aawas Housing", roi: 12, processing_fee: 2, bank_image: "bank_images/aawas-housing.png"}},
- # //{ equitas_bank: { name: "Equitas Bank", roi: 10, processing_fee: 2, bank_image: "bank_images/equitas-bank.jpeg"}},
- # //{ utkarsh_small_bank: { name: "Utkarsh Small Bank", roi: 8.5, processing_fee: 2, bank_image: "bank_images/utkarsh-small-bank.png"}},
- # //{ bankdhan_bank: { name: "Bankdhan Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/bankdhan-bank.png"}},
- # //{ au_small_bank: { name: "AU Small Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}},
- { pnb_housing_bank: { name: "PNB Housing finance LTD", roi: 7.5, processing_fee: 2, bank_image: "bank_images/pnb-housing.png"}},
- { aditya_birla: { name: "Aditya Birla", roi: 7.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png"}},
+ { hdfc_housing: { name: "HDFC Housing", roi: 6.95, processing_fee: 2, bank_image: "bank_images/hdfc-housing.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2% + GST part payment Charges(If customer pays below 25% of principle amount, part payment charges will be 0%)</p>"}},
+ { icici_housing: { name: "ICICI Housing", roi: 7.15, processing_fee: 2, bank_image: "bank_images/icici-housing.svg", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>2% to  4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% payment Charges</p>"}},
+ { idfc_first_bank: { name: "IDFC First Bank", roi: 8.30, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif", 
+  preprocessing_charges: "<p>after 9 EMI forclose</p>
+<p>0% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 9 EMI</p>
+<p>0% payment Charges</p>"}},
+ { kotak_bank: { name: "Kotak Mahindra Bank", roi: 7.50, processing_fee: 2, bank_image: "bank_images/kotak-bank.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>2% to  4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% payment Charges</p>"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 7.50, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { axis_bank: { name: "Axis Bank", roi: 7.10, processing_fee: 2, bank_image: "bank_images/axis-bank.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { aadhar_housing: { name: "Aadhar Housing", roi: 13.25, processing_fee: 2, bank_image: "bank_images/aadhar-housing.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { pnb_housing_bank: { name: "PNB Housing finance LTD", roi: 7.5, processing_fee: 2, bank_image: "bank_images/pnb-housing.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { aditya_birla: { name: "Aditya Birla", roi: 10.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2% part payment Charges</p>"}},
 ].each do |k|
   k = k.flatten
   hlb = HomeLoanBank.new(name: k[1][:name], slug: k[0].to_s)
   hlb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
   hlb.save
-  hlbi = HomeLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], home_loan_bank_id: hlb.id)
+  hlbi = HomeLoanBankInfo.new(preprocessing_charges: k[1][:preprocessing_charges], roi: k[1][:roi], processing_fee: k[1][:processing_fee], home_loan_bank_id: hlb.id)
   hlbi.save
-  hlbi = TransferHomeLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], home_loan_bank_id: hlb.id)
+  puts "HomeLoanBank #{hlb}"
+end
+
+# TRANSFER HOME LOAN
+[
+ { hdfc_housing: { name: "HDFC Housing", roi: 6.95, processing_fee: 2, bank_image: "bank_images/hdfc-housing.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2% + GST part payment Charges(If customer pays below 25% of principle amount, part payment charges will be 0%)</p>"}},
+ { icici_housing: { name: "ICICI Housing", roi: 7, processing_fee: 2, bank_image: "bank_images/icici-housing.svg", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>2% to  4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% payment Charges</p>"}},
+ { idfc_first_bank: { name: "IDFC First Bank", roi: 8.25, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif", 
+  preprocessing_charges: "<p>after 9 EMI forclose</p>
+<p>0% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 9 EMI</p>
+<p>0% payment Charges</p>"}},
+ { kotak_bank: { name: "Kotak Mahindra Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/kotak-bank.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>2% to  4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% payment Charges</p>"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 7, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { axis_bank: { name: "Axis Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/axis-bank.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { aadhar_housing: { name: "Aadhar Housing", roi: 11.25, processing_fee: 2, bank_image: "bank_images/aadhar-housing.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { pnb_housing_bank: { name: "PNB Housing finance LTD", roi: 6.75, processing_fee: 2, bank_image: "bank_images/pnb-housing.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { aditya_birla: { name: "Aditya Birla", roi: 9.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2% part payment Charges</p>"}},
+].each do |k|
+  k = k.flatten
+  hlb = TransferHomeLoanBank.new(name: k[1][:name], slug: k[0].to_s)
+  hlb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
+  hlb.save
+  hlbi = TransferHomeLoanBankInfo.new(preprocessing_charges: k[1][:preprocessing_charges], roi: k[1][:roi], processing_fee: k[1][:processing_fee], transfer_home_loan_bank_id: hlb.id)
   hlbi.save
   puts "HomeLoanBank #{hlb}"
 end
 
 [
- { hdfc_housing: { name: "HDFC Housing", roi: 6.95, processing_fee: 2, bank_image: "bank_images/hdfc-housing.png"}},
- { icici_housing: { name: "ICICI Housing", roi: 7, processing_fee: 2, bank_image: "bank_images/icici-housing.svg"}},
- { idfc_first_bank: { name: "IDFC First Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif"}},
- { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png"}},
- { hero_fincorp: { name: "Hero Fincorp", roi: 21, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png"}},
- { bajaj_finserve: { name: "Bajaj Finserve", roi: 17, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png"}},
- { axis_bank: { name: "Axis Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/axis-bank.png"}},
- { aadhar_housing: { name: "Aadhar Housing", roi: 12, processing_fee: 2, bank_image: "bank_images/aadhar-housing.png"}},
- { pnb_housing_bank: { name: "PNB Housing finance LTD", roi: 7.5, processing_fee: 2, bank_image: "bank_images/pnb-housing.png"}},
- { aditya_birla: { name: "Aditya Birla", roi: 7.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png"}},
- { au_small_bank: { name: "AU Small Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}}, 
+ { hdfc_housing: { name: "HDFC Housing", roi: 6.95, processing_fee: 2, bank_image: "bank_images/hdfc-housing.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>4% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2% + GST part payment Charges</p>"}},
+ { icici_housing: { name: "ICICI Housing", roi: 7, processing_fee: 2, bank_image: "bank_images/icici-housing.svg", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>2% to  4% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>pPart payment after 1 EMI</p>
+<p>0% payment Charges</p>"}},
+ { idfc_first_bank: { name: "IDFC First Bank", roi: 11.50, processing_fee: 2, bank_image: "bank_images/idfc-bank.gif", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>forclosing charges(Within 12 EMI 5% + GST charges. After 12 EMI 3% + GST. Remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>0% + GST part payment Charges</p>"}},
+ { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2% + GST part payment Charges(If customer pays below 25% of principle amount, part payment charges will be 0%)</p>"}},
+ # { hero_fincorp: { name: "Hero Fincorp", roi: 21, processing_fee: 2, bank_image: "bank_images/hero-fincorp.png"}},
+ { bajaj_finserve: { name: "Bajaj Finserve", roi: 9, processing_fee: 2, bank_image: "bank_images/bajaj-logo.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { axis_bank: { name: "Axis Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/axis-bank.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { aadhar_housing: { name: "Aadhar Housing", roi: 14.50, processing_fee: 2, bank_image: "bank_images/aadhar-housing.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>2% + GST forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { pnb_housing_bank: { name: "PNB Housing finance LTD", roi: 7.5, processing_fee: 2, bank_image: "bank_images/pnb-housing.png", 
+  preprocessing_charges: "<p>after 1 EMI forclose</p>
+<p>0% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 1 EMI</p>
+<p>0% part payment Charges</p>"}},
+ { aditya_birla: { name: "Aditya Birla", roi: 11.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png", 
+  preprocessing_charges: "<p>after 12 EMI forclose</p>
+<p>5% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment after 6 EMI</p>
+<p>2% part payment Charges</p>"}},
+ { au_small_bank: { name: "AU Small Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/au-small-bank.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>forclosing charges(remaining outstanding amount. Before 12 EMI 5% and After 12 EMI 3%)</p>
+<p>part payment(after 6 EMI changes will be 0%)</p>"}},
 ].each do |k|
   k = k.flatten
   lap = LoanAgainstPropertyBank.new(name: k[1][:name], slug: k[0].to_s)
   lap.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
   lap.save
-  lapi = LoanAgainstPropertyBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], loan_against_property_bank_id: lap.id)
+  lapi = LoanAgainstPropertyBankInfo.new(preprocessing_charges: k[1][:preprocessing_charges], roi: k[1][:roi], processing_fee: k[1][:processing_fee], loan_against_property_bank_id: lap.id)
   lapi.save
   puts "LoanAgainstPropertyBank #{lap}"
 end
 
 [
- { hdfc_bank: { name: "HDFC Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png"}},
- { icici_bank: { name: "ICICI Bank", roi: 9.50, processing_fee: 2, bank_image: "bank_images/icici-bank.png"}},
- { yes_bank: { name: "YES Bank", roi: 11.75, processing_fee: 2, bank_image: "bank_images/yes-bank.png"}},
+ { hdfc_bank: { name: "HDFC Bank", roi: 6, processing_fee: 2, bank_image: "bank_images/hdfc-bank.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>4% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { icici_bank: { name: "ICICI Bank", roi: 7, processing_fee: 2, bank_image: "bank_images/icici-bank.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>5% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { yes_bank: { name: "YES Bank", roi: 7.5, processing_fee: 2, bank_image: "bank_images/yes-bank.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>5% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
 ].each do |k|
   k = k.flatten
   nclb = NewCarLoanBank.new(name: k[1][:name], slug: k[0].to_s)
   nclb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
   nclb.save
-  nclbi = NewCarLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], new_car_loan_bank_id: nclb.id)
+  nclbi = NewCarLoanBankInfo.new(preprocessing_charges: k[1][:preprocessing_charges], roi: k[1][:roi], processing_fee: k[1][:processing_fee], new_car_loan_bank_id: nclb.id)
   nclbi.save
   puts "NewCarLoanBank #{nclb}"
 end
 
 [
- { icici_bank: { name: "ICICI Bank", roi: 12.10, processing_fee: 2, bank_image: "bank_images/icici-bank.png"}},
- { au_small_bank: { name: "AU Small Finance Bank", roi: 13.75, processing_fee: 2, bank_image: "bank_images/au-small-bank.png"}},
- { yes_bank: { name: "YES Bank", roi: 13.50, processing_fee: 2, bank_image: "bank_images/yes-bank.png"}},
+ { icici_bank: { name: "ICICI Bank", roi: 8.5, processing_fee: 2, bank_image: "bank_images/icici-bank.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>5% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { au_small_bank: { name: "AU Small Finance Bank", roi: 9, processing_fee: 2, bank_image: "bank_images/au-small-bank.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>5% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
+ { yes_bank: { name: "YES Bank", roi: 9.5, processing_fee: 2, bank_image: "bank_images/yes-bank.png", 
+  preprocessing_charges: "<p>after 6 EMI forclose</p>
+<p>5% forclosing charges(remaining outstanding amount.)</p>
+<p>part payment – NA</p>"}},
 ].each do |k|
   k = k.flatten
   uclb = UsedCarLoanBank.new(name: k[1][:name], slug: k[0].to_s)
   uclb.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
   uclb.save
-  uclbi = UsedCarLoanBankInfo.new(roi: k[1][:roi], processing_fee: k[1][:processing_fee], used_car_loan_bank_id: uclb.id)
+  uclbi = UsedCarLoanBankInfo.new(preprocessing_charges: k[1][:preprocessing_charges], roi: k[1][:roi], processing_fee: k[1][:processing_fee], used_car_loan_bank_id: uclb.id)
   uclbi.save
   puts "UsedCarLoanBank #{uclb}"
 end
@@ -495,13 +841,13 @@ end
   puts "City #{city}"
 }
 
-[{sbi: { name: "SBI Credit Card", bank_image: "bank_images/sbi-bank.png", first_year_fee: 100.00, annual_fee: 300}},
- {icici: { name: "ICICI Credit Card", bank_image: "bank_images/icici-bank.png", first_year_fee: 100.00, annual_fee: 300}},
- {indusind: { name: "IndusInd Credit Card", bank_image: "bank_images/IndusInd-bank.png", first_year_fee: 100.00, annual_fee: 300}},
- {hdfc: { name: "HDFC Credit Card", bank_image: "bank_images/hdfc-bank.png", first_year_fee: 100.00, annual_fee: 300}}
+[{sbi: { name: "SBI Credit Card", bank_image: "bank_images/sbi-bank.png", joining_charge: 500, annual_charge: 500}},
+ {icici: { name: "ICICI Credit Card", bank_image: "bank_images/icici-bank.png", joining_charge: 500.00, annual_charge: 0}},
+ {indusind: { name: "IndusInd Credit Card", bank_image: "bank_images/IndusInd-bank.png", joining_charge: 899, annual_charge: 0}},
+ {hdfc: { name: "HDFC Credit Card", bank_image: "bank_images/hdfc-bank.png", joining_charge: 0, annual_charge: 500}}
 ].each do |k|
   k = k.flatten
-  card = Card.new(name: k[1][:name], first_year_fee: k[1][:first_year_fee], annual_fee: k[1][:annual_fee])
+  card = Card.new(name: k[1][:name], joining_charge: k[1][:joining_charge], annual_charge: k[1][:annual_charge])
   card.bank_image.attach(io: File.open(File.join(Rails.root, k[1][:bank_image])), filename: k[1][:bank_image].split('/')[1])
   card.save
   puts "Card #{card}"

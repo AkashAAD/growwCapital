@@ -187,7 +187,11 @@ $(document).ready(function(){
 			},
 			"used_car_loan[terms_and_conditions]": {
 				required: true
-			}
+			},
+			"used_car_loan[mobile_number]": {
+				required: true,
+				minlength: 10
+			},
 		},
 		messages: {
 			'used_car_loan[tenure]': {
@@ -212,7 +216,11 @@ $(document).ready(function(){
 			},
 			"used_car_loan[terms_and_conditions]": {
 				required: "Please select terms and conditions."
-			}
+			},
+			"used_car_loan[mobile_number]": {
+				required: "Please enter mobile number.",
+				minlength: 'Mobile number must consist of at least 10 characters'
+			},
 		}
 	});	
 
@@ -225,16 +233,9 @@ $(document).ready(function(){
 			"used_car_loan[dob]": {
 				required: true,
 			},
-			"used_car_loan[mobile_number]": {
-				required: true,
-				minlength: 10
-			},
 			"used_car_loan[email]": {
 				required: true,
 				email: true
-			},
-			"used_car_loan[current_emi]": {
-				required: true
 			},
   	},
   	messages: {
@@ -245,16 +246,9 @@ $(document).ready(function(){
 			"used_car_loan[dob]": {
 				required: "Please enter date of birth.",
 			},
-			"used_car_loan[mobile_number]": {
-				required: "Please enter mobile number.",
-				minlength: 'Mobile number must consist of at least 10 characters'
-			},
 			"used_car_loan[email]": {
 				required: "Please enter email.",
 				email: "Please enter valid email."
-			},
-			"used_car_loan[current_emi]": {
-				required: "Please enter current EMI."
 			},
   	}	
   });

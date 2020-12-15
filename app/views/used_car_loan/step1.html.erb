@@ -1,71 +1,104 @@
-<section class="business-loan-section">
-  <%= form_for @used_car_loan, :url => { :action => @used_car_loan.id.nil? ? "create_otp" : "update"}, html: {id:  "basic_used_car_loan", class: "basic_used_car_loan"} do |f| %>
-
-    <div class="container">
-      <div class="row heading">
-        <div class="col-md-4">
-          <div class="form-group">
-            <h3>Loan Application</h3>
+<section class="business-loan-section custom-container">
+  <div class="container uc-container">
+    <%= form_for @used_car_loan, :url => { :action => @used_car_loan.id.nil? ? "create_otp" : "update"}, remote: true, html: {id:  "basic_used_car_loan", class: "basic_used_car_loan"} do |f| %>
+      <div class="container">
+        <div class="row heading">
+          <div class="col-md-4">
+            <div class="form-group">
+              <h3>Loan Application</h3>
+            </div>
           </div>
+        </div>
+        <div class="row first-row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Your desired loan amount
+                <i data-toggle="tooltip" data-placement="top" title="Please fill in the loan amount you need to fullfil your financial needs." class="fa fa-info-circle" aria-hidden="true"></i>
+              </label>
+              <%= f.number_field(:loan_amount, class: "form-control") %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Tenure
+                <i data-toggle="tooltip" data-placement="top" title="Please fill the duration of the loan amount." class="fa fa-info-circle" aria-hidden="true"></i>
+              </label>
+              <%= f.select(:tenure, tenure, class: "form-control") %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Car Registration Number
+                <i data-toggle="tooltip" data-placement="top" title="Please fill the registration number which is registerd after 2010." class="fa fa-info-circle" aria-hidden="true"></i>
+              </label>
+              <%= f.text_field(:car_registration_number, class: "form-control") %>
+            </div>
+          </div>        
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Model Year
+                <i data-toggle="tooltip" data-placement="top" title="Please fill the model year which is registerd after 2010." class="fa fa-info-circle" aria-hidden="true"></i>
+              </label>
+              <%= f.number_field(:model_year, class: "form-control") %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Car Manufacturer</label>
+              <%= f.select(:car_manufacturer, car_manufacturer, class: "form-control") %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Car Model</label>
+              <%= f.select(:car_model, car_model(f), class: "form-control") %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Employment Type</label>
+              <%= f.select(:employment_type, employment_type, class: "form-control") %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Mobile Number
+                <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="100% privacy guaranteed. We well never share your details."></i>
+              </label>
+              <%= f.number_field(:mobile_number, class: "form-control") %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.check_box(:terms_and_conditions) %>
+            <%= f.label "Terms & Conditions", for: 'personal_loan_terms_and_conditions' %>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-custom">Submit</button>
+      </div>
+    <%end%>
+    <br>
+    <%= form_for @used_car_loan, :url => { :action => @used_car_loan.id.nil? ? "update_otp_status" : "update_otp_status"}, method: :patch, remote: true, html: {id:  "otp_used_car_loan", class: "otp_used_car_loan hide-div"} do |f| %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.number_field(:otp, class: "form-control", value: "") %>
+            </div> 
+            <button type="submit" class="btn btn-custom">Submit</button>
+            <a href="javascript:void(o)" id="used-car-loan-resend-otp" style="float: right;">Resend</a>
+          </div>
+          <div class="col-md-4"></div>
         </div>
       </div>
-      <div class="row first-row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Your desired loan amount</label>
-            <%= f.number_field(:loan_amount, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Tenure</label>
-            <%= f.select(:tenure, tenure, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Car Registration Number</label>
-            <%= f.text_field(:car_registration_number, class: "form-control") %>
-          </div>
-        </div>        
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Model Year</label>
-            <%= f.number_field(:model_year, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Car Manufacturer</label>
-            <%= f.select(:car_manufacturer, car_manufacturer, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Car Model</label>
-            <%= f.select(:car_model, car_model(f), class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Employment Type</label>
-            <%= f.select(:employment_type, employment_type, class: "form-control") %>
-          </div>
-        </div>        
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <%= f.check_box(:terms_and_conditions) %>
-          <%= f.label "Terms & Conditions", for: 'personal_loan_terms_and_conditions' %>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-custom">Submit</button>
-    </div>
-  <%end%>
+    <%end%>
+  </div>
 </section>

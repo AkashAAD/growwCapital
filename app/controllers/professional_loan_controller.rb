@@ -18,17 +18,15 @@ class ProfessionalLoanController < ApplicationController
     when "step2"
       @professional_loan = id.nil? ? ProfessionalLoan.new : get_professional_loan(id)
       return redirect_to professional_loan_path("step1") if id.nil?
-    when "step3"
-      @professional_loan = id.nil? ? ProfessionalLoan.new : get_professional_loan(id)
-      return redirect_to professional_loan_path("step4") if @professional_loan.otp_verified
-    when "step4", "step6"
+    when "step3", "step4"
       @professional_loan = id.nil? ? ProfessionalLoan.new : get_professional_loan(id)
       @banks = @professional_loan.banks
       return redirect_to professional_loan_path("step1") unless @professional_loan.otp_verified
     when "step5"
       @professional_loan = id.nil? ? ProfessionalLoan.new : get_professional_loan(id)
       return redirect_to professional_loan_path("step1") unless @professional_loan.otp_verified
-    when "step7"
+    when "step6"
+      return redirect_to professional_loan_path("step1") if id.nil?      
       @professional_loan = get_professional_loan(id) #ProfessionalLoan.last
       LoanMailer.professional_loan(@professional_loan).deliver_later
       session[:professional_loan_id] = nil
@@ -38,7 +36,15 @@ class ProfessionalLoanController < ApplicationController
 
   def create_otp
     @professional_loan.reference_number = "PROL#{(rand*100000000).to_i}"
-    create_update_professional_loan(@professional_loan.save, "Professional Loan created successfully", professional_loan_path("step2"))
+    unless @professional_loan.otp_verified
+      send_otp
+    end
+    if session[:professional_loan_id]
+      @professional_loan.update_attributes(professsional_loan_params)
+    else
+      @professional_loan.save
+    end
+    session[:professional_loan_id] = @professional_loan.id
   end
 
   def update_otp_status
@@ -47,10 +53,10 @@ class ProfessionalLoanController < ApplicationController
       @professional_loan.otp_verified = true
       @professional_loan.save
       flash[:notice] = "The entered OTP verified successfully."
-      redirect_to professional_loan_path("step4")
+      # redirect_to professional_loan_path("step4")
     else
       flash[:error] = "The entered OTP is not valid."
-      redirect_to professional_loan_path("step3")
+      # redirect_to professional_loan_path("step3")
     end
   end
 
@@ -59,11 +65,12 @@ class ProfessionalLoanController < ApplicationController
   end
 
   def update
-    create_update_professional_loan(@update_status_pl, "Professional Loan updated successfully.", professional_loan_path("step2"))
+    flash[:notice] = "Professional Loan updated successfully."
+    # create_update_professional_loan(@update_status_pl, "Professional Loan updated successfully.", professional_loan_path("step2"))
   end
 
   def select_bank
-    create_update_professional_loan(@update_status_pl, "Professional Loan bank selected successfully.", professional_loan_path("step5"))
+    create_update_professional_loan(@update_status_pl, "Professional Loan bank selected successfully.", professional_loan_path("step4"))
   end
 
   def create_professional_offer
@@ -71,18 +78,15 @@ class ProfessionalLoanController < ApplicationController
   end
 
   def update_professional_offer
-    unless @professional_loan.otp_verified
-      send_otp
-    end
   	create_update_professional_loan_offer(@update_status_plo, "Professional Loan offer applied successfully.", professional_loan_path("step3"))
   end
 
   def updated_address
-    create_update_professional_loan_offer(@update_status_plo, "Personal Loan updated successfully.", professional_loan_path("step6"))
+    create_update_professional_loan_offer(@update_status_plo, "Personal Loan updated successfully.", professional_loan_path("step5"))
   end
 
   def update_professional_assets
-		create_update_professional_loan_offer(@update_status_plo, "Professional Loan updated successfully.", professional_loan_path("step7"))
+		create_update_professional_loan_offer(@update_status_plo, "Professional Loan updated successfully.", professional_loan_path("step6"))
   end
 
   def resend_otp

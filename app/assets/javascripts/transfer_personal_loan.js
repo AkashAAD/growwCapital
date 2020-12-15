@@ -235,9 +235,6 @@ $(document).ready(function(){
 			"transfer_personal_loan[employer_name]": {
 				required: true
 			},
-			"transfer_personal_loan[current_emi]": {
-				required: true
-			},
 			"transfer_personal_loan[existing_card]": {
 				required: true
 			},
@@ -249,6 +246,12 @@ $(document).ready(function(){
 				required: true,
 				email: true
 			},
+			"transfer_personal_loan[existing_roi]": {
+				required: true,
+			},
+			"transfer_personal_loan[existing_bank_name]": {
+				required: true,
+			},
 		},
 		messages: {
 			'transfer_personal_loan[dob]': {
@@ -258,9 +261,6 @@ $(document).ready(function(){
 			},
 			"transfer_personal_loan[employer_name]": {
 				required: "Please enter company name."
-			},
-			"transfer_personal_loan[current_emi]": {
-				required: "Please enter your current EMI."
 			},
 			"transfer_personal_loan[existing_card]": {
 				required: "Please select existing card option."
@@ -272,6 +272,12 @@ $(document).ready(function(){
 			"transfer_personal_loan[email]": {
 				required: "Please enter email.",
 				email: "Please enter valid email."
+			},
+			"transfer_personal_loan[existing_roi]": {
+				required: "Please enter existing loan rate of interest.",
+			},
+			"transfer_personal_loan[existing_bank_name]": {
+				required: "Please enter existing loan bank name.",
 			},
 		}
   });

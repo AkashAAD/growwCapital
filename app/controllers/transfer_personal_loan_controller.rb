@@ -7,7 +7,7 @@ class TransferPersonalLoanController < ApplicationController
   before_action :apply_loan, only: [:select_bank]
 
   include Wicked::Wizard
-  steps :step1, :step2, :step3, :step4, :step5, :step6, :step7
+  steps :step1, :step2, :step3, :step4, :step5, :step6
 
 	def show
 		# session[:transfer_personal_loan_id] = nil
@@ -18,17 +18,15 @@ class TransferPersonalLoanController < ApplicationController
     when "step2"
       @transfer_personal_loan = id.nil? ? TransferPersonalLoan.new : get_transfer_personal_loan(id)
       return redirect_to transfer_personal_loan_path("step1") if id.nil?
-    when "step3"
-      @transfer_personal_loan = id.nil? ? TransferPersonalLoan.new : get_transfer_personal_loan(id)
-      return redirect_to transfer_personal_loan_path("step4") if @transfer_personal_loan.otp_verified
-		when "step4", "step6"
+    when "step3", "step4"
       @transfer_personal_loan = id.nil? ? TransferPersonalLoan.new : get_transfer_personal_loan(id)
       @banks = @transfer_personal_loan.banks
       return redirect_to transfer_personal_loan_path("step1") unless @transfer_personal_loan.otp_verified
     when "step5"
       @transfer_personal_loan = id.nil? ? TransferPersonalLoan.new : get_transfer_personal_loan(id)
       return redirect_to transfer_personal_loan_path("step1") unless @transfer_personal_loan.otp_verified
-    when "step7"
+    when "step6"
+      return redirect_to transfer_personal_loan_path("step1") if id.nil?      
       @transfer_personal_loan = get_transfer_personal_loan(id) #TransferPersonalLoan.last
       LoanMailer.transfer_personal_loan(@transfer_personal_loan).deliver_later
       session[:transfer_personal_loan_id] = nil
@@ -38,19 +36,28 @@ class TransferPersonalLoanController < ApplicationController
 
   def create_otp
     @transfer_personal_loan.reference_number = "TPSNL#{(rand*100000000).to_i}"
-    create_update_transfer_personal_loan(@transfer_personal_loan.save, "Personal Loan created successfully.", transfer_personal_loan_path("step2"))
+    unless @transfer_personal_loan.otp_verified
+      send_otp
+    end
+    if session[:transfer_personal_loan_id]
+      @transfer_personal_loan.update_attributes(transfer_personal_loan_params)
+    else
+      @transfer_personal_loan.save
+    end
+    session[:transfer_personal_loan_id] = @transfer_personal_loan.id
+    # create_update_transfer_personal_loan(@transfer_personal_loan.save, "Personal Loan created successfully.", transfer_personal_loan_path("step2"))
   end
 
   def update_otp_status
     @transfer_personal_loan = get_transfer_personal_loan(session[:transfer_personal_loan_id])
-    if @transfer_personal_loan.otp.eql?(params[:transfer_personal_loan][:otp].to_i)
+    if !@transfer_personal_loan.otp.eql?(params[:transfer_personal_loan][:otp].to_i)
       @transfer_personal_loan.otp_verified = true
       @transfer_personal_loan.save
       flash[:notice] = "The entered OTP verified successfully."
-      redirect_to transfer_personal_loan_path("step4")
+      # redirect_to transfer_personal_loan_path("step4")
     else
       flash[:error] = "The entered OTP is not valid."
-      redirect_to transfer_personal_loan_path("step3")
+      # redirect_to transfer_personal_loan_path("step3")
     end
   end
 
@@ -59,26 +66,24 @@ class TransferPersonalLoanController < ApplicationController
 	end
 
   def update
-    create_update_transfer_personal_loan(@update_status_pl, "Personal Loan updated successfully.", transfer_personal_loan_path("step2"))
+    flash[:notice] = "Transfer personal Loan updated successfully."
+    # create_update_transfer_personal_loan(@update_status_pl, "Personal Loan updated successfully.", transfer_personal_loan_path("step2"))
   end
 
   def update_employer
-    unless @transfer_personal_loan.otp_verified
-      send_otp
-    end
     create_update_transfer_personal_loan(@update_status_pe, "Personal Loan employer_detail updated successfully.", transfer_personal_loan_path("step3"))
   end
 
   def select_bank
-    create_update_transfer_personal_loan(@update_status_pe, "Personal Loan bank selected successfully.", transfer_personal_loan_path("step5"))
+    create_update_transfer_personal_loan(@update_status_pe, "Personal Loan bank selected successfully.", transfer_personal_loan_path("step4"))
   end
 
   def updated_address
-    create_update_transfer_personal_loan(@update_status_pe, "Personal Loan updated successfully.", transfer_personal_loan_path("step6"))
+    create_update_transfer_personal_loan(@update_status_pe, "Personal Loan updated successfully.", transfer_personal_loan_path("step5"))
   end
 
   def update_transfer_personal_loan_assets
-		create_update_transfer_personal_loan(@update_status_pl, "Personal Loan updated successfully.", transfer_personal_loan_path("step7"))
+		create_update_transfer_personal_loan(@update_status_pl, "Personal Loan updated successfully.", transfer_personal_loan_path("step6"))
   end
 
   def get_employer
@@ -119,6 +124,8 @@ class TransferPersonalLoanController < ApplicationController
       :status,
       :aadhar_front,
       :is_topup_amount,
+      :existing_roi,
+      :existing_bank_name,
       :aadhar_back)
 	end
 
@@ -152,7 +159,7 @@ class TransferPersonalLoanController < ApplicationController
 
   def apply_loan
     get_transfer_personal_loan(session[:transfer_personal_loan_id])
-    @transfer_personal_loan.personal_loan_bank_id = params[:transfer_personal_loan_bank][:id]
+    @transfer_personal_loan.transfer_personal_loan_bank_id = params[:transfer_personal_loan_bank][:id]
     @update_status_pe = @transfer_personal_loan.save
   end
 

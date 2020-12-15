@@ -1,7 +1,15 @@
-.basic_loan_against_property .container, .update_against_property_offer .container, .loan_against_property_address .container, .loan_against_property_assets .container{
+.lg-container {
+  padding: 0px 15px 15px 15px;
+  box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
+  border-radius: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.update_against_property_offer .container, .loan_against_property_address .container, .loan_against_property_assets .container{
 	padding: 0px 15px 15px 15px;
 	box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
-	border-radius: 10px;	
+	border-radius: 10px;
 }
 
 .basic_loan_against_property .container .heading, .update_against_property_offer .container .heading, .loan_against_property_address .container .heading, .loan_against_property_assets .container .heading,{

@@ -1,37 +1,35 @@
-<!-- <section id="secondary-banner" class="dynamic-image-6">
-    <div class="container">
-        <div class="row align-items-end">
-            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-                <h2>New Personal Loan</h2>
-                <h4>Apply for new personal loan</h4>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li>FAQ</li>
-                </ul>
-            </div>
-        </div>
+<div class="container custom-container">
+  <div class="container">
+    <div class="row">
+      <table class="table loan-table">
+        <thead class="thead-light">
+          <tr>
+            <th>Bank</th>
+            <th>Interest Rate</th>
+            <th>EMI</th>
+            <th>Processing Fee</th>
+            <th class="pre-pay-charg">Prepayment Charges</th>
+            <th>Proceed</th>
+          </tr>
+        </thead>
+        <% @banks.each do |bank| %>
+          <tr>
+            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
+            <td><b><%= percentage_roi(bank.personal_loan_info.roi) %><br><span>(Reducing)</span></b></td>
+            <td><b><%= number_to_currency(calculate_emi(bank.personal_loan_info, @personal_loan), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.personal_loan_info.processing_fee, @personal_loan.loan_amount), unit: "₹ ") %></b></td>
+            <td class="pre-pay-charg"><%= bank.personal_loan_info.preprocessing_charges.html_safe %></td>
+            <td>
+              <b>
+                <%= form_for @personal_loan, :url => { :action => "select_bank" }, html: {id:  "personal_loan_bank", class: "personal_loan_bank"} do |f| %>
+                  <input type="hidden" name="personal_loan_bank[id]" value="<%= bank.personal_loan_info.id %>">
+                  <button type="submit" class="btn btn-custom">Apply</button>
+                <%end%>
+              </b>
+            </td>
+          </tr>
+        <%end%>
+      </table>
     </div>
-</section> -->
-<section class="personal-loan-section custom-container">
-  <%= form_for @personal_loan, :url => { :action => @personal_loan.id.nil? ? "update_otp_status" : "update_otp_status"}, html: {id:  "otp_personal_loan", class: "otp_personal_loan"} do |f| %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <!-- <div class="form-group">
-            <h3>Verify OTP</h3>
-          </div> -->
-          <div class="form-group">
-            <!-- <span>OTP</span> -->
-            <%= f.number_field(:otp, class: "form-control", value: "", placeholder: "OTP") %>
-          </div> 
-          <button type="submit" class="btn btn-custom">Submit</button>
-          <a href="javascript:void(o)" id="personal-loan-resend-otp" style="float: right;">Resend</a>
-        </div>
-        <div class="col-md-4"></div>
-      </div>
-    </div>
-  <%end%>
-</section>
+  </div>
+</div>

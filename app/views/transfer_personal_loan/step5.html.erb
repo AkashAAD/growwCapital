@@ -1,54 +1,53 @@
 <section class="business-loan-section custom-container">
-  <%= form_for @transfer_personal_loan, :url => { :action => "updated_address"}, html: { id:  "transfer_personal_loan_address", class: "transfer_personal_loan_address" } do |f| %>
+  <%= form_for @transfer_personal_loan, :url => { :action => "update_transfer_personal_loan_assets" }, html: {id:  "transfer_personal_loan_assets", class: "transfer_personal_loan_assets"} do |f| %>
     <div class="container">
       <div class="row heading">
-        <div class="col-md-4">
-          <div class="form-group">
-            <h3>Address Details</h3>
-          </div>
+        <div class="col-md-6">
+          <h3>Upload KYC Document</h3>
         </div>
       </div>
       <div class="row first-row">
-         <div class="col-md-4">
+        <div class="col-md-12">
           <div class="form-group">
-            <label>Present Address</label>
-            <%= f.text_area(:address, class: "form-control") %>
-          </div>
-        </div>
-         <div class="col-md-4">
-          <div class="form-group">
-            <label>City</label>
-            <%= f.select(:city, only_cities,class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Pincode</label>
-            <%= f.number_field(:pincode, class: "form-control") %>
+            <ul class="file-msg">
+              <li>Supported file format - <b>PDF/ JPG/ PNG only</b></li>
+              <li>File size should be <b>< 5 MB</b></li>
+            </ul>
+            <label>NOTE: Your uploaded document will be secure on our end.</label>
           </div>
         </div>
       </div>
-       <div class="row">
-        <div class="col-md-4">
+      <hr class="file-hr">
+      <div class="row"> 
+        <div class="col-md-6">
           <div class="form-group">
-            <label>Office Address</label>
-            <%= f.text_area(:office_address, class: "form-control") %>
+            <label>Aadhar Card(Front)
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="KYC document"></i>
+            </label><br>
+            <div class="wrapper">
+              <div class="file-upload">
+                <%= f.file_field(:id_proof_front, class: "") %>
+                <i class="fa fa-arrow-up"></i>
+              </div>
+            </div>
           </div>
         </div>
-         <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
-            <label>Office City</label>
-            <%= f.select(:office_city, only_cities,class: "form-control") %>
+            <label>Aadhar Card(Back)
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="KYC document"></i>
+            </label><br>
+            <div class="wrapper">
+              <div class="file-upload">
+                <%= f.file_field(:id_proof_back, class: "") %>
+                <i class="fa fa-arrow-up"></i>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Office Pincode</label>
-            <%= f.number_field(:office_pincode, class: "form-control") %>
-          </div>
-        </div>
-      </div><br>
-      <button type="submit" class="btn btn-custom">Process</button>
+      </div>
+      <br>
+       <button type="submit" class="btn btn-custom">Submit</button>
     </div>
   <%end%>
 </section>

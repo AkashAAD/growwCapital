@@ -1,7 +1,15 @@
-.basic_transfer_home_loan .container, .update_transfer_home_offer .container, .transfer_home_loan_address .container, .transfer_home_loan_assets .container{
+.trh-container {
+  padding: 0px 15px 15px 15px;
+  box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
+  border-radius: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.update_transfer_home_offer .container, .transfer_home_loan_address .container, .transfer_home_loan_assets .container {
 	padding: 0px 15px 15px 15px;
 	box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
-	border-radius: 10px;	
+	border-radius: 10px;
 }
 
 .basic_transfer_home_loan .container .heading, .update_transfer_home_offer .container .heading, .transfer_home_loan_address .container .heading, .transfer_home_loan_assets .container .heading,{

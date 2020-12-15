@@ -1,12 +1,6 @@
 <section class="personal-loan-section custom-container">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <div class="form-group">
-        </div>
-      </div>
-    </div>
-    <%= form_for @transfer_personal_loan, :url => { :action => @transfer_personal_loan.id.nil? ? "create_otp" : "update"}, html: {id:  "basic_transfer_personal_loan", class: "basic_transfer_personal_loan"} do |f| %>
+  <div class="container tp-container">
+    <%= form_for @transfer_personal_loan, :url => { :action => @transfer_personal_loan.id.nil? ? "create_otp" : "update"}, remote: true, html: {id:  "basic_transfer_personal_loan", class: "basic_transfer_personal_loan"} do |f| %>
       <div class="container">
         <div class="row heading">
           <div class="col-md-6">
@@ -15,6 +9,22 @@
         </div>
         <%= render partial: "form", locals: { f: f } %>
         <button type="submit" class="btn btn-custom"><b>Process</b></button>
+      </div>
+    <%end%>
+    <br>
+    <%= form_for @transfer_personal_loan, :url => { :action => @transfer_personal_loan.id.nil? ? "update_otp_status" : "update_otp_status"}, method: :patch, remote: true, html: {id:  "otp_transfer_personal_loan", class: "otp_transfer_personal_loan hide-div"} do |f| %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.number_field(:otp, class: "form-control", value: "", placeholder: "OTP") %>
+            </div> 
+            <button type="submit" class="btn btn-custom">Submit</button>
+            <a href="javascript:void(o)" id="tr-personal-loan-resend-otp" style="float: right;">Resend</a>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
       </div>
     <%end%>
   </div>

@@ -1,78 +1,86 @@
 <section class="personal-loan-section custom-container">
-  <%= form_for @loan_against_property, :url => { :action => @loan_against_property.id.nil? ? "create_otp" : "update" }, html: { id:  "basic_loan_against_property", class: "basic_loan_against_property" } do |f| %>
-    <div class="container">
-      <div class="row heading">
-        <div class="col-md-4">
-          <div class="form-group">
-            <h3>Loan Application</h3>
+  <div class="lg-container container">
+    <%= form_for @loan_against_property, :url => { :action => @loan_against_property.id.nil? ? "create_otp" : "update" }, remote: true, html: { id:  "basic_loan_against_property", class: "basic_loan_against_property" } do |f| %>
+      <div class="container">
+        <div class="row heading">
+          <div class="col-md-4">
+            <div class="form-group">
+              <h3>Loan Application</h3>
+            </div>
           </div>
+        </div>
+        <div class="row first-row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Your desired loan amount
+                <i data-toggle="tooltip" data-placement="top" title="Please fill in the loan amount you need to fullfil your financial needs." class="fa fa-info-circle" aria-hidden="true"></i>
+              </label>
+              <%= f.number_field(:loan_amount, class: "form-control") %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Tenure
+                <i data-toggle="tooltip" data-placement="top" title="Please fill the duration of the loan amount." class="fa fa-info-circle" aria-hidden="true"></i>
+              </label>
+              <%= f.select(:tenure, home_loan_tenure, class: "form-control") %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Property City
+                <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Which city you are going to purchase property."></i>
+              </label>
+              <%= f.select(:property_city, only_cities, class: "form-control") %>
+            </div>
+          </div>        
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Annual Income
+                <i data-toggle="tooltip" data-placement="top" title="Your financial income as per latest ITR." class="fa fa-info-circle" aria-hidden="true"></i>
+              </label>
+              <%= f.number_field(:annual_income, class: "form-control") %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Mobile Number
+                <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="100% privacy guaranteed. We well never share your details."></i>
+              </label>
+              <%= f.number_field(:mobile_number, class: "form-control") %>
+            </div>
+          </div>        
+          <div class="col-md-6">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.check_box(:terms_and_conditions) %>
+            <%= f.label "Terms & Conditions", for: 'loan_against_property_terms_and_conditions' %>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-custom">Submit</button>
+      </div>
+    <%end%>
+    <br>
+    <%= form_for @loan_against_property, :url => { :action => "update_otp_status" }, method: :patch, remote: true, html: {id: "otp_loan_against_property", class: "otp_loan_against_property hide-div"} do |f| %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.number_field(:otp, class: "form-control", value: "", placeholder: "OTP") %>
+            </div> 
+            <button type="submit" class="btn btn-custom">Submit</button>
+            <a href="javascript:void(o)" id="home-loan-resend-otp" style="float: right;">Resend</a>
+          </div>
+          <div class="col-md-4"></div>
         </div>
       </div>
-      <div class="row first-row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Your desired loan amount
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-              </a>
-            </label>
-            <%= f.number_field(:loan_amount, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Tenure
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-              </a>
-            </label>
-            <%= f.select(:tenure, home_loan_tenure, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Property City
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-              </a>
-            </label>
-            <%= f.select(:property_city, only_cities, class: "form-control") %>
-          </div>
-        </div>        
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Annual Income
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-              </a>
-            </label>
-            <%= f.number_field(:annual_income, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Mobile Number
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-              </a>
-            </label>
-            <%= f.number_field(:mobile_number, class: "form-control") %>
-          </div>
-        </div>        
-        <div class="col-md-6">
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <%= f.check_box(:terms_and_conditions) %>
-          <%= f.label "Terms & Conditions", for: 'loan_against_property_terms_and_conditions' %>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-custom">Submit</button>
-    </div>
-  <%end%>
+    <%end%>
+  </div>
 </section>

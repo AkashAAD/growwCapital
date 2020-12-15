@@ -1,66 +1,86 @@
 <section class="personal-loan-section custom-container">
-  <%= form_for @professional_loan, :url => { :action => @professional_loan.id.nil? ? "create_otp" : "update"}, html: {id:  "basic_professional_loan", class: "basic_professional_loan"} do |f| %>
-    <div class="container">
-      <div class="row heading">
-        <div class="col-md-4">
-          <div class="form-group">
-            <h3>Loan Application</h3>
+  <div class="container pr-container">
+    <%= form_for @professional_loan, :url => { :action => @professional_loan.id.nil? ? "create_otp" : "update"}, remote: true, html: {id:  "basic_professional_loan", class: "basic_professional_loan"} do |f| %>
+      <div class="container">
+        <div class="row heading">
+          <div class="col-md-4">
+            <div class="form-group">
+              <h3>Loan Application</h3>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row first-row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Your desired loan amount 
-              <i data-toggle="tooltip" data-placement="top" title="!" class="fa fa-info-circle i-info" aria-hidden="true"></i>
-            </label>
-            <%= f.number_field(:loan_amount, class: "form-control") %>
+        <div class="row first-row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Your desired loan amount 
+                <i data-toggle="tooltip" data-placement="top" title="Please fill in the loan amount you need to fullfil your financial needs." class="fa fa-info-circle" aria-hidden="true"></i>
+              </label>
+              <%= f.number_field(:loan_amount, class: "form-control") %>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Tenure
+                <i data-toggle="tooltip" data-placement="top" title="Please fill the duration of the loan amount." class="fa fa-info-circle" aria-hidden="true"></i>
+              </label>
+              <%= f.select(:tenure, tenure, class: "form-control") %>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Tenure
-              <i data-toggle="tooltip" data-placement="top" title="!" class="fa fa-info-circle i-info" aria-hidden="true"></i>
-            </label>
-            <%= f.select(:tenure, tenure, class: "form-control") %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Profession Type</label>
+              <%= f.select(:profession_type, profession_type, class: "form-control") %>
+            </div>
+          </div>        
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Your gross annual income
+                <i data-toggle="tooltip" data-placement="top" title="Your financial income as per latest ITR." class="fa fa-info-circle i-info" aria-hidden="true"></i>
+              </label>
+              <%= f.number_field(:annual_income, class: "form-control") %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Profession Type
-              <i data-toggle="tooltip" data-placement="top" title="!" class="fa fa-info-circle i-info" aria-hidden="true"></i>
-            </label>
-            <%= f.select(:profession_type, profession_type, class: "form-control") %>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label class="degree-yrs">Degree</label>
+              <%= f.select(:degree, degrees(f), class: "form-control") %>
+            </div>
           </div>
-        </div>        
-        <div class="col-md-6">
-          <div class="form-group">
-            <label>Your gross annual income
-              <i data-toggle="tooltip" data-placement="top" title="!" class="fa fa-info-circle i-info" aria-hidden="true"></i>
-            </label>
-            <%= f.number_field(:annual_income, class: "form-control") %>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Mobile Number</label>
+              <%= f.number_field(:mobile_number, class: "form-control") %>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label class="degree-yrs">Degree
-              <i data-toggle="tooltip" data-placement="top" title="!" class="fa fa-info-circle i-info" aria-hidden="true"></i>
-            </label>
-            <%= f.select(:degree, degrees(f), class: "form-control") %>
+        <div class="row">
+          <div class="col-md-4">
+            <%= f.check_box(:terms_and_conditions) %>
+            <%= f.label "Terms & Conditions", for: 'personal_loan_terms_and_conditions' %>
           </div>
-        </div>        
+        </div>
+        <button type="submit" class="btn btn-custom">Submit</button>
       </div>
-      <div class="row">
-        <div class="col-md-4">
-          <%= f.check_box(:terms_and_conditions) %>
-          <%= f.label "Terms & Conditions", for: 'personal_loan_terms_and_conditions' %>
+    <%end%>
+    <br>
+    <%= form_for @professional_loan, :url => { :action => "update_otp_status"}, method: :patch, remote: true, html: {id:  "otp_professional_loan", class: "otp_professional_loan hide-div"} do |f| %>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <%= f.number_field(:otp, class: "form-control", value: "") %>
+            </div> 
+            <button type="submit" class="btn btn-custom">Submit</button>
+            <a href="javascript:void(o)" id="professional-loan-resend-otp" style="float: right;">Resend</a>
+          </div>
+          <div class="col-md-4"></div>
         </div>
       </div>
-      <button type="submit" class="btn btn-custom">Submit</button>
-    </div>
-  <%end%>
+    <%end%>
+  </div>
 </section>

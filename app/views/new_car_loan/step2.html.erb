@@ -7,35 +7,37 @@
         </div>
       </div>
       <div class="row first-row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
-            <label>Full Name </label>
+            <label>Full Name
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="As per aadhar card records, to ensure your application gets successfully processed."></i>
+            </label>
             <%= f.text_field(:full_name, class: "form-control") %>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
-            <label>Date Of Birth </label>
+            <label>Date Of Birth
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="To ensure you are fiting the partner's criteria."></i>
+            </label>
             <%= f.date_field(:dob, class: "form-control", max: "#{Time.zone.now - 18.years}") %>
           </div>          
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label>Mobile Number </label>
-            <%= f.number_field(:mobile_number, class: "form-control") %>
-          </div>
-        </div>
       </div>
       <div class="row first-row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
-            <label>Email </label>
+            <label>Email
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Share the correct email address to ensure timely communication regarding this application."></i>
+            </label>
             <%= f.text_field(:email, class: "form-control") %>
           </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="form-group">
-            <label>Current Paying EMI </label>
+            <label>Total EMI you pay currently?
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Helps to calculate the right loan amount you are eligible for."></i>
+            </label>
             <%= f.number_field(:current_emi, class: "form-control") %>
           </div>
         </div>

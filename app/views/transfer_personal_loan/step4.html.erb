@@ -1,35 +1,60 @@
-<div class="container custom-container">
-  <div class="container">
-    <div class="row">
-      <table class="table loan-table">
-        <thead class="thead-light">
-          <tr>
-            <th>Bank</th>
-            <th>Interest Rate</th>
-            <th>EMI</th>
-            <th>Processing Fee</th>
-            <th>Prepayment Charges</th>
-            <th>Proceed</th>
-          </tr>
-        </thead>
-        <% @banks.each do |bank| %>
-          <tr>
-            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
-            <td><b><%= percentage_roi(bank.transfer_personal_loan_info.roi) %><br><span>(Reducing)</span></b></td>
-            <td><b><%= number_to_currency(tr_calculate_emi(bank.transfer_personal_loan_info, @transfer_personal_loan), unit: "₹ ") %></b></td>
-            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.transfer_personal_loan_info.processing_fee, @transfer_personal_loan.desired_loan_amount), unit: "₹ ") %></b></td>
-            <td></td>
-            <td>
-              <b>
-                <%= form_for @transfer_personal_loan, :url => { :action => "select_bank" }, html: {id:  "transfer_personal_loan_bank", class: "transfer_personal_loan_bank"} do |f| %>
-                  <input type="hidden" name="transfer_personal_loan_bank[id]" value="<%= bank.transfer_personal_loan_info.id %>">
-                  <button type="submit" class="btn btn-custom">Apply</button>
-                <%end%>
-              </b>
-            </td>
-          </tr>
-        <%end%>
-      </table>
+<section class="business-loan-section custom-container">
+  <%= form_for @transfer_personal_loan, :url => { :action => "updated_address"}, html: { id:  "transfer_personal_loan_address", class: "transfer_personal_loan_address" } do |f| %>
+    <div class="container">
+      <div class="row heading">
+        <div class="col-md-4">
+          <div class="form-group">
+            <h3>Address Details</h3>
+          </div>
+        </div>
+      </div>
+      <div class="row first-row">
+         <div class="col-md-4">
+          <div class="form-group">
+            <label>Present Address
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Your current residence address."></i>
+            </label>
+            <%= f.text_area(:address, class: "form-control") %>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="form-group">
+            <label>City
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Your current residence city name."></i>
+            </label>
+            <%= f.select(:city, only_cities,class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Pincode</label>
+            <%= f.number_field(:pincode, class: "form-control") %>
+          </div>
+        </div>
+      </div>
+       <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Office Address
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Your office address."></i>
+            </label>
+            <%= f.text_area(:office_address, class: "form-control") %>
+          </div>
+        </div>
+         <div class="col-md-4">
+          <div class="form-group">
+            <label>Office City</label>
+            <%= f.select(:office_city, only_cities,class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Office Pincode</label>
+            <%= f.number_field(:office_pincode, class: "form-control") %>
+          </div>
+        </div>
+      </div><br>
+      <button type="submit" class="btn btn-custom">Process</button>
     </div>
-  </div>
-</div>
+  <%end%>
+</section>

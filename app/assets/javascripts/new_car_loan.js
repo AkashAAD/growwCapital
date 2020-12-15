@@ -243,7 +243,11 @@ $(document).ready(function(){
 			},
 			"new_car_loan[terms_and_conditions]": {
 				required: true
-			}
+			},
+			"new_car_loan[mobile_number]": {
+				required: true,
+				minlength: 10
+			},
 		},
 		messages: {
 			'new_car_loan[tenure]': {
@@ -262,7 +266,11 @@ $(document).ready(function(){
 			},
 			"new_car_loan[terms_and_conditions]": {
 				required: "Please select terms and conditions."
-			}
+			},
+			"new_car_loan[mobile_number]": {
+				required: "Please enter mobile number.",
+				minlength: 'Mobile number must consist of at least 10 characters'
+			},
 		}
 	});
 
@@ -276,16 +284,9 @@ $(document).ready(function(){
 			"new_car_loan[dob]": {
 				required: true,
 			},
-			"new_car_loan[mobile_number]": {
-				required: true,
-				minlength: 10
-			},
 			"new_car_loan[email]": {
 				required: true,
 				email: true
-			},
-			"new_car_loan[current_emi]": {
-				required: true
 			},
   	},
   	messages: {
@@ -296,16 +297,9 @@ $(document).ready(function(){
 			"new_car_loan[dob]": {
 				required: "Please enter date of birth.",
 			},
-			"new_car_loan[mobile_number]": {
-				required: "Please enter mobile number.",
-				minlength: 'Mobile number must consist of at least 10 characters'
-			},
 			"new_car_loan[email]": {
 				required: "Please enter email.",
 				email: "Please enter valid email."
-			},
-			"new_car_loan[current_emi]": {
-				required: "Please enter current EMI."
 			},
   	}
 	});

@@ -1,0 +1,6 @@
+<%unless @transfer_personal_loan.otp_verified?%>
+  $(".otp_transfer_personal_loan").removeClass('hide-div');
+<%else%>
+  window.location.href = "/transfer_personal_loan/step2";
+<%end%>
+toastr["info"]('<%= flash[:notice] %>', "");

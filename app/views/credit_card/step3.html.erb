@@ -14,8 +14,8 @@
           <% @cards.each do |card| %>
             <tr>
               <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(card.bank_image), width: 200, height: 100 %></div></td>
-              <td><%= number_to_currency(card.first_year_fee, unit: "₹ ") %></td>
-              <td><%= number_to_currency(card.annual_fee, unit: "₹ ") %></td>
+              <td><%= number_to_currency(card.joining_charge, unit: "₹ ") %></td>
+              <td><%= [3, 2].include?(@credit_card.employment_type) ? "Free" : number_to_currency(card.annual_charge, unit: "₹ ") %></td>
               <td>
                 <b>
                   <%= form_for @credit_card, :url => { :action => "select_bank" }, html: {id:  "credit_card_bank", class: "credit_card_bank"} do |f| %>

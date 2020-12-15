@@ -1,0 +1,6 @@
+<%unless @loan_against_property.otp_verified?%>
+  $(".otp_loan_against_property").removeClass('hide-div');
+<%else%>
+  window.location.href = "/loan_against_property/step2";
+<%end%>
+toastr["info"]('<%= flash[:notice] %>', "");

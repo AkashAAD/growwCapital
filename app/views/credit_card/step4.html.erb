@@ -11,7 +11,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label>Present Address
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+              <a href="" data-toggle="tooltip" data-placement="top" title="Your current residence address.">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
               </a>
             </label>
@@ -21,7 +21,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label>City
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+              <a href="" data-toggle="tooltip" data-placement="top" title="Your current residence city name.">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
               </a>
             </label>
@@ -30,11 +30,7 @@
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label>Pincode
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-              </a>
-            </label>
+            <label>Pincode</label>
             <%= f.number_field(:pincode, class: "form-control") %>
           </div>
         </div>
@@ -43,7 +39,7 @@
         <div class="col-md-4">
           <div class="form-group">
             <label>Office Address
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+              <a href="" data-toggle="tooltip" data-placement="top" title="Your office address.">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
               </a>
             </label>
@@ -52,21 +48,13 @@
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label>Office City
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-              </a>
-            </label>
+            <label>Office City</label>
             <%= f.select(:office_city, only_cities, class: "form-control") %>
           </div>
         </div>
         <div class="col-md-4">
           <div class="form-group">
-            <label>Office Pincode
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
-                <i class="fa fa-info-circle" aria-hidden="true"></i>
-              </a>
-            </label>
+            <label>Office Pincode</label>
             <%= f.number_field(:office_pincode, class: "form-control") %>
           </div>
         </div>

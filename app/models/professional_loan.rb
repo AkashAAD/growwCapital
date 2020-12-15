@@ -6,7 +6,11 @@ class ProfessionalLoan < ApplicationRecord
 
   def banks
     info = ProfessionalLoanBankInfo.where(profession_id: self.profession_type).pluck(:professional_loan_bank_id)
-    return ProfessionalLoanBank.where("id in (?)", info)
+    if info.blank?
+      return ProfessionalLoanBank.all
+    else
+      return ProfessionalLoanBank.where("id in (?)", info)
+    end
   end
 
 end

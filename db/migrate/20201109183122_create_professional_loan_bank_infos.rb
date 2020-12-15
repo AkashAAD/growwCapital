@@ -3,6 +3,7 @@ class CreateProfessionalLoanBankInfos < ActiveRecord::Migration[5.2]
     create_table :professional_loan_bank_infos do |t|
       t.decimal :roi, precision: 20, scale: 2
       t.decimal :processing_fee, precision: 20, scale: 2
+      t.text :preprocessing_charges
       t.integer :professional_loan_bank_id
       t.integer :profession_id
       t.timestamps

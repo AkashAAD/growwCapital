@@ -2,9 +2,7 @@
   <div class="col-md-3">
     <div class="form-group">
       <label>Your foreclose loan amount
-        <a href="" data-toggle="tooltip" data-placement="top" title="!">
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
-        </a>
+        <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="For existing loan closer amount."></i>
       </label>
       <%= f.number_field(:foreclose_loan_amount, class: "form-control", placeholder: "Rs. 0") %>
     </div>
@@ -12,9 +10,7 @@
   <div class="col-md-3">
     <div class="form-group">
       <label>Your require topup amount?
-        <a href="" data-toggle="tooltip" data-placement="top" title="!">
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
-        </a>
+        <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="For the additional loan amount."></i>
       </label>
       <%= f.select(:is_topup_amount, is_topup_amount, class: "form-control", placeholder: "Rs. 0") %>
     </div>
@@ -22,9 +18,7 @@
   <div class="col-md-3 desired-loan <%= 'hide-div' if !f.object.is_topup_amount? %>">
     <div class="form-group">
       <label>Your desired loan amount
-        <a href="" data-toggle="tooltip" data-placement="top" title="!">
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
-        </a>
+        <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Please fill in the loan amount you need to fullfil your financial needs."></i>
       </label>
       <%= f.number_field(:desired_loan_amount, class: "form-control", placeholder: "Rs. 0") %>
     </div>
@@ -32,9 +26,7 @@
   <div class="col-md-3">
     <div class="form-group">
       <label>Tenure
-        <a href="" data-toggle="tooltip" data-placement="top" title="!">
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
-        </a>
+        <i data-toggle="tooltip" data-placement="top" title="Please fill the duration of the loan amount." class="fa fa-info-circle" aria-hidden="true" class="fa fa-info-circle" aria-hidden="true"></i>
       </label>
       <%= f.select(:tenure, tenure, class: "form-control") %>
     </div>
@@ -44,9 +36,7 @@
   <div class="col-md-3">
     <div class="form-group">
       <label>Your monthly net income
-        <a href="" data-toggle="tooltip" data-placement="top" title="!">
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
-        </a>
+        <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Your post-tax salary excluding any bonus/incentive helps calculate the right loan amount."></i>
       </label>
       <%= f.number_field(:monthly_net_salary, class: "form-control",  placeholder: "Rs. 0") %>
     </div>
@@ -54,9 +44,7 @@
   <div class="col-md-3">
     <div class="form-group">
       <label>Mobile number
-        <a href="" data-toggle="tooltip" data-placement="top" title="!">
-          <i class="fa fa-info-circle" aria-hidden="true"></i>
-        </a>
+        <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="100% privacy guaranteed. We well never share your details."></i>
       </label>
       <%= f.number_field(:mobile_number, class: "form-control", placeholder: "9999999999") %>
     </div>
@@ -69,7 +57,9 @@
   </div>
   <div class="col-md-3">
     <div class="form-group">
-      <label>Salary received in</label>
+      <label>Salary received in
+        <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Helps to display specific offers based on your salary mode/bank account."></i>
+      </label>
       <%= f.select(:bank_name, persoanl_bank_name, class: "form-control") %>
     </div>
   </div>

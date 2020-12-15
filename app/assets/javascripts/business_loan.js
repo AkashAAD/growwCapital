@@ -126,6 +126,10 @@ $(document).ready(function(){
 			"business_loan[terms_and_conditions]": {
 				required: true
 			},
+			'business_loan[mobile_number]': {
+				required: true,
+				minlength: 10
+			},
 		},
 		messages: {
 			"business_loan[annual_turnover]": {
@@ -143,7 +147,11 @@ $(document).ready(function(){
 			},
 			"business_loan[terms_and_conditions]": {
 				required: "Please select terms and conditions."
-			}
+			},
+			'business_loan[mobile_number]': {
+				required: "Please enter mobile number.",
+				minlength: 'Mobile number must consist of at least 10 characters'
+			},
 		}
 	});
 
@@ -158,19 +166,12 @@ $(document).ready(function(){
 			'business_loan[bank_name]': {
 				required: true
 			},
-			'business_loan[current_emi]': {
-				required: true
-			},
 			'business_loan[full_name]': {
 				required: true,
 				full_name: true
 			},
 			'business_loan[dob]': {
 				required: true
-			},
-			'business_loan[mobile_number]': {
-				required: true,
-				minlength: 10
 			},
 			'business_loan[email]': {
 				required: true,
@@ -187,9 +188,6 @@ $(document).ready(function(){
 			'business_loan[bank_name]': {
 				required: "Please select bank name."
 			},
-			'business_loan[current_emi]': {
-				required: "Please enter current EMI"
-			},
 			'business_loan[full_name]': {
 				required: "Please enter full name",
 				full_name: "Please enter valid full name."
@@ -197,10 +195,6 @@ $(document).ready(function(){
 			'business_loan[dob]': {
 				required: "Please enter date of birth.",
 				max: "For applying loan you should be minimum 21 years old."
-			},
-			'business_loan[mobile_number]': {
-				required: "Please enter mobile number.",
-				minlength: 'Mobile number must consist of at least 10 characters'
 			},
 			'business_loan[email]': {
 				required: "Please enter email address.",

@@ -1,57 +1,57 @@
 <section class="personal-loan-section custom-container">
   <%= form_for @credit_card, :url => { :action => @credit_card.id.nil? ? "create_otp" : "update" }, remote: true, html: { id:  "basic_credit_card", class: "basic_credit_card" } do |f| %>
-    <div class="container">
+    <div class="container" style="width: 40%;">
       <div class="row heading">
-        <div class="col-md-4">
+        <div class="col-md-12">
           <div class="form-group">
             <h3>Credit Card Application</h3>
           </div>
         </div>
       </div>
       <div class="row first-row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-7">
           <div class="form-group">
             <label>Mobile Number
-              <a href="" data-toggle="tooltip" data-placement="top" title="!">
+              <a href="" data-toggle="tooltip" data-placement="top" title="100% privacy guaranteed. We well never share your details.">
                 <i class="fa fa-info-circle" aria-hidden="true"></i>
               </a>
             </label>
             <%= f.number_field(:mobile_number, class: "form-control") %>
           </div>
         </div>        
-        <div class="col-md-4"></div>
+        <div class="col-md-2"></div>
       </div>
       <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-7">
           <%= f.check_box(:terms_and_conditions) %>
           <%= f.label "Terms & Conditions", for: 'home_loan_terms_and_conditions' %><br>
-          <button type="submit" class="btn btn-custom">Submit</button>          
+          <button type="submit" class="btn btn-custom btn-block">Check Offers</button>          
         </div>
-         <div class="col-md-4"></div>
+         <div class="col-md-2"></div>
       </div>
     </div>
   <%end%>
   <%= form_for @credit_card, :url => { :action => "update_otp_status" }, method: :patch, remote: true, html: {id: "otp_credit_card", class: "otp_credit_card hide-div"} do |f| %>
-    <div class="container">
+    <div class="container"  style="width: 40%;">
       <div class="row heading">
-        <div class="col-md-4">
+        <div class="col-md-12">
           <div class="form-group">
             <h3>Verify OTP</h3>
           </div>
         </div>
       </div>
       <div class="row first-row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-7">
           <div class="form-group">
             <%= f.number_field(:otp, class: "form-control", value: "", placeholder: "OTP") %>
           </div> 
           <button type="submit" class="btn btn-custom">Submit</button>
           <a href="javascript:void(o)" id="credit-card-resend-otp" style="float: right;">Resend</a>
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-2"></div>
       </div>
     </div>
   <%end%>

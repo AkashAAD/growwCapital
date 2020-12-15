@@ -171,9 +171,6 @@ $(document).ready(function(){
 			"home_loan[employment_type]": {
 				required: true
 			},
-			"home_loan[current_emi]": {
-				required: true
-			},
 			"home_loan[email]": {
 				required: true,
 				email: true
@@ -190,9 +187,6 @@ $(document).ready(function(){
 			},
 			"home_loan[employment_type]": {
 				required: "Please select employment type."
-			},
-			"home_loan[current_emi]": {
-				required: "Please enter current EMI."
 			},
 			"home_loan[email]": {
 				required: "Please enter email",

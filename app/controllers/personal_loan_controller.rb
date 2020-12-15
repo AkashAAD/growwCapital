@@ -7,7 +7,7 @@ class PersonalLoanController < ApplicationController
   before_action :apply_loan, only: [:select_bank]
 
   include Wicked::Wizard
-  steps :step1, :step2, :step3, :step4, :step5, :step6, :step7
+  steps :step1, :step2, :step3, :step4, :step5, :step6
 
 	def show
 		# session[:personal_loan_id] = nil
@@ -18,17 +18,15 @@ class PersonalLoanController < ApplicationController
     when "step2"
       @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
       return redirect_to personal_loan_path("step1") if id.nil?
-    when "step3"
-      @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
-      return redirect_to personal_loan_path("step4") if @personal_loan.otp_verified
-		when "step4", "step6"
+    when "step3", "step4"
       @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
       @banks = @personal_loan.banks
       return redirect_to personal_loan_path("step1") unless @personal_loan.otp_verified
     when "step5"
       @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
       return redirect_to personal_loan_path("step1") unless @personal_loan.otp_verified
-    when "step7"
+    when "step6"
+      return redirect_to personal_loan_path("step1") if id.nil?
       @personal_loan = get_personal_loan(id) #PersonalLoan.last
       LoanMailer.personal_loan(@personal_loan).deliver_later
       session[:personal_loan_id] = nil
@@ -38,19 +36,25 @@ class PersonalLoanController < ApplicationController
 
   def create_otp
     @personal_loan.reference_number = "PSNL#{(rand*100000000).to_i}"
-    create_update_personal_loan(@personal_loan.save, "Personal Loan created successfully.", personal_loan_path("step2"))
+    unless @personal_loan.otp_verified
+      send_otp
+    end
+    if session[:personal_loan_id]
+      @personal_loan.update_attributes(personal_loan_params)
+    else
+      @personal_loan.save
+    end
+    session[:personal_loan_id] = @personal_loan.id
   end
 
   def update_otp_status
     @personal_loan = get_personal_loan(session[:personal_loan_id])
-    if @personal_loan.otp.eql?(params[:personal_loan][:otp].to_i)
+    if !@personal_loan.otp.eql?(params[:personal_loan][:otp].to_i)
       @personal_loan.otp_verified = true
       @personal_loan.save
       flash[:notice] = "The entered OTP verified successfully."
-      redirect_to personal_loan_path("step4")
     else
       flash[:error] = "The entered OTP is not valid."
-      redirect_to personal_loan_path("step3")
     end
   end
 
@@ -59,26 +63,23 @@ class PersonalLoanController < ApplicationController
 	end
 
   def update
-    create_update_personal_loan(@update_status_pl, "Personal Loan updated successfully.", personal_loan_path("step2"))
+    flash[:notice] = "Personal Loan updated successfully."
   end
 
   def update_employer
-    unless @personal_loan.otp_verified
-      send_otp
-    end
     create_update_personal_loan(@update_status_pe, "Personal Loan employer_detail updated successfully.", personal_loan_path("step3"))
   end
 
   def select_bank
-    create_update_personal_loan(@update_status_pe, "Personal Loan bank selected successfully.", personal_loan_path("step5"))
+    create_update_personal_loan(@update_status_pe, "Personal Loan bank selected successfully.", personal_loan_path("step4"))
   end
 
   def updated_address
-    create_update_personal_loan(@update_status_pe, "Personal Loan updated successfully.", personal_loan_path("step6"))
+    create_update_personal_loan(@update_status_pe, "Personal Loan updated successfully.", personal_loan_path("step5"))
   end
 
   def update_personal_loan_assets
-		create_update_personal_loan(@update_status_pl, "Personal Loan updated successfully.", personal_loan_path("step7"))
+		create_update_personal_loan(@update_status_pl, "Personal Loan updated successfully.", personal_loan_path("step6"))
   end
 
   def get_employer
@@ -125,7 +126,9 @@ class PersonalLoanController < ApplicationController
 	end
 
 	def create_personal_loan
-		@personal_loan = PersonalLoan.new(personal_loan_params)
+    if get_personal_loan(session[:personal_loan_id]).nil?
+		  @personal_loan = PersonalLoan.new(personal_loan_params)
+    end
 	end
 
 	def update_personal_loan
@@ -174,7 +177,7 @@ class PersonalLoanController < ApplicationController
 	end
 
   def get_personal_loan(id)
-    @personal_loan = PersonalLoan.find(id)
+    @personal_loan = PersonalLoan.find_by(id: id)
   end
 
   def send_otp

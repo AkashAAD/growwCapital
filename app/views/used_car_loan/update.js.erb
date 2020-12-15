@@ -1,0 +1,6 @@
+<%unless @used_car_loan.otp_verified?%>
+  $(".otp_used_car_loan").removeClass('hide-div');
+<%else%>
+  window.location.href = "/used_car_loan/step2";
+<%end%>
+toastr["info"]('<%= flash[:notice] %>', "");

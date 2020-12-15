@@ -1,17 +1,35 @@
-<section class="business-loan-section custom-container">
-  <%= form_for @used_car_loan, :url => { :action => @used_car_loan.id.nil? ? "update_otp_status" : "update_otp_status"}, html: {id:  "otp_used_car_loan", class: "otp_used_car_loan"} do |f| %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <%= f.number_field(:otp, class: "form-control", value: "") %>
-          </div> 
-          <button type="submit" class="btn btn-default">Submit</button>
-          <a href="javascript:void(o)" id="used-car-loan-resend-otp" style="float: right;">Resend</a>
-        </div>
-        <div class="col-md-4"></div>
-      </div>
+<div class="container custom-container">
+  <div class="container">
+    <div class="row">
+      <table class="table loan-table">
+        <thead class="thead-light">
+          <tr>
+            <th>Bank</th>
+            <th>Interest Rate</th>
+            <th>EMI</th>
+            <th>Processing Fee</th>
+            <th class="pre-pay-charg">Prepayment Charges</th>
+            <th>Proceed</th>
+          </tr>
+        </thead>
+        <% @banks.each do |bank| %>
+          <tr>
+            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
+            <td><b><%= percentage_roi(bank.used_car_loan_bank_info.roi) %><br><span>(Reducing)</span></b></td>
+            <td><b><%= number_to_currency(calculate_emi(bank.used_car_loan_bank_info, @used_car_loan), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.used_car_loan_bank_info.processing_fee, @used_car_loan.loan_amount), unit: "₹ ") %></b></td>
+            <td class="pre-pay-charg"><%= bank.used_car_loan_bank_info.preprocessing_charges.html_safe %></td>
+            <td>
+              <b>
+                <%= form_for @used_car_loan, :url => { :action => "select_bank" }, html: {id:  "used_car_loan_bank", class: "used_car_loan_bank"} do |f| %>
+                  <input type="hidden" name="used_car_loan_bank[id]" value="<%= bank.used_car_loan_bank_info.id %>">
+                  <button type="submit" class="btn btn-custom">Apply</button>
+                <%end%>
+              </b>
+            </td>
+          </tr>
+        <%end%>
+      </table>
     </div>
-  <%end%>
-</section>
+  </div>
+</div>

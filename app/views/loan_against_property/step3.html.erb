@@ -1,17 +1,35 @@
-<section class="personal-loan-section custom-container">
-  <%= form_for @loan_against_property, :url => { :action => "update_otp_status" }, html: {id: "otp_loan_against_property", class: "otp_loan_against_property"} do |f| %>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-4"></div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <%= f.number_field(:otp, class: "form-control", value: "", placeholder: "OTP") %>
-          </div> 
-          <button type="submit" class="btn btn-custom">Submit</button>
-          <a href="javascript:void(o)" id="home-loan-resend-otp" style="float: right;">Resend</a>
-        </div>
-        <div class="col-md-4"></div>
-      </div>
+<section class="business-loan-section custom-container">
+  <div class="container">
+    <div class="row">
+      <table class="table loan-table">
+        <thead class="thead-light">
+          <tr>
+            <th>Bank</th>
+            <th>Interest Rate</th>
+            <th>EMI</th>
+            <th>Processing Fee</th>
+            <th class="pre-pay-charg">Prepayemnt Charges</th>
+            <th>Proceed</th>
+          </tr>
+        </thead>
+        <% @banks.each do |bank| %>
+          <tr>
+            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
+            <td><b><%= percentage_roi(bank.loan_against_property_bank_info.roi) %><br><span>(Reducing)</span></b></td>
+            <td><b><%= number_to_currency(calculate_emi(bank.loan_against_property_bank_info, @loan_against_property), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.loan_against_property_bank_info.processing_fee, @loan_against_property.loan_amount), unit: "₹ ") %></b></td>
+            <td class="pre-pay-charg"><%= bank.loan_against_property_bank_info.preprocessing_charges.html_safe %></td>
+            <td>
+              <b>
+                <%= form_for @loan_against_property, :url => { :action => "select_bank" }, html: {id:  "loan_against_property_bank", class: "loan_against_property_bank"} do |f| %>
+                  <input type="hidden" name="loan_against_property_bank[id]" value="<%= bank.loan_against_property_bank_info.id %>">
+                  <button type="submit" class="btn btn-custom">Apply</button>
+                <%end%>
+              </b>
+            </td>
+          </tr>
+        <%end%>
+      </table>
     </div>
-  <%end%>
+  </div>
 </section>
