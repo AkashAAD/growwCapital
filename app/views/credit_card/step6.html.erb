@@ -6,11 +6,11 @@
       </div>
       <div>
         <p>First Year Fee</p>
-        <p><%= number_to_currency(@credit_card.card.first_year_fee, unit: "₹ ") %></p>
+        <p><%= number_to_currency(@credit_card.card.joining_charge, unit: "₹ ") %></p>
       </div>
       <div>
         <p>Annual Fee</p>
-        <p><%= number_to_currency(@credit_card.card.annual_fee, unit: "₹ ") %></p>
+        <p><%= number_to_currency(@credit_card.card.annual_charge, unit: "₹ ") %></p>
       </div>
     </div>
     <div class="col-md-8 col-lg-8 col-sm-12 thank-row">

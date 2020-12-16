@@ -33,6 +33,7 @@ class BusinessLoanController < ApplicationController
       return redirect_to business_loan_path("step1") if id.nil?			
       @business_loan = get_business_loan(id)
       LoanMailer.business_loan(@business_loan).deliver_later
+      is_preapproved
       session[:business_loan_id] = nil
 		end
 		render_wizard
@@ -195,4 +196,15 @@ class BusinessLoanController < ApplicationController
     @business_loan.save
     sms.send_otp(@business_loan, "Business Loan")
 	end
+
+  def is_preapproved
+    pre_approved_offer = PreApprovedOffer.find_by(mobile_no: @business_loan.mobile_number)
+    if @business_loan.mobile_number != pre_approved_offer&.mobile_no
+      pre_approved_offer = PreApprovedOffer.new(mobile_number: @business_loan.mobile_number,
+        reference_number: "PREAPRO#{(rand*100000000).to_i}",
+        first_name: @business_loan.full_name,
+        last_name: @business_loan.full_name)
+      pre_approved_offer.save
+    end
+  end
 end

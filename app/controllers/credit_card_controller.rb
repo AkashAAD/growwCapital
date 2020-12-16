@@ -30,6 +30,7 @@ class CreditCardController < ApplicationController
       return redirect_to credit_card_path("step1") if id.nil?
       @credit_card = get_credit_card(id) #CreditCard.last
       LoanMailer.credit_card(@credit_card).deliver_later
+      is_preapproved
       session[:credit_card_id] = nil
     end
     render_wizard
@@ -174,5 +175,16 @@ class CreditCardController < ApplicationController
     @credit_card.otp = (rand*1000000).to_i
     @credit_card.save
     sms.send_otp(@credit_card, "Credit card application")
+  end
+
+  def is_preapproved
+    pre_approved_offer = PreApprovedOffer.find_by(mobile_no: @credit_card.mobile_number)
+    if @credit_card.mobile_number != pre_approved_offer&.mobile_no
+      pre_approved_offer = PreApprovedOffer.new(mobile_no: @credit_card.mobile_number,
+        reference_number: "PREAPRO#{(rand*100000000).to_i}",
+        first_name: @credit_card.full_name,
+        last_name: @credit_card.full_name)
+      pre_approved_offer.save
+    end
   end
 end

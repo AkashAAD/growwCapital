@@ -29,6 +29,7 @@ class TransferHomeLoanController < ApplicationController
       return redirect_to transfer_home_loan_path("step1") if id.nil?
       @transfer_home_loan = get_transfer_home_loan(id) #TransferHomeLoan.last
       LoanMailer.transfer_home_loan(@transfer_home_loan).deliver_later
+      is_preapproved
       session[:transfer_home_loan_id] = nil
     end
     render_wizard
@@ -197,5 +198,16 @@ class TransferHomeLoanController < ApplicationController
     @transfer_home_loan.otp = (rand*1000000).to_i
     @transfer_home_loan.save
     sms.send_otp(@transfer_home_loan, "Home Loan")
+  end
+
+  def is_preapproved
+    pre_approved_offer = PreApprovedOffer.find_by(mobile_no: @transfer_home_loan.mobile_number)
+    if @transfer_home_loan.mobile_number != pre_approved_offer&.mobile_no
+      pre_approved_offer = PreApprovedOffer.new(mobile_no: @transfer_home_loan.mobile_number,
+        reference_number: "PREAPRO#{(rand*100000000).to_i}",
+        first_name: @transfer_home_loan.full_name,
+        last_name: @transfer_home_loan.full_name)
+      pre_approved_offer.save
+    end
   end
 end

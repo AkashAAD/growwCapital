@@ -29,6 +29,7 @@ class ProfessionalLoanController < ApplicationController
       return redirect_to professional_loan_path("step1") if id.nil?      
       @professional_loan = get_professional_loan(id) #ProfessionalLoan.last
       LoanMailer.professional_loan(@professional_loan).deliver_later
+      is_preapproved
       session[:professional_loan_id] = nil
     end
     render_wizard
@@ -201,6 +202,17 @@ class ProfessionalLoanController < ApplicationController
     @professional_loan.otp = (rand*1000000).to_i
     @professional_loan.save
     sms.send_otp(@professional_loan, "Professional Loan")
+  end
+
+  def is_preapproved
+    pre_approved_offer = PreApprovedOffer.find_by(mobile_no: @professional_loan.mobile_number)
+    if @professional_loan.mobile_number != pre_approved_offer&.mobile_no
+      pre_approved_offer = PreApprovedOffer.new(mobile_no: @professional_loan.mobile_number,
+        reference_number: "PREAPRO#{(rand*100000000).to_i}",
+        first_name: @professional_loan.full_name,
+        last_name: @professional_loan.full_name)
+      pre_approved_offer.save
+    end
   end
 
 end

@@ -29,6 +29,7 @@ class NewCarLoanController < ApplicationController
       return redirect_to new_car_loan_path("step1") if id.nil?      
       @new_car_loan = get_new_car_loan(id) #NewCarLoan.last
       LoanMailer.new_car_loan(@new_car_loan).deliver_later
+      is_preapproved
       session[:new_car_loan_id] = nil
     end
     render_wizard
@@ -193,4 +194,14 @@ class NewCarLoanController < ApplicationController
     sms.send_otp(@new_car_loan, "New Car Loan")
   end
 
+  def is_preapproved
+    pre_approved_offer = PreApprovedOffer.find_by(mobile_no: @new_car_loan.mobile_number)
+    if @new_car_loan.mobile_number != pre_approved_offer&.mobile_no
+      pre_approved_offer = PreApprovedOffer.new(mobile_no: @new_car_loan.mobile_number,
+        reference_number: "PREAPRO#{(rand*100000000).to_i}",
+        first_name: @new_car_loan.full_name,
+        last_name: @new_car_loan.full_name)
+      pre_approved_offer.save
+    end
+  end
 end

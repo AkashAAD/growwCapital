@@ -29,6 +29,7 @@ class LoanAgainstPropertyController < ApplicationController
       return redirect_to loan_against_property_path("step1") if id.nil?      
       @loan_against_property = get_loan_against_property(id) #LoanAgainstProperty.last
       LoanMailer.loan_against_property(@loan_against_property).deliver_later
+      is_preapproved
       session[:loan_against_property_id] = nil
     end
     render_wizard
@@ -198,5 +199,16 @@ class LoanAgainstPropertyController < ApplicationController
     @loan_against_property.otp = (rand*1000000).to_i
     @loan_against_property.save
     sms.send_otp(@loan_against_property, "Loan Against Property")
+  end
+
+  def is_preapproved
+    pre_approved_offer = PreApprovedOffer.find_by(mobile_no: @loan_against_property.mobile_number)
+    if @loan_against_property.mobile_number != pre_approved_offer&.mobile_no
+      pre_approved_offer = PreApprovedOffer.new(mobile_no: @loan_against_property.mobile_number,
+        reference_number: "PREAPRO#{(rand*100000000).to_i}",
+        first_name: @loan_against_property.full_name,
+        last_name: @loan_against_property.full_name)
+      pre_approved_offer.save
+    end
   end
 end

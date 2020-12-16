@@ -67,7 +67,6 @@ $(document).ready(function(){
   });
 
   // .blur(function(event) {
-  //   debugger
   //   $('#loan-autocomplete-list').remove();
   // });
 
