@@ -3,42 +3,24 @@
   <div class="banner">
     <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-12">
-        <!-- <div class="header-description">
-          <h4>LOANS | CARDS | INSURANCE</h4>
-          <p>All in one place.</p>
-          <div class="row">
-            <div class="col-md-12">
-              <form action="/" style="display: inline-flex;">
-                <input type="text" placeholder="Search.." class="search-loan" name="search">
-              </form>
-            </div>
-          </div>
-        </div> -->
       </div>
       <div class="col-lg-6 col-md-6 col-sm-12">
-        <!-- <iframe class="header-video"  src="https://www.youtube.com/embed/WJTd1iSch94">
-        </iframe> -->
-        <%#= video_tag "diwali1.mp4", :controls => true, class: "top-video", type: "video/mp4" %>
-        <!-- <video class="top-video" controls>
-          <source src="assets/diwali1.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>  -->
       </div>
     </div>
     <script>
       var revapi;
       jQuery(document).ready(function() {
-          revapi = jQuery("#rev_slider").revolution({
-              sliderType:"standard",
-              loop: true,
-              sliderLayout:"fullwidth",
-              delay:9000,
-              navigation: {
-                arrows:{ enable:true }
-              },
-              gridwidth:1170,
-              gridheight:645
-          });
+        revapi = jQuery("#rev_slider").revolution({
+            sliderType:"standard",
+            loop: true,
+            sliderLayout:"fullwidth",
+            delay:9000,
+            navigation: {
+              arrows:{ enable:true }
+            },
+            gridwidth:1170,
+            gridheight:645
+        });
 
         $('.cards').owlCarousel({
           autoplay:false,
@@ -74,8 +56,11 @@
             600:{
               items:3
             },
-            1000:{
+            1200:{
               items:9
+            },
+            1000:{
+              items: 8
             }
           }
         });
@@ -252,62 +237,6 @@
           </div>
         </div>
       </section>
-      <!-- <section class="row car-block-wrap padding-loans">
-        <div class="owl-carousel cards">
-          <div class="col-sm-12 col-xs-12 margin-bottom-none">
-            <div class="scroll_effect img-effect bounceInUp">
-              <%= image_tag "hdfc-bank.png" %>
-            </div>
-          </div>
-          <div class="col-sm-12 col-xs-12 margin-bottom-none">
-            <div class="scroll_effect img-effect bounceInUp">
-              <%= image_tag "IndusInd-bank.png" %>
-            </div>
-          </div>
-          <div class="col-sm-12 col-xs-12 margin-bottom-none">
-            <div class="scroll_effect img-effect bounceInUp">
-              <%= image_tag "sbi-bank.png" %>
-            </div>
-          </div>
-          <div class="col-sm-12 col-xs-12 margin-bottom-none">
-            <div class="scroll_effect img-effect bounceInUp">
-              <%= image_tag "rbl-bank.png" %>
-            </div>
-          </div>
-          <div class="col-sm-12 col-xs-12 margin-bottom-none">
-            <div class="scroll_effect img-effect bounceInUp">
-              <%= image_tag "yes-bank.png" %>
-            </div>
-          </div>
-        </div>
-      </section> -->
-      <!-- <div class="row">
-        <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-          <span class="ind-section">Loans & Card Benefit Description</span>
-        </h2>
-      </div> -->
-      <!-- <section class="welcome-wrap sm-horizontal-15">
-        <div class="row">
-          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 welcome scroll_effect fadeInUp">
-            <h4 class="">About <strong>Loans</strong> </h4>
-            <div class="search-form margin-top-20 padding-vertical-20">
-              <video class="bottom-video" controls>
-                <source src="assets/diwali2.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 welcome scroll_effect fadeInUp" data-wow-delay='.2s'>
-            <h4 class="">About <strong>Cards</strong></h4>
-            <div class="search-form margin-top-20 padding-vertical-20">
-              <video class="bottom-video" controls>
-                <source src="assets/diwali2.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-          </div>
-        </div>
-      </section> -->
       <div class="homeStrip">
         <div class="container">
           <p>It has been brought to our notice that fraudsters are using growwcapital’s identity to send erroneous communication to dupe people.<br>
@@ -373,12 +302,12 @@
           </div>
         </div>
       </section>
-      <div class="row">
+      <!-- <div class="row">
         <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <span class="ind-section">What Customers Say</span>
         </h2>
-      </div>
-      <section>
+      </div> -->
+      <!-- <section>
         <div class="">
           <div id="crsl-customers" class="carousel slide carousel-multi-item lkcarousel wow fadeInUp" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -461,38 +390,6 @@
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- <section class="testimonital">
-        <div class="row">
-          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
-            <div class="card">
-              <div class="card-body crd-parts">
-                <div>
-                  <%= image_tag "associalted-partners.jpg" %>
-                </div>
-                <h3>50 + Partners</h3>
-                <h4>&</h4>
-                <h3>Over 100 Products</h3>
-                <h4>
-                  Disburse Loans worth 30 crore on an annulized basis
-                </h4>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-12 col-xs-12 col-md-6 col-lg-6">
-            <div class="card">
-              <div class="card-body crd-sat-cust">
-                <div>
-                  <%= image_tag "customers.jpeg" %>
-                </div>
-                <h3>Satisfied Custmers</h3>
-                <h2>1000</h2>
-                <h4>Secured Systems</h4>
-                <h4>To Keep your data safe</h4>
               </div>
             </div>
           </div>

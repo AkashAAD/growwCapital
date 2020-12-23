@@ -82,7 +82,7 @@ $(document).ready(function(){
 
 	$("#professional_loan_profession_type").change(function(evt) {
 		if(evt.target.value == 2) {
-			$(".degree-yrs").html("Years In?");
+			$(".degree-yrs").html("Practice in years?");
 		} else {
 			$(".degree-yrs").html("Degree");
 		}

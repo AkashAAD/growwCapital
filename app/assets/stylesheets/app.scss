@@ -16,7 +16,7 @@
 .slider {
   -webkit-appearance: none;
   width: 100%;
-  height: 10px;
+  height: 2px;
   background: #ffffff;
   outline: none;
   opacity: 1;
@@ -61,8 +61,8 @@
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   background: #0854a0;
   cursor: pointer;
   border-radius: 100px; 
@@ -445,7 +445,7 @@ textarea.error, input.error, select.error {
       }
     }
     li:hover {
-      background-color: #bfbebd;
+      //background-color: #bfbebd;
     }
   }
   text-align: center !important;
@@ -741,5 +741,227 @@ homeStrip .container>p {
     i {
       font-size: 40px;
     }
+  }
+}
+
+.quicklinks-menu {
+  background-color: #fff;
+  border: solid 1px #e2e2e2;
+  border-radius: 5px;
+  border-right: none;
+  box-shadow: -10px 0 35px 0 rgba(132,115,115,0.35);
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 37%;
+  width: 75px;
+  z-index: 100;
+}
+
+.quicklinks-menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .quicklinks-menu ul li a {
+    width: 85px;
+  }
+}
+
+.quicklinks-menu ul li.mobile-menu .dropdown-menu li {
+  display: inline-block;
+  vertical-align: middle;
+  width: 32.5%;
+}
+
+@media (min-width: 1200px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .quicklinks-menu ul li .dropdown-menu li {
+    padding: 10px 0 8px;
+  }
+}
+
+.quicklinks-menu ul li {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.quicklinks-menu ul li.desktop-menu>a, .quicklinks-menu ul li.mobile-menu>a {
+  display: none;
+}
+
+.quicklinks-menu ul li a {
+  color: #00334e;
+  display: block;
+  font-family: "Titillium Web",sans-serif;
+  font-size: .733em;
+  line-height: 1.20;
+  margin: auto;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  width: 55px;
+}
+
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 10px 15px;
+}
+
+.quicklinks-menu ul li .dropdown-menu {
+  border: 0;
+  box-shadow: none;
+  display: block;
+  margin: 0;
+  padding: 0;
+  min-width: inherit;
+  position: static;
+  width: 100%;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 160px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  list-style: none;
+  font-size: 14px;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.175);
+  background-clip: padding-box;
+}
+
+.quicklinks-menu ul li .dropdown-menu li {
+  clear: both;
+  display: block;
+  float: none;
+  padding: 17px 0;
+  width: 100%;
+}
+
+.quicklinks-menu ul li a {
+  color: #00334e;
+  display: block;
+  font-family: "Titillium Web",sans-serif;
+  font-size: .733em;
+  line-height: 1.20;
+  margin: auto;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  width: 55px;
+}
+
+.quicklinks-menu ul li a:before {
+  color: #e22323;
+  display: block;
+  font-family: "icomoon";
+  font-size: 2.5em;
+  margin-bottom: 3px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#call-you {
+  .modal-header {
+    border-bottom: none;
+    padding-bottom: 0px;
+  }
+  .modal-body {
+    padding-top: 0px;
+    .heading {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #00334e;
+      text-align: center;
+      margin: 0px;
+    }
+    .body {
+      text-align: center;
+      font-size: 1.06em;
+      color: #00334e;
+    }
+  }
+  .modal-content {
+    border-radius: 0px;
+  }
+  .modal-footer {
+    border-top: none;
+    padding: 0;
+    button {
+      border-radius: 0px;
+    }
+  }
+  .modal-dialog {
+    max-width: 335px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .quicklinks-menu {
+    border-left: 0;
+    border-radius: 0;
+    border-right: 0;
+    bottom: 0;
+    top: inherit;
+    width: 100%;
+  }
+}
+
+.modal-backdrop {
+  display: none;
+}
+
+@media screen and (max-width: 1400px) {
+  .desktop-nav li {
+    margin: 0px 3px 0px 3px;
+  }
+  .search-loan {
+    width: 170px !important;
+  }
+  .part-img-effect {
+    width: 120px;
+    height: 100px;
+  }
+  .owl-carousel .owl-nav .owl-prev {
+    top: 30px;
+  }
+  .owl-carousel .owl-nav .owl-next {
+    top: 30px;
   }
 }

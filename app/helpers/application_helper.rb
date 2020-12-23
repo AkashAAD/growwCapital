@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def only_cities
-    [['-Select City-','']] + City.all.map{ |val| [val.name, val.slug] }
+    [['-Select City-','']] + City.all.order('name').map{ |val| [val.name, val.slug] }
   end
 
   def degrees(obj)

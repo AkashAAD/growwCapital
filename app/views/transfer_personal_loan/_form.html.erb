@@ -17,7 +17,7 @@
   </div>
   <div class="col-md-3 desired-loan <%= 'hide-div' if !f.object.is_topup_amount? %>">
     <div class="form-group">
-      <label>Your desired loan amount
+      <label>Your desired total loan amount
         <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Please fill in the loan amount you need to fullfil your financial needs."></i>
       </label>
       <%= f.number_field(:desired_loan_amount, class: "form-control", placeholder: "Rs. 0") %>
