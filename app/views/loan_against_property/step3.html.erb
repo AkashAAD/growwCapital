@@ -17,7 +17,7 @@
             <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
             <td><b><%= percentage_roi(bank.loan_against_property_bank_info.roi) %><br><span>(Reducing)</span></b></td>
             <td><b><%= number_to_currency(calculate_emi(bank.loan_against_property_bank_info, @loan_against_property), unit: "₹ ") %></b></td>
-            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.loan_against_property_bank_info.processing_fee, @loan_against_property.loan_amount), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.loan_against_property_bank_info.processing_fee, @loan_against_property.loan_amount, bank), unit: "₹ ") %></b></td>
             <td class="pre-pay-charg"><%= bank.loan_against_property_bank_info.preprocessing_charges.html_safe %></td>
             <td>
               <b>

@@ -180,8 +180,12 @@ module ApplicationHelper
     "%.2f" % roi + "%"
   end
 
-  def processing_fee(processing_fee, loan_amount)
-    (processing_fee.to_f / 100.to_f) * loan_amount.to_f
+  def processing_fee(processing_fee, loan_amount, bank)
+    if ["HomeLoanBank", "TransferHomeLoanBank", "LoanAgainstPropertyBank"].include?(bank.class.name) || (bank.slug == 'au_small_bank' && bank.class.name == "BusinessLoanBank")
+      return processing_fee.to_f
+    else
+      return (processing_fee.to_f / 100.to_f) * loan_amount.to_f
+    end
   end
 
   def calculate_emi(personal_loan_info, personal_loan)
