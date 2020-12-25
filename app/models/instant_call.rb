@@ -1,0 +1,2 @@
+class InstantCall < ApplicationRecord
+end

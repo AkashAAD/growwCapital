@@ -2259,10 +2259,10 @@ input[type=text]:focus, .leave-comments form input[type=text]:focus, .leave-comm
 }
 
 footer {
-	background-image: linear-gradient(90deg, #01000f 0%, #030303 35%, #2e4f56 100%);
-	padding: 47px 0 64px 0;
-	color: #fff;
-	font-size: 14px;
+    background-color: #f8f8f8;
+    padding: 47px 0 64px 0;
+    color: #00334e;
+    font-size: 14px;
 }
 
 .car-rate-block.row {
@@ -2278,7 +2278,7 @@ footer h4 {
 }
 
 footer a {
-	color: #BEBEBE;
+	color: #00334e;
 	text-decoration: underline;
 }
 
@@ -2328,10 +2328,10 @@ footer form input[type=text] {
 }
 
 .copyright-wrap {
-	padding: 18px 0 20px 11px;
-	background-image: linear-gradient(90deg, #39848b 0%, #040505 35%, #1c3034 100%);
-	color: #999999;
-	font-size: 13px;
+    padding: 18px 0 20px 11px;
+    background-color: #f4f4f4;
+    color: #00334e;
+    font-size: 13px;
 }
 
 .copyright-wrap a {
@@ -2585,6 +2585,8 @@ footer.design_2 h4 {
 	position: relative;
 	padding-right:10px;
 }
+
+.footer-contact
 
 .design_2 .footer-contact .back_icon {
 	position: absolute;

@@ -249,7 +249,8 @@ end
 "ATUL LIMITED",
 "AUROBINDO PHARMA",
 "AUTOMOTIVE AXLES LIMITED",
-"AXIS BANK"].each do |em|
+"AXIS BANK",
+"Other"].each do |em|
   Employer.create(name: em)
   puts "Employer #{em}"
 end
@@ -422,10 +423,10 @@ end
   preprocessing_charges: "<p>after 6 EMI forclose</p>
 <p>2% + GST forclosing charges(remaining outstanding amount.)</p>
 <p>part payment – NA</p>"}},
- { aditya_birla: { name: "Aditya Birla", roi: 7.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png", 
-  preprocessing_charges: "<p>after 12 EMI forclose</p>
-<p>5% + GST forclosing charges(remaining outstanding amount.)</p>
-<p>part payment – NA</p>"}},
+ # { aditya_birla: { name: "Aditya Birla", roi: 7.5, processing_fee: 2, bank_image: "bank_images/aditya-birla.png", 
+  # preprocessing_charges: "<p>after 12 EMI forclose</p>
+# <p>5% + GST forclosing charges(remaining outstanding amount.)</p>
+# <p>part payment – NA</p>"}},
  { kotak_bank: { name: "Kotak Mahindra Bank", roi: 15, processing_fee: 2, bank_image: "bank_images/kotak-bank.png", 
   preprocessing_charges: "<p>after 12 EMI forclose</p>
 <p>5% + GST forclosing charges(remaining outstanding amount.)</p>

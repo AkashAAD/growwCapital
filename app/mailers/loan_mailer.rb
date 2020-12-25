@@ -48,4 +48,9 @@ class LoanMailer < ApplicationMailer
     @card = card
     mail(to: card.email, subject: "Credit Card Application")
   end
+
+  def instant_call(obj)
+    @instant_call = obj
+    mail(to: "support@growwcapital.com", subject: "Instant call email")
+  end
 end

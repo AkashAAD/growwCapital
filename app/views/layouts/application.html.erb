@@ -115,7 +115,7 @@
                   <a href="/" class="dropdown-toggle" data-toggle="dropdown">Desktop <span class="caret"></span></a>
                   <ul class="menu dropdown-menu">
                     <li class="call-us">
-                      <a title="" target="" data-toggle="modal" data-target="#call-you" href="/">
+                      <a title="" target="" id="let-u-call-u" data-toggle="modal" data-target="#call-you" href="/">
                         <i class="fa fa-3x fa-phone"></i><br>
                         Let Us Call You
                       </a>
@@ -125,7 +125,7 @@
                       Request Call Back</a>
                     </li>
                     <li class="missed-call">
-                      <a title="" target="" href="/"><i class="fa fa-3x fa-volume-control-phone"></i><br>Give a Missed Call</a>
+                      <a title="" target="" id="let-u-call-u" data-toggle="modal" data-target="#missed-call" href="/"><i class="fa fa-3x fa-volume-control-phone"></i><br>Give a Missed Call</a>
                     </li>
                   </ul>
                 </li>
@@ -164,15 +164,50 @@
                 <div class="modal-header">
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-body">
-                  <p class="heading">Couldn't find what you were looking for?</p>
-                  <p class="body">Please fill in your details to get a call from our<br>Loan Expert!</p>
+                <%= form_for @instant_call, :url => { controller: "home", action: "instant_call" }, remote: true, html: { id:  "instant-call", class: "instant-call" } do |f| %>                
+                  <div class="modal-body">
+                    <p class="heading">Couldn't find what you were looking for?</p>
+                    <p class="body">Please fill in your details to get a call from our<br>Loan Expert!</p>
+                    <div class="form-group">
+                      <label class="ins-lbl">Name</label>
+                      <input placeholder="Enter your full name" class="form-control" type="text" name="instant_call[full_name]" id="instant_call_full_name">
+                    </div>
+                    <div class="form-group">
+                      <label class="ins-lbl">Mobile Number</label>
+                      <input placeholder="Enter your mobile number" class="form-control" type="number" name="instant_call[mobile_number]" id="instant_call_mobile_number">
+                    </div>
+                    <div class="form-group">
+                      <label class="ins-lbl">Email</label>
+                      <input placeholder="Enter your full email" class="form-control" type="email" name="instant_call[email]" id="instant_call_email">
+                    </div>
+                    <div class="form-group">
+                      <label class="ins-lbl">Location</label>
+                      <%= select_tag "instant_call[city]", options_for_select(only_cities, "") %>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-block btn-default">SUBMIT</button>
+                  </div>
+                <%end%>
+              </div>
+            </div>
+          </div>
+          <div id="missed-call" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-block btn-default" data-dismiss="modal">Close</button>
+                <div class="modal-body">
+                  <div>
+                    <h4 class="text-center">LOOKING FOR ANY NEW LOAN?</h4>
+                    <p class="text-center">Just give us a Missed Call on</p>
+                  </div>
+                  <div class="text-center">
+                    <span><i class="fa fa-2x fa-phone"></i><span class="mob-no">+91-9289200017</span></span>
+                  </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>

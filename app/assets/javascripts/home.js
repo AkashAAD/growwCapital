@@ -38,6 +38,45 @@ $(document).ready(function(){
 		}
 	});
 
+
+  $("#instant-call").validate({
+    rules: {
+      "instant_call[full_name]": {
+        required: true
+      },
+      "instant_call[mobile_number]": {
+        required: true
+      },
+      "instant_call[email]": {
+        required: true,
+        email: true
+      },
+      "instant_call[city]": {
+        required: true
+      },
+    },
+    messages: {
+      "instant_call[full_name]": {
+        required: "Please enter full name."
+      },
+      "instant_call[mobile_number]": {
+        required: "Please enter mobile number."
+      },
+      "instant_call[email]": {
+        required: "Please enter email.",
+        email: "Please enter valid email."
+      },
+      "instant_call[city]": {
+        required: "Please select city."
+      },
+    }
+  });
+
+  $("#let-u-call-u").click(function() {
+    document.getElementById("instant-call").reset();
+  });
+
+
   function delay(callback, ms) {
 	  var timer = 0;
 	  return function() {

@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   require "indian_pincodes"
 
   def index
+    @instant_call = InstantCall.new
   end
 
   def about_us
@@ -11,6 +12,13 @@ class HomeController < ApplicationController
 
   def pre_approved
     @pre_approved_offer = PreApprovedOffer.new
+  end
+
+  def instant_call
+    @instant_call = InstantCall.new(instant_call_params)
+    @instant_call.save
+    LoanMailer.instant_call(@instant_call).deliver_later
+    flash[:notice] = "Thank you for the details. Our associate will reach to you soon."
   end
 
   def emi_calculator; end
@@ -120,5 +128,9 @@ class HomeController < ApplicationController
 
   def pre_approved_user
     @pre_approved_offer = PreApprovedOffer.find_by(mobile_no: pre_approved_offer_params[:mobile_no])
+  end
+
+  def instant_call_params
+    params.require(:instant_call).permit(:full_name, :mobile_number, :email, :city)    
   end
 end

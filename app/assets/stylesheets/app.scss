@@ -1,3 +1,14 @@
+#newsletter {
+  display: flex;
+  #newsletter_email {
+    border-radius: 0px;
+    border: 1px solid;
+  }
+  .md-button {
+    margin-bottom: 0px;
+    border-radius: 0px;
+  }
+}
 .container-step {
   box-shadow: none !important;
 }
@@ -835,6 +846,10 @@ homeStrip .container>p {
   width: 100%;
 }
 
+.dropdown-menu>li>a:hover, .dropdown-menu>li>a:focus {
+  background-color: unset;
+}
+
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -897,7 +912,47 @@ homeStrip .container>p {
   border: 0;
 }
 
+.modal-backdrop {
+     background-color: rgba(0,0,0,.0001) !important;
+}
+
 #call-you {
+  .instant-call {
+    input, select {
+      background-color: transparent;
+      border: 0;
+      border-bottom: 1px solid #d1dce2;
+      border-radius: 0;
+      box-shadow: none;
+      display: block;
+      float: none;
+      font-size: 1.1em;
+      height: auto;
+      line-height: 18px;
+      margin: 0;
+      padding: 0 0 3px;
+      width: 100%;
+    }
+    .form-control:focus {
+      box-shadow: none;
+    }
+    .ins-lbl {
+      margin-bottom: 0px;
+      color: #00334e;
+      text-transform: uppercase;
+    }
+    .ins-lbl:after {
+      color: #e00;
+      content: "*";
+    }
+  }
+
+  button {
+    padding: 13px;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
   .modal-header {
     border-bottom: none;
     padding-bottom: 0px;
@@ -929,6 +984,42 @@ homeStrip .container>p {
   }
   .modal-dialog {
     max-width: 335px;
+  }
+}
+
+.modal {
+  background-image: linear-gradient( #161414d1, #161414d1, #161414d1, #161414d1, #161414d1, #161414d1);
+}
+
+#missed-call {
+  .modal-header {
+    border-bottom: 0px;
+    padding-bottom: 0px;
+  }
+  .modal-content {
+    width: 285px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 230px;
+    .modal-body {
+      padding-top: 0px;    
+    }
+    h4 {
+      padding: 10px;
+      color: #00334e;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    p {
+      color: #00334e;
+    }
+    span {
+      color: #00334e;    
+    }
+    .mob-no {
+      font-size: 22px;
+      font-weight: bold;
+    }
   }
 }
 
