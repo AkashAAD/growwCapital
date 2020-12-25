@@ -107,109 +107,111 @@
               </div>
             </div>
           </nav>
-          <nav role="navigation" aria-labelledby="block-quicklinksmenu-menu" id="block-quicklinksmenu" class="quicklinks-menu">
-            <div class="inner-wrapper">
-              <h2 class="sr-only" id="block-quicklinksmenu-menu">Quicklinks menu</h2>
-              <ul class="menu nav">
-                <li class="desktop-menu hidden-sm hidden-xs">
-                  <a href="/" class="dropdown-toggle" data-toggle="dropdown">Desktop <span class="caret"></span></a>
-                  <ul class="menu dropdown-menu">
-                    <li class="call-us">
-                      <a title="" target="" id="let-u-call-u" data-toggle="modal" data-target="#call-you" href="/">
-                        <i class="fa fa-3x fa-phone"></i><br>
-                        Let Us Call You
-                      </a>
-                    </li>
-                    <li class="request-callback">
-                      <a title="" target="" href="/"><i class="fa fa-3x fa-mobile"></i><br>
-                      Request Call Back</a>
-                    </li>
-                    <li class="missed-call">
-                      <a title="" target="" id="let-u-call-u" data-toggle="modal" data-target="#missed-call" href="/"><i class="fa fa-3x fa-volume-control-phone"></i><br>Give a Missed Call</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="mobile-menu hidden-md hidden-lg">
-                  <span class="toggle-arrow"></span>
-                  <a href="/" class="dropdown-toggle" data-toggle="dropdown">Mobile <span class="caret"></span></a>
-                  <ul class="menu dropdown-menu">
-                    <div class="hidden-quicklinks" style="display: none;">
-                      <li class="calculate-emi hidden-mobile">
-                        <a title="" target="" href="/home-loan-emi-calculator">Calculate EMI</a>
+          <%if request.path == "/"%>          
+            <nav role="navigation" aria-labelledby="block-quicklinksmenu-menu" id="block-quicklinksmenu" class="quicklinks-menu">
+              <div class="inner-wrapper">
+                <h2 class="sr-only" id="block-quicklinksmenu-menu">Quicklinks menu</h2>
+                <ul class="menu nav">
+                  <li class="desktop-menu hidden-sm hidden-xs">
+                    <a href="/" class="dropdown-toggle" data-toggle="dropdown">Desktop <span class="caret"></span></a>
+                    <ul class="menu dropdown-menu">
+                      <li class="call-us">
+                        <a title="" target="" id="let-u-call-u" data-toggle="modal" data-target="#call-you" href="/">
+                          <i class="fa fa-3x fa-phone"></i><br>
+                          Let Us Call You
+                        </a>
                       </li>
-                      <li class="call-us call-us-click-call hidden-mobile">
-                        <a title="" target="" href="javascript:void(0)">Call Us Now</a>
+                      <li class="request-callback">
+                        <a title="" target="" href="/"><i class="fa fa-3x fa-mobile"></i><br>
+                        Request Call Back</a>
                       </li>
-                      <li class="branch-locator hidden-mobile">
-                        <a title="" target="" href="/branch-locator">Branch Locator </a>
+                      <li class="missed-call">
+                        <a title="" target="" id="let-u-call-u" data-toggle="modal" data-target="#missed-call" href="/"><i class="fa fa-3x fa-volume-control-phone"></i><br>Give a Missed Call</a>
                       </li>
+                    </ul>
+                  </li>
+                  <li class="mobile-menu hidden-md hidden-lg">
+                    <span class="toggle-arrow"></span>
+                    <a href="/" class="dropdown-toggle" data-toggle="dropdown">Mobile <span class="caret"></span></a>
+                    <ul class="menu dropdown-menu">
+                      <div class="hidden-quicklinks" style="display: none;">
+                        <li class="calculate-emi hidden-mobile">
+                          <a title="" target="" href="/home-loan-emi-calculator">Calculate EMI</a>
+                        </li>
+                        <li class="call-us call-us-click-call hidden-mobile">
+                          <a title="" target="" href="javascript:void(0)">Call Us Now</a>
+                        </li>
+                        <li class="branch-locator hidden-mobile">
+                          <a title="" target="" href="/branch-locator">Branch Locator </a>
+                        </li>
+                      </div>
+                      <li class="chat-us">
+                        <a title="" target="" href="javascript:void(0);">Chat with us</a>
+                      </li>
+                      <li class="request-callback">
+                        <a title="" target="" href="/">Request Call Back</a>
+                      </li>
+                      <li class="more-options">
+                        <a title="" target="" href="">More Options</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+            <div id="call-you" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
+                  <%= form_for @instant_call, :url => { controller: "home", action: "instant_call" }, remote: true, html: { id:  "instant-call", class: "instant-call" } do |f| %>                
+                    <div class="modal-body">
+                      <p class="heading">Couldn't find what you were looking for?</p>
+                      <p class="body">Please fill in your details to get a call from our<br>Loan Expert!</p>
+                      <div class="form-group">
+                        <label class="ins-lbl">Name</label>
+                        <input placeholder="Enter your full name" class="form-control" type="text" name="instant_call[full_name]" id="instant_call_full_name">
+                      </div>
+                      <div class="form-group">
+                        <label class="ins-lbl">Mobile Number</label>
+                        <input placeholder="Enter your mobile number" class="form-control" type="number" name="instant_call[mobile_number]" id="instant_call_mobile_number">
+                      </div>
+                      <div class="form-group">
+                        <label class="ins-lbl">Email</label>
+                        <input placeholder="Enter your full email" class="form-control" type="email" name="instant_call[email]" id="instant_call_email">
+                      </div>
+                      <div class="form-group">
+                        <label class="ins-lbl">Location</label>
+                        <%= select_tag "instant_call[city]", options_for_select(only_cities, "") %>
+                      </div>
                     </div>
-                    <li class="chat-us">
-                      <a title="" target="" href="javascript:void(0);">Chat with us</a>
-                    </li>
-                    <li class="request-callback">
-                      <a title="" target="" href="/">Request Call Back</a>
-                    </li>
-                    <li class="more-options">
-                      <a title="" target="" href="">More Options</a>
-                    </li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          <div id="call-you" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-block btn-default">SUBMIT</button>
+                    </div>
+                  <%end%>
                 </div>
-                <%= form_for @instant_call, :url => { controller: "home", action: "instant_call" }, remote: true, html: { id:  "instant-call", class: "instant-call" } do |f| %>                
+              </div>
+            </div>
+            <div id="missed-call" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  </div>
                   <div class="modal-body">
-                    <p class="heading">Couldn't find what you were looking for?</p>
-                    <p class="body">Please fill in your details to get a call from our<br>Loan Expert!</p>
-                    <div class="form-group">
-                      <label class="ins-lbl">Name</label>
-                      <input placeholder="Enter your full name" class="form-control" type="text" name="instant_call[full_name]" id="instant_call_full_name">
+                    <div>
+                      <h4 class="text-center">LOOKING FOR ANY NEW LOAN?</h4>
+                      <p class="text-center">Just give us a Missed Call on</p>
                     </div>
-                    <div class="form-group">
-                      <label class="ins-lbl">Mobile Number</label>
-                      <input placeholder="Enter your mobile number" class="form-control" type="number" name="instant_call[mobile_number]" id="instant_call_mobile_number">
+                    <div class="text-center">
+                      <span><i class="fa fa-2x fa-phone"></i><span class="mob-no">+91-9289200017</span></span>
                     </div>
-                    <div class="form-group">
-                      <label class="ins-lbl">Email</label>
-                      <input placeholder="Enter your full email" class="form-control" type="email" name="instant_call[email]" id="instant_call_email">
-                    </div>
-                    <div class="form-group">
-                      <label class="ins-lbl">Location</label>
-                      <%= select_tag "instant_call[city]", options_for_select(only_cities, "") %>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="submit" class="btn btn-block btn-default">SUBMIT</button>
-                  </div>
-                <%end%>
-              </div>
-            </div>
-          </div>
-          <div id="missed-call" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                  <div>
-                    <h4 class="text-center">LOOKING FOR ANY NEW LOAN?</h4>
-                    <p class="text-center">Just give us a Missed Call on</p>
-                  </div>
-                  <div class="text-center">
-                    <span><i class="fa fa-2x fa-phone"></i><span class="mob-no">+91-9289200017</span></span>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          <%end%>
         </div>
         <div class="header_shadow"></div>
       </div>
