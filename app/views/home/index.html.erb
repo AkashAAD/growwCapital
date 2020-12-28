@@ -1,93 +1,98 @@
-<div class="clearfix"></div>
+<!-- <div class="clearfix"></div> -->
+<script>
+  jQuery(document).ready(function() {
+    $('.cards').owlCarousel({
+      autoplay:false,
+      margin:10,
+      nav:true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1000:{
+          items:5
+        }
+      }
+    });
+
+    $('.partners').owlCarousel({
+      autoplayTimeout:2000,
+      loop:true,
+      margin:10,
+      items: 6,
+      nav:true,
+      autoplay:true,
+      autoplayTimeout:1000,
+      autoplayHoverPause:true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1200:{
+          items:9
+        },
+        1000:{
+          items: 8
+        }
+      }
+    });
+
+    $('.loans').owlCarousel({
+      autoplayTimeout:2000,
+      loop:true,
+      margin:10,
+      nav:true,
+      autoplay:true,
+      autoplayTimeout:1000,
+      autoplayHoverPause:true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1000:{
+          items:5
+        }
+      }
+    });
+    $("#carosel-home-desk, #carosel-home-mob").owlCarousel({
+        loop:true,
+        margin:10,
+        items: 6,
+        nav:true,
+        autoplay:true,
+        autoplayTimeout:5000,
+        autoplayHoverPause:true,
+        navigation : true, // Show next and prev buttons
+        slideSpeed : 5000,
+        paginationSpeed : 400,
+        singleItem:true,
+        items : 1, 
+        // itemsDesktop : false,
+        // itemsDesktopSmall : false,
+        // itemsTablet: false,
+        // itemsMobile : false
+    });
+  });
+</script>
 <section class="banner-wrap">
-  <div class="banner">
-    <div class="row">
-      <div class="col-lg-6 col-md-6 col-sm-12">
-      </div>
-      <div class="col-lg-6 col-md-6 col-sm-12">
-      </div>
-    </div>
-    <script>
-      var revapi;
-      jQuery(document).ready(function() {
-        revapi = jQuery("#rev_slider").revolution({
-            sliderType:"standard",
-            loop: true,
-            sliderLayout:"fullwidth",
-            delay:9000,
-            navigation: {
-              arrows:{ enable:true }
-            },
-            gridwidth:1170,
-            gridheight:645
-        });
-
-        $('.cards').owlCarousel({
-          autoplay:false,
-          margin:10,
-          nav:true,
-          responsive:{
-            0:{
-              items:1
-            },
-            600:{
-              items:3
-            },
-            1000:{
-              items:5
-            }
-          }
-        });
-
-        $('.partners').owlCarousel({
-          autoplay:false,
-          autoplayTimeout:2000,
-          loop:true,
-          margin:10,
-          items: 6,
-          nav:true,
-          autoplay:true,
-          autoplayTimeout:1000,
-          autoplayHoverPause:true,
-          responsive:{
-            0:{
-              items:1
-            },
-            600:{
-              items:3
-            },
-            1200:{
-              items:9
-            },
-            1000:{
-              items: 8
-            }
-          }
-        });
-
-        $('.loans').owlCarousel({
-          autoplay:false,
-          autoplayTimeout:2000,
-          loop:true,
-          margin:10,
-          nav:true,
-          autoplay:true,
-          autoplayTimeout:1000,
-          autoplayHoverPause:true,
-          responsive:{
-            0:{
-              items:1
-            },
-            600:{
-              items:3
-            },
-            1000:{
-              items:5
-            }
-          }
-        });
-      });
-    </script>
+  <div id="carosel-home-desk" class="owl-carousel">
+    <div class="carosel-imgs img1"><%= image_tag "carosel/desktop/credit-card-banner.jpg", alt: "" %></div>
+    <div class="carosel-imgs img2"><%= image_tag "carosel/desktop/home-loan-banner.jpg", alt: "" %></div>
+    <div class="carosel-imgs img3"><%= image_tag "carosel/desktop/personal-loan-banner.jpg", alt: "" %></div>
+  </div>
+  <div id="carosel-home-mob" class="owl-carousel">
+    <div class="carosel-imgs img1"><%= image_tag "carosel/mobile/credit-card-banner.jpg", alt: "" %></div>
+    <div class="carosel-imgs img2"><%= image_tag "carosel/mobile/home-loan-banner.jpg", alt: "" %></div>
+    <div class="carosel-imgs img3"><%= image_tag "carosel/mobile/personal-loan-banner.jpg", alt: "" %></div>
   </div>
 </section>
 
@@ -107,7 +112,7 @@
                 <h1 class="product-name">Credit Card</h1>
                 <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card offers</p>
                 <div class="product-icon">
-                  <i class="fa fa-3x fa-credit-card"></i>
+                  <%= image_tag "icons/cc-icon.png", style: "width: 35%; float: right;" %>
                 </div>
               </div>
             <%end%>
@@ -162,7 +167,10 @@
                 <h1 class="product-name">Home Loan</h1>
                 <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card offers</p>
                 <div class="product-icon">
-                  <i class="fa fa-3x fa-home"></i>
+                  <%= image_tag "icons/home-loan-icon.png", style: "    width: 35%;
+                    float: right;
+                    bottom: 15px;
+                    position: relative;" %>
                 </div>
               </div>
             <%end%>

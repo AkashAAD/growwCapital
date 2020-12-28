@@ -1,3 +1,19 @@
+<section id="secondary-banner1" >
+    <div class="container">
+        <div class="row align-items-end">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <h2>New Personal Loan</h2>
+                <h4>Apply for new personal loan</h4>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li>FAQ</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="personal-loan-section custom-container">
   <div class="container h-container">
     <%= form_for @home_loan, :url => { :action => @home_loan.id.nil? ? "create_otp" : "update" }, remote: true, html: { id:  "basic_home_loan", class: "basic_home_loan" } do |f| %>

@@ -1,3 +1,20 @@
+#banner1 {
+  background: url(./credit-card-banner2.jpg) top center no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+  .container-banner1 {
+    padding-top: 300px;
+    padding-bottom: 300px;
+  }
+}
+
+.card-section {
+  .container-card {
+    width: 40%;
+  }
+}
+
 .pb-feature-section-serve {
   margin-top: 0px !important;
   .row1 {
@@ -589,11 +606,27 @@ textarea.error, input.error, select.error {
   }
 }
 
-@media(max-width: 767px) {
+@media(max-width: 768px) {
   .col-md-6-prd {
     max-width: 100%;
     flex: 100%;
   }
+
+  #banner1 {
+    background-position: center;
+    width: 100%;
+    .container-banner1 {
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+  }
+
+  .card-section {
+    .container-card {
+      width: 100%;
+    }
+  }
+
 }
 
 @media only screen and (max-width: 600px) {
@@ -656,6 +689,17 @@ textarea.error, input.error, select.error {
   }
   .top-video {
     width: 100%;
+  }
+  #banner1 {
+    background: url(./mobile/credit-card-banner.jpg) top center no-repeat;
+    .container-banner1 {
+      h2 {
+        font-size: 20px;
+      }
+      h4 {
+        font-size: 15px;
+      }
+    }
   }
 }
 
