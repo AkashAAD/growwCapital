@@ -16,39 +16,63 @@
 </section>
 <section class="personal-loan-section custom-container">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>  
-    <div class="container">
+    <div class="container p-container">
       <div class="row regist-div">
-        <div class="col-md-6">
+        <div class="col-md-5">
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+        <div class="col-md-7">
           <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
               <div class="form-group">
-                <%= f.label :email %>
-                <%= f.email_field :email, class: "form-control", required: true  %>
+                <b><%= f.label :first_name %></b>
+                <%= f.text_field :first_name, class: "form-control", required: true  %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <b><%= f.label :last_name %></b>
+                <%= f.text_field :last_name, class: "form-control", required: true  %>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <%= f.label :password %>
+                <b><%= f.label :email %></b>
+                <%= f.email_field :email, class: "form-control", required: true  %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <b><%= f.label :mobile_number %></b>
+                <%= f.number_field :mobile_number, class: "form-control", required: true  %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <b><%= f.label :password %></b>
                 <%= f.password_field :password, class: "form-control", required: true  %>
               </div>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <%= f.label :password_confirmation %>
+                <b><%= f.label :password_confirmation %></b>
                 <%= f.password_field :password_confirmation, class: "form-control", required: true  %>
               </div>
             </div>
           </div>
+          <br>
           <div class="row">
             <div class="col-md-6">
               <div class="actions">
-                <%= f.submit "Sign up" %>
+                <%= f.submit "SIGN UP" %>
               </div>
             </div>
             <div class="col-md-6 text-right">
-              <%= render "devise/shared/links" %>
+              <%= link_to "Log in", new_session_path(resource_name) %>
             </div>
           </div>
         </div>

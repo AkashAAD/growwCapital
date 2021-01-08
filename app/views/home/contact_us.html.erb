@@ -29,7 +29,7 @@
         <div class="col-md-5 left-information">
           <div class="contact_information information_head clearfix">
             <h3 class="margin-bottom-25 margin-top-none">CONTACT INFORMATION</h3>
-            <div class="address clearfix margin-right-25 padding-bottom-40">
+            <div class="address clearfix margin-right-25">
               <div class="icon_address">
                 <p><i class="fa fa-map-marker"></i><strong>Address:</strong></p>
               </div>
@@ -45,7 +45,7 @@
               <ul class="margin-bottom-none">
                 <li><i class="fa fa-phone"></i><strong>Phone:</strong> <a href="tel:+918806644344">+91-88066-44344</a></li>
                 <li><i class="fa fa-envelope-o"></i><strong>Email:</strong> <a href="mailto:support@growwcapital.com">support@growwcapital.com</a></li>
-                <li class="padding-bottom-none"><i class="fa fa-laptop"></i><strong>Web:</strong> <a href="http://www.growwcapital.com/">www.growwcapital.com/</a></li>
+                <li class="padding-bottom-none"><i class="fa fa-laptop"></i><strong>Web:&nbsp;&nbsp;&nbsp;</strong> <a href="http://www.growwcapital.com/">www.growwcapital.com/</a></li>
               </ul>
             </div>
           </div>
@@ -57,10 +57,10 @@
                   <table class="table table-bordered no-border font-12px">
                     <thead>
                       <tr>
-                        <td colspan="2"><strong>Sales Department</strong></td>
+                        <td colspan="2"><strong style="font-size: 15px;">Sales Department</strong></td>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="text-align: left;">
                       <tr>
                         <td>Mon:</td>
                         <td>10:00AM - 7:00PM</td>
@@ -108,7 +108,7 @@
                   <div class="col-md-6">
                     <%= f.text_field(:last_name, class: "form-control", placeholder: "Last Name(* Required)") %>
                   </div>
-                </div>
+                </div><br>
                 <div class="row">
                   <div class="col-md-6">
                     <%= f.text_field(:email, class: "form-control", placeholder: "Email(* Required)") %>
@@ -116,7 +116,7 @@
                   <div class="col-md-6">
                     <%= f.text_field(:subject, class: "form-control", placeholder: "Subject(* Required)") %>
                   </div>
-                </div>
+                </div><br>
                 <div class="row">
                   <div class="col-md-12">
                     <%= f.text_area(:message, class: "form-control", placeholder: "Message(* Required)") %>

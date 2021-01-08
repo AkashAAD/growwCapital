@@ -15,40 +15,60 @@
   </div>
 </section>
 <section class="personal-loan-section custom-container">
-  <%= form_for @pre_approved_offer, :url => { :action => "pre_approved_offer" }, html: { id:  "pre_approved_offer", class: "pre_approved_offer" } do |f| %>
+  <div class="container p-container">
+    <%= form_for @pre_approved_offer, :url => { :action => "pre_approved_offer" }, remote: true, html: { id:  "pre_approved_offer", class: "pre_approved_offer" } do |f| %>
+      <div class="container">
+        <div class="row heading">
+          <div class="col-md-4">
+            <div class="form-group">
+              <h3>Pre Approved Offer</h3>
+            </div>
+          </div>
+        </div>
+        <div class="row first-row">
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>First Name</label>
+              <%= f.text_field(:first_name, class: "form-control") %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Last Name</label>
+              <%= f.text_field(:last_name, class: "form-control") %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="form-group">
+              <label>Mobile Number</label>
+              <%= f.number_field(:mobile_no, class: "form-control") %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">      
+            <button type="submit" class="btn btn-custom">Submit</button>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <%= form_for 'pre_off_opt', url: { controller: "home", action: "verfiy_pre_approved"}, remote: true, html: {id:  "verfiy_pre_approved", class: "verfiy_pre_approved hide-div"} do |f| %>
     <div class="container">
       <div class="row">
+        <div class="col-md-4"></div>
         <div class="col-md-4">
           <div class="form-group">
-            <h3>Pre Approved Offer</h3>
+            <h3>Verify OTP</h3>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
           <div class="form-group">
-            <span>First Name <span>*</span></span>
-            <%= f.text_field(:first_name, class: "form-control") %>
-          </div>
+            <%= number_field_tag(:otp, {},class: "form-control", value: "", required: true) %>
+          </div> 
+          <button type="submit" class="btn btn-custom">Submit</button>
+          <a href="javascript:void(o)" id="resend-otp" style="float: right;">Resend</a>
         </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Last Name <span>*</span></span>
-            <%= f.text_field(:last_name, class: "form-control") %>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <span>Mobile Number <span>*</span></span>
-            <%= f.number_field(:mobile_no, class: "form-control") %>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">      
-          <button type="submit" class="btn btn-default">Submit</button>
-        </div>
+        <div class="col-md-4"></div>
       </div>
     </div>
-  <%end%>
+  <% end %>
+  </div>
 </section>

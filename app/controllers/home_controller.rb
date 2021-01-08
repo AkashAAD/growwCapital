@@ -46,15 +46,12 @@ class HomeController < ApplicationController
       @pre_approved_offer.save
       unless @pre_approved_offer.errors.blank?
         flash[:error] = @pre_approved_offer.errors.full_messages.join(', ')
-        return redirect_to pre_approved_path
+      else
+        send_sms
       end
+    else
+      send_sms
     end
-
-    session[:pre_mobile_no] = pre_approved_offer_params[:mobile_no]
-    session[:pre_otp] = "#{(rand * 1000000).to_i}"
-    sms = SmsService.new
-    sms.send_preapproved_otp(pre_approved_offer_params, session[:pre_otp])
-    redirect_to confirm_otp_path
   end
 
   def pre_approved_status
@@ -73,11 +70,11 @@ class HomeController < ApplicationController
         @pre_approved_offer.opt_status = true
         @pre_approved_offer.save
       end
-      flash[:notice] = "Your entered OTP is vefified successfully."
-      redirect_to pre_approved_status_path + "?pre_approved_offer_id=#{@pre_approved_offer&.id}"
+      flash[:notice] = "Your entered OTP is verified successfully."
+      @url = "/pre_approved_status?pre_approved_offer_id=#{@pre_approved_offer&.id}"
+      # redirect_to pre_approved_status_path + "?pre_approved_offer_id=#{@pre_approved_offer&.id}"
     else
       flash[:error] = "Please enter correct OTP. Entered OTP is wrong!"
-      redirect_to confirm_otp_path
     end
   end
 
@@ -133,4 +130,12 @@ class HomeController < ApplicationController
   def instant_call_params
     params.require(:instant_call).permit(:full_name, :mobile_number, :email, :city)    
   end
+
+  def send_sms
+    session[:pre_mobile_no] = pre_approved_offer_params[:mobile_no]
+    session[:pre_otp] = "#{(rand * 1000000).to_i}"
+    sms = SmsService.new
+    sms.send_preapproved_otp(pre_approved_offer_params, session[:pre_otp])
+  end
+
 end

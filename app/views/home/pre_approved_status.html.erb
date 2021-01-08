@@ -23,7 +23,7 @@
       <div class="row main-thx-row"> 
         <div class="col-md-12 col-lg-12 col-sm-12 thank-row">
           <div class="congo">
-            <h3 class="float-left">CONGRATULATIONS</h3>
+            <h3 class="float-left"><%= @pre_approved_offer ? "CONGRATULATIONS" : "SORRY" %></h3>
             <h4 class="float-right">Reference Number: <%= "#{@pre_approved_offer&.reference_number}" %></h4>        
           </div>
           <div>            

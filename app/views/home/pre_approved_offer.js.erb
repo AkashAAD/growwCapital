@@ -1,0 +1,5 @@
+<% if flash[:error] %>
+  toastr["error"]('<%= flash[:error] %>', "");
+<% else %>
+  $(".verfiy_pre_approved").removeClass('hide-div');
+<% end %>

@@ -86,13 +86,13 @@
 <section class="banner-wrap">
   <div id="carosel-home-desk" class="owl-carousel">
     <div class="carosel-imgs img1"><%= image_tag "carosel/desktop/credit-card-banner.jpg", alt: "" %></div>
-    <div class="carosel-imgs img2"><%= image_tag "carosel/desktop/home-loan-banner.jpg", alt: "" %></div>
+    <div class="carosel-imgs img2"><%= image_tag "carosel/desktop/home-loan-banner.svg", alt: "" %></div>
     <div class="carosel-imgs img3"><%= image_tag "carosel/desktop/personal-loan-banner.jpg", alt: "" %></div>
   </div>
   <div id="carosel-home-mob" class="owl-carousel">
     <div class="carosel-imgs img1"><%= image_tag "carosel/mobile/credit-card-banner.jpg", alt: "" %></div>
-    <div class="carosel-imgs img2"><%= image_tag "carosel/mobile/home-loan-banner.jpg", alt: "" %></div>
-    <div class="carosel-imgs img3"><%= image_tag "carosel/mobile/personal-loan-banner.jpg", alt: "" %></div>
+    <div class="carosel-imgs img2"><%= image_tag "carosel/mobile/home-loan-banner.svg", alt: "" %></div>
+    <div class="carosel-imgs img3"><%= image_tag "carosel/mobile/personal-loan-banner.svg", alt: "" %></div>
   </div>
 </section>
 
@@ -112,7 +112,7 @@
                 <h1 class="product-name">Credit Card</h1>
                 <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card offers</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/cc-icon.png", style: "width: 35%; float: right;" %>
+                  <%= image_tag "icons/cc-icon.svg", style: "width: 35%; float: right;" %>
                 </div>
               </div>
             <%end%>
@@ -123,7 +123,7 @@
                 <h1 class="product-name">Personal Loan</h1>
                 <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card offers</p>
                 <div class="product-icon">
-                  <i class="fa fa-3x fa-user"></i>
+                  <%= image_tag "icons/personal-loan-icon.svg", style: "width: 35%; float: right;" %>
                 </div>
               </div>
             <%end%>
@@ -134,7 +134,7 @@
                 <h1 class="product-name">Transfer Personal Loan</h1>
                 <p class="product-desc">Check, track &amp; build your credit scors</p>
                 <div class="product-icon">
-                  <i class="fa fa-3x fa-user"></i>
+                  <%= image_tag "icons/transfer-personal-loan-icon.svg", style: "width: 35%; float: right;" %>
                 </div>
               </div>
             <%end%>
@@ -145,7 +145,7 @@
                 <h1 class="product-name">Business Loan</h1>
                 <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card offers</p>
                 <div class="product-icon">
-                  <i class="fa fa-3x fa-briefcase"></i>
+                  <%= image_tag "icons/business-loan-icon.svg", style: "width: 35%; float: right;" %>
                 </div>
               </div>
             <%end%>
@@ -156,7 +156,10 @@
                 <h1 class="product-name">Professional Loan</h1>
                 <p class="product-desc">Check, track &amp; build your credit score</p>
                 <div class="product-icon">
-                  <i class="fa fa-3x fa-user-md"></i>
+                  <%= image_tag "icons/professional-loan-icon.svg", style: "width: 26%;
+                  float: right;
+                  top: 15px;
+                  position: relative;" %>
                 </div>
               </div>
             <%end%>
@@ -167,7 +170,7 @@
                 <h1 class="product-name">Home Loan</h1>
                 <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card offers</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/home-loan-icon.png", style: "    width: 35%;
+                  <%= image_tag "icons/home-loan-icon.svg", style: "width: 35%;
                     float: right;
                     bottom: 15px;
                     position: relative;" %>
@@ -183,7 +186,7 @@
                 <h1 class="product-name">Transfer Home Loan</h1>
                 <p class="product-desc">Check, track &amp; build your credit score </p>
                 <div class="product-icon">
-                  <i class="fa fa-3x fa-home"></i>
+                  <%= image_tag "icons/tr-home-loan-icon.svg", style: "width: 35%; float: right;" %>
                 </div>
               </div>
             <%end%>
@@ -194,7 +197,10 @@
                 <h1 class="product-name">Loan Against Property</h1>
                 <p class="product-desc">Check, track &amp; build your credit score </p>
                 <div class="product-icon">
-                  <i class="fa fa-3x fa-building-o"></i>
+                  <%= image_tag "icons/loan-against-property-icon.svg", style: "width: 35%;
+                    float: right;
+                    bottom: 15px;
+                    position: relative;" %>
                 </div>
               </div>
             <%end%>
@@ -202,10 +208,10 @@
           <div class="col-3 col-md-4 col-lg-3 col-xl-2 ord-10 col-md-6-prd">
             <%= link_to new_car_loan_path('step1'), method: :get do %>
               <div class="pb-product active">
-                <h1 class="product-name">New  Car Loan</h1>
+                <h1 class="product-name">New Car Loan</h1>
                 <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card offers</p>
                 <div class="product-icon">
-                  <i class="fa fa-3x fa-car"></i>
+                  <%= image_tag "icons/new-car-loan-icon.svg", style: "width: 35%; float: right;" %>
                 </div>
               </div>
             <%end%>
@@ -216,7 +222,7 @@
                 <h1 class="product-name">Used Car Loan</h1>
                 <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card offers</p>
                 <div class="product-icon">
-                  <i class="fa fa-3x fa-car"></i>
+                  <%= image_tag "icons/used-car-loan-icon.svg", style: "width: 35%; float: right;" %>
                 </div>
               </div>
             <%end%>
@@ -227,7 +233,7 @@
                 <h1 class="product-name">Gold Loan</h1>
                 <p class="product-desc">Check, tcredit score for best loan &amp; card offers comming soon...</p>
                 <div class="product-icon">
-                  <i class="fa fa-3x fa-balance-scale"></i>
+                  <%= image_tag "icons/gold-loan-icon.svg", style: "width: 35%; float: right;" %>
                 </div>
               </div>
             <%end%>
@@ -238,7 +244,7 @@
                 <h1 class="product-name">Insurance</h1>
                 <div class="product-icon">
                 <p class="product-desc">Check, track &amp; build your credit score for best loan &amp; card comming soon...</p>
-                  <i class="fa fa-3x fa-heartbeat"></i>
+                  <%= image_tag "icons/insurance-icon.svg", style: "width: 28%; float: right;" %>
                 </div>
               </div>
             <%end%>
@@ -326,49 +332,49 @@
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/nagpur.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
-                    <span class="pop-city">Ahmedabad</span>
+                    <span class="pop-city">Nagpur</span>
                   </a>
                 </div>
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/mumbai.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
-                    <span class="pop-city">Ahmedabad</span>
+                    <span class="pop-city">Mumbai</span>
                   </a>
                 </div>
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/indoor.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
-                    <span class="pop-city">Ahmedabad</span>
+                    <span class="pop-city">Indoor</span>
                   </a>
                 </div>
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/kolkata.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
-                    <span class="pop-city">Ahmedabad</span>
+                    <span class="pop-city">Kolkata</span>
                   </a>
                 </div>
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/hydrabad.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
-                    <span class="pop-city">Ahmedabad</span>
+                    <span class="pop-city">Hydrabad</span>
                   </a>
                 </div>
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/pune.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
-                    <span class="pop-city">Ahmedabad</span>
+                    <span class="pop-city">Pune</span>
                   </a>
                 </div>
               </div>
@@ -376,7 +382,7 @@
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/ahmdabad.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
                     <span class="pop-city">Ahmedabad</span>
                   </a>
@@ -384,41 +390,41 @@
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/banglore.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
-                    <span class="pop-city">Ahmedabad</span>
+                    <span class="pop-city">Banglore</span>
                   </a>
                 </div>
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/chennai.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
-                    <span class="pop-city">Ahmedabad</span>
+                    <span class="pop-city">Chennai</span>
                   </a>
                 </div>
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/delhi.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
-                    <span class="pop-city">Ahmedabad</span>
+                    <span class="pop-city">Delhi</span>
                   </a>
                 </div>
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/nashik.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
-                    <span class="pop-city">Ahmedabad</span>
+                    <span class="pop-city">Nashik</span>
                   </a>
                 </div>
                 <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
                   <a title="Used cars in  Ahmedabad" href="/used-cars+in+ahmedabad">
                     <span class="iconHolder">
-                      <img alt="Ahmedabad" src="https://stimg.cardekho.com/pwa/img/IconCityNew/ahmedabad.svg" data-lazy="true" class="imageTransition active">
+                      <%= image_tag "cities/raipur.svg", "data-lazy": "true", class: "imageTransition active", alt: "Nagpur" %>
                     </span>
-                    <span class="pop-city">Ahmedabad</span>
+                    <span class="pop-city">Raipur</span>
                   </a>
                 </div>
               </div>              

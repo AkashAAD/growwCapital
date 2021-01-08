@@ -1,0 +1,6 @@
+<% if flash[:notice] %>
+  toastr["info"]('<%= flash[:notice] %>', "");
+  window.location.href = '<%= @url %>';
+<% elsif flash[:error] %>
+  toastr["error"]('<%= flash[:error] %>', "");
+<%end%>

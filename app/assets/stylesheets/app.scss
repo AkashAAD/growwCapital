@@ -1,3 +1,48 @@
+.personal-loan-section {
+  .row1 {
+    padding: 50px;
+    .col-md-6 {
+      font-size: 18px;
+    }
+  }
+  .row2 {
+    text-align: center;
+    .col-md-6 {
+      font-size: 16px;
+    }
+    label {
+      font-weight: bold;
+      color: #b4b1b1;    
+    }
+    span {
+      color: #0a3560;
+      font-size: 20px;
+    }
+  }
+}
+
+.pre_approved_offer {
+  .container {
+    .heading {
+      height: 70px;
+      background: linear-gradient(135deg,#294e9b,#6c6ea0);
+      color: #ffffff;
+      border-radius: 10px 10px 0px 0px;
+      h3 {
+        padding-top: 15px;      
+      }
+    }
+    .first-row {
+      padding-top: 20px;
+    }
+  }
+  .form-group {
+    label {
+      font-size: 18px;
+    }
+  }
+}
+
 #banner1 {
   background: url(./credit-card-banner2.jpg) top center no-repeat;
   background-size: cover;
@@ -165,8 +210,8 @@
 .slider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 12px;
+  height: 30px;
   background: #0854a0;
   cursor: pointer;
   border-radius: 100px; 
@@ -174,7 +219,7 @@
 
 .slider::-moz-range-thumb {
   width: 25px;
-  height: 25px;
+  height: 20px;
   background: #4CAF50;
   cursor: pointer;
 }

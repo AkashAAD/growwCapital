@@ -248,7 +248,7 @@ a.sbSelector:link, a.sbSelector:visited, a.sbSelector:hover {
 }
 
 .font-12px {
-	font-size: 12px;
+	font-size: 15px;
 	line-height: 18px;
 }
 
@@ -6776,7 +6776,7 @@ img.aligncenter {
 }
 
 .icon_address p {
-	font-size: 13px;
+	font-size: 15px;
 	padding-right: 8px;
 	color: #2d2d2d
 }
@@ -6792,12 +6792,12 @@ img.aligncenter {
 
 .contact_address p {
 	line-height: 24px;
-	font-size: 13px;
+	font-size: 15px;
 }
 
 .address {
 	float: left;
-	font-size: 13px;
+	font-size: 15px;
 }
 
 .address ul li {
@@ -6805,12 +6805,16 @@ img.aligncenter {
 	padding-bottom: 5px;
 }
 
+.address ul li a {
+  color: #484848;
+}
+
 .address ul li span.compayWeb_color {
 	color: #c7081b;
 }
 
 .address ul li i, .address ul li strong, .address ul li span {
-	font-size: 13px;
+	font-size: 15px;
 	color: #2d2d2d;
 	margin-right: 10px;
 }

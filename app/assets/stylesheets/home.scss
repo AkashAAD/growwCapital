@@ -18,6 +18,12 @@
   box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
   padding-top: 20px;
   border-radius: 10px;
+
+  background: url(./cities-backgrond.svg) top center no-repeat;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left;
+
 }
 
 .pb-feature-section .pb-feature {

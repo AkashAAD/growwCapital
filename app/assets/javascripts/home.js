@@ -201,7 +201,7 @@ $(document).ready(function(){
 
   $(".loanAmount").on('input', function () {
     if(this.value <=1 ){
-      this.value = 1;
+      // this.value = 1;
     } else if(this.value >= 100000) {
       this.value = 100000;
     };
@@ -220,7 +220,7 @@ $(document).ready(function(){
 
   $(".loanRoi").on('input', function () {
     if(this.value <=1 ){
-      this.value = 1;
+      // this.value = 1;
     } else if(this.value >= 100) {
       this.value = 100;
     };
@@ -239,7 +239,7 @@ $(document).ready(function(){
 
   $(".loanTen").on('input', function () {
     if(this.value <=1 ){
-      this.value = 1;
+      // this.value = 1;
     } else if(this.value >= 500) {
       this.value = 500;
     };

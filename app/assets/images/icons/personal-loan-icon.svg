@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2020 (64-Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="11.1067mm" height="11.7717mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 160.91 170.54"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:black;stroke-width:2.9;stroke-miterlimit:22.9256}
+    .fil2 {fill:none}
+    .fil1 {fill:black}
+    .fil0 {fill:#99CC99}
+    .fil4 {fill:#ED6262}
+    .fil3 {fill:#F5D9BA}
+   ]]>
+  </style>
+     <clipPath id="id0">
+      <path d="M22.24 41.21l110.98 -39.36 18.86 53.18 -110.98 39.36 -18.86 -53.18z"/>
+     </clipPath>
+     <clipPath id="id1">
+      <path d="M41.7 39.07l117.75 0 0 56.42 -117.75 0 0 -56.42z"/>
+     </clipPath>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2773802994800">
+   <g>
+    <polygon class="fil0" points="22.24,41.21 133.22,1.85 152.08,55.03 41.1,94.39 "/>
+    <g style="clip-path:url(#id0)">
+     <g>
+      <circle class="fil1 str0" transform="matrix(0.942476 -0.334274 0.334274 0.942476 25.3952 41.7901)" r="15.69"/>
+      <circle class="fil1 str0" transform="matrix(0.942476 -0.334274 0.334274 0.942476 41.2499 94.3756)" r="15.69"/>
+      <circle class="fil1 str0" transform="matrix(0.942476 -0.334274 0.334274 0.942476 132.297 3.49194)" r="15.69"/>
+      <circle class="fil1 str0" transform="matrix(0.942476 -0.334274 0.334274 0.942476 151.546 54.1757)" r="15.69"/>
+     </g>
+    </g>
+    <polygon class="fil2 str0" points="22.24,41.21 133.22,1.85 152.08,55.03 41.1,94.39 "/>
+    <path class="fil1" d="M73.04 41.33c4.21,-1.49 9.1,-3.6 11.17,-0.59l-8.61 3.05c-0.17,1.18 -0.39,1.97 -0.57,3.15l10.48 -3.72c2.5,7.57 -8.64,6.52 -7.61,9.44 0.88,2.47 1.09,1.78 4.85,4.18l9.38 5.77c2.52,1.69 2.8,0.86 6.42,-0.42 -0.77,-1.13 -2.51,-1.9 -3.71,-2.66l-11.68 -7.47c4.33,-1.54 7.83,-6.16 6.46,-10.3l3.74 -1.33c-0.1,-1.19 0.37,-1.77 0.57,-3.15l-5.24 1.86c-0.61,-1.35 -1.29,-1.77 -2.19,-2.6l4.87 -1.73c-0.32,-3.96 5.92,-5.47 -16.78,2.58 -1.24,0.44 -1.4,2.84 -1.56,3.92z"/>
+   </g>
+   <g>
+    <polygon class="fil0" points="41.7,39.07 159.46,39.07 159.46,95.5 41.7,95.5 "/>
+    <g style="clip-path:url(#id1)">
+     <g>
+      <circle class="fil1 str0" cx="44.48" cy="40.67" r="15.69"/>
+      <circle class="fil1 str0" cx="41.85" cy="95.53" r="15.69"/>
+      <circle class="fil1 str0" cx="158.03" cy="40.31" r="15.69"/>
+      <circle class="fil1 str0" cx="159.23" cy="94.51" r="15.69"/>
+     </g>
+    </g>
+    <polygon class="fil2 str0" points="41.7,39.07 159.46,39.07 159.46,95.5 41.7,95.5 "/>
+    <path class="fil1" d="M89.54 56.17c4.47,0 9.78,-0.36 10.72,3.18l-9.14 0c-0.56,1.05 -1.03,1.73 -1.59,2.78l11.12 0c-0.18,7.97 -10.33,3.25 -10.33,6.36 0,2.62 0.43,2.05 3.18,5.56l6.91 8.58c1.81,2.44 2.35,1.75 6.19,1.75 -0.35,-1.32 -1.73,-2.63 -2.61,-3.75l-8.51 -10.95c4.59,0 9.44,-3.19 9.53,-7.55l3.97 0c0.31,-1.16 0.94,-1.55 1.59,-2.78l-5.56 0c-0.12,-1.48 -0.62,-2.1 -1.19,-3.18l5.16 0c1.02,-3.83 7.4,-3.18 -16.68,-3.18 -1.31,0 -2.27,2.2 -2.78,3.18z"/>
+   </g>
+   <g>
+    <path class="fil2 str0" d="M1.23 131.07l19.63 1.23c0,0 3.68,2.45 4.91,8.59l0 24.53c0,0 -2.45,3.68 -6.13,3.68l-19.63 0"/>
+    <path class="fil3 str0" d="M63.78 131.07l31.89 0c0,0 12.27,-9.81 6.13,-19.63l-45.38 1.23c0,0 -25.76,19.47 -28.21,24.53 -2.45,5.06 -1.23,26.99 -1.23,26.99 0,0 80.95,-4.91 83.41,-7.36 2.45,-2.45 47.84,-29.44 47.84,-33.12 0,-3.68 -4.91,-14.72 -34.34,-1.23 0,0 -34.34,19.63 -60.1,8.59z"/>
+    <rect class="fil4" x="8.58" y="133.52" width="15.4" height="34.34" rx="3.55" ry="3.55"/>
+   </g>
+  </g>
+ </g>
+</svg>
