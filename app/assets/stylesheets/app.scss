@@ -1,4 +1,8 @@
 .profile-container {
+  h4 {
+    padding: 20px;
+    color: #3c9e86;
+  }
   margin: 0 auto;
   table {
     td {
@@ -604,7 +608,7 @@ textarea.error, input.error, select.error {
         color: #000000;
       }
       a:hover {
-        color: #ffffff;
+        color: #2069d1;
       }
     }
     li:hover {

@@ -20,9 +20,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    meth = params[:user][:password].blank? ? "update_without_password" : "update"
+    respond_to do |format|
+      if @user.send(meth, user_params)
+        format.html { redirect_to home_profile_path, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @user }
+      else
+        format.html { render :edit }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # DELETE /resource
   # def destroy
@@ -59,4 +68,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :profession, :mobile_number, :full_address, :profile_image)
+  end
 end
