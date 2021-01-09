@@ -25,6 +25,11 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations'
   }
 
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
+
   resources :business_loan do
     collection do
       post  :create_business_offer

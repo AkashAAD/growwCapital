@@ -1,16 +1,38 @@
-<section id="secondary-banner" class="dynamic-image-5">
+<section class="personal-loan-section custom-container">
   <div class="container">
-    <div class="row align-items-end">
-      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-        <h2>My Profile</h2>
-        <h4></h4>
-      </div>
-      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-        <ul class="breadcrumb">
-          <li><a href="#">Home</a></li>
-          <li>My Profile</li>
-        </ul>
-      </div>
+    <div class="col-md-6 p-container profile-container text-center">
+      <h4>Welcome to Growwcapital <%= current_user&.full_name %></h4>
+      <table class="table">
+        <tr>
+          <td colspan="2">
+            <%= image_tag "default-img.jpg", class: "default-img" %>
+          </td>          
+        </tr>
+        <tr>
+          <td>First Name</td>
+          <td><%= current_user&.first_name %></td>
+        </tr>
+        <tr>
+          <td>Last Name</td>
+          <td><%= current_user&.last_name %></td>
+        </tr>
+        <tr>
+          <td>Mobile Number</td>
+          <td><%= current_user&.mobile_number %></td>
+        </tr>
+        <tr>
+          <td>Address</td>
+          <td><%= current_user&.full_address %></td>
+        </tr>
+        <tr>
+          <td>Profession</td>
+          <td><%= current_user&.profession %></td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td><%= current_user&.email %></td>
+        </tr>
+      </table>
     </div>
   </div>
 </section>
