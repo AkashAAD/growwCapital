@@ -72,6 +72,59 @@
   }
 }
 
+#pre-apv-banner {
+  background-image: url(./pre-approved.jpg);
+  height: 470px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 50px;
+  width: 100%;
+}
+
+#abt-us-banner {
+  background-image: url(./about-us.jpg);
+  height: 470px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 50px;
+  width: 100%;
+}
+
+#emi-calc-banner {
+  background-image: url(./emi-calculator.jpg);
+  height: 470px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 50px;
+  width: 100%;
+}
+
+#blog-banner {
+  background-image: url(./blog.jpg);
+  height: 470px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 50px;
+  width: 100%;
+}
+
+#cont-us-banner {
+  background-image: url(./contact-us.jpg);
+  height: 470px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin-top: 50px;
+  width: 100%;
+}
+
+.bg-img {
+  background-image: url(./registration.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 470px;
+}
+
 .card-section {
   .container-card {
     width: 40%;
@@ -755,6 +808,17 @@ textarea.error, input.error, select.error {
   #banner1 {
     background: url(./mobile/credit-card-banner.jpg) top center no-repeat;
     .container-banner1 {
+      h2 {
+        font-size: 20px;
+      }
+      h4 {
+        font-size: 15px;
+      }
+    }
+  }
+  #pre-apv-banner {
+    background: url(./pre-approved.jpg) top center no-repeat;
+    .cnt-pre-apv-banner {
       h2 {
         font-size: 20px;
       }
