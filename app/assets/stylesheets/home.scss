@@ -1,3 +1,6 @@
+.homepage {
+  margin-top: 0px;
+}
 #carosel-home-desk {
   display: block;
   .owl-nav .owl-prev {
@@ -5,6 +8,9 @@
   }
   .owl-nav .owl-next {
     right: 10px;
+  }
+  img {
+    border-bottom: 1px solid #ececec;
   }
 }
 
@@ -23,7 +29,7 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: left;
-
+  background-color: #ebf3fa;
 }
 
 .pb-feature-section .pb-feature {

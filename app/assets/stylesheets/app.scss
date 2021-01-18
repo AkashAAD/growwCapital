@@ -74,16 +74,17 @@
 
 #pre-apv-banner {
   background-image: url(./pre-approved.png);
-  height: 470px;
+  height: 400px;
   background-size: contain;
   background-repeat: no-repeat;
   margin-top: 50px;
   width: 100%;
+  border-bottom: 1px solid #ececec;
 }
 
 #abt-us-banner {
   background-image: url(./about-us.png);
-  height: 470px;
+  height: 400px;
   background-size: contain;
   background-repeat: no-repeat;
   margin-top: 50px;
@@ -92,7 +93,7 @@
 
 #emi-calc-banner {
   background-image: url(./emi-calculator.png);
-  height: 470px;
+  height: 430px;
   background-size: contain;
   background-repeat: no-repeat;
   margin-top: 50px;
@@ -101,7 +102,7 @@
 
 #blog-banner {
   background-image: url(./blog.png);
-  height: 470px;
+  height: 400px;
   background-size: contain;
   background-repeat: no-repeat;
   margin-top: 50px;
@@ -110,7 +111,7 @@
 
 #cont-us-banner {
   background-image: url(./contact-us.png);
-  height: 470px;
+  height: 400px;
   background-size: contain;
   background-repeat: no-repeat;
   margin-top: 50px;
@@ -560,6 +561,12 @@ textarea.error, input.error, select.error {
 .custom-container {
   padding: 50px 0px 50px 0px;
   margin-top: 50px;
+}
+
+.emi-calcul {
+  .container {
+    padding: 0px 50px 50px 50px;
+  }
 }
 
 .ind-section {
