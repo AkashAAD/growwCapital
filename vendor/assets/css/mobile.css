@@ -1931,7 +1931,7 @@ header .left_bar {
 }
 
 .dropdown .dropdown-menu li.dropdown .dropdown-menu, header .navbar-nav.pull-right>li>.dropdown-menu, header .navbar-nav>li>.dropdown-menu {
-	background: rgba(0, 0, 0, 0.65);
+	background: #ffffff;
 }
 
 .dropdown .dropdown-menu li.dropdown .dropdown-menu>li>a {

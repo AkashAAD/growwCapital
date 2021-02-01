@@ -760,7 +760,7 @@ header .navbar-nav li.dropdown .dropdown-menu li.dropdown:hover .dropdown-menu {
 }
 
 header .navbar-nav>li>.dropdown-menu >li>a {
-	padding: 9px 20px;
+	padding: 10px 10px;
 }
 
 header.affix .dropdown .dropdown-menu li.dropdown .dropdown-menu>li>a {
@@ -787,7 +787,7 @@ header .navbar-nav li.dropdown .dropdown-menu li.dropdown.other_side .dropdown-m
 .navbar .navbar-nav li .dropdown-menu>li>a {
 	font-weight: 600;
 	font-size: 13px;
-	color: #fff;
+	color: #544c4c !important;
 	font-family: 'Source Sans Pro', sans-serif;
 	transition-duration: .15s;
 	display: block;

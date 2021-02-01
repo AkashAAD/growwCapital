@@ -39,8 +39,25 @@
               </div>
               <div class="desktop-menu-dropdown collapse navbar-collapse" id="navbar-collapse-desktop">
                 <ul class="nav navbar-nav pull-right desktop-nav">
-                  <li class="<%= active_tab('index') %>">
-                    <%= link_to "Home", root_path, method: :get %>
+                  <%if request.path != '/' %>
+                    <li class="<%= active_tab('index') %>">
+                      <%= link_to "Home", root_path, method: :get %>
+                    </li>
+                  <%end%>
+                  <li class="dropdown">
+                      <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">All Products</a>
+                      <ul class="dropdown-menu">
+                        <li><%= link_to "Credit Card", credit_card_path('step1'), method: :get %></li>
+                        <li><%= link_to "Personal Loan", personal_loan_path('step1'), method: :get %></li>
+                        <li><%= link_to "Transfer Personal Loan", transfer_personal_loan_path('step1'), method: :get %></li>
+                        <li><%= link_to "Business Loan", business_loan_path('step1'), method: :get %></li>
+                        <li><%= link_to "Professional Loan", professional_loan_path('step1'), method: :get %></li>
+                        <li><%= link_to "Home Loan", home_loan_path('step1'), method: :get %></li>
+                        <li><%= link_to "Transfer Home Loan", transfer_home_loan_path('step1'), method: :get %></li>
+                        <li><%= link_to "Loan Against Property", loan_against_property_path('step1'), method: :get %></li>
+                        <li><%= link_to "New Car Loan", new_car_loan_path('step1'), method: :get %></li>
+                        <li><%= link_to "Used Car Loan", used_car_loan_path('step1'), method: :get %></li>
+                      </ul>
                   </li>
                   <li class="<%#= active_tab('pre_approved') %>">
                     <%= link_to "Pre-Approved Offers", pre_approved_path, method: :get %>
@@ -73,8 +90,25 @@
               </div>
               <div class="mobile-menu-dropdown collapse navbar-collapse" id="navbar-collapse-mobile">
                 <ul class="nav navbar-nav pull-right">
-                  <li class="<%= active_tab('index') %>">
-                    <%= link_to "Home", root_path, method: :get %>
+                  <%if request.path != '/' %>
+                    <li class="<%= active_tab('index') %>">
+                      <%= link_to "Home", root_path, method: :get %>
+                    </li>
+                  <%end%>
+                  <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">All Products</a>
+                    <ul class="dropdown-menu">
+                      <li><%= link_to "Credit Card", credit_card_path('step1'), method: :get %></li>
+                      <li><%= link_to "Personal Loan", personal_loan_path('step1'), method: :get %></li>
+                      <li><%= link_to "Transfer Personal Loan", transfer_personal_loan_path('step1'), method: :get %></li>
+                      <li><%= link_to "Business Loan", business_loan_path('step1'), method: :get %></li>
+                      <li><%= link_to "Professional Loan", professional_loan_path('step1'), method: :get %></li>
+                      <li><%= link_to "Home Loan", home_loan_path('step1'), method: :get %></li>
+                      <li><%= link_to "Transfer Home Loan", transfer_home_loan_path('step1'), method: :get %></li>
+                      <li><%= link_to "Loan Against Property", loan_against_property_path('step1'), method: :get %></li>
+                      <li><%= link_to "New Car Loan", new_car_loan_path('step1'), method: :get %></li>
+                      <li><%= link_to "Used Car Loan", used_car_loan_path('step1'), method: :get %></li>
+                    </ul>
                   </li>
                   <li class="<%= active_tab('pre_approved') %>">
                     <%= link_to "Pre Approved Offers", pre_approved_path, method: :get %>
