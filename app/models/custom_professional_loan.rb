@@ -1,0 +1,2 @@
+class CustomProfessionalLoan < ApplicationRecord
+end

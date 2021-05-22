@@ -1,0 +1,161 @@
+<section>
+  <div class="container  custom-container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center">Apply For Personal Loan</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container custom-application">
+  <div class="row">
+    <div class="col-md-7">
+      <p>Please provide following details for the application</p>
+      <%= form_for @personal_loan, :url => { :action => "personal_loan" }, remote: false, html: { class: "custom_personal_loan" } do |f| %>
+          <div class="form-group">
+            <label>Your Full Name</label>
+            <%= f.text_field(:full_name, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <label>Your Mobile Number</label>
+            <%= f.number_field(:mobile_number, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <label>Your Email</label>
+            <%= f.text_field(:email, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <label>Your Purpose of Loan</label>
+            <%= f.select(:loan_purpose, @personal_loan.loan_purpose, class: "form-control") %>
+          </div>
+          <button type="submit" class="btn btn-custom btn-block">Submit</button>
+          <br>
+          <p class="text-center">OR</p>
+          <p class="text-center"> You can directly <%= link_to "Apply from here", personal_loan_path('step1'), method: :get %></p><br>
+      <%end%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="credit-card-banks owl-carousel">
+        <% PersonalLoanBank.all.uniq.each do |card| %>
+          <div class="part-img-effect"><%= image_tag url_for(card.bank_image), width: 200, height: 100 %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+<div class="container application-description">
+  <div class="row">
+    <div class="col-md-7">
+      <br>
+      <h4>Eligibility Personal Loan lowest interest personal loan nagpur.</h4>
+      <p>If you’re looking to get personal loan for any emergency or generally we can help you identify the best bank offering lowest interest rates and minimum documentation and paperwork. We have helped people get loans sanctioned and disbursed in hours! For more information on how we can help you click on this link</p>
+      <h3><i>Apply for Personal Loan with Lowest Interest Rate From Over 25 Banks</i></h3>
+      <p><strong>About Personal Loan</strong></p>
+      <p>A Personal Loan is an unsecured loan, meaning the borrower is not required to pledge a collateral security to be granted the funds by an institution he or she is applying to. Availing personal loan is easy. Our Financial Assistant will come and explain everything and collect all the documents and initiate the process.  You can also apply online, on approval funds will be transferred into your bank account.  You may use the money to meet almost any expense.</p>
+      <p><strong>How can you use Personal Loan?</strong></p>
+      <p>Personal loan helps you to meet a wide range of financial requirements that may include medical crises, home improvement or renovation, education, debt consolidation, travel, or wedding</p>
+      <p><strong>What is the Rate of Interest for Personal Loan?</strong></p>
+      <p>Minimum rate of interest 9.5% and maximum 25%</p>
+      <p><strong>Personal Loan Upper & Lower Limit & Repayment Clause:</strong></p>
+      <p>An Individual can apply for personal loan from INR 100,000 to INR 40,00,000 (one lac to forty lac) and repayment period for the same can be anywhere between one year and 5 years.</p>
+      <p>How quickly can a bank disburse personal Loan?</p>
+      <p>Personal loan can take anywhere between one hour and 3 days  to come into your bank account.</p>
+      <p><strong>Documents, Age Limit, & Other Criteria to Apply For Personal Loan</strong></p>
+      <p>To get your personal loan approved, you are required to meet the eligibility criteria, which are as follows:</p>
+      <ul>
+        <li>Minimum documents required. Just KYC and income proof.</li>
+        <li>You have to be a residing citizen of India.</li>
+        <li>Between 23 and 55 years of age.</li>
+        <li>Employed with a corporate, public, MNC, or private company.</li>
+        <li>Meet the salary requirement based on your present residence city or town.</li>
+        <li>To apply for a loan you should be 21 years old. Maximum age can be up to 60 years for salaried employees. 65 years for self-employed professionals at the time of loan maturity. However, age criteria may vary from institution to institution.</li>
+        <li>If all the above criteria match with your banks requirements, you qualify for a loan.</li>
+      </ul>
+      <p><strong>How to Apply for Personal Loan</strong></p>
+      <ul>
+        <li>Our Financial Assistant will be at your service from start to finish.</li>
+        <li>He or she will guide and assist you fill in the online application form with your personal, employment and financial details.</li>
+        <li>Help you choose an amount and opt for an appropriate repayment plan to get quick approval</li>
+        <li>Our executive will be in touch with the lender bank to keep you posted and get disbursement as early as he can. Many a times we have got approval for clients within 24 hours!</li>
+      </ul>
+      <p>We’re here to answer all your questions and more. Give us a call on <a href="tel:+918806644344">+91-88066-44344</a></p>
+      <a href="/home/personal_loan">Apply Loan Today</a>
+      <p>Fill The form and get the all loan approval as soon as possible!</p>
+      <p><strong>Our other services:</strong></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div style="margin-bottom: 100px;" class="other-services">
+        <%= link_to custom_credit_card_path, method: :get do %>
+            <%= image_tag "icons/cc-icon.svg", style: "width: 25px;" %>
+            Credit Card
+        <%end%>
+        <%= link_to custom_transfer_personal_loan_path, method: :get do %>
+          <%= image_tag "icons/transfer-personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transgfer Personal Loan
+        <%end%>
+        <%= link_to custom_business_loan_path, method: :get do %>
+          <%= image_tag "icons/business-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Business Loan
+        <%end%>
+        <%= link_to custom_professional_loan_path, method: :get do %>
+          <%= image_tag "icons/professional-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Professional Loan
+        <%end%>
+        <%= link_to custom_home_loan_path, method: :get do %>
+          <%= image_tag "icons/home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Home Loan
+        <%end%>
+        <br><br>
+        <%= link_to custom_transfer_home_loan_path, method: :get do %>
+          <%= image_tag "icons/tr-home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transfer Home Loan
+        <%end%>
+        <%= link_to custom_loan_against_property_path, method: :get do %>
+          <%= image_tag "icons/loan-against-property-icon.svg", style: "width: 25px;" %>&nbsp;
+          Loan Against Property
+        <%end%>
+        <%= link_to custom_new_car_loan_path, method: :get do %>
+          <%= image_tag "icons/new-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          New Car Loan
+        <%end%>
+        <%= link_to custom_used_car_loan_path, method: :get do %>
+          <%= image_tag "icons/used-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Used Car Loan
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.credit-card-banks').owlCarousel({
+      loop:true,
+      margin:10,
+      items: 3,
+      nav:true,
+      autoplay:true,
+      autoplayTimeout:5000,
+      autoplayHoverPause:true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1200:{
+          items: 5
+        },
+        1000:{
+          items: 5
+        }
+      }
+    });
+  });
+</script>

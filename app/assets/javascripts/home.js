@@ -38,6 +38,157 @@ $(document).ready(function(){
 		}
 	});
 
+  $("#new_custom_credit_card").validate({
+    rules: {
+      "custom_credit_card[full_name]": {
+        required: true
+      },
+      "custom_credit_card[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_credit_card[email]": {
+        required: true,
+        email: true
+      },
+      "custom_credit_card[loan_purpose]": {
+        required: true
+      }
+    },
+    messages: {
+      "custom_credit_card[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_credit_card[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_credit_card[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_credit_card[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
+    },
+    invalidHandler: function(event, validator) {
+      $(".form-group").css({"padding-bottom": "0px !important"});
+    }
+  });
+
+  $("#new_custom_personal_loan").validate({
+    rules: {
+      "custom_personal_loan[full_name]": {
+        required: true
+      },
+      "custom_personal_loan[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_personal_loan[email]": {
+        required: true,
+        email: true
+      },
+      "custom_personal_loan[loan_purpose]": {
+        required: true
+      }
+    },
+    messages: {
+      "custom_personal_loan[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_personal_loan[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_personal_loan[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_personal_loan[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
+    },
+    invalidHandler: function(event, validator) {
+      $(".form-group").css({"padding-bottom": "0px !important"});
+    }
+  });
+
+  $("#new_custom_transfer_personal_loan").validate({
+    rules: {
+      "custom_transfer_personal_loan[full_name]": {
+        required: true
+      },
+      "custom_transfer_personal_loan[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_transfer_personal_loan[email]": {
+        required: true,
+        email: true
+      },
+      "custom_transfer_personal_loan[loan_purpose]": {
+        required: true
+      }
+    },
+    messages: {
+      "custom_transfer_personal_loan[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_transfer_personal_loan[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_transfer_personal_loan[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_transfer_personal_loan[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
+    },
+    invalidHandler: function(event, validator) {
+      $(".form-group").css({"padding-bottom": "0px !important"});
+    }
+  });
+
+  $("#new_custom_business_loan").validate({
+    rules: {
+      "custom_business_loan[full_name]": {
+        required: true
+      },
+      "custom_business_loan[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_business_loan[email]": {
+        required: true,
+        email: true
+      },
+      "custom_business_loan[loan_purpose]": {
+        required: true
+      }
+    },
+    messages: {
+      "custom_business_loan[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_business_loan[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_business_loan[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_business_loan[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
+    },
+    invalidHandler: function(event, validator) {
+      $(".form-group").css({"padding-bottom": "0px !important"});
+    }
+  });
 
   $("#instant-call").validate({
     rules: {

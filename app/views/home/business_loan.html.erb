@@ -1,0 +1,227 @@
+<section>
+  <div class="container  custom-container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center">Apply For Business Loan</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container custom-application">
+  <div class="row">
+    <div class="col-md-7">
+      <p>Please provide following details for the application</p>
+      <%= form_for @business_loan, :url => { :action => "business_loan" }, remote: false, html: { class: "custom_credit_card" } do |f| %>
+          <div class="form-group">
+            <label>Your Full Name</label>
+            <%= f.text_field(:full_name, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <label>Your Mobile Number</label>
+            <%= f.number_field(:mobile_number, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <label>Your Email</label>
+            <%= f.text_field(:email, class: "form-control") %>
+          </div>
+          <div class="form-group">
+            <label>Your Purpose of Loan</label>
+            <%= f.select(:loan_purpose, @business_loan.loan_purpose, class: "form-control") %>
+          </div>
+          <button type="submit" class="btn btn-custom btn-block">Submit</button>
+          <br>
+          <p class="text-center">OR</p>
+          <p class="text-center"> You can directly <%= link_to "Apply from here", business_loan_path('step1'), method: :get %></p><br>
+      <%end%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="credit-card-banks owl-carousel">
+        <% BusinessLoanBank.all.each do |card| %>
+          <div class="part-img-effect"><%= image_tag url_for(card.bank_image), width: 200, height: 100 %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+<div class="container application-description">
+  <div class="row">
+    <div class="col-md-7">
+      <br>
+      <h4>Interest rate business loans best banks start-up business loans for women.</h4>
+      <p>If you are looking for best banks to get business loans, we are here at your service. Just give us a call and we will share all possible information to help you take an informed decision and offer all the advice ahead of applying for loans</p>
+      <p><h3><i>We Deal with Best Banks for Business Loans, Women’s Loan, Government Business Loan and more!</i></h3></p>
+      <p><strong>Business Loan Details</strong></p>
+      <table class="table">
+        <tr>
+          <td>Interest Rate</td>
+          <td>18% Onwards</td>
+        </tr>
+        <tr>
+          <td>Processing Fee</td>
+          <td>Up to 3% on loan amt.</td>
+        </tr>
+        <tr>
+          <td>Loan Period</td>
+          <td>5 years</td>
+        </tr>
+        <tr>
+          <td>Lowest EMI per lac</td>
+          <td>2539 for 5 years</td>
+        </tr>
+      </table>
+      <ul>
+        <li>Compare and get lowest interest bearing business loan offers for salaried and self-employed.</li>
+        <li>Option of flexi loans and zero prepayment charges also available.</li>
+        <li>Apply business loan online without any security or collateral</li>
+      </ul>
+      <p><strong>Types of Business Loan</strong></p>
+      <div style="margin-left: 20px;">
+        <p><strong>Secured Loans</strong></p>
+        <p>These loans are taken against personal guarantee comprising valuable assets as collateral. Some such business loans include loan to buy equipment, inventory loans, term loans, property loan etc.</p>
+        <p><strong>Unsecured Loans</strong></p>
+        <p>Unsecured business loans are generally obtained by service class or self-employed and this type of loan does not require any collateral security. The reasons are as follows:</p>
+        <p>Short repayment period sometimes of 5 -15 days, much shorter compared to secured loans.</p>
+        <p>Collateral or security not required for such type of loan. It is the best option if borrower is in need of urgent money and does not want to rely on friends, relatives or local money lenders for example medical emergency or seasonal business expenses.</p>
+        <p>To know more about business loan, you can call us on....</p>
+      </div>
+      <p><strong>Business Loan Eligibility</strong></p>
+      <p>Age Limit: 18 - 65 years</p>
+      <p>Credit Score: Good credit score with no past loan default record.</p>
+      <p>Annual Turnover: INR. 10 lakh for already operational enterprises.</p>
+      <p><strong>If you belong to any of the below mentioned categories, we help to avail of business loan</strong></p>
+      <ul>
+        <li>Self-employed individuals and professionals like CA, doctors, CS, Architects etc.</li>
+        <li>Startup Enterprises</li>
+        <li>MSMEs</li>
+        <li>Artisans, Retailers, Manufacturers and Traders</li>
+        <li>Private and Public Limited Companies</li>
+        <li>Sole Proprietors, Partnership firms, Limited Liability Partnerships and Large businesses into Manufacturing, Trading or Services sectors</li>
+        <li>NGOs, Co-operative Societies and Trusts</li>
+      </ul>
+      <p><strong>Documents required for submission of Business Loan application</strong></p>
+      <ul>
+        <li>Legibly filled application (can also avail online application submission facility) with 2 passport-sized photographs</li>
+        <li>Applicant KYC, PAN, Passport, & Aadhar Card; Driving License, Voter ID card, any of the Utility Bills (Water/Electricity)</li>
+        <li>Bank statement of current one year</li>
+        <li>Annual Business Turnover Criteria: Min Rs. 10 lakh or above (for existing businesses or enterprises)</li>
+        <li>Non-Collateral Overdraft</li>
+        <li>Photocopy of Business Incorporation</li>
+      </ul>
+      <p><strong>What about fees & other charges to get personal loan?</strong></p>
+      <p>It varies depending on several factors and also from bank to bank. It generally has to do with the loan amount, interest rate & repayment period.</p>
+      <p><strong>How to Apply for Business from <a href="/">Growwcapital</a></strong></p>
+      <p>Follow the mentioned steps:</p>
+      <ul>
+        <li>Fill and submit the form given above. We ask you to furnish basic details.</li>
+        <li>You’ll receive a call back from <a href="/">Growwcapital</a> within 24 hours</li>
+        <li>You can get all the information and answers from the caller with regard to which loan would best serve you’re propose, special offers currently available, loans available for farmers, women etc.</li>
+        <li>We visit your office or residence on a pre-appointed and mutually convenient time to complete all the paper work and fill and submit the form online in front of you.</li>
+        <li>We can also guide you over phone or video chat to fill your own form online from your own device.</li>
+        <li>We will keep you posted about approval status.</li>
+        <li>We will keep track of disbursement.</li>
+        <li>After submitting the details, our Help Desk will get in touch with you to verify the submitted details and to finalize the discussion on the chosen loan deal.</li>
+        <li>We will send your business loan application to respective bank for next stage of verification.</li>
+        <li>Bank’s representative may also get in touch with you ahead of proceeding with loan formalities.</li>
+        <li>After your loan application is approved, it amount shall get disbursed in the registered bank account.</li>
+      </ul>
+      <p><strong>We can help you with the following types of business loans:</strong></p>
+      <ul>
+        <li>Term Loans</li>
+        <li>Working Capital Loans</li>
+        <li>Overdraft loans</li>
+        <li>Letter of Credit</li>
+        <li>Bill(invoice) Discounting</li>
+        <li>Point of Sale Loan</li>
+        <li>If there are special business loan schemes launched by government in your category, we will share the information to help you get maximum benefit.</li>
+      </ul>
+      <p><strong>What is the best credit score or CIBIL score to get instant business loan sanctioned?</strong></p>
+      <p>CIBIL score between 7and 900 or is considered good by financial institutions.</p>
+      <p><strong>Will you help me in choosing the perfect repayment period for business loans?</strong></p>
+      <p>Yes we will. If you’re planning to avail of short-term loan then we suggest you to limit your repayment tenure to not exceed 12 months. If the amount is bigger, we advise you to keep the maximum repayment period up to 5 years.</p>
+      <p><strong>What about GST’s impact on business loans for new businesses?</strong></p>
+      <p>GST plays an important role in getting business loans. The more the GST you pay, larger the business volume. Banks consider such applicants more reliable and their chances of loan being granted are better.</p>
+      <p><strong>Is there an age limit to apply for Business Loan?</strong></p>
+      <p>Yes, you can apply for loan only if you have completed 18 years of age or more at the time of business loan application.</p>
+      <p><strong>Submission of any collateral to the bank required while applying for a business loan?</strong></p>
+      <p>No, no need to submit any collateral to the bank or NBFC, for few specific secured business loans, collateral is required. We have discussed this issue in the beginning.</p>
+      <p><strong>Are there pre closure and part-prepayment charges?</strong></p>
+      <p>Yes. The pre-closure & part-payment charges are different from bank to bank. While some banks may not charge anything, in some banks it may exceed up to 4%-5% of the loan amount.</p>
+      <p>We’re here to answer all your questions and more. Give us a call on <a href="tel:+918806644344">+91-88066-44344</a></p>
+      <p><strong>Our other services:</strong></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="other-services">
+        <%= link_to custom_credit_card_path, method: :get do %>
+            <%= image_tag "icons/cc-icon.svg", style: "width: 25px;" %>
+            Credit Card
+        <%end%>
+        <%= link_to custom_personal_loan_path, method: :get do %>
+          <%= image_tag "icons/personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Personal Loan
+        <%end%>
+        <%= link_to custom_transfer_personal_loan_path, method: :get do %>
+          <%= image_tag "icons/transfer-personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transgfer Personal Loan
+        <%end%>
+        <%= link_to custom_professional_loan_path, method: :get do %>
+          <%= image_tag "icons/professional-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Professional Loan
+        <%end%>
+        <%= link_to custom_home_loan_path, method: :get do %>
+          <%= image_tag "icons/home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Home Loan
+        <%end%>
+        <br><br>
+        <%= link_to custom_transfer_home_loan_path, method: :get do %>
+          <%= image_tag "icons/tr-home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transfer Home Loan
+        <%end%>
+        <%= link_to custom_loan_against_property_path, method: :get do %>
+          <%= image_tag "icons/loan-against-property-icon.svg", style: "width: 25px;" %>&nbsp;
+          Loan Against Property
+        <%end%>
+        <%= link_to custom_new_car_loan_path, method: :get do %>
+          <%= image_tag "icons/new-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          New Car Loan
+        <%end%>
+        <%= link_to custom_used_car_loan_path, method: :get do %>
+          <%= image_tag "icons/used-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Used Car Loan
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.credit-card-banks').owlCarousel({
+      loop:true,
+      margin:10,
+      items: 3,
+      nav:true,
+      autoplay:true,
+      autoplayTimeout:5000,
+      autoplayHoverPause:true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1200:{
+          items: 5
+        },
+        1000:{
+          items: 5
+        }
+      }
+    });
+  });
+</script>

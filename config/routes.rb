@@ -17,6 +17,18 @@ Rails.application.routes.draw do
   get "pre_approved_status" => "home#pre_approved_status", as: "pre_approved_status"
   post "verfiy_pre_approved" => "home#verfiy_pre_approved", as: "verfiy_pre_approved"
   get "confirm_otp" => "home#confirm_otp", as: "confirm_otp"
+  get "thank_you" => "home#thank_you", as: "thank_you"
+
+  match "home/credit_card" => "home#credit_card", as: :custom_credit_card, via: [:get, :post]
+  match "home/personal_loan" => "home#personal_loan", as: :custom_personal_loan, via: [:get, :post]
+  match "home/transfer_personal_loan" => "home#transfer_personal_loan", as: :custom_transfer_personal_loan, via: [:get, :post]
+  match "home/business_loan" => "home#business_loan", as: :custom_business_loan, via: [:get, :post]
+  match "home/professional_loan" => "home#professional_loan", as: :custom_professional_loan, via: [:get, :post]
+  match "home/home_loan" => "home#home_loan", as: :custom_home_loan, via: [:get, :post]
+  match "home/transfer_home_loan" => "home#transfer_home_loan", as: :custom_transfer_home_loan, via: [:get, :post]
+  match "home/loan_against_property" => "home#loan_against_property", as: :custom_loan_against_property, via: [:get, :post]
+  match "home/new_car_loan" => "home#new_car_loan", as: :custom_new_car_loan, via: [:get, :post]
+  match "home/used_car_loan" => "home#used_car_loan", as: :custom_used_car_loan, via: [:get, :post]
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',

@@ -1,0 +1,2 @@
+class CustomTransferHomeLoan < ApplicationRecord
+end

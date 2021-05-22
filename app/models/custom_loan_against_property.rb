@@ -1,0 +1,2 @@
+class CustomLoanAgainstProperty < ApplicationRecord
+end

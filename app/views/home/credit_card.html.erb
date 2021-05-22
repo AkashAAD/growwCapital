@@ -1,0 +1,143 @@
+<section>
+  <div class="container  custom-container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center">Apply For Credit Card</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container custom-application">
+  <div class="row">
+    <div class="col-md-7">
+      <p>Please provide following details for the application</p>
+      <%= form_for @credit_card, :url => { :action => "credit_card" }, remote: false, html: { class: "custom_credit_card" } do |f| %>
+          <div class="">
+            <label>Your Full Name</label>
+            <%= f.text_field(:full_name, class: "form-control") %>
+          </div>
+          <div class="">
+            <label>Your Mobile Number</label>
+            <%= f.number_field(:mobile_number, class: "form-control") %>
+          </div>
+          <div class="">
+            <label>Your Email</label>
+            <%= f.text_field(:email, class: "form-control") %>
+          </div>
+          <div class="">
+            <label>Your Purpose of Loan</label>
+            <%= f.select(:loan_purpose, @credit_card.loan_purpose, class: "form-control") %>
+          </div>
+          <button type="submit" class="btn btn-custom btn-block">Submit</button>
+          <br>
+          <p class="text-center">OR</p>
+          <p class="text-center"> You can directly <%= link_to "Apply from here", credit_card_path('step1'), method: :get %></p><br>
+      <%end%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="credit-card-banks owl-carousel">
+        <% Card.all.each do |card| %>
+          <div class="part-img-effect"><%= image_tag url_for(card.bank_image), width: 200, height: 100 %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+<div class="container application-description">
+  <div class="row">
+    <div class="col-md-7">
+      <br>
+      <h4>HDFC credit card offers IDFC bank Salary SBI Credit Card American express</h4>
+      <p>If you’re looking to apply for a credit card but feel overwhelmed with all the choices, we are at your service.</p>
+      <p>We provide all the assistance for all matters related to credit card and help you choose one that works best for you without you having to step out of your home!</p>
+      <p><h3><i>Planning to apply for a credit card but feeling confused with so much choice?</i></h3></p>
+      <p>We deal in over 20 credit cards of the most reputed banks, viz. HDFC credit cards, IDFC best offers, American Express credit card among others. We can help you get a credit card that best suits your requirements without stepping out of your premise. </p>
+      <p>Whether you need the credit card for international holidays, business travel, spouse or Child, or for online shopping that offers maximum reward point advantages, we have the best solutions!</p>
+      <p class="pl-ser">Our personalized service comes at no extra cost!</p>
+      <p>If you want to apply for a credit card, we assign an executive exclusive for you to provide all the front- &-back-end support you may need now and then. He’ll visit you to share info, collect and complete formalities and documentation process and later on he’ll  track you credit card delivery to ensure it is delivered on time.</p>
+      <p>He’ll give you all the info you may need, e.g. getting a card against card, reward point advantages on online shopping, interest rate on purchases (EMI), and minimum salary for card eligibility, and more.  He’ll help you compare the cards to see what works best for your lifestyle and spending habits, and check your eligibility without affecting credit score!</p>
+      <p><strong>Know the Features</strong></p>
+      <p>Once you’ve shortlisted a credit card, we’ll initiate documentation process, share info on the type of bank account you need, card limit, info about benefits & reward points, annual fee, services under free credit card and premium card, your obligations to government, surcharges, etc.</p>
+      <p><strong>Check Credit Score</strong></p>
+      <p>Apart from this, we can also help you with credit score, as no credit card company will approve your application without a good credit score.</p>
+      <p><strong>Credit Card EMI Calculator</strong></p>
+      <p>Credit Card <a href="/emi_calculator">EMI Calculator</a> is a free tool, which as the name suggests helps credit card holder to calculate monthly repayment schedule if he wants to pay his dues in installments and number two the credit card holder can know the exact interest charges he will be paying if he decides to pay in EMI. This tool offers a break-up of amount to give you a clear idea about what will you be paying towards principal and interest. You can opt for EMIs for amounts ranging from INR 2500 to INR 5 lakh.</p>
+      <p>We’re here to answer all your questions and more. Give us a call on <a href="tel:+918806644344">+91-88066-44344</a></p>
+      <p><strong>Our other services:</strong></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="other-services">
+        <%= link_to custom_personal_loan_path, method: :get do %>
+          <%= image_tag "icons/personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Personal Loan
+        <%end%>
+        <%= link_to custom_transfer_personal_loan_path, method: :get do %>
+          <%= image_tag "icons/transfer-personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transgfer Personal Loan
+        <%end%>
+        <%= link_to custom_business_loan_path, method: :get do %>
+          <%= image_tag "icons/business-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Business Loan
+        <%end%>
+        <%= link_to custom_professional_loan_path, method: :get do %>
+          <%= image_tag "icons/professional-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Professional Loan
+        <%end%>
+        <%= link_to custom_home_loan_path, method: :get do %>
+          <%= image_tag "icons/home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Home Loan
+        <%end%>
+        <br><br>
+        <%= link_to custom_transfer_home_loan_path, method: :get do %>
+          <%= image_tag "icons/tr-home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transfer Home Loan
+        <%end%>
+        <%= link_to custom_loan_against_property_path, method: :get do %>
+          <%= image_tag "icons/loan-against-property-icon.svg", style: "width: 25px;" %>&nbsp;
+          Loan Against Property
+        <%end%>
+        <%= link_to custom_new_car_loan_path, method: :get do %>
+          <%= image_tag "icons/new-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          New Car Loan
+        <%end%>
+        <%= link_to custom_used_car_loan_path, method: :get do %>
+          <%= image_tag "icons/used-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Used Car Loan
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.credit-card-banks').owlCarousel({
+      loop:true,
+      margin:10,
+      items: 3,
+      nav:true,
+      autoplay:true,
+      autoplayTimeout:5000,
+      autoplayHoverPause:true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1200:{
+          items: 5
+        },
+        1000:{
+          items: 5
+        }
+      }
+    });
+  });
+</script>

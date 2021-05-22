@@ -114,6 +114,70 @@ class HomeController < ApplicationController
     render json: { degrees: degrees }, status: :ok
   end
 
+  def credit_card
+    @credit_card = CustomCreditCard.new
+    if request.post?
+      @credit_card = CustomCreditCard.new(application_request_params(:custom_credit_card))
+      @credit_card.save
+      redirect_to thank_you_path
+    end
+  end
+
+  def personal_loan
+    @personal_loan = CustomPersonalLoan.new
+    if request.post?
+      @personal_loan = CustomPersonalLoan.new(application_request_params(:custom_personal_loan))
+      @personal_loan.save
+      redirect_to thank_you_path
+    end
+  end
+
+  def transfer_personal_loan
+    @transfer_personal_loan = CustomTransferPersonalLoan.new
+    if request.post?
+      @transfer_personal_loan = CustomTransferPersonalLoan.new(application_request_params(:custom_transfer_personal_loan))
+      @transfer_personal_loan.save
+      redirect_to thank_you_path
+    end
+  end
+
+  def business_loan
+    @business_loan = CustomBusinessLoan.new
+    if request.post?
+      @business_loan = CustomBusinessLoan.new(application_request_params(:custom_business_loan))
+      @business_loan.save
+      redirect_to thank_you_path
+    end
+  end
+
+  def professional_loan
+    
+  end
+
+  def home_loan
+    
+  end
+
+  def transfer_home_loan
+    
+  end
+  
+  def loan_against_property
+    
+  end
+
+  def new_car_loan
+    
+  end
+
+  def used_car_loan
+    
+  end
+
+  def thank_you
+    
+  end
+
   private
   def contact_us_params
     params.require(:contact_u).permit(:first_name, :last_name, :email, :subject, :message)    
@@ -136,6 +200,10 @@ class HomeController < ApplicationController
     session[:pre_otp] = "#{(rand * 1000000).to_i}"
     sms = SmsService.new
     sms.send_preapproved_otp(pre_approved_offer_params, session[:pre_otp])
+  end
+
+  def application_request_params(params_obj)
+    params.require(params_obj).permit(:full_name, :email, :mobile_number, :loan_purpose)
   end
 
 end

@@ -1,0 +1,2 @@
+class CustomUsedCarLoan < ApplicationRecord
+end

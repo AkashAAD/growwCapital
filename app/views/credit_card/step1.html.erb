@@ -1,13 +1,3 @@
-<section id="banner1">
-  <div class="container container-banner1">
-    <div class="row align-items-end">
-      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
-        <h2>New Credit Card</h2>
-        <h4>Apply for new credit card</h4>
-      </div>
-    </div>
-  </div>
-</section>
 <section class="personal-loan-section card-section custom-container">
   <%= form_for @credit_card, :url => { :action => @credit_card.id.nil? ? "create_otp" : "update" }, remote: true, html: { id:  "basic_credit_card", class: "basic_credit_card" } do |f| %>
     <div class="container container-card">

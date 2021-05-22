@@ -1,0 +1,2 @@
+class CustomHomeLoan < ApplicationRecord
+end
