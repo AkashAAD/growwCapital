@@ -160,17 +160,24 @@
 }
 
 .application-description {
-  .col-md-7 {
+  .col-md-12 {
     margin: 0 auto;
     text-align: justify;
     text-justify: inter-word;
     .pl-ser {
       font-weight: bold;
+      color: #1b1dc7;
     }
   }
   p {
-    font-size: 16px;
+    font-size: 20px;
   }
+}
+
+.card-title {
+  font-size: 35px;
+  color: #1b1dc7;
+  font-weight: 400;
 }
 
 .thank-you {
