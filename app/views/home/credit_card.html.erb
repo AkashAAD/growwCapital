@@ -2,14 +2,14 @@
   <div class="container  custom-container">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="text-center">Apply For Credit Card</h2>
+        <h3 class="text-center">Planning to apply for a credit card but feeling confused with so much choice?</h3>
       </div>
     </div>
   </div>
 </section>
 <div class="container custom-application">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
       <p>Please provide following details for the application</p>
       <%= form_for @credit_card, :url => { :action => "credit_card" }, remote: false, html: { class: "custom_credit_card" } do |f| %>
           <div class="">
@@ -25,21 +25,23 @@
             <%= f.text_field(:email, class: "form-control") %>
           </div>
           <div class="">
-            <label>Your Purpose of Loan</label>
+            <label>Your Purpose</label>
             <%= f.select(:loan_purpose, @credit_card.loan_purpose, class: "form-control") %>
           </div>
           <button type="submit" class="btn btn-custom btn-block">Submit</button>
           <br>
-          <p class="text-center">OR</p>
-          <p class="text-center"> You can directly <%= link_to "Apply from here", credit_card_path('step1'), method: :get %></p><br>
+          <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", credit_card_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
       <%end%>
+    </div>
+    <div class="col-md-6">
+      <h4 class="crd-heading"><span>We deal in over 20+ credit cards of the most reputed banks</span>, viz. HDFC credit cards, IDFC best offers, American Express credit card among others.<br><br>We can help you get a credit card that best suits your requirements without stepping out of your premise.</h4>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="credit-card-banks owl-carousel">
         <% Card.all.each do |card| %>
-          <div class="part-img-effect"><%= image_tag url_for(card.bank_image), width: 200, height: 100 %></div>
+          <div class="part-img-effect crd-img-effect"><%= image_tag url_for(card.bank_image), width: 200, height: 100 %></div>
         <% end %>
       </div>
     </div>
@@ -48,16 +50,12 @@
 </div>
 <div class="container application-description">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-12">
       <br>
-      <h4>HDFC credit card offers IDFC bank Salary SBI Credit Card American express</h4>
-      <p>If you’re looking to apply for a credit card but feel overwhelmed with all the choices, we are at your service.</p>
-      <p>We provide all the assistance for all matters related to credit card and help you choose one that works best for you without you having to step out of your home!</p>
-      <p><h3><i>Planning to apply for a credit card but feeling confused with so much choice?</i></h3></p>
-      <p>We deal in over 20 credit cards of the most reputed banks, viz. HDFC credit cards, IDFC best offers, American Express credit card among others. We can help you get a credit card that best suits your requirements without stepping out of your premise. </p>
+      <p>We deal in over 20+ credit cards of the most reputed banks, viz. HDFC credit cards, IDFC best offers, American Express credit card among others. We can help you get a credit card that best suits your requirements without stepping out of your premise. </p>
       <p>Whether you need the credit card for international holidays, business travel, spouse or Child, or for online shopping that offers maximum reward point advantages, we have the best solutions!</p>
       <p class="pl-ser">Our personalized service comes at no extra cost!</p>
-      <p>If you want to apply for a credit card, we assign an executive exclusive for you to provide all the front- &-back-end support you may need now and then. He’ll visit you to share info, collect and complete formalities and documentation process and later on he’ll  track you credit card delivery to ensure it is delivered on time.</p>
+      <p>If you want to apply for a credit card, we assign an executive exclusive for you to provide all the front-end & back-end support you may need now and then. He’ll visit you to share info, collect and complete formalities and documentation process and later on he’ll  track you credit card delivery to ensure it is delivered on time.</p>
       <p>He’ll give you all the info you may need, e.g. getting a card against card, reward point advantages on online shopping, interest rate on purchases (EMI), and minimum salary for card eligibility, and more.  He’ll help you compare the cards to see what works best for your lifestyle and spending habits, and check your eligibility without affecting credit score!</p>
       <p><strong>Know the Features</strong></p>
       <p>Once you’ve shortlisted a credit card, we’ll initiate documentation process, share info on the type of bank account you need, card limit, info about benefits & reward points, annual fee, services under free credit card and premium card, your obligations to government, surcharges, etc.</p>
@@ -122,7 +120,7 @@
       items: 3,
       nav:true,
       autoplay:true,
-      autoplayTimeout:5000,
+      autoplayTimeout:10000,
       autoplayHoverPause:true,
       responsive:{
         0:{

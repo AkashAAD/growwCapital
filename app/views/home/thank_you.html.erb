@@ -1,16 +1,27 @@
 <section>
-  <div class="container custom-container">
+  <div class="container custom-container" style="margin-top: 200px;">
     <div class="row">
-      <div class="col-md-12">
-        <h1 class="text-center">Thank You!</h1>
-      </div>
-    </div>
-    <hr>
-    <div class="row">
-      <div class="col-md-12 text-center">
-        <h5>Our finance executive will be reach out soon for further process!</h5>
-        <h5>Having Trouble? <a href="/contact_us">Contact Us</a></h5>
-        <a href="/" class="btn btn-custom" style="color: #fff;">Continue to services</a>
+      <div class="col-md-10 text-center thank-you">
+        <h1 class="text-center">Thank You!</h1><br>
+        <%= image_tag "right.png", alt: "right", style: "width: 15%;" %><br><br>
+        <h5>We thank you for submitting the details. We'll depute a Relationship Manager at your service.<br>He will get back to you within 24 hours or less to take the discussion forward.<br>Assuring you of our best and prompt services.</h5>
+        <h5><a href="/contact_us">Contact Us</a> | <a href="tel:+918806644344">+91-88066-44344</a></h5>
+        <h5><p class="text-center"><span>Click on this link to apply directly online.</span> <%= link_to "Apply", credit_card_path('step1'), method: :get, class: "btn btn-custom", style: "color: #fff" %></p></h5>
+        <br>
+        <h5 class="thx-other-services">
+          <%= link_to credit_card_path('step1'), method: :get do %>
+            <%= image_tag "icons/personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Personal Loan
+          <%end%>
+          <%= link_to custom_business_loan_path, method: :get do %>
+            <%= image_tag "icons/business-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+            Business Loan
+          <%end%>
+          <%= link_to custom_home_loan_path, method: :get do %>
+            <%= image_tag "icons/home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+            Home Loan
+          <%end%>
+        </h5>
       </div>
     </div>
   </div>

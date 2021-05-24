@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="description" content="<%= @description %>">
+    <meta name="keywords" content="<%=  %>">    
     <%= favicon_link_tag asset_path('logo.ico'), :rel => 'icon', :type => "image/x-icon" %>
-    <title>growwCapital</title>
+    <title>GrowwCapital <%= "| #{@title}" if @title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>

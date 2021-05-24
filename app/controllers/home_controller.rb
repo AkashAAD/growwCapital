@@ -116,6 +116,13 @@ class HomeController < ApplicationController
 
   def credit_card
     @credit_card = CustomCreditCard.new
+
+    @title = 'HDFC credit card offers IDFC bank Salary SBI Credit Card American express'
+    @description = 'If you’re looking to apply for a credit card but feel overwhelmed with 
+      all the choices, we are at your service. We provide all the assistance for 
+      all matters related to credit card and help you choose one that works 
+      best for you without you having to step out of your home!'
+
     if request.post?
       @credit_card = CustomCreditCard.new(application_request_params(:custom_credit_card))
       @credit_card.save
