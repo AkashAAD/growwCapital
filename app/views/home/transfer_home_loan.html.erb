@@ -1,0 +1,164 @@
+<section>
+  <div class="container  custom-container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center card-title">Home loan transfer from one bank to another. Procedure, documents required, & more...</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container custom-application">
+  <div class="row">
+    <div class="col-md-7">
+      <p>Please provide following details for the application</p>
+      <%= form_for @transfer_home_loan, :url => { :action => "transfer_home_loan" }, remote: false, html: { class: "custom_personal_loan" } do |f| %>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Full Name</label>
+              <%= f.text_field(:full_name, class: "form-control", autofocus: "true") %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Mobile Number</label>
+              <%= f.number_field(:mobile_number, class: "form-control") %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Email</label>
+              <%= f.text_field(:email, class: "form-control") %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Purpose</label>
+              <%= f.select(:loan_purpose, @transfer_home_loan.loan_purpose, class: "form-control") %>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-custom btn-block">Submit</button>
+          <br>
+          <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", transfer_home_loan_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
+      <%end%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="credit-card-banks owl-carousel">
+        <% TransferHomeLoanBank.all.uniq.each do |card| %>
+          <div class="part-img-effect"><%= image_tag url_for(card.bank_image), width: 200, height: 100 %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+<div class="container application-description">
+  <div class="row">
+    <div class="col-md-12">
+      <br>
+      <p>Home Loan Transfer is the process of transferring home loan from existing bank to a new bank that offers the same at lower interest rates that what you’re already paying. You are eligible to transfer your home loan from your existing bank to another if you have regularly paid a minimum of 6-12 month EMI.</p>
+      <p>We’re associated with leading reputed banks that offer transfer of home loan at starting interest rate of 6.75%. Different banks charge different Processing Fee and have different Approval Time. Get in touch with us to know more about it.</p>
+      <p class="pl-ser">Why do people opt for home loan bank transfer?</p>
+      <p>People may opt for transfer of Home Loan from one bank to another for a wide range of reasons. While some want to avail of the benefit of attractive interest rate, some may want to reduce Equated Monthly Instalment (EMI). Almost all the banks that offer home loans also offer home loan transfer facility. However each one has their own policy with regard to processing fee and documentation etc.</p>
+      <p class="pl-ser">Best Home Loan transfer Options For Maximum Savings</p>
+      <p>When you reach out to us with your home loan transfer requirement we will provide all the services at your doorstep with help of a dedicated Relationship Manager. He or she will visit or call you to understand your requirements and present suitable options for home loan transfer, and compare them for you to choose the best one. You will also understand how change in the monthly instalment or even not changing the amount will bring you additional savings per month due to lower interest rates. How you can reduce your repayment period with new bank after home loan transfer to settle the loan in less time. If you wish we can also present options where you can stretch the home loan for as long as you want.</p>
+      <p class="pl-ser">Best Facilities for Home Loan Transfer including Top-up option</p>
+      <p>The Relationship Manager will present the banks that are currently offering best (lowest) interest rates and maximum repayment tenure; minimal documentation; quick approval, along with facility of top up loan if that can be your future requirement.</p>
+      <p>Many borrowers like to have top-up loan facility as they can use the funds for any purpose they want, and they can get this loan without any additional document submission, plus this additional loan is going to be collateral free.</p>
+      <p class="pl-ser">Eligibility for Home Loan balance transfer</p>
+      <ul>
+        <li>Anyone with an outstanding home loan in one bank is eligible for home loan transfer. Age, income, employment history and loan to value ratio are some of the standard eligibilities. </li>
+        <li>Applicant has a running home loan from another bank</li>
+        <li>Some banks may have a clause that an applicant has paid at least 6 to 12 EMI’s on existing loan before going for balance transfer of home loan. Under special situations this condition may be waived by banks and home loan takeover is made possible even when the loan has not completed 6 – 12 months tenure.</li>
+        <li>Banks will not allow you for a home loan transfer if you have defaulted in payment of EMI with your existing bank.</li>
+        <li>Sometimes in case of under-construction property, the same project has to be approved with the new lender. The balance transfer of home loan on new property whose possession has been handed over but registration has not been done – on such a property granting transfer may not be possible s per their policy.  When it comes to ready property, the registration has to be completed</li>
+      </ul>
+      <p class="pl-ser">Home Loan Transfer Process</p>
+      <ul>
+        <li>Compare your interest rate to calculate saving on interest</li>
+        <li>Calculate and compare expenses incurred towards fees and other charges related to granting of home loan transfer</li>
+        <li>Freeze on a bank that you wish to transfer your loan to; make an informed decision with regard to opting for top up loan</li>
+        <li>Take property documents deposited with existing bank along with foreclosure letter</li>
+        <li>Apply for loan with new bank with photocopy of property documents and other papers required by them.</li>
+        <li>Get sanction letter and initiate procedure for new loan agreement</li>
+        <li>Take disbursement from new bank by cheque or demand draft in favor of existing bank and deposit the same</li>
+        <li>Get property documents from old bank and submit them in the new bank</li>
+      </ul>
+      <p class="pl-ser">Get in touch with your home loan transfer requirements</p>
+      <p>You can trust our Relationship Manager to suggest only the best banks and deals to get your loan transferred from one bank to another. We are attached to banks that offer a wide range of facilities for customers, like lowest interest rates, no hidden charges or pre-payment penalty, banks offering interest charged on daily reducing balance, home loan available as overdraft and interest concessions for women borrowers.</p>
+      <p class="pl-ser"><strong>Checkout our other services:</strong></p><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div style="margin-bottom: 100px;" class="other-services">
+        <%= link_to custom_credit_card_path, method: :get do %>
+            <%= image_tag "icons/cc-icon.svg", style: "width: 25px;" %>
+            Credit Card
+        <%end%>
+        <%= link_to custom_transfer_personal_loan_path, method: :get do %>
+          <%= image_tag "icons/transfer-personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transfer Personal Loan
+        <%end%>
+        <%= link_to custom_business_loan_path, method: :get do %>
+          <%= image_tag "icons/business-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Business Loan
+        <%end%>
+        <%= link_to custom_professional_loan_path, method: :get do %>
+          <%= image_tag "icons/professional-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Professional Loan
+        <%end%>
+        <%= link_to custom_home_loan_path, method: :get do %>
+          <%= image_tag "icons/home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Home Loan
+        <%end%>
+        <br><br><br>
+        <%= link_to custom_transfer_home_loan_path, method: :get do %>
+          <%= image_tag "icons/tr-home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transfer Home Loan
+        <%end%>
+        <%= link_to custom_loan_against_property_path, method: :get do %>
+          <%= image_tag "icons/loan-against-property-icon.svg", style: "width: 25px;" %>&nbsp;
+          Loan Against Property
+        <%end%>
+        <%= link_to custom_new_car_loan_path, method: :get do %>
+          <%= image_tag "icons/new-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          New Car Loan
+        <%end%>
+        <%= link_to custom_used_car_loan_path, method: :get do %>
+          <%= image_tag "icons/used-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Used Car Loan
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.credit-card-banks').owlCarousel({
+      loop:true,
+      margin:10,
+      items: 3,
+      nav:true,
+      autoplay:true,
+      autoplayTimeout:5000,
+      autoplayHoverPause:true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1200:{
+          items: 5
+        },
+        1000:{
+          items: 5
+        }
+      }
+    });
+  });
+</script>

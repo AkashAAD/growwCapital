@@ -2,7 +2,7 @@
   <div class="container  custom-container">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="text-center">Apply For Personal Loan</h2>
+        <h2 class="text-center card-title">Apply for Personal Loan with Lowest Interest Rate From Over 25 Banks</h2>
       </div>
     </div>
   </div>
@@ -12,26 +12,33 @@
     <div class="col-md-7">
       <p>Please provide following details for the application</p>
       <%= form_for @personal_loan, :url => { :action => "personal_loan" }, remote: false, html: { class: "custom_personal_loan" } do |f| %>
-          <div class="form-group">
-            <label>Your Full Name</label>
-            <%= f.text_field(:full_name, class: "form-control") %>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Full Name</label>
+              <%= f.text_field(:full_name, class: "form-control", autofocus: "true") %>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Your Mobile Number</label>
-            <%= f.number_field(:mobile_number, class: "form-control") %>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Mobile Number</label>
+              <%= f.number_field(:mobile_number, class: "form-control") %>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Your Email</label>
-            <%= f.text_field(:email, class: "form-control") %>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Email</label>
+              <%= f.text_field(:email, class: "form-control") %>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Your Purpose of Loan</label>
-            <%= f.select(:loan_purpose, @personal_loan.loan_purpose, class: "form-control") %>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Purpose</label>
+              <%= f.select(:loan_purpose, @personal_loan.loan_purpose, class: "form-control") %>
+            </div>
           </div>
           <button type="submit" class="btn btn-custom btn-block">Submit</button>
           <br>
-          <p class="text-center">OR</p>
-          <p class="text-center"> You can directly <%= link_to "Apply from here", personal_loan_path('step1'), method: :get %></p><br>
+          <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", personal_loan_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
       <%end%>
     </div>
   </div>
@@ -48,22 +55,19 @@
 </div>
 <div class="container application-description">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-12">
       <br>
-      <h4>Eligibility Personal Loan lowest interest personal loan nagpur.</h4>
-      <p>If you’re looking to get personal loan for any emergency or generally we can help you identify the best bank offering lowest interest rates and minimum documentation and paperwork. We have helped people get loans sanctioned and disbursed in hours! For more information on how we can help you click on this link</p>
-      <h3><i>Apply for Personal Loan with Lowest Interest Rate From Over 25 Banks</i></h3>
-      <p><strong>About Personal Loan</strong></p>
+      <p class="pl-ser"><strong>About Personal Loan</strong></p>
       <p>A Personal Loan is an unsecured loan, meaning the borrower is not required to pledge a collateral security to be granted the funds by an institution he or she is applying to. Availing personal loan is easy. Our Financial Assistant will come and explain everything and collect all the documents and initiate the process.  You can also apply online, on approval funds will be transferred into your bank account.  You may use the money to meet almost any expense.</p>
-      <p><strong>How can you use Personal Loan?</strong></p>
+      <p class="pl-ser"><strong>How can you use Personal Loan?</strong></p>
       <p>Personal loan helps you to meet a wide range of financial requirements that may include medical crises, home improvement or renovation, education, debt consolidation, travel, or wedding</p>
-      <p><strong>What is the Rate of Interest for Personal Loan?</strong></p>
+      <p class="pl-ser"><strong>What is the Rate of Interest for Personal Loan?</strong></p>
       <p>Minimum rate of interest 9.5% and maximum 25%</p>
-      <p><strong>Personal Loan Upper & Lower Limit & Repayment Clause:</strong></p>
+      <p class="pl-ser"><strong>Personal Loan Upper & Lower Limit & Repayment Clause:</strong></p>
       <p>An Individual can apply for personal loan from INR 100,000 to INR 40,00,000 (one lac to forty lac) and repayment period for the same can be anywhere between one year and 5 years.</p>
       <p>How quickly can a bank disburse personal Loan?</p>
       <p>Personal loan can take anywhere between one hour and 3 days  to come into your bank account.</p>
-      <p><strong>Documents, Age Limit, & Other Criteria to Apply For Personal Loan</strong></p>
+      <p class="pl-ser"><strong>Documents, Age Limit, & Other Criteria to Apply For Personal Loan</strong></p>
       <p>To get your personal loan approved, you are required to meet the eligibility criteria, which are as follows:</p>
       <ul>
         <li>Minimum documents required. Just KYC and income proof.</li>
@@ -74,7 +78,7 @@
         <li>To apply for a loan you should be 21 years old. Maximum age can be up to 60 years for salaried employees. 65 years for self-employed professionals at the time of loan maturity. However, age criteria may vary from institution to institution.</li>
         <li>If all the above criteria match with your banks requirements, you qualify for a loan.</li>
       </ul>
-      <p><strong>How to Apply for Personal Loan</strong></p>
+      <p class="pl-ser"><strong>How to Apply for Personal Loan</strong></p>
       <ul>
         <li>Our Financial Assistant will be at your service from start to finish.</li>
         <li>He or she will guide and assist you fill in the online application form with your personal, employment and financial details.</li>
@@ -84,7 +88,7 @@
       <p>We’re here to answer all your questions and more. Give us a call on <a href="tel:+918806644344">+91-88066-44344</a></p>
       <a href="/home/personal_loan">Apply Loan Today</a>
       <p>Fill The form and get the all loan approval as soon as possible!</p>
-      <p><strong>Our other services:</strong></p>
+      <p class="pl-ser"><strong>Checkout our other services:</strong></p><br>
     </div>
   </div>
   <div class="row">
@@ -96,7 +100,7 @@
         <%end%>
         <%= link_to custom_transfer_personal_loan_path, method: :get do %>
           <%= image_tag "icons/transfer-personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
-          Transgfer Personal Loan
+          Transfer Personal Loan
         <%end%>
         <%= link_to custom_business_loan_path, method: :get do %>
           <%= image_tag "icons/business-loan-icon.svg", style: "width: 25px;" %>&nbsp;
@@ -110,7 +114,7 @@
           <%= image_tag "icons/home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
           Home Loan
         <%end%>
-        <br><br>
+        <br><br><br>
         <%= link_to custom_transfer_home_loan_path, method: :get do %>
           <%= image_tag "icons/tr-home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
           Transfer Home Loan

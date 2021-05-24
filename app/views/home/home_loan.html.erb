@@ -1,0 +1,156 @@
+<section>
+  <div class="container  custom-container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center card-title">Get Home Loan from Best Banks, Know about Home Loan Transfer Procedure, Eligibility, Documentation, and more</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container custom-application">
+  <div class="row">
+    <div class="col-md-7">
+      <p>Please provide following details for the application</p>
+      <%= form_for @home_loan, :url => { :action => "home_loan" }, remote: false, html: { class: "custom_personal_loan" } do |f| %>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Full Name</label>
+              <%= f.text_field(:full_name, class: "form-control", autofocus: "true") %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Mobile Number</label>
+              <%= f.number_field(:mobile_number, class: "form-control") %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Email</label>
+              <%= f.text_field(:email, class: "form-control") %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Purpose</label>
+              <%= f.select(:loan_purpose, @home_loan.loan_purpose, class: "form-control") %>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-custom btn-block">Submit</button>
+          <br>
+          <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", home_loan_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
+      <%end%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="credit-card-banks owl-carousel">
+        <% HomeLoanBank.all.uniq.each do |card| %>
+          <div class="part-img-effect"><%= image_tag url_for(card.bank_image), width: 200, height: 100 %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+<div class="container application-description">
+  <div class="row">
+    <div class="col-md-12">
+      <br>
+      <p class="pl-ser">The Best Bank for Your Home Loan</p>
+      <p>Before you start documentation process for a home loan we help you compare loans offered by different banks, and financial institutions offering loans to buy or build a home. Comparison includes the processing fee, interest rate, Loan-to-Value (LTV) ratio, and loan repayment duration offered by various banks.</p>
+      <p>We also use home loan EMI calculator to give you an idea about your EMI based on above factors. Get ready to compare home loans offered by various banks.  We keep our eyes open to special home loan offers offered by banks from time to time that we apprise you of when you reach out to us. What sets us apart is that through personalized service we understand your requirements before suggesting best banks to apply for home loans.</p>
+      <p class="pl-ser">How long does it take for home loan to get sanctioned?</p>
+      <p>Generally a home loan application takes around 3 to 4 weeks to get sanction followed by disbursement into your registered bank account. A borrowed however does need to keep a few factors in mind for a clear understanding. First thing is that you require a pre-approval of your home loan from the bank to get loan sanctioned. Having said that borrower also needs to keep in mind that pre-approval doesn't necessarily mean that the loan will be disbursed immediately. Disbursement of home loan depends on many external as well internal factors. The loan sanction may be delayed if you or your representative has delayed in submission of property or income-related documents, or any such document.</p>
+      <p>At <a href="/">GrowwCapital</a>, timely processing and verification of documentation and completing all formalities is our top most responsibility and we conduct the entire process in the most professional manner to ensure delay is not caused due to our conduct or services.</p>
+      <p class="pl-ser">Can I take Two Home Loans Simultaneously?</p>
+      <p>Yes, you can avail of 2 home loans simultaneously if your lending banks are satisfied and approve of the fact that you are financially in a position to manage 2 Equated Monthly Instalments (EMIs) payments simultaneously. But applicant of home loan has to bear in mind that the tax benefits on the second house are going to be different. And you will be required to establish, announce or notify that the property is self-occupied or has let-out to tenant.</p>
+      <p class="pl-ser">Can I get 100% Home Loan?</p>
+      <p>Banking institutions have a policy under which they provide 'Loan against Property' approval for fixed percentage of the value of the mortgaged property. For bank’s own security purposes, they do not sanction a Mortgage Loan with 100% LTV. An applicant can avail a maximum of 90% of the property's present market value from a bank offering home loans.</p>
+      <p class="pl-ser">Best Loan for First Time Home Buyers</p>
+      <p>FHA loans work best for first-time homebuyers as in addition to lower upfront loan costs and less stringent credit requirements, the applicant is required to make a down payment just about 3.5%. Another thing to keep in mind with FHA loans is that it cannot exceed the statutory limits</p>
+      <p class="pl-ser">Mistake that a first time home buyer or home loan applicant should avoid</p>
+      <p>Plan in advance, prepare for clean documentation, quick processing. Make good your poor credit score.</p>
+      <p>Not negotiate with the builder for best price</p>
+      <p>For a home buyer looking for loan to give away all or most of the savings towards down payment and closing costs is amongst the biggest mistakes first-time homebuyer commit. It may lead to a life you will be living on the edge for years to come month after month. This isn’t worth it.</p>
+      <p>First thing is to fix a budget, second to check out your eligibility with banks and third start looking for a home in that budget. It should not be the other way round.</p>
+      <p>After your home loan is sanctioned, you should control any new credits from building. No new credit cards, no opening of new expenses, large purchases, whatsoever. Pay all your bills on time every month to avoid interest or surcharge burdens. In short don’t be careless with your credits.</p>
+      <p>Don’t just talk to one bank and freeze the deal. Take your time, get a few options, compare lender fee, processing fee charged by the bank, loan term, interest rates and more to make an informed decision.</p>
+      <p>Applicant should focus on what monthly payment he or she can afford and pay with ease instead of focusing on maximum loan amount she or he qualifies for. Applicant should be clean and honest and disclose his true financial position to the bank. Applicant has to remember that finally it is he who has to replay and every month should not be a struggle.</p>
+      <p>Don’t give in to emotions while finalizing buying a home; do not go beyond your means. Upmarket neighborhood, large spaces etc. are secondary considerations. First is what practically fits in your budget. What works for you - small house in hip locality or large house in simpler surroundings; one bed room in the center of city or a 3 bedroom house in the outskirts? Whatever you do, take an informed decision.</p>
+      <p>For more info, get in touch with us. Call us on <a href="tel:+918806644344">+91-88066-44344</a>. Send an email <a href="mailto:support@growwcapital.com">support@growwcapital.com</a></p>
+      <p class="pl-ser"><strong>Checkout our other services:</strong></p><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div style="margin-bottom: 100px;" class="other-services">
+        <%= link_to custom_credit_card_path, method: :get do %>
+            <%= image_tag "icons/cc-icon.svg", style: "width: 25px;" %>
+            Credit Card
+        <%end%>
+        <%= link_to custom_transfer_personal_loan_path, method: :get do %>
+          <%= image_tag "icons/transfer-personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transfer Personal Loan
+        <%end%>
+        <%= link_to custom_business_loan_path, method: :get do %>
+          <%= image_tag "icons/business-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Business Loan
+        <%end%>
+        <%= link_to custom_professional_loan_path, method: :get do %>
+          <%= image_tag "icons/professional-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Professional Loan
+        <%end%>
+        <%= link_to custom_home_loan_path, method: :get do %>
+          <%= image_tag "icons/home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Home Loan
+        <%end%>
+        <br><br><br>
+        <%= link_to custom_transfer_home_loan_path, method: :get do %>
+          <%= image_tag "icons/tr-home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transfer Home Loan
+        <%end%>
+        <%= link_to custom_loan_against_property_path, method: :get do %>
+          <%= image_tag "icons/loan-against-property-icon.svg", style: "width: 25px;" %>&nbsp;
+          Loan Against Property
+        <%end%>
+        <%= link_to custom_new_car_loan_path, method: :get do %>
+          <%= image_tag "icons/new-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          New Car Loan
+        <%end%>
+        <%= link_to custom_used_car_loan_path, method: :get do %>
+          <%= image_tag "icons/used-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Used Car Loan
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.credit-card-banks').owlCarousel({
+      loop:true,
+      margin:10,
+      items: 3,
+      nav:true,
+      autoplay:true,
+      autoplayTimeout:5000,
+      autoplayHoverPause:true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1200:{
+          items: 5
+        },
+        1000:{
+          items: 5
+        }
+      }
+    });
+  });
+</script>

@@ -126,51 +126,127 @@ class HomeController < ApplicationController
     if request.post?
       @credit_card = CustomCreditCard.new(application_request_params(:custom_credit_card))
       @credit_card.save
+      session[:thank_you_path] = credit_card_path('step1')
       redirect_to thank_you_path
     end
   end
 
   def personal_loan
     @personal_loan = CustomPersonalLoan.new
+
+    @title = 'Eligibility Personal Loan lowest interest personal loan nagpur'
+    @description = 'If you\'re looking to get personal loan for any emergency or generally 
+      we can help you identify the best bank offering lowest 
+      interest rates and minimum documentation and paperwork. 
+      We have helped people get loans sanctioned and disbursed in hours!'
+
     if request.post?
       @personal_loan = CustomPersonalLoan.new(application_request_params(:custom_personal_loan))
       @personal_loan.save
+      session[:thank_you_path] = personal_loan_path('step1')
       redirect_to thank_you_path
     end
   end
 
   def transfer_personal_loan
     @transfer_personal_loan = CustomTransferPersonalLoan.new
+
+    @title = 'Process for personal loan transfer to other bank, balance loan transfer.'
+    @description = 'If you wish to transfer your personal loan that you have taken from 
+      one bank to another owing to lower interest rate or other personal reasons, 
+      we are at your service to complete all the formalities quickly and swiftly. 
+      Get in touch with us and transfer your personal loan transferred before you know it!'
+
     if request.post?
       @transfer_personal_loan = CustomTransferPersonalLoan.new(application_request_params(:custom_transfer_personal_loan))
       @transfer_personal_loan.save
+      session[:thank_you_path] = transfer_personal_loan_path('step1')
       redirect_to thank_you_path
     end
   end
 
   def business_loan
     @business_loan = CustomBusinessLoan.new
+
+    @title = 'Interest rate business loans best banks start-up business loans for women.'
+    @description = 'If you are looking for best banks to get business loans, we are here at your service. 
+      Just give us a call and we will share all possible information to 
+      help you take an informed decision and offer all the advice ahead of applying for loans'
+
     if request.post?
       @business_loan = CustomBusinessLoan.new(application_request_params(:custom_business_loan))
       @business_loan.save
+      session[:thank_you_path] = business_loan_path('step1')
       redirect_to thank_you_path
     end
   end
 
   def professional_loan
-    
+    @professional_loan = CustomProfessionalLoan.new
+
+    @title = 'Interest rates Professional Loans for CA, CS. Professional loans for lawyers'
+    @description = 'If you are a CA, CS, Doctor, Architect, or want professional loan
+     to start your own physiotherapy center, Groww Capital can help you 
+     procure best loan that fulfills all your requirements with ease. Click on this link 
+     and speak to one of us so that we can help you over the phone or visit you personally to explain everything.'
+
+    if request.post?
+      @professional_loan = CustomProfessionalLoan.new(application_request_params(:custom_professional_loan))
+      @professional_loan.save
+      session[:thank_you_path] = professional_loan_path('step1')
+      redirect_to thank_you_path
+    end
   end
 
   def home_loan
-    
+    @home_loan = CustomHomeLoan.new
+
+    @title = 'Eligibility Home loan best bank interest rates, home loan transfer sbi'
+    @description = 'Whether you want to know about best bank to apply for home loan
+     or want to get your home loan transferred from one bank to another, or 
+     want to know about documentation or eligibility to apply for it, we are always at 
+     your service, presenting the best options and best advice you’ll find anywhere! Call us today.'
+
+    if request.post?
+      @home_loan = CustomHomeLoan.new(application_request_params(:custom_home_loan))
+      @home_loan.save
+      session[:thank_you_path] = home_loan_path('step1')
+      redirect_to thank_you_path
+    end
   end
 
   def transfer_home_loan
-    
+    @transfer_home_loan = CustomTransferHomeLoan.new
+
+    @title = 'Documents required to transfer home procedure to transfer housing loan'
+    @description = 'If you’re looking to transfer home loan from one bank to another,
+      do visit out site to know the procedure, documents required for home 
+      loan transfer and everything else that you want to. 
+      We will suggest the best bank to transfer your home loan based on your requirements. Click on the link and get in touch with us.'
+
+    if request.post?
+      @transfer_home_loan = CustomTransferHomeLoan.new(application_request_params(:custom_transfer_home_loan))
+      @transfer_home_loan.save
+      session[:thank_you_path] = transfer_home_loan_path('step1')
+      redirect_to thank_you_path
+    end
   end
   
   def loan_against_property
-    
+    @loan_against_property = CustomLoanAgainstProperty.new
+
+    @title = 'Interest rates Loan against Property documents without income proof'
+    @description = 'If you\'re looking for loan against property and want information like
+     interest rates, documents required or if you can get it from banks 
+     without submitting your income proof, our relationship manager can answer 
+     all these questions for you and offer you service at your door step. Click on the link and get in touch with us.'
+
+    if request.post?
+      @loan_against_property = CustomLoanAgainstProperty.new(application_request_params(:custom_loan_against_property))
+      @loan_against_property.save
+      session[:thank_you_path] = loan_against_property_path('step1')
+      redirect_to thank_you_path
+    end
   end
 
   def new_car_loan
@@ -182,7 +258,7 @@ class HomeController < ApplicationController
   end
 
   def thank_you
-    
+    redirect_to root_path unless session[:thank_you_path]
   end
 
   private

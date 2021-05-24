@@ -68,7 +68,7 @@ $(document).ready(function(){
         email: "Please enter correct email"
       },
       "custom_credit_card[loan_purpose]": {
-        required: "Please select purpose of loan"
+        required: "Please select purpose of credit card."
       }
     },
     invalidHandler: function(event, validator) {
@@ -182,6 +182,158 @@ $(document).ready(function(){
         email: "Please enter correct email"
       },
       "custom_business_loan[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
+    },
+    invalidHandler: function(event, validator) {
+      $(".form-group").css({"padding-bottom": "0px !important"});
+    }
+  });
+
+  $("#new_custom_professional_loan").validate({
+    rules: {
+      "custom_professional_loan[full_name]": {
+        required: true
+      },
+      "custom_professional_loan[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_professional_loan[email]": {
+        required: true,
+        email: true
+      },
+      "custom_professional_loan[loan_purpose]": {
+        required: true
+      }
+    },
+    messages: {
+      "custom_professional_loan[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_professional_loan[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_professional_loan[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_professional_loan[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
+    },
+    invalidHandler: function(event, validator) {
+      $(".form-group").css({"padding-bottom": "0px !important"});
+    }
+  });
+
+  $("#new_custom_home_loan").validate({
+    rules: {
+      "custom_home_loan[full_name]": {
+        required: true
+      },
+      "custom_home_loan[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_home_loan[email]": {
+        required: true,
+        email: true
+      },
+      "custom_home_loan[loan_purpose]": {
+        required: true
+      }
+    },
+    messages: {
+      "custom_home_loan[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_home_loan[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_home_loan[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_home_loan[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
+    },
+    invalidHandler: function(event, validator) {
+      $(".form-group").css({"padding-bottom": "0px !important"});
+    }
+  });
+
+  $("#new_custom_transfer_home_loan").validate({
+    rules: {
+      "custom_transfer_home_loan[full_name]": {
+        required: true
+      },
+      "custom_transfer_home_loan[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_transfer_home_loan[email]": {
+        required: true,
+        email: true
+      },
+      "custom_transfer_home_loan[loan_purpose]": {
+        required: true
+      }
+    },
+    messages: {
+      "custom_transfer_home_loan[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_transfer_home_loan[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_transfer_home_loan[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_transfer_home_loan[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
+    },
+    invalidHandler: function(event, validator) {
+      $(".form-group").css({"padding-bottom": "0px !important"});
+    }
+  });
+
+  $("#new_custom_loan_against_property").validate({
+    rules: {
+      "custom_loan_against_property[full_name]": {
+        required: true
+      },
+      "custom_loan_against_property[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_loan_against_property[email]": {
+        required: true,
+        email: true
+      },
+      "custom_loan_against_property[loan_purpose]": {
+        required: true
+      }
+    },
+    messages: {
+      "custom_loan_against_property[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_loan_against_property[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_loan_against_property[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_loan_against_property[loan_purpose]": {
         required: "Please select purpose of loan"
       }
     },

@@ -2,7 +2,7 @@
   <div class="container  custom-container">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="text-center">Apply For Transfer Personal Loan</h2>
+        <h2 class="text-center card-title">Want to get Personal Bank Loan Transferred to another? We will help!</h2>
       </div>
     </div>
   </div>
@@ -12,26 +12,33 @@
     <div class="col-md-7">
       <p>Please provide following details for the application</p>
       <%= form_for @transfer_personal_loan, :url => { :action => "transfer_personal_loan" }, remote: false, html: { class: "custom_transfer_personal_loan" } do |f| %>
-          <div class="form-group">
-            <label>Your Full Name</label>
-            <%= f.text_field(:full_name, class: "form-control") %>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Full Name</label>
+              <%= f.text_field(:full_name, class: "form-control", autofocus: "true") %>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Your Mobile Number</label>
-            <%= f.number_field(:mobile_number, class: "form-control") %>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Mobile Number</label>
+              <%= f.number_field(:mobile_number, class: "form-control") %>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Your Email</label>
-            <%= f.text_field(:email, class: "form-control") %>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Email</label>
+              <%= f.text_field(:email, class: "form-control") %>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Your Purpose of Loan</label>
-            <%= f.select(:loan_purpose, @transfer_personal_loan.loan_purpose, class: "form-control") %>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Purpose</label>
+              <%= f.select(:loan_purpose, @transfer_personal_loan.loan_purpose, class: "form-control") %>
+            </div>
           </div>
           <button type="submit" class="btn btn-custom btn-block">Submit</button>
           <br>
-          <p class="text-center">OR</p>
-          <p class="text-center"> You can directly <%= link_to "Apply from here", transfer_personal_loan_path('step1'), method: :get %></p><br>
+          <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", transfer_home_loan_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
       <%end%>
     </div>
   </div>
@@ -48,41 +55,38 @@
 </div>
 <div class="container application-description">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-12">
       <br>
-      <h4>Process for personal loan transfer to other bank, balance loan transfer.</h4>
-      <p>If you wish to transfer your personal loan that you have taken from one bank to another owing to lower interest rate or other personal reasons, we are at your service to complete all the formalities quickly and swiftly. Get in touch with us and transfer your personal loan transferred before you know it!</p>
-      <p><h3><i>Want to get Personal Bank Loan Transferred to another? We will help!</i></h3></p>
-      <p><strong>Personal Loan Transfer Eligibility</strong></p>
+      <p class="pl-ser"><strong>Personal Loan Transfer Eligibility</strong></p>
       <p>If you have taken personal loan from one bank and want to transfer it to another, there are certain eligibility criteria the applicant has to meet, which depends on your repayment capacity to repay the loan along with your creditworthiness.  Other criteria are mentioned as under:</p>
       <p>For example, the applicant must have a running personal loan from another bank.</p>
       <p>Minimum outstanding loan amount has to be or exceed ₹ 50,000.</p>
       <p>The applicant’s previous bank account from which he took lean should reflect clean EMI payment track record of at least 12 months to be eligible for personal loan transfer.</p>
       <p>CIBIL Score required as per bank policy, typically 700 and above.</p>
-      <p><strong>Why Do People Opt For Personal Loan Transfer</strong></p>
+      <p class="pl-ser"><strong>Why Do People Opt For Personal Loan Transfer</strong></p>
       <p>Existing personal loan borrowers consider personal loan balance transfer to another bank, if they identify a bank or are referred to a bank that is charging lower her interest rate on current personal loan rates or are looking to avail a personal loan top up.</p>
       <p>Availing the personal loan balance transfer facility offers many benefits like lower interest rate, flexible repayment contract and provision to avail of top-up loan. People also often change their banks when they are not happy with their existing lender bank’s customer service.</p>
-      <p><strong>Our Financial Representative are the best</strong></p>
+      <p class="pl-ser"><strong>Our Financial Representative are the best</strong></p>
       <p>Our Financial Executive will identify and present the best personal loan transfer offers to save you interest on your existing EMIs, avail extra funds to meet your requirements at the best possible interest rate and other benefits.</p>
-      <p><strong>Key Features of Various Options</strong></p>
+      <p class="pl-ser"><strong>Key Features of Various Options</strong></p>
       <p>We will explain key features and benefits of each option available that may include information about Interest Rate, availability of top-up loan facility, how to get it done in a hassle free manner with minimum documentation and scope to increase repayment tenure</p>
-      <p><strong>Processing of Documentation</strong></p>
+      <p class="pl-ser"><strong>Processing of Documentation</strong></p>
       <p>Our representative will explain about documents required by bank for balance transfer. You will be required to furnish your latest salary slip, KYC, the current loan statement, bank statement of last six months that reflects repayment schedule. Once you speak to our Rep everything will be clear.</p>
       <p>Use our Balance Transfer <a href="/emi_calculator">Calculator Tool</a> (tool)</p>
-      <p><strong>Personal loan balance transfer process</strong></p>
+      <p class="pl-ser"><strong>Personal loan balance transfer process</strong></p>
       <p>The process to transfer your loan from one bank to another involves the following steps:</p>
       <div style="margin-left: 20px;">
-        <p><strong>Calculate Accurate Final Savings:</strong></p>
+        <p class="pl-ser"><strong>Calculate Accurate Final Savings:</strong></p>
         <p>When you have decided to transfer personal loan from one bank to another because of lower interest rate offer, the applicant should calculate the potential interest savings once bank confirms final rate of interest. Applicant should also take bank charges like processing fee and pre-payment charges into account while making any such calculations.</p>
-        <p><strong>Apply for Personal Loan at Bew Bank:</strong></p>
+        <p class="pl-ser"><strong>Apply for Personal Loan at Bew Bank:</strong></p>
         <p>Next step is to apply for <a href="/home/personal_loan">personal loan</a> at new bank. Our executive will help you to submit your loan documents, complete with repayment record.</p>
-        <p><strong>Obtain NOC from Existing Lender Bank:</strong></p>
+        <p class="pl-ser"><strong>Obtain NOC from Existing Lender Bank:</strong></p>
         <p>When you apply for personal loan transfer to a new bank, simultaneously you have to request for a NOC and foreclosure letter from your existing lender bank which is required to be submitted for loan processing and sanction.</p>
-        <p><strong>Loan Agreement Approval & disbursement</strong></p>
+        <p class="pl-ser"><strong>Loan Agreement Approval & disbursement</strong></p>
         <p>On completion of formalities applicant will obtain sanction letter to process new loan agreement with the new bank. Disbursement from new bank may be received via cheque/demand draft in favor of existing bank that he may deposit against his personal loan account. When bank receives settlement of dues, they’ll cancel all the checks, cancel or withdraw electronic transfer instructions if any to close your loan account.</p>
       </div>
       <p>We’re here to answer all your questions and more. Give us a call on <a href="tel:+918806644344">+91-88066-44344</a></p>
-      <p><strong>Our other services:</strong></p>
+      <p class="pl-ser"><strong>Checkout our other services:</strong></p><br>
     </div>
   </div>
   <div class="row">
@@ -108,7 +112,7 @@
           <%= image_tag "icons/home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
           Home Loan
         <%end%>
-        <br><br>
+        <br><br><br>
         <%= link_to custom_transfer_home_loan_path, method: :get do %>
           <%= image_tag "icons/tr-home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
           Transfer Home Loan

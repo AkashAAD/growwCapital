@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
 			:password_confirmation])
 	end
 
-    def after_sign_in_path_for(resource)
-      home_profile_path
-    end
+  def after_sign_in_path_for(resource)
+    home_profile_path
+  end
 
 end
