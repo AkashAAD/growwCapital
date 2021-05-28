@@ -9,7 +9,7 @@
 </section>
 <div class="container custom-application">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
       <p>Please provide following details for the application</p>
       <%= form_for @business_loan, :url => { :action => "business_loan" }, remote: false, html: { class: "custom_credit_card" } do |f| %>
           <div class="row">
@@ -40,6 +40,12 @@
           <br>
           <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", business_loan_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
       <%end%>
+    </div>
+    <div class="col-md-6">
+      <h4 class="crd-heading">
+        <br><br>
+        <span>The easiest way to procure a Business loan is to fill this form and get in touch with us.</span><br><br>Our Relationship Manager will call back in less than 24 hours. If you want to talk to us, call us on <a href="tel:+918806644344">+91-88066-44344</a>.
+      </h4>
     </div>
   </div>
   <div class="row">

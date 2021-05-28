@@ -336,9 +336,146 @@ $(document).ready(function(){
       "custom_loan_against_property[loan_purpose]": {
         required: "Please select purpose of loan"
       }
+    }
+  });
+
+  $("#new_custom_new_car_loan").validate({
+    rules: {
+      "custom_new_car_loan[full_name]": {
+        required: true
+      },
+      "custom_new_car_loan[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_new_car_loan[email]": {
+        required: true,
+        email: true
+      },
+      "custom_new_car_loan[loan_purpose]": {
+        required: true
+      }
     },
-    invalidHandler: function(event, validator) {
-      $(".form-group").css({"padding-bottom": "0px !important"});
+    messages: {
+      "custom_new_car_loan[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_new_car_loan[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_new_car_loan[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_new_car_loan[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
+    }
+  });
+
+  $("#new_custom_used_car_loan").validate({
+    rules: {
+      "custom_used_car_loan[full_name]": {
+        required: true
+      },
+      "custom_used_car_loan[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_used_car_loan[email]": {
+        required: true,
+        email: true
+      },
+      "custom_used_car_loan[loan_purpose]": {
+        required: true
+      }
+    },
+    messages: {
+      "custom_used_car_loan[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_used_car_loan[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_used_car_loan[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_used_car_loan[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
+    }
+  });
+
+  $("#new_custom_gold_loan").validate({
+    rules: {
+      "custom_gold_loan[full_name]": {
+        required: true
+      },
+      "custom_gold_loan[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_gold_loan[email]": {
+        required: true,
+        email: true
+      },
+      "custom_gold_loan[loan_purpose]": {
+        required: true
+      }
+    },
+    messages: {
+      "custom_gold_loan[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_gold_loan[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_gold_loan[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_gold_loan[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
+    }
+  });
+
+  $("#new_custom_insurance").validate({
+    rules: {
+      "custom_insurance[full_name]": {
+        required: true
+      },
+      "custom_insurance[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+      "custom_insurance[email]": {
+        required: true,
+        email: true
+      },
+      "custom_insurance[loan_purpose]": {
+        required: true
+      }
+    },
+    messages: {
+      "custom_insurance[full_name]": {
+        required: "Please enter full name"
+      },
+      "custom_insurance[mobile_number]": {
+        required: "Please enter last name",
+        minlength: "Please enter atmost 10 numbers."
+      },
+      "custom_insurance[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "custom_insurance[loan_purpose]": {
+        required: "Please select purpose of loan"
+      }
     }
   });
 

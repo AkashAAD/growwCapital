@@ -9,7 +9,7 @@
 </section>
 <div class="container custom-application">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
       <p>Please provide following details for the application</p>
       <%= form_for @transfer_home_loan, :url => { :action => "transfer_home_loan" }, remote: false, html: { class: "custom_personal_loan" } do |f| %>
           <div class="row">
@@ -40,6 +40,12 @@
           <br>
           <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", transfer_home_loan_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
       <%end%>
+    </div>
+    <div class="col-md-6">
+      <h4 class="crd-heading">
+        <br>
+        <span>If you seek to transfer your home loan for any reason, just fill the form the send it to us.</span><br><br>We will revert within or less than 24 hours and offer the best solutions. If you want to talk to us, you can call us on <a href="tel:+918806644344">+91-88066-44344</a>.        
+      </h4>
     </div>
   </div>
   <div class="row">

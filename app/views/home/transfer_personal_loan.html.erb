@@ -9,7 +9,7 @@
 </section>
 <div class="container custom-application">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
       <p>Please provide following details for the application</p>
       <%= form_for @transfer_personal_loan, :url => { :action => "transfer_personal_loan" }, remote: false, html: { class: "custom_transfer_personal_loan" } do |f| %>
           <div class="row">
@@ -38,8 +38,13 @@
           </div>
           <button type="submit" class="btn btn-custom btn-block">Submit</button>
           <br>
-          <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", transfer_home_loan_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
+          <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", transfer_personal_loan_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
       <%end%>
+    </div>
+    <div class="col-md-6">
+      <h4 class="crd-heading">
+        <br>
+        <span>Call us and we'll designate a Relationship Manager at your service, who'll not only explain various aspects of Personal Loan Transfer but also suggest options of best banks to do it.</span><br><br>For a hassle-free personal loan transfer, fill and send the form. <a href="tel:+918806644344">+91-88066-44344</a></h4>
     </div>
   </div>
   <div class="row">

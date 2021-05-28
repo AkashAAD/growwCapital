@@ -44,6 +44,7 @@ class HomeLoanController < ApplicationController
       @home_loan.update_attributes(home_loan_params)
     else
       @home_loan.save
+      session[:hl_mobile_number] = nil
     end
     session[:home_loan_id] = @home_loan.id
     # create_update_home_loan(@home_loan.save, "Home Loan created successfully.", home_loan_path("step2"))
@@ -165,6 +166,8 @@ class HomeLoanController < ApplicationController
   def update_home_loan_offer
     get_home_loan(session[:home_loan_id])
     @update_status_nclo = @home_loan.update_attributes(home_loan_params)
+    session[:hl_full_name] = nil
+    session[:hl_email] = nil
   end
 
 

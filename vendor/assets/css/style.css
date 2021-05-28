@@ -631,7 +631,7 @@ header .bottom-header .navbar-default {
 	background-color: transparent;
 	border-color: transparent;
 	padding: 0;
-	height: 50px;
+	height: 70px;
 }
 
 header .navbar-toggler {
@@ -2259,7 +2259,7 @@ input[type=text]:focus, .leave-comments form input[type=text]:focus, .leave-comm
 }
 
 footer {
-    background-color: #f8f8f8;
+    background-color: #e5e5e5;
     padding: 47px 0 64px 0;
     color: #00334e;
     font-size: 14px;
@@ -2642,7 +2642,7 @@ footer.design_2 h4 {
 .back_to_top {
 	width: 50px;
     height: 50px;
-    background-color: rgb(40 207 142);
+    background-color: #3a61c8;
     color: #FFF;
     cursor: pointer;
     text-align: center;
@@ -2659,6 +2659,10 @@ footer.design_2 h4 {
 
 .back_to_top:hover {
 	background-color: #ee4131;
+}
+
+.back_to_top > img {
+  width: 15px;
 }
 
 /*  K. Form Styles

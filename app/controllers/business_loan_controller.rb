@@ -48,6 +48,7 @@ class BusinessLoanController < ApplicationController
       @business_loan.update_attributes(business_loan_params)
     else
       @business_loan.save
+      session[:bl_mobile_number] = nil
     end
     session[:business_loan_id] = @business_loan.id
 	end
@@ -155,6 +156,8 @@ class BusinessLoanController < ApplicationController
 	def update_business_loan_offer
 		get_business_loan(session[:business_loan_id])
 		@update_status_blo = @business_loan.update_attributes(business_loan_params)
+    session[:bl_full_name] = nil
+    session[:bl_email] = nil
 	end
 
 	def update_business_loan_offer_assets

@@ -5,6 +5,10 @@ class HomeController < ApplicationController
 
   def index
     @instant_call = InstantCall.new
+    @title = 'best banks home loan personal interest rates credit card eligibility'
+    @description = 'We can help you with all kinds of loans and loan transfers.
+     If you’re looking for credit card, we can offer some of the best credit card offers and more. 
+     Visit our website to know all about all the products and personalized services we offer.'
   end
 
   def about_us
@@ -126,6 +130,11 @@ class HomeController < ApplicationController
     if request.post?
       @credit_card = CustomCreditCard.new(application_request_params(:custom_credit_card))
       @credit_card.save
+
+      session[:cc_full_name] = @credit_card.full_name
+      session[:cc_email] = @credit_card.email
+      session[:cc_mobile_number] = @credit_card.mobile_number
+
       session[:thank_you_path] = credit_card_path('step1')
       redirect_to thank_you_path
     end
@@ -143,6 +152,11 @@ class HomeController < ApplicationController
     if request.post?
       @personal_loan = CustomPersonalLoan.new(application_request_params(:custom_personal_loan))
       @personal_loan.save
+
+      session[:pl_full_name] = @personal_loan.full_name
+      session[:pl_email] = @personal_loan.email
+      session[:pl_mobile_number] = @personal_loan.mobile_number
+
       session[:thank_you_path] = personal_loan_path('step1')
       redirect_to thank_you_path
     end
@@ -160,6 +174,11 @@ class HomeController < ApplicationController
     if request.post?
       @transfer_personal_loan = CustomTransferPersonalLoan.new(application_request_params(:custom_transfer_personal_loan))
       @transfer_personal_loan.save
+
+      session[:tpl_full_name] = @transfer_personal_loan.full_name
+      session[:tpl_email] = @transfer_personal_loan.email
+      session[:tpl_mobile_number] = @transfer_personal_loan.mobile_number
+
       session[:thank_you_path] = transfer_personal_loan_path('step1')
       redirect_to thank_you_path
     end
@@ -176,6 +195,11 @@ class HomeController < ApplicationController
     if request.post?
       @business_loan = CustomBusinessLoan.new(application_request_params(:custom_business_loan))
       @business_loan.save
+
+      session[:bl_full_name] = @business_loan.full_name
+      session[:bl_email] = @business_loan.email
+      session[:bl_mobile_number] = @business_loan.mobile_number
+      
       session[:thank_you_path] = business_loan_path('step1')
       redirect_to thank_you_path
     end
@@ -193,6 +217,11 @@ class HomeController < ApplicationController
     if request.post?
       @professional_loan = CustomProfessionalLoan.new(application_request_params(:custom_professional_loan))
       @professional_loan.save
+
+      session[:prl_full_name] = @professional_loan.full_name
+      session[:prl_email] = @professional_loan.email
+      session[:prl_mobile_number] = @professional_loan.mobile_number
+
       session[:thank_you_path] = professional_loan_path('step1')
       redirect_to thank_you_path
     end
@@ -210,6 +239,11 @@ class HomeController < ApplicationController
     if request.post?
       @home_loan = CustomHomeLoan.new(application_request_params(:custom_home_loan))
       @home_loan.save
+
+      session[:hl_full_name] = @home_loan.full_name
+      session[:hl_email] = @home_loan.email
+      session[:hl_mobile_number] = @home_loan.mobile_number
+
       session[:thank_you_path] = home_loan_path('step1')
       redirect_to thank_you_path
     end
@@ -227,6 +261,11 @@ class HomeController < ApplicationController
     if request.post?
       @transfer_home_loan = CustomTransferHomeLoan.new(application_request_params(:custom_transfer_home_loan))
       @transfer_home_loan.save
+
+      session[:thl_full_name] = @transfer_home_loan.full_name
+      session[:thl_email] = @transfer_home_loan.email
+      session[:thl_mobile_number] = @transfer_home_loan.mobile_number
+
       session[:thank_you_path] = transfer_home_loan_path('step1')
       redirect_to thank_you_path
     end
@@ -244,17 +283,89 @@ class HomeController < ApplicationController
     if request.post?
       @loan_against_property = CustomLoanAgainstProperty.new(application_request_params(:custom_loan_against_property))
       @loan_against_property.save
+
+      session[:lap_full_name] = @loan_against_property.full_name
+      session[:lap_email] = @loan_against_property.email
+      session[:lap_mobile_number] = @loan_against_property.mobile_number
+
       session[:thank_you_path] = loan_against_property_path('step1')
       redirect_to thank_you_path
     end
   end
 
   def new_car_loan
-    
+    @new_car_loan = CustomNewCarLoan.new
+
+    @title = 'New car loan interest rate, car loan EMI calculator, car loan bank'
+    @description = 'If you want car loan and looking for a bank offering lowest interest rate,
+     we can guide you. Before looking for banks offering car loans and interest rates 
+     charged by various banks, let us calculate EMI of car that we will be paying. 
+     Once that is finalized, we can select best bank. Click here for more info....'
+
+    if request.post?
+      @new_car_loan = CustomNewCarLoan.new(application_request_params(:custom_new_car_loan))
+      @new_car_loan.save
+
+      session[:ncl_full_name] = @new_car_loan.full_name
+      session[:ncl_email] = @new_car_loan.email
+      session[:ncl_mobile_number] = @new_car_loan.mobile_number
+
+      session[:thank_you_path] = new_car_loan_path('step1')
+      redirect_to thank_you_path
+    end
   end
 
   def used_car_loan
-    
+    @used_car_loan = CustomUsedCarLoan.new
+
+    @title = 'Eligibility used car loan financing, interest rates used car loan bank in Nagpur'
+    @description = 'If you are looking for used car loan and want to know about bank options
+     and other attractive offers, do let us know. Our Relationship Manager will be 
+     at your service presenting the best banks, best offers. Click on this link to know more...'
+
+    if request.post?
+      @used_car_loan = CustomUsedCarLoan.new(application_request_params(:custom_used_car_loan))
+      @used_car_loan.save
+
+      session[:ucl_full_name] = @used_car_loan.full_name
+      session[:ucl_email] = @used_car_loan.email
+      session[:ucl_mobile_number] = @used_car_loan.mobile_number
+
+      session[:thank_you_path] = used_car_loan_path('step1')
+      redirect_to thank_you_path
+    end
+  end
+
+  def gold_loan
+    @gold_loan = CustomGoldLoan.new
+
+    @title = 'How to apply for gold loan documents, interest rate how to get gold loan'
+    @description = 'If you’re in need of urgent money, and have gold sitting idle in bank,
+     you can pledge this gold and get loan against it. 
+     This is governed by RBI and you can.'
+
+    if request.post?
+      @gold_loan = CustomGoldLoan.new(application_request_params(:custom_gold_loan))
+      @gold_loan.save
+      session[:thank_you_path] = root_path
+      redirect_to thank_you_path
+    end
+  end
+
+  def inssurance
+    @inssurance = CustomInsurance.new
+
+    @title = 'Buy insurance for car, bike term insurance how to choose life insurance'
+    @description = 'We deal in all types of insurances to secure your life and
+     of your loved ones, buy car insurance, building insurance, term insurance. 
+     Complete & right guidance at your door step'
+
+    if request.post?
+      @inssurance = CustomInsurance.new(application_request_params(:custom_insurance))
+      @inssurance.save
+      session[:thank_you_path] = root_path
+      redirect_to thank_you_path
+    end
   end
 
   def thank_you

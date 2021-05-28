@@ -1275,6 +1275,29 @@ homeStrip .container>p {
   }
 }
 
+.header-strip {
+  box-shadow: unset !important;
+  border-bottom: 1px solid #e3dede;
+  p {
+    margin-bottom: 0px;
+    padding: 5px;
+    float: right;
+  }
+  span {
+    font-size: 18px;  
+  }
+  .bar {
+    font-size: 25px;
+  }
+  .fa-envelope {
+    color: #cb2d08;
+  }
+
+  .fa-whatsapp {
+    color: #26c726;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .quicklinks-menu {
     border-left: 0;

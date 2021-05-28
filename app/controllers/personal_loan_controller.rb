@@ -44,6 +44,7 @@ class PersonalLoanController < ApplicationController
       @personal_loan.update_attributes(personal_loan_params)
     else
       @personal_loan.save
+      session[:pl_mobile_number] = nil
     end
     session[:personal_loan_id] = @personal_loan.id
   end
@@ -139,6 +140,8 @@ class PersonalLoanController < ApplicationController
 	def update_personal_loan_employer
 		get_personal_loan(session[:personal_loan_id])
 		@update_status_pe = @personal_loan.update_attributes(personal_loan_params)
+    session[:pl_full_name] = nil
+    session[:pl_email] = nil
 	end
 
 	def create_personal_loan_employer

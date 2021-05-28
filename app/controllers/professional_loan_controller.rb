@@ -44,6 +44,7 @@ class ProfessionalLoanController < ApplicationController
       @professional_loan.update_attributes(professsional_loan_params)
     else
       @professional_loan.save
+      session[:prl_mobile_number] = nil
     end
     session[:professional_loan_id] = @professional_loan.id
   end
@@ -166,6 +167,8 @@ class ProfessionalLoanController < ApplicationController
 	def update_professional_loan_offer
 		get_professional_loan(session[:professional_loan_id])
 		@update_status_plo = @professional_loan.update_attributes(professsional_loan_params)
+    session[:prl_email] = nil
+    session[:prl_full_name] = nil
 	end
 
 	def update_professsional_loan_assets

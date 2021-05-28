@@ -175,6 +175,10 @@ $(document).ready(function(){
 				required: true,
 				email: true
 			},
+			"home_loan[full_name]": {
+				required: true,
+				full_name: true
+			},
 		},
 		messages: {
 			'home_loan[dob]': {
@@ -190,7 +194,11 @@ $(document).ready(function(){
 			},
 			"home_loan[email]": {
 				required: "Please enter email",
-				email: "Please enter validate email"
+				email: "Please enter validate email."
+			},
+			"home_loan[full_name]": {
+				required: "Please enter full name.",
+				full_name: "Please enter validate full name."
 			},
 		}  	
   });

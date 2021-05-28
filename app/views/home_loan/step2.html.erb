@@ -37,7 +37,7 @@
             <label>Email
               <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Share the correct email address to ensure timely communication regarding this application."></i>
             </label>
-            <%= f.email_field(:email, class: "form-control") %>
+            <%= f.email_field(:email, class: "form-control", value: "#{session[:hl_email] ? session[:hl_email] : f.object.email}") %>
           </div>
         </div>
       </div>
@@ -49,8 +49,14 @@
             </label>
             <%= f.date_field(:dob, class: "form-control", min: "#{Time.zone.now - 21.years}", max: Time.zone.now + 39.years) %>
           </div>
-        </div>        
+        </div>
         <div class="col-md-6">
+          <div class="form-group">
+            <label>Full Name
+              <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="To ensure you are fiting the partner's criteria."></i>
+            </label>
+            <%= f.text_field(:full_name, class: "form-control", value: "#{session[:hl_full_name] ? session[:hl_full_name] : f.object.full_name}") %>
+          </div>
         </div>
       </div>
       <button type="submit" class="btn btn-custom">Submit</button>

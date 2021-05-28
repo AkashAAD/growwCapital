@@ -45,6 +45,7 @@ class CreditCardController < ApplicationController
       @credit_card.update_attributes(credit_card_params)
     else
       @credit_card.save
+      session[:cc_mobile_number] = nil
     end
     session[:credit_card_id] = @credit_card.id    
     # create_update_credit_card(@credit_card.save, "Credit card application created successfully.", credit_card_path("step2"))
@@ -144,6 +145,8 @@ class CreditCardController < ApplicationController
   def update_credit_card_offer
     get_credit_card(session[:credit_card_id])
     @update_status_nclo = @credit_card.update_attributes(credit_card_params)
+    session[:cc_full_name] = nil
+    session[:cc_email] = nil
   end
 
 

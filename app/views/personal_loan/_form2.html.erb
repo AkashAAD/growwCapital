@@ -1,5 +1,5 @@
 <div class="row first-row">
-  <div class="col-md-4">
+  <div class="col-md-6">
     <div class="form-group">
       <label>Your Company Name
         <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="If you can not find the name of your compnay in the list. Please select the other."></i>
@@ -7,20 +7,12 @@
       <%= f.text_field(:employer_name, class: "form-control") %>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-6">
     <div class="form-group">
       <label>Total EMI you pay currently?
         <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Helps to calculate the right loan amount you are eligible for."></i>
       </label>
       <%= f.number_field(:current_emi, class: "form-control", placeholder: "Rs. 0") %>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="form-group">
-      <label>Do you have an existing credit card
-        <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Your existing card will help to approve this application."></i>
-      </label>
-      <%= f.select(:existing_card, existing_card, class: "form-control") %>
     </div>
   </div>
 </div>
@@ -30,7 +22,7 @@
       <label>Your Full Name
         <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="As per aadhar card records, to ensure your application gets successfully processed."></i>
       </label>
-      <%= f.text_field(:full_name, class: "form-control", placeholder: "") %>
+      <%= f.text_field(:full_name, class: "form-control", placeholder: "", value: "#{session[:pl_full_name] ? session[:pl_full_name] : f.object.full_name}") %>
     </div>
   </div>
   <div class="col-md-4">
@@ -46,7 +38,7 @@
       <label>Your Email Address
         <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Share the correct email address to ensure timely communication regarding this application."></i>
       </label>
-      <%= f.text_field(:email, class: "form-control", placeholder: "") %>
+      <%= f.text_field(:email, class: "form-control", placeholder: "", value: "#{session[:pl_email] ? session[:pl_email] : f.object.email}") %>
     </div>
   </div>
 </div>

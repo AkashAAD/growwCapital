@@ -9,7 +9,7 @@
 </section>
 <div class="container custom-application">
   <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-6">
       <p>Please provide following details for the application</p>
       <%= form_for @professional_loan, :url => { :action => "professional_loan" }, remote: false, html: { class: "custom_personal_loan" } do |f| %>
           <div class="row">
@@ -41,6 +41,13 @@
           <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", professional_loan_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
       <%end%>
     </div>
+    <div class="col-md-6">
+      <h4 class="crd-heading">
+        <br>
+        <span>Are you looking to apply for a professional loan?</span><br><br>
+        GrowwCapital is @ your service to ensure you procure it from the best bank and which meets all financial requirements of your business. Fill the form & send it. You can also call us on <a href="tel:+918806644344">+91-88066-44344</a>.
+      </h4>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-12">
@@ -57,7 +64,6 @@
   <div class="row">
     <div class="col-md-12">
       <br>
-      <p><a href="/">GrowwCapital</a> always @ your service to apply for a professional loan you need, to ensure you get the right loan that it fulfils all your financial requirements with ease.</p>
       <p>Chartered Accountants, Company Secretaries, Doctors, & Architects are the standard four types of professionals who are eligible to apply for professional loans. All the leading banks have provision for these loans. Some banks also accommodate more in the category of professionals. When you talk to us and give us a brief on your profile and requirements we can present the right options to you.</p>
       <p>All such professional may apply for these loans for various needs, starting from setting up their offices or meet long and short term professional goals. Like already mentioned some banks also provide loans to salaried and non-individuals such as diagnostic centers and hospitals.</p>
       <p>If you belong to any of the above professions and seek loan, we can help you get it within a short span of time and minimum paperwork and running around. Our team has helped many professionals to get a quick approval and disbursement of their loan amount.</p>

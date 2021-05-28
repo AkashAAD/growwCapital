@@ -2,7 +2,7 @@
   <div class="container  custom-container">
     <div class="row">
       <div class="col-md-12">
-        <h2 class="text-center card-title">Looking for Used Car Loan in Nagpur –We Help You Find the Best Cars & Quick Sanctions!</h2>
+        <h3 class="text-center card-title">Easy Hassle-Free Insurance for Your Health, Life, Assets, and more!</h3>
       </div>
     </div>
   </div>
@@ -11,7 +11,7 @@
   <div class="row">
     <div class="col-md-6">
       <p>Please provide following details for the application</p>
-      <%= form_for @used_car_loan, :url => { :action => "used_car_loan" }, remote: false, html: { class: "custom_personal_loan" } do |f| %>
+      <%= form_for @inssurance, :url => { :action => "inssurance" }, remote: false, html: { class: "custom_credit_card" } do |f| %>
           <div class="row">
             <div class="col-md-12">
               <label>Your Full Name</label>
@@ -33,30 +33,19 @@
           <div class="row">
             <div class="col-md-12">
               <label>Your Purpose</label>
-              <%= f.select(:loan_purpose, @used_car_loan.loan_purpose, class: "form-control") %>
+              <%= f.select(:loan_purpose, @inssurance.loan_purpose, class: "form-control") %>
             </div>
           </div>
           <button type="submit" class="btn btn-custom btn-block">Submit</button>
           <br>
-          <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", used_car_loan_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
+          <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", credit_card_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
       <%end%>
     </div>
     <div class="col-md-6">
       <h4 class="crd-heading">
         <br><br>
-        <span>To get up to 100% finance for used cars, hassle-free processing of loan, minimal documentation and quick sanction</span>, fill out the form or talk to us on <a href="tel:+918806644344">+91-88066-44344</a>
-        <br><br>
-        | Paperless Sanction <br> | Speedy Disbursement <br> | Attractive Interest Rate & EMIs
+        <span>Buy Term Plan, Car Insurance, or any other! we can help you choose the best one.</span> Instant Policy, Online Renewal, No Claim Bonus, & more.<br><br>Call <a href="tel:+918806644344">+91-88066-44344</a> to get all your answers.
       </h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="credit-card-banks owl-carousel">
-        <% UsedCarLoanBank.all.uniq.each do |card| %>
-          <div class="part-img-effect"><%= image_tag url_for(card.bank_image), width: 200, height: 100 %></div>
-        <% end %>
-      </div>
     </div>
   </div>
   <br>
@@ -65,23 +54,28 @@
   <div class="row">
     <div class="col-md-12">
       <br>
-      <p class="pl-ser">Pre-owned Car Loan Financing Options with Flexible Loan Tenures</p>
-      <p>If you’re planning to buy pre-owned car or repurchase an old car, we can suggest best options and procedure to buy the car of your choice in the easiest quickest manner.</p>
-      <p>Once you connect with us we will tell you everything related to procuring it, from used car loan eligibility, fee and charges, will calculate EMI for you and more.</p>
-      <p class="pl-ser">Used Car Loan Sanction Parameters</p>
-      <p>If you wish to own a pre-used car and need a loan on it, you ought to know that different banks have different polices with regard to used car loans. Some banks sanction the loan on pre-owned cars that are up to 10 years old, and the borrower need to be at least 21 years of age. Generally banks offer loans to salaried as well as self-employed professionals and entrepreneurs as long as you meet all the conditions.</p>
-      <p>Our Relationship Manager will present different bank options help you shortlist banks that meet your expectations. They will also assist you to use the <b>Pre-Owned Car Loan EMI calculator</b> to take an informed decision.</p>
+      <p>We Advise. We provide door to door support to get your Insurance Policy in order & offer support to settle the claim.</p>
+      <p>When you contact us to buy insurance, we make sure you leave happy and satisfied. Whichever insurance that you may have in mind, if this is the first time you’re buying insurance; our Relationship Manger will offer the help and answer all your questions. </p>
+      <p>Whether you’re contemplating to take term insurance to protect your loved ones, or want to buy insurance for your vehicle or building or any other asset, we will present all the options based on your need and answer all the questions to help you take an informed decision to safeguard your future.</p>
+      <p>With us you never have to worry about hidden charges or other unpleasant surprises leading to expense.</p>
+      <p>From Critical Illness Insurance, accidental death cover, tax benefits, permanent disability, term insurance, asset protection insurance we offer all kinds of insurance and are attached with the best and leading insurance companies.</p>
       <p class="pl-ser">How we help</p>
-      <p>Our office is more than happy to help to choose a car that meets your specific needs and help you till the stage of title transfer for a hassle free experience of buying a pre-owned car. We help you find the right cars, with great reviews and different loan options available against each one of them. We also help you to choose a bank that offers maximum as well as flexible repayment conveniences including pocket-friendly EMIs. Call us to know more <a href="tel:+918806644344">+91-88066-44344</a></p>
+      <p>Right from helping you decide the type and duration of insurance, the best policy you should opt for under different circumstances, considering your age, income, etc. to calculating an appropriate premium you should pay; we can make it all happen for you in the most hassle free manner. We help you put documents in order, initiate auto debit of premium directly from bank to make life easy for you.</p>
+      <p>We answer a wide range of questions to cover various topics from which cover will be best for you, ideal duration that your health, life or asset policy should be, maximum amount covered, benefits of buying insurance policies, about built-in benefits of each of the policies you’re looking to buy. We’ll also inform you about age limits on buying certain policies, etc. We will give you detailed info on what your insurance covers like Hospital room rent limit, road ambulance charges, organ donor expenses, post hospitalization expenses, day care treatment coverage, if robotic surgery is covered in your policy,  We will also stand by you at the time of getting settlements and claims.</p>
+      <p class="pl-ser">With us every policy will be completed in 3 Easy steps</p>
+      <p>Select the best plan</p>
+      <p>Complete application and other formalities and documents</p>
+      <p>Do payment and upload documents</p>
+      <p>Check out more services offered by  us</p>
       <p class="pl-ser"><strong>Checkout our other services:</strong></p><br>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div style="margin-bottom: 100px;" class="other-services">
-        <%= link_to custom_credit_card_path, method: :get do %>
-            <%= image_tag "icons/cc-icon.svg", style: "width: 25px;" %>
-            Credit Card
+      <div class="other-services">
+        <%= link_to custom_personal_loan_path, method: :get do %>
+          <%= image_tag "icons/personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Personal Loan
         <%end%>
         <%= link_to custom_transfer_personal_loan_path, method: :get do %>
           <%= image_tag "icons/transfer-personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
@@ -129,7 +123,7 @@
       items: 3,
       nav:true,
       autoplay:true,
-      autoplayTimeout:5000,
+      autoplayTimeout:10000,
       autoplayHoverPause:true,
       responsive:{
         0:{

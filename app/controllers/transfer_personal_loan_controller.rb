@@ -43,6 +43,7 @@ class TransferPersonalLoanController < ApplicationController
     if session[:transfer_personal_loan_id]
       @transfer_personal_loan.update_attributes(transfer_personal_loan_params)
     else
+      session[:tpl_mobile_number] = nil
       @transfer_personal_loan.save
     end
     session[:transfer_personal_loan_id] = @transfer_personal_loan.id
@@ -145,6 +146,8 @@ class TransferPersonalLoanController < ApplicationController
 	def update_transfer_personal_loan_employer
 		get_transfer_personal_loan(session[:transfer_personal_loan_id])
 		@update_status_pe = @transfer_personal_loan.update_attributes(transfer_personal_loan_params)
+    session[:tpl_full_name] = nil
+    session[:tpl_email] = nil
 	end
 
 	def create_transfer_personal_loan_employer

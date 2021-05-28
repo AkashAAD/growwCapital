@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   match "home/loan_against_property" => "home#loan_against_property", as: :custom_loan_against_property, via: [:get, :post]
   match "home/new_car_loan" => "home#new_car_loan", as: :custom_new_car_loan, via: [:get, :post]
   match "home/used_car_loan" => "home#used_car_loan", as: :custom_used_car_loan, via: [:get, :post]
+  match "home/gold_loan" => "home#gold_loan", as: :custom_gold_loan, via: [:get, :post]
+  match "home/inssurance" => "home#inssurance", as: :custom_insurance, via: [:get, :post]
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',

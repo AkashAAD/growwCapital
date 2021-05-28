@@ -1,0 +1,157 @@
+<section>
+  <div class="container  custom-container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center card-title">Apply for Loan For New Car.  Learn about procedure, documentation, eligibility, interest rates & more</h2>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="container custom-application">
+  <div class="row">
+    <div class="col-md-6">
+      <p>Please provide following details for the application</p>
+      <%= form_for @new_car_loan, :url => { :action => "new_car_loan" }, remote: false, html: { class: "custom_personal_loan" } do |f| %>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Full Name</label>
+              <%= f.text_field(:full_name, class: "form-control", autofocus: "true") %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Mobile Number</label>
+              <%= f.number_field(:mobile_number, class: "form-control") %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Email</label>
+              <%= f.text_field(:email, class: "form-control") %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <label>Your Purpose</label>
+              <%= f.select(:loan_purpose, @new_car_loan.loan_purpose, class: "form-control") %>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-custom btn-block">Submit</button>
+          <br>
+          <p class="text-center"><span style="color: blue;">Click on this link to apply directly.</span> <%= link_to "Apply", new_car_loan_path('step1'), method: :get, style: "color: #0000ff; font-weight: 500;" %></p><br>
+      <%end%>
+    </div>
+    <div class="col-md-6">
+      <h4 class="crd-heading">
+        <br><br>
+        <span>If you are unable to purchase a private vehicle due to scarcity of funds</span>, you needn’t worry, because funding your brand-new car is super simple now!<br><br>Call us on <a href="tel:+918806644344">+91-88066-44344</a> to talk to us.
+      </h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="credit-card-banks owl-carousel">
+        <% NewCarLoanBank.all.uniq.each do |card| %>
+          <div class="part-img-effect"><%= image_tag url_for(card.bank_image), width: 200, height: 100 %></div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <br>
+</div>
+<div class="container application-description">
+  <div class="row">
+    <div class="col-md-12">
+      <br>
+      <p class="pl-ser">Eligibility - Who Can Apply For Car Loan</p>
+      <p>There are many banks offering loans to buy a new car. Also referred to as auto loans (loans for automobile) can be availed of by salaried employees, businessmen, professionals, and corporate. Some banks also offer car loan or vehicle loan to NRIs and PIOs.</p>
+      <p class="pl-ser">Financing & Interest Rates</p>
+      <p>When you get in touch with us we will share the best banks offering car loan with attractive interest rates with up to 90% or even 100% financing, or less as per your requirements.</p>
+      <p>Different banks offer different benefits and offers on car loans depending on their offers and policies, your loan amount, and type of vehicle. Our Relationship Manager will apprise you of all the facts to help you take an informed decision and avail maximum benefits. Some banks also offer top up facility after you’ve cleared EMIs for first 9 or 10 months.</p>
+      <p>After you finalize the car you want to buy, we’ll present bank options that offer best offers, quick processing, minimal documentation hassle, and speedy disbursal of funds. While suggesting banks for new car loan we always keep the foreclosure clause in mind. This ensures that if borrowers decide to clear the loans before time they do not have to pay foreclosure charges or pre-payment penalty, nor pay advance EMIs.</p>
+      <p>Some banks offer attractive interest rates on loans to borrowers based on their credit scores. Also if you have taken home loan from the bank, and you have a good credit history, banks also offer concession on car loan interest rate. Our Relationship Managers are seasoned professionals who will give best and beneficial advice.</p>
+      <p class="pl-ser">Borrower-friendly Loan Repayment schemes:</p>
+      <p>There are banks which offer borrower-friendly schemes. Under such schemes borrower starts the repayment of car loan in affordable EMIs and gradually increases the amount as his or her income grows and he is in a position to increase the amount and clear loan faster and save on interest.  Our Relationship Manager will apprise you of all these and more.</p>
+      <p class="pl-ser">Car Loan Eligibility Calculator Criteria</p>
+      <p>We calculate approximate amount a bank is likely to sanction for you before initiating application procedure in a bank. Some parameters we consider for car loan eligibility calculation include cost of the car, your age, EMIs you are currently paying, your CIBIL score, EMI you can comfortably pay for your car, loan repayment period you’re looking at, and your monthly income.</p>
+      <p class="pl-ser">Age limit to apply for a car loan</p>
+      <p>The minimum age of the borrower should be 21 years, and the maximum age needn’t be over 70 years at the time of completion of repayment period.</p>
+      <p class="pl-ser">Calculation</p>
+      <p>Car loan EMI calculator takes into account three basic variables. That is the loan amount borrower needs, the period or the repayment that suits the borrower and the interest rate. We get the best car loan interest rates offer for you, and take the other two in our calculation to arrive at a tentative monthly EMI figure.</p>
+      <p>Write to us <a href="mailto:support@growwcapital.com">support@growwcapital.com</a> or call us on <a href="tel:+918806644344">+91-88066-44344</a> if you have any queries or questions.</p>
+
+      <p class="pl-ser"><strong>Checkout our other services:</strong></p><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div style="margin-bottom: 100px;" class="other-services">
+        <%= link_to custom_credit_card_path, method: :get do %>
+            <%= image_tag "icons/cc-icon.svg", style: "width: 25px;" %>
+            Credit Card
+        <%end%>
+        <%= link_to custom_transfer_personal_loan_path, method: :get do %>
+          <%= image_tag "icons/transfer-personal-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transfer Personal Loan
+        <%end%>
+        <%= link_to custom_business_loan_path, method: :get do %>
+          <%= image_tag "icons/business-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Business Loan
+        <%end%>
+        <%= link_to custom_professional_loan_path, method: :get do %>
+          <%= image_tag "icons/professional-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Professional Loan
+        <%end%>
+        <%= link_to custom_home_loan_path, method: :get do %>
+          <%= image_tag "icons/home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Home Loan
+        <%end%>
+        <br><br><br>
+        <%= link_to custom_transfer_home_loan_path, method: :get do %>
+          <%= image_tag "icons/tr-home-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Transfer Home Loan
+        <%end%>
+        <%= link_to custom_loan_against_property_path, method: :get do %>
+          <%= image_tag "icons/loan-against-property-icon.svg", style: "width: 25px;" %>&nbsp;
+          Loan Against Property
+        <%end%>
+        <%= link_to custom_new_car_loan_path, method: :get do %>
+          <%= image_tag "icons/new-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          New Car Loan
+        <%end%>
+        <%= link_to custom_used_car_loan_path, method: :get do %>
+          <%= image_tag "icons/used-car-loan-icon.svg", style: "width: 25px;" %>&nbsp;
+          Used Car Loan
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $('.credit-card-banks').owlCarousel({
+      loop:true,
+      margin:10,
+      items: 3,
+      nav:true,
+      autoplay:true,
+      autoplayTimeout:5000,
+      autoplayHoverPause:true,
+      responsive:{
+        0:{
+          items:1
+        },
+        600:{
+          items:3
+        },
+        1200:{
+          items: 5
+        },
+        1000:{
+          items: 5
+        }
+      }
+    });
+  });
+</script>
