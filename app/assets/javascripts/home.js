@@ -1,5 +1,9 @@
 $(document).ready(function(){
 
+  jQuery.validator.addMethod("full_name", function(value, element) {
+    return value.split(" ").length >= 2;
+  }, "");
+
 	$("#contact_us").validate({
 		rules: {
 			"contact_u[first_name]": {
@@ -41,7 +45,8 @@ $(document).ready(function(){
   $("#new_custom_credit_card").validate({
     rules: {
       "custom_credit_card[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_credit_card[mobile_number]": {
         required: true,
@@ -57,7 +62,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_credit_card[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_credit_card[mobile_number]": {
         required: "Please enter last name",
@@ -79,7 +85,8 @@ $(document).ready(function(){
   $("#new_custom_personal_loan").validate({
     rules: {
       "custom_personal_loan[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_personal_loan[mobile_number]": {
         required: true,
@@ -95,7 +102,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_personal_loan[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_personal_loan[mobile_number]": {
         required: "Please enter last name",
@@ -117,7 +125,8 @@ $(document).ready(function(){
   $("#new_custom_transfer_personal_loan").validate({
     rules: {
       "custom_transfer_personal_loan[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_transfer_personal_loan[mobile_number]": {
         required: true,
@@ -133,7 +142,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_transfer_personal_loan[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_transfer_personal_loan[mobile_number]": {
         required: "Please enter last name",
@@ -155,7 +165,8 @@ $(document).ready(function(){
   $("#new_custom_business_loan").validate({
     rules: {
       "custom_business_loan[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_business_loan[mobile_number]": {
         required: true,
@@ -171,7 +182,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_business_loan[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_business_loan[mobile_number]": {
         required: "Please enter last name",
@@ -193,7 +205,8 @@ $(document).ready(function(){
   $("#new_custom_professional_loan").validate({
     rules: {
       "custom_professional_loan[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_professional_loan[mobile_number]": {
         required: true,
@@ -209,7 +222,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_professional_loan[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_professional_loan[mobile_number]": {
         required: "Please enter last name",
@@ -231,7 +245,8 @@ $(document).ready(function(){
   $("#new_custom_home_loan").validate({
     rules: {
       "custom_home_loan[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_home_loan[mobile_number]": {
         required: true,
@@ -247,7 +262,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_home_loan[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_home_loan[mobile_number]": {
         required: "Please enter last name",
@@ -269,7 +285,8 @@ $(document).ready(function(){
   $("#new_custom_transfer_home_loan").validate({
     rules: {
       "custom_transfer_home_loan[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_transfer_home_loan[mobile_number]": {
         required: true,
@@ -285,7 +302,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_transfer_home_loan[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_transfer_home_loan[mobile_number]": {
         required: "Please enter last name",
@@ -307,7 +325,8 @@ $(document).ready(function(){
   $("#new_custom_loan_against_property").validate({
     rules: {
       "custom_loan_against_property[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_loan_against_property[mobile_number]": {
         required: true,
@@ -323,7 +342,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_loan_against_property[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_loan_against_property[mobile_number]": {
         required: "Please enter last name",
@@ -342,7 +362,8 @@ $(document).ready(function(){
   $("#new_custom_new_car_loan").validate({
     rules: {
       "custom_new_car_loan[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_new_car_loan[mobile_number]": {
         required: true,
@@ -358,7 +379,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_new_car_loan[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_new_car_loan[mobile_number]": {
         required: "Please enter last name",
@@ -377,7 +399,8 @@ $(document).ready(function(){
   $("#new_custom_used_car_loan").validate({
     rules: {
       "custom_used_car_loan[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_used_car_loan[mobile_number]": {
         required: true,
@@ -393,7 +416,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_used_car_loan[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_used_car_loan[mobile_number]": {
         required: "Please enter last name",
@@ -412,7 +436,8 @@ $(document).ready(function(){
   $("#new_custom_gold_loan").validate({
     rules: {
       "custom_gold_loan[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_gold_loan[mobile_number]": {
         required: true,
@@ -428,7 +453,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_gold_loan[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_gold_loan[mobile_number]": {
         required: "Please enter last name",
@@ -447,7 +473,8 @@ $(document).ready(function(){
   $("#new_custom_insurance").validate({
     rules: {
       "custom_insurance[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "custom_insurance[mobile_number]": {
         required: true,
@@ -463,7 +490,8 @@ $(document).ready(function(){
     },
     messages: {
       "custom_insurance[full_name]": {
-        required: "Please enter full name"
+        required: "Please enter full name",
+        full_name: "Please enter validate full name."
       },
       "custom_insurance[mobile_number]": {
         required: "Please enter last name",
@@ -482,7 +510,8 @@ $(document).ready(function(){
   $("#instant-call").validate({
     rules: {
       "instant_call[full_name]": {
-        required: true
+        required: true,
+        full_name: true
       },
       "instant_call[mobile_number]": {
         required: true
@@ -497,7 +526,8 @@ $(document).ready(function(){
     },
     messages: {
       "instant_call[full_name]": {
-        required: "Please enter full name."
+        required: "Please enter full name.",
+        full_name: "Please enter validate full name."
       },
       "instant_call[mobile_number]": {
         required: "Please enter mobile number."

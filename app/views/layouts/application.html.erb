@@ -89,9 +89,9 @@
                   <li class="<%#= active_tab('about_us') %>">
                     <%= link_to "About us", about_us_path, method: :get %>
                   </li>
-                  <li class="<%#= active_tab('blog') %>">
-                    <%= link_to "Blog", blog_path, method: :get %>
-                  </li>
+                  <!-- <li class="<%#= active_tab('blog') %>">
+                    <%#= link_to "Blog", blog_path, method: :get %>
+                  </li> -->
                   <%if current_user.nil?%>
                   <li class="<%#= active_tab('contact_us') %>">
                     <%= link_to "Sign In", new_user_session_path, method: :get, class: "sign-in" %>
@@ -232,6 +232,8 @@
         </div>
       </div>
     </section>
-    <div class="back_to_top"> <%= image_tag "arrow-up.png", alt: "scroll up" %></div>
+    <div class="back_to_top">
+      <i class="fa fa-angle-up"></i>
+    </div>
   </body>
 </html>

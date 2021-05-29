@@ -12,6 +12,11 @@ class HomeController < ApplicationController
   end
 
   def about_us
+    @title = 'GrowwCapital Nagpur for Home Loans best banks, Credit Cards Nagpur Insurance'
+    @description = 'If you’re looking to get home loan, insurance or credit card for the first
+     time, you need someone whose advice you can trust. 
+     Get in touch with us for honest advise, understand the correct documentation process and more. 
+     We will advise on correct EMI, good credit card, best bank offers for home loan and more.'
   end
 
   def pre_approved

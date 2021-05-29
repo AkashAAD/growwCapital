@@ -44,6 +44,7 @@ class LoanAgainstPropertyController < ApplicationController
       @loan_against_property.update_attributes(loan_against_property_params)
     else
       @loan_against_property.save
+      session[:lap_mobile_number] = nil
     end
     session[:loan_against_property_id] = @loan_against_property.id
     # create_update_loan_against_property(@loan_against_property.save, "New Loan Against Property created successfully.", loan_against_property_path("step2"))
@@ -167,6 +168,8 @@ class LoanAgainstPropertyController < ApplicationController
   def update_loan_against_property_offer
     get_loan_against_property(session[:loan_against_property_id])
     @update_status_nclo = @loan_against_property.update_attributes(loan_against_property_params)
+    session[:lap_full_name] = nil
+    session[:lap_email] = nil
   end
 
 

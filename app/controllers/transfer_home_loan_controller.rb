@@ -44,6 +44,7 @@ class TransferHomeLoanController < ApplicationController
       @transfer_home_loan.update_attributes(transfer_home_loan_params)
     else
       @transfer_home_loan.save
+      session[:thl_mobile_number] = nil
     end
     session[:transfer_home_loan_id] = @transfer_home_loan.id
     # create_update_transfer_home_loan(@transfer_home_loan.save, "Home Loan created successfully.", transfer_home_loan_path("step2"))
@@ -166,6 +167,8 @@ class TransferHomeLoanController < ApplicationController
   def update_transfer_home_loan_offer
     get_transfer_home_loan(session[:transfer_home_loan_id])
     @update_status_nclo = @transfer_home_loan.update_attributes(transfer_home_loan_params)
+    session[:thl_email] = nil
+    session[:thl_full_name] = nil
   end
 
 

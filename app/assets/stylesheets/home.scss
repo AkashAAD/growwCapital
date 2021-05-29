@@ -12,10 +12,38 @@
   img {
     border-bottom: 1px solid #ececec;
   }
+  .img1 {
+    background: url(./carosel/desktop/credit-card-banner.png) top center no-repeat;
+    height: 550px;
+  }
+  .img2 {
+    background: url(./carosel/desktop/home-loan-banner.png) top center no-repeat;
+    height: 550px;
+  }
+  .txt-carosel-imgs {
+    padding: 140px 140px 140px 300px;
+    h3 {
+      font-size: 35px;
+      font-weight: bold;
+      color: #1b1dc7;
+    }
+    li {
+      list-style: none;
+      font-size: 25px;
+      line-height: 35px;
+      color: #1b1dc7;
+    }
+  }
 }
 
 #carosel-home-mob {
   display: none;
+  .img1 {
+    background: url(./carosel/mobile/credit-card-banner.png) top center no-repeat;  
+  }
+  .img2 {
+    background: url(./carosel/mobile/home-loan-banner.svg) top center no-repeat;  
+  }
 }
 
 .pb-feature-section {

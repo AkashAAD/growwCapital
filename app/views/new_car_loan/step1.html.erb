@@ -51,7 +51,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label>Mobile Number</label>
-              <%= f.number_field(:mobile_number, class: "form-control") %>
+              <%= f.number_field(:mobile_number, class: "form-control", value: "#{session[:ncl_mobile_number] ? session[:ncl_mobile_number] : f.object.mobile_number}") %>
             </div>
           </div>
         </div>

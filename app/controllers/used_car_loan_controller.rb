@@ -45,6 +45,7 @@ class UsedCarLoanController < ApplicationController
       @used_car_loan.update_attributes(used_car_loan_params)
     else
       @used_car_loan.save
+      session[:ucl_mobile_number] = nil
     end
     session[:used_car_loan_id] = @used_car_loan.id
     # create_update_used_car_loan(@used_car_loan.save, "Used Car Loan created successfully.", used_car_loan_path("step2"))
@@ -163,6 +164,8 @@ class UsedCarLoanController < ApplicationController
 	def update_used_car_loan_offer
 		get_used_car_loan(session[:used_car_loan_id])
 		@update_status_nclo = @used_car_loan.update_attributes(used_car_loan_params)
+    session[:ucl_email] = nil
+    session[:ucl_full_name] = nil
 	end
 
 

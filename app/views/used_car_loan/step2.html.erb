@@ -12,7 +12,7 @@
             <label>Your Full Name
               <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="As per aadhar card records, to ensure your application gets successfully processed."></i>
             </label>
-            <%= f.text_field(:full_name, class: "form-control") %>
+            <%= f.text_field(:full_name, class: "form-control", value: "#{session[:ucl_full_name] ? session[:ucl_full_name] : f.object.full_name}") %>
           </div>
         </div>
         <div class="col-md-6">
@@ -30,7 +30,7 @@
             <label>Email
               <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Share the correct email address to ensure timely communication regarding this application."></i>
             </label>
-            <%= f.text_field(:email, class: "form-control") %>
+            <%= f.text_field(:email, class: "form-control", value: "#{session[:ucl_email] ? session[:ucl_email] : f.object.email}") %>
           </div>
         </div>
         <div class="col-md-6">

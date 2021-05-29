@@ -1310,7 +1310,7 @@ table.right_table {
 	position: relative;
 	display: block;
 	z-index: 22;
-	margin-top: 52px;
+	margin-top: 115px;
 }
 
 .boxed_layout .banner-wrap {
@@ -2275,6 +2275,7 @@ footer h4 {
 	margin-bottom: 15px;
 	letter-spacing: -1px;
 	text-transform: capitalize;
+	color: #1b1dc7;
 }
 
 footer a {
@@ -2642,7 +2643,7 @@ footer.design_2 h4 {
 .back_to_top {
 	width: 50px;
     height: 50px;
-    background-color: #3a61c8;
+    background-color: #1b1dc7;
     color: #FFF;
     cursor: pointer;
     text-align: center;
@@ -2661,8 +2662,9 @@ footer.design_2 h4 {
 	background-color: #ee4131;
 }
 
-.back_to_top > img {
-  width: 15px;
+.back_to_top > i {
+  font-size: 25px;
+  font-weight: bold;
 }
 
 /*  K. Form Styles

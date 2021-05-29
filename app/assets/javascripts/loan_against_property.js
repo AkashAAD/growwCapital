@@ -187,6 +187,10 @@ $(document).ready(function(){
 				required: true,
 				email: true
 			},
+			"loan_against_property[full_name]": {
+				required: true,
+				full_name: true
+			},
 		},
 		messages: {
 			'loan_against_property[dob]': {
@@ -203,6 +207,10 @@ $(document).ready(function(){
 			"loan_against_property[email]": {
 				required: "Please enter email",
 				email: "Please enter validate email"
+			},
+			"home_loan[full_name]": {
+				required: "Please enter full name.",
+				full_name: "Please enter validate full name."
 			},
 		}   	
   });

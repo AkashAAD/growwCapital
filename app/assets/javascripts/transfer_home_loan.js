@@ -200,6 +200,10 @@ $(document).ready(function(){
 				required: true,
 				email: true
 			},
+			"transfer_home_loan[full_name]": {
+				required: true,
+				full_name: true
+			},
 		},
 		messages: {
 			'transfer_home_loan[dob]': {
@@ -217,7 +221,11 @@ $(document).ready(function(){
 				required: "Please enter email",
 				email: "Please enter validate email"
 			},
-		}  	
+			"transfer_home_loan[full_name]": {
+				required: "Please enter full name.",
+				full_name: "Please enter validate full name."
+			},
+		}
   });
 
   $("#transfer_home_loan_address").validate({
