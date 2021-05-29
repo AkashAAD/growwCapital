@@ -257,7 +257,7 @@ $(document).ready(function(){
 			'transfer_personal_loan[dob]': {
 				required: 'Please enter date of birth.',
 				max: "For applying loan you should be minimum 21 years old.",
-				min: ""
+				min: "For applying loan you should be maximum 60 years old."
 			},
 			"transfer_personal_loan[employer_name]": {
 				required: "Please enter company name."

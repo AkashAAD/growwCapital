@@ -195,8 +195,8 @@ $(document).ready(function(){
 		messages: {
 			'loan_against_property[dob]': {
 				required: 'Please enter date of birth.',
-				min: "For applying loan you should be minimum 21 years old.",
-				max: "For applying loan you should be maximum 60 years old."
+				max: "For applying loan you should be minimum 21 years old.",
+				min: "For applying loan you should be maximum 60 years old."
 			},
 			"loan_against_property[property_cost]": {
 				required: "Please enter property cost."

@@ -390,8 +390,7 @@ ActiveRecord::Schema.define(version: 2021_05_27_040410) do
   create_table "instant_calls", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "full_name"
     t.string "mobile_number"
-    t.string "email"
-    t.string "city"
+    t.string "product_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

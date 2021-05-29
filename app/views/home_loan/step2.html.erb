@@ -47,7 +47,7 @@
             <label>Date Of Birth
               <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="To ensure you are fiting the partner's criteria."></i>
             </label>
-            <%= f.date_field(:dob, class: "form-control", min: "#{Time.zone.now - 21.years}", max: Time.zone.now + 39.years) %>
+            <%= f.date_field(:dob, class: "form-control", max: "#{Time.zone.now - 21.years}", min: "#{(Time.zone.now - 21.years) - 60.years}") %>
           </div>
         </div>
         <div class="col-md-6">

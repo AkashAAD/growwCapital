@@ -507,7 +507,7 @@ $(document).ready(function(){
     }
   });
 
-  $("#instant-call").validate({
+  $("#frm-apply-now").validate({
     rules: {
       "instant_call[full_name]": {
         required: true,
@@ -516,12 +516,8 @@ $(document).ready(function(){
       "instant_call[mobile_number]": {
         required: true
       },
-      "instant_call[email]": {
+      "instant_call[product_name]": {
         required: true,
-        email: true
-      },
-      "instant_call[city]": {
-        required: true
       },
     },
     messages: {
@@ -532,12 +528,8 @@ $(document).ready(function(){
       "instant_call[mobile_number]": {
         required: "Please enter mobile number."
       },
-      "instant_call[email]": {
-        required: "Please enter email.",
-        email: "Please enter valid email."
-      },
-      "instant_call[city]": {
-        required: "Please select city."
+      "instant_call[product_name]": {
+        required: "Please select product name.",
       },
     }
   });

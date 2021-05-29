@@ -195,7 +195,8 @@ $(document).ready(function(){
 			},
 			"professional_loan[dob]": {
 				required: "Please enter date of birth.",
-				min: "For applying loan you should be minimum 21 years old.",
+				max: "For applying loan you should be minimum 21 years old.",
+				min: "For applying loan you should be maximum 60 years old."
 			},
 			"professional_loan[email]": {
 				required: "Please enter email",

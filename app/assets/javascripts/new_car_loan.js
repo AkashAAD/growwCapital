@@ -296,6 +296,8 @@ $(document).ready(function(){
 			},
 			"new_car_loan[dob]": {
 				required: "Please enter date of birth.",
+				max: "For applying loan you should be minimum 21 years old.",
+				min: "For applying loan you should be maximum 60 years old."
 			},
 			"new_car_loan[email]": {
 				required: "Please enter email.",

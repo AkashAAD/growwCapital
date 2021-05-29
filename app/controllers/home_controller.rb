@@ -4,7 +4,6 @@ class HomeController < ApplicationController
   require "indian_pincodes"
 
   def index
-    @instant_call = InstantCall.new
     @title = 'best banks home loan personal interest rates credit card eligibility'
     @description = 'We can help you with all kinds of loans and loan transfers.
      If you’re looking for credit card, we can offer some of the best credit card offers and more. 
@@ -391,7 +390,7 @@ class HomeController < ApplicationController
   end
 
   def instant_call_params
-    params.require(:instant_call).permit(:full_name, :mobile_number, :email, :city)    
+    params.require(:instant_call).permit(:full_name, :mobile_number, :product_name)
   end
 
   def send_sms
