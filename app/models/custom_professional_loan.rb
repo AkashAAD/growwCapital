@@ -1,5 +1,5 @@
 class CustomProfessionalLoan < ApplicationRecord
-  def loan_purpose
+  def loan_reasons
     [
       ['-Select Loan Purpose-',''],
       ['Business Expansion', '0'],

@@ -1,5 +1,5 @@
 class CustomCreditCard < ApplicationRecord
-  def loan_purpose
+  def loan_reasons
     [
       ['-Select Purpose-',''],
       ['International Holiday', '0'],

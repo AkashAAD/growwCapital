@@ -549,13 +549,13 @@ $(document).ready(function(){
 	    }, ms || 0);
 	  };
   }
-  var predictions = [{loan: 'Personal Loan', link: "/personal_loan/step1", type: 'loan'},
-    {loan: 'Business Loan', link: "/business_loan/step1", type: 'loan'},
-    {loan: 'Professional Loan', link: "/professional_loan/step1", type: 'loan'},
-    {loan: 'Home Loan', link: "/home_loan/step1", type: 'loan'},
-    {loan: 'Loan Against Property', link: "/loan_against_property/step1", type: 'loan'},
-    {loan: 'Car Loan', link: "/new_car_loan/step1", type: 'loan'},
-    {loan: 'Used Car Loan', link: "/used_car_loan/step1", type: 'loan'},
+  var predictions = [{loan: 'Personal Loan', link: "/home/personal_loan", type: 'loan'},
+    {loan: 'Business Loan', link: "/home/business_loan", type: 'loan'},
+    {loan: 'Professional Loan', link: "/home/professional_loan", type: 'loan'},
+    {loan: 'Home Loan', link: "/home/home_loan", type: 'loan'},
+    {loan: 'Loan Against Property', link: "/home/loan_against_property", type: 'loan'},
+    {loan: 'Car Loan', link: "/home/new_car_loan", type: 'loan'},
+    {loan: 'Used Car Loan', link: "/home/used_car_loan", type: 'loan'},
     // {loan: 'Axis Bank Credit Card', link: "#", type: 'card'},
     // {loan: 'SBI Bank Credit Card', link: "#", type: 'card'},
     // {loan: 'IndusInd Bank Credit Card', link: "#", type: 'card'},
@@ -577,8 +577,6 @@ $(document).ready(function(){
     }
   });
 
-
-
 	$(".search-loan").keydown(delay(function () {
     searchLoans(this.value, 'key');
 	}));
@@ -591,8 +589,9 @@ $(document).ready(function(){
     }
     $('#loan-autocomplete-list').remove();    
     $html += '<ul class="predictions" >';
-    var loans = '<li class="loans">Loans</li>';
-    var cards = '<li class="cards">Credit Card</li>';
+    var loans = '';
+    // <li class="loans">Loans</li>
+    var cards = '<li class=""><a href="/home/credit_card">Credit Card</a></li>';
     predictions.forEach(function (item) {
       if ((_searchVal == '' && state == 'focus') || item.loan.toLocaleLowerCase().includes(_searchVal.toLocaleLowerCase())) {
         if(item.type == 'loan') {

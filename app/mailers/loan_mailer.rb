@@ -51,6 +51,16 @@ class LoanMailer < ApplicationMailer
 
   def instant_call(obj)
     @instant_call = obj
-    mail(to: "support@growwcapital.com", subject: "Instant call email")
+    mail(to: "support@growwcapital.com", subject: "Instant Application")
+  end
+
+  def instant_application(application, product)
+    @application = application
+    @product = product
+    @loan_purpose = @application.loan_reasons[@application.loan_purpose + 1][0]
+
+    sms = SmsService.new
+    sms.instant_application(@application, product, @loan_purpose)
+    mail(to: "support@growwcapital.com", subject: "Application by executive")
   end
 end

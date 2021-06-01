@@ -1,5 +1,5 @@
 class CustomUsedCarLoan < ApplicationRecord
-  def loan_purpose
+  def loan_reasons
     [
       ['-Select Loan Purpose-',''],
       ['Used Car', '0'],

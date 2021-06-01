@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post "verfiy_pre_approved" => "home#verfiy_pre_approved", as: "verfiy_pre_approved"
   get "confirm_otp" => "home#confirm_otp", as: "confirm_otp"
   get "thank_you" => "home#thank_you", as: "thank_you"
+  get "career" => "home#career", as: "career"
+  get "channel_partner" => "home#channel_partner", as: "channel_partner"
 
   match "home/credit_card" => "home#credit_card", as: :custom_credit_card, via: [:get, :post]
   match "home/personal_loan" => "home#personal_loan", as: :custom_personal_loan, via: [:get, :post]

@@ -1,5 +1,5 @@
 class CustomTransferHomeLoan < ApplicationRecord
-  def loan_purpose
+  def loan_reasons
     [
       ['-Select Loan Purpose-',''],
       ['Lower rate of interest', '0'],

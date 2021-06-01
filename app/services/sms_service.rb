@@ -17,4 +17,16 @@ class SmsService
 		thread = "#{Rails.application.config.SMS_URL}&numbers=#{pre_approved_offer[:mobile_no]}&message=#{message}"
 		request = RestClient.get("#{thread}")
 	end
+
+	def instant_application(application, product, loan_purpose)
+		message = "Dear Admin, #{application.full_name} tried to reach us!.
+		 Here is other details Mobile Number: #{application.mobile_number}, 
+		 Email: #{application.email}, 
+		 Product Name: #{product},
+		 Loan/ Card Purpose: #{loan_purpose}"
+
+		thread = "#{Rails.application.config.SMS_URL}&numbers=8806601122&message=#{message}"
+		request = RestClient.get("#{thread}")
+	end
+
 end

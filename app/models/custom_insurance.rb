@@ -1,5 +1,5 @@
 class CustomInsurance < ApplicationRecord
-  def loan_purpose
+  def loan_reasons
     [
       ['-Select Insurance Purpose-',''],
       ['Car Insurance', '0'],

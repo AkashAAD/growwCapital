@@ -10,6 +10,20 @@ class HomeController < ApplicationController
      Visit our website to know all about all the products and personalized services we offer.'
   end
 
+  def channel_partner
+    @title = 'Channel Partners Groww Capital, Nagpur credit cards home of loans best banks'
+    @description = 'If you are looking at expanding and becoming more structured in your business,
+     become our channel partners. We’re licensed representatives of leading financial 
+     institutions and banks and offer opportunity to those looking for a foothold to establish themselves'
+  end
+
+  def career
+    @title = 'Career with Groww Capital, credit card, loans Nagpur'
+    @description = 'If you’re seeking a career in financial and investment industry,
+     we are the best people to grow with. We offer growth and an environment that 
+     will bring out the best in you.'
+  end
+
   def about_us
     @title = 'GrowwCapital Nagpur for Home Loans best banks, Credit Cards Nagpur Insurance'
     @description = 'If you’re looking to get home loan, insurance or credit card for the first
@@ -140,6 +154,7 @@ class HomeController < ApplicationController
       session[:cc_mobile_number] = @credit_card.mobile_number
 
       session[:thank_you_path] = credit_card_path('step1')
+      LoanMailer.instant_application(@credit_card, 'Credit Card').deliver_now
       redirect_to thank_you_path
     end
   end
@@ -162,6 +177,7 @@ class HomeController < ApplicationController
       session[:pl_mobile_number] = @personal_loan.mobile_number
 
       session[:thank_you_path] = personal_loan_path('step1')
+      LoanMailer.instant_application(@personal_loan, 'Personal Loan').deliver_later
       redirect_to thank_you_path
     end
   end
@@ -184,6 +200,7 @@ class HomeController < ApplicationController
       session[:tpl_mobile_number] = @transfer_personal_loan.mobile_number
 
       session[:thank_you_path] = transfer_personal_loan_path('step1')
+      LoanMailer.instant_application(@transfer_personal_loan, 'Transfer Personal Loan').deliver_later
       redirect_to thank_you_path
     end
   end
@@ -205,6 +222,7 @@ class HomeController < ApplicationController
       session[:bl_mobile_number] = @business_loan.mobile_number
       
       session[:thank_you_path] = business_loan_path('step1')
+      LoanMailer.instant_application(@business_loan, 'Business Loan').deliver_later
       redirect_to thank_you_path
     end
   end
@@ -227,6 +245,7 @@ class HomeController < ApplicationController
       session[:prl_mobile_number] = @professional_loan.mobile_number
 
       session[:thank_you_path] = professional_loan_path('step1')
+      LoanMailer.instant_application(@professional_loan, 'Professional Loan').deliver_later
       redirect_to thank_you_path
     end
   end
@@ -249,6 +268,7 @@ class HomeController < ApplicationController
       session[:hl_mobile_number] = @home_loan.mobile_number
 
       session[:thank_you_path] = home_loan_path('step1')
+      LoanMailer.instant_application(@home_loan, 'Home Loan').deliver_later
       redirect_to thank_you_path
     end
   end
@@ -271,6 +291,7 @@ class HomeController < ApplicationController
       session[:thl_mobile_number] = @transfer_home_loan.mobile_number
 
       session[:thank_you_path] = transfer_home_loan_path('step1')
+      LoanMailer.instant_application(@transfer_home_loan, 'Transfer Home Loan').deliver_later
       redirect_to thank_you_path
     end
   end
@@ -293,6 +314,7 @@ class HomeController < ApplicationController
       session[:lap_mobile_number] = @loan_against_property.mobile_number
 
       session[:thank_you_path] = loan_against_property_path('step1')
+      LoanMailer.instant_application(@loan_against_property, 'Loan Against Property').deliver_later
       redirect_to thank_you_path
     end
   end
@@ -315,6 +337,7 @@ class HomeController < ApplicationController
       session[:ncl_mobile_number] = @new_car_loan.mobile_number
 
       session[:thank_you_path] = new_car_loan_path('step1')
+      LoanMailer.instant_application(@new_car_loan, 'New Car Loan').deliver_later
       redirect_to thank_you_path
     end
   end
@@ -336,6 +359,7 @@ class HomeController < ApplicationController
       session[:ucl_mobile_number] = @used_car_loan.mobile_number
 
       session[:thank_you_path] = used_car_loan_path('step1')
+      LoanMailer.instant_application(@used_car_loan, 'Used Car Loan').deliver_later
       redirect_to thank_you_path
     end
   end
@@ -352,6 +376,7 @@ class HomeController < ApplicationController
       @gold_loan = CustomGoldLoan.new(application_request_params(:custom_gold_loan))
       @gold_loan.save
       session[:thank_you_path] = root_path
+      LoanMailer.instant_application(@gold_loan, 'Gold Loan').deliver_later
       redirect_to thank_you_path
     end
   end
@@ -368,6 +393,7 @@ class HomeController < ApplicationController
       @inssurance = CustomInsurance.new(application_request_params(:custom_insurance))
       @inssurance.save
       session[:thank_you_path] = root_path
+      LoanMailer.instant_application(@inssurance, "Insurance").deliver_later
       redirect_to thank_you_path
     end
   end

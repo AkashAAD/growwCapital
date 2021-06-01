@@ -1,5 +1,5 @@
 class CustomGoldLoan < ApplicationRecord
-  def loan_purpose
+  def loan_reasons
     [
       ['-Select Loan Purpose-',''],
       ['Personal Use', '0'],

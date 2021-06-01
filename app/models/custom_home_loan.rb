@@ -1,5 +1,5 @@
 class CustomHomeLoan < ApplicationRecord
-  def loan_purpose
+  def loan_reasons
     [
       ['-Select Loan Purpose-',''],
       ['New Home Purchase', '0'],
