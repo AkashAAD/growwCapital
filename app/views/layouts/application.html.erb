@@ -92,8 +92,14 @@
                   <!-- <li class="<%#= active_tab('blog') %>">
                     <%#= link_to "Blog", blog_path, method: :get %>
                   </li> -->
+                  <li class="">
+                    <%= link_to "Franchise", channel_partner_path, method: :get %>
+                  </li>
+                  <li class="">
+                    <%= link_to "Career", career_path, method: :get %>
+                  </li>
                   <li class="<%#= active_tab('blog') %>">
-                    <%= link_to "Apply Now", "javascript:void(0)", "data-toggle": "modal", "data-target": "#apply-now-modal" %>
+                    <%= link_to "Apply Now", "javascript:void(0)", "data-toggle": "modal", "data-target": "#apply-now-modal", id: "show-apply-modal" %>
                   </li>
                   <%if current_user.nil?%>
                   <li class="<%#= active_tab('contact_us') %>">
@@ -208,7 +214,7 @@
           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
             <h4>Work With Us</h4>
             <ul style="list-style: none; padding: 0px;">
-              <li><a href="/channel_partner">Channel Partner</a></li>
+              <li><a href="/channel_partner">Franchise</a></li>
               <li><a href="/career">Career</a></li>
             </ul>
           </div>
@@ -254,7 +260,7 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
-          <%= form_for @instant_call, :url =>  home_instant_call_path, remote: true, html: { id:  "frm-apply-now", class: "frm-apply-now" } do |f| %>
+          <%= form_for @instant_call, :url => home_instant_call_path, remote: true, html: { id:  "frm-apply-now", class: "frm-apply-now" } do |f| %>
               <div class="form-group">
                 <label>Full Name</label>
                 <%= f.text_field(:full_name, class: "form-control") %>

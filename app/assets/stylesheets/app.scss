@@ -1346,6 +1346,13 @@ homeStrip .container>p {
   }
 }
 
+#apply-now-modal {
+  .modal-title {
+    color: #1b1dc7;
+    font-weight: 600;
+  }
+}
+
 @media screen and (max-width: 991px) {
   .quicklinks-menu {
     border-left: 0;

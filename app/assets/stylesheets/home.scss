@@ -15,10 +15,12 @@
   .img1 {
     background: url(./carosel/desktop/credit-card-banner.png) top center no-repeat;
     height: 550px;
+    background-size: contain;
   }
   .img2 {
     background: url(./carosel/desktop/home-loan-banner.png) top center no-repeat;
     height: 550px;
+    background-size: contain;
   }
   .txt-carosel-imgs {
     padding: 140px 140px 140px 300px;
@@ -57,6 +59,10 @@
   background-repeat: no-repeat;
   background-position: left;
   background-color: #ebf3fa;
+}
+
+.bpb-feature-section {
+  background: #ebf3fa;
 }
 
 .pb-happ-section {
