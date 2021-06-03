@@ -702,16 +702,16 @@ header.affix .container .navbar {
 }
 
 header.affix .container .navbar .navbar-brand img {
-	height: 80%;
+	/*height: 80%;
 	width: 300px;
-	margin-top: -2px;
+	margin-top: -2px;*/
 }
 
 header.affix .container .navbar .navbar-nav li a {
-	line-height: 10px;
+	/*line-height: 10px;
 	padding: 28px 10px 21px 10px;
 	font-size: 12px;
-	transition-duration: .15s;
+	transition-duration: .15s;*/
 }
 
 header .nav .open>a, header .nav .open>a:hover, header .nav .open>a:focus, header .navbar-default .navbar-nav>.open>a, header .navbar-default .navbar-nav>.open>a:hover, header .navbar-default .navbar-nav>.open>a:focus {
@@ -1759,25 +1759,30 @@ a.btn-inventory:not([href]):not([tabindex]) {
 }
 
 .default-btn:hover, .btn-inventory:hover, button:hover, input[type="reset"]:hover, input[type="button"]:hover, input[type="submit"]:hover, , a.btn-inventory:not([href]):not([tabindex]):hover {
-	background-color: #B8091B;
+	/*background-color: #B8091B;*/
 	color: #fff;
 }
 
 .default-btn:active, .btn-inventory:active, button:active, input[type="reset"]:active, input[type="button"]:active, input[type="submit"]:active {
-	background-color: #B8091B;
+	/*background-color: #B8091B;*/
 	outline: 0;
 }
 
 footer .default-btn, footer .btn-inventory, footer button, footer input[type="reset"], footer input[type="button"], footer input[type="submit"] {
-	background-color: #2F2F2F;
+	/*background-color: #2F2F2F;*/
 }
 
 footer .default-btn:hover, footer .btn-inventory:hover, footer button:hover, footer input[type="reset"]:hover, footer input[type="button"]:hover, footer input[type="submit"]:hover {
-	background-color: #202020;
+	/*background-color: #202020;*/
 }
 
 footer .default-btn:active, footer .btn-inventory:active, footer button:active, footer input[type="reset"]:active, footer input[type="button"]:active, footer input[type="submit"]:active {
-	background-color: #202020;
+	/*background-color: #202020;*/
+}
+
+.close:focus {
+  outline: none;
+  outline: none;
 }
 
 .xs-button, .default-btn.xs-button, .btn-inventory.xs-button, button.xs-button, input[type="reset"].xs-button, input[type="button"].xs-button, input[type="submit"].xs-button {

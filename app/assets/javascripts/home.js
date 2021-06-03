@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   $("#show-apply-modal").on("mouseover", function () {
     $('#apply-now-modal').modal('hide');
-    $('#apply-now-modal').modal('show');
+    $('#apply-now-modal').modal('show');    
   });
 
   jQuery.validator.addMethod("full_name", function(value, element) {

@@ -45,8 +45,8 @@
                 </button>
                 <%= link_to root_path, method: :get, class: "navbar-brand" do %>
                 <span class="logo">
-                  <span class="primary_text"><%= image_tag "logo2.png", alt: "logo2", class: "main-logo" %></span>
-                </span>                  
+                  <%= image_tag "logo2.png", alt: "logo2", class: "main-logo" %>
+                </span>
                 <% end %>
               </div>
               <div class="desktop-menu-dropdown collapse navbar-collapse">
@@ -253,25 +253,32 @@
     <!-- Apply now modal START -->
 
     <div class="modal fade" id="apply-now-modal" role="dialog">
-      <div class="modal-dialog modal-sm">
+      <div class="modal-dialog modal-md">
         <div class="modal-content">
           <div class="modal-header">
             <h4 class="modal-title text-center">Apply Now</h4>
+            <p>Apply for loan/credit card directly!</p>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
           </div>
           <div class="modal-body">
           <%= form_for @instant_call, :url => home_instant_call_path, remote: true, html: { id:  "frm-apply-now", class: "frm-apply-now" } do |f| %>
-              <div class="form-group">
-                <label>Full Name</label>
-                <%= f.text_field(:full_name, class: "form-control") %>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Full Name</label>
+                  <%= f.text_field(:full_name, class: "form-control") %>
+                </div>
               </div>
-              <div class="form-group">
-                <label>Mobile Number</label>
-                <%= f.number_field(:mobile_number, class: "form-control") %>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Mobile Number</label>
+                  <%= f.number_field(:mobile_number, class: "form-control") %>
+                </div>
               </div>
-              <div class="form-group">
-                <label>Products</label>
-                <%= f.select(:product_name, f.object.products, class: "form-control") %>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Products</label>
+                  <%= f.select(:product_name, f.object.products, class: "form-control") %>
+                </div>
               </div>
               <div class="form-group">
                 <button type="submit" class="btn btn-custom btn-block">Submit</button>
