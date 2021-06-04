@@ -659,7 +659,7 @@ $(document).ready(function(){
 
 
   $(".sldLoanAmount").on('input', function () {
-    var per = (this.value/100000)*100;
+    var per = (this.value/1000000)*100;
     this.style.background = 'linear-gradient(to right, #0854a0 0%, #82CFD0 ' + per + '%, #fff ' + per + '%, white 100%)';
     $(".loanAmount").val(this.value);
     calculateEMI(this.value, $(".loanRoi").val(), $(".loanTen").val());
@@ -668,10 +668,10 @@ $(document).ready(function(){
   $(".loanAmount").on('input', function () {
     if(this.value <=1 ){
       // this.value = 1;
-    } else if(this.value >= 100000) {
-      this.value = 100000;
+    } else if(this.value >= 1000000) {
+      this.value = 1000000;
     };
-    var per = (this.value/100000)*100;
+    var per = (this.value/1000000)*100;
     $(".sldLoanAmount").css("background", 'linear-gradient(to right, #0854a0 0%, #82CFD0 ' + per + '%, #fff ' + per + '%, white 100%)');
     $(".sldLoanAmount").val(this.value);
     calculateEMI(this.value, $(".loanRoi").val(), $(".loanTen").val());

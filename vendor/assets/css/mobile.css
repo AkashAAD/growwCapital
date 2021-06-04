@@ -2619,7 +2619,7 @@ header .bottom-header .navbar-default .navbar-brand {
 }
 
 header.affix .bottom-header .navbar-default .navbar-brand {
-	padding: 5px 0 0 0;
+	padding: 0px 0 0 0;
 }
 
 .inner-page.about-us .latest-news {

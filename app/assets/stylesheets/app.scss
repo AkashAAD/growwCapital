@@ -1347,6 +1347,15 @@ homeStrip .container>p {
 }
 
 #apply-now-modal {
+  .modal-dialog {
+    margin-top: 200px;
+  }
+  .modal-content {
+    background-color: #bcbcbc;
+    border-radius: 8px;
+    border: 1px solid blue;
+    box-shadow: 0 2px 4px 0 #252624, 0 12px 16px 0 #070b978c;
+  }
   .modal-title {
     color: #1b1dc7;
     font-weight: 600;
