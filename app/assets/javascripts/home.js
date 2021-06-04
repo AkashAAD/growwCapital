@@ -5,6 +5,11 @@ $(document).ready(function(){
     $('#apply-now-modal').modal('show');    
   });
 
+  setInterval(function(){
+    $("#show-apply-modal").toggleClass('apply-now-color');
+  }, 500);
+
+
   jQuery.validator.addMethod("full_name", function(value, element) {
     return value.split(" ").length >= 2;
   }, "");
