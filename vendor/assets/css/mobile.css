@@ -561,11 +561,11 @@ header .navbar-nav li.dropdown.open:hover ul.dropdown-menu {
 }
 
 .navbar-default .navbar-collapse .navbar-nav > li > a {
-	padding: 13px 15px 8px 15px;
+	/*padding: 13px 15px 8px 15px;*/
 }
 
 .affix .container .navbar .navbar-collapse .navbar-nav > li > a {
-	padding: 18px 9px 18px 10px !important;
+	/*padding: 18px 9px 18px 10px !important;*/
 }
 
 header .bottom-header .navbar-nav {

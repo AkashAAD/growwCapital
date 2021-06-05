@@ -129,7 +129,7 @@
                 <h1 class="product-name">Credit Card</h1>
                 <p class="product-desc">Learn about the best credit card offers and how to maintain it?</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/cc-icon.svg", style: "width: 25%; float: right; margin-top: 10px;" %>
+                  <%= image_tag "icons/cc-icon.svg", class: "cc-icon" %>
                 </div>
               </div>
             <%end%>
@@ -140,7 +140,7 @@
                 <h1 class="product-name">Personal Loan</h1>
                 <p class="product-desc">Know everything about documents, eligibility, interest rates, and more...</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/personal-loan-icon.svg", style: "width: 25%; float: right;" %>
+                  <%= image_tag "icons/personal-loan-icon.svg", class: "personal-loan-icon" %>
                 </div>
               </div>
             <%end%>
@@ -151,7 +151,7 @@
                 <h1 class="product-name">Transfer Personal Loan</h1>
                 <p class="product-desc">All formalities to transfer from existing to new bank</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/transfer-personal-loan-icon.svg", style: "width: 25%; float: right;     margin-top: 10px;" %>
+                  <%= image_tag "icons/transfer-personal-loan-icon.svg", class: "transfer-personal-loan-icon" %>
                 </div>
               </div>
             <%end%>
@@ -162,7 +162,7 @@
                 <h1 class="product-name">Business Loan</h1>
                 <p class="product-desc">Learn about the procedure & banks offering best interest</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/business-loan-icon.svg", style: "width: 25%; float: right; margin-top: 6px;" %>
+                  <%= image_tag "icons/business-loan-icon.svg", class: "business-loan-icon" %>
                 </div>
               </div>
             <%end%>
@@ -173,10 +173,7 @@
                 <h1 class="product-name">Professional Loan</h1>
                 <p class="product-desc">Know everything about professional category, loan limits and more...</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/professional-loan-icon.svg", style: "width: 20%;
-                  float: right;
-                  top: 5px;
-                  position: relative;" %>
+                  <%= image_tag "icons/professional-loan-icon.svg", class: "professional-loan-icon" %>
                 </div>
               </div>
             <%end%>
@@ -187,9 +184,7 @@
                 <h1 class="product-name">Home Loan</h1>
                 <p class="product-desc">Best banks, best Interest rates, loan transfer, are you eligible, & more</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/home-loan-icon.svg", style: "width: 24%;
-                    float: right;
-                    margin-top: -5px;" %>
+                  <%= image_tag "icons/home-loan-icon.svg", class: "home-loan-icon" %>
                 </div>
               </div>
             <%end%>
@@ -202,7 +197,7 @@
                 <h1 class="product-name">Transfer Home Loan</h1>
                 <p class="product-desc">Know about the formalities and eligibility with best banks.</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/tr-home-loan-icon.svg", style: "width: 25%; float: right;" %>
+                  <%= image_tag "icons/tr-home-loan-icon.svg", class: "tr-home-loan-icon" %>
                 </div>
               </div>
             <%end%>
@@ -213,9 +208,7 @@
                 <h1 class="product-name">Loan Against Property</h1>
                 <p class="product-desc">Learn about Eligibility, Documents, & Interest Rates on LAP, and more.</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/loan-against-property-icon.svg", style: "width: 24%;
-                    float: right;
-                    margin-top: -15px;" %>
+                  <%= image_tag "icons/loan-against-property-icon.svg", class: "loan-against-property-icon" %>
                 </div>
               </div>
             <%end%>
@@ -226,7 +219,7 @@
                 <h1 class="product-name">New Car Loan</h1>
                 <p class="product-desc">Auto loan to buy new car. Banks with best interest rates, 90% financing</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/new-car-loan-icon.svg", style: "width: 25%; float: right; margin-top: 10px;" %>
+                  <%= image_tag "icons/new-car-loan-icon.svg", class: "new-car-loan-icon" %>
                 </div>
               </div>
             <%end%>
@@ -237,7 +230,7 @@
                 <h1 class="product-name">Used Car Loan</h1>
                 <p class="product-desc">Find out about best banks offering pre-owned car<br>loan</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/used-car-loan-icon.svg", style: "width: 25%; float: right;" %>
+                  <%= image_tag "icons/used-car-loan-icon.svg", class: "used-car-loan-icon" %>
                 </div>
               </div>
             <%end%>
@@ -248,7 +241,7 @@
                 <h1 class="product-name">Gold Loan</h1>
                 <p class="product-desc">Best gold loan partners in the market and learn about its documentation process</p>
                 <div class="product-icon">
-                  <%= image_tag "icons/gold-loan-icon.svg", style: "width: 26%; float: right; margin-top: 5px;" %>
+                  <%= image_tag "icons/gold-loan-icon.svg", class: "gold-loan-icon" %>
                 </div>
               </div>
             <%end%>
@@ -259,7 +252,7 @@
                 <h1 class="product-name">Insurance</h1>
                 <div class="product-icon">
                 <p class="product-desc">Insurance plans with income friendly premiums & easy slaims settlement.</p>
-                  <%= image_tag "icons/insurance-icon.svg", style: "width: 23%; float: right;" %>
+                  <%= image_tag "icons/insurance-icon.svg", class: "insurance-icon" %>
                 </div>
               </div>
             <%end%>
@@ -296,35 +289,34 @@
                   <span class="top-line"></span>
                   <h3>Why Choose GrowwCapital?</h3>
                   <%= image_tag "why-choose-us.png", alt: "" %>
-                  <!-- <a href="/about_us" data-ga-label="contentAboutPaisabazaar" class="read-more-btn">Read More</a> -->
                 </div>
             </div>
             <div class="col-md-7">
               <div class="row">
                 <div class="col-sm-6">
                   <div class="pb-feature">
-                      <img src="https://www.paisabazaar.com//PBHP/assets/images/credible.svg" data-src="PBHP/assets/images/credible.svg" alt="credible">
+                      <%= image_tag "grc-credible.svg", alt: "grc-credible" %>
                       <h3>Unbiased advisor of Loan and Insurance</h3>
                       <p><br><br></p>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="pb-feature">
-                      <img src="https://www.paisabazaar.com//PBHP/assets/images/trustworthy.svg" data-src="PBHP/assets/images/trustworthy.svg" alt="trustworthy">
+                      <%= image_tag "grc-trustworthy.svg", alt: "grc-trustworthy" %>
                       <h3>Best deals in Loan, Credit cards & Insurance</h3>
                       <p><br><br></p>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="pb-feature">
-                      <img src="https://www.paisabazaar.com//PBHP/assets/images/secure.svg" data-src="PBHP/assets/images/secure.svg" alt="secure">
+                      <%= image_tag "grc-secure.svg", alt: "grc-secure" %>
                       <h3>Unmatched advisory services</h3>
                       <p><br><br></p>
                   </div>
                 </div>
                 <div class="col-sm-6">
                   <div class="pb-feature">
-                      <img src="https://www.paisabazaar.com//PBHP/assets/images/helpful.svg" data-src="PBHP/assets/images/helpful.svg" alt="helpful">
+                      <%= image_tag "grc-helpful.svg", alt: "grc-helpful" %>
                       <h3>All Types of Lending Solutions</h3>
                       <p><br><br></p>
                   </div>

@@ -41,11 +41,84 @@
 #carosel-home-mob {
   display: none;
   .img1 {
-    background: url(./carosel/mobile/credit-card-banner.png) top center no-repeat;  
+    background: url(./carosel/mobile/credit-card-banner.png) top center no-repeat;
+    height: 220px;
+    background-size: contain;
   }
   .img2 {
-    background: url(./carosel/mobile/home-loan-banner.svg) top center no-repeat;  
+    background: url(./carosel/mobile/home-loan-banner.svg) top center no-repeat;
+    height: 220px;
+    background-size: contain;
   }
+}
+
+.cc-icon {
+  width: 25%;
+  float: right;
+  margin-top: 10px;  
+}
+
+.personal-loan-icon {
+  width: 25%;
+  float: right;  
+}
+
+.transfer-personal-loan-icon {
+  width: 25%;
+  float: right;
+  margin-top: 10px;
+}
+
+.business-loan-icon {
+  width: 25%;
+  float: right;
+  margin-top: 6px;  
+}
+
+.professional-loan-icon {
+  width: 20%;
+  float: right;
+  top: 5px;
+  position: relative;  
+}
+
+.home-loan-icon {
+  width: 24%;
+  float: right;
+  margin-top: -5px;
+}
+
+.tr-home-loan-icon {
+  width: 25%;
+  float: right;
+}
+
+.loan-against-property-icon {
+  width: 24%;
+  float: right;
+  margin-top: -15px;  
+}
+
+.new-car-loan-icon {
+  width: 25%;
+  float: right;
+  margin-top: 10px;  
+}
+
+.used-car-loan-icon {
+  width: 25%;
+  float: right;
+}
+
+.gold-loan-icon {
+  width: 26%;
+  float: right;
+  margin-top: 5px;  
+}
+
+.insurance-icon {
+  width: 23%;
+  float: right;
 }
 
 .pb-feature-section {
@@ -264,6 +337,63 @@
   }
   margin-bottom: 100px;
   text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .cc-icon {
+    width: 20%;
+    margin-top: 33px;
+  }
+
+  .personal-loan-icon {
+    width: 19%;
+    margin-top: -10px;
+  }
+
+  .transfer-personal-loan-icon {
+    width: 20%;
+  }
+
+  .business-loan-icon {
+    width: 20%;
+  }
+
+  .professional-loan-icon {
+    width: 15%;
+    top: 0px;
+  }
+
+  .home-loan-icon {
+    width: 17%;
+    margin-top: -20px;
+  }
+
+  .tr-home-loan-icon {
+    width: 18%;
+  }
+
+  .loan-against-property-icon {
+    width: 18%;
+  }
+
+  .new-car-loan-icon {
+    width: 19%;
+    margin-top: 5px;
+  }
+
+  .used-car-loan-icon {
+    width: 19%;
+    margin-top: -8px;
+  }
+
+  .gold-loan-icon {
+    width: 21%;
+    margin-top: -5px;
+  }
+
+  .insurance-icon {
+    width: 18%;
+  }
 }
 
 @media(max-width: 575px) {

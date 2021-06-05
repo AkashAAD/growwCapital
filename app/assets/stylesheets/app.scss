@@ -1025,18 +1025,6 @@ homeStrip .container>p {
   padding: 0;
 }
 
-@media (max-width: 767px) {
-  .hidden-xs {
-    display: none !important;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .quicklinks-menu ul li a {
-    width: 85px;
-  }
-}
-
 .quicklinks-menu ul li.mobile-menu .dropdown-menu li {
   display: inline-block;
   vertical-align: middle;
@@ -1449,10 +1437,49 @@ homeStrip .container>p {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .quicklinks-menu ul li a {
+    width: 85px;
+  }
+
+  .hidden-xs {
+    display: none !important;
+  }
+
+  .header-strip {
+    p {
+      float: left !important;
+    }
+    span {
+      font-size: 13px !important;
+    }
+  }
+  .navbar-brand img {
+    margin-top: 6px !important;;
+    width: 200px !important;
+    height: 33px !important;;
+  }
+  header .bottom-header .navbar-default .navbar-nav > li > a {
+    font-size: 14px !important;
+    padding-left: 18px !important;
+  }
+  #carosel-home-mob {
+    .owl-prev {
+      top: 95px;
+    }
+    .owl-next {
+      top: 95px;
+    }
+  }
+  .navbar .navbar-nav li .dropdown-menu>li>a {
+    font-weight: normal !important;
+  }
+}
+
 .modal-backdrop {
   display: none;
 }
 
 .apply-now-color {
-  color: #28a745 !important;
+  color: #1b1dc7 !important;
 }
