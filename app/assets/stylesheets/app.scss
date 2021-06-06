@@ -253,8 +253,8 @@
 }
 
 .btn-custom {
-  background-color: #ff7000;
-  border-color: #ff7000;
+  background-color: #ff7000 !important;
+  border-color: #ff7000 !important;
 }
 
 .bottom-header {
@@ -471,7 +471,7 @@ textarea.error, input.error, select.error {
 }
 
 .main-thx-row {
-  border: 2px solid #20d950;  
+  border: 1px solid #032361;
 }
 .thank-row {
   padding: 20px;
@@ -1339,7 +1339,7 @@ homeStrip .container>p {
     margin-top: 200px;
   }
   .modal-content {
-    background-color: #bcbcbc;
+    background-color: #f6f6f6;
     border-radius: 8px;
     border: 1px solid blue;
     box-shadow: 0 2px 4px 0 #252624, 0 12px 16px 0 #070b978c;
@@ -1371,6 +1371,14 @@ homeStrip .container>p {
   .btn-custom {
     padding: 3px;  
   }
+}
+
+.loan-table {
+  .thead-light th {
+    color: #ffffff;
+    background-color: #315fc8;
+    border-color: #315fc8;
+  }  
 }
 
 @media screen and (max-width: 1659px) {

@@ -617,9 +617,8 @@ header.affix .bottom-header {
 }
 
 header .navbar-brand img {
-	height: 100%;
 	width: 300px;
-	margin-top: 3px;
+	margin-top: 8px;
 }
 
 .bottom-header .navbar {
@@ -2289,7 +2288,7 @@ footer a {
 }
 
 footer a:hover {
-	color: #999999;
+	color: #315fc8;
 	text-decoration: underline;
 }
 

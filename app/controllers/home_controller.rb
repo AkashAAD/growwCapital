@@ -32,6 +32,18 @@ class HomeController < ApplicationController
      We will advise on correct EMI, good credit card, best bank offers for home loan and more.'
   end
 
+  def terms_and_conditions
+    @title = 'Growwcapital best offers home loans, insurance, credit cards Nagpur'
+    @description = 'Growwcapital is a platform that takes you closer to loan providing banks, best offers and
+      companies selling credit cards and insurance policies of different kinds. We are based in Nagpur, Ms'
+  end
+
+  def privacy_policy
+    @title = 'Growwcapital home loans, insurance, credit cards offers Nagpur'
+    @description = 'Growwcapital is a platform that takes you closer to loan providing banks, best offers and
+      companies selling credit cards and insurance policies of different kinds. We are based in Nagpur, Ms'
+  end
+
   def pre_approved
     @pre_approved_offer = PreApprovedOffer.new
   end

@@ -195,7 +195,7 @@
             </p>
             <%= form_for 'newsletter', path: home_newsletter_path, html: {id:  "newsletter", class: "newsletter"} do |f| %>
             <%= f.email_field(:email, class: "form-control", placeholder: "Email Address", required: true) %>
-            <input type="submit" value="Subscribe" class="md-button" style="cursor: pointer;">
+            <input type="submit" value="Subscribe" class="btn btn-custom" style="cursor: pointer;border-radius: 0px;height: 35px;">
             <% end %>            
           </div>
           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 padding-right-none md-padding-right-none sm-padding-right-15 xs-padding-right-15">
@@ -214,6 +214,8 @@
             <ul style="list-style: none; padding: 0px;">
               <li><a href="/channel_partner">Franchise</a></li>
               <li><a href="/career">Career</a></li>
+              <li><a href="/terms_and_conditions">Terms and Conditions</a></li>
+              <li><a href="/privacy_policy">Privacy Poliy</a></li>
             </ul>
           </div>
         </div>

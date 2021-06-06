@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get "thank_you" => "home#thank_you", as: "thank_you"
   get "career" => "home#career", as: "career"
   get "channel_partner" => "home#channel_partner", as: "channel_partner"
+  get "terms_and_conditions" => "home#terms_and_conditions", as: "terms_and_conditions"
+  get "privacy_policy" => "home#privacy_policy", as: "privacy_policy"
 
   match "home/credit_card" => "home#credit_card", as: :custom_credit_card, via: [:get, :post]
   match "home/personal_loan" => "home#personal_loan", as: :custom_personal_loan, via: [:get, :post]
