@@ -20,7 +20,8 @@
             <td><b><%= number_to_currency(calculate_emi(bank.personal_loan_info, @personal_loan), unit: "₹ ") %></b></td>
             <td><b><%= number_to_currency("%.2f" % processing_fee(bank.personal_loan_info.processing_fee, @personal_loan.loan_amount, bank), unit: "₹ ") %></b></td>
             <td class="pre-pay-charg"><%= bank.personal_loan_info.preprocessing_charges.html_safe %></td>
-            <td><%= image_tag "meter.png", alt: "meter" %><br>
+            <td>
+              <%= image_tag "meter.png", alt: "meter" %><br>
               <span style="color: #aaa4a4;">Excelent</span>
             </td>
             <td>

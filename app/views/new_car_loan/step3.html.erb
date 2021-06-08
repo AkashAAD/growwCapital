@@ -9,6 +9,7 @@
             <th>EMI</th>
             <th>Processing Fee</th>
             <th class="pre-pay-charg">Prepayment Charges</th>
+            <th>Loan Approval Chances</th>
             <th>Proceed</th>
           </tr>
         </thead>
@@ -19,6 +20,10 @@
             <td><b><%= number_to_currency(calculate_emi(bank.new_car_loan_bank_info, @new_car_loan), unit: "₹ ") %></b></td>
             <td><b><%= number_to_currency("%.2f" % processing_fee(bank.new_car_loan_bank_info.processing_fee, @new_car_loan.loan_amount, bank), unit: "₹ ") %></b></td>
             <td class="pre-pay-charg"><%= bank.new_car_loan_bank_info.preprocessing_charges.html_safe %></td>
+            <td>
+              <%= image_tag "meter.png", alt: "meter" %><br>
+              <span style="color: #aaa4a4;">Excelent</span>
+            </td>
             <td>
               <b>
                 <%= form_for @new_car_loan, :url => { :action => "select_bank" }, html: {id:  "new_car_loan_bank", class: "new_car_loan_bank"} do |f| %>

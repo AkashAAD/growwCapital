@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+  $(".calculated-emi").hide();
   $("#show-apply-modal").on("mouseover", function () {
     $('#apply-now-modal').modal('hide');
     $('#apply-now-modal').modal('show');    
@@ -7,8 +7,23 @@ $(document).ready(function(){
 
   setInterval(function(){
     $("#show-apply-modal").toggleClass('apply-now-color');
+    $(".emi-calculator-link").toggleClass('apply-now-color');
   }, 500);
 
+  $(".cal-emi").click(function(){
+    var loan_amount = $('.loan_amount').val();
+    var roi = $('.roi').val();
+    var tenure = $('.tenure').val();
+
+    var r = roi / (12 * 100);
+    var t = tenure;
+    var emi = Math.round((loan_amount * r * (Math.pow(1 + r, t)))/(Math.pow(1 + r, t) - 1));
+    $('.clt-emi').text('₹ ' + emi);
+    $('.clt-ia').text('₹ ' + (Math.round(Math.round(emi) * t) - Math.round(loan_amount)));
+    $('.clt-ta').text('₹ ' + Math.round(Math.round(emi) * t));
+
+    $(".calculated-emi").show();
+  });
 
   jQuery.validator.addMethod("full_name", function(value, element) {
     return value.split(" ").length >= 2;

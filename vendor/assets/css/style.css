@@ -1309,7 +1309,7 @@ table.right_table {
 	position: relative;
 	display: block;
 	z-index: 22;
-	margin-top: 115px;
+	margin-bottom: -110px;
 }
 
 .boxed_layout .banner-wrap {

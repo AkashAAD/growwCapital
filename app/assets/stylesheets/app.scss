@@ -1,3 +1,7 @@
+.cc-pincode, .cc-off-pincode{
+  display: none;
+  color: green;
+}
 .profile-container {
   h4 {
     padding: 20px;
@@ -560,6 +564,9 @@ textarea.error, input.error, select.error {
 .custom-container {
   padding: 50px 0px 50px 0px;
   margin-top: 100px;
+  table {
+    box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
+  }
 }
 
 .emi-calcul {
@@ -1379,6 +1386,29 @@ homeStrip .container>p {
     background-color: #315fc8;
     border-color: #315fc8;
   }  
+}
+
+.h-emai-calc {
+  width: 350px;
+  input {
+    border-radius: 0px;
+  }
+  .p-emi-cal {
+    color: #1b1dc7;
+    text-align: center;
+    font-size: 20px;
+    margin-top: 10px;  
+  }
+  .calculated-emi {
+    p {
+      color: #000;
+      text-align: center;
+      font-size: 15px;
+    }
+    span {
+      font-weight: bold;
+    }
+  }
 }
 
 @media screen and (max-width: 1659px) {

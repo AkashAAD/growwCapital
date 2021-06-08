@@ -116,6 +116,7 @@ $(document).ready(function(){
 	}, "");
 
 	jQuery.validator.addMethod("trp_is_pincode", function(value, element) {
+		$('.new-loading').addClass('loading');
 		var status = false;
 		var attr;
 		if($(element).attr('id') == "transfer_personal_loan_pincode") {
@@ -131,6 +132,7 @@ $(document).ready(function(){
 	    	} else {
 	    		status = false;
 	    	}
+	    	$('.new-loading').removeClass('loading');
 	    },
 	    async: false
 		});

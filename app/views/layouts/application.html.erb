@@ -16,6 +16,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <div class="new-loading">Loading&#8230;</div>
     <header data-spy="affix" data-offset-top="1" class="clearfix">
       <%= render "layouts/flash_messages" %>
       <div class="bottom-header">
@@ -78,8 +79,29 @@
                   <li class="<%#= active_tab('pre_approved') %>">
                     <%= link_to "Pre-Approved Offers", pre_approved_path, method: :get %>
                   </li>
-                  <li class="<%#= active_tab('emi_calculator') %>">
-                    <%= link_to "EMI Calculator", emi_calculator_path, method: :get %>
+                  <li class="dropdown<%#= active_tab('emi_calculator') %>">
+                    <%= link_to "EMI Calculator", emi_calculator_path, method: :get,  class: "dropdown-toggle emi-calculator-link", "data-toggle": "dropdown" %>
+                    <ul class="dropdown-menu h-emai-calc">
+                      <li>
+                        <form action="javascript:void(0)">
+                          <div class="row">
+                            <div class="col-md-12">
+                              <p class="p-emi-cal">EMI CALCULATOR</p>
+                              <input type="number" class="loan_amount form-control" placeholder="Loan Amount"><br>
+                              <input type="number" class="roi form-control" placeholder="ROI(%)"><br>
+                              <input type="number" class="tenure form-control" placeholder="Tenure(Months)"><br>
+                              <button class="cal-emi btn btn-custom btn-block">Calculate</button>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="calculated-emi">
+                            <p>EMI: <span class="clt-emi"></span></p>
+                            <p>Interest Amount: <span class="clt-ia"></span></p>
+                            <p>Total Amount: <span class="clt-ta"></span></p>
+                          </div>
+                        </form>
+                      </li>
+                    </ul>
                   </li>
                   <li class="<%#= active_tab('contact_us') %>">
                     <%= link_to "Contact us", contact_us_path, method: :get %>
@@ -189,16 +211,16 @@
     <footer class="design_2">
       <div class="container">
         <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 padding-left-none md-padding-left-none sm-padding-left-15 xs-padding-left-15">
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
             <h4>At your service:</h4>
             <p>When you give <a href="/">GrowwCapital</a> any task, no matter how big or small, it is an opportunity for us to prove that we know our business & that you can trust us!
             </p>
             <%= form_for 'newsletter', path: home_newsletter_path, html: {id:  "newsletter", class: "newsletter"} do |f| %>
             <%= f.email_field(:email, class: "form-control", placeholder: "Email Address", required: true) %>
             <input type="submit" value="Subscribe" class="btn btn-custom" style="cursor: pointer;border-radius: 0px;height: 35px;">
-            <% end %>            
+            <% end %>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 padding-right-none md-padding-right-none sm-padding-right-15 xs-padding-right-15">
+          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
             <h4>Contact us</h4>
             <div class="footer-contact">
               <ul>
@@ -206,14 +228,18 @@
                 <li><i class="fa fa-phone"></i> <strong>Phone:</strong><a href="tel:+918806644344">+91-88066-44344</a></li>
                 <li><i class="fa fa-envelope-o"></i> <strong>Email:</strong><a href="mailto:support@growwcapital.com">support@growwcapital.com</a></li>
               </ul>
-              <!-- <i class="fa fa-location-arrow back_icon"></i> -->
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+          <div class="col-lg-2 col-md-6 col-sm-6 col-xs-12">
             <h4>Work With Us</h4>
             <ul style="list-style: none; padding: 0px;">
               <li><a href="/channel_partner">Franchise</a></li>
               <li><a href="/career">Career</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
+            <h4>Terms and Policy</h4>
+            <ul style="list-style: none; padding: 0px;">
               <li><a href="/terms_and_conditions">Terms and Conditions</a></li>
               <li><a href="/privacy_policy">Privacy Poliy</a></li>
             </ul>

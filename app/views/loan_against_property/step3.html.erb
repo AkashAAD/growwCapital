@@ -9,6 +9,7 @@
             <th>EMI</th>
             <th>Processing Fee</th>
             <th class="pre-pay-charg">Prepayemnt Charges</th>
+            <th>Loan Approval Chances</th>
             <th>Proceed</th>
           </tr>
         </thead>
@@ -19,6 +20,10 @@
             <td><b><%= number_to_currency(calculate_emi(bank.loan_against_property_bank_info, @loan_against_property), unit: "₹ ") %></b></td>
             <td><b><%= number_to_currency("%.2f" % processing_fee(bank.loan_against_property_bank_info.processing_fee, @loan_against_property.loan_amount, bank), unit: "₹ ") %></b></td>
             <td class="pre-pay-charg"><%= bank.loan_against_property_bank_info.preprocessing_charges.html_safe %></td>
+            <td>
+              <%= image_tag "meter.png", alt: "meter" %><br>
+              <span style="color: #aaa4a4;">Excelent</span>
+            </td>
             <td>
               <b>
                 <%= form_for @loan_against_property, :url => { :action => "select_bank" }, html: {id:  "loan_against_property_bank", class: "loan_against_property_bank"} do |f| %>

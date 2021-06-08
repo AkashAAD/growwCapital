@@ -41,6 +41,7 @@ $(document).ready(function(){
 	}, "");
 
 	jQuery.validator.addMethod("pro_is_pincode", function(value, element) {
+		$('.new-loading').addClass('loading');
 		var status = false;
 		var attr;
 		if($(element).attr('id') == "professional_loan_pincode") {
@@ -56,6 +57,7 @@ $(document).ready(function(){
 	    	} else {
 	    		status = false;
 	    	}
+	    	$('.new-loading').removeClass('loading');
 	    },
 	    async: false
 		});
