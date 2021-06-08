@@ -18,9 +18,9 @@ $(document).ready(function(){
     var r = roi / (12 * 100);
     var t = tenure;
     var emi = Math.round((loan_amount * r * (Math.pow(1 + r, t)))/(Math.pow(1 + r, t) - 1));
-    $('.clt-emi').text('₹ ' + emi);
-    $('.clt-ia').text('₹ ' + (Math.round(Math.round(emi) * t) - Math.round(loan_amount)));
-    $('.clt-ta').text('₹ ' + Math.round(Math.round(emi) * t));
+    $('.clt-emi').text(' ' + emi);
+    $('.clt-ia').text(' ' + (Math.round(Math.round(emi) * t) - Math.round(loan_amount)));
+    $('.clt-ta').text(' ' + Math.round(Math.round(emi) * t));
 
     $(".calculated-emi").show();
   });
