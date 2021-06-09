@@ -163,26 +163,35 @@
                   <li class="<%= active_tab('about_us') %>">
                     <%= link_to "About Us", about_us_path, method: :get %>
                   </li>
+                  <li class="">
+                    <%= link_to "Franchise", channel_partner_path, method: :get %>
+                  </li>
+                  <li class="">
+                    <%= link_to "Career", career_path, method: :get %>
+                  </li>
                   <li class="<%= active_tab('emi_calculator') %>">
                     <%= link_to "EMI Calculator", emi_calculator_path, method: :get %>
                   </li>
                   <li class="<%= active_tab('blog') %>">
                     <%= link_to "Blog", blog_path, method: :get %>
                   </li>
+                  <li class="<%#= active_tab('blog') %>">
+                    <%= link_to "Apply Now", "javascript:void(0)", "data-toggle": "modal", "data-target": "#apply-now-modal", id: "sshow-apply-modal" %>
+                  </li>
                   <li class="<%= active_tab('contact_us') %>">
                     <%= link_to "Contact Us", contact_us_path, method: :get %>
                   </li>
                   <%if current_user.nil?%>
-                  <li class="<%= active_tab('contact_us') %>">
-                    <%= link_to "Sign In", new_user_session_path, method: :get %>
-                  </li>
+                    <li class="<%= active_tab('contact_us') %>">
+                      <%= link_to "Sign In", new_user_session_path, method: :get %>
+                    </li>
                   <% else %>
-                  <li>
-                    <%= link_to "My Profile", home_profile_path, method: :get %>
-                  </li>
-                  <li>
-                    <%= link_to "Log Out", destroy_user_session_path, method: :get %>
-                  </li>
+                    <li>
+                      <%= link_to "My Profile", home_profile_path, method: :get %>
+                    </li>
+                    <li>
+                      <%= link_to "Log Out", destroy_user_session_path, method: :get %>
+                    </li>
                   <% end %>
                 </ul>
               </div>
