@@ -502,7 +502,7 @@ hr {
 
 
 header {
-	background: rgb(255 255 255);
+	background: #ffffff;
 	position: absolute;
 	z-index: 1000;
 	width: 100%;
@@ -522,7 +522,7 @@ header, header * {
 	min-height: 30px;
 	position: relative;
 	z-index: 5555;
-	background: rgb(8 84 160);
+	/*background: rgb(8 84 160);*/
 	display: block;
 }
 
@@ -692,7 +692,7 @@ header.affix .toolbar {
 
 .navbar-toggler-icon {
     /* background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E"); */
-		background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+		/*background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");*/
 }
 
 header.affix .container .navbar {
@@ -735,7 +735,8 @@ header .navbar-default .navbar-nav>.dropdown>a .caret, header .navbar-default .n
 
 header .navbar-nav.pull-right>li>.dropdown-menu, header .navbar-nav>li>.dropdown-menu {
 	left: 0;
-	background: rgba(0, 0, 0, 0.65);
+    background: #000000;
+    opacity: 0.6;
 	right: auto;
 	margin-left: 0;
 	font-size: 13px;
@@ -878,7 +879,8 @@ header.affix .bottom-header .navbar-default .navbar-brand .logo .secondary_text 
 }
 
 .dropdown .dropdown-menu li.dropdown .dropdown-menu {
-	background: rgba(0, 0, 0, 0.65);
+    background: #000000;
+    opacity: 0.6;
 	top: 0;
 	left: 100%;
 	margin: 0;
@@ -1587,7 +1589,7 @@ table.right_table {
     font-family: "Open Sans";
     color: #FFF;
     text-decoration: none;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: #ffffff;
     padding: 0px 0px 0px 0px;
     text-align: center;
     border-width: 0px;
@@ -7328,7 +7330,6 @@ section.content, .car-block-wrap, .welcome-wrap {
 
 .inventory.car_sold img.preview {
     -webkit-filter: grayscale(100%);
-    filter: url(data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svâ¦0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0' /></filter></svg>#greyscale);
     filter: grayscale(100%);
 }
 
