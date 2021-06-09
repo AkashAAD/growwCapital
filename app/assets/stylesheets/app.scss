@@ -1411,6 +1411,16 @@ homeStrip .container>p {
   }
 }
 
+.footer-other-images {
+  .india-flag {
+    width: 40px;
+    margin: 4px 0px 0px 0px;
+  }
+  img, span {
+    float: right;
+  }
+}
+
 @media screen and (max-width: 1659px) {
   .desktop-nav li {
     margin: 0px 1px 0px 1px;
