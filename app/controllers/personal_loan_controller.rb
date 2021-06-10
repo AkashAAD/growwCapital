@@ -26,9 +26,9 @@ class PersonalLoanController < ApplicationController
       @personal_loan = id.nil? ? PersonalLoan.new : get_personal_loan(id)
       return redirect_to personal_loan_path("step1") unless @personal_loan.otp_verified
     when "step6"
-      return redirect_to personal_loan_path("step1") if id.nil?
-      @personal_loan = get_personal_loan(id) #PersonalLoan.last
-      LoanMailer.personal_loan(@personal_loan).deliver_later
+      # return redirect_to personal_loan_path("step1") if id.nil?
+      @personal_loan = PersonalLoan.last
+      # LoanMailer.personal_loan(@personal_loan).deliver_later
       is_preapproved
       session[:personal_loan_id] = nil
 		end

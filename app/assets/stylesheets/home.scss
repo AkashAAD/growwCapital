@@ -352,6 +352,40 @@
 }
 
 @media screen and (max-width: 767px) {
+  .footer-other-images {
+    margin-right: 60px;
+  }
+  .personal_loan_assets .container {
+    padding: 0px !important;
+    h3 {
+      font-size: 20px;
+    }
+  }
+  .thank-row {
+    .congo {
+      display: grid;
+    }
+    .congo + div {
+      padding-top: 30px;
+    }
+  }
+  .business-loan-section {
+    padding: 20px;
+  }
+  .credit-card-banks {
+    margin-left: 0px;
+  }
+  .crd-heading {
+    padding: 0px;
+    font-size: 20px;
+  }
+  .other-services a {
+    margin: 10px;
+    display: block;
+  }
+  .btn-custom {
+    width: 100% !important;
+  }
   #abt-us-banner {
     height: 95px;
   }  

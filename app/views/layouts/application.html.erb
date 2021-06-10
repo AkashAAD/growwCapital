@@ -42,7 +42,7 @@
             <div class="container-fluid">
               <div class="navbar-header">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse-mobile" aria-controls="navbar-collapse-mobile" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
+                  <span class="fa fa-bars navbar-toggler-icon"></span>
                 </button>
                 <%= link_to root_path, method: :get, class: "navbar-brand" do %>
                   <%= image_tag "logo2.png", alt: "logo2", class: "main-logo" %>
@@ -202,21 +202,6 @@
       </div>
     </header>
     <%= yield %>
-    <script>
-      var revapi;
-      jQuery(document).ready(function() {
-        revapi = jQuery("#rev_slider").revolution({
-          sliderType:"standard",
-          sliderLayout:"fullwidth",
-          delay:9000,
-          navigation: {
-              arrows:{enable:true}
-          },
-          gridwidth:1170,
-          gridheight:645
-        });
-      });
-    </script>
     <footer class="design_2">
       <div class="container">
         <div class="row">
