@@ -86,16 +86,17 @@ $(document).ready(function(){
 		}
 		$.ajax({
 	    url: "/home/check_pincode?pincode=" + value + "&city=" + $(attr).val(),
+	    method: 'GET',
 	    success: function (data) {
 	    	if(data.pincode_status) {
 	    		status = true;
 	    	} else {
 	    		status = false;
 	    	}
-	    	$('.new-loading').removeClass('loading');
 	    },
 	    async: false
 		});
+		$('.new-loading').removeClass('loading');
 		return status;
 	}, "Please enter valid pincode.");
 

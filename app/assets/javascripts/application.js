@@ -12,7 +12,7 @@
 //
 //= require jquery.min.js
 //= require bootstrap.min.js
-
+//= require main.js
 //= require jquery.selectbox-0.2.js
 //= require jquery.mousewheel.js
 //= require jquery.easing.js

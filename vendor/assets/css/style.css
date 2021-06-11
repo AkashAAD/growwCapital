@@ -503,7 +503,7 @@ hr {
 
 header {
 	background: #ffffff;
-	position: absolute;
+	position: fixed;
 	z-index: 1000;
 	width: 100%;
 	top: 0px;
@@ -680,11 +680,6 @@ header .bottom-header .navbar-default .navbar-nav>li>a {
 header.affix {
 	top: -30px;
 	position: fixed;
-}
-
-header.affix .bottom-header .navbar-default .navbar-brand {
-	padding: 5px 0 0 10px;
-	height: 59px;
 }
 
 header.affix .toolbar {

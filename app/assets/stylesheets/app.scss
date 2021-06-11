@@ -884,20 +884,8 @@ textarea.error, input.error, select.error {
   }
 }
 
-
-header.affix-top {
-  .mobile-menu-dropdown {
-    margin-top: 7px;
-  }
-}
-
-header.affix {
-  .mobile-menu-dropdown {
-    margin-top: -7px;
-  }
-}
-
 .mobile-menu-dropdown {
+  margin-top: 11px;
   .navbar-nav {
     background: white;
   }
