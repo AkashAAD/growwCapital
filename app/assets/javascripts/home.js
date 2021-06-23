@@ -581,12 +581,10 @@ $(document).ready(function(){
     {loan: 'Loan Against Property', link: "/home/loan_against_property", type: 'loan'},
     {loan: 'Car Loan', link: "/home/new_car_loan", type: 'loan'},
     {loan: 'Used Car Loan', link: "/home/used_car_loan", type: 'loan'},
-    // {loan: 'Axis Bank Credit Card', link: "#", type: 'card'},
-    // {loan: 'SBI Bank Credit Card', link: "#", type: 'card'},
-    // {loan: 'IndusInd Bank Credit Card', link: "#", type: 'card'},
-    // {loan: 'HDFC Bank Credit Card', link: "#", type: 'card'},
-    // {loan: 'ICICI Bank Credit Card', link: "#", type: 'card'}
-    ];
+    {loan: 'Gold Loan', link: "/home/gold_loan", type: 'loan'},
+    {loan: 'Insurance', link: "/home/insurance", type: 'loan'},
+    {loan: 'Credit Card', link: "/home/credit_card", type: 'card'},
+  ];
 
   $(".search-loan").focus(function(){
     searchLoans(this.value, 'focus');
@@ -616,7 +614,7 @@ $(document).ready(function(){
     $html += '<ul class="predictions" >';
     var loans = '';
     // <li class="loans">Loans</li>
-    var cards = '<li class=""><a href="/home/credit_card">Credit Card</a></li>';
+    var cards = '';
     predictions.forEach(function (item) {
       if ((_searchVal == '' && state == 'focus') || item.loan.toLocaleLowerCase().includes(_searchVal.toLocaleLowerCase())) {
         if(item.type == 'loan') {
