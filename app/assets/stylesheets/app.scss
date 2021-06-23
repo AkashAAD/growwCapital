@@ -1,3 +1,7 @@
+.meter-img {
+  width: 50%;
+  margin-top: 15px;
+}
 .cc-pincode, .cc-off-pincode{
   display: none;
   color: green;
@@ -77,9 +81,9 @@
 }
 
 #pre-apv-banner {
-  background-image: url(./pre-approved.png);
-  height: 400px;
-  background-size: contain;
+  background-image: url(./pre-approved.jpg);
+  height: 450px;
+  background-size: cover;
   background-repeat: no-repeat;
   margin-top: 110px;
   width: 100%;
@@ -88,19 +92,37 @@
 
 #abt-us-banner {
   background-image: url(./about-us.png);
-  height: 400px;
+  height: 450px;
   background-size: contain;
   background-repeat: round;
   margin-top: 110px;
   width: 100%;
 }
 
+#franchise-banner {
+  background-image: url(./frenchise.jpg);
+  height: 450px;
+  background-size: contain;
+  background-repeat: round;
+  margin-top: 88px;
+  width: 100%;
+}
+
+#career-banner {
+  background-image: url(./career.jpg);
+  height: 450px;
+  background-size: contain;
+  background-repeat: round;
+  margin-top: 85px;
+  width: 100%;
+}
+
 #emi-calc-banner {
-  background-image: url(./emi-calculator.png);
+  background-image: url(./emi-calculator.jpg);
   height: 430px;
   background-size: contain;
   background-repeat: no-repeat;
-  margin-top: 110px;
+  margin-top: 85px;
   width: 100%;
 }
 
