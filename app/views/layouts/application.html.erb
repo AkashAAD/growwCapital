@@ -25,10 +25,14 @@
             <div class="col-md-12">
               <p>
                 <span>
+                  <%= link_to "Refer & Earn", "javascript:void(0)", "data-toggle": "modal", "data-target": "#refer-earn-modal", id: "show-refer-earn" %>
+                </span>
+                <span class="bar"> | </span>
+                <span>
                   <i class="fa fa-envelope"></i>&nbsp;
                   <a href="mailto:support@growwcapital.com">support@growwcapital.com</a>
                 </span>
-                 <span class="bar"> | </span> 
+                 <span class="bar"> | </span>
                 <span>
                   <i class="fa fa-whatsapp"></i>&nbsp;
                   <a href="tel:+918806644344">+91-88066-44344</a>  
@@ -160,7 +164,7 @@
                     </ul>
                   </li>
                   <li class="<%= active_tab('pre_approved') %>">
-                    <%= link_to "Pre Approved Offers", pre_approved_path, method: :get %>
+                    <%= link_to "Pre-Approved Offers", pre_approved_path, method: :get %>
                   </li>
                   <li class="<%= active_tab('about_us') %>">
                     <%= link_to "About Us", about_us_path, method: :get %>
@@ -279,7 +283,6 @@
     </div>
 
     <!-- Apply now modal START -->
-
     <div class="modal fade" id="apply-now-modal" role="dialog">
       <div class="modal-dialog modal-md">
         <div class="modal-content">
@@ -316,7 +319,63 @@
         </div>
       </div>
     </div>
+    <!-- Apply now modal END -->
 
+    <!-- Apply now modal START -->
+
+    <div class="modal fade" id="refer-earn-modal" role="dialog">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title text-center">Refer & Earn</h4>
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+          <%= form_for @refer_earn, :url => home_refer_earn_path, remote: true, html: { id:  "frm-refer-earn", class: "frm-refer-earn" } do |f| %>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Full Name
+                    <i data-toggle="tooltip" data-placement="top" title="Your Friend/ Family member full name." class="fa fa-info-circle" aria-hidden="true"></i>
+                  </label>
+                  <%= f.text_field(:full_name, class: "form-control") %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Mobile Number
+                    <i data-toggle="tooltip" data-placement="top" title="Your Friend/ Family member mobile number." class="fa fa-info-circle" aria-hidden="true"></i>
+                  </label>
+                  <%= f.number_field(:mobile_number, class: "form-control") %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Products</label>
+                  <%= f.select(:product_name, f.object.products, class: "form-control") %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Your Full Name
+                  </label>
+                  <%= f.text_field(:referer_full_name, class: "form-control") %>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <label>Your Mobile Number
+                  </label>
+                  <%= f.number_field(:referer_mobile_number, class: "form-control") %>
+                </div>
+              </div>
+              <div class="form-group">
+                <button type="submit" class="btn btn-custom btn-block">Submit</button>
+              </div>
+            <%end%>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Apply now modal END -->
 
   </body>

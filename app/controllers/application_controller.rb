@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
 
 	def apply_now
 		@instant_call = InstantCall.new
+		@refer_earn = ReferEarn.new
 	end
 
   def after_sign_in_path_for(resource)

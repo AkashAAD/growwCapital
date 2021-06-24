@@ -5,9 +5,15 @@ $(document).ready(function(){
     $('#apply-now-modal').modal('show');    
   });
 
+  $("#show-refer-earn").on("mouseover", function () {
+    $('#refer-earn-modal').modal('hide');
+    $('#refer-earn-modal').modal('show');
+  });
+
   setInterval(function(){
     $("#show-apply-modal").toggleClass('apply-now-color');
     $(".emi-calculator-link").toggleClass('apply-now-color');
+    $("#show-refer-earn").toggleClass('apply-now-color');
   }, 500);
 
   $(".cal-emi").click(function(){
@@ -554,6 +560,47 @@ $(document).ready(function(){
         required: "Please enter mobile number."
       },
       "instant_call[product_name]": {
+        required: "Please select product name.",
+      },
+    }
+  });
+
+  $("#frm-refer-earn").validate({
+    rules: {
+      "refer_earn[full_name]": {
+        required: true,
+        full_name: true
+      },
+      "refer_earn[mobile_number]": {
+        required: true
+      },
+      "refer_earn[referer_full_name]": {
+        required: true,
+        full_name: true
+      },
+      "refer_earn[referer_mobile_number]": {
+        required: true
+      },
+      "refer_earn[product_name]": {
+        required: true,
+      },
+    },
+    messages: {
+      "refer_earn[referer_full_name]": {
+        required: "Please enter full name.",
+        full_name: "Please enter validate full name."
+      },
+      "refer_earn[referer_mobile_number]": {
+        required: "Please enter mobile number."
+      },
+      "refer_earn[full_name]": {
+        required: "Please enter full name.",
+        full_name: "Please enter validate full name."
+      },
+      "refer_earn[mobile_number]": {
+        required: "Please enter mobile number."
+      },
+      "refer_earn[product_name]": {
         required: "Please select product name.",
       },
     }

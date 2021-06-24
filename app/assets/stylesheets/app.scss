@@ -85,7 +85,7 @@
   height: 450px;
   background-size: contain;
   background-repeat: no-repeat;
-  margin-top: 110px;
+  margin-top: 76px;
   width: 100%;
   border-bottom: 1px solid #ececec;
 }
@@ -121,6 +121,15 @@
   background-image: url(./emi-calculator.jpg);
   height: 430px;
   background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: 85px;
+  width: 100%;
+}
+
+#forget-password {
+  background-image: url(./forget-password.jpg);
+  height: 430px;
+  background-size: cover;
   background-repeat: no-repeat;
   margin-top: 85px;
   width: 100%;
@@ -1354,7 +1363,7 @@ homeStrip .container>p {
   }
 }
 
-#apply-now-modal {
+#apply-now-modal, #refer-earn-modal {
   .modal-dialog {
     margin-top: 200px;
   }

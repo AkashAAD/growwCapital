@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_040410) do
+ActiveRecord::Schema.define(version: 2021_06_24_063335) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
@@ -614,6 +614,16 @@ ActiveRecord::Schema.define(version: 2021_05_27_040410) do
 
   create_table "qualifications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "refer_earns", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "full_name"
+    t.string "mobile_number"
+    t.string "product_name"
+    t.string "referer_full_name"
+    t.string "referer_mobile_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

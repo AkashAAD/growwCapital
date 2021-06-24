@@ -55,6 +55,13 @@ class HomeController < ApplicationController
     flash[:notice] = "Thank you for the details. Our associate will reach to you soon."
   end
 
+  def refer_earn
+    @refer_earn = ReferEarn.new(refer_earn_params)
+    @refer_earn.save
+    LoanMailer.refer_earn(@refer_earn).deliver_later
+    flash[:notice] = "Thank you for the reference. Our associate will reach to you soon."
+  end
+
   def emi_calculator; end
 
   def check_pincode
@@ -429,6 +436,10 @@ class HomeController < ApplicationController
 
   def instant_call_params
     params.require(:instant_call).permit(:full_name, :mobile_number, :product_name)
+  end
+
+  def refer_earn_params
+    params.require(:refer_earn).permit(:full_name, :mobile_number, :product_name, :referer_full_name, :referer_mobile_number)
   end
 
   def send_sms
