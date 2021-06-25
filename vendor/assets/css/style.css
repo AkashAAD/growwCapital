@@ -2656,6 +2656,7 @@ footer.design_2 h4 {
     transition-duration: .2s;
     transition-property: background-color;
     border-radius: 100%;
+    z-index: 9999999;
 }
 
 .back_to_top:hover {

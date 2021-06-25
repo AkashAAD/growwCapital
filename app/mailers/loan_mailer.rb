@@ -54,7 +54,12 @@ class LoanMailer < ApplicationMailer
     mail(to: "support@growwcapital.com", subject: "Instant Application")
   end
 
-  def refer_earn(obj)
+  def refer_earn_admin(obj)
+    @refer_earn = obj
+    mail(to: "support@growwcapital.com", subject: "Refer & Earn")
+  end
+
+  def refer_earn_customer(obj)
     @refer_earn = obj
     mail(to: "support@growwcapital.com", subject: "Refer & Earn")
   end

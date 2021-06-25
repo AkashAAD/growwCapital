@@ -57,9 +57,11 @@ class HomeController < ApplicationController
 
   def refer_earn
     @refer_earn = ReferEarn.new(refer_earn_params)
+    @refer_earn.reference_number = "REF-#{(rand * 1000000000).to_i}"
     @refer_earn.save
-    LoanMailer.refer_earn(@refer_earn).deliver_later
-    flash[:notice] = "Thank you for the reference. Our associate will reach to you soon."
+    LoanMailer.refer_earn_admin(@refer_earn).deliver_later
+    LoanMailer.refer_earn_customer(@refer_earn).deliver_later
+    flash[:notice] = "Thank you for the reference. Our associate will reach to you soon. your reference number is #{@refer_earn.reference_number}"
   end
 
   def emi_calculator; end

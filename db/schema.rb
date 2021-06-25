@@ -624,6 +624,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_063335) do
     t.string "product_name"
     t.string "referer_full_name"
     t.string "referer_mobile_number"
+    t.string "reference_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

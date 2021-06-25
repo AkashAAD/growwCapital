@@ -24,10 +24,12 @@
           <div class="row">
             <div class="col-md-12">
               <p>
-                <span>
-                  <%= link_to "Refer & Earn", "javascript:void(0)", "data-toggle": "modal", "data-target": "#refer-earn-modal", id: "show-refer-earn" %>
+                <span class="sp-refer-earn">
+                  <span>
+                    <%= link_to "Refer & Earn", "javascript:void(0)", "data-toggle": "modal", "data-target": "#refer-earn-modal", id: "show-refer-earn" %>
+                  </span>
+                  <span class="bar"> | </span>
                 </span>
-                <span class="bar"> | </span>
                 <span>
                   <i class="fa fa-envelope"></i>&nbsp;
                   <a href="mailto:support@growwcapital.com">support@growwcapital.com</a>
@@ -278,6 +280,13 @@
         </div>
       </div>
     </section>
+    <div class="refer-earn-bottom">
+      <div class="row">
+        <div class="col-md-12 refer-earn">
+          <%= link_to "Refer & Earn", "javascript:void(0)", "data-toggle": "modal", "data-target": "#refer-earn-modal", id: "" %>
+        </div>
+      </div>
+    </div>
     <div class="back_to_top">
       <i class="fa fa-angle-up"></i>
     </div>

@@ -6,6 +6,7 @@ class CreateReferEarns < ActiveRecord::Migration[5.2]
       t.string :product_name
       t.string :referer_full_name
       t.string :referer_mobile_number
+      t.string :reference_number
       t.timestamps
     end
   end
