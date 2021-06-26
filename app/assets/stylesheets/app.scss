@@ -118,6 +118,8 @@
   background-repeat: round;
   margin-top: 110px;
   width: 100%;
+  margin-bottom: 20px;
+  background-position: center;
 }
 
 #franchise-banner {
@@ -1530,6 +1532,13 @@ homeStrip .container>p {
 }
 
 @media screen and (max-width: 767px) {
+  #abt-us-banner {
+    background-image: url(./mobile/abput-us.jpg);
+    height: 200px;
+    background-repeat: no-repeat;
+    margin-top: 65px;
+    margin-bottom: 0px;
+  }
   .refer-earn-bottom {
     display: block;
   }
