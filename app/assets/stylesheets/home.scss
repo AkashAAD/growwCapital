@@ -47,12 +47,12 @@
 #carosel-home-mob {
   display: none;
   .img1 {
-    background: url(./carosel/mobile/credit-card-banner.png) top center no-repeat;
+    background: url(./carosel/mobile/credit-card.jpg) top center no-repeat;
     height: 220px;
     background-size: contain;
   }
   .img2 {
-    background: url(./carosel/mobile/home-loan-banner.svg) top center no-repeat;
+    background: url(./carosel/mobile/home-loan.jpg) top center no-repeat;
     height: 220px;
     background-size: contain;
   }
@@ -395,7 +395,7 @@
   }
   .cc-icon {
     width: 20%;
-    margin-top: 25px;
+    margin-top: 10px;
   }
 
   .personal-loan-icon {

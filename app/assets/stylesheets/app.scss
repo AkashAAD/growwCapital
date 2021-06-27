@@ -108,7 +108,6 @@
   background-repeat: no-repeat;
   margin-top: 76px;
   width: 100%;
-  border-bottom: 1px solid #ececec;
 }
 
 #abt-us-banner {
@@ -125,19 +124,21 @@
 #franchise-banner {
   background-image: url(./frenchise.jpg);
   height: 450px;
-  background-size: contain;
-  background-repeat: round;
+  background-size: cover;
+  background-repeat: no-repeat;
   margin-top: 88px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 #career-banner {
   background-image: url(./career.jpg);
   height: 450px;
-  background-size: contain;
-  background-repeat: round;
+  background-size: cover;
+  background-repeat: no-repeat;
   margin-top: 85px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 #emi-calc-banner {
@@ -147,6 +148,7 @@
   background-repeat: no-repeat;
   margin-top: 85px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 #forget-password {
@@ -172,8 +174,9 @@
   height: 400px;
   background-size: cover;
   background-repeat: no-repeat;
-  margin-top: 110px;
+  margin-top: 85px;
   width: 100%;
+  margin-bottom: 20px;
 }
 
 .bg-img {
@@ -886,7 +889,6 @@ textarea.error, input.error, select.error {
     }
   }
   #pre-apv-banner {
-    background: url(./pre-approved.jpg) top center no-repeat;
     .cnt-pre-apv-banner {
       h2 {
         font-size: 20px;
@@ -1532,12 +1534,60 @@ homeStrip .container>p {
 }
 
 @media screen and (max-width: 767px) {
+  .social-media-icons {
+    bottom: 45px;
+    right: 20px;
+  }
+  #apply-now-modal {
+    .modal-title {
+      width: 115px;
+    }
+  }
+  #career-banner {
+    background-image: url(./mobile/career.jpg);
+    height: 235px;
+    margin-top: 65px;
+    background-size: contain;
+    margin-bottom: 0px;
+    background-position: center;
+  }
+  #franchise-banner {
+    background-image: url(./mobile/frenchise.jpg);
+    height: 235px;
+    margin-top: 65px;
+    background-size: contain;
+    margin-bottom: 0px;
+    background-position: center;
+  }
+  #cont-us-banner {
+    background-image: url(./mobile/contact-us.jpg);
+    height: 235px;
+    margin-top: 65px;
+    background-size: contain;
+    background-position: center;
+  }
+  #emi-calc-banner {
+    background-image: url(./mobile/calculator.jpg);
+    height: 180px;
+    background-repeat: no-repeat;
+    margin-top: 65px;
+  }
+  #pre-apv-banner {
+    background-image: url(./mobile/pre-approved.jpg);
+    height: 180px;
+    background-repeat: no-repeat;
+    margin-top: 65px;
+    background-position: center;
+    margin-bottom: 0px;
+  }
+
   #abt-us-banner {
-    background-image: url(./mobile/abput-us.jpg);
+    background-image: url(./mobile/about-us.jpg);
     height: 200px;
     background-repeat: no-repeat;
     margin-top: 65px;
     margin-bottom: 0px;
+    background-position: center;
   }
   .refer-earn-bottom {
     display: block;

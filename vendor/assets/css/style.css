@@ -2648,7 +2648,7 @@ footer.design_2 h4 {
     cursor: pointer;
     text-align: center;
     position: fixed;
-    right: 50px;
+    right: 0px;
     bottom: 50px;
     padding-top: 12px;
     display: none;

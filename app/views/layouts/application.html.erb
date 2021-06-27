@@ -180,9 +180,9 @@
                   <li class="<%= active_tab('emi_calculator') %>">
                     <%= link_to "EMI Calculator", emi_calculator_path, method: :get %>
                   </li>
-                  <li class="<%= active_tab('blog') %>">
-                    <%= link_to "Blog", blog_path, method: :get %>
-                  </li>
+                  <!-- <li class="<%#= active_tab('blog') %>">
+                    <%#= link_to "Blog", blog_path, method: :get %>
+                  </li> -->
                   <li class="<%#= active_tab('blog') %>">
                     <%= link_to "Apply Now", "javascript:void(0)", "data-toggle": "modal", "data-target": "#apply-now-modal", id: "sshow-apply-modal" %>
                   </li>
@@ -266,7 +266,7 @@
             </div>
             <p>Copyright &copy; <%= "#{Time.zone.now.year}" %> Growwcapital.com. All rights reserved.</p>
           </div>
-          <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12">
+          <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 social-media-icons">
             <ul class="social margin-bottom-25 md-margin-bottom-25 sm-margin-bottom-20 xs-margin-bottom-20 xs-padding-top-10 clearfix">
               <li><a class="sc-1" style="display: none;" href="javascript:void(0)"></a></li>
               <li><a class="sc-1" href="#"></a></li>
