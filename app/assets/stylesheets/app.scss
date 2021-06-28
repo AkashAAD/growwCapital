@@ -151,12 +151,13 @@
   margin-bottom: 20px;
 }
 
-#forget-password {
+#forget-password-section {
   background-image: url(./forget-password.jpg);
   height: 430px;
   background-size: cover;
   background-repeat: no-repeat;
   margin-top: 85px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
@@ -1534,6 +1535,12 @@ homeStrip .container>p {
 }
 
 @media screen and (max-width: 767px) {
+  .personal-loan-section {
+    margin-top: 100px;
+  }
+  #forget-password-section {
+    display: none;
+  }
   .social-media-icons {
     bottom: 45px;
     right: 20px;

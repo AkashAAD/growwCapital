@@ -356,6 +356,10 @@
 }
 
 @media screen and (max-width: 767px) {
+  .thank-you .thx-other-services a {
+    margin: 10px;
+    display: block;
+  }
   .footer-other-images {
     margin-right: 60px;
   }
