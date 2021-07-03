@@ -36,3 +36,4 @@ gem 'city-state'
 gem 'wicked'
 gem 'toastr-rails'
 gem 'indian-pincodes'
+gem "select2-rails"
