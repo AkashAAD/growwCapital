@@ -28,7 +28,7 @@
           </div>
           <div class="col-md-3 desired-loan <%= 'hide-div' if !f.object.is_topup_amount? %>">
             <div class="form-group">
-              <label>Your desired loan amount
+              <label>Your total desired loan amount
                 <i class="fa fa-info-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Please fill in the loan amount you need to fullfil your financial needs."></i>
               </label>
               <%= f.number_field(:desired_loan_amount, class: "form-control") %>
@@ -75,7 +75,7 @@
             <%= f.label "Terms & Conditions", for: 'transfer_home_loan_terms_and_conditions' %>
           </div>
         </div>
-        <button type="submit" class="btn btn-custom">Submit</button>
+        <button type="submit" class="btn btn-custom">Process</button>
       </div>
     <%end%>
     <br>

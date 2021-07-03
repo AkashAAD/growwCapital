@@ -1,44 +1,40 @@
 <section class="business-loan-section custom-container">
   <div class="container">
-    <div class="row">
-    </div>
-    <div class="container">
-      <div class="row">
-        <table class="table loan-table">
-          <thead class="thead-light">
-            <tr>
-              <th>Bank</th>
-              <th>Interest Rate</th>
-              <th>EMI</th>
-              <th>Processing Fee</th>
-              <th class="pre-pay-charg">Prepayment Charges</th>
-              <th>Loan Approval Chances</th>
-              <th>Proceed</th>
-            </tr>
-          </thead>
-          <% @banks.each do |bank| %>
-            <tr>
-              <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
-              <td><b><%= percentage_roi(bank.transfer_home_loan_bank_info.roi) %><br><span>(Reducing)</span></b></td>
-              <td><b><%= number_to_currency(tr_calculate_emi(bank.transfer_home_loan_bank_info, @transfer_home_loan), unit: "₹ ") %></b></td>
-              <td><b><%= number_to_currency("%.2f" % processing_fee(bank.transfer_home_loan_bank_info.processing_fee, @transfer_home_loan.desired_loan_amount, bank), unit: "₹ ") %></b></td>
-              <td class="pre-pay-charg"><%= bank.transfer_home_loan_bank_info.preprocessing_charges.html_safe %></td>
-              <td>
-                <%= image_tag "meter.png", alt: "meter", class: "meter-img" %><br>
-                <span style="color: #aaa4a4;">Excelent</span>
-              </td>
-              <td>
-                <b>
-                  <%= form_for @transfer_home_loan, :url => { :action => "select_bank" }, html: {id:  "transfer_home_loan_bank", class: "transfer_home_loan_bank"} do |f| %>
-                    <input type="hidden" name="transfer_home_loan_bank[id]" value="<%= bank.transfer_home_loan_bank_info.id %>">
-                    <button type="submit" class="btn btn-custom">Apply</button>
-                  <%end%>
-                </b>
-              </td>
-            </tr>
-          <%end%>
-        </table>
-      </div>
+    <div class="row table-responsive">
+      <table class="table loan-table">
+        <thead class="thead-light">
+          <tr>
+            <th>Bank</th>
+            <th>Interest Rate</th>
+            <th>EMI</th>
+            <th>Processing Fee</th>
+            <th class="pre-pay-charg">Prepayment Charges</th>
+            <th>Loan Approval Chances</th>
+            <th>Proceed</th>
+          </tr>
+        </thead>
+        <% @banks.each do |bank| %>
+          <tr>
+            <td><div class="img-effect" style="margin-bottom: 0;"><%= image_tag url_for(bank.bank_image), width: 200, height: 100 %></div></td>
+            <td><b><%= percentage_roi(bank.transfer_home_loan_bank_info.roi) %><br><span>(Reducing)</span></b></td>
+            <td><b><%= number_to_currency(tr_calculate_emi(bank.transfer_home_loan_bank_info, @transfer_home_loan), unit: "₹ ") %></b></td>
+            <td><b><%= number_to_currency("%.2f" % processing_fee(bank.transfer_home_loan_bank_info.processing_fee, @transfer_home_loan.desired_loan_amount, bank), unit: "₹ ") %></b></td>
+            <td class="pre-pay-charg"><%= bank.transfer_home_loan_bank_info.preprocessing_charges.html_safe %></td>
+            <td>
+              <%= image_tag "meter.png", alt: "meter", class: "meter-img" %><br>
+              <span style="color: #aaa4a4;">Excelent</span>
+            </td>
+            <td>
+              <b>
+                <%= form_for @transfer_home_loan, :url => { :action => "select_bank" }, html: {id:  "transfer_home_loan_bank", class: "transfer_home_loan_bank"} do |f| %>
+                  <input type="hidden" name="transfer_home_loan_bank[id]" value="<%= bank.transfer_home_loan_bank_info.id %>">
+                  <button type="submit" class="btn btn-custom">Apply</button>
+                <%end%>
+              </b>
+            </td>
+          </tr>
+        <%end%>
+      </table>
     </div>
   </div>
 </section>

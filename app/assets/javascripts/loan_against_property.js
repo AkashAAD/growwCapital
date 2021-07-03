@@ -1,5 +1,21 @@
 $(document).ready(function(){
 
+  $("#loan_against_property_tenure").select2({
+    theme: "bootstrap"
+  });
+
+  $("#loan_against_property_property_city").select2({
+    theme: "bootstrap"
+  });
+
+  $("#loan_against_property_employment_type").select2({
+    theme: "bootstrap"
+  });
+
+  $("#loan_against_property_city").select2({
+    theme: "bootstrap"
+  });
+
 	$("#loan-against-property-resend-otp").click(function(){
 		$.ajax({
 	    url: "/loan_against_property/resend_otp",
@@ -171,7 +187,15 @@ $(document).ready(function(){
 			"loan_against_property[property_city]": {
 				required: "Please select property city."
 			}
-		}
+		},
+    errorPlacement: function (error, element) {
+      if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+        $('.select2-container').addClass('error');
+        error.insertAfter(element.next());
+      } else {
+        error.insertAfter(element);
+      }
+    }
 	});
 
   $("#update_against_property_offer").validate({
@@ -214,7 +238,15 @@ $(document).ready(function(){
 				required: "Please enter full name.",
 				full_name: "Please enter validate full name."
 			},
-		}   	
+		},
+    errorPlacement: function (error, element) {
+      if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+        $('.select2-container').addClass('error');
+        error.insertAfter(element.next());
+      } else {
+        error.insertAfter(element);
+      }
+    }
   });
 
   $("#loan_against_property_address").validate({
@@ -244,7 +276,15 @@ $(document).ready(function(){
 				required: "Please enter pincode.",
 				minlength: "Pincode must consist of at least 6 characters.",
 			},
-		}
+		},
+    errorPlacement: function (error, element) {
+      if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+        $('.select2-container').addClass('error');
+        error.insertAfter(element.next());
+      } else {
+        error.insertAfter(element);
+      }
+    }
 	});
 
 	$("#loan_against_property_assets").validate({

@@ -1,5 +1,25 @@
 $(document).ready(function(){
 
+	$("#transfer_personal_loan_tenure").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#transfer_personal_loan_city").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#transfer_personal_loan_bank_name").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#transfer_personal_loan_existing_bank_name").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#transfer_personal_loan_office_city").select2({
+	  theme: "bootstrap"
+	});
+
 	$("#tr-personal-loan-resend-otp").click(function(){
 		$.ajax({
 	    url: "/transfer_personal_loan/resend_otp",
@@ -226,6 +246,14 @@ $(document).ready(function(){
 			"transfer_personal_loan[bank_name]": {
 				required: "Please select bank name."
 			},
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
 	});
 
@@ -281,6 +309,14 @@ $(document).ready(function(){
 			"transfer_personal_loan[existing_bank_name]": {
 				required: "Please enter existing loan bank name.",
 			},
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
   });
 
@@ -334,6 +370,14 @@ $(document).ready(function(){
 				required: "Please enter office pincode.",
 				minlength: "Pincode must consist of at least 6 characters.",
 			},
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
   });
 

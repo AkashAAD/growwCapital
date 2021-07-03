@@ -1,5 +1,33 @@
 $(document).ready(function(){
 
+	$("#business_loan_annual_turnover").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#business_loan_tenure").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#business_loan_business_nature").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#business_loan_bank_name").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#business_loan_company_type").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#business_loan_city").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#business_loan_business_city").select2({
+	  theme: "bootstrap"
+	});
+
 	$("#business-loan-resend-otp").click(function(){
 		$.ajax({
 	    url: "/business_loan/resend_otp",
@@ -154,6 +182,14 @@ $(document).ready(function(){
 				required: "Please enter mobile number.",
 				minlength: 'Mobile number must consist of at least 10 characters'
 			},
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
 	});
 
@@ -203,7 +239,15 @@ $(document).ready(function(){
 				required: "Please enter email address.",
 				email: "Please enter valid email."
 			},		
-		}  	
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
+		}
   });
 
   $("#business_loan_address").validate({
@@ -256,7 +300,15 @@ $(document).ready(function(){
 				required: "Please enter pincode",
 				minlength: "Pincode must consist of at least 6 characters.",
 			}
-		} 	
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
+		}
   });
 
 	$("#business_loan_offer_assets").validate({

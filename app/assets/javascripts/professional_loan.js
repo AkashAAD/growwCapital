@@ -1,5 +1,29 @@
 $(document).ready(function(){
 
+	$("#professional_loan_tenure").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#professional_loan_profession_type").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#professional_loan_degree").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#professional_loan_bank_name").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#professional_loan_city").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#professional_loan_office_city").select2({
+	  theme: "bootstrap"
+	});
+
 	$("#professional-loan-resend-otp").click(function(){
 		$.ajax({
 	    url: "/professional_loan/resend_otp",
@@ -167,6 +191,14 @@ $(document).ready(function(){
 			"professional_loan[terms_and_conditions]": {
 				required: "Please select terms and conditions."
 			}
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
 	});
 
@@ -204,6 +236,14 @@ $(document).ready(function(){
 				required: "Please enter email",
 				email: "Please enter validate email"
 			},
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
 	});
 
@@ -257,6 +297,14 @@ $(document).ready(function(){
 				required: "Please enter pincode.",
 				minlength: "Pincode must consist of at least 6 characters.",
 			},
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
 	});
 

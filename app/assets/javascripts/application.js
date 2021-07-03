@@ -24,6 +24,7 @@
 //= require activestorage
 // require turbolinks
 //= require toastr
+//= require select2
 //= require_tree .
 
 $(function () {

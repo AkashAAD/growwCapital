@@ -24,6 +24,7 @@
  *= require jquery-ui.css
  *= require owl.carousel.min.css
  *= require toastr
+ *= require select2
  *= require_tree .
  *= require_self
  */

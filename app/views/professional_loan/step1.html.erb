@@ -12,7 +12,7 @@
         <div class="row first-row">
           <div class="col-md-6">
             <div class="form-group">
-              <label>Your desired loan amount 
+              <label>Your total desired loan amount 
                 <i data-toggle="tooltip" data-placement="top" title="Please fill in the loan amount you need to fullfil your financial needs." class="fa fa-info-circle" aria-hidden="true"></i>
               </label>
               <%= f.number_field(:loan_amount, class: "form-control") %>
@@ -63,7 +63,7 @@
             <%= f.label "Terms & Conditions", for: 'personal_loan_terms_and_conditions' %>
           </div>
         </div>
-        <button type="submit" class="btn btn-custom">Submit</button>
+        <button type="submit" class="btn btn-custom">Process</button>
       </div>
     <%end%>
     <br>

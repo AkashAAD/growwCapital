@@ -1,5 +1,29 @@
 $(document).ready(function(){
 
+	$("#used_car_loan_tenure").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#used_car_loan_car_manufacturer").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#used_car_loan_car_model").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#used_car_loan_employment_type").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#used_car_loan_city").select2({
+	  theme: "bootstrap"
+	});
+
+	$("#used_car_loan_office_city").select2({
+	  theme: "bootstrap"
+	});
+
 	$("#used-car-loan-resend-otp").click(function(){
 		$.ajax({
 	    url: "/used_car_loan/resend_otp",
@@ -223,6 +247,14 @@ $(document).ready(function(){
 				required: "Please enter mobile number.",
 				minlength: 'Mobile number must consist of at least 10 characters'
 			},
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
 	});	
 
@@ -307,6 +339,14 @@ $(document).ready(function(){
 				required: "Please enter pincode.",
 				minlength: "Pincode must consist of at least 6 characters.",
 			},
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
 	});
 
