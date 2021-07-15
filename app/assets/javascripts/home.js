@@ -621,7 +621,8 @@ $(document).ready(function(){
 	    }, ms || 0);
 	  };
   }
-  var predictions = [{loan: 'Personal Loan', link: "/home/personal_loan", type: 'loan'},
+  var predictions = [{loan: 'Credit Card', link: "/home/credit_card", type: 'card'},
+    {loan: 'Personal Loan', link: "/home/personal_loan", type: 'loan'},
     {loan: 'Business Loan', link: "/home/business_loan", type: 'loan'},
     {loan: 'Professional Loan', link: "/home/professional_loan", type: 'loan'},
     {loan: 'Home Loan', link: "/home/home_loan", type: 'loan'},
@@ -630,7 +631,6 @@ $(document).ready(function(){
     {loan: 'Used Car Loan', link: "/home/used_car_loan", type: 'loan'},
     {loan: 'Gold Loan', link: "/home/gold_loan", type: 'loan'},
     {loan: 'Insurance', link: "/home/insurance", type: 'loan'},
-    {loan: 'Credit Card', link: "/home/credit_card", type: 'card'},
   ];
 
   $(".search-loan").focus(function(){
@@ -683,8 +683,8 @@ $(document).ready(function(){
         }
       }
     });
-    $html += loans;
     $html += cards;
+    $html += loans;
     $html += '</ul>';
     var a = document.createElement("DIV");
     a.setAttribute("id", "loan-autocomplete-list");
@@ -731,11 +731,6 @@ $(document).ready(function(){
   });
 
   $(".loanAmount").on('input', function () {
-    if(this.value <=1 ){
-      // this.value = 1;
-    } else if(this.value >= 1000000) {
-      this.value = 1000000;
-    };
     var per = (this.value/1000000)*100;
     $(".sldLoanAmount").css("background", 'linear-gradient(to right, #0854a0 0%, #82CFD0 ' + per + '%, #fff ' + per + '%, white 100%)');
     $(".sldLoanAmount").val(this.value);
@@ -750,11 +745,6 @@ $(document).ready(function(){
   });
 
   $(".loanRoi").on('input', function () {
-    if(this.value <=1 ){
-      // this.value = 1;
-    } else if(this.value >= 100) {
-      this.value = 100;
-    };
     var per = (this.value/100)*100;
     $(".sldLoanRoi").css("background", 'linear-gradient(to right, #0854a0 0%, #82CFD0 ' + per + '%, #fff ' + per + '%, white 100%)');
     $(".sldLoanRoi").val(this.value);
@@ -769,11 +759,6 @@ $(document).ready(function(){
   });
 
   $(".loanTen").on('input', function () {
-    if(this.value <=1 ){
-      // this.value = 1;
-    } else if(this.value >= 500) {
-      this.value = 500;
-    };
     var per = (this.value/500)*100;
     $(".sldLoanTen").css("background", 'linear-gradient(to right, #0854a0 0%, #82CFD0 ' + per + '%, #fff ' + per + '%, white 100%)');
     $(".sldLoanTen").val(this.value);

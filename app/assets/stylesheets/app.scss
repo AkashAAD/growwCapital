@@ -4,6 +4,7 @@
   height: 35px;
   font-size: 16px;
   color: #54545e;
+  width: 100% !important;
   .select2-selection__rendered {
     padding-top: 4px;
     padding-left: 15px !important;
@@ -118,7 +119,7 @@
 
 #pre-apv-banner {
   background-image: url(./pre-approved.jpg);
-  height: 450px;
+  height: 350px;
   background-size: contain;
   background-repeat: no-repeat;
   margin-top: 76px;
@@ -129,8 +130,8 @@
   background-image: url(./about-us.png);
   height: 450px;
   background-size: contain;
-  background-repeat: round;
-  margin-top: 110px;
+  background-repeat: no-repeat;
+  margin-top: 20px;
   width: 100%;
   margin-bottom: 20px;
   background-position: center;
@@ -139,11 +140,12 @@
 #franchise-banner {
   background-image: url(./frenchise.jpg);
   height: 450px;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   margin-top: 88px;
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  background-color: #f7f7f7;
 }
 
 #career-banner {
@@ -1319,7 +1321,6 @@ homeStrip .container>p {
     .fa-envelope {
       color: #cb2d08;
     }
-
     .fa-whatsapp {
       color: #26c726;
     }
@@ -1337,10 +1338,9 @@ homeStrip .container>p {
   .fa-envelope {
     color: #cb2d08;
   }
-
   .fa-whatsapp {
     color: #26c726;
-  }
+  }  
 }
 
 #missed-call {
@@ -1398,7 +1398,9 @@ homeStrip .container>p {
   .fa-envelope {
     color: #cb2d08;
   }
-
+  .fa-money {
+    color: #1dab2d;
+  }
   .fa-whatsapp {
     color: #26c726;
   }
@@ -1406,7 +1408,7 @@ homeStrip .container>p {
 
 #apply-now-modal, #refer-earn-modal {
   .modal-dialog {
-    margin-top: 200px;
+    margin-top: 50px;
   }
   .modal-content {
     background-color: #f6f6f6;
@@ -1453,6 +1455,7 @@ homeStrip .container>p {
 
 .h-emai-calc {
   width: 350px;
+  padding: 20px;
   opacity: 1 !important;
   input {
     border-radius: 0px;

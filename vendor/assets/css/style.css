@@ -619,6 +619,7 @@ header.affix .bottom-header {
 header .navbar-brand img {
 	width: 300px;
 	margin-top: 8px;
+	image-rendering: -webkit-optimize-contrast;
 }
 
 .bottom-header .navbar {

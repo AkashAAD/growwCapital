@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+	$("#credit_card_bank_name, #credit_card_city, #credit_card_office_city").select2({
+	  theme: "bootstrap"
+	});
+
 	$("#credit-card-resend-otp").click(function(){
 		$.ajax({
 	    url: "/credit_card/resend_otp",
@@ -151,6 +155,14 @@ $(document).ready(function() {
 			"credit_card[existing_card]": {
 				required: "Please select existing card option."
 			}
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
 	});
 
@@ -204,6 +216,14 @@ $(document).ready(function() {
 				required: "Please enter pincode.",
 				minlength: "Pincode must consist of at least 6 characters."
 			},
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
+				$('.select2-container').addClass('error');
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
 	});
 
