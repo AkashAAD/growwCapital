@@ -192,7 +192,10 @@ $(document).ready(function(){
       if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
         $('.select2-container').addClass('error');
         error.insertAfter(element.next());
-      } else {
+			} else if(element.next()[0] && element.next()[0].classList[0] == 'tnc_loan_against_property_lb') {
+				$('#loan_against_property_terms_and_conditions').css({'display': 'inline'});
+				error.insertAfter(element.next());
+			} else {
         error.insertAfter(element);
       }
     }

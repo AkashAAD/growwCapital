@@ -91,6 +91,14 @@ $(document).ready(function() {
 				required: 'Please enter mobile number.',
 				minlength: 'Mobile number must consist of at most 10 characters'
 			},
+		},
+    errorPlacement: function (error, element) {
+			if(element.next()[0] && element.next()[0].classList[0] == 'tnc_credit_card_lb') {
+				$('#credit_card_terms_and_conditions').css({'display': 'inline'});
+				error.insertAfter(element.next());
+			} else {
+				error.insertAfter(element);
+			}
 		}
 	});
 

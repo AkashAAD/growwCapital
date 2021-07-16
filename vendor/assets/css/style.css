@@ -2822,8 +2822,9 @@ input[type="file"]:active:after {
 }
 
 input[type="radio"], input[type="checkbox"] {
-	/*position: absolute;
-	left: -999em;*/
+    top: 2px;
+    margin-bottom: 0px;
+    position: relative;
 }
 
 label:before {

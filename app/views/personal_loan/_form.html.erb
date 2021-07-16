@@ -51,7 +51,9 @@
 <div class="row">
   <div class="col-md-4">
     <%= f.check_box(:terms_and_conditions) %>
-    <%= f.label "Terms & Conditions", for: 'personal_loan_terms_and_conditions' %>
+    <label for='personal_loan_terms_and_conditions' class='tnc_personal_loan_lb'>
+      <i>I agree to the applicable <a href="/terms_and_conditions" target="_blank">T&Cs</a>.</i>
+    </label><br>
   </div>
 </div>
 

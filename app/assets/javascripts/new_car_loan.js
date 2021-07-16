@@ -302,6 +302,9 @@ $(document).ready(function(){
 			if(element.next()[0] && element.next()[0].classList[0] == 'select2') {
 				$('.select2-container').addClass('error');
 				error.insertAfter(element.next());
+			} else if(element.next()[0] && element.next()[0].classList[0] == 'tnc_new_car_loan_lb') {
+				$('#new_car_loan_terms_and_conditions').css({'display': 'inline'});
+				error.insertAfter(element.next());
 			} else {
 				error.insertAfter(element);
 			}

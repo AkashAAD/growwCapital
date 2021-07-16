@@ -28,7 +28,9 @@
         <div class="col-md-2"></div>
         <div class="col-md-7">
           <%= f.check_box(:terms_and_conditions) %>
-          <%= f.label "Terms & Conditions", for: 'home_loan_terms_and_conditions' %><br>
+          <label for='credit_card_terms_and_conditions' class='tnc_credit_card_lb'>
+            <i>I agree to the applicable <a href="/terms_and_conditions" target="_blank">T&Cs</a>.</i>
+          </label><br>
           <button type="submit" class="btn btn-custom btn-block">Check Offers</button>          
         </div>
          <div class="col-md-2"></div>
