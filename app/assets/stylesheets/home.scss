@@ -29,17 +29,20 @@
     margin-top: 70px;
   }
   .txt-carosel-imgs {
-    padding: 140px 140px 140px 300px;
-    h3 {
-      font-size: 35px;
+    padding: 100px 140px 140px 300px;
+    h4 {
       font-weight: bold;
-      color: #1b1dc7;
+      color: #ed2030;
+      text-shadow: 2px 2px #a9a5a5;
     }
-    li {
-      list-style: none;
-      font-size: 25px;
-      line-height: 35px;
-      color: #1b1dc7;
+    ul {
+      padding-left: 20px;
+      li {
+        list-style: none;
+        font-size: 20px;
+        line-height: 35px;
+        color: #485ed9;
+      }      
     }
   }
 }
@@ -61,7 +64,7 @@
 .cc-icon {
   width: 25%;
   float: right;
-  margin-top: 10px;  
+  margin-top: 33px;  
 }
 
 .personal-loan-icon {
@@ -72,7 +75,7 @@
 .transfer-personal-loan-icon {
   width: 25%;
   float: right;
-  margin-top: 10px;
+  margin-top: -14px;
 }
 
 .business-loan-icon {
@@ -355,6 +358,10 @@
   text-align: center;
 }
 
+.all-products-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 767px) {
   .thank-you .thx-other-services a {
     margin: 10px;
@@ -454,6 +461,45 @@
 }
 
 @media(max-width: 575px) {
+  .all-products-desktop {
+    display: none;
+  }
+  .all-products-mobile {
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    .transfer-personal-loan-icon {
+      margin-top: -1px;
+      height: 43px;
+    }
+    .personal-loan-icon {
+      height: 43px;
+      margin-top: -1px;
+    }
+    .professional-loan-icon {
+      width: 43px;
+    }
+    .home-loan-icon {
+      width: 43px;
+      margin-top: 1px;
+      height: 50px;
+    }
+    .loan-against-property-icon {
+      height: 45px;
+      margin-top: 2px;
+    }
+    .tr-home-loan-icon {
+      height: 45px;
+      margin-top: 2px;
+    }
+    .used-car-loan-icon {
+      width: 45px;
+      margin-top: 1px;    
+    }
+    .gold-loan-icon {
+      margin-top: 4px;
+    }   
+  }
   #carosel-home-desk {
     display: none;
   }

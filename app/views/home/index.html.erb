@@ -87,22 +87,29 @@
   <div id="carosel-home-desk" class="owl-carousel">
     <div class="carosel-imgs img1">
       <div class="txt-carosel-imgs">
-        <!-- <h3>Facilitating all types of Loans from the best banks</h3><br>
-        <h3>Associated with best insurance companies</h3><br>
-        <h3>Best offers to suit salaried individuals & businessmen</h3><br> -->
+        <h4>Services @ Your Doorstep – Best Offers in Bank Loan, Credit Cards, & Insurance</h4>
+        <ul>
+          <li>All types of Loans, Credit Cards, & Insurance</li>
+          <li>We serve Salaried individuals, Start-ups, & Entrepreneurs</li>
+          <li>We assist in documentation</li>
+          <li>We come to handover policy</li>
+          <li>We help you to settle claims</li>
+          <li>Help with Credit Score</li>
+          <li>Call to talk to us <a href="tel:+918806644344">+91-88066-44344</a></li>
+        </ul>
       </div>
     </div>
     <div class="carosel-imgs img2">
       <div class="txt-carosel-imgs">
-        <!-- <h3><b>Personalized consultation & other services</b></h3>
-        <h3>Our Relationship Manager will visit your office or home</h3>
+        <h4>Personalized consultation & other services</h4>
+        <h4>Our Relationship Manager will visit your office or home</h4>
         <ul>
           <li>To make a presentation</li>
           <li>Collect documents</li>
           <li>Get signatures</li>
           <li>Handover policy</li>
           <li>Settle claims</li>
-        </ul> -->
+        </ul>
       </div>
     </div>
     <!-- <div class="carosel-imgs img3"><%#= image_tag "carosel/desktop/personal-loan-banner.png", alt: "" %></div> -->
@@ -121,13 +128,13 @@
           <span class="ind-section">Our Products</span>
         </h2>
       </div>
-      <section class="car-block-wrap padding-loans">
+      <section class="car-block-wrap padding-loans all-products-desktop">
         <div class="row">
           <div class="col-3 col-md-4 col-lg-3 col-xl-2 ord-10 col-md-6-prd">
             <%= link_to custom_credit_card_path, method: :get do %>
               <div class="pb-product active">
                 <h1 class="product-name">Credit Card</h1>
-                <p class="product-desc">Learn about the best credit card offers and how to maintain it?</p>
+                <p class="product-desc">Get best credit card offers to match your lifestyle!</p>
                 <div class="product-icon">
                   <%= image_tag "icons/cc-icon.svg", class: "cc-icon" %>
                 </div>
@@ -149,7 +156,7 @@
             <%= link_to custom_transfer_personal_loan_path, method: :get do %>
               <div class="pb-product active">
                 <h1 class="product-name">Transfer Personal Loan</h1>
-                <p class="product-desc">All formalities to transfer from existing to new bank</p>
+                <p class="product-desc">Banks offering lowest rate of interest to transfer personal loan.</p>
                 <div class="product-icon">
                   <%= image_tag "icons/transfer-personal-loan-icon.svg", class: "transfer-personal-loan-icon" %>
                 </div>
@@ -171,7 +178,7 @@
             <%= link_to custom_professional_loan_path, method: :get do %>
               <div class="pb-product active">
                 <h1 class="product-name">Professional Loan</h1>
-                <p class="product-desc">Know everything about professional category, loan limits and more...</p>
+                <p class="product-desc">Know your loan limits as a professional and get other info</p>
                 <div class="product-icon">
                   <%= image_tag "icons/professional-loan-icon.svg", class: "professional-loan-icon" %>
                 </div>
@@ -182,7 +189,7 @@
             <%= link_to custom_home_loan_path, method: :get do %>
               <div class="pb-product active">
                 <h1 class="product-name">Home Loan</h1>
-                <p class="product-desc">Best banks, best Interest rates, loan transfer, are you eligible, & more</p>
+                <p class="product-desc">Best banks, best Interest rates, Max EMIs, are you eligible, & more…</p>
                 <div class="product-icon">
                   <%= image_tag "icons/home-loan-icon.svg", class: "home-loan-icon" %>
                 </div>
@@ -228,7 +235,7 @@
             <%= link_to custom_used_car_loan_path, method: :get do %>
               <div class="pb-product active">
                 <h1 class="product-name">Used Car Loan</h1>
-                <p class="product-desc">Find out about best banks offering pre-owned car<br>loan</p>
+                <p class="product-desc">Find out about best banks offering 90% financing on pre-owned Car Loan</p>
                 <div class="product-icon">
                   <%= image_tag "icons/used-car-loan-icon.svg", class: "used-car-loan-icon" %>
                 </div>
@@ -239,7 +246,7 @@
             <%= link_to custom_gold_loan_path, method: :get do %>
               <div class="pb-product active">
                 <h1 class="product-name">Gold Loan</h1>
-                <p class="product-desc">Best gold loan partners in the market and learn about its documentation process</p>
+                <p class="product-desc">Reach out to the best gold loan partners & lowest ROI in market</p>
                 <div class="product-icon">
                   <%= image_tag "icons/gold-loan-icon.svg", class: "gold-loan-icon" %>
                 </div>
@@ -259,6 +266,112 @@
           </div>
         </div>
       </section>
+      <section class="car-block-wrap padding-loans all-products-mobile pb-feature-section-serve">
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_credit_card_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/cc-icon.svg", class: "cc-icon" %>
+              </span>
+              <span class="pop-city">Credit Card</span>
+            <%end%>
+          </div>
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_personal_loan_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/personal-loan-icon.svg", class: "personal-loan-icon" %>
+              </span>
+              <span class="pop-city">Personal Loan</span>
+            <%end%>
+          </div>
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_transfer_personal_loan_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/transfer-personal-loan-icon.svg", class: "transfer-personal-loan-icon" %>
+              </span>
+              <span class="pop-city">Trsf. Personal Loan</span>
+            <%end%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_business_loan_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/business-loan-icon.svg", class: "business-loan-icon" %>
+              </span>
+              <span class="pop-city">Business Loan</span>
+            <%end%>
+          </div>
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_professional_loan_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/professional-loan-icon.svg", class: "professional-loan-icon" %>
+              </span>
+              <span class="pop-city">Professional Loan</span>
+            <%end%>
+          </div>
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_home_loan_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/home-loan-icon.svg", class: "home-loan-icon" %>
+              </span>
+              <span class="pop-city">Home Loan</span>
+            <%end%>
+          </div>                    
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_transfer_home_loan_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/tr-home-loan-icon.svg", class: "tr-home-loan-icon" %>
+              </span>
+              <span class="pop-city">Transfer Home Loan</span>
+            <%end%>
+          </div>
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_loan_against_property_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/loan-against-property-icon.svg", class: "loan-against-property-icon" %>
+              </span>
+              <span class="pop-city">Loan Agt. Property</span>
+            <%end%>
+          </div>
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_new_car_loan_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/new-car-loan-icon.svg", class: "new-car-loan-icon" %>
+              </span>
+              <span class="pop-city">New Car Loan</span>
+            <%end%>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_used_car_loan_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/used-car-loan-icon.svg", class: "used-car-loan-icon" %>
+              </span>
+              <span class="pop-city">Used Car Loan</span>
+            <%end%>
+          </div>
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_gold_loan_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/gold-loan-icon.svg", class: "gold-loan-icon" %>
+              </span>
+              <span class="pop-city">Gold Loan</span>
+            <%end%>
+          </div>
+          <div class="col-md-3 col-sm-4 col-lg-2 col-xl-2 ord-10 col-md-prd">
+            <%= link_to custom_insurance_path, method: :get do %>
+              <span class="iconHolder">
+                <%= image_tag "icons/insurance-icon.svg", class: "insurance-icon" %>
+              </span>
+              <span class="pop-city">Insurance</span>
+            <%end%>
+          </div>
+        </div>
+      </section>
       <div class="homeStrip">
         <div class="row">
           <div class="col-md-12">
@@ -266,7 +379,18 @@
             <p>Is your loan application rejected because of low credit scores?</p>
             <p>Your credit report shows somebody else’s loan accounts?</p>
             <p>Does Your Credit Reputation Look Skewed Because Of Some Error?</p>
-            <p><b>If you’re facing any of the above problems or some other, let our experts guide and assist you to resolve the issues!</b></p>
+            <p><b>If you’re facing any of the above problems or some other, let our experts guide and assist you to resolve them!</b></p>
+            <p><b>Offering Personalized Services means that we help clients</b></p>
+            <ul style="padding-left: 60px;">
+              <li>Avail of PM Awaas Yojana benefit at the time of applying for home loan or home loan transfer</li>
+              <li>Choose the best credit card or procure loans</li>
+              <li>We stand by clients till the closure of transaction, i.e. till the last installment is paid and in case of insurance claims, we provide services till claim is settled.</li>
+              <li>We do not charge commission from client for our services</li>
+              <li>Never hassle clients to pay any hidden expenses</li>
+            </ul>
+            <p><b>How We Work</b></p>
+            <p>Step 1: We understand our clients’ business environment, objectives & challenges, before translating them into informed, calculated strategies to offer risk-mitigating solutions.</p>
+            <p>Step2: Personalized services offered by our Relationship Managers ensure to deliver solutions in a way that your day-to-day operations are not disrupted.</p>
             <p class="abt-strip">
               <span>
                 <i class="fa fa-envelope"></i>&nbsp;
@@ -275,7 +399,7 @@
                <span class="bar"> | </span> 
               <span>
                 <i class="fa fa-whatsapp"></i>&nbsp;
-                <a href="tel:+918806644344">+91-88066-44344</a>  
+                <a href="tel:+918806644344">+91-88066-44344</a>
               </span>
             </p>
           </div>

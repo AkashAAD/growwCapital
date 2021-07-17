@@ -222,7 +222,8 @@
   a {
     display: grid;
     text-align: center;
-    box-shadow: 0 1px 3px rgba(36,39,44,.15);
+    border: 1px solid #ebeff7cc;
+    box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #3469cb1f;
     background-color: #fff;
     padding: 10px 0;
   }
@@ -272,6 +273,7 @@
     }
     img {
       width: 50px;
+      float: none;
     }
     .col-md-9 {
       padding: 0px;

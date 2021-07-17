@@ -4,10 +4,10 @@ class HomeController < ApplicationController
   require "indian_pincodes"
 
   def index
-    @title = 'best banks home loan personal interest rates credit card eligibility'
-    @description = 'We can help you with all kinds of loans and loan transfers.
-     If you’re looking for credit card, we can offer some of the best credit card offers and more. 
-     Visit our website to know all about all the products and personalized services we offer.'
+    @title = 'credit card eligibility, best banks home loans interest EMI insurance policies'
+    @description = 'we can help you with all kinds of loans and loan transfers, insurance policies, and credit cards.
+      Whether you’re looking for credit card, or best home loan offers, we suggest best banks and quick turnaround. 
+      Visit our website to know all about our products and personalized services.'
   end
 
   def channel_partner
