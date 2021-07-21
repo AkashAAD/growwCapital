@@ -1,3 +1,10 @@
+.p-container {
+  padding: 0px 15px 15px 15px;
+  box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #bae8cf99;
+  border-radius: 10px;
+  padding-right: 0px;
+  padding-left: 0px;
+}
 .homepage {
   margin-top: 0px;
 }
@@ -254,153 +261,11 @@
   }
 }
 
-.custom-application {
-  padding-top: 10px;
-  border-bottom: 2px solid #d5d5d7;
-  .col-md-12 {
-    margin: 0 auto;
-    margin-bottom: 15px;
-  }
-  input, select {
-    height: 40px !important;
-    border: none;
-    border-bottom: 1px solid #838383;
-    border-radius: unset;
-    -webkit-box-shadow: unset;
-  }
-  input:focus{
-    color: unset;
-    background-color: unset;
-    border-color: unset;
-    outline: unset;
-    box-shadow: unset;
-    border: none;
-    border-bottom: 1px solid #838383;
-    border-radius: unset;
-    -webkit-box-shadow: unset;
-  }
-  label {
-    font-size: 20px;
-    color: #838383;
-  }
-  p {
-    font-size: 20px;
-    font-weight: lighter;
-  }
-  label.error {
-    color: #f54545 !important;
-  }
-}
-
-.credit-card-banks {
-  display: flex;
-  margin-left: 40px;
-  p {
-    margin: 0px 10px 0px 10px;
-  }
-  .crd-img-effect {
-    height: 100px;
-  }
-}
-
-.application-description {
-  .col-md-12 {
-    margin: 0 auto;
-    text-align: justify;
-    text-justify: inter-word;
-    .pl-ser {
-      font-weight: bold;
-      color: #1b1dc7;
-    }
-  }
-  p, li, a {
-    font-size: 20px;
-  }
-}
-
-.card-title {
-  font-size: 35px;
-  color: #1b1dc7;
-  font-weight: 400;
-}
-
-.thank-you {
-  margin: 0 auto;
-  border: 1px solid rgba(235, 239, 247, 0.8);
-  box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #3469cb1f;
-  padding: 40px;
-  .thx-other-services {
-    a {
-      color: #0000ff;
-      font-weight: 500;
-      background-color: #fff;
-      border-radius: 8px;
-      border: 1px solid #ebeff7cc;
-      box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #3469cb1f;
-      padding: 15px;
-      margin-right: 15px;
-    }
-  }
-}
-
-.other-services {
-  a {
-    color: #0000ff;
-    font-weight: 500;
-    background-color: #fff;
-    border-radius: 8px;
-    border: 1px solid #ebeff7cc;
-    box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #3469cb1f;
-    padding: 15px;
-    margin-right: 15px;
-  }
-  margin-bottom: 100px;
-  text-align: center;
-}
-
 .all-products-mobile {
   display: none;
 }
 
 @media screen and (max-width: 767px) {
-  .thank-you .thx-other-services a {
-    margin: 10px;
-    display: block;
-  }
-  .footer-other-images {
-    margin-right: 60px;
-  }
-  .personal_loan_assets .container {
-    padding: 0px !important;
-    h3 {
-      font-size: 20px;
-    }
-  }
-  .thank-row {
-    .congo {
-      display: grid;
-    }
-    .congo + div {
-      padding-top: 30px;
-    }
-  }
-  .business-loan-section {
-    padding: 20px;
-  }
-  .credit-card-banks {
-    margin-left: 0px;
-  }
-  .crd-heading {
-    padding: 0px;
-    font-size: 20px;
-  }
-  .other-services a {
-    margin: 10px;
-    display: block;
-  }
-  .btn-custom {
-    width: 100% !important;
-  }
   .homepage {
     margin-top: 90px;
   }

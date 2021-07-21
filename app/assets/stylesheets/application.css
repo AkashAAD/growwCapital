@@ -12,20 +12,13 @@
  *
  *= require bootstrap.min.css
  *= require font-awesome.min.css
- *= require flexslider.css
- *= require jquery.bxslider.css
- *= require jquery.fancybox.css
- *= require jquery.selectbox.css
  *= require style.css
  *= require mobile.css
- *= require settings.css
- *= require animate.min.css
- *= require ts.css
  *= require jquery-ui.css
  *= require owl.carousel.min.css
  *= require toastr
  *= require select2
- *= require_tree .
+ *= require app
  *= require_self
  */
 

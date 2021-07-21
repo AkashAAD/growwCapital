@@ -603,14 +603,6 @@ header, header * {
 	top: 30px;
 }
 
-.header_shadow {
-	background-image: url(header_shadow.png);
-	background-repeat: no-repeat;
-	background-size: contain;
-	padding-bottom: 22px;
-	margin-bottom: -21px;
-}
-
 header.affix .bottom-header {
 	height: initial;
 	background-position: unset;
@@ -1306,7 +1298,7 @@ table.right_table {
 	position: relative;
 	display: block;
 	z-index: 22;
-	margin-bottom: -110px;
+	margin-bottom: -100px;
 }
 
 .boxed_layout .banner-wrap {

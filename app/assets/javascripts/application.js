@@ -13,19 +13,14 @@
 //= require jquery.min.js
 //= require bootstrap.min.js
 //= require main.js
-//= require jquery.selectbox-0.2.js
-//= require jquery.mousewheel.js
-//= require jquery.easing.js
 //= require jquery-ui.js
 //= require jquery.validate.js
 //= require owl.carousel.js
 //= require Chart.min.js
 //= require rails-ujs
 //= require activestorage
-// require turbolinks
 //= require toastr
 //= require select2
-//= require_tree .
 
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();

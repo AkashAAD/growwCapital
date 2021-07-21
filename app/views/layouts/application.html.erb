@@ -11,8 +11,10 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400&display=swap" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
     <div class="new-loading">Loading&#8230;</div>
@@ -163,6 +165,8 @@
                       <li><%= link_to "Loan Against Property", custom_loan_against_property_path, method: :get %></li>
                       <li><%= link_to "New Car Loan", custom_new_car_loan_path, method: :get %></li>
                       <li><%= link_to "Used Car Loan", custom_used_car_loan_path, method: :get %></li>
+                      <li><%= link_to "Gold Loan", custom_gold_loan_path, method: :get %></li>
+                      <li><%= link_to "Insurance", custom_insurance_path, method: :get %></li>
                     </ul>
                   </li>
                   <li class="<%= active_tab('pre_approved') %>">
@@ -206,7 +210,6 @@
             </div>
           </nav>
         </div>
-        <div class="header_shadow"></div>
       </div>
     </header>
     <%= yield %>
