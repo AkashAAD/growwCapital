@@ -1,5 +1,5 @@
 <section class="personal-loan-section custom-container">
-  <div class="container tp-container">
+  <div class="container p-container">
     <%= form_for @transfer_personal_loan, :url => { :action => @transfer_personal_loan.id.nil? ? "create_otp" : "update"}, remote: true, html: {id:  "basic_transfer_personal_loan", class: "basic_transfer_personal_loan"} do |f| %>
       <div class="container">
         <div class="row heading">
