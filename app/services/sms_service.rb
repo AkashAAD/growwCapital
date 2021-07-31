@@ -25,11 +25,7 @@ class SmsService
 	end
 
 	def instant_application(application, product, loan_purpose)
-		message = "Dear Admin, #{application.full_name} tried to reach us!.
-		 Here is other details Mobile Number: #{application.mobile_number}, 
-		 Email: #{application.email}, 
-		 Product Name: #{product},
-		 Loan/ Card Purpose: #{loan_purpose}"
+		message = "Dear Customer, We received your loan/ insurance application. Our support executive will reach you soon."
 
 		thread = "#{Rails.application.config.SMS_URL}&numbers=8806601122&message=#{message}"
 		request = RestClient.get("#{thread}")
