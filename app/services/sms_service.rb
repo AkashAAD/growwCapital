@@ -5,30 +5,27 @@ class SmsService
   end
 
 	def send_otp(loan, loan_type)
-		# message = "Dear Customer, Your #{loan_type} otp is #{loan.otp}. Do not share this with anyone. No Growwcapital employee will call and ask for your OTP. Call +91-88066-01122 if not requested by you."
-		# thread = "#{Rails.application.config.SMS_URL}&numbers=#{loan.mobile_number}&message=#{message}"
-		# request = RestClient.get("#{thread}")
-		# debugger
-		# uri = URI.parse(@api_url)
-		# http = Net::HTTP.start(uri.host, uri.port)
-		# request = Net::HTTP::Get.new(uri.request_uri)
-		 
-		# res = Net::HTTP.post_form(uri, 'apikey' => @api_key, 'message' => 'Hello Akash', 'sender' => '600010', 'numbers' => '7387145433')
-		# response = JSON.parse(res.body)
-		# puts "#{response}"
+		message = "Dear Customer, Your #{loan_type} otp is #{loan.otp}. Do not share this with anyone. No Growwcapital employee will call and ask for your OTP. Call +91-88066-01122 if not requested by you."
+		send_message(message, loan.mobile_number)
+		puts "#{response}"
 	end
 
 	def send_preapproved_otp(pre_approved_offer, otp)
 		message = "Dear #{pre_approved_offer[:first_name]} #{pre_approved_offer[:last_name]}, Your preappoved offer otp is #{otp}. Do not share this with anyone. No Growwcapital employee will call and ask for your OTP. Call +91-88066-01122 if not requested by you."
-		thread = "#{Rails.application.config.SMS_URL}&numbers=#{pre_approved_offer[:mobile_no]}&message=#{message}"
-		request = RestClient.get("#{thread}")
+		send_message(message, pre_approved_offer[:mobile_no])
 	end
 
 	def instant_application(application, product, loan_purpose)
-		message = "Dear Customer, We received your loan/ insurance application. Our support executive will reach you soon."
-
-		thread = "#{Rails.application.config.SMS_URL}&numbers=8806601122&message=#{message}"
-		request = RestClient.get("#{thread}")
+		message = "Dear Customer, We received your #{product.downcase} application. Our support executive will reach you soon."
+		# send_message(message, pre_approved_offer[:mobile_no])
 	end
 
-end
+	private
+	def send_message(message, mob_number)
+		uri = URI.parse(@api_url)
+		http = Net::HTTP.start(uri.host, uri.port)
+		request = Net::HTTP::Get.new(uri.request_uri)
+
+		res = Net::HTTP.post_form(uri, 'apikey' => @api_key, 'message' => message, 'sender' => 'GRWCAP', 'numbers' => mob_number)
+		response = JSON.parse(res.body)
+	end

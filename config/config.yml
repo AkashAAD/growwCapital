@@ -1,4 +1,3 @@
-SMS_URL: "http://sms.messageindia.in/sendSMS?username=growwcapital&sendername=GROCAP&smstype=TRANS&apikey=ffc1c03a-1c0f-42a8-bcf7-3478db32c01f"
-# SMS_API_KEY: "ffc1c03a-1c0f-42a8-bcf7-3478db32c01f"
-# &numbers=9370205657
-# &message=Hi Bro
+# SMS_URL: "http://sms.messageindia.in/sendSMS?username=growwcapital&sendername=GROCAP&smstype=TRANS&apikey=ffc1c03a-1c0f-42a8-bcf7-3478db32c01f"
+TEXT_LOCAL_URL: 'https://api.textlocal.in/send/?'
+TEXT_LOCAL_KEY: 'MzA1NDRmNzg1OTRhNDM1NjZjNjI3MDdhNzI0MTVhMzc='
