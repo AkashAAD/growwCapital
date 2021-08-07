@@ -194,7 +194,7 @@ class TransferPersonalLoanController < ApplicationController
     sms = SmsService.new
     @transfer_personal_loan.otp = (rand*1000000).to_i
     @transfer_personal_loan.save
-    sms.send_otp(@transfer_personal_loan, "Personal Loan")    
+    sms.send_otp(@transfer_personal_loan, "Transfer Personal Loan")
   end
 
   def is_preapproved

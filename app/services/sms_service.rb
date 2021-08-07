@@ -5,7 +5,7 @@ class SmsService
   end
 
 	def send_otp(loan, loan_type)
-		message = "Dear Customer, Your #{loan_type} otp is #{loan.otp}. Do not share this with anyone. No Growwcapital employee will call and ask for your OTP. Call +91-88066-01122 if not requested by you."
+		message = "Dear Customer, Your #{loan_type.downcase} otp is #{loan.otp}. Do not share this with anyone. No Growwcapital employee will call and ask for your OTP. Call +91-88066-01122 if not requested by you."
 		send_message(message, loan.mobile_number)
 	end
 

@@ -3,7 +3,7 @@ class ApplicationMailer < ActionMailer::Base
   layout 'mailer'
 
   def demo_mail
-  	mail(to: "rahulvairagade21@gmail.com", subject: "This is a test")
+  	mail(to: "deshbhratarakash@gmail.com", subject: "This is a test")
   end
 
   def contact_us(contact)
