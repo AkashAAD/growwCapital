@@ -55,7 +55,7 @@ class BusinessLoanController < ApplicationController
 
   def update_otp_status
     @business_loan = get_business_loan(session[:business_loan_id])
-    if !@business_loan.otp.eql?(params[:business_loan][:otp].to_i)
+    if @business_loan.otp.eql?(params[:business_loan][:otp].to_i)
       @business_loan.otp_verified = true
       @business_loan.save
       flash[:notice] = "The entered OTP verified successfully."

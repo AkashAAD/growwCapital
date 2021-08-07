@@ -53,7 +53,7 @@ class CreditCardController < ApplicationController
 
   def update_otp_status
     @credit_card = get_credit_card(session[:credit_card_id])
-    if !@credit_card.otp.eql?(params[:credit_card][:otp].to_i)
+    if @credit_card.otp.eql?(params[:credit_card][:otp].to_i)
       @credit_card.otp_verified = true
       @credit_card.save
       flash[:notice] = "The entered OTP verified successfully."

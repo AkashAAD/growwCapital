@@ -52,7 +52,7 @@ class HomeLoanController < ApplicationController
 
   def update_otp_status
     @home_loan = get_home_loan(session[:home_loan_id])
-    if !@home_loan.otp.eql?(params[:home_loan][:otp].to_i)
+    if @home_loan.otp.eql?(params[:home_loan][:otp].to_i)
       @home_loan.otp_verified = true
       @home_loan.save
       flash[:notice] = "The entered OTP verified successfully."

@@ -52,7 +52,7 @@ class LoanAgainstPropertyController < ApplicationController
 
   def update_otp_status
     @loan_against_property = get_loan_against_property(session[:loan_against_property_id])
-    if !@loan_against_property.otp.eql?(params[:loan_against_property][:otp].to_i)
+    if @loan_against_property.otp.eql?(params[:loan_against_property][:otp].to_i)
       @loan_against_property.otp_verified = true
       @loan_against_property.save
       flash[:notice] = "The entered OTP verified successfully."

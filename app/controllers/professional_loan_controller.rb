@@ -51,7 +51,7 @@ class ProfessionalLoanController < ApplicationController
 
   def update_otp_status
     @professional_loan = get_professional_loan(session[:professional_loan_id])
-    if !@professional_loan.otp.eql?(params[:professional_loan][:otp].to_i)
+    if @professional_loan.otp.eql?(params[:professional_loan][:otp].to_i)
       @professional_loan.otp_verified = true
       @professional_loan.save
       flash[:notice] = "The entered OTP verified successfully."

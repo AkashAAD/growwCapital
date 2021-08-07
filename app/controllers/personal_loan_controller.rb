@@ -51,7 +51,7 @@ class PersonalLoanController < ApplicationController
 
   def update_otp_status
     @personal_loan = get_personal_loan(session[:personal_loan_id])
-    if !@personal_loan.otp.eql?(params[:personal_loan][:otp].to_i)
+    if @personal_loan.otp.eql?(params[:personal_loan][:otp].to_i)
       @personal_loan.otp_verified = true
       @personal_loan.save
       flash[:notice] = "The entered OTP verified successfully."

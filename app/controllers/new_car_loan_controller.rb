@@ -52,7 +52,7 @@ class NewCarLoanController < ApplicationController
 
   def update_otp_status
     @new_car_loan = get_new_car_loan(session[:new_car_loan_id])
-    if !@new_car_loan.otp.eql?(params[:new_car_loan][:otp].to_i)
+    if @new_car_loan.otp.eql?(params[:new_car_loan][:otp].to_i)
       @new_car_loan.otp_verified = true
       @new_car_loan.save
       flash[:notice] = "The entered OTP verified successfully."

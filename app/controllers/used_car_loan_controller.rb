@@ -53,7 +53,7 @@ class UsedCarLoanController < ApplicationController
 
   def update_otp_status
     @used_car_loan = get_used_car_loan(session[:used_car_loan_id])
-    if !@used_car_loan.otp.eql?(params[:used_car_loan][:otp].to_i)
+    if @used_car_loan.otp.eql?(params[:used_car_loan][:otp].to_i)
       @used_car_loan.otp_verified = true
       @used_car_loan.save
       flash[:notice] = "The entered OTP verified successfully."
