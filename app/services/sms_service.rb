@@ -7,7 +7,6 @@ class SmsService
 	def send_otp(loan, loan_type)
 		message = "Dear Customer, Your #{loan_type} otp is #{loan.otp}. Do not share this with anyone. No Growwcapital employee will call and ask for your OTP. Call +91-88066-01122 if not requested by you."
 		send_message(message, loan.mobile_number)
-		puts "#{response}"
 	end
 
 	def send_preapproved_otp(pre_approved_offer, otp)
@@ -28,5 +27,6 @@ class SmsService
 
 		res = Net::HTTP.post_form(uri, 'apikey' => @api_key, 'message' => message, 'sender' => 'GRWCAP', 'numbers' => mob_number)
 		response = JSON.parse(res.body)
+		puts "#{response}"
 	end
 end
