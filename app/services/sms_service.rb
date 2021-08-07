@@ -29,3 +29,4 @@ class SmsService
 		res = Net::HTTP.post_form(uri, 'apikey' => @api_key, 'message' => message, 'sender' => 'GRWCAP', 'numbers' => mob_number)
 		response = JSON.parse(res.body)
 	end
+end
