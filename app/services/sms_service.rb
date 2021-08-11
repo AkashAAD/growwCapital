@@ -15,8 +15,8 @@ class SmsService
 	end
 
 	def instant_application(application, product, loan_purpose)
-		message = "Dear Customer, We received your #{product.downcase} application. Our support executive will reach you soon."
-		# send_message(message, pre_approved_offer[:mobile_no])
+		message = "Dear Customer, We received your #{product.downcase} application. Our growwcapital support executive will reach you soon."
+		send_message(message, application.mobile_number)
 	end
 
 	private
