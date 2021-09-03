@@ -545,7 +545,8 @@ $(document).ready(function(){
         full_name: true
       },
       "instant_call[mobile_number]": {
-        required: true
+        required: true,
+        minlength: 10
       },
       "instant_call[product_name]": {
         required: true,
@@ -557,7 +558,8 @@ $(document).ready(function(){
         full_name: "Please enter validate full name."
       },
       "instant_call[mobile_number]": {
-        required: "Please enter mobile number."
+        required: "Please enter mobile number.",
+        minlength: "Please enter atmost 10 numbers."
       },
       "instant_call[product_name]": {
         required: "Please select product name.",
@@ -572,14 +574,16 @@ $(document).ready(function(){
         full_name: true
       },
       "refer_earn[mobile_number]": {
-        required: true
+        required: true,
+        minlength: 10
       },
       "refer_earn[referer_full_name]": {
         required: true,
         full_name: true
       },
       "refer_earn[referer_mobile_number]": {
-        required: true
+        required: true,
+        minlength: 10
       },
       "refer_earn[product_name]": {
         required: true,
@@ -591,14 +595,16 @@ $(document).ready(function(){
         full_name: "Please enter validate full name."
       },
       "refer_earn[referer_mobile_number]": {
-        required: "Please enter mobile number."
+        required: "Please enter mobile number.",
+        minlength: 'Mobile number must consist of at most 10 characters'
       },
       "refer_earn[full_name]": {
         required: "Please enter full name.",
         full_name: "Please enter validate full name."
       },
       "refer_earn[mobile_number]": {
-        required: "Please enter mobile number."
+        required: "Please enter mobile number.",
+        minlength: 'Mobile number must consist of at most 10 characters'
       },
       "refer_earn[product_name]": {
         required: "Please select product name.",

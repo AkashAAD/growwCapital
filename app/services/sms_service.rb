@@ -19,6 +19,10 @@ class SmsService
 		send_message(message, application.mobile_number)
 	end
 
+	def refer_earn_sms(mob_number, message)
+		send_message(message, mob_number)
+	end
+
 	private
 	def send_message(message, mob_number)
 		uri = URI.parse(@api_url)

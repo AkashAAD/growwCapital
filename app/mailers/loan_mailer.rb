@@ -51,16 +51,22 @@ class LoanMailer < ApplicationMailer
 
   def instant_call(obj)
     @instant_call = obj
+    message = "Dear Customer, you have successfully applied for #{obj.product_name.split("_").map(&:capitalize).join(" ")}. Our growwcapital support executive will reach you soon."
+    sent_refer_earn_sms(message, obj.mobile_number)
     mail(to: "support@growwcapital.com", subject: "Instant Application")
   end
 
   def refer_earn_admin(obj)
     @refer_earn = obj
+    message = "Dear Customer, you have been refer by #{obj.full_name} for #{obj.product_name.split("_").map(&:capitalize).join(" ")}. Our growwcapital support executive will reach you soon."
+    sent_refer_earn_sms(message, obj.mobile_number)
     mail(to: "support@growwcapital.com", subject: "Refer & Earn")
   end
 
   def refer_earn_customer(obj)
     @refer_earn = obj
+    message = "Dear Customer, you have refered to #{obj.referer_full_name} for #{obj.product_name.split("_").map(&:capitalize).join(" ")}. Thank you for reaching out growwcapital."
+    sent_refer_earn_sms(message, obj.referer_mobile_number)
     mail(to: "support@growwcapital.com", subject: "Refer & Earn")
   end
 
@@ -72,5 +78,10 @@ class LoanMailer < ApplicationMailer
     sms = SmsService.new
     sms.instant_application(@application, product, @loan_purpose)
     mail(to: "support@growwcapital.com", subject: "Application by executive")
+  end
+
+  def sent_refer_earn_sms(message, mob_number)
+    sms = SmsService.new
+    sms.refer_earn_sms(mob_number, message)
   end
 end
