@@ -65,7 +65,7 @@ class LoanMailer < ApplicationMailer
 
   def refer_earn_customer(obj)
     @refer_earn = obj
-    message = "Dear Customer, you have refered to #{obj.referer_full_name} for #{obj.product_name.split("_").map(&:capitalize).join(" ")}. Thank you for reaching out growwcapital."
+    message = "Dear Customer, you have referred to #{obj.referer_full_name} for #{obj.product_name.split("_").map(&:capitalize).join(" ")}. Thank you for reaching out growwcapital."
     sent_refer_earn_sms(message, obj.referer_mobile_number)
     mail(to: "support@growwcapital.com", subject: "Refer & Earn")
   end
