@@ -15,6 +15,8 @@ class HomeController < ApplicationController
     @description = 'If you are looking at expanding and becoming more structured in your business,
      become our channel partners. We’re licensed representatives of leading financial 
      institutions and banks and offer opportunity to those looking for a foothold to establish themselves'
+     @channel_partner_payment = ChannelPartnerPayment.new
+     @friancise_application = ChannelPartnerPayment.find(params[:applicant_id]) if params[:applicant_id]
   end
 
   def career

@@ -1,0 +1,51 @@
+<% if flash[:error].present? %>
+  toastr['error']('<%= flash[:error]%>', 'error');
+<% else %>
+  var franchise_id = '<%= @franchise.id %>';
+  var options = {
+      "key": "rzp_test_4d0xg6XaZ48Sge",
+      "amount": '<%= @order.attributes['amount'] %>',
+      "currency": "INR",
+      "name": "Growwcapital",
+      "description": "Growwcapital Franchise",
+      "image": "https://growwcapital.com/assets/logo.png",
+      "order_id": '<%= @order.attributes['id'] %>',
+      "handler": function (response){
+        $.ajax({
+          type: 'POST',
+          url: "/payment/create_channel_partner_payment",
+          dataType: "json",
+          data: { franchise_id: franchise_id,
+            payment_id: response
+          },
+          success: function (data) {
+            $('#friancise_application-modal').modal('hide');
+            $('#create_channel_partner_order').trigger('reset');
+            toastr["success"]("Your payment has been successfully done.", "success");
+          }
+        });
+      },
+      "prefill": {
+        "name": "<%= @franchise.full_name %>",
+        "email": "<%= @franchise.email %>",
+        "contact": "<%= @franchise.mobile_number %>"
+      },
+      "notes": {
+        "address": "2nd Floor, Gupta Travels Building, Lokmat Square, Nagpur - 440012"
+      },
+      "theme": {
+        "color": "#0954a0"
+      }
+  };
+  var rzp1 = new Razorpay(options);
+  rzp1.on('payment.failed', function (response){
+    alert(response.error.code);
+    alert(response.error.description);
+    alert(response.error.source);
+    alert(response.error.step);
+    alert(response.error.reason);
+    alert(response.error.metadata.order_id);
+    alert(response.error.metadata.payment_id);
+  });
+  rzp1.open();
+<% end %>

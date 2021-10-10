@@ -40,14 +40,29 @@
         color: #1c1dc7;
         margin-bottom: 40px;
         font-weight: bold;
-        span {
-          color: #ed2030;
+        p:nth-child(1) {
+          span {
+            color: #db4646ba;
+            text-shadow: 2px 1px #d2d2d2;
+            font-size: 40px;
+          }
         }
         p:nth-child(2) {
           font-size: 20px;
           padding-top: 15px;
           a {
             color: #fff;
+            padding: 8px 40px 8px 40px;
+            background: -webkit-linear-gradient(0deg, #b1b3fc 0, #0d10f2 100%);
+            border: none;
+            font-size: 18px;
+            span {
+              opacity: 1;
+              color: #fff;
+            }
+            &:hover {
+              background: -webkit-linear-gradient(90deg, #3a3ee5 0, #1b1dc7 100%);
+            }
           }
           span {
             opacity: .6;

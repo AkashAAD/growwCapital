@@ -180,4 +180,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :payment do
+    collection do
+      put :create_channel_partner_order
+      post :create_channel_partner_payment
+      post :friancise_application
+    end
+  end
+
 end

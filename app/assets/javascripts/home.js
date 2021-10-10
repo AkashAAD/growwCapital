@@ -1,4 +1,11 @@
 $(document).ready(function(){
+
+  $(window).load(function(){
+    if(window.isPaymentAllowed) {
+      $('#friancise_application-modal').modal('show');
+    }
+  });
+
   $(".calculated-emi").hide();
   $("#show-apply-modal").on("mouseover", function () {
     $('#apply-now-modal').modal('hide');
@@ -35,6 +42,64 @@ $(document).ready(function(){
     return value.split(" ").length >= 2;
   }, "");
 
+  jQuery.validator.addMethod("email", function(value, element) {
+    return this.optional(element) || /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+  }, "");
+
+  jQuery.validator.addMethod("amount", function(value, element) {
+    return value > 0;
+  }, "");
+
+  $("#create_channel_partner_order").validate({
+    rules: {
+      "franchise[amount]": {
+        required: true,
+        amount: true
+      },
+    },
+    messages: {
+      "franchise[amount]": {
+        required: "Please enter amount",
+        amount: 'Amount should be greator than 0.'
+      },
+    }
+  });
+
+  $("#channel_partner_application").validate({
+    rules: {
+      "channel_partner_payment[first_name]": {
+        required: true
+      },
+      "channel_partner_payment[last_name]": {
+        required: true
+      },
+      "channel_partner_payment[email]": {
+        required: true,
+        email: true
+      },
+      "channel_partner_payment[mobile_number]": {
+        required: true,
+        minlength: 10
+      },
+    },
+    messages: {
+      "channel_partner_payment[first_name]": {
+        required: "Please enter first name"
+      },
+      "channel_partner_payment[last_name]": {
+        required: "Please enter last name"
+      },
+      "channel_partner_payment[email]": {
+        required: "Please enter email",
+        email: "Please enter correct email"
+      },
+      "channel_partner_payment[mobile_number]": {
+        required: "Please enter mobile number",
+        minlength: "Please enter atmost 10 numbers."
+      },
+    }
+  });
+
 	$("#contact_us").validate({
 		rules: {
 			"contact_u[first_name]": {
@@ -62,7 +127,8 @@ $(document).ready(function(){
 				required: "Please enter last name"
 			},
 			"contact_u[email]": {
-				required: "Please enter email"
+				required: "Please enter email",
+        email: "Please enter correct email"
 			},
 			"contact_u[subject]": {
 				required: "Please enter subject"

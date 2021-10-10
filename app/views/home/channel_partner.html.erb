@@ -1,6 +1,6 @@
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <section id="franchise-banner">
 </section>
-
 <section class="personal-loan-section">
   <div class="container">
     <div class="row align-items-end">
@@ -23,6 +23,110 @@
         <p>Our partnership terms will be transparent, mutually beneficial and professional. Our dedicated financing specialist will be available during all working days and within working hours (and beyond) to answer questions and help the business thrive.</p>
         <p>Growing together is the surest and the best way to grow!</p>
         <p>To know more about how to become our channel partners and other information please call us on <a href="tel:+918806644344">+91-88066-44344</a>. You can also leave a message via email for us to revert at the earliest.</p>
+        <p>
+          <button id="apply-francise" class="btn btn-custom" data-toggle= "modal" data-target= "#channel_partner_payment-modal">Apply for Franchise</button>
+
+          <!-- Application Modal -->
+          <div class="modal fade" id="channel_partner_payment-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Apply For Franchise</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <%= form_for @channel_partner_payment, :url => { controller: 'payment', :action => 'friancise_application' }, remote: true, html: { id:  "channel_partner_application", class: "channel_partner_application" } do |f| %>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>First Name</label>
+                          <%= f.text_field(:first_name, class: "form-control") %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Last Name</label>
+                          <%= f.text_field(:last_name, class: "form-control") %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Email</label>
+                          <%= f.text_field(:email, class: "form-control") %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <label>Mobile Number</label>
+                          <%= f.number_field(:mobile_number, class: "form-control") %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="form-group">
+                          <button type="submit" name="" class="btn-custom btn-block">submit</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <%end%>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Payment Modal -->
+          <% if @friancise_application %>
+            <div class="modal fade" id="friancise_application-modal"
+              tabindex="-1" role="dialog"
+              aria-labelledby="exampleModalLabel" aria-hidden="true"
+              data-backdrop="static" data-keyboard="false">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Proceed with payment</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <%= form_for @friancise_application, :url => { controller: 'payment', :action => 'create_channel_partner_order' }, method: :put, remote: true, html: { id:  "create_channel_partner_order", class: "create_channel_partner_order" } do |f| %>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label>Amount(Rs.)</label>
+                            <input type="hidden" name="franchise[id]" value="<%= @friancise_application.id %>">
+                            <input type="number" name="franchise[amount]" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <button type="submit" name="" class="btn-custom btn-block">submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <%end%>
+                  </div>
+                </div>
+              </div>
+              <script type="text/javascript">
+                var isPaymentAllowed = true;
+              </script>
+            <% end %>
+          </div>
+        </p>
       </div>
     </div>
   </div>

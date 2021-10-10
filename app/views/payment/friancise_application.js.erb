@@ -1,0 +1,7 @@
+<% if flash[:success] %>
+  toastr['success']('<%= flash[:success] %>', 'success');
+  $('#channel_partner_payment-modal').modal('hide');
+  $('#channel_partner_application').trigger('reset');
+<% else %>
+  toastr['error']('<%= flash[:error] %>', 'error');
+<% end %>
