@@ -6,6 +6,7 @@ require:
 AllCops:
   NewCops: enable
   Exclude:
+    - 'app/controllers/users/**'
     - 'db/**/*'
     - 'script/**/*'
     - 'bin/**/*'
@@ -82,6 +83,12 @@ Lint/UselessRuby2Keywords: # new in 1.23
 Naming/BlockForwarding: # new in 1.24
   Enabled: true
 Security/IoMethods: # new in 1.22
+  Enabled: true
+Style/NumericLiterals:
+  Enabled: false
+Naming/PredicateName:
+  Enabled: false
+Layout/IndentationConsistency:
   Enabled: true
 Style/ArgumentsForwarding: # new in 1.1
   Enabled: true
@@ -255,3 +262,4 @@ RSpec/FactoryBot/SyntaxMethods: # new in 2.7
   Enabled: true
 RSpec/Rails/AvoidSetupHook: # new in 2.4
   Enabled: true
+
