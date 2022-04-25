@@ -78,7 +78,7 @@ Rails.application.configure do
     port: 80,
     domain: 'growwcapital.com',
     user_name: 'support@growwcapital.com',
-    password: "Aka786sh!D",
+    password: "Growwcapital%17112021",
     authentication: 'plain',
     enable_starttls_auto: true
   }
