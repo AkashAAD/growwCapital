@@ -702,7 +702,7 @@ $(document).ready(function(){
     {loan: 'Car Loan', link: "/home/new_car_loan", type: 'loan'},
     {loan: 'Used Car Loan', link: "/home/used_car_loan", type: 'loan'},
     {loan: 'Gold Loan', link: "/home/gold_loan", type: 'loan'},
-    {loan: 'Insurance', link: "/home/insurance", type: 'loan'},
+    // {loan: 'Insurance', link: "/home/insurance", type: 'loan'},
   ];
 
   $(".search-loan").focus(function(){
