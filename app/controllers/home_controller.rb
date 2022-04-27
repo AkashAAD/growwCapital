@@ -4,10 +4,8 @@ class HomeController < ApplicationController
   require "indian_pincodes"
 
   def index
-    @title = 'credit card eligibility, best banks home loans interest EMI insurance policies'
-    @description = 'we can help you with all kinds of loans and loan transfers, insurance policies, and credit cards.
-      Whether you’re looking for credit card, or best home loan offers, we suggest best banks and quick turnaround. 
-      Visit our website to know all about our products and personalized services.'
+    @title = 'Home loan in Nagpur | Deal with best finance company in nagpur'
+    @description = 'Growwcapital can help you with all kinds of credit card or car, personal & home loan in Nagpur. Enjoy personalized service with finance company in Nagpur. Call +91-9112345687'
   end
 
   def channel_partner
@@ -162,11 +160,8 @@ class HomeController < ApplicationController
   def credit_card
     @credit_card = CustomCreditCard.new
 
-    @title = 'HDFC credit card offers IDFC bank Salary SBI Credit Card American express'
-    @description = 'If you’re looking to apply for a credit card but feel overwhelmed with 
-      all the choices, we are at your service. We provide all the assistance for 
-      all matters related to credit card and help you choose one that works 
-      best for you without you having to step out of your home!'
+    @title = 'Apply online for new Credit Card | Credit Card eligibilty checker'
+    @description = 'Applying for a new credit card but feeling trouble, check credit card eligibilty. Apply online for HDFC, SBI, IDBI, Axis, American Express credit card. No charges apply.'
 
     if request.post?
       @credit_card = CustomCreditCard.new(application_request_params(:custom_credit_card))
@@ -185,7 +180,7 @@ class HomeController < ApplicationController
   def personal_loan
     @personal_loan = CustomPersonalLoan.new
 
-    @title = 'Eligibility Personal Loan lowest interest personal loan nagpur'
+    @title = 'Check eligibility for personal in Nagpur | Lowest Rate of Interest'
     @description = 'If you\'re looking to get personal loan for any emergency or generally 
       we can help you identify the best bank offering lowest 
       interest rates and minimum documentation and paperwork. 
@@ -208,7 +203,7 @@ class HomeController < ApplicationController
   def transfer_personal_loan
     @transfer_personal_loan = CustomTransferPersonalLoan.new
 
-    @title = 'Process for personal loan transfer to other bank, balance loan transfer.'
+    @title = 'GrowwCapital | Process for personal loan transfer to other bank, balance loan transfer.'
     @description = 'If you wish to transfer your personal loan that you have taken from 
       one bank to another owing to lower interest rate or other personal reasons, 
       we are at your service to complete all the formalities quickly and swiftly. 
@@ -231,7 +226,7 @@ class HomeController < ApplicationController
   def business_loan
     @business_loan = CustomBusinessLoan.new
 
-    @title = 'Interest rate business loans best banks start-up business loans for women.'
+    @title = 'GrowwCapital | Interest rate business loans best banks start-up business loans for women.'
     @description = 'If you are looking for best banks to get business loans, we are here at your service. 
       Just give us a call and we will share all possible information to 
       help you take an informed decision and offer all the advice ahead of applying for loans'
@@ -253,7 +248,7 @@ class HomeController < ApplicationController
   def professional_loan
     @professional_loan = CustomProfessionalLoan.new
 
-    @title = 'Interest rates Professional Loans for CA, CS. Professional loans for lawyers'
+    @title = 'GrowwCapital | Interest rates Professional Loans for CA, CS. Professional loans for lawyers'
     @description = 'If you are a CA, CS, Doctor, Architect, or want professional loan
      to start your own physiotherapy center, Groww Capital can help you 
      procure best loan that fulfills all your requirements with ease. Click on this link 
@@ -276,7 +271,7 @@ class HomeController < ApplicationController
   def home_loan
     @home_loan = CustomHomeLoan.new
 
-    @title = 'Eligibility Home loan best bank interest rates, home loan transfer sbi'
+    @title = 'GrowwCapital | Eligibility Home loan best bank interest rates, home loan transfer sbi'
     @description = 'Whether you want to know about best bank to apply for home loan
      or want to get your home loan transferred from one bank to another, or 
      want to know about documentation or eligibility to apply for it, we are always at 
@@ -299,7 +294,7 @@ class HomeController < ApplicationController
   def transfer_home_loan
     @transfer_home_loan = CustomTransferHomeLoan.new
 
-    @title = 'Documents required to transfer home procedure to transfer housing loan'
+    @title = 'GrowwCapital | Documents required to transfer home procedure to transfer housing loan'
     @description = 'If you’re looking to transfer home loan from one bank to another,
       do visit out site to know the procedure, documents required for home 
       loan transfer and everything else that you want to. 
@@ -322,7 +317,7 @@ class HomeController < ApplicationController
   def loan_against_property
     @loan_against_property = CustomLoanAgainstProperty.new
 
-    @title = 'Interest rates Loan against Property documents without income proof'
+    @title = 'GrowwCapital | Interest rates Loan against Property documents without income proof'
     @description = 'If you\'re looking for loan against property and want information like
      interest rates, documents required or if you can get it from banks 
      without submitting your income proof, our relationship manager can answer 
@@ -345,7 +340,7 @@ class HomeController < ApplicationController
   def new_car_loan
     @new_car_loan = CustomNewCarLoan.new
 
-    @title = 'New car loan interest rate, car loan EMI calculator, car loan bank'
+    @title = 'GrowwCapital | New car loan interest rate, car loan EMI calculator, car loan bank'
     @description = 'If you want car loan and looking for a bank offering lowest interest rate,
      we can guide you. Before looking for banks offering car loans and interest rates 
      charged by various banks, let us calculate EMI of car that we will be paying. 
@@ -368,7 +363,7 @@ class HomeController < ApplicationController
   def used_car_loan
     @used_car_loan = CustomUsedCarLoan.new
 
-    @title = 'Eligibility used car loan financing, interest rates used car loan bank in Nagpur'
+    @title = 'GrowwCapital | Eligibility used car loan financing, interest rates used car loan bank in Nagpur'
     @description = 'If you are looking for used car loan and want to know about bank options
      and other attractive offers, do let us know. Our Relationship Manager will be 
      at your service presenting the best banks, best offers. Click on this link to know more...'
@@ -390,7 +385,7 @@ class HomeController < ApplicationController
   def gold_loan
     @gold_loan = CustomGoldLoan.new
 
-    @title = 'How to apply for gold loan documents, interest rate how to get gold loan'
+    @title = 'GrowwCapital | How to apply for gold loan documents, interest rate how to get gold loan'
     @description = 'If you’re in need of urgent money, and have gold sitting idle in bank,
      you can pledge this gold and get loan against it. 
      This is governed by RBI and you can.'
