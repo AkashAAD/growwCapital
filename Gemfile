@@ -43,3 +43,5 @@ gem 'wicked'
 gem 'toastr-rails'
 gem 'indian-pincodes'
 gem "select2-rails"
+gem 'cancancan'
+gem 'rails_admin'

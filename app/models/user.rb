@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, authentication_keys: [:login]
+  belongs_to :role
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :mobile_number, presence: true, uniqueness: true
@@ -22,5 +24,9 @@ class User < ApplicationRecord
 
 	def full_name
 		"#{self.first_name} #{self.last_name}"
+	end
+
+	def admin?
+		['admin', 'super_admin'].include?(role.name)
 	end
 end

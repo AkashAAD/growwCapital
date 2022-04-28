@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  authenticate :user, lambda { |u| u.admin? } do
+    mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  end
+
   root 'home#index'
   get 'home/change_state' => "home#change_state"
   get "home/car_models" => "home#car_models"
