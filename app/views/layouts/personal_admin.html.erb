@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="author" content="">
+    <meta name="description" content="<%= @description %>">
+    <meta name="keywords" content="<%=  %>">
+    <meta name="google-site-verification" content="vluZCVNoRTrhS0n-KvdHFdGkSzJnq1wIS1zWyIOq9h0" />
+    <%= favicon_link_tag asset_path('logo.ico'), :rel => 'icon', :type => "image/x-icon" %>
+    <title>GrowwCapital <%= "| #{@title}" if @title %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag params[:controller], media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;400&display=swap" rel="stylesheet">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload' %>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PR8TLH04L2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-PR8TLH04L2');
+    </script>
+  </head>
+  <body>
+    <header data-spy="affix" data-offset-top="1" class="clearfix">
+      <%= render "layouts/flash_messages" %>
+    </header>
+    <%= yield %>
+  </body>
+</html>

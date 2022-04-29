@@ -3,8 +3,10 @@ Rails.application.routes.draw do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end
 
+  require_relative 'routes/personal_admin'
+
   root 'home#index'
-  get 'home/change_state' => "home#change_state"
+  # get 'home/change_state' => "home#change_state"
   get "home/car_models" => "home#car_models"
   post "home/instant_call" => "home#instant_call"
   post "home/refer_earn" => "home#refer_earn"
