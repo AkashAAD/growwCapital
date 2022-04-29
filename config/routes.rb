@@ -52,6 +52,16 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy'
   end
 
+  namespace :api do
+    namespace :v1 do
+      namespace :admin do
+         resources :disbursement do
+            collection do
+            end
+         end
+      end
+    end
+  end
 
   resources :business_loan do
     collection do

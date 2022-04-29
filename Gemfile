@@ -45,3 +45,4 @@ gem 'indian-pincodes'
 gem "select2-rails"
 gem 'cancancan'
 gem 'rails_admin'
+gem 'webpacker'
