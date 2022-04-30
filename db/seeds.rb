@@ -1,8 +1,10 @@
-['user', 'admin', 'super_admin'].each do |role|
+['user', 'admin', 'super_admin', 'sales_manager'].each do |role|
   Role.create(name: role)
   puts "Role #{role}"
 end
-# User.create(role_id: 2, email: "admin@gmail.com", password: "123456", password_confirmation: "123456")
+
+User.create(first_name: 'Admin', last_name: 'Admin', mobile_number: '1234567890', role_id: 2, email: "admin@gmail.com", password: "123456", password_confirmation: "123456")
+User.create(first_name: 'User', last_name: 'User', mobile_number: '1234567890', role_id: 1, email: "user@gmail.com", password: "123456", password_confirmation: "123456")
 
 ["SSC", "HSC", "Graduation", "Post Graduation", "Engineering", "Professional", "Under Graduate", "Doctorate", "Other"].each do |hq|
   HighestQualification.create(name: hq)
