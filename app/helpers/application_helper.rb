@@ -208,6 +208,9 @@ module ApplicationHelper
 
   def is_topup_amount
     [['-Select Option-', ''], ['Yes','true'], ['No', 'false']]
-  end  
+  end
 
+  def show_date(date)
+    date.strftime("%d/%m/%Y")
+  end
 end

@@ -8,3 +8,5 @@ Rails.application.config.assets.precompile += Dir["#{Rails.root}/app/assets/styl
 Rails.application.config.assets.precompile += Dir["#{Rails.root}/app/assets/javascripts/*"].sort_by { |dir| -dir.size }
 Rails.application.config.assets.precompile += Dir["#{Rails.root}/app/assets/javascripts/users/*"].sort_by { |dir| -dir.size }
 Rails.application.config.assets.precompile += Dir["#{Rails.root}/app/assets/javascripts/personal_admin/*"].sort_by { |dir| -dir.size }
+# Rails.application.config.assets.precompile += Dir["#{Rails.root}/app/assets/javascripts/personal_admin/*"].sort_by { |dir| -dir.size }
+Rails.application.config.assets.precompile += %w( personal_admin.js )

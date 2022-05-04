@@ -29,4 +29,8 @@ class User < ApplicationRecord
 	def admin?
 		['admin', 'super_admin'].include?(role.name)
 	end
+
+  def sales_manager?
+    role.name == 'sales_manager'
+  end
 end

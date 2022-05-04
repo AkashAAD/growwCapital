@@ -1,0 +1,73 @@
+<section>
+  <div class="container">
+    <div class="row row-heading">
+      <div class="col-md-6 heading-container">
+        <span class="heading-container">Disbursements</span>
+      </div>
+      <div class="col-md-6">
+        <%= link_to '+ New Disbursement', new_disbursement_path, class: 'btn btn-info' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <thead>
+          <th>Full Name</th>
+          <th>Business Name</th>
+          <th>Location</th>
+          <th>Mobile Number</th>
+          <th>Loan Type</th>
+          <th>Loan Amount(Rs.)</th>
+          <th>Annual Fee(Rs.)</th>
+          <th>Actions</th>
+          <!-- <th>Process Date</th>
+          <th>Disburse Date</th>
+          <th>Disburse Amount(Rs.)</th>
+          <th>ROI(%)</th>
+          <th>BT/INHANCEMENT</th>
+          <th>Executive Full Name</th>
+          <th>Channel Name</th>
+          <th>Customer ID</th>
+          <th>CC Apply or Not</th>
+          <th>Health Insurance</th>
+          <th>DOB</th>
+          <th>Remark</th> -->
+        </thead>
+        <tbody>
+          <% @disbursements.each do |disbursement| %>
+            <tr>
+              <td><%= disbursement.customer_full_name %></td>
+              <td><%= disbursement.business_name %></td>
+              <td><%= disbursement.location %></td>
+              <td><%= disbursement.mobile_number %></td>
+              <td><%= disbursement.product_type %></td>
+              <td><%= disbursement.loan_amount %></td>
+              <td><%= disbursement.annual_fee %></td>
+              <td>
+                <%= link_to 'Show', "/disbursement/#{disbursement.id}/show" %> | 
+                <%= link_to 'Edit', "/disbursement/#{disbursement.id}/edit" %>
+                <%if current_user.admin? %>
+                 | <%= link_to 'Delete', "/disbursement/#{disbursement.id}/destroy" %>
+                <%end%>
+              </td>
+              <!-- <td><%= disbursement.process_date %></td>
+              <td><%= disbursement.disburse_date %></td>
+              <td><%= disbursement.disburse_amount %></td>
+              <td><%= disbursement.roi %></td>
+              <td><%= disbursement.bt_inhancement %></td>
+              <td><%= disbursement.executive_full_name %></td>
+              <td><%= disbursement.channel_name %></td>
+              <td><%= disbursement.customer_id %></td>
+              <td><%= disbursement.cc_apply %></td>
+              <td><%= disbursement.health_insurance %></td>
+              <td><%= disbursement.dob %></td>
+              <td><%= disbursement.remark %></td> -->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

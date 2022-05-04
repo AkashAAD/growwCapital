@@ -55,6 +55,12 @@ class HomeController < ApplicationController
     flash[:notice] = "Thank you for the details. Our associate will reach to you soon."
   end
 
+  def job_apply
+    ApplicationMailer.job_application(params.require(:job_application).permit!).deliver_later
+    flash[:notice] = "Thank you for the details. We will reach to you soon."
+    redirect_to career_path
+  end
+
   def refer_earn
     @refer_earn = ReferEarn.new(refer_earn_params)
     @refer_earn.reference_number = "REF-#{(rand * 1000000000).to_i}"

@@ -7,7 +7,12 @@ class ApplicationMailer < ActionMailer::Base
   end
 
   def contact_us(contact)
-  	@contact = contact
-  	mail(to: "support@growwcapital.com", subject: "Contact Us mail")
+    @contact = contact
+    mail(to: "support@growwcapital.com", subject: "Contact Us mail")
+  end
+
+  def job_application(job_application)
+    @job_application = job_application
+    mail(to: "hr@growwcapital.com", subject: "Job Application mail", :cc => "dm@growwcapital.com")   
   end
 end

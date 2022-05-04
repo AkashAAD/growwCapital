@@ -2,13 +2,36 @@
 </section>
 <section class="personal-loan-section">
   <div class="container">
-    <div class="row align-items-end">
-      <div class="col-md-12 about-us">
-        <h2 class="text-center card-title">Career with GrowwCapital – An Environment That Brings Out the Best in You!</h2>
+    <div class="row">
+      <div class="col-md-6 about-us">
+        <h2 class="card-title">Career with GrowwCapital</h2>
+        <h3>- An Environment That Brings Out the Best in You!</h3><br>
         <p>Groww Capital is working towards building an aware clientele by offering strong understanding of financial products and its implications on one’s life in long term and immediately, helping clients to make informed decision. It’s because of this philosophy we follow that we want to get associated with best people, be it investors or employees!  We offer relevant, unbiased, and personalized services and this is what drives us to deliver, excel, and grow and would like our applicants to believe in as they prepare to work with us.</p>
         <p>We work in an environment where we grow, grow together with each other’s help, and have immense fun. If you are willing to work hard as well as smart, do drop us a mail as we might make a great team together!</p>
         <p>Email your resume with a covering note on <a href="mailto:support@growwcapital.com">support@growwcapital.com</a>.</p> 
         <p>Call us for information <a href="tel:+919112345687">+91-91123-45687</a></p>
+      </div>
+      <div class="col-md-6 about-us">
+        <h2 class="card-title">Apply Here:</h2>
+        <%= form_tag("/home/job_apply", method: :post) do %>
+          <label for="fname">Full name:</label><br>
+          <input type="text" id="fname" name="job_application[fname]" required><br>
+          <label for="email">Email:</label><br>
+          <input type="email" id="email" name="job_application[email]" required ><br>
+          <label for="mobile_number">Mobile Number:</label><br>
+          <input type="text" id="mobile_number" name='job_application[mobile_number]' min='10' max='10' required><br>
+          <label for="job">Applying for?</label><br>
+          <select class="form-control job" id="job" name="job_application[job]" required>
+            <option value="">-Select Profile-</option>
+            <option value="Graphics Designer">Graphics Designer</option>
+            <option value="HR Manager">HR Manager</option>
+            <option value="Software Developer - Trainee">Software Developer - Trainee</option>
+            <option value="Business Development Executive">Business Development Executive</option>
+            <option value="Business Development Associate">Business Development Associate</option>
+            <option value="Telesales Executive">Telesales Executive</option>
+          </select>
+          <input type="submit" value="Submit" class="btn btn-custom">
+        <%end%>
       </div>
     </div>
   </div>
