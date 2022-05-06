@@ -7,6 +7,8 @@ module PersonalAdmin
 
     def index
       @disbursements = Disbursement.all.where('created_at >= ?', 1.week.ago)
+      @disbursements = search_disbursements(params[:search]) if params[:search].present?
+      @disbursements = @disbursements.paginate(page: params[:page], per_page: 10)
     end
 
     def new
@@ -18,7 +20,7 @@ module PersonalAdmin
 
       if @disbursement.save
         flash[:notice] = 'New disbursement created successfully.'
-        redirect_to disbursements_path
+        redirect_to sales_manager_disbursements_path
       else
         flash[:error] = @disbursement.errors.full_messages.join(', ')
         render :new
@@ -28,10 +30,10 @@ module PersonalAdmin
     def update
       if @disbursement.update_attributes(set_params)
         flash[:notice] = 'Disbursement updated successfully.'
-        redirect_to disbursements_path
+        redirect_to sales_manager_disbursements_path
       else
         flash[:error] = @disbursement.errors.full_messages.join(', ')
-        redirect_to :edit
+        render :edit
       end
     end
 
@@ -53,6 +55,15 @@ module PersonalAdmin
 
     def get_disbursment
       @disbursement = Disbursement.find_by!(id: params[:id])
+    end
+
+    def search_disbursements(search)
+      key = "%#{search}%"
+      columns = Disbursement.column_names
+      return Disbursement.where(
+        columns.map { |c| "#{c} like :search" }.join(' OR '),
+        search: key
+      )
     end
   end
 end

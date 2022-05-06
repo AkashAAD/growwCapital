@@ -4,10 +4,19 @@
       <div class="col-md-6 heading-container">
         <span class="heading-container">Disbursements</span>
       </div>
+    </div>
+    <div class="row heading-container">
       <div class="col-md-6">
-        <%= link_to '+ New Disbursement', new_disbursement_path, class: 'btn btn-info' %>
+        <%= form_tag(sales_manager_disbursements_path, method: :get) do %>
+          <input type="text" name="search" placeholder="Search Here..." class="form-control search">
+          <button type="submit" class="btn btn-info"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <%end%>
+      </div>
+      <div class="col-md-6">
+        <%= link_to '+ New Disbursement', sales_manager_new_disbursement_path, class: 'btn btn-info float-right' %>
       </div>
     </div>
+    <br>
   </div>
 
   <div class="container">
@@ -46,10 +55,10 @@
               <td><%= disbursement.loan_amount %></td>
               <td><%= disbursement.annual_fee %></td>
               <td>
-                <%= link_to 'Show', "/disbursement/#{disbursement.id}/show" %> | 
-                <%= link_to 'Edit', "/disbursement/#{disbursement.id}/edit" %>
+                <%= link_to 'Show', "/sales-manager/disbursement/#{disbursement.id}/show" %> |
+                <%= link_to 'Edit', "/sales-manager/disbursement/#{disbursement.id}/edit" %>
                 <%if current_user.admin? %>
-                 | <%= link_to 'Delete', "/disbursement/#{disbursement.id}/destroy" %>
+                 | <%= link_to 'Delete', "/sales-manager/disbursement/#{disbursement.id}/destroy" %>
                 <%end%>
               </td>
               <!-- <td><%= disbursement.process_date %></td>
@@ -68,6 +77,9 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+    <div class="row digg_pagination">
+      <%= will_paginate @disbursements %>
     </div>
   </div>
 </section>

@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
 	end
 
   def check_sales_manager
-    return root_path unless current_user.sales_manager? || current_user.admin?
+    return redirect_to root_path unless current_user.sales_manager? || current_user.admin?
   end
 
   def after_sign_in_path_for(resource)
