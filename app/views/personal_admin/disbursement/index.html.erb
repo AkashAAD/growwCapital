@@ -25,35 +25,23 @@
         <thead>
           <th>Full Name</th>
           <th>Business Name</th>
-          <th>Location</th>
+          <th>City</th>
           <th>Mobile Number</th>
-          <th>Loan Type</th>
-          <th>Loan Amount(Rs.)</th>
-          <th>Annual Fee(Rs.)</th>
-          <th>Actions</th>
-          <!-- <th>Process Date</th>
-          <th>Disburse Date</th>
+          <th>Product Type</th>
           <th>Disburse Amount(Rs.)</th>
-          <th>ROI(%)</th>
-          <th>BT/INHANCEMENT</th>
-          <th>Executive Full Name</th>
-          <th>Channel Name</th>
-          <th>Customer ID</th>
-          <th>CC Apply or Not</th>
-          <th>Health Insurance</th>
-          <th>DOB</th>
-          <th>Remark</th> -->
+          <th>Processing Fee(Rs.)</th>
+          <th>Actions</th>
         </thead>
         <tbody>
           <% @disbursements.each do |disbursement| %>
             <tr>
               <td><%= disbursement.customer_full_name %></td>
               <td><%= disbursement.business_name %></td>
-              <td><%= disbursement.location %></td>
+              <td><%= disbursement.city %></td>
               <td><%= disbursement.mobile_number %></td>
               <td><%= disbursement.product_type %></td>
-              <td><%= disbursement.loan_amount %></td>
-              <td><%= disbursement.annual_fee %></td>
+              <td><%= disbursement.disburse_amount %></td>
+              <td><%= disbursement.processing_fee %></td>
               <td>
                 <%= link_to 'Show', "/sales-manager/disbursement/#{disbursement.id}/show" %> |
                 <%= link_to 'Edit', "/sales-manager/disbursement/#{disbursement.id}/edit" %>
@@ -61,18 +49,6 @@
                  | <%= link_to 'Delete', "/sales-manager/disbursement/#{disbursement.id}/destroy" %>
                 <%end%>
               </td>
-              <!-- <td><%= disbursement.process_date %></td>
-              <td><%= disbursement.disburse_date %></td>
-              <td><%= disbursement.disburse_amount %></td>
-              <td><%= disbursement.roi %></td>
-              <td><%= disbursement.bt_inhancement %></td>
-              <td><%= disbursement.executive_full_name %></td>
-              <td><%= disbursement.channel_name %></td>
-              <td><%= disbursement.customer_id %></td>
-              <td><%= disbursement.cc_apply %></td>
-              <td><%= disbursement.health_insurance %></td>
-              <td><%= disbursement.dob %></td>
-              <td><%= disbursement.remark %></td> -->
             </tr>
           <% end %>
         </tbody>

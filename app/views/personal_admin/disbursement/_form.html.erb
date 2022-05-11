@@ -18,46 +18,46 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <label>Location</label>
-        <%= f.text_field(:location, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :location) %></p>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
         <label>Mobile Number</label>
         <%= f.number_field(:mobile_number, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :mobile_number) %></p>
       </div>
     </div>
-  </div>
-  <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <label>Loan Type</label>
-        <%= f.select(:loan_type, f.object.loan_types, {}, { class: "form-control" }) %>
-        <p class='error'><%= show_errors(@disbursement, :loan_type) %></p>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Loan Amount(Rs.)</label>
-        <%= f.number_field(:loan_amount, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :loan_amount) %></p>
+        <label>Email</label>
+        <%= f.text_field(:email, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :email) %></p>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <label>Annual Fee(Rs.) </label>
-        <%= f.number_field(:annual_fee, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :annual_fee) %></p>
+        <label>State</label>
+        <%= f.select(:state, states, {}, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :state) %></p>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <label>Process Date</label>
+        <label>City</label>
+        <%= f.select(:city, cities(f, f.object.state, :city), {}, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :city) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Product Name</label>
+        <%= f.select(:product_name, f.object.loan_types, {}, { class: "form-control" }) %>
+        <p class='error'><%= show_errors(@disbursement, :product_name) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Processing Date</label>
         <%= f.date_field(:process_date, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :process_date) %></p>
       </div>
@@ -73,18 +73,51 @@
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <label>Disburse Amount(Rs.)</label>
-        <%= f.number_field(:disburse_amount, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :disburse_amount) %></p>
+        <label>ROI(%)</label>
+        <%= f.number_field(:roi, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :roi) %></p>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <label>ROI(%)</label>
-        <%= f.number_field(:roi, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :roi) %></p>
+        <label>Processing Fee(Rs.) </label>
+        <%= f.number_field(:processing_fee, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :processing_fee) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Bank Insurance(Rs.) </label>
+        <%= f.number_field(:bank_insurance, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :bank_insurance) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Disburse Amount(Rs.)</label>
+        <%= f.number_field(:disburse_amount, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :disburse_amount) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Customer Id</label><br>
+        <%= f.text_field(:customer_id, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :customer_id) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>BT/Inhancement</label><br>
+        <%= f.radio_button :bt_inhancement, true %> Yes
+        <%= f.radio_button :bt_inhancement, false %> No<br>
+        <p class='error'><%= show_errors(@disbursement, :bt_inhancement) %></p>
       </div>
     </div>
     <div class="col-md-6">
@@ -97,60 +130,57 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-4">
-      <div class="form-group">
-        <label>BT/Inhancement</label><br>
-        <%= f.radio_button :bt_inhancement, true %> Yes
-        <%= f.radio_button :bt_inhancement, false %> No<br>
-        <p class='error'><%= show_errors(@disbursement, :bt_inhancement) %></p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="form-group">
-        <label>CC APPLY OR NOT</label><br>
-        <%= f.radio_button :cc_apply, true %> Yes
-        <%= f.radio_button :cc_apply, false %> No<br>
-        <p class='error'><%= show_errors(@disbursement, :cc_apply) %></p>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="form-group">
-        <label>Health Insurance</label><br>
-        <%= f.radio_button :health_insurance, true %> Yes
-        <%= f.radio_button :health_insurance, false %> No<br>
-        <p class='error'><%= show_errors(@disbursement, :health_insurance) %></p>
-      </div>
+    <div class="col-md-12">
+      <h3>Channel Partner Details</h3>
     </div>
   </div>
-  <hr>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <label>Executive/ Manager Full Name</label><br>
+        <label>Executive Full Name</label><br>
         <%= f.text_field(:executive_full_name, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :executive_full_name) %></p>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <label>Channel Name</label><br>
-        <%= f.text_field(:channel_name, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :channel_name) %></p>
+        <label>Channel Partner</label><br>
+        <%= f.select(:channel_partner_id, f.object.channel_partners, {}, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :channel_partner) %></p>
+      </div>
+    </div>
+    <!-- <div class="col-md-4">
+      <div class="form-group">
+        <label>Channel Partner Code</label><br>
+        <span class="channel-partner-code">NONE</span>
+      </div>
+    </div> -->
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Credit Card</label><br>
+        <%= f.radio_button :cc_apply, true %> Yes
+        <%= f.radio_button :cc_apply, false %> No<br>
+        <p class='error'><%= show_errors(@disbursement, :cc_apply) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Insurance</label><br>
+        <%= f.radio_button :insurance, true %> Yes
+        <%= f.radio_button :insurance, false %> No<br>
+        <p class='error'><%= show_errors(@disbursement, :insurance) %></p>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <label>Customer Id</label><br>
-        <%= f.text_field(:customer_id, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :customer_id) %></p>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
         <label>Remark</label><br>
-        <%= f.text_field(:remark, class: "form-control") %>
+        <%= f.text_area(:remark, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :remark) %></p>
       </div>
     </div>

@@ -44,7 +44,7 @@ module PersonalAdmin
     def destroy
       @disbursement.destroy
       flash[:notice] = 'Disbursement deleted successfully.'
-      redirect_to disbursements_path
+      redirect_to sales_manager_disbursements_path
     end
 
     private

@@ -13,30 +13,36 @@
         <tr>
           <th>Customer Full Name:</th>
           <td><%= @disbursement.customer_full_name %></td>
-          <th>Business Name:</th>
-          <td><%= @disbursement.business_name %></td>
-        </tr>
-        <tr>
-          <th>Location:</th>
-          <td><%= @disbursement.location %></td>
           <th>Mobile Number:</th>
           <td><%= @disbursement.mobile_number %></td>
         </tr>
         <tr>
-          <th>Loan Type:</th>
-          <td><%= @disbursement.product_type %></td>
-          <th>Loan Amount:</th>
-          <td>Rs. <%= @disbursement.loan_amount %></td>
+          <th>Email:</th>
+          <td><%= @disbursement.email %></td>
+          <th>Business Name:</th>
+          <td><%= @disbursement.business_name %></td>
         </tr>
         <tr>
-          <th>Annual Fee:</th>
-          <td>Rs. <%= @disbursement.annual_fee %></td>
+          <th>State:</th>
+          <td><%= state(@disbursement.state) %></td>
+          <th>City:</th>
+          <td><%= @disbursement.city %></td>
+        </tr>
+        <tr>
+          <th>Product Type:</th>
+          <td><%= @disbursement.product_type %></td>
+          <th>Disbursement Amount:</th>
+          <td>Rs. <%= @disbursement.disburse_amount %></td>
+        </tr>
+        <tr>
+          <th>Processing Fee:</th>
+          <td>Rs. <%= @disbursement.processing_fee %></td>
           <th>Process Date:</th>
           <td><%= show_date(@disbursement.process_date) %></td>
         </tr>
         <tr>
           <th>Disbursement Date:</th>
-          <td>Rs. <%= show_date(@disbursement.disburse_date) %></td>
+          <td><%= show_date(@disbursement.disburse_date) %></td>
           <th>Disburse Amount:</th>
           <td>Rs. <%= @disbursement.disburse_amount %></td>
         </tr>
@@ -47,10 +53,8 @@
           <td><%= @disbursement.bt_inhancement ? 'Yes' :  'No' %></td>
         </tr>
         <tr>
-          <th>Executive Full Name:</th>
-          <td><%= @disbursement.executive_full_name %></td>
-          <th>Channel Name:</th>
-          <td><%= @disbursement.channel_name %></td>
+          <th colspan="2">Executive Full Name:</th>
+          <td colspan="2"><%= @disbursement.executive_full_name %></td>
         </tr>
         <tr>
           <th>Customer Id:</th>
@@ -59,10 +63,16 @@
           <td><%= @disbursement.cc_apply ? 'Yes' : 'No' %></td>
         </tr>
         <tr>
-          <th>Health Insurance:</th>
-          <td><%= @disbursement.health_insurance ? 'Yes' : 'No' %></td>
+          <th>Insurance:</th>
+          <td><%= @disbursement.insurance ? 'Yes' : 'No' %></td>
           <th>Dob:</th>
           <td><%= show_date(@disbursement.dob) %></td>
+        </tr>
+        <tr>
+          <th>Channel Partner Full Name:</th>
+          <td><%= @disbursement.channel_partner&.full_name %></td>
+          <th>Channel Partner Code:</th>
+          <td><%= @disbursement.channel_partner&.code %></td>
         </tr>
       </table>
     </div>

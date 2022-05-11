@@ -12,7 +12,7 @@ module ApplicationHelper
     if obj.object.send(city).blank?
       [['-Select City-','']]
     else
-      [['-Select City-','']] + CS.cities(obj.object.send(state).to_sym, :in).map{ |val| [val, val.downcase] }
+      [['-Select City-','']] + CS.cities(state.to_sym, :in).map{ |val| [val, val.downcase] }
     end
   end
 
@@ -26,6 +26,10 @@ module ApplicationHelper
     else
       [['-Select Degree-','']] + Degree.where(profession_id: obj.object.profession_type).pluck(:name, :id)
     end
+  end
+
+  def state(state)
+    CS.states(:in)[state.upcase.to_sym]
   end
 
   def states
