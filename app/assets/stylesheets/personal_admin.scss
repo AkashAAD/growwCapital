@@ -1,6 +1,8 @@
 /*
  *= require bootstrap.min.css
+ *= require jquery-ui.css
  *= require font-awesome.min.css
+ *= require select2
 */
 
 body, html {
@@ -61,6 +63,23 @@ body, html {
   }
 }
 
+.select2-container {
+  border: 1px solid #e4e4e4;
+  border-radius: 4px 4px;
+  height: 35px;
+  font-size: 16px;
+  color: #54545e;
+  width: 100% !important;
+  .select2-selection__rendered {
+    padding-top: 4px;
+    padding-left: 15px !important;
+  }
+  .select2-dropdown {
+    border: 1px solid #e4e4e4 !important;
+    border-top: none;
+  }
+}
+
 .personal_admin_body {
   float: left;
   width: 70%;
@@ -106,6 +125,9 @@ body, html {
   a.heading {
     font-size: 20px;
     font-weight: 15px;
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   a {

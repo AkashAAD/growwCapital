@@ -27,18 +27,15 @@
     </script>
   </head>
   <body>
-    <header data-spy="affix" data-offset-top="1" class="clearfix">
-      <%= render "layouts/flash_messages" %>
-    </header>
     <div class="sales-manager-menu d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
-      <a href="/sales-manager" class="heading d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+      <a href="/sales-manager" class="heading d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white">
         <%= image_tag "logo.png", alt: "logo", class: "main-logo" %>
         <span class="fs-4">Sales Manager</span>
       </a>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
         <li class="nav-item">
-          <a href="/sales-manager/disbursements" class="nav-link active" aria-current="page">
+          <a href="/sales-manager/disbursements" class="nav-link <%= 'active' if request.path.include?('disbursement') %>" aria-current="page">
             <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;&nbsp;Disbursements
           </a>
         </li>
@@ -59,6 +56,7 @@
       </div>
     </div>
     <div class="personal_admin_body">
+      <%= render "layouts/personal_admin_flash_messages" %>
       <%= yield %>
     </div>
   </body>

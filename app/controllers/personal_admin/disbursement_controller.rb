@@ -1,12 +1,13 @@
 module PersonalAdmin 
   class DisbursementController < ApplicationController
     before_action :get_disbursment, only: [:edit, :show, :destroy, :update]
+    before_action :get_channel_partner, only: [:create, :update]
     before_action :authenticate_user!
     before_action :check_sales_manager
     layout 'personal_admin'
 
     def index
-      @disbursements = Disbursement.all.where('created_at >= ?', 1.week.ago)
+      @disbursements = Disbursement.all.where('created_at >= ?', 3.days.ago)
       @disbursements = search_disbursements(params[:search]) if params[:search].present?
       @disbursements = @disbursements.paginate(page: params[:page], per_page: 10)
     end
@@ -17,6 +18,7 @@ module PersonalAdmin
 
     def create
       @disbursement = Disbursement.new(set_params)
+      @disbursement.channel_partner = @channel_partner
 
       if @disbursement.save
         flash[:notice] = 'New disbursement created successfully.'
@@ -28,7 +30,9 @@ module PersonalAdmin
     end
 
     def update
-      if @disbursement.update_attributes(set_params)
+      set_params[:channel_partner_id] = @channel_partner&.id
+
+      if @disbursement.update(set_params)
         flash[:notice] = 'Disbursement updated successfully.'
         redirect_to sales_manager_disbursements_path
       else
@@ -47,6 +51,10 @@ module PersonalAdmin
       redirect_to sales_manager_disbursements_path
     end
 
+    def channel_partner_name
+      render json: { name: channel_partner(params[:code])&.full_name }
+    end
+
     private
 
     def set_params
@@ -55,6 +63,14 @@ module PersonalAdmin
 
     def get_disbursment
       @disbursement = Disbursement.find_by!(id: params[:id])
+    end
+
+    def get_channel_partner
+      @channel_partner = channel_partner(params[:disbursement][:channel_partner_id])
+    end
+
+    def channel_partner(code)
+      ChannelPartner.find_by(code: code)
     end
 
     def search_disbursements(search)

@@ -1,0 +1,20 @@
+<% if flash.any? && !request.path.include?('create') %>
+<br>
+  <% flash.each do |f| %>
+    <% if f[0] == 'notice' %>
+      <div class="alert alert-primary" role="alert">
+        <%= f[1] %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    <% elsif f[0] == 'error' %>
+      <div class="alert alert-danger" role="alert">
+        <%= f[1] %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>        
+      </div>
+    <% end %>
+  <% end %>
+<%end%>

@@ -19,4 +19,21 @@ $(document).ready(function(){
       }
     });
   });
+
+  $("#disbursement_channel_partner_id").change(function(evt) {
+    if (evt.target.value == '') {
+      $('.channel-partner-name').html('NA');
+      return;
+    }
+    $.ajax({
+      url: "/sales-manager/channel_partner",
+      dataType: "json",
+      data: {
+        code: evt.target.value
+      },
+      success: function (data) {
+        $('.channel-partner-name').html(data.name);
+      }
+    });
+  });
 });

@@ -9,7 +9,7 @@
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <label>Business Name</label>
+        <label>Company Name</label>
         <%= f.text_field(:business_name, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :business_name) %></p>
       </div>
@@ -128,36 +128,41 @@
       </div>
     </div>
   </div>
-  <hr>
   <div class="row">
     <div class="col-md-12">
       <h3>Channel Partner Details</h3>
     </div>
   </div>
+  <hr>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Executive Full Name</label><br>
         <%= f.text_field(:executive_full_name, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :executive_full_name) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
-        <label>Channel Partner</label><br>
-        <%= f.select(:channel_partner_id, f.object.channel_partners, {}, class: "form-control") %>
+        <label>Channel Partner Code</label><br>
+        <%= f.select :channel_partner_id, options_for_select(f.object.channel_partners, @disbursement.channel_partner&.code), {}, class: 'form-control' %>
         <p class='error'><%= show_errors(@disbursement, :channel_partner) %></p>
       </div>
     </div>
-    <!-- <div class="col-md-4">
+    <div class="col-md-4">
       <div class="form-group">
-        <label>Channel Partner Code</label><br>
-        <span class="channel-partner-code">NONE</span>
+        <label>Channel Partner Name</label><br>
+        <span class="channel-partner-name"><%= f.object.channel_partner ? f.object.channel_partner&.full_name : 'NA' %></span>
       </div>
-    </div> -->
+    </div>
   </div>
 
-
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Add-on Products</h3>
+    </div>
+  </div>
+  <hr>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">

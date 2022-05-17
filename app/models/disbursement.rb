@@ -20,8 +20,6 @@ class Disbursement < ApplicationRecord
     :remark,
     :dob, presence: true
 
-
-  # validates :channel_partner_id, presence: { message: 'Channel Partner can\'t be blank.' }
   validates :customer_full_name, :executive_full_name, format: /\w+ \w+/
   validates :bt_inhancement, :cc_apply, :insurance, inclusion: { in: [true, false], message: '' }
   validates :bt_inhancement, exclusion: { in: [nil, ''], message: 'can\'t be empty' }
@@ -29,12 +27,21 @@ class Disbursement < ApplicationRecord
   validates :cc_apply, exclusion: { in: [nil, ''], message: 'can\'t be empty' }
   validates_length_of :mobile_number, is: 10,  message: 'Number must be 10 digit long'
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validate :dob_validation
 
   def channel_partners
-    [['-Select Channel Partner-','']] + ChannelPartner.all.map{ |val| [val.full_name, val.id] }.uniq
+    [['-Select Channel Partner-','']] + ChannelPartner.all.map{ |val| [val.code, val.code] }.uniq
   end
 
   def product_type
     product_name.gsub('_', ' ').capitalize
+  end
+
+  def dob_validation
+    if dob
+      max = (Time.zone.now - 21.years)
+      min = (Time.zone.now - 21.years) - 60.years
+      errors.add(:dob, 'Please enter valid dob.') if !(dob < max && dob > min)
+    end
   end
 end
