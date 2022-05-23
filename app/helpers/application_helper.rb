@@ -8,16 +8,24 @@ module ApplicationHelper
     end
   end
 
-  def cities(obj, state, city)
-    if obj.object.send(city).blank?
+  def cities(obj)
+    if obj.blank? || (obj.state.blank? && obj.city.blank?)
       [['-Select City-','']]
     else
-      [['-Select City-','']] + CS.cities(state.to_sym, :in).map{ |val| [val, val.downcase] }
+      [['-Select City-','']] + CS.cities(obj.state.to_sym, :in).map{ |val| [val, val.downcase] }
     end
   end
 
   def only_cities
     [['-Select City-','']] + City.all.order('name').map{ |val| [val.name, val.slug] }.uniq
+  end
+
+  def products(obj)
+    if obj&.product_name.blank?
+      [['-Select Product-','']]
+    else
+      obj.channel_partner.products.pluck(:name, :slug)
+    end
   end
 
   def degrees(obj)

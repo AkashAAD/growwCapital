@@ -1,64 +1,77 @@
-<%= form_for @disbursement, :url => { :action => @disbursement.id.nil? ? "create" : "update"}, html: {id:  "disbursment-form", class: "disbursment-form"} do |f| %>
+<%= form_tag  @disbursement.id.nil? ? '/sales-manager/create_disbursement' : "/sales-manager/update_disbursement/#{@disbursement.id}", method: @disbursement.id.nil? ? :post : :patch, html: {id:  "disbursment-form", class: "disbursment-form"} do |f| %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
+      <label><b>Login Entry</b></label>
+      <%= select_tag('disbursement[login_entry_id]', options_for_select([['-Select Login Entry-', '']] + @disbursement.login_entries, @disbursement.login_entry&.id), class: 'form-control') %>
+      <p class='error'><%= show_errors(@disbursement, :login_entry_id) %></p>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Customer's Full Name</label>
-        <%= f.text_field(:customer_full_name, class: "form-control") %>
+        <%= text_field_tag('disbursement[customer_full_name]', @disbursement&.login_entry&.customer_full_name, class: "form-control", disabled: true) %>
         <p class='error'><%= show_errors(@disbursement, :customer_full_name) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Company Name</label>
-        <%= f.text_field(:business_name, class: "form-control") %>
+        <%= text_field_tag('disbursement[business_name]', @disbursement&.login_entry&.business_name, class: "form-control", disabled: true) %>
         <p class='error'><%= show_errors(@disbursement, :business_name) %></p>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Customer Id</label><br>
+        <%= text_field_tag('disbursement[customer_id]', @disbursement&.login_entry&.customer_id, class: "form-control", disabled: true) %>
+        <p class='error'><%= show_errors(@disbursement, :customer_id) %></p>
+      </div>
+    </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Mobile Number</label>
-        <%= f.number_field(:mobile_number, class: "form-control") %>
+        <%= number_field_tag('disbursement[mobile_number]', @disbursement&.login_entry&.mobile_number, class: "form-control", disabled: true) %>
         <p class='error'><%= show_errors(@disbursement, :mobile_number) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Email</label>
-        <%= f.text_field(:email, class: "form-control") %>
+        <%= text_field_tag('disbursement[email]', @disbursement&.login_entry&.email, class: "form-control", disabled: true) %>
         <p class='error'><%= show_errors(@disbursement, :email) %></p>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>DOB</label>
+        <%= date_field_tag('disbursement[dob]', @disbursement&.login_entry&.dob&.to_date, class: "form-control", disabled: true) %>
+        <p class='error'><%= show_errors(@disbursement, :dob) %></p>
+      </div>
+    </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>State</label>
-        <%= f.select(:state, states, {}, class: "form-control") %>
+        <%= select_tag('disbursement[state]', options_for_select(states, @disbursement&.login_entry&.state), class: 'form-control', disabled: true) %>
         <p class='error'><%= show_errors(@disbursement, :state) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>City</label>
-        <%= f.select(:city, cities(f, f.object.state, :city), {}, class: "form-control") %>
+        <%= select_tag('disbursement[city]', options_for_select(cities(@disbursement.login_entry), @disbursement&.login_entry&.city), class: "form-control", disabled: true) %>
         <p class='error'><%= show_errors(@disbursement, :city) %></p>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Product Name</label>
-        <%= f.select(:product_name, f.object.loan_types, {}, { class: "form-control" }) %>
-        <p class='error'><%= show_errors(@disbursement, :product_name) %></p>
-      </div>
-    </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Processing Date</label>
-        <%= f.date_field(:process_date, class: "form-control") %>
+        <%= date_field_tag('disbursement[process_date]', @disbursement&.login_entry&.process_date&.to_date, class: "form-control", disabled: true) %>
         <p class='error'><%= show_errors(@disbursement, :process_date) %></p>
       </div>
     </div>
@@ -66,65 +79,63 @@
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">
-        <label>Disburse Date</label>
-        <%= f.date_field(:disburse_date, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :disburse_date) %></p>
+        <label>Channel Partner</label>
+        <%= select_tag('disbursement[channel_partner]', options_for_select([[@disbursement&.login_entry&.channel_partner&.full_name ? @disbursement&.login_entry&.channel_partner&.full_name : '-Select Channel Partner-', '']], {}), class: "form-control", disabled: true) %>
+        <p class='error'><%= show_errors(@disbursement, :channel_partner_id) %></p>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
-        <label>ROI(%)</label>
-        <%= f.number_field(:roi, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :roi) %></p>
+        <label>Product Name</label>
+        <%= select_tag('disbursement[product_name]', options_for_select(products(@disbursement.login_entry), @disbursement&.login_entry&.product_name), class: "form-control", disabled: true) %>
+        <p class='error'><%= show_errors(@disbursement, :product_name) %></p>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Processing Fee(Rs.) </label>
-        <%= f.number_field(:processing_fee, class: "form-control") %>
+        <%= number_field_tag('disbursement[processing_fee]', @disbursement.processing_fee, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :processing_fee) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Bank Insurance(Rs.) </label>
-        <%= f.number_field(:bank_insurance, class: "form-control") %>
+        <%= number_field_tag('disbursement[bank_insurance]', @disbursement.bank_insurance, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :bank_insurance) %></p>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Disburse Amount(Rs.)</label>
-        <%= f.number_field(:disburse_amount, class: "form-control") %>
+        <%= number_field_tag('disbursement[disburse_amount]', @disbursement.disburse_amount, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :disburse_amount) %></p>
       </div>
     </div>
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Customer Id</label><br>
-        <%= f.text_field(:customer_id, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :customer_id) %></p>
-      </div>
-    </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
-        <label>BT/Inhancement</label><br>
-        <%= f.radio_button :bt_inhancement, true %> Yes
-        <%= f.radio_button :bt_inhancement, false %> No<br>
-        <p class='error'><%= show_errors(@disbursement, :bt_inhancement) %></p>
+        <label>Disburse Date</label>
+        <%= date_field_tag('disbursement[disburse_date]', @disbursement.disburse_date&.to_date, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :disburse_date) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
-        <label>DOB</label>
-        <%= f.date_field(:dob, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :dob) %></p>
+        <label>ROI(%)</label>
+        <%= number_field_tag('disbursement[roi]', @disbursement.roi, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :roi) %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>BT/Inhancement</label><br>
+        <%= radio_button_tag 'disbursement[bt_inhancement]', true, @disbursement.bt_inhancement == true %> Yes
+        <%= radio_button_tag 'disbursement[bt_inhancement]', false, @disbursement.bt_inhancement == false %> No<br>
+        <p class='error'><%= show_errors(@disbursement, :bt_inhancement) %></p>
       </div>
     </div>
   </div>
@@ -135,24 +146,16 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-4">
-      <div class="form-group">
-        <label>Executive Full Name</label><br>
-        <%= f.text_field(:executive_full_name, class: "form-control") %>
-        <p class='error'><%= show_errors(@disbursement, :executive_full_name) %></p>
-      </div>
-    </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="form-group">
         <label>Channel Partner Code</label><br>
-        <%= f.select :channel_partner_id, options_for_select(f.object.channel_partners, @disbursement.channel_partner&.code), {}, class: 'form-control' %>
-        <p class='error'><%= show_errors(@disbursement, :channel_partner) %></p>
+        <span class="channel-partner-code"></span>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
       <div class="form-group">
         <label>Channel Partner Name</label><br>
-        <span class="channel-partner-name"><%= f.object.channel_partner ? f.object.channel_partner&.full_name : 'NA' %></span>
+        <span class="channel-partner-name"></span>
       </div>
     </div>
   </div>
@@ -164,32 +167,40 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Credit Card</label><br>
-        <%= f.radio_button :cc_apply, true %> Yes
-        <%= f.radio_button :cc_apply, false %> No<br>
+        <%= radio_button_tag 'disbursement[cc_apply]', true, @disbursement.cc_apply == true %> Yes
+        <%= radio_button_tag 'disbursement[cc_apply]', false, @disbursement.cc_apply == false %> No<br>
         <p class='error'><%= show_errors(@disbursement, :cc_apply) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Insurance</label><br>
-        <%= f.radio_button :insurance, true %> Yes
-        <%= f.radio_button :insurance, false %> No<br>
+        <%= radio_button_tag 'disbursement[insurance]', true, @disbursement.insurance == true %> Yes
+        <%= radio_button_tag 'disbursement[insurance]', false, @disbursement.insurance == false %> No<br>
         <p class='error'><%= show_errors(@disbursement, :insurance) %></p>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Remark</label><br>
-        <%= f.text_area(:remark, class: "form-control") %>
+        <%= text_area_tag('disbursement[remark]', @disbursement.remark, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :remark) %></p>
       </div>
     </div>
   </div>
+  <% unless current_user.sales_manager? %>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label>Payment Done?</label>
+          <%= check_box_tag('disbursement[payment]', true, @disbursement.payment) %>
+        </div>
+      </div>
+    </div>
+  <%end%>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">

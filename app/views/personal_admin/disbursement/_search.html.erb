@@ -1,0 +1,31 @@
+<br>
+<%= form_tag(sales_manager_disbursements_path, method: :get) do %>
+  <div class="row">
+    <div class="col-md-3">
+        <label>From Date:</label>
+        <%= date_field_tag 'from_date', params[:from_date], class: 'form-control' %>
+    </div>
+    <div class="col-md-3">
+      <label>To Date:</label>
+      <%= date_field_tag 'to_date', params[:to_date], class: 'form-control' %>
+    </div>
+    <div class="col-md-3">
+      <label>Channel Partners:</label>
+      <%= select_tag('channel_partner_code', options_for_select([['-Select Channel Partner-', '']] + @channel_partners, params[:channel_partner_code]), class: 'form-control disburse-channel-partner', id: 'disburse-channel-partner') %>
+    </div>
+    <div class="col-md-3">
+      <label>Products:</label>
+      <%= select_tag('product_name', options_for_select([['-Select Product Name-', '']] + @products, params[:product_name]), class: 'form-control disburse-product-name', id: 'disburse-product-name') %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-info">Search</button>
+    </div>
+    <div class="col-md-6 text-right">
+      <span>Total Disbursement Amount: Rs. <%= @total_disburse_amount %></span>
+    </div>
+  </div>
+<%end%>
+<br>

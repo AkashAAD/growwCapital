@@ -1,0 +1,46 @@
+<section>
+  <div class="container">
+    <div class="row row-heading">
+      <div class="col-md-12 heading-container">
+        <span class="heading-container">Channel Partner Details</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <tr>
+          <th>Full Name:</th>
+          <td><%= @channel_partner.full_name %></td>
+          <th>Code:</th>
+          <td><%= @channel_partner.code %></td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td><%= @channel_partner.email %></td>
+          <th>Mobile Number:</th>
+          <td><%= @channel_partner.mobile_number %></td>
+        </tr>
+        <tr>
+          <th>Onboarding Date:</th>
+          <td><%= show_date(@channel_partner.onbording_date) %></td>
+          <th>Firm Name:</th>
+          <td><%= @channel_partner.firm_name %></td>
+        </tr>
+        <tr>
+          <th>State:</th>
+          <td><%= state(@channel_partner.state) %></td>
+          <th>City:</th>
+          <td><%= @channel_partner.city %></td>
+        </tr>
+        <tr>
+          <th>Products:</th>
+          <td><%= @channel_partner.products.pluck(:name).join(', ') %></td>
+          <th>Address:</th>
+          <td><%= @channel_partner.full_address %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>

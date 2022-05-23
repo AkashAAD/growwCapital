@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   get 'sales-manager' => 'personal_admin/home#index'
+  get 'personal-admin/home/channel-partner-products' => 'personal_admin/home#get_channel_products'
+  get 'personal-admin/home/channel-login-entry' => 'personal_admin/home#get_login_entry'
 
   get 'sales-manager/disbursements' => 'personal_admin/disbursement#index'
   get 'sales-manager/channel_partner' => 'personal_admin/disbursement#channel_partner_name'
@@ -9,4 +11,20 @@ Rails.application.routes.draw do
   get 'sales-manager/disbursement/:id/destroy' => 'personal_admin/disbursement#destroy'
   post 'sales-manager/create_disbursement' => 'personal_admin/disbursement#create'
   patch 'sales-manager/update_disbursement/:id' => 'personal_admin/disbursement#update'
+
+  get 'sales-manager/channel-partners' => 'personal_admin/channel_partner#index'
+  get 'sales-manager/new-channel-partner' => 'personal_admin/channel_partner#new'
+  get 'sales-manager/channel-partner/:id/show' => 'personal_admin/channel_partner#show'
+  get 'sales-manager/channel-partner/:id/edit' => 'personal_admin/channel_partner#edit'
+  get 'sales-manager/channel-partner/:id/destroy' => 'personal_admin/channel_partner#destroy'
+  post 'sales-manager/create_channel_partner' => 'personal_admin/channel_partner#create'
+  patch 'sales-manager/update_channel_partner/:id' => 'personal_admin/channel_partner#update'
+
+  get 'sales-manager/login-entries' => 'personal_admin/login_entry#index'
+  get 'sales-manager/new-login-entry' => 'personal_admin/login_entry#new'
+  get 'sales-manager/login-entry/:id/show' => 'personal_admin/login_entry#show'
+  get 'sales-manager/login-entry/:id/edit' => 'personal_admin/login_entry#edit'
+  get 'sales-manager/login-entry/:id/destroy' => 'personal_admin/login_entry#destroy'
+  post 'sales-manager/create_login_entry' => 'personal_admin/login_entry#create'
+  patch 'sales-manager/update_login_entry/:id' => 'personal_admin/login_entry#update'
 end

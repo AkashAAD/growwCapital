@@ -1,0 +1,57 @@
+<section>
+  <div class="container">
+    <div class="row row-heading">
+      <div class="col-md-6 heading-container">
+        <span class="heading-container">Login Entries</span>
+      </div>
+    </div>
+    <div class="row heading-container">
+      <div class="col-md-6">
+        <%= form_tag(sales_manager_login_entries_path, method: :get) do %>
+          <input type="text" name="search" value="<%= params[:search] %>" placeholder="Search Here..." class="form-control search">
+          <button type="submit" class="btn btn-info"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <%end%>
+      </div>
+      <div class="col-md-6">
+        <%= link_to '+ New Login Entry', sales_manager_new_login_entry_path, class: 'btn btn-info float-right' %>
+      </div>
+    </div>
+    <br>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <thead>
+          <th>Full Name</th>
+          <th>Customer Id</th>
+          <th>Product Name</th>
+          <th>Company Name</th>
+          <th>Executive Name</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          <% @login_entries.each do |login_entry| %>
+            <tr>
+              <td><%= login_entry.customer_full_name %></td>
+              <td><%= login_entry.customer_id %></td>
+              <td><%= login_entry.product_name.titleize %></td>
+              <td><%= login_entry.business_name %></td>
+              <td><%= login_entry.user.full_name %></td>
+              <td>
+                <%= link_to 'Show', "/sales-manager/login-entry/#{login_entry.id}/show" %> |
+                <%= link_to 'Edit', "/sales-manager/login-entry/#{login_entry.id}/edit" %>
+                <%if current_user.admin? %>
+                 | <%= link_to 'Delete', "/sales-manager/login-entry/#{login_entry.id}/destroy", data: { confirm: 'Are you sure?' } %>
+                <%end%>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row digg_pagination">
+      <%= will_paginate @login_entries %>
+    </div>
+  </div>
+</section>

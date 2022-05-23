@@ -16,13 +16,21 @@ class ApplicationController < ActionController::Base
 		@refer_earn = ReferEarn.new
 	end
 
+  def check_admin_manager
+    return redirect_to root_path unless current_user.sales_manager? || current_user.admin? || current_user.accountant?
+  end
+
   def check_sales_manager
-    return redirect_to root_path unless current_user.sales_manager? || current_user.admin?
+    redirect_to '/sales-manager' if current_user.accountant?
+  end
+
+  def check_accountant
+    return redirect_to root_path unless current_user.accountant? || current_user.admin?
   end
 
   def after_sign_in_path_for(resource)
     return rails_admin_path if resource.admin?
-    return '/sales-manager' if resource.sales_manager?
+    return '/sales-manager' if resource.sales_manager? || resource.accountant?
     home_profile_path
   end
 

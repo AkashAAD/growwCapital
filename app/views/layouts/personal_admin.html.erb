@@ -34,6 +34,18 @@
       </a>
       <hr>
       <ul class="nav nav-pills flex-column mb-auto">
+        <% unless current_user.sales_manager? %>
+          <li class="nav-item">
+            <a href="/sales-manager/channel-partners" class="nav-link <%= 'active' if request.path.include?('channel-partner') %>" aria-current="page">
+              <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;&nbsp;Channel Partners
+            </a>
+          </li>
+        <%end%>
+        <li class="nav-item">
+          <a href="/sales-manager/login-entries" class="nav-link <%= 'active' if request.path.include?('login') %>" aria-current="page">
+            <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;&nbsp;Login Entries
+          </a>
+        </li>
         <li class="nav-item">
           <a href="/sales-manager/disbursements" class="nav-link <%= 'active' if request.path.include?('disbursement') %>" aria-current="page">
             <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;&nbsp;Disbursements

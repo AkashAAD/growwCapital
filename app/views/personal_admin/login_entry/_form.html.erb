@@ -1,0 +1,107 @@
+<%= form_tag  @login_entry.id.nil? ? '/sales-manager/create_login_entry' : "/sales-manager/update_login_entry/#{@login_entry.id}", method: @login_entry.id.nil? ? :post : :patch, html: {id:  "login-entry-form", class: "login-entry-form"} do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Customer's Full Name</label>
+        <%= text_field_tag('login_entry[customer_full_name]', @login_entry.customer_full_name, class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :customer_full_name) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Company Name</label>
+        <%= text_field_tag('login_entry[business_name]', @login_entry.business_name, class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :business_name) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <%= number_field_tag('login_entry[mobile_number]', @login_entry.mobile_number, class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :mobile_number) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Email</label>
+        <%= text_field_tag('login_entry[email]', @login_entry.email, class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :email) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>State</label>
+        <%= select_tag('login_entry[state]', options_for_select(states, @login_entry.state), class: 'form-control') %>
+        <p class='error'><%= show_errors(@login_entry, :state) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>City</label>
+        <%= select_tag('login_entry[city]', options_for_select(cities(@login_entry), @login_entry.city), class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :city) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Channel Partner</label>
+        <%= select_tag('login_entry[channel_partner]', options_for_select([['-Select Channel Partner-', '']] + @login_entry.channel_partners.pluck(:full_name, :id), @login_entry.channel_partner&.id), class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :channel_partner_id) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Product Name</label>
+        <%= select_tag('login_entry[product_name]', options_for_select(products(@login_entry), @login_entry.product_name), class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :product_name) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Customer Id</label><br>
+        <%= text_field_tag('login_entry[customer_id]', @login_entry.customer_id, class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :customer_id) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>DOB</label>
+        <%= date_field_tag('login_entry[dob]', @login_entry.dob&.to_date, class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :dob) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Processing Date</label>
+        <%= date_field_tag('login_entry[process_date]', @login_entry.process_date&.to_date, class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :process_date) %></p>
+      </div>
+    </div>
+    <% unless @login_entry.id.nil? %>
+      <div class="col-md-6">
+        <div class="form-group">
+          <br>
+          <label>Approved</label><br>
+          <%= check_box_tag('login_entry[approved]', true, @login_entry.approved) %>
+        </div>
+      </div>
+    <%end%>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+    </div>
+  </div>
+<%end%>

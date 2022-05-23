@@ -13,6 +13,11 @@ class ApplicationMailer < ActionMailer::Base
 
   def job_application(job_application)
     @job_application = job_application
-    mail(to: "hr@growwcapital.com", subject: "Job Application mail", :cc => "dm@growwcapital.com")   
+    mail(to: "hr@growwcapital.com", subject: "Job Application mail", :cc => "dm@growwcapital.com")
+  end
+
+  def welcome_channel_partner(channel_partner)
+    @channel_partner = channel_partner
+    mail(to: @channel_partner.email, subject: "Welcome to GrowwCapital")
   end
 end

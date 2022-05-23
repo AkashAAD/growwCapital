@@ -1,5 +1,4 @@
 class User < ApplicationRecord
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, authentication_keys: [:login]
   belongs_to :role
 
@@ -7,6 +6,10 @@ class User < ApplicationRecord
   validates :last_name, presence: true
   validates :mobile_number, presence: true, uniqueness: true
   has_one_attached :profile_image
+  has_many :disbursements, dependent: :destroy
+  has_many :channel_partners, dependent: :destroy
+  has_many :login_entries, dependent: :destroy
+
   attr_writer :login
 
   def login
@@ -32,5 +35,9 @@ class User < ApplicationRecord
 
   def sales_manager?
     role.name == 'sales_manager'
+  end
+
+  def accountant?
+    role.name == 'accountant'
   end
 end

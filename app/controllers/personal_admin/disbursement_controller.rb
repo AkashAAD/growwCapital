@@ -2,14 +2,17 @@ module PersonalAdmin
   class DisbursementController < ApplicationController
     before_action :get_disbursment, only: [:edit, :show, :destroy, :update]
     before_action :get_channel_partner, only: [:create, :update]
+    before_action :check_sales_manager, only: [:create, :new, :destroy]
     before_action :authenticate_user!
-    before_action :check_sales_manager
+    before_action :check_admin_manager
     layout 'personal_admin'
 
     def index
-      @disbursements = Disbursement.all.where('created_at >= ?', 3.days.ago)
-      @disbursements = search_disbursements(params[:search]) if params[:search].present?
+      @disbursements = current_user.sales_manager? ? Disbursement.all.where('created_at >= ?', 3.days.ago) : Disbursement.all
+      search_disbursements
       @disbursements = @disbursements.paginate(page: params[:page], per_page: 10)
+      @channel_partners = ChannelPartner.all.pluck(:code, :code)
+      @products = Product.all.pluck(:name, :slug)
     end
 
     def new
@@ -18,7 +21,7 @@ module PersonalAdmin
 
     def create
       @disbursement = Disbursement.new(set_params)
-      @disbursement.channel_partner = @channel_partner
+      @disbursement.user = current_user
 
       if @disbursement.save
         flash[:notice] = 'New disbursement created successfully.'
@@ -30,7 +33,8 @@ module PersonalAdmin
     end
 
     def update
-      set_params[:channel_partner_id] = @channel_partner&.id
+      @disbursement.user = current_user
+      @disbursement.payment = params[:disbursement][:payment] ? true : false
 
       if @disbursement.update(set_params)
         flash[:notice] = 'Disbursement updated successfully.'
@@ -58,7 +62,18 @@ module PersonalAdmin
     private
 
     def set_params
-      params.require(:disbursement).permit!
+      params.require(:disbursement).permit(
+        :login_entry_id,
+        :processing_fee,
+        :bank_insurance,
+        :disburse_amount,
+        :disburse_date,
+        :bt_inhancement,
+        :cc_apply,
+        :insurance,
+        :roi,
+        :remark
+      )
     end
 
     def get_disbursment
@@ -73,13 +88,34 @@ module PersonalAdmin
       ChannelPartner.find_by(code: code)
     end
 
-    def search_disbursements(search)
-      key = "%#{search}%"
-      columns = Disbursement.column_names
-      return Disbursement.where(
-        columns.map { |c| "#{c} like :search" }.join(' OR '),
-        search: key
-      )
+    def search_disbursements
+      if params[:search].present?
+        key = "%#{params[:search]}%"
+        columns = Disbursement.column_names
+        @disbursements = @disbursements.where(
+          columns.map { |c| "#{c} like :search" }.join(' OR '),
+          search: key
+        )
+      end
+
+      if params[:from_date].present? && params[:to_date].present?
+        if params[:from_date]&.to_date < params[:to_date]&.to_date
+          @disbursements = @disbursements.where(created_at: params[:from_date].to_date..params[:to_date].to_date)
+        else
+          return flash[:error] = 'From date should be less than to date.'
+        end
+      end
+
+      if params[:channel_partner_code].present?
+        @disbursements = @disbursements.joins([login_entry: :channel_partner])
+        @disbursements = @disbursements.where('channel_partners.code = ?', params[:channel_partner_code])
+      end
+
+      if params[:product_name].present?
+        @disbursements = @disbursements.where('login_entries.product_name = ?', params[:product_name])
+      end
+
+      @total_disburse_amount = @disbursements.sum(:disburse_amount)
     end
   end
 end
