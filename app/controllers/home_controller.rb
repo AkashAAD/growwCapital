@@ -25,7 +25,7 @@ class HomeController < ApplicationController
   end
 
   def about_us
-    @title = 'Best Finance Service Company in Nagpur | Finance Adviser'
+    @title = 'Best Finance Service Company in Nagpur | Financial Advisor'
     @description = 'We are leading finance service company in nagpur for home loan, insurance or credit cards. Understand the correct documentation process and visit office at Civil Lines, Nagpur. No charge on service.'
   end
 
