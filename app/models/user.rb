@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, authentication_keys: [:login]
-  belongs_to :role
+  belongs_to :role, optional: true
 
   validates :first_name, presence: true
   validates :last_name, presence: true
