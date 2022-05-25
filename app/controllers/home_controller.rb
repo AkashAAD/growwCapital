@@ -9,7 +9,7 @@ class HomeController < ApplicationController
   end
 
   def channel_partner
-    @title = 'Channel Partners Groww Capital, Nagpur credit cards home of loans best banks'
+    @title = 'Channel Partners GrowwCapital, Nagpur credit cards home of loans best banks'
     @description = 'If you are looking at expanding and becoming more structured in your business,
      become our channel partners. We’re licensed representatives of leading financial 
      institutions and banks and offer opportunity to those looking for a foothold to establish themselves'
@@ -18,26 +18,26 @@ class HomeController < ApplicationController
   end
 
   def career
-    @title = 'Career with Groww Capital, credit card, loans Nagpur'
+    @title = 'Career with GrowwCapital, credit card, loans Nagpur'
     @description = 'If you’re seeking a career in financial and investment industry,
      we are the best people to grow with. We offer growth and an environment that 
      will bring out the best in you.'
   end
 
   def about_us
-    @title = 'Best Finance Service Company in Nagpur | Financial Advisor'
+    @title = 'Best Finance Service Company in Nagpur | About Us'
     @description = 'We are leading finance service company in nagpur for home loan, insurance or credit cards. Understand the correct documentation process and visit office at Civil Lines, Nagpur. No charge on service.'
   end
 
   def terms_and_conditions
-    @title = 'Growwcapital best offers home loans, insurance, credit cards Nagpur'
-    @description = 'Growwcapital is a platform that takes you closer to loan providing banks, best offers and
+    @title = 'GrowwCapital best offers home loans, insurance, credit cards Nagpur'
+    @description = 'GrowwCapital is a platform that takes you closer to loan providing banks, best offers and
       companies selling credit cards and insurance policies of different kinds. We are based in Nagpur, Ms'
   end
 
   def privacy_policy
-    @title = 'Growwcapital home loans, insurance, credit cards offers Nagpur'
-    @description = 'Growwcapital is a platform that takes you closer to loan providing banks, best offers and
+    @title = 'GrowwCapital home loans, insurance, credit cards offers Nagpur'
+    @description = 'GrowwCapital is a platform that takes you closer to loan providing banks, best offers and
       companies selling credit cards and insurance policies of different kinds. We are based in Nagpur, Ms'
   end
 
