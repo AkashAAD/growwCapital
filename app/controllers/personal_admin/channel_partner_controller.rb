@@ -21,7 +21,7 @@ module PersonalAdmin
       set_products
 
       if @channel_partner.save
-        ApplicationMailer.welcome_channel_partner(@channel_partner).deliver_later
+        ApplicationMailer.welcome_channel_partner(@channel_partner).deliver_now
         flash[:notice] = 'New channel partner created successfully.'
         redirect_to sales_manager_channel_partners_path
       else
@@ -70,7 +70,7 @@ module PersonalAdmin
         :city,
         :onbording_date,
         :code,
-        :bank_name,
+        :bank_id,
         :account_number,
         :ifsc_code,
         :micr_code,

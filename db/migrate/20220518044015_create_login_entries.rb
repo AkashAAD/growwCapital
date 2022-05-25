@@ -14,6 +14,7 @@ class CreateLoginEntries < ActiveRecord::Migration[5.2]
       t.boolean :approved, default: false
       t.references :channel_partner, index: true
       t.references :user, index: true
+      t.references :executive, index: true
       t.timestamps
     end
   end

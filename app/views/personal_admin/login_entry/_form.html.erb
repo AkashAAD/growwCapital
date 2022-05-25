@@ -87,6 +87,13 @@
         <p class='error'><%= show_errors(@login_entry, :process_date) %></p>
       </div>
     </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Executive Name</label>
+        <%= select_tag('login_entry[executive_id]', options_for_select([['-Select Executive Name-', '']] + @login_entry.executives.pluck(:full_name, :id), @login_entry.executive&.id), class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :executive_id) %></p>
+      </div>
+    </div>
     <% unless @login_entry.id.nil? %>
       <div class="col-md-6">
         <div class="form-group">

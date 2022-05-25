@@ -67,7 +67,8 @@ module PersonalAdmin
         :product_name,
         :customer_id,
         :dob,
-        :process_date
+        :process_date,
+        :executive_id
       )
     end
 

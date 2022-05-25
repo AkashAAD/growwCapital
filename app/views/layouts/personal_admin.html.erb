@@ -40,6 +40,11 @@
               <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;&nbsp;Channel Partners
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/sales-manager/executives" class="nav-link <%= 'active' if request.path.include?('executive') %>" aria-current="page">
+              <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;&nbsp;Executives
+            </a>
+          </li>
         <%end%>
         <li class="nav-item">
           <a href="/sales-manager/login-entries" class="nav-link <%= 'active' if request.path.include?('login') %>" aria-current="page">

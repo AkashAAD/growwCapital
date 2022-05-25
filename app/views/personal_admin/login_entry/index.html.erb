@@ -40,7 +40,7 @@
               <td><%= login_entry.customer_id %></td>
               <td><%= login_entry.product_name.titleize %></td>
               <td><%= login_entry.business_name %></td>
-              <td><%#= login_entry.user.full_name %></td>
+              <td><%= login_entry.executive&.full_name %></td>
               <td><b><i><%= login_entry.approved ? 'Approved' : 'Unapproved' %></i></b></td>
               <td>
                 <%= link_to 'Show', "/sales-manager/login-entry/#{login_entry.id}/show" %>

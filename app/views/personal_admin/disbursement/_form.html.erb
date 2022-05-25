@@ -77,18 +77,25 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Channel Partner</label>
         <%= select_tag('disbursement[channel_partner]', options_for_select([[@disbursement&.login_entry&.channel_partner&.full_name ? @disbursement&.login_entry&.channel_partner&.full_name : '-Select Channel Partner-', '']], {}), class: "form-control", disabled: true) %>
         <p class='error'><%= show_errors(@disbursement, :channel_partner_id) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Product Name</label>
         <%= select_tag('disbursement[product_name]', options_for_select(products(@disbursement.login_entry), @disbursement&.login_entry&.product_name), class: "form-control", disabled: true) %>
         <p class='error'><%= show_errors(@disbursement, :product_name) %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Executive Name</label>
+        <%= select_tag('disbursement[executive_name]', options_for_select([[@disbursement&.login_entry&.executive&.full_name ? @disbursement&.login_entry&.executive&.full_name : '-Select Executive Name-', '']], {}), class: "form-control", disabled: true) %>
+        <p class='error'><%= show_errors(@disbursement, :executive_name) %></p>
       </div>
     </div>
   </div>
@@ -149,13 +156,17 @@
     <div class="col-md-6">
       <div class="form-group">
         <label>Channel Partner Code</label><br>
-        <span class="channel-partner-code"></span>
+        <span class="channel-partner-code">
+          <%= @disbursement&.login_entry&.channel_partner&.code %>
+        </span>
       </div>
     </div>
     <div class="col-md-6">
       <div class="form-group">
         <label>Channel Partner Name</label><br>
-        <span class="channel-partner-name"></span>
+        <span class="channel-partner-name">
+          <%= @disbursement&.login_entry&.channel_partner&.full_name %>
+        </span>
       </div>
     </div>
   </div>

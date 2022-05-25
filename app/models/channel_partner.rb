@@ -16,7 +16,7 @@ class ChannelPartner < ApplicationRecord
     :state,
     :city,
     :onbording_date,
-    :bank_name,
+    :bank_id,
     :account_number,
     :ifsc_code,
     :micr_code,

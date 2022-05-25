@@ -15,6 +15,7 @@ $(document).ready(function(){
       $('#disbursement_process_date').val('')
       $('#disbursement_channel_partner').html('<option value="">-Select Channel Partner-</option>');
       $('#disbursement_product_name').html('<option value="">-Select Product Name-</option>');
+      $('#disbursement_executive_name').html('<option value="">-Select Executive Name-</option>');
       return;
     }
 
@@ -38,6 +39,7 @@ $(document).ready(function(){
         $('#disbursement_process_date').val(data.process_date);
         $('#disbursement_channel_partner').html('<option value="">'+ data.channel_partner.full_name +'</option>');
         $('#disbursement_product_name').html('<option value="">'+ data.product_name +'</option>');
+        $('#disbursement_executive_name').html('<option value="">'+ data.executive.full_name +'</option>');
         $('.channel-partner-code').html(data.channel_partner.code);
         $('.channel-partner-name').html(data.channel_partner.full_name);
       }

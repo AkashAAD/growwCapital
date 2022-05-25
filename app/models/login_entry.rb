@@ -17,6 +17,7 @@ class LoginEntry < ApplicationRecord
     :process_date,
     :channel_partner_id,
     :customer_id,
+    :executive_id,
     :dob, presence: true
 
   validates :customer_full_name, format: /\w+ \w+/
@@ -26,6 +27,10 @@ class LoginEntry < ApplicationRecord
 
   def channel_partners
     ChannelPartner.all
+  end
+
+  def executives
+    Executive.all
   end
 
   def dob_validation

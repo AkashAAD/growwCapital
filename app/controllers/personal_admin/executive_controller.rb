@@ -1,9 +1,8 @@
 module PersonalAdmin
   class ExecutiveController < ApplicationController
     before_action :get_executive, only: [:edit, :show, :destroy, :update]
-    before_action :check_sales_manager, only: [:create, :new, :destroy, :edit, :update]
+    before_action :check_accountant
     before_action :authenticate_user!
-    before_action :check_admin_manager
     layout 'personal_admin'
 
     def index

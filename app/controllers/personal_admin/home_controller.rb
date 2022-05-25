@@ -23,7 +23,8 @@ module PersonalAdmin
         state: state(login_entry.state),
         city: login_entry.city.titleize,
         channel_partner: login_entry.channel_partner,
-        product_name: login_entry.product_name.titleize
+        product_name: login_entry.product_name.titleize,
+        executive: login_entry.executive
       }
     end
   end

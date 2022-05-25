@@ -8,6 +8,7 @@ class Disbursement < ApplicationRecord
     :disburse_amount,
     :roi,
     :login_entry_id,
+    :bank_insurance,
     :remark, presence: true
 
   validates :bt_inhancement, :cc_apply, :insurance, inclusion: { in: [true, false], message: '' }
