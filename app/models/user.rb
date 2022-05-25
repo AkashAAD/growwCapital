@@ -30,14 +30,14 @@ class User < ApplicationRecord
 	end
 
 	def admin?
-		['admin', 'super_admin'].include?(role.name)
+		['admin', 'super_admin'].include?(role&.name)
 	end
 
   def sales_manager?
-    role.name == 'sales_manager'
+    role&.name == 'sales_manager'
   end
 
   def accountant?
-    role.name == 'accountant'
+    role&.name == 'accountant'
   end
 end
