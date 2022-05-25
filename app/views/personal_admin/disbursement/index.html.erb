@@ -8,15 +8,17 @@
     <div class="row heading-container">
       <div class="col-md-6">
         <%= form_tag(sales_manager_disbursements_path, method: :get) do %>
-          <input type="text" name="search" placeholder="Search Here..." class="form-control search">
+          <input type="text" name="search" value="<%= params[:search] %>" placeholder="Search Here..." class="form-control search">
           <button type="submit" class="btn btn-info"><i class="fa fa-search" aria-hidden="true"></i></button>
         <%end%>
       </div>
-      <div class="col-md-6">
-        <%= link_to '+ New Disbursement', sales_manager_new_disbursement_path, class: 'btn btn-info float-right' %>
-      </div>
+      <% if current_user.sales_manager? || current_user.admin? %>
+        <div class="col-md-6">
+          <%= link_to '+ New Disbursement', sales_manager_new_disbursement_path, class: 'btn btn-info float-right' %>
+        </div>
+      <%end%>
     </div>
-    <br>
+    <%= render 'search' %>
   </div>
 
   <div class="container">
@@ -26,27 +28,27 @@
           <th>Full Name</th>
           <th>Business Name</th>
           <th>City</th>
-          <th>Mobile Number</th>
           <th>Product Type</th>
           <th>Disburse Amount(Rs.)</th>
           <th>Processing Fee(Rs.)</th>
+          <th>Payment Done?</th>
           <th>Actions</th>
         </thead>
         <tbody>
           <% @disbursements.each do |disbursement| %>
             <tr>
-              <td><%= disbursement.customer_full_name %></td>
-              <td><%= disbursement.business_name %></td>
-              <td><%= disbursement.city %></td>
-              <td><%= disbursement.mobile_number %></td>
-              <td><%= disbursement.product_type %></td>
+              <td><%= disbursement&.login_entry&.customer_full_name %></td>
+              <td><%= disbursement&.login_entry&.business_name %></td>
+              <td><%= disbursement&.login_entry&.city %></td>
+              <td><%= disbursement&.login_entry&.product_name&.titleize %></td>
               <td><%= disbursement.disburse_amount %></td>
               <td><%= disbursement.processing_fee %></td>
+              <td><b><i><%= disbursement.payment ? 'Done' : 'Un-done' %></i></b></td>
               <td>
                 <%= link_to 'Show', "/sales-manager/disbursement/#{disbursement.id}/show" %> |
                 <%= link_to 'Edit', "/sales-manager/disbursement/#{disbursement.id}/edit" %>
                 <%if current_user.admin? %>
-                 | <%= link_to 'Delete', "/sales-manager/disbursement/#{disbursement.id}/destroy" %>
+                 | <%= link_to 'Delete', "/sales-manager/disbursement/#{disbursement.id}/destroy", data: { confirm: 'Are you sure?' } %>
                 <%end%>
               </td>
             </tr>

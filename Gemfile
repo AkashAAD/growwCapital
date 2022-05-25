@@ -48,3 +48,5 @@ gem 'rails_admin'
 gem 'sassc', '~> 2.1.0' 
 gem 'will_paginate', '~> 3.3'
 gem 'sitemap_generator'
+gem 'chosen-rails'
+

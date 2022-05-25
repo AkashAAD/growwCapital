@@ -1,0 +1,2 @@
+module PersonalAdmin::ChannelPartnerHelper
+end

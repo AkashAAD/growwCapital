@@ -1,0 +1,64 @@
+<section>
+  <div class="container">
+    <div class="row row-heading">
+      <div class="col-md-12 heading-container">
+        <span class="heading-container">Login Entry Details</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <tr>
+          <th>Customer Full Name:</th>
+          <td><%= @login_entry.customer_full_name %></td>
+          <th>Bisiness Name:</th>
+          <td><%= @login_entry.business_name %></td>
+        </tr>
+        <tr>
+          <th>Email:</th>
+          <td><%= @login_entry.email %></td>
+          <th>Mobile Number:</th>
+          <td><%= @login_entry.mobile_number %></td>
+        </tr>
+        <tr>
+          <th>State:</th>
+          <td><%= state(@login_entry.state) %></td>
+          <th>City:</th>
+          <td><%= @login_entry.city %></td>
+        </tr>
+        <tr>
+          <th>Product Name:</th>
+          <td><%= @login_entry.product_name.titleize %></td>
+          <th>Process Date:</th>
+          <td><%= show_date(@login_entry.process_date) %></td>
+        </tr>
+        <tr>
+          <th>Customer ID:</th>
+          <td><%= @login_entry.customer_id %></td>
+          <th>DOB:</th>
+          <td><%= show_date(@login_entry.dob) %></td>
+        </tr>
+        <tr>
+          <th>Channel Partner:</th>
+          <td><%= @login_entry.channel_partner&.full_name %></td>
+          <th>Co-ordinator Full Name:</th>
+          <td><%= @login_entry.user&.full_name %></td>
+        </tr>
+        <tr>
+          <th>Executive Name</th>
+          <td><%= @login_entry.executive&.full_name %></td>
+          <th>Executive Code</th>
+          <td><%= @login_entry.executive&.code %></td>
+        </tr>
+        <tr>
+          <th>Login Approved?:</th>
+          <td><%= @login_entry.approved ? 'Yes' : 'No' %></td>
+          <th></th>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>

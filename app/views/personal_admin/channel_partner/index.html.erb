@@ -1,0 +1,53 @@
+<section>
+  <div class="container">
+    <div class="row row-heading">
+      <div class="col-md-6 heading-container">
+        <span class="heading-container">Channel Partners</span>
+      </div>
+    </div>
+    <div class="row heading-container">
+      <div class="col-md-6">
+        <%= form_tag(sales_manager_channel_partners_path, method: :get) do %>
+          <input type="text" name="search" value="<%= params[:search] %>" placeholder="Search Here..." class="form-control search">
+          <button type="submit" class="btn btn-info"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <%end%>
+      </div>
+      <div class="col-md-6">
+        <%= link_to '+ New Channel Partner', sales_manager_new_channel_partner_path, class: 'btn btn-info float-right' %>
+      </div>
+    </div>
+    <br>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <thead>
+          <th>Full Name</th>
+          <th>Email</th>
+          <th>Code</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          <% @channel_partners.each do |channel_partner| %>
+            <tr>
+              <td><%= channel_partner.full_name %></td>
+              <td><%= channel_partner.email %></td>
+              <td><%= channel_partner.code %></td>
+              <td>
+                <%= link_to 'Show', "/sales-manager/channel-partner/#{channel_partner.id}/show" %> |
+                <%= link_to 'Edit', "/sales-manager/channel-partner/#{channel_partner.id}/edit" %>
+                <%if current_user.admin? %>
+                 | <%= link_to 'Delete', "/sales-manager/channel-partner/#{channel_partner.id}/destroy", data: { confirm: 'Are you sure?' } %>
+                <%end%>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row digg_pagination">
+      <%= will_paginate @channel_partners %>
+    </div>
+  </div>
+</section>

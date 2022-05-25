@@ -1,38 +1,47 @@
 $(document).ready(function(){
-  $("#disbursement_state").change(function(evt) {
-    if (evt.target.value == '') {
-      $("#disbursement_city").html('<option value="">-Select City-</option>');
-      return;
-    }
-    $.ajax({
-      url: "/home/change_state",
-      dataType: "json",
-      data: {
-        state: evt.target.value
-      },
-      success: function (data) {
-        var options = '';
-        data.cities.forEach(function(val) {
-          options+= '<option value="' + val[1] + '">'+val[0]+'</option>' 
-        });
-        $("#disbursement_city").html(options);
-      }
-    });
-  });
+  $("#disbursement_login_entry_id").chosen();
+  $("#disburse-channel-partner").chosen();
 
-  $("#disbursement_channel_partner_id").change(function(evt) {
+  $("#disbursement_login_entry_id").change(function(evt) {
     if (evt.target.value == '') {
-      $('.channel-partner-name').html('NA');
+      $('#disbursement_customer_full_name').val('');
+      $('#disbursement_business_name').val('');
+      $('#disbursement_customer_id').val('');
+      $('#disbursement_mobile_number').val('');
+      $('#disbursement_email').val('');
+      $('#disbursement_dob').val('');
+      $('#disbursement_state').html('<option value="">-Select State-</option>')
+      $('#disbursement_city').html('<option value="">-Select City-</option>');
+      $('#disbursement_process_date').val('')
+      $('#disbursement_channel_partner').html('<option value="">-Select Channel Partner-</option>');
+      $('#disbursement_product_name').html('<option value="">-Select Product Name-</option>');
+      $('#disbursement_executive_name').html('<option value="">-Select Executive Name-</option>');
       return;
     }
+
     $.ajax({
-      url: "/sales-manager/channel_partner",
+      url: "/personal-admin/home/channel-login-entry",
       dataType: "json",
       data: {
-        code: evt.target.value
+        id: evt.target.value
       },
       success: function (data) {
-        $('.channel-partner-name').html(data.name);
+        var login_entry = data.login_entry;
+
+        $('#disbursement_customer_full_name').val(login_entry.customer_full_name);
+        $('#disbursement_business_name').val(login_entry.customer_full_name);
+        $('#disbursement_customer_id').val(login_entry.customer_id);
+        $('#disbursement_mobile_number').val(login_entry.mobile_number);
+        $('#disbursement_email').val(login_entry.email);
+        $('#disbursement_dob').val(data.dob);
+        $('#disbursement_state').html('<option value="">'+ data.state +'</option>')
+        $('#disbursement_city').html('<option value="">'+ data.city +'</option>');
+        $('#disbursement_process_date').val(data.process_date);
+        $('#disbursement_channel_partner').html('<option value="">'+ data.channel_partner.full_name +'</option>');
+        $('#disbursement_product_name').html('<option value="">'+ data.product_name +'</option>');
+        $('#disbursement_executive_name').html('<option value="">'+ data.executive.full_name +'</option>');
+        $('.channel-partner-code').html(data.channel_partner.code);
+        $('.channel-partner-name').html(data.channel_partner.full_name);
       }
     });
   });
