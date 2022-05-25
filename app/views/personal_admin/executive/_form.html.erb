@@ -1,0 +1,25 @@
+<%= form_tag  @executive.id.nil? ? '/sales-manager/create_executive' : "/sales-manager/update_executive/#{@executive.id}", method: @executive.id.nil? ? :post : :patch, html: {id:  "executive-form", class: "executive-form"} do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Full Name</label>
+        <%= text_field_tag('executive[full_name]', @executive.full_name, class: "form-control") %>
+        <p class='error'><%= show_errors(@executive, :full_name) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Code</label>
+        <%= text_field_tag('executive[code]', @executive.code, class: "form-control") %>
+        <p class='error'><%= show_errors(@executive, :code) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+    </div>
+  </div>
+<%end%>

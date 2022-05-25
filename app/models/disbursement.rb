@@ -20,6 +20,6 @@ class Disbursement < ApplicationRecord
   end
 
   def login_entries
-    LoginEntry.pluck(:customer_full_name, :id)
+    LoginEntry.approved_login_entires.pluck(:customer_full_name, :id)
   end
 end

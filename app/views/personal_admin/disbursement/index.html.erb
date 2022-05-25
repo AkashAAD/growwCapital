@@ -31,6 +31,7 @@
           <th>Product Type</th>
           <th>Disburse Amount(Rs.)</th>
           <th>Processing Fee(Rs.)</th>
+          <th>Payment Done?</th>
           <th>Actions</th>
         </thead>
         <tbody>
@@ -42,6 +43,7 @@
               <td><%= disbursement&.login_entry&.product_name&.titleize %></td>
               <td><%= disbursement.disburse_amount %></td>
               <td><%= disbursement.processing_fee %></td>
+              <td><b><i><%= disbursement.payment ? 'Done' : 'Un-done' %></i></b></td>
               <td>
                 <%= link_to 'Show', "/sales-manager/disbursement/#{disbursement.id}/show" %> |
                 <%= link_to 'Edit', "/sales-manager/disbursement/#{disbursement.id}/edit" %>

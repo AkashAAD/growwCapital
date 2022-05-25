@@ -2,7 +2,10 @@ class LoginEntry < ApplicationRecord
   include Products
   belongs_to :user
   belongs_to :channel_partner
+  belongs_to :executive
   has_one :disbursement, dependent: :destroy
+
+  scope :approved_login_entires, -> { where(approved: true) }
 
   validates :customer_full_name,
     :business_name,
@@ -20,7 +23,6 @@ class LoginEntry < ApplicationRecord
   validates_length_of :mobile_number, is: 10,  message: 'Number must be 10 digit long'
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validate :dob_validation
-
 
   def channel_partners
     ChannelPartner.all

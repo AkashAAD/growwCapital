@@ -80,6 +80,49 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-md-12">
+      <h3>Bank Details</h3>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Bank Name</label>
+        <%= select_tag('channel_partner[bank_id]', options_for_select(bank_name, @channel_partner.bank_id), class: "form-control") %>
+        <p class='error'><%= show_errors(@channel_partner, :bank_id) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>Account Number</label>
+      <%= text_field_tag('channel_partner[account_number]', @channel_partner.account_number, class: "form-control") %>
+      <p class='error'><%= show_errors(@channel_partner, :account_number) %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>IFSC Code</label>
+        <%= text_field_tag('channel_partner[ifsc_code]', @channel_partner.ifsc_code, class: "form-control") %>
+        <p class='error'><%= show_errors(@channel_partner, :ifsc_code) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label>MICR Code</label>
+      <%= text_field_tag('channel_partner[micr_code]', @channel_partner.micr_code, class: "form-control") %>
+      <p class='error'><%= show_errors(@channel_partner, :micr_code) %></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Name As per Bank</label>
+        <%= text_field_tag('channel_partner[name_as_per_bank]', @channel_partner.name_as_per_bank, class: "form-control") %>
+        <p class='error'><%= show_errors(@channel_partner, :name_as_per_bank) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-6">
       <div class="form-group">
         <button type="submit" class="btn btn-info">Submit</button>

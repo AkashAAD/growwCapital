@@ -1,7 +1,7 @@
 module PersonalAdmin
   class LoginEntryController < ApplicationController
     before_action :get_login_entry, only: [:edit, :show, :destroy, :update]
-    before_action :check_sales_manager, only: [:create, :new, :destroy]
+    before_action :check_sales_manager, only: [:create, :new, :destroy, :edit, :update]
     before_action :authenticate_user!
     before_action :check_admin_manager
     layout 'personal_admin'
@@ -9,7 +9,7 @@ module PersonalAdmin
     def index
       @login_entries = LoginEntry.all.where('created_at >= ?', 1.week.ago)
       @login_entries = search_login_entries(params[:search]) if params[:search].present?
-      @login_entries = @login_entries.paginate(page: params[:page], per_page: 10)
+      @login_entries = @login_entries.order(id: :desc).paginate(page: params[:page], per_page: 10)
     end
 
     def new

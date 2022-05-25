@@ -10,7 +10,7 @@ module PersonalAdmin
     def index
       @disbursements = current_user.sales_manager? ? Disbursement.all.where('created_at >= ?', 3.days.ago) : Disbursement.all
       search_disbursements
-      @disbursements = @disbursements.paginate(page: params[:page], per_page: 10)
+      @disbursements = @disbursements.order(id: :desc).paginate(page: params[:page], per_page: 10)
       @channel_partners = ChannelPartner.all.pluck(:code, :code)
       @products = Product.all.pluck(:name, :slug)
     end

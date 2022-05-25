@@ -27,4 +27,12 @@ Rails.application.routes.draw do
   get 'sales-manager/login-entry/:id/destroy' => 'personal_admin/login_entry#destroy'
   post 'sales-manager/create_login_entry' => 'personal_admin/login_entry#create'
   patch 'sales-manager/update_login_entry/:id' => 'personal_admin/login_entry#update'
+
+  get 'sales-manager/executives' => 'personal_admin/executive#index'
+  get 'sales-manager/new-executive' => 'personal_admin/executive#new'
+  get 'sales-manager/executive/:id/show' => 'personal_admin/executive#show'
+  get 'sales-manager/executive/:id/edit' => 'personal_admin/executive#edit'
+  get 'sales-manager/executive/:id/destroy' => 'personal_admin/executive#destroy'
+  post 'sales-manager/create_executive' => 'personal_admin/executive#create'
+  patch 'sales-manager/update_executive/:id' => 'personal_admin/executive#update'
 end

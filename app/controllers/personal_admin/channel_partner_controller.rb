@@ -8,7 +8,7 @@ module PersonalAdmin
     def index
       @channel_partners = ChannelPartner.all.where('created_at >= ?', 3.days.ago)
       @channel_partners = search_channel_partners(params[:search]) if params[:search].present?
-      @channel_partners = @channel_partners.paginate(page: params[:page], per_page: 10)
+      @channel_partners = @channel_partners.order(id: :desc).paginate(page: params[:page], per_page: 10)
     end
 
     def new
@@ -70,7 +70,13 @@ module PersonalAdmin
         :city,
         :onbording_date,
         :code,
-        :full_address)
+        :bank_name,
+        :account_number,
+        :ifsc_code,
+        :micr_code,
+        :name_as_per_bank,
+        :full_address
+      )
     end
 
     def get_channel_partner
