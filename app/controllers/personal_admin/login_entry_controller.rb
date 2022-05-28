@@ -7,7 +7,12 @@ module PersonalAdmin
     layout 'personal_admin'
 
     def index
-      @login_entries = LoginEntry.all.where('created_at >= ?', 1.week.ago)
+      if current_user&.sales_manager?
+        @login_entries = LoginEntry.all.where('payment_date >= ?', 1.day.ago)
+      else
+        @login_entries = LoginEntry.all
+      end
+
       @login_entries = search_login_entries(params[:search]) if params[:search].present?
       @login_entries = @login_entries.order(id: :desc).paginate(page: params[:page], per_page: 10)
     end
@@ -31,6 +36,8 @@ module PersonalAdmin
     end
 
     def update
+      redirect_to sales_manager_login_entries_path if @login_entry.payment
+
       @login_entry.channel_partner = set_channel_partner
       @login_entry.user = current_user
       @login_entry.approved = params[:login_entry][:approved] ? true : false
@@ -44,7 +51,9 @@ module PersonalAdmin
       end
     end
 
-    def edit; end
+    def edit
+      redirect_to sales_manager_login_entries_path if @login_entry.payment
+    end
 
     def show; end
 
@@ -68,7 +77,8 @@ module PersonalAdmin
         :customer_id,
         :dob,
         :process_date,
-        :executive_id
+        :executive_id,
+        :bank_id
       )
     end
 

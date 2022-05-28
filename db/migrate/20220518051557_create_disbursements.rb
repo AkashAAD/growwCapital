@@ -11,6 +11,7 @@ class CreateDisbursements < ActiveRecord::Migration[5.2]
       t.boolean :insurance
       t.text :remark
       t.boolean :payment, default: false
+      t.datetime :payment_date
       t.references :user, index: true
       t.references :login_entry, index: true
 

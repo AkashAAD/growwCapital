@@ -133,7 +133,7 @@
     <div class="col-md-4">
       <div class="form-group">
         <label>ROI(%)</label>
-        <%= number_field_tag('disbursement[roi]', @disbursement.roi, class: "form-control") %>
+        <%= number_field_tag('disbursement[roi]', @disbursement.roi, class: 'form-control', step: 'any') %>
         <p class='error'><%= show_errors(@disbursement, :roi) %></p>
       </div>
     </div>

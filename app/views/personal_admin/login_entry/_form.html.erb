@@ -48,14 +48,20 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
-        <label>Channel Partner</label>
-        <%= select_tag('login_entry[channel_partner]', options_for_select([['-Select Channel Partner-', '']] + @login_entry.channel_partners.pluck(:full_name, :id), @login_entry.channel_partner&.id), class: "form-control") %>
+        <label>Channel Partner Code</label>
+        <%= select_tag('login_entry[channel_partner]', options_for_select([['-Select Channel Partner-', '']] + @login_entry.channel_partners.pluck(:code, :id), @login_entry.channel_partner&.id), class: "form-control") %>
         <p class='error'><%= show_errors(@login_entry, :channel_partner_id) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Channel Partner Name</label>
+        <p class="lg-channel-partner-name"><%= @login_entry.channel_partner&.full_name %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
       <div class="form-group">
         <label>Product Name</label>
         <%= select_tag('login_entry[product_name]', options_for_select(products(@login_entry), @login_entry.product_name), class: "form-control") %>
@@ -92,6 +98,13 @@
         <label>Executive Name</label>
         <%= select_tag('login_entry[executive_id]', options_for_select([['-Select Executive Name-', '']] + @login_entry.executives.pluck(:full_name, :id), @login_entry.executive&.id), class: "form-control") %>
         <p class='error'><%= show_errors(@login_entry, :executive_id) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Bank Name</label>
+        <%= select_tag('login_entry[bank_id]', options_for_select(bank_name, @login_entry.bank_id), class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :bank_id) %></p>
       </div>
     </div>
     <% unless @login_entry.id.nil? %>

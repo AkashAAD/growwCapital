@@ -23,6 +23,7 @@ $(document).ready(function(){
   $("#login_entry_channel_partner").change(function(evt) {
     if (evt.target.value == '') {
       $("#login_entry_product_name").html('<option value="">-Select Product-</option>');
+      $('.lg-channel-partner-name').html('');
       return;
     }
     $.ajax({
@@ -37,6 +38,7 @@ $(document).ready(function(){
           options+= '<option value="' + val[1] + '">'+val[0]+'</option>' 
         });
         $("#login_entry_product_name").html(options);
+        $('.lg-channel-partner-name').html(data.channel_partner.full_name);
       }
     });
   });

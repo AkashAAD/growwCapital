@@ -23,7 +23,12 @@ class SmsService
 		send_message(message, mob_number)
 	end
 
+  def channel_partner_registration(mob_number, message)
+    send_message(message, mob_number)
+  end
+
 	private
+
 	def send_message(message, mob_number)
 		uri = URI.parse(@api_url)
 		http = Net::HTTP.start(uri.host, uri.port)

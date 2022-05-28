@@ -40,6 +40,14 @@
               </div>
             </div>
           </div>
+          <% if current_user&.sales_manager? %>
+            <div class="row">
+              <div class="col-md-12">
+                <b><%= f.label 'Employee Id' %></b>
+                <%= f.text_field :employee_id, class: "form-control" %>
+              </div>
+            </div>
+          <% end %>
           <div class="row">
             <div class="col-md-7">
               <div class="form-group">

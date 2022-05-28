@@ -3,9 +3,10 @@ class LoginEntry < ApplicationRecord
   belongs_to :user
   belongs_to :channel_partner
   belongs_to :executive
+  belongs_to :bank
   has_one :disbursement, dependent: :destroy
 
-  scope :approved_login_entires, -> { where(approved: true) }
+  scope :approved_login_entires, -> { where(approved: true, payment: false) }
 
   validates :customer_full_name,
     :business_name,
@@ -18,6 +19,7 @@ class LoginEntry < ApplicationRecord
     :channel_partner_id,
     :customer_id,
     :executive_id,
+    :bank_id,
     :dob, presence: true
 
   validates :customer_full_name, format: /\w+ \w+/

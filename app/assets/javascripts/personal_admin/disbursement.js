@@ -29,7 +29,7 @@ $(document).ready(function(){
         var login_entry = data.login_entry;
 
         $('#disbursement_customer_full_name').val(login_entry.customer_full_name);
-        $('#disbursement_business_name').val(login_entry.customer_full_name);
+        $('#disbursement_business_name').val(login_entry.business_name);
         $('#disbursement_customer_id').val(login_entry.customer_id);
         $('#disbursement_mobile_number').val(login_entry.mobile_number);
         $('#disbursement_email').val(login_entry.email);

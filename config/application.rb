@@ -10,6 +10,8 @@ module GrowwCapital
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
+    config.time_zone = 'Kolkata'
+
     if Rails.env == 'development'
       config.action_mailer.asset_host = 'http://localhost:3000'
     else

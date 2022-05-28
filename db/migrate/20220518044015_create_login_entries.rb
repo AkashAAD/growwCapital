@@ -12,9 +12,12 @@ class CreateLoginEntries < ActiveRecord::Migration[5.2]
       t.string :customer_id
       t.datetime :dob
       t.boolean :approved, default: false
+      t.boolean :payment, default: false
+      t.datetime :payment_date
       t.references :channel_partner, index: true
       t.references :user, index: true
       t.references :executive, index: true
+      t.references :bank, index: true
       t.timestamps
     end
   end

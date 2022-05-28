@@ -44,7 +44,7 @@
               <td><b><i><%= login_entry.approved ? 'Approved' : 'Unapproved' %></i></b></td>
               <td>
                 <%= link_to 'Show', "/sales-manager/login-entry/#{login_entry.id}/show" %>
-                <% unless current_user.accountant? %>
+                <% unless current_user.accountant? || login_entry.payment %>
                    |
                   <%= link_to 'Edit', "/sales-manager/login-entry/#{login_entry.id}/edit" %>
                 <%end%>

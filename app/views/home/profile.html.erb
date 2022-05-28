@@ -2,7 +2,7 @@
   <div class="container">
     <div class="col-md-6 p-container profile-container text-center">
       <h4>Welcome to Growwcapital<br><b><%= current_user&.full_name.titleize %></b></h4>
-      <table class="table">
+      <table class="table" style='box-shadow: none;'>
         <tr>
           <td colspan="2">
             <%if current_user.profile_image.attachment.blank? %>
@@ -25,12 +25,18 @@
           <td align="left"><%= current_user&.mobile_number %></td>
         </tr>
         <tr>
-          <td align="right">Address</td>
-          <td align="left"><%= current_user&.full_address %></td>
-        </tr>
-        <tr>
           <td align="right">Profession</td>
           <td align="left"><%= current_user&.profession %></td>
+        </tr>
+        <% if current_user&.sales_manager? %>
+          <tr>
+            <td align="right">Employee Id</td>
+            <td align="left"><%= current_user.employee_id %></td>
+          </tr>
+        <% end %>
+        <tr>
+          <td align="right">Address</td>
+          <td align="left"><%= current_user&.full_address %></td>
         </tr>
         <tr>
           <td align="right">Email</td>

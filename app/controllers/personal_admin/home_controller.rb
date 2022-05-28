@@ -10,7 +10,10 @@ module PersonalAdmin
     def get_channel_products
       channel_partner = ChannelPartner.find(params[:id])
 
-      render json: { products: channel_partner.products.pluck(:name, :slug) }
+      render json: {
+        products: channel_partner.products.pluck(:name, :slug),
+        channel_partner: channel_partner
+      }
     end
 
     def get_login_entry

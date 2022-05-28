@@ -8,7 +8,12 @@ module PersonalAdmin
     layout 'personal_admin'
 
     def index
-      @disbursements = current_user.sales_manager? ? Disbursement.all.where('created_at >= ?', 3.days.ago) : Disbursement.all
+      if current_user&.sales_manager?
+        @disbursements = Disbursement.all.where('payment_date >= ?', 1.day.ago)
+      else
+        @disbursements = Disbursement.all
+      end
+
       search_disbursements
       @disbursements = @disbursements.order(id: :desc).paginate(page: params[:page], per_page: 10)
       @channel_partners = ChannelPartner.all.pluck(:code, :code)
@@ -33,10 +38,14 @@ module PersonalAdmin
     end
 
     def update
+      redirect_to sales_manager_disbursements_path if @disbursement.payment
+
       @disbursement.user = current_user
       @disbursement.payment = params[:disbursement][:payment] ? true : false
 
       if @disbursement.update(set_params)
+        set_payment
+
         flash[:notice] = 'Disbursement updated successfully.'
         redirect_to sales_manager_disbursements_path
       else
@@ -45,7 +54,9 @@ module PersonalAdmin
       end
     end
 
-    def edit; end
+    def edit
+      redirect_to sales_manager_disbursements_path if @disbursement.payment
+    end
 
     def show; end
 
@@ -86,6 +97,18 @@ module PersonalAdmin
 
     def channel_partner(code)
       ChannelPartner.find_by(code: code)
+    end
+
+    def set_payment
+      if @disbursement.payment
+        @disbursement.payment_date = Time.zone.now
+        @disbursement.login_entry.payment_date = @disbursement.payment_date
+      end
+
+      @disbursement.save
+
+      @disbursement.login_entry.payment = @disbursement.payment
+      @disbursement.login_entry.save
     end
 
     def search_disbursements

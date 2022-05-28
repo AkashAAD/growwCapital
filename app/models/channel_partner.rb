@@ -2,6 +2,7 @@ class ChannelPartner < ApplicationRecord
   include Products
 
   belongs_to :user
+  belongs_to :bank
   has_many :channel_partner_products, dependent: :destroy
   has_many :products, through: :channel_partner_products
   has_many :login_entries, dependent: :destroy
