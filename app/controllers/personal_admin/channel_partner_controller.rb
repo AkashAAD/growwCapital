@@ -75,7 +75,8 @@ module PersonalAdmin
         :ifsc_code,
         :micr_code,
         :name_as_per_bank,
-        :full_address
+        :full_address,
+        :payout_percent
       )
     end
 

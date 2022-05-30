@@ -12,6 +12,7 @@ class CreateChannelPartners < ActiveRecord::Migration[5.2]
       t.string :ifsc_code
       t.string :micr_code
       t.string :name_as_per_bank
+      t.decimal :payout_percent, precision: 20, scale: 2
       t.text :full_address
       t.datetime :onbording_date
       t.references :bank, index: true

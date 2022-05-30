@@ -16,18 +16,25 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <%= text_field_tag('channel_partner[mobile_number]', @channel_partner.mobile_number, class: "form-control") %>
+        <p class='error'><%= show_errors(@channel_partner, :mobile_number) %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
       <div class="form-group">
         <label>Code</label>
         <%= text_field_tag('channel_partner[code]', @channel_partner.code, class: "form-control") %>
         <p class='error'><%= show_errors(@channel_partner, :code) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
-        <label>Mobile Number</label>
-        <%= text_field_tag('channel_partner[mobile_number]', @channel_partner.mobile_number, class: "form-control") %>
-        <p class='error'><%= show_errors(@channel_partner, :mobile_number) %></p>
+        <label>Payout Percentage(%)</label>
+        <%= number_field_tag('channel_partner[payout_percent]', @channel_partner.payout_percent, class: "form-control") %>
+        <p class='error'><%= show_errors(@channel_partner, :payout_percent) %></p>
       </div>
     </div>
   </div>

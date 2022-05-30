@@ -22,6 +22,7 @@ class ChannelPartner < ApplicationRecord
     :ifsc_code,
     :micr_code,
     :name_as_per_bank,
+    :payout_percent,
     :full_address, presence: true
 
   validates_length_of :mobile_number, is: 10,  message: 'Number must be 10 digit long'

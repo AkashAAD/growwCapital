@@ -35,10 +35,28 @@
           <td><%= @channel_partner.city %></td>
         </tr>
         <tr>
+          <th>Payout Percentage(&)</th>
+          <td><%= "#{@channel_partner.payout_percent}%" %></td>
           <th>Products:</th>
           <td><%= @channel_partner.products.pluck(:name).join(', ') %></td>
+        </tr>
+        <tr>
+          <th>Bank Account Number</th>
+          <td><%= @channel_partner.account_number %></td>
+          <th>IFSC Code</th>
+          <td><%= @channel_partner.ifsc_code %></td>
+        </tr>
+        <tr>
+          <th>MICR code</th>
+          <td><%= @channel_partner.micr_code %></td>
+          <th>Name As Per Bank</th>
+          <td><%= @channel_partner.name_as_per_bank %></td>
+        </tr>
+        <tr>
           <th>Address:</th>
           <td><%= @channel_partner.full_address %></td>
+          <th></th>
+          <td></td>
         </tr>
       </table>
     </div>
