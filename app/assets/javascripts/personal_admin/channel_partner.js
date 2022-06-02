@@ -29,7 +29,8 @@ $(document).ready(function(){
       return false;
     }
 
-    var all_products = $('.dis-product').map((_,el) => el.value).get();
+    var all_products = [];
+    $('.dis-product').each(function () { all_products.push($(this).val()); });
     var total_rows = $('.product-table').find('tr').length - 1;
 
     if(all_products.includes($('#channel_partner_product').val())) {
