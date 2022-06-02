@@ -7,7 +7,6 @@ class CreateLoginEntries < ActiveRecord::Migration[5.2]
       t.string :state
       t.string :city
       t.string :mobile_number
-      t.string :product_name
       t.datetime :process_date
       t.string :customer_id
       t.datetime :dob
@@ -15,6 +14,7 @@ class CreateLoginEntries < ActiveRecord::Migration[5.2]
       t.boolean :payment, default: false
       t.datetime :payment_date
       t.references :channel_partner, index: true
+      t.references :channel_partner_product, index: true
       t.references :user, index: true
       t.references :executive, index: true
       t.references :bank, index: true

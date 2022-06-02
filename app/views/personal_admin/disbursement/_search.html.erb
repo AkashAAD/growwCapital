@@ -10,13 +10,17 @@
       <%= date_field_tag 'to_date', params[:to_date], class: 'form-control' %>
     </div>
     <div class="col-md-3">
+      <label>Co-ordinators:</label>
+      <%= select_tag('cordinator', options_for_select([['-Select Co-ordinator-', '']] + @corrdinators, params[:cordinator]), class: 'form-control disburse-channel-partner', id: 'disburse-channel-partner') %>
+    </div>
+    <!-- <div class="col-md-3">
       <label>Channel Partners:</label>
-      <%= select_tag('channel_partner_code', options_for_select([['-Select Channel Partner-', '']] + @channel_partners, params[:channel_partner_code]), class: 'form-control disburse-channel-partner', id: 'disburse-channel-partner') %>
-    </div>
-    <div class="col-md-3">
+      <%#= select_tag('channel_partner_code', options_for_select([['-Select Channel Partner-', '']] + @channel_partners, params[:channel_partner_code]), class: 'form-control disburse-channel-partner', id: 'disburse-channel-partner') %>
+    </div> -->
+    <!-- <div class="col-md-3">
       <label>Products:</label>
-      <%= select_tag('product_name', options_for_select([['-Select Product Name-', '']] + @products, params[:product_name]), class: 'form-control disburse-product-name', id: 'disburse-product-name') %>
-    </div>
+      <%#= select_tag('product_name', options_for_select([['-Select Product Name-', '']] + @products, params[:product_name]), class: 'form-control disburse-product-name', id: 'disburse-product-name') %>
+    </div> -->
   </div>
   <br>
   <div class="row">

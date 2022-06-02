@@ -73,7 +73,7 @@ module PersonalAdmin
         :email,
         :state,
         :city,
-        :product_name,
+        :channel_partner_product_id,
         :customer_id,
         :dob,
         :process_date,

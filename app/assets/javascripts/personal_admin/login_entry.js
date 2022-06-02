@@ -22,7 +22,7 @@ $(document).ready(function(){
 
   $("#login_entry_channel_partner").change(function(evt) {
     if (evt.target.value == '') {
-      $("#login_entry_product_name").html('<option value="">-Select Product-</option>');
+      $("#login_entry_channel_partner_product_id").html('<option value="">-Select Product-</option>');
       $('.lg-channel-partner-name').html('');
       return;
     }
@@ -37,7 +37,7 @@ $(document).ready(function(){
         data.products.forEach(function(val) {
           options+= '<option value="' + val[1] + '">'+val[0]+'</option>' 
         });
-        $("#login_entry_product_name").html(options);
+        $("#login_entry_channel_partner_product_id").html(options);
         $('.lg-channel-partner-name').html(data.channel_partner.full_name);
       }
     });

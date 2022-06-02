@@ -64,8 +64,8 @@
     <div class="col-md-4">
       <div class="form-group">
         <label>Product Name</label>
-        <%= select_tag('login_entry[product_name]', options_for_select(products(@login_entry), @login_entry.product_name), class: "form-control") %>
-        <p class='error'><%= show_errors(@login_entry, :product_name) %></p>
+        <%= select_tag('login_entry[channel_partner_product_id]', options_for_select(channel_products(@login_entry), @login_entry.channel_partner_product&.id), class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :channel_partner_product_id) %></p>
       </div>
     </div>
   </div>

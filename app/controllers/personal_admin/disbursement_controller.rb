@@ -16,7 +16,8 @@ module PersonalAdmin
 
       search_disbursements
       @disbursements = @disbursements.order(id: :desc).paginate(page: params[:page], per_page: 10)
-      @channel_partners = ChannelPartner.all.pluck(:code, :code)
+      # @channel_partners = ChannelPartner.all.pluck(:code, :code)
+      @corrdinators = User.joins(:role).where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin').map {|rr| [rr.full_name, rr.id] }
       @products = Product.all.pluck(:name, :slug)
     end
 
@@ -125,7 +126,7 @@ module PersonalAdmin
         if params[:from_date]&.to_date < params[:to_date]&.to_date
           @disbursements = @disbursements.where(created_at: params[:from_date].to_date..params[:to_date].to_date)
         else
-          return flash[:error] = 'From date should be less than to date.'
+          return flash[:warning] = 'From date should be less than to date.'
         end
       end
 
@@ -136,6 +137,10 @@ module PersonalAdmin
 
       if params[:product_name].present?
         @disbursements = @disbursements.where('login_entries.product_name = ?', params[:product_name])
+      end
+
+      if params[:cordinator].present?
+        @disbursements = @disbursements.where(user_id: params[:cordinator])
       end
 
       @total_disburse_amount = @disbursements.sum(:disburse_amount)

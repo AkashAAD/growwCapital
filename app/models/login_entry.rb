@@ -2,6 +2,7 @@ class LoginEntry < ApplicationRecord
   include Products
   belongs_to :user
   belongs_to :channel_partner
+  belongs_to :channel_partner_product
   belongs_to :executive
   belongs_to :bank
   has_one :disbursement, dependent: :destroy
@@ -14,7 +15,7 @@ class LoginEntry < ApplicationRecord
     :state,
     :city,
     :mobile_number,
-    :product_name,
+    :channel_partner_product_id,
     :process_date,
     :channel_partner_id,
     :customer_id,

@@ -11,6 +11,9 @@
     <div class="row">
       <table class="table">
         <tr>
+          <td colspan="4"><h4>Channel Partner</h4></td>
+        </tr>
+        <tr>
           <th>Full Name:</th>
           <td><%= @channel_partner.full_name %></td>
           <th>Code:</th>
@@ -35,10 +38,13 @@
           <td><%= @channel_partner.city %></td>
         </tr>
         <tr>
-          <th>Payout Percentage(&)</th>
-          <td><%= "#{@channel_partner.payout_percent}%" %></td>
-          <th>Products:</th>
-          <td><%= @channel_partner.products.pluck(:name).join(', ') %></td>
+          <th>Address:</th>
+          <td><%= @channel_partner.full_address %></td>
+          <th></th>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="4"><h4>Bank Details</h4></td>
         </tr>
         <tr>
           <th>Bank Account Number</th>
@@ -53,11 +59,18 @@
           <td><%= @channel_partner.name_as_per_bank %></td>
         </tr>
         <tr>
-          <th>Address:</th>
-          <td><%= @channel_partner.full_address %></td>
-          <th></th>
-          <td></td>
+          <td colspan="4"><h4>Products</h4></td>
         </tr>
+        <tr>
+          <th colspan="2">Product Name</th>
+          <th colspan="2">Product Payout Percentage (%)</th>
+        </tr>
+        <% @channel_partner.channel_partner_products.each do |product| %>
+          <tr>
+            <td colspan="2"><%= product.product.name %></td>
+            <td colspan="2"><%= product.payout_percent %> %</td>
+          </tr>
+        <% end %>
       </table>
     </div>
   </div>

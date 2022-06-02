@@ -30,7 +30,7 @@
         </tr>
         <tr>
           <th>Product Name:</th>
-          <td><%= @login_entry.product_name.titleize %></td>
+          <td><%= @login_entry.channel_partner_product.product.name.titleize %></td>
           <th>Process Date:</th>
           <td><%= show_date(@login_entry.process_date) %></td>
         </tr>

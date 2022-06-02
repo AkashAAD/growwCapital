@@ -18,10 +18,12 @@ module PersonalAdmin
     def create
       @channel_partner = ChannelPartner.new(set_params)
       @channel_partner.user = current_user
+
+      set_channel_partner_type
       set_products
 
       if @channel_partner.save
-        ApplicationMailer.welcome_channel_partner(@channel_partner).deliver_later
+        # ApplicationMailer.welcome_channel_partner(@channel_partner).deliver_later
         flash[:notice] = 'New channel partner created successfully.'
         redirect_to sales_manager_channel_partners_path
       else
@@ -34,8 +36,10 @@ module PersonalAdmin
       @channel_partner.products.destroy_all
       @channel_partner.user = current_user
 
+      set_channel_partner_type
       set_products
-      if @channel_partner.update(set_params)
+
+      if @channel_partner.update_attributes(set_params.merge!(channel_partner_type_id: @channel_partner.channel_partner_type&.id))
         flash[:notice] = 'Channel Partner updated successfully.'
         redirect_to sales_manager_channel_partners_path
       else
@@ -76,7 +80,10 @@ module PersonalAdmin
         :micr_code,
         :name_as_per_bank,
         :full_address,
-        :payout_percent
+        :bank_account_type,
+        :channel_partner_type_id,
+        :aadhar_number,
+        :pan_number
       )
     end
 
@@ -84,9 +91,19 @@ module PersonalAdmin
       @channel_partner = ChannelPartner.find_by!(id: params[:id])
     end
 
+    def set_channel_partner_type
+      channel_partner_type = ChannelPartnerType.find_by(slug: params[:channel_partner][:channel_partner_type_id])
+      @channel_partner.channel_partner_type = channel_partner_type
+    end
+
     def set_products
-      params[:channel_partner][:products]&.each do |product|
-        @channel_partner.products << Product.find_by(slug: product)        
+      params[:channel_partner][:products]&.each do |channel_partner_product|
+        product = Product.find_by(slug: channel_partner_product[1]['product_slug'])
+
+        @channel_partner.channel_partner_products.new(
+          payout_percent: channel_partner_product[1]['product_payout_percent'],
+          product_id: product&.id
+        )
       end
     end
 

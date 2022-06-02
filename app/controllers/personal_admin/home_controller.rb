@@ -11,7 +11,7 @@ module PersonalAdmin
       channel_partner = ChannelPartner.find(params[:id])
 
       render json: {
-        products: channel_partner.products.pluck(:name, :slug),
+        products: channel_partner.channel_partner_products.map { |product| [product.product.name, product.id] },
         channel_partner: channel_partner
       }
     end
@@ -26,7 +26,7 @@ module PersonalAdmin
         state: state(login_entry.state),
         city: login_entry.city.titleize,
         channel_partner: login_entry.channel_partner,
-        product_name: login_entry.product_name.titleize,
+        product_name: login_entry.channel_partner_product.product.name,
         executive: login_entry.executive
       }
     end

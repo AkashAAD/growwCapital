@@ -20,11 +20,11 @@ module ApplicationHelper
     [['-Select City-','']] + City.all.order('name').map{ |val| [val.name, val.slug] }.uniq
   end
 
-  def products(obj)
-    if obj&.product_name.blank?
+  def channel_products(obj)
+    if obj&.channel_partner_product.blank?
       [['-Select Product-','']]
     else
-      obj.channel_partner.products.pluck(:name, :slug)
+      obj.channel_partner.channel_partner_products.map { |product| [product.product.name, product.id] }
     end
   end
 

@@ -1,26 +1,33 @@
 <%= form_tag  @channel_partner.id.nil? ? '/sales-manager/create_channel_partner' : "/sales-manager/update_channel_partner/#{@channel_partner.id}", method: @channel_partner.id.nil? ? :post : :patch, html: {id:  "channel-partner-form", class: "channel-partner-form"} do |f| %>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Full Name</label>
         <%= text_field_tag('channel_partner[full_name]', @channel_partner.full_name, class: "form-control") %>
         <p class='error'><%= show_errors(@channel_partner, :full_name) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Email</label>
         <%= text_field_tag('channel_partner[email]', @channel_partner.email, class: "form-control") %>
         <p class='error'><%= show_errors(@channel_partner, :email) %></p>
       </div>
     </div>
-  </div>
-  <div class="row">
     <div class="col-md-4">
       <div class="form-group">
         <label>Mobile Number</label>
         <%= text_field_tag('channel_partner[mobile_number]', @channel_partner.mobile_number, class: "form-control") %>
         <p class='error'><%= show_errors(@channel_partner, :mobile_number) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Firm Name</label>
+        <%= text_field_tag('channel_partner[firm_name]', @channel_partner.firm_name, class: "form-control") %>
+        <p class='error'><%= show_errors(@channel_partner, :firm_name) %></p>
       </div>
     </div>
     <div class="col-md-4">
@@ -32,22 +39,6 @@
     </div>
     <div class="col-md-4">
       <div class="form-group">
-        <label>Payout Percentage(%)</label>
-        <%= number_field_tag('channel_partner[payout_percent]', @channel_partner.payout_percent, class: "form-control") %>
-        <p class='error'><%= show_errors(@channel_partner, :payout_percent) %></p>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Firm Name</label>
-        <%= text_field_tag('channel_partner[firm_name]', @channel_partner.firm_name, class: "form-control") %>
-        <p class='error'><%= show_errors(@channel_partner, :firm_name) %></p>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="form-group">
         <label>Onbording Date</label>
         <%= date_field_tag('channel_partner[onbording_date]', @channel_partner.onbording_date&.to_date, class: 'form-control') %>
         <p class='error'><%= show_errors(@channel_partner, :onbording_date) %></p>
@@ -55,33 +46,47 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>State</label>
         <%= select_tag('channel_partner[state]', options_for_select(states, @channel_partner.state), class: "form-control") %>
         <p class='error'><%= show_errors(@channel_partner, :state) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>City</label>
         <%= select_tag('channel_partner[city]', options_for_select(cities(@channel_partner), @channel_partner.city), class: "form-control") %>
         <p class='error'><%= show_errors(@channel_partner, :city) %></p>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
-        <label>Products</label>
-        <%= select_tag('channel_partner[products]', options_for_select(@channel_partner.loan_types, @channel_partner.products.map {|cp| cp.slug }), multiple: true) %>
-        <p class='error'><%= show_errors(@channel_partner, :products) %></p>
+        <label>Channel Partner Type</label>
+        <%= select_tag('channel_partner[channel_partner_type_id]', options_for_select([['-Select Account Type-', '']] + @channel_partner.channel_partner_types, @channel_partner.channel_partner_type&.slug), class: "form-control") %>
+        <p class='error'><%= show_errors(@channel_partner, :channel_partner_type_id) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Aadhar Number</label>
+        <%= text_field_tag('channel_partner[aadhar_number]', @channel_partner.aadhar_number, class: 'form-control') %>
+        <p class='error'><%= show_errors(@channel_partner, :aadhar_number) %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Pan Number</label>
+        <%= text_field_tag('channel_partner[pan_number]', @channel_partner.pan_number, class: 'form-control') %>
+        <p class='error'><%= show_errors(@channel_partner, :pan_number) %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
       <div class="form-group">
         <label>Address</label>
-        <%= text_field_tag('channel_partner[full_address]', @channel_partner.full_address, class: "form-control") %>
+        <%= text_area_tag('channel_partner[full_address]', @channel_partner.full_address, class: "form-control") %>
         <p class='error'><%= show_errors(@channel_partner, :full_address) %></p>
       </div>
     </div>
@@ -93,41 +98,91 @@
   </div>
   <hr>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Bank Name</label>
         <%= select_tag('channel_partner[bank_id]', options_for_select(bank_name, @channel_partner.bank_id), class: "form-control") %>
         <p class='error'><%= show_errors(@channel_partner, :bank_id) %></p>
       </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <label>Account Number</label>
       <%= text_field_tag('channel_partner[account_number]', @channel_partner.account_number, class: "form-control") %>
       <p class='error'><%= show_errors(@channel_partner, :account_number) %></p>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>IFSC Code</label>
-        <%= text_field_tag('channel_partner[ifsc_code]', @channel_partner.ifsc_code, class: "form-control") %>
-        <p class='error'><%= show_errors(@channel_partner, :ifsc_code) %></p>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <label>MICR Code</label>
-      <%= text_field_tag('channel_partner[micr_code]', @channel_partner.micr_code, class: "form-control") %>
-      <p class='error'><%= show_errors(@channel_partner, :micr_code) %></p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <div class="form-group">
         <label>Name As per Bank</label>
         <%= text_field_tag('channel_partner[name_as_per_bank]', @channel_partner.name_as_per_bank, class: "form-control") %>
         <p class='error'><%= show_errors(@channel_partner, :name_as_per_bank) %></p>
       </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>IFSC Code</label>
+        <%= text_field_tag('channel_partner[ifsc_code]', @channel_partner.ifsc_code, class: "form-control") %>
+        <p class='error'><%= show_errors(@channel_partner, :ifsc_code) %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <label>MICR Code</label>
+      <%= text_field_tag('channel_partner[micr_code]', @channel_partner.micr_code, class: "form-control") %>
+      <p class='error'><%= show_errors(@channel_partner, :micr_code) %></p>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Account Type</label>
+        <%= select_tag('channel_partner[bank_account_type]', options_for_select([['-Select Account Type-', ''], ['Saving', 'Saving'], ['Current', 'Current']], @channel_partner.bank_account_type), class: "form-control") %>
+        <p class='error'><%= show_errors(@channel_partner, :bank_account_type) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Channel Partner Products</h3>
+      <p class='error'><%= show_errors(@channel_partner, :products) %></p>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="form-group">
+        <label>Product Name</label>
+        <%= select_tag('channel_partner[product]', options_for_select([['-Select Product-', '']] + @channel_partner.loan_types), class: 'form-control') %>
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="form-group">
+        <label>Payout Percentage (%)</label>
+        <%= number_field_tag('channel_partner[payout_percent]', '', class: 'form-control') %>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="form-group">
+        <a href="javascript:void(0)" id="add-more-product">Add Product</a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table product-table">
+      <th>Product Name</th>
+      <th>Product Payout Percentage (%)</th>
+      <% @channel_partner.channel_partner_products.each_with_index do |product, index| %>
+        <tr>
+          <td>
+            <input type="text" name="channel_partner[products][<%= index %>][product_slug]" value="<%= product.product.slug %>" class="form-control dis-product" readonly />
+          </td>
+          <td>
+            <input type="number" name="channel_partner[products]<%= index %>[product_payout_percent]" value="<%= product.payout_percent %>" class="form-control dis-percentage" readonly />
+          </td>
+          <td>
+            <a href="javascript:void(0)" class="remove-product"><i class="fa fa-remove"></i></a>
+          </td>
+        </tr>
+      <%end%>
+    </table>
   </div>
   <div class="row">
     <div class="col-md-6">

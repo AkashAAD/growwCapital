@@ -120,14 +120,13 @@ body, html {
     margin-top: 14px;
     .search {
       display: inline;
-      width: 80%;
     }
 
     button {
-      top: 14px;
-      position: absolute;
       float: right;
-      right: 124px;
+      position: absolute;
+      top: 14px;
+      right: 15px;
     }
   }
   .row-heading {

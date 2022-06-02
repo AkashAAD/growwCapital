@@ -30,7 +30,7 @@
         </tr>
         <tr>
           <th>Product Type:</th>
-          <td><%= @disbursement.login_entry.product_name.titleize %></td>
+          <td><%= @disbursement.login_entry.channel_partner_product.product.name %></td>
           <th>Disbursement Amount:</th>
           <td>Rs. <%= @disbursement.disburse_amount %></td>
         </tr>
@@ -69,14 +69,44 @@
           <td><%= show_date(@disbursement.login_entry.dob) %></td>
         </tr>
         <tr>
+          <th>Executive Name</th>
+          <td><%= @disbursement.login_entry&.executive&.full_name %></td>
+          <th>Payment Done?</th>
+          <td><%= @disbursement.payment ? 'Yes' : 'No' %></td>
+        </tr>
+        <tr>
+          <th colspan="4"><h4>Channel Partner Details</h4></th>
+        </tr>
+        <tr>
           <th>Channel Partner Full Name:</th>
           <td><%= @disbursement.login_entry.channel_partner&.full_name %></td>
           <th>Channel Partner Code:</th>
           <td><%= @disbursement.login_entry.channel_partner&.code %></td>
         </tr>
         <tr>
-          <th>Payment Done?</th>
-          <td><%= @disbursement.payment ? 'Yes' : 'No' %></td>
+          <th colspan="4"><h4>Bank Details</h4></th>
+        </tr>
+        <tr>
+          <th>Bank Name</th>
+          <td><%= @disbursement.login_entry.channel_partner.bank.name %></td>
+          <th>Account Number</th>
+          <td><%= @disbursement.login_entry.channel_partner.account_number %></td>
+        </tr>
+        <tr>
+          <th>IFSC Code</th>
+          <td><%= @disbursement.login_entry.channel_partner.ifsc_code %></td>
+          <th>MICR Code</th>
+          <td><%= @disbursement.login_entry.channel_partner.micr_code %></td>
+        </tr>
+        <tr>
+          <th>Account Type</th>
+          <td><%= @disbursement.login_entry.channel_partner.bank_account_type %></td>
+          <th>Name as per bank</th>
+          <td><%= @disbursement.login_entry.channel_partner.name_as_per_bank %></td>
+        </tr>
+        <tr>
+          <th>Payout Percentage</th>
+          <td><%= @disbursement.login_entry.channel_partner_product.payout_percent %> %</td>
         </tr>
       </table>
     </div>
