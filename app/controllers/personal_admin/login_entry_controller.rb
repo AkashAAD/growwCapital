@@ -8,7 +8,7 @@ module PersonalAdmin
 
     def index
       if current_user&.sales_manager?
-        @login_entries = LoginEntry.all.where('payment_date >= ?', 1.day.ago)
+        @login_entries = LoginEntry.all.where('payment_date >= ? OR payment_date is null', 1.day.ago)
       else
         @login_entries = LoginEntry.all
       end

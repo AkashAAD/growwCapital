@@ -9,7 +9,7 @@ module PersonalAdmin
 
     def index
       if current_user&.sales_manager?
-        @disbursements = Disbursement.all.where('payment_date >= ?', 1.day.ago)
+        @disbursements = Disbursement.all.where('payment_date >= ? OR payment_date is null', 1.day.ago)
       else
         @disbursements = Disbursement.all
       end

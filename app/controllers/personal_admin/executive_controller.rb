@@ -6,7 +6,7 @@ module PersonalAdmin
     layout 'personal_admin'
 
     def index
-      @executives = Executive.all.where('created_at >= ?', 1.week.ago)
+      @executives = Executive.all
       @executives = search_executives(params[:search]) if params[:search].present?
       @executives = @executives.order(id: :desc).paginate(page: params[:page], per_page: 10)
     end
