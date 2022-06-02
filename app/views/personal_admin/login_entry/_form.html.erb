@@ -51,7 +51,7 @@
     <div class="col-md-4">
       <div class="form-group">
         <label>Channel Partner Code</label>
-        <%= select_tag('login_entry[channel_partner]', options_for_select([['-Select Channel Partner-', '']] + @login_entry.channel_partners.pluck(:code, :id), @login_entry.channel_partner&.id), class: "form-control") %>
+        <%= select_tag('login_entry[channel_partner]', options_for_select([['-Select Channel Partner-', '']] + @login_entry.channel_partners(current_user).pluck(:code, :id), @login_entry.channel_partner&.id), class: "form-control") %>
         <p class='error'><%= show_errors(@login_entry, :channel_partner_id) %></p>
       </div>
     </div>

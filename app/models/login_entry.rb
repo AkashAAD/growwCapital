@@ -28,8 +28,8 @@ class LoginEntry < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validate :dob_validation
 
-  def channel_partners
-    ChannelPartner.all
+  def channel_partners(user)
+    ChannelPartner.where(channel_partner_type_id: user&.channel_partner_type&.id)
   end
 
   def executives
