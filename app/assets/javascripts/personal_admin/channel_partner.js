@@ -46,6 +46,9 @@ $(document).ready(function(){
       '</tr>'
     );
 
+    $('#channel_partner_product').val('')
+    $('#channel_partner_payout_percent').val('')
+
     $('.remove-product').click(function() {
       $(this).parent().parent().remove();
     });
