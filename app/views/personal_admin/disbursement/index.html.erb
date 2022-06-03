@@ -18,7 +18,9 @@
         </div>
       <%end%>
     </div>
-    <%= render 'search' %>
+    <% if current_user.admin? || current_user.accountant? %>
+      <%= render 'search' %>
+    <% end %>
   </div>
 
   <div class="container">

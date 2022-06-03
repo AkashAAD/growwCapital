@@ -16,7 +16,9 @@
         <%= link_to '+ New Channel Partner', sales_manager_new_channel_partner_path, class: 'btn btn-info float-right' %>
       </div>
     </div>
-    <br>
+    <% if current_user.admin? || current_user.accountant? %>
+      <%= render 'search' %>
+    <% end %>
   </div>
 
   <div class="container">
@@ -24,16 +26,16 @@
       <table class="table">
         <thead>
           <th>Full Name</th>
-          <th>Email</th>
           <th>Code</th>
+          <th>Type</th>
           <th>Actions</th>
         </thead>
         <tbody>
           <% @channel_partners.each do |channel_partner| %>
             <tr>
               <td><%= channel_partner.full_name %></td>
-              <td><%= channel_partner.email %></td>
               <td><%= channel_partner.code %></td>
+              <td><%= channel_partner.channel_partner_type&.name %></td>
               <td>
                 <%= link_to 'Show', "/sales-manager/channel-partner/#{channel_partner.id}/show" %> |
                 <%= link_to 'Edit', "/sales-manager/channel-partner/#{channel_partner.id}/edit" %>

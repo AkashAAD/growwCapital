@@ -7,7 +7,8 @@ module PersonalAdmin
 
     def index
       @channel_partners = ChannelPartner.all.where('created_at >= ?', 3.days.ago)
-      @channel_partners = search_channel_partners(params[:search]) if params[:search].present?
+      @types = ChannelPartnerType.pluck(:name, :id)
+      search_channel_partners
       @channel_partners = @channel_partners.order(id: :desc).paginate(page: params[:page], per_page: 10)
     end
 
@@ -107,13 +108,19 @@ module PersonalAdmin
       end
     end
 
-    def search_channel_partners(search)
-      key = "%#{search}%"
-      columns = ChannelPartner.column_names
-      return ChannelPartner.where(
-        columns.map { |c| "#{c} like :search" }.join(' OR '),
-        search: key
-      )
+    def search_channel_partners
+      if params[:search].present?
+        key = "%#{params[:search]}%"
+        columns = ChannelPartner.column_names
+        @channel_partners = ChannelPartner.where(
+          columns.map { |c| "#{c} like :search" }.join(' OR '),
+          search: key
+        )
+      end
+
+      if params[:type].present?
+        @channel_partners = @channel_partners.where(channel_partner_type_id: params[:type])
+      end
     end
   end
 end
