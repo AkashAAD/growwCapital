@@ -14,6 +14,11 @@ body, html {
     display: inline;
   }
 
+  .btn-info {
+    background-color: #0854a0;
+    border-color: #0854a0;
+  }
+
   .chosen-container-multi, .chosen-container-single {
     display: block;
     width: 100% !important;

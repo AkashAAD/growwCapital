@@ -1,5 +1,5 @@
 class Executive < ApplicationRecord
-  has_many :login_entries
+  has_many :login_entries, dependent: :destroy
   belongs_to :user
 
   validates :full_name, :code, presence: true

@@ -1,0 +1,24 @@
+<br>
+<%= form_tag(sales_manager_login_entries_path, method: :get) do %>
+  <div class="row">
+    <div class="col-md-3">
+        <label>From Date:</label>
+        <%= date_field_tag 'from_date', params[:from_date], class: 'form-control' %>
+    </div>
+    <div class="col-md-3">
+      <label>To Date:</label>
+      <%= date_field_tag 'to_date', params[:to_date], class: 'form-control' %>
+    </div>
+    <div class="col-md-3">
+      <label>Co-ordinators:</label>
+      <%= select_tag('cordinator', options_for_select([['-Select Co-ordinator-', '']] + @corrdinators, params[:cordinator]), class: 'form-control disburse-channel-partner', id: 'disburse-channel-partner') %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-info">Search</button>
+    </div>
+  </div>
+<%end%>
+<br>

@@ -13,7 +13,8 @@ module PersonalAdmin
         @login_entries = LoginEntry.all
       end
 
-      @login_entries = search_login_entries(params[:search]) if params[:search].present?
+      search_login_entries
+      @corrdinators = User.joins(:role).where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin').map {|rr| [rr.full_name, rr.id] }
       @login_entries = @login_entries.order(id: :desc).paginate(page: params[:page], per_page: 10)
     end
 
@@ -90,13 +91,27 @@ module PersonalAdmin
       ChannelPartner.find_by(id: params[:login_entry][:channel_partner])
     end
 
-    def search_login_entries(search)
-      key = "%#{search}%"
-      columns = LoginEntry.column_names
-      return LoginEntry.where(
-        columns.map { |c| "#{c} like :search" }.join(' OR '),
-        search: key
-      )
+    def search_login_entries
+      if params[:search].present?
+        key = "%#{params[:search]}%"
+        columns = LoginEntry.column_names
+        @login_entries = LoginEntry.where(
+          columns.map { |c| "#{c} like :search" }.join(' OR '),
+          search: key
+        )
+      end
+
+      if params[:from_date].present? && params[:to_date].present?
+        if params[:from_date]&.to_date <= params[:to_date]&.to_date
+          @login_entries = @login_entries.where(created_at: params[:from_date].to_date.beginning_of_day..params[:to_date].to_date.end_of_day)
+        else
+          return flash[:warning] = 'From date should be less than to date.'
+        end
+      end
+
+      if params[:cordinator].present?
+        @login_entries = @login_entries.where(user_id: params[:cordinator])
+      end
     end
   end
 end

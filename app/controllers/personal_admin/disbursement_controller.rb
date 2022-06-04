@@ -123,8 +123,8 @@ module PersonalAdmin
       end
 
       if params[:from_date].present? && params[:to_date].present?
-        if params[:from_date]&.to_date < params[:to_date]&.to_date
-          @disbursements = @disbursements.where(created_at: params[:from_date].to_date..params[:to_date].to_date)
+        if params[:from_date]&.to_date <= params[:to_date]&.to_date
+          @disbursements = @disbursements.where(created_at: params[:from_date].to_date.beginning_of_day..params[:to_date].to_date.end_of_day)
         else
           return flash[:warning] = 'From date should be less than to date.'
         end
