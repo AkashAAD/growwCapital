@@ -6,7 +6,7 @@ module PersonalAdmin
     layout 'personal_admin'
 
     def index
-      @channel_partners = ChannelPartner.all.where('created_at >= ?', 3.days.ago)
+      @channel_partners = ChannelPartner.all
       @types = ChannelPartnerType.pluck(:name, :id)
       search_channel_partners
       @channel_partners = @channel_partners.order(id: :desc).paginate(page: params[:page], per_page: 10)
