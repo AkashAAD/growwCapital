@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $("#disbursement_login_entry_id").chosen();
   $("#disburse-channel-partner").chosen();
+  $("#disburse-channel-partner").chosen();
 
   $("#disbursement_login_entry_id").change(function(evt) {
     if (evt.target.value == '') {

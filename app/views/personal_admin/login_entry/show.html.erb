@@ -30,7 +30,7 @@
         </tr>
         <tr>
           <th>Product Name:</th>
-          <td><%= @login_entry.channel_partner_product.product.name.titleize %></td>
+          <td><%= @login_entry.channel_partner_product&.product&.name&.titleize %></td>
           <th>Process Date:</th>
           <td><%= show_date(@login_entry.process_date) %></td>
         </tr>
@@ -57,6 +57,12 @@
           <td><%= @login_entry.bank&.name %></td>
           <th>Login Approved?:</th>
           <td><%= @login_entry.approved ? 'Yes' : 'No' %></td>
+        </tr>
+        <tr>
+          <th>Notes</th>
+          <td><%= @login_entry.notes %></td>
+          <th></th>
+          <td></td>
         </tr>
       </table>
     </div>

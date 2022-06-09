@@ -8,14 +8,18 @@ module PersonalAdmin
 
     def index
       if current_user&.sales_manager?
-        @login_entries = LoginEntry.all.where(user_id: current_user.id).where('payment_date >= ? OR payment_date is null', 1.day.ago)
+        @login_entries = current_user.login_entries.where('payment_date >= ? OR payment_date is null', 1.day.ago)
       else
-        @login_entries = LoginEntry.all
+        @login_entries = []
       end
 
       search_login_entries
-      @corrdinators = User.joins(:role).where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin').map {|rr| [rr.full_name, rr.id] }
-      @login_entries = @login_entries.order(id: :desc).paginate(page: params[:page], per_page: 10)
+
+      @corrdinators = User.joins(:role)
+        .where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin')
+        .where('users.profession IS NULL || users.profession != ?', 'developer')
+        .map {|rr| [rr.full_name, rr.id] }
+      @login_entries = @login_entries.order(id: :desc).paginate(page: params[:page], per_page: 10) unless @login_entries.blank?
     end
 
     def new
@@ -40,7 +44,6 @@ module PersonalAdmin
       redirect_to sales_manager_login_entries_path if @login_entry.payment
 
       @login_entry.channel_partner = set_channel_partner
-      @login_entry.user = current_user
       @login_entry.approved = params[:login_entry][:approved] ? true : false
 
       if @login_entry.update(set_params)
@@ -79,7 +82,8 @@ module PersonalAdmin
         :dob,
         :process_date,
         :executive_id,
-        :bank_id
+        :bank_id,
+        :notes
       )
     end
 
@@ -92,6 +96,22 @@ module PersonalAdmin
     end
 
     def search_login_entries
+      if params[:cordinator].present?
+        @login_entries = LoginEntry.where(user_id: params[:cordinator])
+      end
+
+      if params[:from_date].present? && params[:to_date].present?
+        if params[:from_date]&.to_date <= params[:to_date]&.to_date
+          if params[:cordinator].present?
+            @login_entries = @login_entries.where(created_at: params[:from_date].to_date.beginning_of_day..params[:to_date].to_date.end_of_day)
+          else
+            return flash[:warning] = 'Please select co-ordinator.'
+          end
+        else
+          return flash[:warning] = 'From date should be less than to date.'
+        end
+      end
+
       if params[:search].present?
         key = "%#{params[:search]}%"
         columns = LoginEntry.column_names
@@ -99,18 +119,6 @@ module PersonalAdmin
           columns.map { |c| "#{c} like :search" }.join(' OR '),
           search: key
         )
-      end
-
-      if params[:from_date].present? && params[:to_date].present?
-        if params[:from_date]&.to_date <= params[:to_date]&.to_date
-          @login_entries = @login_entries.where(created_at: params[:from_date].to_date.beginning_of_day..params[:to_date].to_date.end_of_day)
-        else
-          return flash[:warning] = 'From date should be less than to date.'
-        end
-      end
-
-      if params[:cordinator].present?
-        @login_entries = @login_entries.where(user_id: params[:cordinator])
       end
     end
   end

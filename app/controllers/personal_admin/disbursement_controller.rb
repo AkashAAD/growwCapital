@@ -9,15 +9,19 @@ module PersonalAdmin
 
     def index
       if current_user&.sales_manager?
-        @disbursements = Disbursement.all.where(user_id: current_user.id).where('payment_date >= ? OR payment_date is null', 1.day.ago)
+        @disbursements = current_user.disbursements.where('payment_date >= ? OR payment_date is null', 1.day.ago)
       else
-        @disbursements = Disbursement.all
+        @disbursements = []
       end
 
       search_disbursements
-      @disbursements = @disbursements.order(id: :desc).paginate(page: params[:page], per_page: 10)
+
+      @disbursements = @disbursements.order(id: :desc).paginate(page: params[:page], per_page: 10) unless @disbursements.blank?
       # @channel_partners = ChannelPartner.all.pluck(:code, :code)
-      @corrdinators = User.joins(:role).where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin').map {|rr| [rr.full_name, rr.id] }
+      @corrdinators = User.joins(:role)
+        .where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin')
+        .where('users.profession IS NULL || users.profession != ?', 'developer')
+        .map {|rr| [rr.full_name, rr.id] }
       @products = Product.all.pluck(:name, :slug)
     end
 
@@ -41,7 +45,6 @@ module PersonalAdmin
     def update
       redirect_to sales_manager_disbursements_path if @disbursement.payment
 
-      @disbursement.user = current_user
       @disbursement.payment = params[:disbursement][:payment] ? true : false
 
       if @disbursement.update(set_params)
@@ -113,6 +116,22 @@ module PersonalAdmin
     end
 
     def search_disbursements
+      if params[:cordinator].present?
+        @disbursements = Disbursement.where(user_id: params[:cordinator])
+      end
+
+      if params[:from_date].present? && params[:to_date].present?
+        if params[:from_date]&.to_date <= params[:to_date]&.to_date
+          if params[:cordinator].present?
+            @disbursements = @disbursements.where(created_at: params[:from_date].to_date.beginning_of_day..params[:to_date].to_date.end_of_day)
+          else
+            return flash[:warning] = 'Please select co-ordinator.'
+          end
+        else
+          return flash[:warning] = 'From date should be less than to date.'
+        end
+      end
+
       if params[:search].present?
         key = "%#{params[:search]}%"
         columns = Disbursement.column_names
@@ -122,28 +141,16 @@ module PersonalAdmin
         )
       end
 
-      if params[:from_date].present? && params[:to_date].present?
-        if params[:from_date]&.to_date <= params[:to_date]&.to_date
-          @disbursements = @disbursements.where(created_at: params[:from_date].to_date.beginning_of_day..params[:to_date].to_date.end_of_day)
-        else
-          return flash[:warning] = 'From date should be less than to date.'
-        end
-      end
+      # if params[:channel_partner_code].present?
+      #   @disbursements = @disbursements.joins([login_entry: :channel_partner])
+      #   @disbursements = @disbursements.where('channel_partners.code = ?', params[:channel_partner_code])
+      # end
 
-      if params[:channel_partner_code].present?
-        @disbursements = @disbursements.joins([login_entry: :channel_partner])
-        @disbursements = @disbursements.where('channel_partners.code = ?', params[:channel_partner_code])
-      end
+      # if params[:product_name].present?
+      #   @disbursements = @disbursements.where('login_entries.product_name = ?', params[:product_name])
+      # end
 
-      if params[:product_name].present?
-        @disbursements = @disbursements.where('login_entries.product_name = ?', params[:product_name])
-      end
-
-      if params[:cordinator].present?
-        @disbursements = @disbursements.where(user_id: params[:cordinator])
-      end
-
-      @total_disburse_amount = @disbursements.sum(:disburse_amount)
+      @total_disburse_amount = @disbursements.blank? ? 0 : @disbursements.sum(:disburse_amount)
     end
   end
 end

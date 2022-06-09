@@ -20,7 +20,7 @@ class Disbursement < ApplicationRecord
     product_name.gsub('_', ' ').capitalize
   end
 
-  def login_entries
-    LoginEntry.approved_login_entires.pluck(:customer_full_name, :id)
+  def login_entries(user)
+    user.login_entries.where(payment: false).approved_login_entires.pluck(:customer_full_name, :id)
   end
 end

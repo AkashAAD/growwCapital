@@ -51,7 +51,7 @@
     <div class="col-md-4">
       <div class="form-group">
         <label>Channel Partner Code</label>
-        <%= select_tag('login_entry[channel_partner]', options_for_select([['-Select Channel Partner-', '']] + @login_entry.channel_partners(current_user).pluck(:code, :id), @login_entry.channel_partner&.id), class: "form-control") %>
+        <%= select_tag('login_entry[channel_partner]', options_for_select([['-Select Channel Partner-', '']] + @login_entry.channel_partners(@login_entry.user || current_user).pluck(:code, :id), @login_entry.channel_partner&.id), class: "form-control") %>
         <p class='error'><%= show_errors(@login_entry, :channel_partner_id) %></p>
       </div>
     </div>
@@ -105,6 +105,13 @@
         <label>Bank Name</label>
         <%= select_tag('login_entry[bank_id]', options_for_select(bank_name, @login_entry.bank_id), class: "form-control") %>
         <p class='error'><%= show_errors(@login_entry, :bank_id) %></p>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Notes:</label>
+        <%= text_area_tag('login_entry[notes]', @login_entry.notes, class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :notes) %></p>
       </div>
     </div>
     <% unless @login_entry.id.nil? %>

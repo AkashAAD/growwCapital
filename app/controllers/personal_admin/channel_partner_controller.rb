@@ -6,10 +6,10 @@ module PersonalAdmin
     layout 'personal_admin'
 
     def index
-      @channel_partners = ChannelPartner.all
+      @channel_partners = []
       @types = ChannelPartnerType.pluck(:name, :id)
       search_channel_partners
-      @channel_partners = @channel_partners.order(id: :desc).paginate(page: params[:page], per_page: 10)
+      @channel_partners = @channel_partners.order(id: :desc).paginate(page: params[:page], per_page: 10) unless @channel_partners.blank?
     end
 
     def new
@@ -35,7 +35,6 @@ module PersonalAdmin
 
     def update
       @channel_partner.products.destroy_all
-      @channel_partner.user = current_user
 
       set_channel_partner_type
       set_products
@@ -109,6 +108,11 @@ module PersonalAdmin
     end
 
     def search_channel_partners
+      if params[:type].present? || session[:channel_partner].present?
+        session[:channel_partner] = params[:type] unless params[:type].nil?
+        @channel_partners = ChannelPartner.where(channel_partner_type_id: params[:type] || session[:channel_partner])
+      end
+
       if params[:search].present?
         key = "%#{params[:search]}%"
         columns = ChannelPartner.column_names
@@ -116,10 +120,6 @@ module PersonalAdmin
           columns.map { |c| "#{c} like :search" }.join(' OR '),
           search: key
         )
-      end
-
-      if params[:type].present?
-        @channel_partners = @channel_partners.where(channel_partner_type_id: params[:type])
       end
     end
   end

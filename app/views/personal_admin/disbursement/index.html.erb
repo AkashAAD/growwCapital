@@ -20,7 +20,9 @@
     </div>
     <% if current_user.admin? || current_user.accountant? %>
       <%= render 'search' %>
-    <% end %>
+    <% else %>
+      <br>
+    <%end%>
   </div>
 
   <div class="container">
@@ -42,7 +44,7 @@
               <td><%= disbursement&.login_entry&.customer_full_name %></td>
               <td><%= disbursement&.login_entry&.business_name %></td>
               <td><%= disbursement&.login_entry&.city %></td>
-              <td><%= disbursement&.login_entry&.channel_partner_product.product&.name %></td>
+              <td><%= disbursement&.login_entry&.channel_partner_product&.product&.name %></td>
               <td><%= disbursement.disburse_amount %></td>
               <td><%= disbursement.processing_fee %></td>
               <td><b><i><%= disbursement.payment ? 'Paid' : 'Un-paid' %></i></b></td>
@@ -61,7 +63,7 @@
       </table>
     </div>
     <div class="row digg_pagination">
-      <%= will_paginate @disbursements %>
+      <%= will_paginate @disbursements unless @disbursements.blank? %>
     </div>
   </div>
 </section>

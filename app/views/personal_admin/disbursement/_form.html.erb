@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-4">
       <label><b>Login Entry</b></label>
-      <%= select_tag('disbursement[login_entry_id]', options_for_select([['-Select Login Entry-', '']] + @disbursement.login_entries, @disbursement.login_entry&.id), class: 'form-control') %>
+      <%= select_tag('disbursement[login_entry_id]', options_for_select([['-Select Login Entry-', '']] + @disbursement.login_entries(@disbursement.user || current_user), @disbursement.login_entry&.id), class: 'form-control') %>
       <p class='error'><%= show_errors(@disbursement, :login_entry_id) %></p>
     </div>
   </div>

@@ -40,7 +40,7 @@
     <div class="col-md-4">
       <div class="form-group">
         <label>Onbording Date</label>
-        <%= date_field_tag('channel_partner[onbording_date]', @channel_partner.onbording_date&.to_date, class: 'form-control') %>
+        <%= date_field_tag('channel_partner[onbording_date]', @channel_partner.onbording_date&.to_date, class: 'form-control', pattern: "\d{4}-\d{2}-\d{2}") %>
         <p class='error'><%= show_errors(@channel_partner, :onbording_date) %></p>
       </div>
     </div>

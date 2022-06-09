@@ -21,6 +21,7 @@ class LoginEntry < ApplicationRecord
     :customer_id,
     :executive_id,
     :bank_id,
+    :notes,
     :dob, presence: true
 
   validates :customer_full_name, format: /\w+ \w+/

@@ -1,4 +1,6 @@
 $(document).ready(function(){
+  $("#login-entry-channel-partner").chosen();
+
   $("#login_entry_state").change(function(evt) {
     if (evt.target.value == '') {
       $("#login_entry_city").html('<option value="">-Select City-</option>');

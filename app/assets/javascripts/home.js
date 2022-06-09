@@ -7,7 +7,7 @@ $(document).ready(function(){
   });
 
   $(".calculated-emi").hide();
-  $("#show-apply-modal").on("mouseover", function () {
+  $("#show-apply-modal").on("click", function () {
     $('#apply-now-modal').modal('hide');
     $('#apply-now-modal').modal('show');    
   });
