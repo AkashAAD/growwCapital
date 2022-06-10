@@ -54,7 +54,7 @@
                   | <%= link_to 'Edit', "/sales-manager/disbursement/#{disbursement.id}/edit" %>
                 <%end%>
                 <%if current_user.admin? %>
-                 | <%= link_to 'Delete', "/sales-manager/disbursement/#{disbursement.id}/destroy", data: { confirm: 'Are you sure?' } %>
+                 | <%= link_to 'Delete', "/sales-manager/disbursement/#{disbursement.id}/destroy", onclick: "show_confirm()" %>
                 <%end%>
               </td>
             </tr>

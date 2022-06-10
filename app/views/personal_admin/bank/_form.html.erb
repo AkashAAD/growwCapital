@@ -1,0 +1,18 @@
+<%= form_tag  @bank.id.nil? ? '/sales-manager/create_bank' : "/sales-manager/update_bank/#{@bank.id}", method: @bank.id.nil? ? :post : :patch, html: {id:  "bank-form", class: "bank-form"} do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Full Name</label>
+        <%= text_field_tag('bank[name]', @bank.name, class: "form-control") %>
+        <p class='error'><%= show_errors(@bank, :name) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+    </div>
+  </div>
+<%end%>

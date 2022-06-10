@@ -1,0 +1,18 @@
+<%= form_tag  @product.id.nil? ? '/sales-manager/create_product' : "/sales-manager/update_product/#{@product.id}", method: @product.id.nil? ? :post : :patch, html: {id:  "product-form", class: "product-form"} do |f| %>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label>Full Name</label>
+        <%= text_field_tag('product[name]', @product.name, class: "form-control") %>
+        <p class='error'><%= show_errors(@product, :name) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+    </div>
+  </div>
+<%end%>

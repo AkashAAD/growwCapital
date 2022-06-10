@@ -45,6 +45,16 @@
               <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;&nbsp;Executives
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/sales-manager/banks" class="nav-link <%= 'active' if request.path.include?('bank') %>" aria-current="page">
+              <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;&nbsp;Banks
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/sales-manager/products" class="nav-link <%= 'active' if request.path.include?('product') %>" aria-current="page">
+              <i class="fa fa-exchange" aria-hidden="true"></i>&nbsp;&nbsp;Products
+            </a>
+          </li>
         <%end%>
         <li class="nav-item">
           <a href="/sales-manager/login-entries" class="nav-link <%= 'active' if request.path.include?('login') %>" aria-current="page">

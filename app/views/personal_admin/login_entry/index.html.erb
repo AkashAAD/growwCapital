@@ -55,7 +55,7 @@
                   <%= link_to 'Edit', "/sales-manager/login-entry/#{login_entry.id}/edit" %>
                 <%end%>
                 <%if current_user.admin? %>
-                 | <%= link_to 'Delete', "/sales-manager/login-entry/#{login_entry.id}/destroy", data: { confirm: 'Are you sure?' } %>
+                 | <%= link_to 'Delete', "/sales-manager/login-entry/#{login_entry.id}/destroy", onclick: "show_confirm()" %>
                 <%end%>
               </td>
             </tr>

@@ -11,6 +11,9 @@
     <div class="col-md-6">
       <button type="submit" class="btn btn-info">Search</button>
     </div>
+    <div class="col-md-6">
+      <%= link_to 'Download as .xlsx', sales_manager_channel_partners_path(format: :xlsx), method: :get, onclick: 'show_confirm()' %>
+    </div>
   </div>
 <%end%>
 <br>

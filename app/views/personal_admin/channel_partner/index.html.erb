@@ -40,7 +40,7 @@
                 <%= link_to 'Show', "/sales-manager/channel-partner/#{channel_partner.id}/show" %> |
                 <%= link_to 'Edit', "/sales-manager/channel-partner/#{channel_partner.id}/edit" %>
                 <% if current_user.admin? || current_user.accountant? %>
-                 | <%= link_to 'Delete', "/sales-manager/channel-partner/#{channel_partner.id}/destroy", data: { confirm: 'Are you sure?' } %>
+                 | <%= link_to 'Delete', "/sales-manager/channel-partner/#{channel_partner.id}/destroy", onclick: "show_confirm()" %>
                 <% end %>
               </td>
             </tr>

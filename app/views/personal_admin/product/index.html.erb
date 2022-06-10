@@ -2,18 +2,18 @@
   <div class="container">
     <div class="row row-heading">
       <div class="col-md-6 heading-container">
-        <span class="heading-container">Channel Executives</span>
+        <span class="heading-container">products</span>
       </div>
     </div>
     <div class="row heading-container">
       <div class="col-md-6">
-        <%= form_tag(sales_manager_executives_path, method: :get) do %>
+        <%= form_tag(sales_manager_products_path, method: :get) do %>
           <input type="text" name="search" value="<%= params[:search] %>" placeholder="Search Here..." class="form-control search">
           <button type="submit" class="btn btn-info"><i class="fa fa-search" aria-hidden="true"></i></button>
         <%end%>
       </div>
       <div class="col-md-6">
-        <%= link_to '+ New Executive', sales_manager_new_executive_path, class: 'btn btn-info float-right' %>
+        <%= link_to '+ New Product', sales_manager_new_product_path, class: 'btn btn-info float-right' %>
       </div>
     </div>
     <br>
@@ -23,20 +23,18 @@
     <div class="row">
       <table class="table">
         <thead>
-          <th>Full Name</th>
-          <th>Code</th>
+          <th>Product Name</th>
           <th>Actions</th>
         </thead>
         <tbody>
-          <% @executives.each do |executive| %>
+          <% @products.each do |product| %>
             <tr>
-              <td><%= executive.full_name %></td>
-              <td><%= executive.code %></td>
+              <td><%= product.name %></td>
               <td>
-                <%= link_to 'Show', "/sales-manager/executive/#{executive.id}/show" %> |
-                <%= link_to 'Edit', "/sales-manager/executive/#{executive.id}/edit" %>
+                <%= link_to 'Show', "/sales-manager/product/#{product.id}/show" %> |
+                <%= link_to 'Edit', "/sales-manager/product/#{product.id}/edit" %>
                 <% if current_user.admin? || current_user.accountant? %>
-                 | <%= link_to 'Delete', "/sales-manager/executive/#{executive.id}/destroy", onclick: "show_confirm()" %>
+                 | <%= link_to 'Delete', "/sales-manager/product/#{product.id}/destroy", onclick: "show_confirm()" %>
                 <% end %>
               </td>
             </tr>
@@ -45,7 +43,7 @@
       </table>
     </div>
     <div class="row digg_pagination">
-      <%= will_paginate @executives %>
+      <%= will_paginate @products %>
     </div>
   </div>
 </section>

@@ -1,0 +1,2 @@
+module PersonalAdmin::ProductHelper
+end

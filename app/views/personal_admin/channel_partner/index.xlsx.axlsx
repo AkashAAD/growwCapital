@@ -1,0 +1,61 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  highlight_header_cell = style.add_style(
+    bg_color: 'FFFF00',
+    border: Axlsx::STYLE_THIN_BORDER,
+    alignment: { horizontal: :left }
+  )
+
+  highlight_cell = style.add_style(
+    alignment: { horizontal: :left }
+  )
+
+  wb.add_worksheet(name: "Channel Partner") do |sheet|
+    sheet.add_row [
+      'Full Name',
+      'Firm Name',
+      'Email',
+      'Mobile Number',
+      'Code',
+      'State',
+      'City',
+      'Account Number',
+      'IFSC Code',
+      'MICR Code',
+      'Name as per bank',
+      'Account Type',
+      'Full Address',
+      'Onboarding Date',
+      'Aadhar Number',
+      'PAN Number',
+      'Bank Name',
+      'Channel Partner Type',
+      'Created at in DB'
+    ], style: [highlight_header_cell] * 19
+
+    @channel_partners.each do |channel_partner|
+      sheet.add_row [
+        channel_partner.full_name,
+        channel_partner.firm_name,
+        channel_partner.email,
+        channel_partner.mobile_number,
+        channel_partner.code,
+        state(channel_partner.state),
+        channel_partner.city,
+        channel_partner.account_number,
+        channel_partner.ifsc_code,
+        channel_partner.micr_code,
+        channel_partner.name_as_per_bank,
+        channel_partner.bank_account_type,
+        channel_partner.full_address,
+        show_date(channel_partner.onbording_date),
+        channel_partner.aadhar_number,
+        channel_partner.pan_number,
+        channel_partner&.bank&.name,
+        channel_partner&.channel_partner_type&.name,
+        show_date(channel_partner.created_at)
+      ], style: [highlight_cell] * 19
+    end
+  end
+end

@@ -29,8 +29,6 @@ module PersonalAdmin
     end
 
     def update
-      @executive.user = current_user
-
       if @executive.update(set_params)
         flash[:notice] = 'Executive updated successfully.'
         redirect_to sales_manager_executives_path
@@ -61,10 +59,6 @@ module PersonalAdmin
 
     def get_executive
       @executive = Executive.find_by!(id: params[:id])
-    end
-
-    def set_channel_partner
-      ChannelPartner.find_by(id: params[:executive][:channel_partner])
     end
 
     def search_executives(search)

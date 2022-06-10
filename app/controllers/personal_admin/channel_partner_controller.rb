@@ -10,6 +10,11 @@ module PersonalAdmin
       @types = ChannelPartnerType.pluck(:name, :id)
       search_channel_partners
       @channel_partners = @channel_partners.order(id: :desc).paginate(page: params[:page], per_page: 10) unless @channel_partners.blank?
+
+      respond_to do |format|
+        format.html
+        format.xlsx
+      end
     end
 
     def new

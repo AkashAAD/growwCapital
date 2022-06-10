@@ -40,6 +40,22 @@ Rails.application.routes.draw do
   get 'sales-manager/executive/:id/destroy' => 'personal_admin/executive#destroy'
   post 'sales-manager/create_executive' => 'personal_admin/executive#create'
   patch 'sales-manager/update_executive/:id' => 'personal_admin/executive#update'
+
+  get 'sales-manager/banks' => 'personal_admin/bank#index'
+  get 'sales-manager/new-bank' => 'personal_admin/bank#new'
+  get 'sales-manager/bank/:id/show' => 'personal_admin/bank#show'
+  get 'sales-manager/bank/:id/edit' => 'personal_admin/bank#edit'
+  get 'sales-manager/bank/:id/destroy' => 'personal_admin/bank#destroy'
+  post 'sales-manager/create_bank' => 'personal_admin/bank#create'
+  patch 'sales-manager/update_bank/:id' => 'personal_admin/bank#update'
+
+  get 'sales-manager/products' => 'personal_admin/product#index'
+  get 'sales-manager/new-product' => 'personal_admin/product#new'
+  get 'sales-manager/product/:id/show' => 'personal_admin/product#show'
+  get 'sales-manager/product/:id/edit' => 'personal_admin/product#edit'
+  get 'sales-manager/product/:id/destroy' => 'personal_admin/product#destroy'
+  post 'sales-manager/create_product' => 'personal_admin/product#create'
+  patch 'sales-manager/update_product/:id' => 'personal_admin/product#update'
   ############# SALES MANAGER URL ###########
 
   root 'home#index'
