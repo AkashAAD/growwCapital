@@ -16,13 +16,10 @@ module PersonalAdmin
 
       search_disbursements
 
-      @disbursements = @disbursements.order(id: :desc).paginate(page: params[:page], per_page: 10) unless @disbursements.blank?
-      # @channel_partners = ChannelPartner.all.pluck(:code, :code)
-      @corrdinators = User.joins(:role)
-        .where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin')
-        .where('users.profession IS NULL || users.profession != ?', 'developer')
-        .map {|rr| [rr.full_name, rr.id] }
-      @products = Product.all.pluck(:name, :slug)
+      respond_to do |format|
+        format.html
+        format.xlsx
+      end
     end
 
     def new
@@ -151,6 +148,15 @@ module PersonalAdmin
       # end
 
       @total_disburse_amount = @disbursements.blank? ? 0 : @disbursements.sum(:disburse_amount)
+      # @channel_partners = ChannelPartner.all.pluck(:code, :code)
+      @corrdinators = User.joins(:role)
+        .where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin')
+        .where('users.profession IS NULL || users.profession != ?', 'developer')
+        .map {|rr| [rr.full_name, rr.id] }
+      @products = Product.all.pluck(:name, :slug)
+
+      return @disbursements && request.format = 'xlsx' if params[:xls] == 'xls'
+      @disbursements = @disbursements.order(id: :desc).paginate(page: params[:page], per_page: 10) unless @disbursements.blank?
     end
   end
 end

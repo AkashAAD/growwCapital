@@ -1,0 +1,79 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  highlight_header_cell = style.add_style(
+    bg_color: 'FFFF00',
+    border: Axlsx::STYLE_THIN_BORDER,
+    alignment: { horizontal: :left }
+  )
+
+  highlight_cell = style.add_style(
+    alignment: { horizontal: :left }
+  )
+
+  wb.add_worksheet(name: "Login Entry") do |sheet|
+    sheet.add_row [
+      'Customer Full Name',
+      'Bisiness Name',
+      'Email',
+      'Mobile Number',
+      'State',
+      'City',
+      'Product Name',
+      'Process Date',
+      'Customer ID',
+      'DOB',
+      'Channel Partner Name',
+      'Channel Partner Code',
+      'Co-ordinator Full Name',
+      'Executive Name',
+      'Executive Code',
+      'Bank Name',
+      'Login Approved?',
+      'Login Notes',
+      'Disbursement Date',
+      'Processing Fee',
+      'Disburse Amount',
+      'ROI (%)',
+      'Insurance?',
+      'BT/Inhancement?',
+      'CC_APPLY?',
+      'Payment Done?',
+      'Disbursement Remark',
+      'Created at in DB'
+    ], style: [highlight_header_cell] * 28
+
+    @disbursements.each do |disbursement|
+      sheet.add_row [
+        disbursement.login_entry&.customer_full_name,
+        disbursement.login_entry&.business_name,
+        disbursement.login_entry&.email,
+        disbursement.login_entry&.mobile_number,
+        state(disbursement.login_entry&.state),
+        disbursement.login_entry&.city,
+        disbursement.login_entry&.channel_partner_product&.product&.name&.titleize,
+        show_date(disbursement.login_entry&.process_date),
+        disbursement.login_entry&.customer_id,
+        show_date(disbursement.login_entry&.dob),
+        disbursement.login_entry&.channel_partner&.full_name,
+        disbursement.login_entry&.channel_partner&.code,
+        disbursement.user&.full_name,
+        disbursement.login_entry&.executive&.full_name,
+        disbursement.login_entry&.executive&.code,
+        disbursement.login_entry&.bank&.name,
+        disbursement.login_entry&.approved ? 'Yes' : 'No',
+        disbursement.login_entry&.notes,
+        show_date(disbursement.disburse_date),
+        disbursement.processing_fee,
+        disbursement.disburse_amount,
+        disbursement.roi,
+        disbursement.insurance ? 'Yes' : 'No',
+        disbursement.bt_inhancement ? 'Yes' : 'No',
+        disbursement.cc_apply ? 'Yes' : 'No',
+        disbursement.payment ? 'Yes' : 'No',
+        disbursement.remark,
+        show_date(disbursement.created_at)
+      ], style: [highlight_cell] * 28
+    end
+  end
+end

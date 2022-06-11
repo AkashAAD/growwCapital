@@ -8,8 +8,8 @@ module PersonalAdmin
     def index
       @channel_partners = []
       @types = ChannelPartnerType.pluck(:name, :id)
+      
       search_channel_partners
-      @channel_partners = @channel_partners.order(id: :desc).paginate(page: params[:page], per_page: 10) unless @channel_partners.blank?
 
       respond_to do |format|
         format.html
@@ -126,6 +126,9 @@ module PersonalAdmin
           search: key
         )
       end
+
+      return @channel_partners if params[:format] == 'xlsx'
+      @channel_partners = @channel_partners.order(id: :desc).paginate(page: params[:page], per_page: 10) unless @channel_partners.blank?
     end
   end
 end

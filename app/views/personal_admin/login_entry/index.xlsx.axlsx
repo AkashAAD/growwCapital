@@ -1,0 +1,61 @@
+wb = xlsx_package.workbook
+
+wb.styles do |style|
+  highlight_header_cell = style.add_style(
+    bg_color: 'FFFF00',
+    border: Axlsx::STYLE_THIN_BORDER,
+    alignment: { horizontal: :left }
+  )
+
+  highlight_cell = style.add_style(
+    alignment: { horizontal: :left }
+  )
+
+  wb.add_worksheet(name: "Login Entry") do |sheet|
+    sheet.add_row [
+      'Customer Full Name',
+      'Bisiness Name',
+      'Email',
+      'Mobile Number',
+      'State',
+      'City',
+      'Product Name',
+      'Process Date',
+      'Customer ID',
+      'DOB',
+      'Channel Partner Name',
+      'Channel Partner Code',
+      'Co-ordinator Full Name',
+      'Executive Name',
+      'Executive Code',
+      'Bank Name',
+      'Login Approved?',
+      'Notes',
+      'Created at in DB'
+    ], style: [highlight_header_cell] * 19
+
+    @login_entries.each do |login_entry|
+      sheet.add_row [
+        login_entry.customer_full_name,
+        login_entry.business_name,
+        login_entry.email,
+        login_entry.mobile_number,
+        state(login_entry.state),
+        login_entry.city,
+        login_entry.channel_partner_product&.product&.name&.titleize,
+        show_date(login_entry.process_date),
+        login_entry.customer_id,
+        show_date(login_entry.dob),
+        login_entry.channel_partner&.full_name,
+        login_entry.channel_partner&.code,
+        login_entry.user&.full_name,
+        login_entry.executive&.full_name,
+        login_entry.executive&.code,
+        login_entry.bank&.name,
+        login_entry.approved ? 'Yes' : 'No',
+        login_entry.notes,
+        show_date(login_entry.created_at)
+      ], style: [highlight_cell] * 19
+    end
+  end
+end

@@ -15,11 +15,10 @@ module PersonalAdmin
 
       search_login_entries
 
-      @corrdinators = User.joins(:role)
-        .where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin')
-        .where('users.profession IS NULL || users.profession != ?', 'developer')
-        .map {|rr| [rr.full_name, rr.id] }
-      @login_entries = @login_entries.order(id: :desc).paginate(page: params[:page], per_page: 10) unless @login_entries.blank?
+      respond_to do |format|
+        format.html
+        format.xlsx
+      end
     end
 
     def new
@@ -120,6 +119,15 @@ module PersonalAdmin
           search: key
         )
       end
+
+      @corrdinators = User.joins(:role)
+        .where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin')
+        .where('users.profession IS NULL || users.profession != ?', 'developer')
+        .map {|rr| [rr.full_name, rr.id] }
+
+      return @login_entries && request.format = 'xlsx' if params[:xls] == 'xls'
+
+      @login_entries = @login_entries.order(id: :desc).paginate(page: params[:page], per_page: 10) unless @login_entries.blank?
     end
   end
 end
