@@ -1572,6 +1572,9 @@ homeStrip .container>p {
   border: 1px solid rgba(235, 239, 247, 0.8);
   box-shadow: 0 2px 4px 0 #052f5f0a, 0 12px 16px 0 #3469cb1f;
   padding: 40px;
+  h2 {
+    font-size: 72px;
+  }
   .thx-other-services {
     a {
       color: #0000ff;
