@@ -16,8 +16,6 @@ sitemap_opts = {
 
 SitemapGenerator::Sitemap.create sitemap_opts do
   add '/home/credit_card', changefreq: 'weekly', priority: 0.5
-  add '/home/credit_card', changefreq: 'weekly', priority: 0.5
-  add '/home/credit_card', changefreq: 'weekly', priority: 0.5
   add '/home/personal_loan', changefreq: 'weekly', priority: 0.5
   add '/home/transfer_personal_loan', changefreq: 'weekly', priority: 0.5
   add '/home/business_loan', changefreq: 'weekly', priority: 0.5
