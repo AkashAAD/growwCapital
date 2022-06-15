@@ -77,7 +77,7 @@
                     </li>
                   <%end%>
                   <li class="dropdown">
-                      <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">All Products</a>
+                      <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Our Services</a>
                       <ul class="dropdown-menu" style="opacity: 1;">
                         <li><%= link_to "Credit Card", custom_credit_card_path, method: :get %></li>
                         <li><%= link_to "Personal Loan", custom_personal_loan_path, method: :get %></li>
@@ -120,23 +120,28 @@
                       </li>
                     </ul>
                   </li>
-                  <li class="<%#= active_tab('contact_us') %>">
-                    <%= link_to "Contact us", contact_us_path, method: :get %>
-                  </li>
-                  <li class="<%#= active_tab('about_us') %>">
-                    <%= link_to "About us", about_us_path, method: :get %>
-                  </li>
-                  <!-- <li class="<%#= active_tab('blog') %>">
-                    <%#= link_to "Blog", blog_path, method: :get %>
-                  </li> -->
-                  <li class="">
-                    <%= link_to "Franchise", channel_partner_path, method: :get %>
-                  </li>
-                  <li class="">
-                    <%= link_to "Career", career_path, method: :get %>
-                  </li>
                   <li class="<%#= active_tab('blog') %>">
                     <%= link_to "Apply Now", "javascript:void(0)", "data-toggle": "modal", "data-target": "#apply-now-modal", id: "show-apply-modal" %>
+                  </li>
+                  <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">More...</a>
+                    <ul class="dropdown-menu" style="opacity: 1;">
+                      <li class="<%#= active_tab('contact_us') %>">
+                        <%= link_to "Contact us", contact_us_path, method: :get %>
+                      </li>
+                      <li class="<%#= active_tab('about_us') %>">
+                        <%= link_to "About us", about_us_path, method: :get %>
+                      </li>
+                      <!-- <li class="<%#= active_tab('blog') %>">
+                        <%#= link_to "Blog", blog_path, method: :get %>
+                      </li> -->
+                      <li class="">
+                        <%= link_to "Franchise", channel_partner_path, method: :get %>
+                      </li>
+                      <li class="">
+                        <%= link_to "Career", career_path, method: :get %>
+                      </li>
+                    </ul>
                   </li>
                   <%if current_user.nil?%>
                   <li class="<%#= active_tab('contact_us') %>">
@@ -160,7 +165,7 @@
                     </li>
                   <%end%>
                   <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">All Products</a>
+                    <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Our Services</a>
                     <ul class="dropdown-menu">
                       <li><%= link_to "Credit Card", custom_credit_card_path, method: :get %></li>
                       <li><%= link_to "Personal Loan", custom_personal_loan_path, method: :get %></li>
