@@ -73,7 +73,7 @@
         </tr>
         <% @channel_partner.channel_partner_products.each do |product| %>
           <tr>
-            <td colspan="2"><%= product.product.name %></td>
+            <td colspan="2"><%= product&.product&.name %></td>
             <td colspan="2"><%= product.payout_percent %> %</td>
           </tr>
         <% end %>

@@ -172,7 +172,7 @@
       <% @channel_partner.channel_partner_products.each_with_index do |product, index| %>
         <tr>
           <td>
-            <input type="text" name="channel_partner[products][<%= index %>][product_slug]" value="<%= product.product.slug %>" class="form-control dis-product" readonly />
+            <input type="text" name="channel_partner[products][<%= index %>][product_slug]" value="<%= product&.product&.slug %>" class="form-control dis-product" readonly />
           </td>
           <td>
             <input type="number" name="channel_partner[products]<%= index %>[product_payout_percent]" value="<%= product.payout_percent %>" class="form-control dis-percentage" readonly />
