@@ -109,7 +109,7 @@
           </tr>
           <tr>
             <th>Payout Percentage</th>
-            <td><%= @disbursement.login_entry.channel_partner_product.payout_percent %> %</td>
+            <td><%= @disbursement&.login_entry&.channel_partner_product&.payout_percent %> %</td>
           </tr>
         <% end %>
       </table>
