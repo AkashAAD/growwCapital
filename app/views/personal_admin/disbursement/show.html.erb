@@ -30,7 +30,7 @@
         </tr>
         <tr>
           <th>Product Type:</th>
-          <td><%= @disbursement.login_entry.channel_partner_product.product.name %></td>
+          <td><%= @disbursement&.login_entry&.channel_partner_product&.product&.name %></td>
           <th>Disbursement Amount:</th>
           <td>Rs. <%= @disbursement.disburse_amount %></td>
         </tr>
