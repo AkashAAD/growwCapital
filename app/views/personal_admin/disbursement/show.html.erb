@@ -53,8 +53,10 @@
           <td><%= @disbursement.bt_inhancement ? 'Yes' :  'No' %></td>
         </tr>
         <tr>
-          <th colspan="2">Co-ordinator Full Name:</th>
-          <td colspan="2"><%= @disbursement.user.full_name %></td>
+          <th>Co-ordinator Full Name:</th>
+          <td><%= @disbursement.user.full_name %></td>
+          <th>Bank Name</th>
+          <td><%= @disbursement&.login_entry&.bank&.name %></td>
         </tr>
         <tr>
           <th>Customer Id:</th>
