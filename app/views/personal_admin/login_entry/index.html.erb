@@ -34,7 +34,7 @@
           <th>Product Name</th>
           <th>Company Name</th>
           <th>Executive Name</th>
-          <th>Payment Done?</th>
+          <!-- <th>Payment Done?</th> -->
           <th>Approved?</th>
           <th>Actions</th>
         </thead>
@@ -46,7 +46,7 @@
               <td><%= login_entry.channel_partner_product&.product&.name&.titleize %></td>
               <td><%= login_entry.business_name %></td>
               <td><%= login_entry&.executive&.full_name %></td>
-              <td><b><%= login_entry.payment ? 'Paid' : 'Un-paid' %></b></td>
+              <!-- <td><b><%#= login_entry.payment ? 'Paid' : 'Un-paid' %></b></td> -->
               <td><b><i><%= login_entry.approved ? 'Approved' : 'Unapproved' %></i></b></td>
               <td>
                 <%= link_to 'Show', "/sales-manager/login-entry/#{login_entry.id}/show" %>
