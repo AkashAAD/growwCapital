@@ -13,6 +13,20 @@
       <label>Co-ordinators:</label>
       <%= select_tag('cordinator', options_for_select([['-Select Co-ordinator-', '']] + @corrdinators, params[:cordinator]), class: 'form-control disburse-channel-partner', id: 'disburse-channel-partner') %>
     </div>
+    <div class="col-md-3">
+      <label>Paid/ Unpaid:</label>
+      <%= select_tag(
+        'paid_unpaid',
+        options_for_select(
+          [
+            ['-Select Payment Status-', ''],
+            ['Paid', true],
+            ['Unpaid', false]
+          ],
+          params[:paid_unpaid]
+        ), class: 'form-control'
+      ) %>
+    </div>
     <!-- <div class="col-md-3">
       <label>Channel Partners:</label>
       <%#= select_tag('channel_partner_code', options_for_select([['-Select Channel Partner-', '']] + @channel_partners, params[:channel_partner_code]), class: 'form-control disburse-channel-partner', id: 'disburse-channel-partner') %>

@@ -1,17 +1,48 @@
 <br>
 <%= form_tag(sales_manager_login_entries_path, method: :get) do %>
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-4">
         <label>From Date:</label>
         <%= date_field_tag 'from_date', params[:from_date], class: 'form-control' %>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <label>To Date:</label>
       <%= date_field_tag 'to_date', params[:to_date], class: 'form-control' %>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-4">
       <label>Co-ordinators:</label>
       <%= select_tag('cordinator', options_for_select([['-Select Co-ordinator-', '']] + @corrdinators, params[:cordinator]), class: 'form-control login-entry-channel-partner', id: 'login-entry-channel-partner') %>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-6">
+      <label>Paid/ Unpaid:</label>
+      <%= select_tag(
+        'paid_unpaid',
+        options_for_select(
+          [
+            ['-Select Payment Status-', ''],
+            ['Paid', true],
+            ['Unpaid', false]
+          ],
+          params[:paid_unpaid]
+        ), class: 'form-control'
+      ) %>
+    </div>
+    <div class="col-md-6">
+      <label>Approved/ Unapproved:</label>
+      <%= select_tag(
+        'approved_unapproved',
+        options_for_select(
+          [
+            ['-Select Approval Status-', ''],
+            ['Approved', true],
+            ['Unapproved', false]
+          ],
+          params[:approved_unapproved]
+        ), class: 'form-control'
+      ) %>
     </div>
   </div>
   <br>

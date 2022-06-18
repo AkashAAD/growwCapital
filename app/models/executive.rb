@@ -4,6 +4,7 @@ class Executive < ApplicationRecord
 
   validates :full_name, :code, presence: true
   validates :full_name, uniqueness: { scope: :code }
+  scope :undeleted, -> { where(soft_delete: false) }
 
   validates :full_name, format: /\w+ \w+/
 end

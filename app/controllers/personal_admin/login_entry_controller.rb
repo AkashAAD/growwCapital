@@ -95,6 +95,11 @@ module PersonalAdmin
     end
 
     def search_login_entries
+      @corrdinators = User.joins(:role)
+        .where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin')
+        .where('users.profession IS NULL || users.profession != ?', 'developer')
+        .map {|rr| [rr.full_name, rr.id] }
+
       if params[:cordinator].present?
         @login_entries = LoginEntry.where(user_id: params[:cordinator])
       end
@@ -111,6 +116,22 @@ module PersonalAdmin
         end
       end
 
+      if params[:paid_unpaid].present?
+        if params[:cordinator].present?
+          @login_entries = @login_entries.where(payment: params[:paid_unpaid])
+        else
+          return flash[:warning] = 'Please select co-ordinator.'
+        end
+      end
+
+      if params[:approved_unapproved].present?
+        if params[:cordinator].present?
+          @login_entries = @login_entries.where(approved: params[:approved_unapproved])
+        else
+          return flash[:warning] = 'Please select co-ordinator.'
+        end
+      end
+
       if params[:search].present?
         key = "%#{params[:search]}%"
         columns = LoginEntry.column_names
@@ -119,11 +140,6 @@ module PersonalAdmin
           search: key
         )
       end
-
-      @corrdinators = User.joins(:role)
-        .where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin')
-        .where('users.profession IS NULL || users.profession != ?', 'developer')
-        .map {|rr| [rr.full_name, rr.id] }
 
       return @login_entries && request.format = 'xlsx' if params[:xls] == 'xls'
 

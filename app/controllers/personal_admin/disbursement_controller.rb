@@ -104,11 +104,10 @@ module PersonalAdmin
       if @disbursement.payment
         @disbursement.payment_date = Time.zone.now
         @disbursement.login_entry.payment_date = @disbursement.payment_date
+        @disbursement.login_entry.payment = @disbursement.payment
       end
 
       @disbursement.save
-
-      @disbursement.login_entry.payment = @disbursement.payment
       @disbursement.login_entry.save
     end
 
@@ -136,6 +135,14 @@ module PersonalAdmin
           columns.map { |c| "#{c} like :search" }.join(' OR '),
           search: key
         )
+      end
+
+      if params[:paid_unpaid].present?
+        if params[:cordinator].present?
+          @disbursements = @disbursements.where(payment: params[:paid_unpaid])
+        else
+          return flash[:warning] = 'Please select co-ordinator.'
+        end
       end
 
       # if params[:channel_partner_code].present?

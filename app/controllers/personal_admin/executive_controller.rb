@@ -6,7 +6,7 @@ module PersonalAdmin
     layout 'personal_admin'
 
     def index
-      @executives = Executive.all
+      @executives = Executive.all.undeleted
       @executives = search_executives(params[:search]) if params[:search].present?
       @executives = @executives.order(id: :desc).paginate(page: params[:page], per_page: 10)
     end
@@ -43,7 +43,9 @@ module PersonalAdmin
     def show; end
 
     def destroy
-      @executive.destroy
+      @executive.soft_delete = true
+      @executive.save
+
       flash[:notice] = 'Executive deleted successfully.'
       redirect_to sales_manager_executives_path
     end

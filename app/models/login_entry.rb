@@ -34,7 +34,7 @@ class LoginEntry < ApplicationRecord
   end
 
   def executives
-    Executive.all
+    Executive.all.undeleted
   end
 
   def dob_validation
