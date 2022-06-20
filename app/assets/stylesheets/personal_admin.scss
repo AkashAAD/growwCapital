@@ -119,6 +119,18 @@ body, html {
   float: left;
   width: 70%;
   margin-left: 20px;
+  .sales-manager-watermark {
+    position: fixed;
+    z-index: -99999;
+    top: 50%;
+    transform: rotate(-50deg);
+    -webkit-transform: rotate(-50deg);
+    -moz-transform: rotate(-50deg);
+    left: 50%;
+    color: #597a9b;
+    opacity: 0.1;
+    font-size: 100px;
+  }
   .heading-container {
     font-size: 35px;
     font-weight: 600;

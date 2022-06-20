@@ -83,6 +83,7 @@
       </div>
     </div>
     <div class="personal_admin_body">
+      <div class="sales-manager-watermark"><%= current_user&.employee_id %></div>
       <%= render "layouts/personal_admin_flash_messages" %>
       <%= yield %>
     </div>
