@@ -50,4 +50,4 @@ gem 'will_paginate', '~> 3.3'
 gem 'sitemap_generator'
 gem 'chosen-rails'
 gem 'caxlsx_rails'
-
+gem 'tinymce-rails'
