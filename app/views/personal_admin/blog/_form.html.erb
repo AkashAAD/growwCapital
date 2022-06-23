@@ -1,0 +1,42 @@
+<%= form_tag  @blog.id.nil? ? '/sales-manager/create_blog' : "/sales-manager/update_blog/#{@blog.id}", method: @blog.id.nil? ? :post : :patch, html: {id:  "blog-form", class: "blog-form"} do |f| %>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Blog Title</label>
+        <%= text_area_tag('blog[title]', @blog.title, class: "form-control") %>
+        <p class='error'><%= show_errors(@blog, :title) %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Auther Name</label>
+        <%= text_field_tag('blog[auther_name]', @blog.auther_name, class: "form-control") %>
+        <p class='error'><%= show_errors(@blog, :auther_name) %></p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Publish Date</label>
+        <%= date_field_tag('blog[publish_date]', @blog.publish_date, class: "form-control") %>
+        <p class='error'><%= show_errors(@blog, :publish_date) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Blog Description</label>
+          <p class='error'><%= show_errors(@blog, :content) %></p>
+          <%= text_area_tag 'blog[content]', "", :class => "tinymce" %>
+          <%= tinymce %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
+        <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+    </div>
+  </div>
+<%end%>

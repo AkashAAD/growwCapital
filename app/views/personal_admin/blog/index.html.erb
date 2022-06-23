@@ -1,0 +1,49 @@
+<section>
+  <div class="container">
+    <div class="row row-heading">
+      <div class="col-md-6 heading-container">
+        <span class="heading-container">Blogs</span>
+      </div>
+    </div>
+    <div class="row heading-container">
+      <div class="col-md-6">
+        <%= form_tag(sales_manager_blogs_path, method: :get) do %>
+          <input type="text" name="search" value="<%= params[:search] %>" placeholder="Search Here..." class="form-control search">
+          <button type="submit" class="btn btn-info"><i class="fa fa-search" aria-hidden="true"></i></button>
+        <%end%>
+      </div>
+      <div class="col-md-6">
+        <%= link_to '+ New blog', sales_manager_new_blog_path, class: 'btn btn-info float-right' %>
+      </div>
+    </div>
+    <br>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <thead>
+          <th>Blog Title</th>
+          <th>Actions</th>
+        </thead>
+        <tbody>
+          <% @blogs.each do |blog| %>
+            <tr>
+              <td><%= blog.title %></td>
+              <td>
+                <%= link_to 'Show', "/sales-manager/blog/#{blog.id}/show" %> |
+                <%= link_to 'Edit', "/sales-manager/blog/#{blog.id}/edit" %>
+                <% if current_user.admin? || current_user.accountant? %>
+                 | <%= link_to 'Delete', "/sales-manager/blog/#{blog.id}/destroy", onclick: "show_confirm()" %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row digg_pagination">
+      <%= will_paginate @blogs %>
+    </div>
+  </div>
+</section>
