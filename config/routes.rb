@@ -56,6 +56,14 @@ Rails.application.routes.draw do
   get 'sales-manager/product/:id/destroy' => 'personal_admin/product#destroy'
   post 'sales-manager/create_product' => 'personal_admin/product#create'
   patch 'sales-manager/update_product/:id' => 'personal_admin/product#update'
+
+  get 'sales-manager/blogs' => 'personal_admin/blog#index'
+  get 'sales-manager/new-blog' => 'personal_admin/blog#new'
+  get 'sales-manager/blog/:id/show' => 'personal_admin/blog#show'
+  get 'sales-manager/blog/:id/edit' => 'personal_admin/blog#edit'
+  get 'sales-manager/blog/:id/destroy' => 'personal_admin/blog#destroy'
+  post 'sales-manager/create_blog' => 'personal_admin/blog#create'
+  patch 'sales-manager/update_blog/:id' => 'personal_admin/blog#update'
   ############# SALES MANAGER URL ###########
 
   root 'home#index'
