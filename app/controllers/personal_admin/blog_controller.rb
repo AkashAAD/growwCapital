@@ -50,7 +50,7 @@ module PersonalAdmin
     private
 
     def set_params
-      params.require(:blog).permit(:name)
+      params.require(:blog).permit(:title, :content, :auther_name, :publish_date, :desktop_image, :mobile_image)
     end
 
     def get_blog
