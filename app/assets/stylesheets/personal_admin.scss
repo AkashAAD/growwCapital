@@ -122,14 +122,14 @@ body, html {
   .sales-manager-watermark {
     position: fixed;
     z-index: -99999;
-    top: 50%;
+    top: 25%;
     transform: rotate(-50deg);
     -webkit-transform: rotate(-50deg);
     -moz-transform: rotate(-50deg);
-    left: 50%;
+    left: 32%;
     color: #597a9b;
     opacity: 0.1;
-    font-size: 100px;
+    font-size: 250px;
   }
   .heading-container {
     font-size: 35px;

@@ -1,0 +1,10 @@
+<br>
+<%= form_tag("#{sales_manager_login_entries_path}?rejected=true", method: :get) do %>
+  <%= hidden_field_tag('rejected', true) %>
+  <div class="row">
+    <div class="col-md-6">
+      <button type="submit" class="btn btn-info">Show Rejected</button>
+    </div>
+  </div>
+<%end%>
+<br>

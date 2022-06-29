@@ -118,8 +118,15 @@
       <div class="col-md-6">
         <div class="form-group">
           <br>
-          <label>Approved</label><br>
+          <label>Approved?</label><br>
           <%= check_box_tag('login_entry[approved]', true, @login_entry.approved) %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <br>
+          <label>Rejected?</label><br>
+          <%= check_box_tag('login_entry[rejected]', true, @login_entry.rejected) %>
         </div>
       </div>
     <%end%>
