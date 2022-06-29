@@ -20,8 +20,8 @@
     </div>
     <% if current_user.admin? || current_user.accountant? %>
       <%= render 'search' %>
-    <% else %>
-      <br>
+    <% elsif current_user.sales_manager? %>
+      <%= render 'sales_manager_search' %>
     <%end%>
   </div>
 

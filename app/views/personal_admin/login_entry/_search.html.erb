@@ -16,7 +16,7 @@
   </div>
   <br>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-4">
       <label>Paid/ Unpaid:</label>
       <%= select_tag(
         'paid_unpaid',
@@ -30,7 +30,7 @@
         ), class: 'form-control'
       ) %>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
       <label>Approved/ Unapproved:</label>
       <%= select_tag(
         'approved_unapproved',
@@ -41,6 +41,20 @@
             ['Unapproved', false]
           ],
           params[:approved_unapproved]
+        ), class: 'form-control'
+      ) %>
+    </div>
+    <div class="col-md-4">
+      <label>Rejected/ Un-rejected:</label>
+      <%= select_tag(
+        'reject_unreject',
+        options_for_select(
+          [
+            ['-Select Rejcted Status-', ''],
+            ['Rejcted', true],
+            ['Un-Reject', false]
+          ],
+          params[:reject_unreject]
         ), class: 'form-control'
       ) %>
     </div>

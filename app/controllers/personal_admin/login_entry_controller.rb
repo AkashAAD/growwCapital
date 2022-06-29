@@ -8,7 +8,7 @@ module PersonalAdmin
 
     def index
       if current_user&.sales_manager?
-        @login_entries = current_user.login_entries.where('payment_date >= ? OR payment_date is null', 1.day.ago)
+        @login_entries = sales_manager_login_entries
       else
         @login_entries = []
       end
@@ -44,6 +44,7 @@ module PersonalAdmin
 
       @login_entry.channel_partner = set_channel_partner
       @login_entry.approved = params[:login_entry][:approved] ? true : false
+      @login_entry.rejected = params[:login_entry][:rejected] ? true : false
 
       if @login_entry.update(set_params)
         flash[:notice] = 'Login Entry updated successfully.'
@@ -94,6 +95,16 @@ module PersonalAdmin
       ChannelPartner.find_by(id: params[:login_entry][:channel_partner])
     end
 
+    def sales_manager_login_entries
+      @login_entries = current_user
+        .login_entries.where('payment_date >= ? OR payment_date is null', 1.day.ago)
+      if params[:rejected] == 'true'
+        @login_entries.where(rejected: true)
+      else
+        @login_entries.where(rejected: false)
+      end
+    end
+
     def search_login_entries
       @corrdinators = User.joins(:role)
         .where('roles.name = ? || roles.name = ?', 'sales_manager', 'admin')
@@ -127,6 +138,14 @@ module PersonalAdmin
       if params[:approved_unapproved].present?
         if params[:cordinator].present?
           @login_entries = @login_entries.where(approved: params[:approved_unapproved])
+        else
+          return flash[:warning] = 'Please select co-ordinator.'
+        end
+      end
+
+      if params[:reject_unreject].present?
+        if params[:cordinator].present?
+          @login_entries = @login_entries.where(rejected: params[:reject_unreject])
         else
           return flash[:warning] = 'Please select co-ordinator.'
         end
