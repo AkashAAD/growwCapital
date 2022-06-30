@@ -48,20 +48,26 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Channel Partner Types</label>
+        <%= select_tag('login_entry[channel_partner_type]', options_for_select([['-Select Channel Partner Type-', '']] + current_user.channel_partner_types.pluck(:name, :id), @login_entry.channel_partner_type&.id), class: "form-control") %>
+      </div>
+    </div>
+    <div class="col-md-3">
       <div class="form-group">
         <label>Channel Partner Code</label>
-        <%= select_tag('login_entry[channel_partner]', options_for_select([['-Select Channel Partner-', '']] + @login_entry.channel_partners(@login_entry.user || current_user).pluck(:code, :id), @login_entry.channel_partner&.id), class: "form-control") %>
+        <%= select_tag('login_entry[channel_partner]', options_for_select([['-Select Channel Partner-', '']] + @login_entry.channel_partners(@login_entry.channel_partner_type).pluck(:code, :id), @login_entry.channel_partner&.id), class: "form-control") %>
         <p class='error'><%= show_errors(@login_entry, :channel_partner_id) %></p>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="form-group">
         <label>Channel Partner Name</label>
         <p class="lg-channel-partner-name"><%= @login_entry.channel_partner&.full_name %></p>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
       <div class="form-group">
         <label>Product Name</label>
         <%= select_tag('login_entry[channel_partner_product_id]', options_for_select(channel_products(@login_entry), @login_entry.channel_partner_product&.id), class: "form-control") %>
@@ -100,6 +106,8 @@
         <p class='error'><%= show_errors(@login_entry, :executive_id) %></p>
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="col-md-6">
       <div class="form-group">
         <label>Bank Name</label>
@@ -109,12 +117,23 @@
     </div>
     <div class="col-md-6">
       <div class="form-group">
+        <label>Loan Amount:</label>
+        <%= number_field_tag('login_entry[loan_amount]', @login_entry.loan_amount, class: "form-control") %>
+        <p class='error'><%= show_errors(@login_entry, :loan_amount) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group">
         <label>Notes:</label>
         <%= text_area_tag('login_entry[notes]', @login_entry.notes, class: "form-control") %>
         <p class='error'><%= show_errors(@login_entry, :notes) %></p>
       </div>
     </div>
-    <% unless @login_entry.id.nil? %>
+  </div>
+  <% unless @login_entry.id.nil? %>
+    <div class="row">
       <div class="col-md-6">
         <div class="form-group">
           <br>
@@ -129,8 +148,8 @@
           <%= check_box_tag('login_entry[rejected]', true, @login_entry.rejected) %>
         </div>
       </div>
-    <%end%>
-  </div>
+    </div>
+  <%end%>
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">

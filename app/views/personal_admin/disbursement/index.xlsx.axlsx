@@ -31,6 +31,7 @@ wb.styles do |style|
       'Bank Name',
       'Login Approved?',
       'Login Notes',
+      'Loan Amount',
       'Disbursement Date',
       'Processing Fee',
       'Disburse Amount',
@@ -41,7 +42,7 @@ wb.styles do |style|
       'Payment Done?',
       'Disbursement Remark',
       'Created at in DB'
-    ], style: [highlight_header_cell] * 28
+    ], style: [highlight_header_cell] * 29
 
     @disbursements.each do |disbursement|
       sheet.add_row [
@@ -63,6 +64,7 @@ wb.styles do |style|
         disbursement.login_entry&.bank&.name,
         disbursement.login_entry&.approved ? 'Yes' : 'No',
         disbursement.login_entry&.notes,
+        disbursement.login_entry&.loan_amount,
         show_date(disbursement.disburse_date),
         disbursement.processing_fee,
         disbursement.disburse_amount,
@@ -73,7 +75,7 @@ wb.styles do |style|
         disbursement.payment ? 'Yes' : 'No',
         disbursement.remark,
         show_date(disbursement.created_at)
-      ], style: [highlight_cell] * 28
+      ], style: [highlight_cell] * 29
     end
   end
 end

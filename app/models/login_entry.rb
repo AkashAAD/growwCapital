@@ -2,6 +2,7 @@ class LoginEntry < ApplicationRecord
   include Products
   belongs_to :user
   belongs_to :channel_partner
+  belongs_to :channel_partner_type
   belongs_to :channel_partner_product
   belongs_to :executive
   belongs_to :bank
@@ -21,6 +22,7 @@ class LoginEntry < ApplicationRecord
     :customer_id,
     :executive_id,
     :bank_id,
+    :loan_amount,
     :notes,
     :dob, presence: true
 
@@ -29,8 +31,8 @@ class LoginEntry < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validate :dob_validation
 
-  def channel_partners(user)
-    ChannelPartner.where(channel_partner_type_id: user&.channel_partner_type&.id)
+  def channel_partners(channel_partner_type)
+    ChannelPartner.where(channel_partner_type_id: channel_partner_type)
   end
 
   def executives

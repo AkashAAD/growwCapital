@@ -28,6 +28,7 @@ module PersonalAdmin
     def create
       @login_entry = LoginEntry.new(set_params)
       @login_entry.channel_partner = set_channel_partner
+      @login_entry.channel_partner_type = set_channel_partner_type
       @login_entry.user = current_user
 
       if @login_entry.save
@@ -43,6 +44,7 @@ module PersonalAdmin
       redirect_to sales_manager_login_entries_path if @login_entry.payment
 
       @login_entry.channel_partner = set_channel_partner
+      @login_entry.channel_partner_type = set_channel_partner_type
       @login_entry.approved = params[:login_entry][:approved] ? true : false
       @login_entry.rejected = params[:login_entry][:rejected] ? true : false
 
@@ -83,6 +85,7 @@ module PersonalAdmin
         :process_date,
         :executive_id,
         :bank_id,
+        :loan_amount,
         :notes
       )
     end
@@ -93,6 +96,10 @@ module PersonalAdmin
 
     def set_channel_partner
       ChannelPartner.find_by(id: params[:login_entry][:channel_partner])
+    end
+
+    def set_channel_partner_type
+      ChannelPartnerType.find_by(id: params[:login_entry][:channel_partner_type])
     end
 
     def sales_manager_login_entries

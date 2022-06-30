@@ -102,6 +102,14 @@
   <div class="row">
     <div class="col-md-4">
       <div class="form-group">
+        <label>Loan Amount</label>
+        <%= number_field_tag('disbursement[loan_amount]', @disbursement&.login_entry&.loan_amount, class: "form-control", disabled: true) %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
         <label>Processing Fee(Rs.) </label>
         <%= number_field_tag('disbursement[processing_fee]', @disbursement.processing_fee, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :processing_fee) %></p>

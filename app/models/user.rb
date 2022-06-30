@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, authentication_keys: [:login]
   belongs_to :role, optional: true
-  belongs_to :channel_partner_type, optional: true
+  has_and_belongs_to_many :channel_partner_types, optional: true
 
   validates :first_name, presence: true
   validates :last_name, presence: true

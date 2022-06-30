@@ -29,10 +29,12 @@ wb.styles do |style|
       'Executive Name',
       'Executive Code',
       'Bank Name',
+      'Loan Amount',
       'Login Approved?',
+      'Login Rejected?',
       'Notes',
       'Created at in DB'
-    ], style: [highlight_header_cell] * 19
+    ], style: [highlight_header_cell] * 21
 
     @login_entries.each do |login_entry|
       sheet.add_row [
@@ -52,10 +54,12 @@ wb.styles do |style|
         login_entry.executive&.full_name,
         login_entry.executive&.code,
         login_entry.bank&.name,
+        login_entry.loan_amount,
         login_entry.approved ? 'Yes' : 'No',
+        login_entry.rejected ? 'Yes' : 'No',
         login_entry.notes,
         show_date(login_entry.created_at)
-      ], style: [highlight_cell] * 19
+      ], style: [highlight_cell] * 21
     end
   end
 end

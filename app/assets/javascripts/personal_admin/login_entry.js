@@ -45,4 +45,22 @@ $(document).ready(function(){
     });
   });
 
+  $("#login_entry_channel_partner_type").change(function(evt) {
+    $("#login_entry_channel_partner").html('<option value="">-Select Channel Partner-</option>');
+    $("#login_entry_channel_partner_product_id").html('<option value="">-Select Product-</option>');
+    $('.lg-channel-partner-name').html('');
+
+    $.ajax({
+      url: "/personal-admin/home/channel-partners",
+      dataType: "json",
+      data: { id: event.target.value },
+      success: function (data) {
+        var options = '<option value="">-Select Channel Partner-</option>';
+        data.channel_partners.forEach(function(val) {
+          options+= '<option value="' + val['id'] + '">' + val['full_name'] + '</option>'
+        });
+        $("#login_entry_channel_partner").html(options);
+      }
+    });
+  });
 });
