@@ -1,12 +1,14 @@
 <%= form_tag  @blog.id.nil? ? '/sales-manager/create_blog' : "/sales-manager/update_blog/#{@blog.id}", method: @blog.id.nil? ? :post : :patch, html: {id:  "blog-form", class: "blog-form"} do |f| %>
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
       <div class="form-group">
         <label>Blog Title</label>
-        <%= text_area_tag('blog[title]', @blog.title, class: "form-control") %>
+        <%= text_field_tag('blog[title]', @blog.title, class: "form-control") %>
         <p class='error'><%= show_errors(@blog, :title) %></p>
       </div>
     </div>
+  </div>
+  <div class="row">
     <div class="col-md-4">
       <div class="form-group">
         <label>Auther Name</label>
@@ -21,14 +23,20 @@
         <p class='error'><%= show_errors(@blog, :publish_date) %></p>
       </div>
     </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label>Blog Image</label>
+        <%= file_field_tag('blog[desktop_image]', as: :ckeditor, class: "form-control") %>
+        <p class='error'><%= show_errors(@blog, :desktop_image) %></p>
+      </div>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-12">
       <div class="form-group">
         <label>Blog Description</label>
           <p class='error'><%= show_errors(@blog, :content) %></p>
-          <%= text_area_tag 'blog[content]', "", :class => "tinymce" %>
-          <%= tinymce %>
+          <%= cktext_area 'blog[content]', "", :class => "tinymce" %>
       </div>
     </div>
   </div>

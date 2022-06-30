@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   authenticate :user, lambda { |u| u.admin? } do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end

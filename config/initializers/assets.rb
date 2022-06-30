@@ -10,3 +10,4 @@ Rails.application.config.assets.precompile += Dir["#{Rails.root}/app/assets/java
 Rails.application.config.assets.precompile += Dir["#{Rails.root}/app/assets/javascripts/personal_admin/*"].sort_by { |dir| -dir.size }
 # Rails.application.config.assets.precompile += Dir["#{Rails.root}/app/assets/javascripts/personal_admin/*"].sort_by { |dir| -dir.size }
 Rails.application.config.assets.precompile += %w( personal_admin.js )
+Rails.application.config.assets.precompile += %w[ckeditor/config.js]
