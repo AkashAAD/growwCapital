@@ -11,6 +11,7 @@ $(document).ready(function(){
       $('#disbursement_mobile_number').val('');
       $('#disbursement_email').val('');
       $('#disbursement_dob').val('');
+      $('#disbursement_loan_amount').val('');
       $('#disbursement_state').html('<option value="">-Select State-</option>')
       $('#disbursement_city').html('<option value="">-Select City-</option>');
       $('#disbursement_process_date').val('')
@@ -35,6 +36,7 @@ $(document).ready(function(){
         $('#disbursement_mobile_number').val(login_entry.mobile_number);
         $('#disbursement_email').val(login_entry.email);
         $('#disbursement_dob').val(data.dob);
+        $('#disbursement_loan_amount').val(login_entry.loan_amount);
         $('#disbursement_state').html('<option value="">'+ data.state +'</option>')
         $('#disbursement_city').html('<option value="">'+ data.city +'</option>');
         $('#disbursement_process_date').val(data.process_date);

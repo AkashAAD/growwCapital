@@ -77,6 +77,12 @@
           <td><%= @disbursement.payment ? 'Yes' : 'No' %></td>
         </tr>
         <tr>
+          <th>Loan amount</th>
+          <td>Rs. <%= @disbursement.login_entry&.loan_amount %></td>
+          <th></th>
+          <td></td>
+        </tr>
+        <tr>
           <th colspan="4"><h4 style="color: #0000ff;">Channel Partner Details</h4></th>
         </tr>
         <tr>

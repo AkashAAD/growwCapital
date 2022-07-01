@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'sales-manager' => 'personal_admin/home#index'
   get 'personal-admin/home/channel-partner-products' => 'personal_admin/home#get_channel_products'
   get 'personal-admin/home/channel-login-entry' => 'personal_admin/home#get_login_entry'
+  get 'personal-admin/home/channel-partners' => 'personal_admin/home#channel_partners'
 
   get 'sales-manager/disbursements' => 'personal_admin/disbursement#index'
   get 'sales-manager/channel_partner' => 'personal_admin/disbursement#channel_partner_name'

@@ -55,14 +55,20 @@
         <tr>
           <th>Bank Name</th>
           <td><%= @login_entry.bank&.name %></td>
-          <th>Login Approved?:</th>
-          <td><%= @login_entry.approved ? 'Yes' : 'No' %></td>
+          <th>Loan Amount</th>
+          <td><%= @login_entry.loan_amount %></td>
         </tr>
         <tr>
           <th>Rejected?</th>
           <td><%= @login_entry.rejected ? 'Yes' : 'No' %></td>
+          <th>Login Approved?:</th>
+          <td><%= @login_entry.approved ? 'Yes' : 'No' %></td>
+        </tr>
+        <tr>
           <th>Notes</th>
           <td><%= @login_entry.notes %></td>
+          <td></td>
+          <td></td>
         </tr>
       </table>
     </div>

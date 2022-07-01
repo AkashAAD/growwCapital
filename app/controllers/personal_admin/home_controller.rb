@@ -16,6 +16,12 @@ module PersonalAdmin
       }
     end
 
+    def channel_partners
+      render json: {
+        channel_partners: ChannelPartner.where(channel_partner_type_id: params[:id])
+      }
+    end
+
     def get_login_entry
       login_entry = LoginEntry.find_by(id: params[:id])
 
