@@ -57,7 +57,7 @@ $(document).ready(function(){
       success: function (data) {
         var options = '<option value="">-Select Channel Partner-</option>';
         data.channel_partners.forEach(function(val) {
-          options+= '<option value="' + val['id'] + '">' + val['full_name'] + '</option>'
+          options+= '<option value="' + val['id'] + '">' + val['code'] + '</option>'
         });
         $("#login_entry_channel_partner").html(options);
       }
