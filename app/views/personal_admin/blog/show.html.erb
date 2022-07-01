@@ -1,0 +1,40 @@
+<section>
+  <div class="container">
+    <div class="row row-heading">
+      <div class="col-md-12 heading-container">
+        <span class="heading-container">Blog Details</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <table class="table">
+        <tr>
+          <th>Title:</th>
+          <td><%= @blog.title %></td>
+          <th>Auther Name:</th>
+          <td><%= @blog.auther_name %></td>
+        </tr>
+        <tr>
+          <th>Publish Date:</th>
+          <td><%= @blog.publish_date %></td>
+          <th>Approved?</th>
+          <td><%= @blog.approved ? 'Yes' : 'No' %></td>
+        </tr>
+        <tr>
+          <th>Keywords:</th>
+          <td><%= @blog.keywords %></td>
+          <th>Meta Description</th>
+          <td><%= @blog.meta_description %></td>
+        </tr>
+        <tr>
+          <th colspan="4">Description</th>
+        </tr>
+        <tr>
+          <td colspan="4"><%= @blog.content.html_safe %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>

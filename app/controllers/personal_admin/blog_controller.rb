@@ -17,6 +17,7 @@ module PersonalAdmin
 
     def create
       @blog = Blog.new(set_params)
+      @blog.content = params[:blog][:content][0]
 
       if @blog.save
         flash[:notice] = 'New blog created successfully.'
@@ -29,6 +30,9 @@ module PersonalAdmin
 
     def update
       if @blog.update(set_params)
+        @blog.content = params[:blog][:content][0]
+        @blog.save
+
         flash[:notice] = 'blog updated successfully.'
         redirect_to sales_manager_blogs_path
       else
@@ -50,7 +54,16 @@ module PersonalAdmin
     private
 
     def set_params
-      params.require(:blog).permit(:title, :content, :auther_name, :publish_date, :desktop_image, :mobile_image)
+      params.require(:blog).permit(
+        :title,
+        :auther_name,
+        :keywords,
+        :meta_description,
+        :publish_date,
+        :desktop_image,
+        :mobile_image,
+        :approved
+      )
     end
 
     def get_blog
