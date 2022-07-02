@@ -1,5 +1,5 @@
 <section id="blog-banner"></section>
-<section class="content">
+<section class="content blog-container">
   <div class="container">
     <% @blogs.each do |blog|%>
       <div class="inner-page blog-container row">
@@ -10,8 +10,8 @@
               <h3 class="card-title"><%= link_to "#{blog.title}", blog_path(blog.slug), mehood: :get %></h3>
             </div>
             <br>
-            <ul class="margin-left-0" style="padding-left: 0px;">
-              <li class="fa fa-calendar">&nbsp;<a href="#"><%= blog.publish_date %></a></li> | 
+            <ul class="margin-left-0 detail">
+              <li class="fa fa-calendar">&nbsp;<a href="#"><%= blog.publish_date %></a></li><a> | </a>
               <li class="fa fa-user">&nbsp;<a href="#"><%= blog.auther_name %></a></li>
             </ul>
           </div>
@@ -21,6 +21,6 @@
     <%end%>
   </div>
   <div class="row digg_pagination">
-    <%= will_paginate @banks %>
+    <%= will_paginate @blogs %>
   </div>
 </section>

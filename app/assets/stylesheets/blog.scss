@@ -1,4 +1,13 @@
 .blog-container {
+  .detail {
+    padding-left: 0px;
+    a {
+      font-size: 18px;
+      font-family: 'Source Sans Pro', sans-serif;
+      padding: 5px 5px 5px 5px !important;
+      font-weight: 600;
+    }
+  }
   .details {
     padding-left: 0px;
     li {
