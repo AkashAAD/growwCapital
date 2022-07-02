@@ -11,11 +11,11 @@
             <h2 class="card-title"><%= @blog.title %></h2>
           </div>
           <br>
-          <ul class="margin-left-0 details" style="padding-left: 0px;">
+          <ul class="margin-left-0 details">
             <li class="fa fa-calendar">&nbsp;<a href="#"><%= @blog.publish_date %></a></li> | 
             <li class="fa fa-user">&nbsp;<a href="#"><%= @blog.auther_name %></a></li>
           </ul>
-          <div class="post-entry clearfix" style="text-align: justify;">
+          <div class="blog-content clearfix">
             <%= @blog.content.html_safe %>
           </div>
         </div>

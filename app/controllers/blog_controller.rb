@@ -1,6 +1,6 @@
 class BlogController < ApplicationController
   def blogs
-    @blogs = Blog.all.paginate(page: params[:page], per_page: 10)
+    @blogs = Blog.all.where(approved: true).paginate(page: params[:page], per_page: 10)
   end
 
   def blog

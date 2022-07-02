@@ -1,13 +1,21 @@
 .blog-container {
   .details {
+    padding-left: 0px;
     li {
       font-size: 17px;
     }
     a {
       color: #1b1dc7;
-      font-size: 17px;
+      font-size: 20px;
+      font-family: 'Source Sans Pro', sans-serif;
       padding: 5px 5px 5px 5px !important;
       font-weight: 600;
+    }
+  }
+  .blog-content {
+    text-align: justify;
+    p {
+      font-size: 20px;
     }
   }
 }
