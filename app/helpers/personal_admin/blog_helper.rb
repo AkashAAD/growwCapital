@@ -1,0 +1,2 @@
+module PersonalAdmin::BlogHelper
+end

@@ -299,6 +299,12 @@
   display: none;
 }
 
+.faq-container {
+  h4 {
+    font-size: 25px;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .homepage {
     margin-top: 90px;

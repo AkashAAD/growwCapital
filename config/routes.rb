@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
   authenticate :user, lambda { |u| u.admin? } do
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   end
@@ -57,6 +58,14 @@ Rails.application.routes.draw do
   get 'sales-manager/product/:id/destroy' => 'personal_admin/product#destroy'
   post 'sales-manager/create_product' => 'personal_admin/product#create'
   patch 'sales-manager/update_product/:id' => 'personal_admin/product#update'
+
+  get 'sales-manager/blogs' => 'personal_admin/blog#index'
+  get 'sales-manager/new-blog' => 'personal_admin/blog#new'
+  get 'sales-manager/blog/:id/show' => 'personal_admin/blog#show'
+  get 'sales-manager/blog/:id/edit' => 'personal_admin/blog#edit'
+  get 'sales-manager/blog/:id/destroy' => 'personal_admin/blog#destroy'
+  post 'sales-manager/create_blog' => 'personal_admin/blog#create'
+  patch 'sales-manager/update_blog/:id' => 'personal_admin/blog#update'
   ############# SALES MANAGER URL ###########
 
   root 'home#index'
@@ -71,7 +80,6 @@ Rails.application.routes.draw do
   post 'home/newsletter' => "home#newsletter"
   get "contact_us" => "home#contact_us", as: "contact_us"
   get "about_us" => "home#about_us", as: "about_us"
-  get "blog" => "home#blog", as: "blog"
   get "emi_calculator" => "home#emi_calculator", as: "emi_calculator"
   get "pre_approved" => "home#pre_approved", as: "pre_approved"
   post "pre_approved_offer" => "home#pre_approved_offer", as: "pre_approved_offer"
@@ -84,6 +92,10 @@ Rails.application.routes.draw do
   get "channel_partner" => "home#channel_partner", as: "channel_partner"
   get "terms_and_conditions" => "home#terms_and_conditions", as: "terms_and_conditions"
   get "privacy_policy" => "home#privacy_policy", as: "privacy_policy"
+  get "faq" => "home#faq", as: 'faq'
+
+  get "blogs" => "blog#blogs"
+  get "blog/:id" => "blog#blog", as: 'blog'
 
   match "home/credit_card" => "home#credit_card", as: :custom_credit_card, via: [:get, :post]
   match "home/personal_loan" => "home#personal_loan", as: :custom_personal_loan, via: [:get, :post]

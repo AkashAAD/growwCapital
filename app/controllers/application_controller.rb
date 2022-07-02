@@ -34,4 +34,8 @@ class ApplicationController < ActionController::Base
     home_profile_path
   end
 
+  def check_admin
+    redirect_to root_path unless current_user.admin?
+  end
+
 end

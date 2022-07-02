@@ -1,10 +1,20 @@
 module SlugConcern
   extend ActiveSupport::Concern
   included do
-    before_save :generate_slug
+    before_save :create_slug
   end
 
+  def create_slug
+    write_attribute(:slug, generate_slug)
+  end
+
+  private
+
   def generate_slug
-    write_attribute(:slug, name.parameterize)
+    begin
+      name&.parameterize
+    rescue StandardError => e
+      return title&.parameterize
+    end
   end
 end
