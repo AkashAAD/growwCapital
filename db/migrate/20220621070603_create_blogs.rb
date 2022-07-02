@@ -7,6 +7,8 @@ class CreateBlogs < ActiveRecord::Migration[5.2]
       t.text :meta_description
       t.string :auther_name
       t.string :publish_date
+      t.string :soft_delete, :boolean, default: false
+      t.string :slug, :string
       t.boolean :approved, default: false
       t.timestamps
     end

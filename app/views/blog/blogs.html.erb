@@ -1,0 +1,23 @@
+<section id="blog-banner"></section>
+<section class="content">
+  <div class="container">
+    <% @blogs.each do |blog|%>
+      <div class="inner-page blog-container row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+          <div class="margin-bottom-40">
+            <div class="blog-title">
+              <h3 class="card-title"><%= link_to "#{blog.title}", blog_path(blog.slug), mehood: :get %></h3>
+            </div>
+            <br>
+            <ul class="margin-left-0" style="padding-left: 0px;">
+              <li class="fa fa-calendar">&nbsp;<a href="#"><%= blog.publish_date %></a></li> | 
+              <li class="fa fa-user">&nbsp;<a href="#"><%= blog.auther_name %></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3"></div>
+      </div>
+    <%end%>
+  </div>
+</section>

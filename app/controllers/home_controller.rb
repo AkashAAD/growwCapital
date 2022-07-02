@@ -129,9 +129,6 @@ class HomeController < ApplicationController
     end
   end
 
-  def blog    
-  end
-
   def newsletter
     newsletter = NewsletterSubscription.new(email: params[:newsletter][:email])
     newsletter.save

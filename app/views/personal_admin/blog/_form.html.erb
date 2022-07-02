@@ -58,7 +58,7 @@
       <div class="form-group">
         <label>Blog Description</label>
           <p class='error'><%= show_errors(@blog, :content) %></p>
-          <%= cktext_area 'blog[content]', '', :class => "tinymce" %>
+          <%= cktext_area_tag 'blog[content]', @blog.content %>
       </div>
     </div>
   </div>

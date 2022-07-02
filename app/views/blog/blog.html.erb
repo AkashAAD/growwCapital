@@ -1,0 +1,25 @@
+<section class="content">
+  <div class="container">
+    <div class="inner-page blog-container row">
+      <div class="col-md-12">
+        <div class="margin-bottom-40">
+          <%= image_tag url_for(@blog.desktop_image)  %>
+        </div>
+        <br>
+        <div class="margin-bottom-40">
+          <div class="blog-title">
+            <h2 class="card-title"><%= @blog.title %></h2>
+          </div>
+          <br>
+          <ul class="margin-left-0 details" style="padding-left: 0px;">
+            <li class="fa fa-calendar">&nbsp;<a href="#"><%= @blog.publish_date %></a></li> | 
+            <li class="fa fa-user">&nbsp;<a href="#"><%= @blog.auther_name %></a></li>
+          </ul>
+          <div class="post-entry clearfix" style="text-align: justify;">
+            <%= @blog.content.html_safe %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="author" content="">
     <meta name="description" content="<%= @description %>">
-    <meta name="keywords" content="<%=  %>">
+    <meta name="keywords" content="<%= @keywords %>">
     <meta name="google-site-verification" content="vluZCVNoRTrhS0n-KvdHFdGkSzJnq1wIS1zWyIOq9h0" />
     <meta name="p:domain_verify" content="db0ae1b307e7cdf553ddd22f957546f8"/>
     <link rel="canonical" href="<%= request.url %>" />
@@ -132,14 +132,17 @@
                       <li class="<%#= active_tab('about_us') %>">
                         <%= link_to "About us", about_us_path, method: :get %>
                       </li>
-                      <li class="<%#= active_tab('blog') %>">
-                        <%= link_to "Blogs", blog_path, method: :get %>
-                      </li>
                       <li class="">
                         <%= link_to "Franchise", channel_partner_path, method: :get %>
                       </li>
                       <li class="">
                         <%= link_to "Career", career_path, method: :get %>
+                      </li>
+                      <li class="<%#= active_tab('blog') %>">
+                        <%= link_to "Blogs", blogs_path, method: :get %>
+                      </li>
+                      <li class="<%#= active_tab('blog') %>">
+                        <%= link_to "FAQs", faq_path, method: :get %>
                       </li>
                     </ul>
                   </li>
@@ -197,13 +200,16 @@
                     <%= link_to "EMI Calculator", emi_calculator_path, method: :get %>
                   </li>
                   <li class="<%#= active_tab('blog') %>">
-                    <%= link_to "Blogs", blog_path, method: :get %>
-                  </li>
-                  <li class="<%#= active_tab('blog') %>">
                     <%= link_to "Apply Now", "javascript:void(0)", "data-toggle": "modal", "data-target": "#apply-now-modal", id: "sshow-apply-modal" %>
                   </li>
                   <li class="<%= active_tab('contact_us') %>">
                     <%= link_to "Contact Us", contact_us_path, method: :get %>
+                  </li>
+                  <li class="<%#= active_tab('blog') %>">
+                    <%= link_to "Blogs", blogs_path, method: :get %>
+                  </li>
+                  <li class="<%#= active_tab('blog') %>">
+                    <%= link_to "FAQs", faq_path, method: :get %>
                   </li>
                   <%if current_user.nil?%>
                     <li class="<%= active_tab('contact_us') %>">
