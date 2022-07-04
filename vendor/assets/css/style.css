@@ -6477,38 +6477,7 @@ div.secect_costom4 {
 	display: block;
 }*/
 
-.blog-content ul {
-	padding: 0;
-	margin: 0;
-	margin-top: 10px;
-}
 
-.blog-content ul li {
-	list-style: none;
-	display: inline-block;
-	color: #2e2e2e;
-	padding-right: 20px;
-	font-size: 14px;
-}
-
-.blog-content ul li:before {
-	padding-right: 10px;
-	color: #6f6f6f;
-	font-size: 20px;
-}
-
-.blog-post .blog-content .post-entry {
-	padding-top: 26px;
-	margin-bottom: 0;
-}
-
-.blog-content ul li a {
-	font-size: 14px;
-	color: #2e2e2e;
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
-	text-decoration: none;
-}
 
 .post-entry img {
 	border: 1px solid #3a3a3a;
