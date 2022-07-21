@@ -28,6 +28,8 @@ module PersonalAdmin
     end
 
     def update
+      @blog.approved = params[:blog][:approved] ? true : false
+
       if @blog.update(set_params)
         flash[:notice] = 'blog updated successfully.'
         redirect_to sales_manager_blogs_path
