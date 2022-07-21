@@ -3,7 +3,9 @@
     <div class="inner-page blog-container row">
       <div class="col-md-12">
         <div class="margin-bottom-40">
-          <%= image_tag url_for(@blog.desktop_image)  %>
+          <% if @blog.desktop_image.attached? %>
+            <%= image_tag url_for(@blog&.desktop_image)  %>
+          <% end %>
         </div>
         <br>
         <div class="margin-bottom-40">
