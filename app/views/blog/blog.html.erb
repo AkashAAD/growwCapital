@@ -5,7 +5,9 @@
         <div class="margin-bottom-40">
           <% if @blog.desktop_image.attached? %>
             <%= image_tag url_for(@blog&.desktop_image)  %>
-          <% end %>
+          <% else %>
+            <p class="p-default-img"></p>
+          <%end%>
         </div>
         <br>
         <div class="margin-bottom-40">

@@ -23,8 +23,11 @@
   }
   .blog-content {
     text-align: justify;
-    p {
+    p, li {
       font-size: 20px;
     }
+  }
+  .p-default-img {
+    margin-top: 40px;
   }
 }
