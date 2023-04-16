@@ -9,6 +9,10 @@ class Disbursement < ApplicationRecord
     :roi,
     :login_entry_id,
     :bank_insurance,
+    :aadhar_number,
+    :pan_number,
+    :net_salary,
+    :current_emi,
     :remark, presence: true
 
   validates :bt_inhancement, :cc_apply, :insurance, inclusion: { in: [true, false], message: '' }
