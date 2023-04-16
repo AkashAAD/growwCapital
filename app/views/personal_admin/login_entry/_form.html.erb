@@ -123,6 +123,54 @@
       </div>
     </div>
   </div>
+  <% if @login_entry.reference_contacts.blank? %>
+    <% 3.times do |rr| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Full Name:</label>
+            <%= text_field_tag("login_entry[reference][#{rr}][full_name]", '', class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Mobile Number:</label>
+            <%= number_field_tag("login_entry[reference][#{rr}][mobile_number]", '', class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Profile:</label>
+            <%= select_tag("login_entry[reference][#{rr}][profile]", options_for_select([['-Select Profile-', ''], ['Salaried', 'Salaried'], ['Business', 'Business']]), class: "form-control") %>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <% else %>
+    <% @login_entry.reference_contacts.each_with_index do |reference_contact, index| %>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Full Name:</label>
+            <%= text_field_tag("login_entry[reference][#{index}][full_name]", reference_contact.full_name, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Mobile Number:</label>
+            <%= number_field_tag("login_entry[reference][#{index}][mobile_number]", reference_contact.mobile_number, class: "form-control") %>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Profile:</label>
+            <%= select_tag("login_entry[reference][#{index}][profile]", options_for_select([['-Select Profile-', ''], ['Salaried', 'Salaried'], ['Business', 'Business']], reference_contact.profile), class: "form-control") %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
   <div class="row">
     <div class="col-md-6">
       <div class="form-group">

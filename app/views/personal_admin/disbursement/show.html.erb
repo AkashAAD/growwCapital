@@ -77,6 +77,18 @@
           <td><%= @disbursement.payment ? 'Yes' : 'No' %></td>
         </tr>
         <tr>
+          <th>Aadhar Number</th>
+          <td><%= @disbursement.aadhar_number %></td>
+          <th>Pan Number</th>
+          <td><%= @disbursement.pan_number %></td>
+        </tr>
+        <tr>
+          <th>Net Salary</th>
+          <td>Rs. <%= @disbursement.net_salary %></td>
+          <th>current EMI</th>
+          <td>Rs. <%= @disbursement.current_emi %></td>
+        </tr>
+        <tr>
           <th>Loan amount</th>
           <td>Rs. <%= @disbursement.login_entry&.loan_amount %></td>
           <th></th>

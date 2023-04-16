@@ -71,6 +71,21 @@
           <td></td>
         </tr>
       </table>
+      <h3>Reference Contacts</h3>
+      <table class="table">
+        <tr>
+          <th>Name</th>
+          <th>Mobile Number</th>
+          <th>Profile</th>
+        </tr>
+        <% @login_entry.reference_contacts.each do |reference_contact| %>
+          <tr>
+            <td><%= reference_contact.full_name %></td>
+            <td><%= reference_contact.mobile_number %></td>
+            <td><%= reference_contact.profile %></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 </section>

@@ -7,6 +7,7 @@ class LoginEntry < ApplicationRecord
   belongs_to :executive
   belongs_to :bank
   has_one :disbursement, dependent: :destroy
+  has_many :reference_contacts
 
   scope :approved_login_entires, -> { where(approved: true, payment: false) }
 

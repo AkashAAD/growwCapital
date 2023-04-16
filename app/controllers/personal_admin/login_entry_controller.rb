@@ -30,6 +30,9 @@ module PersonalAdmin
       @login_entry.channel_partner = set_channel_partner
       @login_entry.channel_partner_type = set_channel_partner_type
       @login_entry.user = current_user
+      @login_entry.reference_contacts << ReferenceContact.new(reference_params['0'])
+      @login_entry.reference_contacts << ReferenceContact.new(reference_params['1'])
+      @login_entry.reference_contacts << ReferenceContact.new(reference_params['2'])
 
       if @login_entry.save
         flash[:notice] = 'New disbursement created successfully.'
@@ -47,6 +50,12 @@ module PersonalAdmin
       @login_entry.channel_partner_type = set_channel_partner_type
       @login_entry.approved = params[:login_entry][:approved] ? true : false
       @login_entry.rejected = params[:login_entry][:rejected] ? true : false
+      @login_entry.reference_contacts.destroy_all
+
+      @login_entry.reference_contacts << ReferenceContact.new(reference_params['0'])
+      @login_entry.reference_contacts << ReferenceContact.new(reference_params['1'])
+      @login_entry.reference_contacts << ReferenceContact.new(reference_params['2'])
+
 
       if @login_entry.update(set_params)
         flash[:notice] = 'Login Entry updated successfully.'
@@ -88,6 +97,10 @@ module PersonalAdmin
         :loan_amount,
         :notes
       )
+    end
+
+    def reference_params
+      params.require(:login_entry).permit(reference: [:full_name, :mobile_number, :profile])[:reference]
     end
 
     def get_login_entry

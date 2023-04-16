@@ -41,4 +41,9 @@ class User < ApplicationRecord
   def accountant?
     role&.name == 'accountant'
   end
+
+  def active_for_authentication?
+      super && !deactivated
+  end
+
 end

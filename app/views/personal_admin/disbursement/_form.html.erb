@@ -131,6 +131,36 @@
     </div>
   </div>
   <div class="row">
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Aadhar Number </label>
+        <%= number_field_tag('disbursement[aadhar_number]', @disbursement.aadhar_number, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :aadhar_number) %></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Pan Number </label>
+        <%= number_field_tag('disbursement[pan_number]', @disbursement.pan_number, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :pan_number) %></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Net Salary</label>
+        <%= number_field_tag('disbursement[net_salary]', @disbursement.net_salary, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :net_salary) %></p>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="form-group">
+        <label>Current EMI</label>
+        <%= number_field_tag('disbursement[current_emi]', @disbursement.current_emi, class: "form-control") %>
+        <p class='error'><%= show_errors(@disbursement, :current_emi) %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-4">
       <div class="form-group">
         <label>Disburse Date</label>
