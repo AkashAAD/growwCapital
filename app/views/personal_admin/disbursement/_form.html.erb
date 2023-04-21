@@ -141,7 +141,7 @@
     <div class="col-md-3">
       <div class="form-group">
         <label>Pan Number </label>
-        <%= number_field_tag('disbursement[pan_number]', @disbursement.pan_number, class: "form-control") %>
+        <%= text_field_tag('disbursement[pan_number]', @disbursement.pan_number, class: "form-control") %>
         <p class='error'><%= show_errors(@disbursement, :pan_number) %></p>
       </div>
     </div>
