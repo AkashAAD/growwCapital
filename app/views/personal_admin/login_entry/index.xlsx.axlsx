@@ -33,6 +33,7 @@ wb.styles do |style|
       'Login Approved?',
       'Login Rejected?',
       'Notes',
+      'Reference Contacts',
       'Created at in DB'
     ], style: [highlight_header_cell] * 21
 
@@ -58,6 +59,7 @@ wb.styles do |style|
         login_entry.approved ? 'Yes' : 'No',
         login_entry.rejected ? 'Yes' : 'No',
         login_entry.notes,
+        login_entry.references,
         show_date(login_entry.created_at)
       ], style: [highlight_cell] * 21
     end

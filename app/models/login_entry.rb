@@ -47,4 +47,13 @@ class LoginEntry < ApplicationRecord
       errors.add(:dob, 'Please enter valid dob.') if !(dob < max && dob > min)
     end
   end
+
+  def references
+    ref_contacts = ''
+    reference_contacts.each do |rc|
+      ref_contacts += "Full Name: #{rc.full_name} | Mobile Number: #{rc.mobile_number} | Profile: #{rc.profile}\n"
+    end
+
+    ref_contacts
+  end
 end
