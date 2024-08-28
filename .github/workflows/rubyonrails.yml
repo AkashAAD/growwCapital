@@ -23,14 +23,9 @@ jobs:
           MYSQL_DB: github_actions_test
           MYSQL_USER: root
           MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_PASSWORD:
+          MYSQL_PASSWORD: ''
     env:
       RAILS_ENV: test
-      DATABASE_PORT: 3306
-    run: |
-      bin/rails db:create
-      bin/rails db:schema:load
-      bin/rails test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
