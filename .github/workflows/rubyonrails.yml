@@ -19,11 +19,8 @@ jobs:
         ports:
           - "3306:3306"
         env:
-          MYSQL_HOST: 127.0.0.1
-          MYSQL_ALLOW_EMPTY_PASSWORD: yes
-          MYSQL_DATABASE: unittest
-    env:
-      RAILS_ENV: test
+          MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+          MYSQL_DATABASE: rails_test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,8 +28,11 @@ jobs:
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@78c01b705fd9d5ad960d432d3a0cfa341d50e410 # v1.179.1
         with:
-          bundler-cache: true
-      # Add or replace database setup steps here
+              bundler-cache: true
+      - name: Set up database
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: mysql2://root:${{ secrets.MYSQL_ROOT_PASSWORD }}@127.0.0.1:3306/rails_test
       - name: Set up database schema
         run: bin/rails db:schema:load
       # Add or replace test runners here
