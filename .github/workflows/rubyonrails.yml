@@ -34,10 +34,10 @@ jobs:
           RAILS_ENV: test
           DATABASE_URL: mysql2://root:${{ secrets.MYSQL_ROOT_PASSWORD }}@127.0.0.1:3306/rails_test
       - name: Set up database schema
-        run: bin/rails db:schema:load
+        run: bin/rails db:schema:load1
       # Add or replace test runners here
       - name: Run tests
-        run: bin/rake1
+        run: bin/rake
 
   # lint:
   #   runs-on: ubuntu-latest
