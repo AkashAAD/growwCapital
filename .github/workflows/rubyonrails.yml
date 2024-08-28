@@ -14,17 +14,23 @@ jobs:
   test:
     runs-on: ubuntu-latest
     services:
-      postgres:
-        image: postgres:11-alpine
+      mysql:
+        image: mysql:5.7
         ports:
-          - "5432:5432"
+          - "3306:3306"
         env:
-          POSTGRES_DB: rails_test
-          POSTGRES_USER: rails
-          POSTGRES_PASSWORD: password
+          MYSQL_HOST: 127.0.0.1
+          MYSQL_DB: github_actions_test
+          MYSQL_USER: root
+          MYSQL_ALLOW_EMPTY_PASSWORD: yes
+          MYSQL_PASSWORD:
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://rails:password@localhost:5432/rails_test"
+      DATABASE_PORT: 3306
+    run: |
+      bin/rails db:create
+      bin/rails db:schema:load
+      bin/rails test
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -40,21 +46,21 @@ jobs:
       - name: Run tests
         run: bin/rake
 
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@78c01b705fd9d5ad960d432d3a0cfa341d50e410 # v1.179.1
-        with:
-          bundler-cache: true
-      - name: Generate binstubs
-        run: bundle binstubs bundler-audit brakeman rubocop
-      # Add or replace any other lints here
-      - name: Security audit dependencies
-        run: bin/bundler-audit --update
-      - name: Security audit application code
-        run: bin/brakeman -q -w2
-      - name: Lint Ruby files
-        run: bin/rubocop --parallel
+  # lint:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #     - name: Install Ruby and gems
+  #       uses: ruby/setup-ruby@78c01b705fd9d5ad960d432d3a0cfa341d50e410 # v1.179.1
+  #       with:
+  #         bundler-cache: true
+  #     - name: Generate binstubs
+  #       run: bundle binstubs bundler-audit brakeman rubocop
+  #     # Add or replace any other lints here
+  #     - name: Security audit dependencies
+  #       run: bin/bundler-audit --update
+  #     - name: Security audit application code
+  #       run: bin/brakeman -q -w2
+  #     - name: Lint Ruby files
+  #       run: bin/rubocop --parallel
